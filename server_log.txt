@@ -1,0 +1,81 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7, (C)2005-2015 SA-MP Team
+
+[14:13:45] filterscripts = ""  (string)
+[14:13:45] weburl = "www.sa-mp.com"  (string)
+[14:13:45] mapname = "San Andreas"  (string)
+[14:13:45] language = ""  (string)
+[14:13:45] 
+[14:13:45] Server Plugins
+[14:13:45] --------------
+[14:13:45]  Loading plugin: SampSharp
+[14:13:45]   Loaded.
+[14:13:45]  Loaded 1 plugins.
+
+[14:13:45] 
+[14:13:45] Filterscripts
+[14:13:45] ---------------
+[14:13:45]   Loaded 0 filterscripts.
+
+[14:13:45]   Filterscript 'empty.amx' loaded.
+[14:13:45] 
+[14:13:45] SampSharp Plugin
+[14:13:45] ----------------
+[14:13:45] v0.9.0, (C)2014-2020 Tim Potze
+[14:13:45] 
+[14:13:46] [SampSharp:INFO] Game mode host running.
+[14:13:46] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7, (C)2005-2015 SA-MP Team
+
+[14:14:30] filterscripts = ""  (string)
+[14:14:30] weburl = "www.sa-mp.com"  (string)
+[14:14:30] mapname = "San Andreas"  (string)
+[14:14:30] language = ""  (string)
+[14:14:30] 
+[14:14:30] Server Plugins
+[14:14:30] --------------
+[14:14:30]  Loading plugin: SampSharp
+[14:14:30]   Loaded.
+[14:14:30]  Loaded 1 plugins.
+
+[14:14:30] 
+[14:14:30] Filterscripts
+[14:14:30] ---------------
+[14:14:30]   Loaded 0 filterscripts.
+
+[14:14:30]   Filterscript 'empty.amx' loaded.
+[14:14:30] 
+[14:14:30] SampSharp Plugin
+[14:14:30] ----------------
+[14:14:30] v0.9.0, (C)2014-2020 Tim Potze
+[14:14:30] 
+[14:14:30] [SampSharp:INFO] Game mode host running.
+[14:14:30] Number of vehicle models: 0
+[14:16:36] [connection] 192.168.0.7:63121 requests connection cookie.
+[14:16:37] Incoming connection: 192.168.0.7:63121 id: 0
+[14:16:38] [join] [DRE]K3NDO_[LT] has joined the server (0:192.168.0.7)
+[14:18:50] [connection] 192.168.0.6:51045 requests connection cookie.
+[14:18:51] Incoming connection: 192.168.0.6:51045 id: 1
+[14:18:51] [join] MrDave1999 has joined the server (1:192.168.0.6)
+[14:19:12] [chat] [[DRE]K3NDO_[LT]]: hi
+[14:20:59] [kill] [DRE]K3NDO_[LT] killed MrDave1999 Desert Eagle
+[14:21:13] [part] MrDave1999 has left the server (1:1)
+[14:21:34] [connection] 192.168.0.6:63588 requests connection cookie.
+[14:21:35] Incoming connection: 192.168.0.6:63588 id: 1
+[14:21:35] [join] MrDave1999 has joined the server (1:192.168.0.6)
+[14:23:31] [kill] [DRE]K3NDO_[LT] killed MrDave1999 Desert Eagle
+[14:28:41] [part] [DRE]K3NDO_[LT] has left the server (0:1)
+[14:44:17] [part] MrDave1999 has left the server (1:1)

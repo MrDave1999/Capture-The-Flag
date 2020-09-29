@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SampSharp.GameMode" Version="0.9.1" />
+    <PackageReference Include="SampSharp.Streamer" Version="0.9.0" />
+  </ItemGroup>
+
+</Project>
