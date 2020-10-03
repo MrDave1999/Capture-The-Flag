@@ -91,14 +91,14 @@ namespace CaptureTheFlag
             player.Angle = 1.0000f;
             player.Interior = 0;
             player.PlayerTeam = (e.ClassId == 0) ? (TeamAlpha) : (TeamBeta);
-            player.PlayerTeam.GetMessageTeamEnable(out string msg);
+            player.PlayerTeam.GetMessageTeamEnable(out var msg);
             player.GameText(msg, 999999999, 6);
         }   
          
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
         {
             var player = sender as Player;
-            if (player.PlayerTeam.GetMessageTeamEnable(out string msg))
+            if (player.PlayerTeam.GetMessageTeamEnable(out var msg))
             {
                 e.PreventSpawning = true;
                 player.GameText(msg, 999999999, 6);
