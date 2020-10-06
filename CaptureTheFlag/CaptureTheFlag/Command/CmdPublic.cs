@@ -31,9 +31,7 @@ namespace CaptureTheFlag.Command
         [Command("kill", Shortcut = "kill")]
         private static void Kill(Player player)
         {
-            if (IsCaptureFlag(player)) return;
             player.Health = 0;
-            ++player.Data.Deaths;
         }
 
         [Command("team", Shortcut = "team")]
