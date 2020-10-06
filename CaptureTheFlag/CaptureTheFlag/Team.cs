@@ -2,6 +2,7 @@
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.World;
+using SampSharp.Streamer.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,8 +22,9 @@ namespace CaptureTheFlag
         public Flag Flag { get; set; }
         public Team TeamRival { get; set; }
         public TextDraw TdScore { get; set; }
+        public DynamicMapIcon Icon { get; set; }
 
-        public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag)
+        public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag, Color colorIcon)
         {
             Skin = skin;
             OtherColor = otherColor;
@@ -32,6 +34,7 @@ namespace CaptureTheFlag
             NameTeam = name;
             NameColor = namecolor;
             Flag = flag;
+            Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = 10, Color = colorIcon};
         }
 
         public bool IsFull()
@@ -121,8 +124,11 @@ namespace CaptureTheFlag
         public void Drop(Player player, Player killer)
         {
             Drop(player);
-            killer.SendClientMessage(Color.LimeGreen, "[CTF]: Obtuviste +4 de score por matar al portador.");
-            killer.Score += 4;
+            if (killer != null)
+            {
+                killer.SendClientMessage(Color.LimeGreen, "[CTF]: Obtuviste +4 de score por matar al portador.");
+                killer.Score += 4;
+            }
         }
 
         public void Drop(Player player)
