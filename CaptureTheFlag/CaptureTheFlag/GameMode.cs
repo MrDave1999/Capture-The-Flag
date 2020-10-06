@@ -6,6 +6,7 @@ using SampSharp.GameMode.Controllers;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Textdraw;
+using SampSharp.Streamer.World;
 
 namespace CaptureTheFlag
 {
@@ -18,7 +19,7 @@ namespace CaptureTheFlag
 
         protected override void OnInitialized(EventArgs e)
         {
-            base.OnInitialized(e);
+            base.OnInitialized(e); 
             Console.WriteLine("\n----------------------------------");
             Console.WriteLine(" GameMode Capture The Flag");
             Console.WriteLine("     Team DeathMatch");
@@ -36,8 +37,8 @@ namespace CaptureTheFlag
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
 
             TdGlobal = new TextDrawGlobal();
-            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TdGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, new Vector3(-1131.7461, 1029.1383, 1345.7311)));
-            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TdGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, new Vector3(-974.7156, 1089.7988, 1344.9755)));
+            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TdGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, new Vector3(-1131.7461, 1029.1383, 1345.7311)), Color.LimeGreen);
+            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TdGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, new Vector3(-974.7156, 1089.7988, 1344.9755)),  Color.Yellow);
             TeamAlpha.TeamRival = TeamBeta;
             TeamBeta.TeamRival = TeamAlpha;
         }
@@ -110,6 +111,7 @@ namespace CaptureTheFlag
             player.SendClientMessage("\n\n");
             player.SendClientMessage(Color.LimeGreen, $"[CTF]: Eres del equipo {player.PlayerTeam.NameTeam}!");
             player.SendClientMessage(Color.LimeGreen, "[CTF]: Captura la bandera del enemigo y llevala a tu base.");
+            TdGlobal.Show(player);
         }
 
         protected override void OnPlayerSpawned(BasePlayer sender, SpawnEventArgs e)
@@ -127,26 +129,26 @@ namespace CaptureTheFlag
                 player.SetPositionEx(new Vector3(-1131.5371, 1057.5098, 1346.4138), 270.4092f, 10);
             else
                 player.SetPositionEx(new Vector3(-975.9757, 1060.9830, 1345.6719), 83.9741f, 10);
-
-            TdGlobal.Show(player);
         }
         
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
         {
             base.OnPlayerDied(sender, e);
             var player = sender as Player;
-            BasePlayer.SendDeathMessageToAll(e.Killer, player, e.DeathReason);
+            var killer = e.Killer as Player;
+            ++player.Data.Deaths;
+            BasePlayer.SendDeathMessageToAll(killer, player, e.DeathReason);
             if (player.IsStateUser == StateUser.Force)
                 player.IsStateUser = StateUser.Kill;
 
-            if (e.Killer != null)
+            if (killer != null)
             {
-                e.Killer.Score += 1;
-                //more code.
+                ++killer.Score;
+                ++killer.Data.Kills;
             }
 
             if (player.IsCapturedFlag())
-                player.PlayerTeam.TeamRival.Drop(player, (Player)e.Killer);
+                player.PlayerTeam.TeamRival.Drop(player, killer);
         }
 
         protected override void OnPlayerTakeDamage(BasePlayer sender, DamageEventArgs e)
