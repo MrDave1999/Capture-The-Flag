@@ -7,6 +7,8 @@ using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Textdraw;
 using SampSharp.Streamer.World;
+using CaptureTheFlag.Command;
+using CaptureTheFlag.Controller;
 
 namespace CaptureTheFlag
 {
@@ -48,7 +50,7 @@ namespace CaptureTheFlag
             var player = sender as Player;
             player.SendClientMessage(Color.Red, "=======================================================================");
             player.SendClientMessage(Color.Yellow, "     Bienvenido a .:: Capture The Flag ::. |Team DeathMatch|");
-            player.SendClientMessage(Color.Yellow, "     Comandos principales: /cmds o /ayuda");
+            player.SendClientMessage(Color.Yellow, "     Comandos principales: /cmds o /help");
             player.SendClientMessage(Color.Red, "=======================================================================");
             player.Color = Color.White;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
@@ -165,18 +167,24 @@ namespace CaptureTheFlag
             }
         }
 
-        protected override void OnPlayerText(BasePlayer player, TextEventArgs e)
+        protected override void OnPlayerText(BasePlayer sender, TextEventArgs e)
         {
-            base.OnPlayerText(player, e);
-            BasePlayer.SendClientMessageToAll(Color.White, $"{player.Color}{player.Name} {Color.White}[{player.Id}]: {e.Text}");
+            base.OnPlayerText(sender, e);
+            var player = sender as Player;
             e.SendToPlayers = false;
+            if (player.IsSelectionClass)
+            {
+                player.SendClientMessage(Color.Red, "Error: No puedes usar el chat en la selección de clases.");
+                return;
+            }
+            Chat.WriteText(player, e.Text);
         }
 
         protected override void OnPlayerCommandText(BasePlayer sender, CommandTextEventArgs e)
         {
             base.OnPlayerCommandText(sender, e);
             if (!e.Success)
-                sender.SendClientMessage(Color.Red, "Error: Comando incorrecto.");
+                sender.SendClientMessage(Color.Red, "Error: Ingresaste un comando desconocido. Usa /cmds o /help.");
             e.Success = true;
         }
 
