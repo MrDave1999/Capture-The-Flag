@@ -63,6 +63,7 @@ namespace CaptureTheFlag.Command
         [Command("switch", Shortcut = "switch")]
         private static void ChangeTeam(Player player)
         {
+            if (IsCaptureFlag(player)) return;
             GameMode.TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
             GameMode.TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
             var ct = new TablistDialog("Change Team", 
