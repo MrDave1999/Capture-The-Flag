@@ -14,8 +14,8 @@ namespace CaptureTheFlag
     {
         public Player PlayerCaptured { get; set; } 
         public bool IsPositionBase { get; set; } = true; 
-        public Color ColorHex { get; set; }
-        public int Model { get; set; }
+        public Color ColorHex { get; private set; }
+        public int Model { get; private set; }
         public Vector3 PositionBase { get; set; }
 
         public Flag(int modelid, Color color, Vector3 vector3)
