@@ -45,6 +45,12 @@ namespace CaptureTheFlag
             TeamBeta.TeamRival = TeamAlpha;
         }
 
+        protected override void OnDialogResponse(BasePlayer player, DialogResponseEventArgs e)
+        {
+            base.OnDialogResponse(player, e);
+            player.PlaySound(e.DialogButton == DialogButton.Left ? (1083) : (1084));
+        }
+
         protected override void OnPlayerConnected(BasePlayer sender, EventArgs e)
         {
             var player = sender as Player;
@@ -111,8 +117,13 @@ namespace CaptureTheFlag
             player.GameText("_", 1000, 4);
             player.PlayerTeam.Members++;
             player.SendClientMessage("\n\n");
-            player.SendClientMessage(Color.LimeGreen, $"[CTF]: Eres del equipo {player.PlayerTeam.NameTeam}!");
-            player.SendClientMessage(Color.LimeGreen, "[CTF]: Captura la bandera del enemigo y llevala a tu base.");
+            BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se añadió al equipo {player.PlayerTeam.NameTeam}.");
+            player.SendClientMessage($"{Color.Pink}[!] {Color.White}Captura la bandera del equipo contrario.");
+            if (player.PlayerTeam.Id == TeamID.Alpha)
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {Color.Yellow}ícono Amarillo {Color.White}que aparece en el mapa radar.");
+            else
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {Color.LimeGreen}ícono Verde {Color.White}que aparece en el mapa radar.");
+            player.SendClientMessage($"{Color.Pink}[!] {Color.White}Luego lleva la bandera a tu base.");
             TdGlobal.Show(player);
         }
 
@@ -123,6 +134,7 @@ namespace CaptureTheFlag
             player.GiveWeapon(Weapon.Deagle, 3000);
             player.GiveWeapon(Weapon.Shotgun, 3000);
             player.GiveWeapon(Weapon.Sniper, 3000);
+            player.GiveWeapon(Weapon.Knife, 1);
             player.Team = (int)player.PlayerTeam.Id;
             player.Skin = player.PlayerTeam.Skin;
             player.Color = player.PlayerTeam.Flag.ColorHex;
@@ -139,6 +151,7 @@ namespace CaptureTheFlag
             var player = sender as Player;
             var killer = e.Killer as Player;
             ++player.Data.Deaths;
+            ++player.PlayerTeam.Deaths;
             BasePlayer.SendDeathMessageToAll(killer, player, e.DeathReason);
             if (player.IsStateUser == StateUser.Force)
                 player.IsStateUser = StateUser.Kill;
@@ -146,6 +159,7 @@ namespace CaptureTheFlag
             if (killer != null)
             {
                 ++killer.Score;
+                ++killer.PlayerTeam.Kills;
                 ++killer.Data.Kills;
             }
 
@@ -159,7 +173,7 @@ namespace CaptureTheFlag
             var player = sender as Player;
             int weaponid = (int)e.Weapon;
             if ((weaponid >= 0 && weaponid <= 15) || (weaponid >= 22 && weaponid <= 34))
-                player.PlaySound(17802, new Vector3(0, 0, 0));
+                player.PlaySound(17802);
 
             if(e.OtherPlayer != null)
             {
