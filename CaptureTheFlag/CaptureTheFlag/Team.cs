@@ -145,8 +145,7 @@ namespace CaptureTheFlag
     public enum TeamID
     {
        Alpha,
-       Beta,
-       None
+       Beta
     }
 
     public class SkinTeam
