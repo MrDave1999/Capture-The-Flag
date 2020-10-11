@@ -124,7 +124,7 @@ namespace CaptureTheFlag.Command
         [Command("tc", Shortcut = "tc", UsageMessage = "/tc [mensaje]")]
         public static void TeamChat(Player player, string msg)
         {
-            if(player.PlayerTeam.Id == TeamID.None)
+            if(player.Team == BasePlayer.NoTeam)
             {
                 player.SendClientMessage(Color.Red, "Error: Debes estar en un equipo para usar el TeamChat.");
                 return;
