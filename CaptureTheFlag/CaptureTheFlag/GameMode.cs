@@ -56,7 +56,8 @@ namespace CaptureTheFlag
             var player = sender as Player;
             player.SendClientMessage(Color.Red, "=======================================================================");
             player.SendClientMessage(Color.Yellow, "     Bienvenido a .:: Capture The Flag ::. |Team DeathMatch|");
-            player.SendClientMessage(Color.Yellow, "     Comandos principales: /cmds o /help");
+            player.SendClientMessage(Color.Yellow, "     ¿No sabes cuales son los comandos? Usa /cmds");
+            player.SendClientMessage(Color.Yellow, "     ¿No sabes como jugar? Usa /help");
             player.SendClientMessage(Color.Red, "=======================================================================");
             player.Color = Color.White;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
@@ -71,7 +72,7 @@ namespace CaptureTheFlag
             if (player.IsCapturedFlag())
                 player.Drop();
 
-            if (player.PlayerTeam.Id != TeamID.None)
+            if (player.Team != BasePlayer.NoTeam)
                 player.PlayerTeam.Members--;
         }
 
@@ -93,6 +94,7 @@ namespace CaptureTheFlag
                 return;
             }
             player.Color = Color.White;
+            player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
             player.Position = new Vector3(-2112.2437, 176.7923, 35.3929);
             player.CameraPosition = new Vector3(-2112.2803, 181.6424, 36.3327);
