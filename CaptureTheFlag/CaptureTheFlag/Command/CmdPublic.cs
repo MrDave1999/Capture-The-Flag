@@ -14,20 +14,26 @@ namespace CaptureTheFlag.Command
     [CommandGroup("public")]
     public class CmdPublic
     {
-        private static bool IsCaptureFlag(Player player)
+        [Command("cmds", Shortcut = "cmds")]
+        private static void ListCommands(Player player)
         {
-            if(player.IsCapturedFlag())
-            {
-                player.SendClientMessage(Color.Red, "Error: Usted no puede usar este comando.");
-                return true;
-            }
-            return false;
+            var cmds = new MessageDialog("Comandos", "", "Aceptar");
+            cmds.Message = "" +
+                $"{Color.Yellow}/force - {Color.White} Fuerza al jugador en ir a la selección de clases." +
+                $"\n{Color.Yellow}/kill - {Color.White} Asesina al jugador (su vida queda en 0.0)." +
+                $"\n{Color.Yellow}/tstats - {Color.White} Muestra las estadísticas de ambos equipos (Alpha y Beta)." +
+                $"\n{Color.Yellow}/switch - {Color.White} Permite al jugador cambiarse de equipo." +
+                $"\n{Color.Yellow}/tc - {Color.White} Permite hablar en el Team Chat." +
+                $"\n{Color.Yellow}!hello - {Color.White} Puedes hablar en el TeamChat con el signo de admiración." +
+                $"\n\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar.";
+            cmds.Show(player);
         }
 
         [Command("force", Shortcut = "force")]
         private static void Force(Player player)
         {
-            if (IsCaptureFlag(player)) return;
+            if (player.IsCapturedFlag())
+                player.Drop();
             player.SetForceClass();
         }
 
@@ -63,7 +69,6 @@ namespace CaptureTheFlag.Command
         [Command("switch", Shortcut = "switch")]
         private static void ChangeTeam(Player player)
         {
-            if (IsCaptureFlag(player)) return;
             GameMode.TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
             GameMode.TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
             var ct = new TablistDialog("Change Team", 
@@ -86,34 +91,34 @@ namespace CaptureTheFlag.Command
                 $"{GameMode.TeamBeta.OtherColor}{msgBeta}"
             });
             ct.Show(player);
-            ct.Response += ChangeTeamDialog_Response;
-        }
-
-        public static void ChangeTeamDialog_Response(object sender, DialogResponseEventArgs e)
-        {
-            if(e.DialogButton == DialogButton.Left)
+            ct.Response += (sender, e) =>
             {
-                var player = e.Player as Player;
-                var ct = sender as TablistDialog;
-                if (player.PlayerTeam.Id == (TeamID)e.ListItem)
+                if (e.DialogButton == DialogButton.Left)
                 {
-                    player.SendClientMessage(Color.Red, "Error: Ya formas parte de ese equipo.");
-                    ct.Show(player);
-                    return;
-                }
-                --player.PlayerTeam.Members;
-                if(player.PlayerTeam.TeamRival.IsFull())
-                {
-                    player.SendClientMessage(Color.Red, "Error: El equipo no está disponible.");
+                    var player = e.Player as Player;
+                    var ct = sender as TablistDialog;
+                    if (player.PlayerTeam.Id == (TeamID)e.ListItem)
+                    {
+                        player.SendClientMessage(Color.Red, "Error: Ya formas parte de ese equipo.");
+                        ct.Show(player);
+                        return;
+                    }
+                    --player.PlayerTeam.Members;
+                    if (player.PlayerTeam.TeamRival.IsFull())
+                    {
+                        player.SendClientMessage(Color.Red, "Error: El equipo no está disponible.");
+                        ++player.PlayerTeam.Members;
+                        ct.Show(player);
+                        return;
+                    }
+                    if (player.IsCapturedFlag())
+                        player.Drop();
+                    player.PlayerTeam = (e.ListItem == 0) ? GameMode.TeamAlpha : GameMode.TeamBeta;
                     ++player.PlayerTeam.Members;
-                    ct.Show(player);
-                    return;
+                    BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
+                    player.Spawn();
                 }
-                player.PlayerTeam = (e.ListItem == 0) ? GameMode.TeamAlpha : GameMode.TeamBeta;
-                ++player.PlayerTeam.Members;
-                BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
-                player.Spawn();
-            }
+            };
         }
 
         [Command("tc", Shortcut = "tc", UsageMessage = "/tc [mensaje]")]
