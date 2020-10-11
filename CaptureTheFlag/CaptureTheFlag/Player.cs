@@ -51,6 +51,11 @@ namespace CaptureTheFlag
             return Data.LevelVip >= levelid;
         }
 
+        public void Drop()
+        {
+            PlayerTeam.TeamRival.Drop(this);
+        }
+
         public bool IsCapturedFlag()
         {
             return this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
