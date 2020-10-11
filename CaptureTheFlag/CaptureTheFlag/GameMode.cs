@@ -69,7 +69,7 @@ namespace CaptureTheFlag
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Disconnect);
 
             if (player.IsCapturedFlag())
-                player.PlayerTeam.TeamRival.Drop(player);
+                player.Drop();
 
             if (player.PlayerTeam.Id != TeamID.None)
                 player.PlayerTeam.Members--;
@@ -107,6 +107,7 @@ namespace CaptureTheFlag
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
         {
             var player = sender as Player;
+
             if (player.PlayerTeam.GetMessageTeamEnable(out var msg))
             {
                 e.PreventSpawning = true;
@@ -124,6 +125,8 @@ namespace CaptureTheFlag
             else
                 player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {Color.LimeGreen}ícono Verde {Color.White}que aparece en el mapa radar.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Luego lleva la bandera a tu base.");
+            if (player.PlayerTeam.Flag.PlayerCaptured != null)
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
             TdGlobal.Show(player);
         }
 
