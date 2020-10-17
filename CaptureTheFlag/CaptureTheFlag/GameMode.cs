@@ -60,6 +60,8 @@ namespace CaptureTheFlag
             player.SendClientMessage(Color.Yellow, "     ¿No sabes como jugar? Usa /help");
             player.SendClientMessage(Color.Red, "=======================================================================");
             player.Color = Color.White;
+            player.Team = BasePlayer.NoTeam;
+            player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
         }
 
@@ -68,10 +70,8 @@ namespace CaptureTheFlag
             base.OnPlayerDisconnected(sender, e);
             var player = sender as Player;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Disconnect);
-
             if (player.IsCapturedFlag())
                 player.Drop();
-
             if (player.Team != BasePlayer.NoTeam)
                 player.PlayerTeam.Members--;
         }
@@ -203,7 +203,7 @@ namespace CaptureTheFlag
         {
             base.OnPlayerCommandText(sender, e);
             if (!e.Success)
-                sender.SendClientMessage(Color.Red, "Error: Ingresaste un comando desconocido. Usa /cmds o /help.");
+                sender.SendClientMessage(Color.Red, $"Error: El comando {e.Text} es incorrecto. Usa /cmds para saber los comandos disponibles.");
             e.Success = true;
         }
 
