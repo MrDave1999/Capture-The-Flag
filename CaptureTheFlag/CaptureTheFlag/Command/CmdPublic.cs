@@ -17,16 +17,32 @@ namespace CaptureTheFlag.Command
         [Command("cmds", Shortcut = "cmds")]
         private static void ListCommands(Player player)
         {
-            var cmds = new MessageDialog("Comandos", "", "Aceptar");
-            cmds.Message = "" +
+            new MessageDialog("Comandos",
                 $"{Color.Yellow}/force - {Color.White} Fuerza al jugador en ir a la selección de clases." +
                 $"\n{Color.Yellow}/kill - {Color.White} Asesina al jugador (su vida queda en 0.0)." +
                 $"\n{Color.Yellow}/tstats - {Color.White} Muestra las estadísticas de ambos equipos (Alpha y Beta)." +
                 $"\n{Color.Yellow}/switch - {Color.White} Permite al jugador cambiarse de equipo." +
                 $"\n{Color.Yellow}/tc - {Color.White} Permite hablar en el Team Chat." +
                 $"\n{Color.Yellow}!hello - {Color.White} Puedes hablar en el TeamChat con el signo de admiración." +
-                $"\n\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar.";
-            cmds.Show(player);
+                $"\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar.", "Aceptar").Show(player);
+        }
+
+        [Command("help", Shortcut = "help")]
+        private static void Help(Player player)
+        {
+            new MessageDialog("Ayuda",
+                $"{Color.Yellow}¿Cómo se juega?" +
+                $"\n{Color.White}Debes capturar la bandera del equipo contrario y luego llevarla a tu base." +
+                $"\n{Color.Yellow}¿A dónde llevo la bandera?" +
+                $"\n{Color.White}Si capturaste la bandera, la debes llevar a la posición base donde se encuentre la bandera de tu equipo. " +
+                $"\n{Color.White}Esa “posición base” es identificada por un ícono que aparecerá en el mapa radar." +
+                $"\n{Color.White}Si eres del equipo {GameMode.TeamAlpha.OtherColor}Alpha{Color.White}, el ícono será de color {Color.LimeGreen}Verde {Color.White}y si eres del equipo {GameMode.TeamBeta.OtherColor}Beta{Color.White}, el ícono será de color {Color.Yellow}Amarillo." +
+                $"\n{Color.Yellow}¿Qué pasa si no encuentro la bandera de mi equipo en la posición base?" +
+                $"\n{Color.White}Pues tu equipo no ganará puntos. En ese caso, debes recuperar la bandera de tu equipo." +
+                $"\n{Color.Yellow}¿Cómo recupero la bandera de mi equipo?" +
+                $"\n{Color.White}Simple, debes matar al jugador que robó la bandera." +
+                $"\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
+                $"\n{Color.White}Con el comando {Color.Pink}/tstats.", "Aceptar").Show(player);
         }
 
         [Command("force", Shortcut = "force")]
@@ -46,9 +62,9 @@ namespace CaptureTheFlag.Command
         [Command("tstats", Shortcut = "tstats")]
         private static void StatsTeam(Player player)
         {
-            var statsList = new MessageDialog("Stats Team", "","Aceptar");
-            statsList.Message = GameMode.TeamAlpha.OtherColor +
-                "Team: Alpha"  +
+            new MessageDialog("Stats Team",
+                GameMode.TeamAlpha.OtherColor +
+                "Team: Alpha" +
                 "\nColor Team: Red" +
                 "\nUsers: " + GameMode.TeamAlpha.Members +
                 "\nScore: " + GameMode.TeamAlpha.Score +
@@ -62,8 +78,7 @@ namespace CaptureTheFlag.Command
                 "\nScore: " + GameMode.TeamBeta.Score +
                 "\nTotal Kills: " + GameMode.TeamBeta.Kills +
                 "\nTotal Deaths: " + GameMode.TeamBeta.Deaths +
-                "\nCaptured Flag by: " + (GameMode.TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{GameMode.TeamBeta.Flag.PlayerCaptured.Name}");
-            statsList.Show(player);
+                "\nCaptured Flag by: " + (GameMode.TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{GameMode.TeamBeta.Flag.PlayerCaptured.Name}"), "Aceptar").Show(player);
         }
 
         [Command("switch", Shortcut = "switch")]
