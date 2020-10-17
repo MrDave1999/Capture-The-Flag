@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics.Tracing;
 using SampSharp.GameMode;
-using SampSharp.GameMode.Pools;
 using SampSharp.GameMode.World;
 
 namespace CaptureTheFlag
@@ -12,7 +11,7 @@ namespace CaptureTheFlag
         public StateUser IsStateUser { get; set; }
         public PlayerData Data { get; set; }
         public Team PlayerTeam { get; set; }
- 
+
         public Player()
         {
             Data = new PlayerData();
