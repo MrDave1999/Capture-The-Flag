@@ -11,7 +11,7 @@ using System.Text;
 
 namespace CaptureTheFlag.Command
 {
-    [CommandGroup("public")]
+    [CommandGroup("public", PermissionChecker = typeof(BlockCommand))]
     public class CmdPublic
     {
         [Command("cmds", Shortcut = "cmds")]
