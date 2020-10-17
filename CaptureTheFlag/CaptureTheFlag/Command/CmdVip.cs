@@ -5,8 +5,14 @@ using System.Text;
 
 namespace CaptureTheFlag.Command
 {
-    [CommandGroup("vip")]
+    [CommandGroup("vip", PermissionChecker = typeof(BlockCommand))]
     public class CmdVip
     {
+        [Command("test", Shortcut = "test")]
+        public static void Test(Player player)
+        {
+
+        }
+
     }
 }
