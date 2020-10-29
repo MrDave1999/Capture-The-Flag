@@ -41,6 +41,7 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.White}Pues tu equipo no ganará puntos. En ese caso, debes recuperar la bandera de tu equipo." +
                 $"\n{Color.Yellow}¿Cómo recupero la bandera de mi equipo?" +
                 $"\n{Color.White}Simple, debes matar al jugador que robó la bandera." +
+                $"\n{Color.White}Aunque puede que la bandera quede en algún sitio que no sea la posición base y te toque buscarla." +
                 $"\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
                 $"\n{Color.White}Con el comando {Color.Pink}/tstats.", "Aceptar").Show(player);
         }
@@ -115,6 +116,12 @@ namespace CaptureTheFlag.Command
                     if (player.PlayerTeam.Id == (TeamID)e.ListItem)
                     {
                         player.SendClientMessage(Color.Red, "Error: Ya formas parte de ese equipo.");
+                        ct.Show(player);
+                        return;
+                    }
+                    if(GameMode.TeamAlpha.Members == GameMode.TeamBeta.Members)
+                    {
+                        player.SendClientMessage(Color.Red, $"Error: No puedes cambiarte al equipo {(e.ListItem == 0 ? "Alpha" : "Beta")} porque el equipo {player.PlayerTeam.NameTeam} quedaría desequilibrado.");
                         ct.Show(player);
                         return;
                     }
