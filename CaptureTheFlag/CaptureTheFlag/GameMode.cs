@@ -203,8 +203,11 @@ namespace CaptureTheFlag
         {
             base.OnPlayerCommandText(sender, e);
             if (!e.Success)
+            {
                 sender.SendClientMessage(Color.Red, $"Error: El comando {e.Text} es incorrecto. Usa /cmds para saber los comandos disponibles.");
-            e.Success = true;
+                sender.PlaySound(1140);
+            }
+                e.Success = true;
         }
 
         protected override void LoadControllers(ControllerCollection controllers)
