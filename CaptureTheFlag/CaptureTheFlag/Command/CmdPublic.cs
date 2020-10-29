@@ -11,6 +11,34 @@ using System.Text;
 
 namespace CaptureTheFlag.Command
 {
+    static class ExtensionTablistDialog
+    {
+        public static void SetInfo(this TablistDialog vs)
+        {
+            vs.Clear();
+            GameMode.TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
+            GameMode.TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
+            vs.Add(new[]
+            {       
+                $"{GameMode.TeamAlpha.OtherColor}{GameMode.TeamAlpha.NameTeam}",
+                $"{GameMode.TeamAlpha.OtherColor}{GameMode.TeamAlpha.Members}",
+                $"{GameMode.TeamAlpha.OtherColor}{msgAlpha}"
+            });
+            vs.Add(new[]
+            {
+                $"{GameMode.TeamBeta.OtherColor}{GameMode.TeamBeta.NameTeam}",
+                $"{GameMode.TeamBeta.OtherColor}{GameMode.TeamBeta.Members}",
+                $"{GameMode.TeamBeta.OtherColor}{msgBeta}"
+            });
+        }
+
+        public static void ShowDialog(this TablistDialog vs, Player player)
+        {
+            vs.SetInfo();
+            vs.Show(player);
+        }
+    }
+
     [CommandGroup("public", PermissionChecker = typeof(BlockCommand))]
     public class CmdPublic
     {
@@ -93,20 +121,7 @@ namespace CaptureTheFlag.Command
                     "Users",
                     "Availability"
                 }, "Seleccionar", "Cerrar");
-            ct.Add(new[]
-            {
-                $"{GameMode.TeamAlpha.OtherColor}{GameMode.TeamAlpha.NameTeam}",
-                $"{GameMode.TeamAlpha.OtherColor}{GameMode.TeamAlpha.Members}",
-                $"{GameMode.TeamAlpha.OtherColor}{msgAlpha}"
-            });
-
-            ct.Add(new[]
-            {
-                $"{GameMode.TeamBeta.OtherColor}{GameMode.TeamBeta.NameTeam}",
-                $"{GameMode.TeamBeta.OtherColor}{GameMode.TeamBeta.Members}",
-                $"{GameMode.TeamBeta.OtherColor}{msgBeta}"
-            });
-            ct.Show(player);
+            ct.ShowDialog(player);
             ct.Response += (sender, e) =>
             {
                 if (e.DialogButton == DialogButton.Left)
@@ -116,13 +131,13 @@ namespace CaptureTheFlag.Command
                     if (player.PlayerTeam.Id == (TeamID)e.ListItem)
                     {
                         player.SendClientMessage(Color.Red, "Error: Ya formas parte de ese equipo.");
-                        ct.Show(player);
+                        ct.ShowDialog(player);
                         return;
                     }
                     if(GameMode.TeamAlpha.Members == GameMode.TeamBeta.Members)
                     {
                         player.SendClientMessage(Color.Red, $"Error: No puedes cambiarte al equipo {(e.ListItem == 0 ? "Alpha" : "Beta")} porque el equipo {player.PlayerTeam.NameTeam} quedaría desequilibrado.");
-                        ct.Show(player);
+                        ct.ShowDialog(player);
                         return;
                     }
                     --player.PlayerTeam.Members;
@@ -130,7 +145,7 @@ namespace CaptureTheFlag.Command
                     {
                         player.SendClientMessage(Color.Red, "Error: El equipo no está disponible.");
                         ++player.PlayerTeam.Members;
-                        ct.Show(player);
+                        ct.ShowDialog(player);
                         return;
                     }
                     if (player.IsCapturedFlag())
@@ -152,7 +167,7 @@ namespace CaptureTheFlag.Command
                 return;
             }
             foreach(Player player1 in BasePlayer.GetAll<Player>())
-                if(!player1.IsSelectionClass && player.PlayerTeam.Id == player1.PlayerTeam.Id)
+                if(player1.Team != BasePlayer.NoTeam && player.PlayerTeam.Id == player1.PlayerTeam.Id)
                     player1.SendClientMessage($"{player.PlayerTeam.OtherColor}[Team Chat] {player.Name} [{player.Id}]: {msg}");
         }
     }
