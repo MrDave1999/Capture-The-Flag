@@ -59,18 +59,21 @@ namespace CaptureTheFlag.Command
         private static void Help(Player player)
         {
             new MessageDialog("Ayuda",
-                $"{Color.Yellow}¿Cómo se juega?" +
-                $"\n{Color.White}Debes capturar la bandera del equipo contrario y luego llevarla a tu base." +
-                $"\n{Color.Yellow}¿A dónde llevo la bandera?" +
+                $"{Color.Yellow}¿Qué es Capture The Flag?" +
+                $"\n{Color.White}Capture The Flag es un estilo de juego en el que dos equipos intentan atrapar una bandera." +
+                $"\n{Color.White}Si el jugador captura la bandera, debe llevarla a un sitio determinado para que su equipo gane puntos." +
+                $"\n{Color.White}Para jugar, los jugadores se dividen en dos equipos, con cada uno en un campo." +
+                $"\n{Color.White}Para poder ganar, hay que coger una bandera y llevarla a un determinado sitio." +
+                $"\n\n{Color.Yellow}¿A dónde llevo la bandera?" +
                 $"\n{Color.White}Si capturaste la bandera, la debes llevar a la posición base donde se encuentre la bandera de tu equipo. " +
                 $"\n{Color.White}Esa “posición base” es identificada por un ícono que aparecerá en el mapa radar." +
                 $"\n{Color.White}Si eres del equipo {GameMode.TeamAlpha.OtherColor}Alpha{Color.White}, el ícono será de color {Color.LimeGreen}Verde {Color.White}y si eres del equipo {GameMode.TeamBeta.OtherColor}Beta{Color.White}, el ícono será de color {Color.Yellow}Amarillo." +
-                $"\n{Color.Yellow}¿Qué pasa si no encuentro la bandera de mi equipo en la posición base?" +
+                $"\n\n{Color.Yellow}¿Qué pasa si no encuentro la bandera de mi equipo en la posición base?" +
                 $"\n{Color.White}Pues tu equipo no ganará puntos. En ese caso, debes recuperar la bandera de tu equipo." +
-                $"\n{Color.Yellow}¿Cómo recupero la bandera de mi equipo?" +
+                $"\n\n{Color.Yellow}¿Cómo recupero la bandera de mi equipo?" +
                 $"\n{Color.White}Simple, debes matar al jugador que robó la bandera." +
                 $"\n{Color.White}Aunque puede que la bandera quede en algún sitio que no sea la posición base y te toque buscarla." +
-                $"\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
+                $"\n\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
                 $"\n{Color.White}Con el comando {Color.Pink}/tstats.", "Aceptar").Show(player);
         }
 
