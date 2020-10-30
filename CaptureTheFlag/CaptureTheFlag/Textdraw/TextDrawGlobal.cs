@@ -10,15 +10,14 @@ namespace CaptureTheFlag.Textdraw
 {
     public class TextDrawGlobal
     {
-        public TextDraw TdCTF { get; set; }
-        public TextDraw TdScoreAlpha { get; set; }
-        public TextDraw TdScoreBeta { get; set; }
+        public TextDraw TdCTF { get; set; }         = new TextDraw();
+        public TextDraw TdScoreAlpha { get; set; }  = new TextDraw();
+        public TextDraw TdScoreBeta { get; set; }   = new TextDraw();
+        public TextDraw TdFlagRed { get; set; }     = new TextDraw();
+        public TextDraw TdFlagBlue { get; set; }    = new TextDraw();
 
         public TextDrawGlobal()
         {
-            TdCTF = new TextDraw();
-            TdScoreAlpha = new TextDraw();
-            TdScoreBeta = new TextDraw();
             Create();
         }
 
@@ -33,23 +32,53 @@ namespace CaptureTheFlag.Textdraw
             TdCTF.Outline = 1;
             TdCTF.Proportional = true;
 
-            TdScoreAlpha.Position = new Vector2(36.000000, 305.000000);
-            TdScoreAlpha.Text = $"~r~Alpha: 0";
+            TdFlagRed.Position = new Vector2(-7.000000, 264.000000);
+            TdFlagRed.Text = "Preview_Model";
+            TdFlagRed.Font = TextDrawFont.PreviewModel;
+            TdFlagRed.Outline = 0;
+            TdFlagRed.Shadow = 0;
+            TdFlagRed.LetterSize = new Vector2(0.600000, 2.000000);
+            TdFlagRed.ForeColor = Color.Red;
+            TdFlagRed.PreviewModel = 19306;
+            TdFlagRed.PreviewRotation = new Vector3(-10.000000, 0.000000, -20.000000);
+            TdFlagRed.PreviewZoom = 1.000000f;
+            TdFlagRed.BackColor = 0;
+            TdFlagRed.BoxColor = 255;
+            TdFlagRed.Proportional = true;
+            TdFlagRed.Height = 50.000000f;
+            TdFlagRed.Width = 59.500000f;
+
+            TdFlagBlue.Position = new Vector2(-6.000000, 302.000000);
+            TdFlagBlue.Text = "Preview_Model";
+            TdFlagBlue.Font = TextDrawFont.PreviewModel;
+            TdFlagBlue.Outline = 0;
+            TdFlagBlue.Shadow = 0;
+            TdFlagBlue.LetterSize = new Vector2(0.600000, 2.000000);
+            TdFlagBlue.ForeColor = Color.Blue;
+            TdFlagBlue.PreviewModel = 19307;
+            TdFlagBlue.PreviewRotation = new Vector3(-10.000000, 0.000000, -20.000000);
+            TdFlagBlue.PreviewZoom = 1.000000f;
+            TdFlagBlue.BackColor =  0;
+            TdFlagBlue.BoxColor = 255;
+            TdFlagBlue.Proportional = true;
+            TdFlagBlue.Height = 50.000000f;
+            TdFlagBlue.Width = 59.500000f;
+
+            TdScoreAlpha.Position = new Vector2(46.000000, 279.000000);
+            TdScoreAlpha.Text = "~r~Alpha: 0";
             TdScoreAlpha.Font = TextDrawFont.Slim;
-            TdScoreAlpha.LetterSize = new Vector2(0.330000, 1.100000);
+            TdScoreAlpha.LetterSize = new Vector2(0.262497, 1.299998);
             TdScoreAlpha.BackColor = 255;
             TdScoreAlpha.ForeColor = Color.Red;
             TdScoreAlpha.Outline = 1;
-            TdScoreAlpha.Proportional = true;
 
-            TdScoreBeta.Position = new Vector2(37.000000, 317.000000);
+            TdScoreBeta.Position = new Vector2(46.000000, 316.000000);
             TdScoreBeta.Text = "~b~Beta: 0";
             TdScoreBeta.Font = TextDrawFont.Slim;
-            TdScoreBeta.LetterSize = new Vector2(0.330000, 1.100000);
+            TdScoreBeta.LetterSize = new Vector2(0.262497, 1.299998);
             TdScoreBeta.BackColor = 255;
             TdScoreBeta.ForeColor = Color.Blue;
             TdScoreBeta.Outline = 1;
-            TdScoreBeta.Proportional = true;
         }
 
         public void Show(Player player)
@@ -57,6 +86,8 @@ namespace CaptureTheFlag.Textdraw
             TdCTF.Show(player);
             TdScoreAlpha.Show(player);
             TdScoreBeta.Show(player);
+            TdFlagRed.Show(player);
+            TdFlagBlue.Show(player);
         }
 
         public void Hide(Player player)
@@ -64,6 +95,8 @@ namespace CaptureTheFlag.Textdraw
             TdCTF.Hide(player);
             TdScoreAlpha.Hide(player);
             TdScoreBeta.Hide(player);
+            TdFlagRed.Hide(player);
+            TdFlagBlue.Hide(player);
         }
     }
 }
