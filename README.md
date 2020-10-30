@@ -5,6 +5,7 @@
 
 Capture the flag is a gamemode for [SA-MP](https://www.sa-mp.com/) created with [sampsharp](https://github.com/ikkentim/SampSharp)
 
-The gamemode is based on capture the flag and then the player must bring the flag to the base for his team to earn score.
+Capture the flag is a style of play in which two teams try to catch a flag and carry it to a certain location to score points.
+To play, players are divided into two teams (Alpha and Beta), each on a field. To earn points, you must capture the flag and take it to a certain location.
 
 In this video you can find a demo of how the gamemode is looking: https://youtu.be/9Ban7Wkhqq4
