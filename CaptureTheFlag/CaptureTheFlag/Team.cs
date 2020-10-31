@@ -27,7 +27,7 @@ namespace CaptureTheFlag
         public DynamicMapIcon Icon { get; private set; }
         public DynamicCheckpoint Checkpoint { get; private set; }
 
-        public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag, Color colorIcon)
+        public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag)
         {
             Skin = skin;
             OtherColor = otherColor;
@@ -37,7 +37,7 @@ namespace CaptureTheFlag
             NameTeam = name;
             NameColor = namecolor;
             Flag = flag;
-            Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = 10, Color = colorIcon};
+            Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = 10, Color = Flag.ColorHex};
             Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, 10, null, 10);
 
             Checkpoint.Enter += (sender, e) =>
