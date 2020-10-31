@@ -67,7 +67,7 @@ namespace CaptureTheFlag.Command
                 $"\n\n{Color.Yellow}¿A dónde llevo la bandera?" +
                 $"\n{Color.White}Si capturaste la bandera, la debes llevar a la posición base donde se encuentre la bandera de tu equipo. " +
                 $"\n{Color.White}Esa “posición base” es identificada por un ícono que aparecerá en el mapa radar." +
-                $"\n{Color.White}Si eres del equipo {GameMode.TeamAlpha.OtherColor}Alpha{Color.White}, el ícono será de color {Color.LimeGreen}Verde {Color.White}y si eres del equipo {GameMode.TeamBeta.OtherColor}Beta{Color.White}, el ícono será de color {Color.Yellow}Amarillo." +
+                $"\n{Color.White}Si eres del equipo {GameMode.TeamAlpha.OtherColor}Alpha{Color.White}, el ícono será de color {GameMode.TeamAlpha.OtherColor}Rojo {Color.White}y si eres del equipo {GameMode.TeamBeta.OtherColor}Beta{Color.White}, el ícono será de color {GameMode.TeamBeta.OtherColor}Azul." +
                 $"\n\n{Color.Yellow}¿Qué pasa si no encuentro la bandera de mi equipo en la posición base?" +
                 $"\n{Color.White}Pues tu equipo no ganará puntos. En ese caso, debes recuperar la bandera de tu equipo." +
                 $"\n\n{Color.Yellow}¿Cómo recupero la bandera de mi equipo?" +
