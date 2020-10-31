@@ -39,8 +39,8 @@ namespace CaptureTheFlag
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
 
             TdGlobal = new TextDrawGlobal();
-            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TdGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, new Vector3(-1131.7461, 1029.1383, 1345.7311)), Color.LimeGreen);
-            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TdGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, new Vector3(-974.7156, 1089.7988, 1344.9755)),  Color.Yellow);
+            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TdGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, new Vector3(-1131.7461, 1029.1383, 1345.7311)));
+            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TdGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, new Vector3(-974.7156, 1089.7988, 1344.9755)));
             TeamAlpha.TeamRival = TeamBeta;
             TeamBeta.TeamRival = TeamAlpha;
         }
@@ -126,9 +126,9 @@ namespace CaptureTheFlag
             BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se añadió al equipo {player.PlayerTeam.NameTeam}.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Captura la bandera del equipo contrario.");
             if (player.PlayerTeam.Id == TeamID.Alpha)
-                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {Color.Yellow}ícono Amarillo {Color.White}que aparece en el mapa radar.");
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {TeamBeta.OtherColor}ícono Azul {Color.White}que aparece en el mapa radar.");
             else
-                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {Color.LimeGreen}ícono Verde {Color.White}que aparece en el mapa radar.");
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Guíate con el {TeamAlpha.OtherColor}ícono Rojo {Color.White}que aparece en el mapa radar.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Luego lleva la bandera a tu base.");
             if (player.PlayerTeam.Flag.PlayerCaptured != null)
                 player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
@@ -145,12 +145,17 @@ namespace CaptureTheFlag
             player.GiveWeapon(Weapon.Knife, 1);
             player.Team = (int)player.PlayerTeam.Id;
             player.Skin = player.PlayerTeam.Skin;
-            player.Color = player.PlayerTeam.Flag.ColorHex;
 
-            if(player.PlayerTeam.Id == TeamID.Alpha)
+            if (player.PlayerTeam.Id == TeamID.Alpha)
+            {
                 player.SetPositionEx(new Vector3(-1131.5371, 1057.5098, 1346.4138), 270.4092f, 10);
+                player.Color = 0xFF000000;
+            }
             else
+            {
                 player.SetPositionEx(new Vector3(-975.9757, 1060.9830, 1345.6719), 83.9741f, 10);
+                player.Color = 0x0000FF00;
+            }
         }
         
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
