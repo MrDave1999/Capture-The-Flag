@@ -20,7 +20,8 @@ namespace CaptureTheFlag
 
         public void SetForceClass()
         {
-            PlayerTeam.Members--;
+            if(Team != NoTeam)
+                --PlayerTeam.Members;
             GameMode.TdGlobal.Hide(this);
             ForceClassSelection();
             ToggleSpectating(true);
