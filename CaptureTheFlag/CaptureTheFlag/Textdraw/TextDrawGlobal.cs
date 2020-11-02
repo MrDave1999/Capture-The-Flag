@@ -15,6 +15,8 @@ namespace CaptureTheFlag.Textdraw
         public TextDraw TdScoreBeta { get; set; }   = new TextDraw();
         public TextDraw TdFlagRed { get; set; }     = new TextDraw();
         public TextDraw TdFlagBlue { get; set; }    = new TextDraw();
+        public TextDraw TdClock { get; set; }       = new TextDraw();
+        public TextDraw TdTimeLeft { get; set; }    = new TextDraw();
 
         public TextDrawGlobal()
         {
@@ -79,6 +81,28 @@ namespace CaptureTheFlag.Textdraw
             TdScoreBeta.BackColor = 255;
             TdScoreBeta.ForeColor = Color.Blue;
             TdScoreBeta.Outline = 1;
+
+            TdClock.Position = new Vector2(513.000000, 100.000000);
+            TdClock.Text = "ld_grav:timer";
+            TdClock.Font = TextDrawFont.DrawSprite;
+            TdClock.LetterSize = new Vector2(0.600000, 2.000000);
+            TdClock.Height = 17.000000f;
+            TdClock.Width = 17.000000f;
+            TdClock.Outline = 1;
+            TdClock.Shadow = 0;
+            TdClock.BackColor = 255;
+            TdClock.BoxColor = 50;
+            TdClock.Proportional = true;
+
+            TdTimeLeft.Position = new Vector2(532.000000, 102.000000);
+            TdTimeLeft.Text = "00:00";
+            TdTimeLeft.Font = TextDrawFont.Slim;
+            TdTimeLeft.LetterSize = new Vector2(0.370833, 1.500000);
+            TdTimeLeft.Outline = 1;
+            TdTimeLeft.Shadow = 0;
+            TdTimeLeft.ForeColor = -1;
+            TdTimeLeft.BackColor = 255;
+            TdTimeLeft.Proportional = true;
         }
 
         public void Show(Player player)
@@ -88,6 +112,8 @@ namespace CaptureTheFlag.Textdraw
             TdScoreBeta.Show(player);
             TdFlagRed.Show(player);
             TdFlagBlue.Show(player);
+            TdClock.Show(player);
+            TdTimeLeft.Show(player);
         }
 
         public void Hide(Player player)
@@ -97,6 +123,8 @@ namespace CaptureTheFlag.Textdraw
             TdScoreBeta.Hide(player);
             TdFlagRed.Hide(player);
             TdFlagBlue.Hide(player);
+            TdClock.Hide(player);
+            TdTimeLeft.Hide(player);
         }
     }
 }
