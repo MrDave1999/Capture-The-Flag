@@ -46,7 +46,6 @@ namespace CaptureTheFlag.Command
         private static void ListCommands(Player player)
         {
             new MessageDialog("Comandos",
-                $"{Color.Yellow}/force - {Color.White} Fuerza al jugador en ir a la selección de clases." +
                 $"\n{Color.Yellow}/kill - {Color.White} Asesina al jugador (su vida queda en 0.0)." +
                 $"\n{Color.Yellow}/tstats - {Color.White} Muestra las estadísticas de ambos equipos (Alpha y Beta)." +
                 $"\n{Color.Yellow}/switch - {Color.White} Permite al jugador cambiarse de equipo." +
@@ -75,14 +74,6 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.White}Aunque puede que la bandera quede en algún sitio que no sea la posición base y te toque buscarla." +
                 $"\n\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
                 $"\n{Color.White}Con el comando {Color.Pink}/tstats.", "Aceptar").Show(player);
-        }
-
-        [Command("force", Shortcut = "force")]
-        private static void Force(Player player)
-        {
-            if (player.IsCapturedFlag())
-                player.Drop();
-            player.SetForceClass();
         }
 
         [Command("kill", Shortcut = "kill")]
@@ -170,7 +161,7 @@ namespace CaptureTheFlag.Command
                 return;
             }
             foreach(Player player1 in BasePlayer.GetAll<Player>())
-                if(player1.Team != BasePlayer.NoTeam && player.PlayerTeam.Id == player1.PlayerTeam.Id)
+                if(player.Team == player1.Team)
                     player1.SendClientMessage($"{player.PlayerTeam.OtherColor}[Team Chat] {player.Name} [{player.Id}]: {msg}");
         }
     }
