@@ -74,7 +74,7 @@ namespace CaptureTheFlag
             if (player.IsCapturedFlag())
                 player.Drop();
             if (player.Team != BasePlayer.NoTeam)
-                player.PlayerTeam.Members--;
+                --player.PlayerTeam.Members;
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
