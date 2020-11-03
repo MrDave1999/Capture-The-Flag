@@ -147,6 +147,7 @@ namespace CaptureTheFlag.Command
                     player.PlayerTeam = (e.ListItem == 0) ? GameMode.TeamAlpha : GameMode.TeamBeta;
                     ++player.PlayerTeam.Members;
                     BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
+                    GameMode.TdGlobal.UpdateCountUsers();
                     player.Spawn();
                 }
             };

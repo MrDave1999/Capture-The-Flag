@@ -74,7 +74,10 @@ namespace CaptureTheFlag
             if (player.IsCapturedFlag())
                 player.Drop();
             if (player.Team != BasePlayer.NoTeam)
+            {
                 --player.PlayerTeam.Members;
+                TdGlobal.UpdateCountUsers();
+            }
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
@@ -133,6 +136,7 @@ namespace CaptureTheFlag
             if (player.PlayerTeam.Flag.PlayerCaptured != null)
                 player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
             TdGlobal.Show(player);
+            TdGlobal.UpdateCountUsers();
         }
 
         protected override void OnPlayerSpawned(BasePlayer sender, SpawnEventArgs e)
