@@ -17,6 +17,8 @@ namespace CaptureTheFlag.Textdraw
         public TextDraw TdFlagBlue { get; set; }    = new TextDraw();
         public TextDraw TdClock { get; set; }       = new TextDraw();
         public TextDraw TdTimeLeft { get; set; }    = new TextDraw();
+        public TextDraw TdUsers { get; set; }       = new TextDraw();
+        public TextDraw TdCountUsers { get; set; }  = new TextDraw();
 
         public TextDrawGlobal()
         {
@@ -82,7 +84,7 @@ namespace CaptureTheFlag.Textdraw
             TdScoreBeta.ForeColor = Color.Blue;
             TdScoreBeta.Outline = 1;
 
-            TdClock.Position = new Vector2(513.000000, 100.000000);
+            TdClock.Position = new Vector2(494.000000, 100.000000);
             TdClock.Text = "ld_grav:timer";
             TdClock.Font = TextDrawFont.DrawSprite;
             TdClock.LetterSize = new Vector2(0.600000, 2.000000);
@@ -94,7 +96,7 @@ namespace CaptureTheFlag.Textdraw
             TdClock.BoxColor = 50;
             TdClock.Proportional = true;
 
-            TdTimeLeft.Position = new Vector2(532.000000, 102.000000);
+            TdTimeLeft.Position = new Vector2(513.000000, 102.000000);
             TdTimeLeft.Text = "00:00";
             TdTimeLeft.Font = TextDrawFont.Slim;
             TdTimeLeft.LetterSize = new Vector2(0.370833, 1.500000);
@@ -103,6 +105,24 @@ namespace CaptureTheFlag.Textdraw
             TdTimeLeft.ForeColor = -1;
             TdTimeLeft.BackColor = 255;
             TdTimeLeft.Proportional = true;
+
+            TdUsers.Position = new Vector2(563.000000, 104.000000);
+            TdUsers.Text = "Users:";
+            TdUsers.Font = TextDrawFont.Normal;
+            TdUsers.LetterSize = new Vector2(0.312500, 1.250000);
+            TdUsers.Outline = 1;
+            TdUsers.ForeColor = -1;
+            TdUsers.BackColor = 255;
+            TdUsers.Proportional = true;
+
+            TdCountUsers.Position = new Vector2(597.000000, 106.000000);
+            TdCountUsers.Text = "~r~0~w~/~b~0";
+            TdCountUsers.Font = TextDrawFont.Normal;
+            TdCountUsers.LetterSize = new Vector2(0.262499, 1.000000);
+            TdCountUsers.Outline = 1;
+            TdCountUsers.ForeColor = -1;
+            TdCountUsers.BackColor = 255;
+            TdCountUsers.Proportional = true;
         }
 
         public void Show(Player player)
@@ -114,6 +134,8 @@ namespace CaptureTheFlag.Textdraw
             TdFlagBlue.Show(player);
             TdClock.Show(player);
             TdTimeLeft.Show(player);
+            TdUsers.Show(player);
+            TdCountUsers.Show(player);
         }
 
         public void Hide(Player player)
@@ -125,6 +147,14 @@ namespace CaptureTheFlag.Textdraw
             TdFlagBlue.Hide(player);
             TdClock.Hide(player);
             TdTimeLeft.Hide(player);
+            TdUsers.Hide(player);
+            TdCountUsers.Hide(player);
+        }
+
+        public void UpdateCountUsers()
+        {
+            TdCountUsers.Text = $"~r~{GameMode.TeamAlpha.Members}~w~/~b~{GameMode.TeamBeta.Members}";
+            TdCountUsers.Show();
         }
     }
 }
