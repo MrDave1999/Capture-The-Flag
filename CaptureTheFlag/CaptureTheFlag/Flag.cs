@@ -28,7 +28,7 @@ namespace CaptureTheFlag
 
         public void AttachedObject(Player player)
         {
-            player.SetAttachedObject(0, Model, Bone.Spine, new Vector3(-0.099000, -0.156000, -0.194000), new Vector3(8.399998, 41.500011, 17.199983), new Vector3(0.486000, 1.295001, 0.571000), ColorHex, ColorHex);
+            player.SetAttachedObject(0, Model, Bone.Spine, new Vector3(-0.057000, -0.108999, 0.075000), new Vector3(171.500030, 66.200012, -4.100002), new Vector3(1.0, 1.0, 1.0), ColorHex, ColorHex);
         }
 
         public void Create(Vector3 vector3)
