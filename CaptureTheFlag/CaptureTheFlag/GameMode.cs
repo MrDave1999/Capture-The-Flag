@@ -201,11 +201,6 @@ namespace CaptureTheFlag
             base.OnPlayerText(sender, e);
             var player = sender as Player;
             e.SendToPlayers = false;
-            if (player.IsSelectionClass)
-            {
-                player.SendClientMessage(Color.Red, "Error: No puedes usar el chat en la selección de clases.");
-                return;
-            }
             Chat.WriteText(player, e.Text);
         }
 
