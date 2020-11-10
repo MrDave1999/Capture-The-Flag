@@ -38,7 +38,7 @@ namespace CaptureTheFlag
             NameColor = namecolor;
             Flag = flag;
             Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = 10, Color = Flag.ColorHex};
-            Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, 10, null, 5.0f);
+            Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, 10, null, 10.0f);
 
             Checkpoint.Enter += (sender, e) =>
             {
