@@ -63,7 +63,6 @@ namespace CaptureTheFlag
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
-            player.ApplyAnimation("DANCING", "dance_loop", 4.1f, true, true, true, false, 0);
         }
 
         protected override void OnPlayerDisconnected(BasePlayer sender, DisconnectEventArgs e)
@@ -100,16 +99,15 @@ namespace CaptureTheFlag
             player.Color = Color.White;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
-            player.Position = new Vector3(447.033, -4.735, 1000.734);
-            player.CameraPosition = new Vector3(446.918, -8.949, 1001.492);
-            player.SetCameraLookAt(new Vector3(447.033, -4.735, 1000.734));
-            player.Angle = 178.626f;
-            player.Interior = 1;
+            player.Position = new Vector3(512.993041, -17.125566, 1001.565307);
+            player.CameraPosition = new Vector3(513.012329, -12.488013, 1001.565307);
+            player.SetCameraLookAt(new Vector3(512.993041, -17.125566, 1001.565307));
+            player.Angle = 0.131221f;
+            player.Interior = 3;
             player.PlayerTeam = (e.ClassId == 0) ? (TeamAlpha) : (TeamBeta);
             player.PlayerTeam.GetMessageTeamEnable(out var msg);
             player.GameText(msg, 999999999, 6);
             player.PlaySound(1132);
-            player.ApplyAnimation("DANCING", "dance_loop", 4.1f, true, true, true, false, 0);
         }   
          
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
