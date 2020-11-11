@@ -1,21 +1,47 @@
 ﻿using System;
 using System.Diagnostics.Tracing;
+using CaptureTheFlag.Textdraw;
 using SampSharp.GameMode;
+using SampSharp.GameMode.Display;
 using SampSharp.GameMode.World;
 
 namespace CaptureTheFlag
 {
     public class Player : BasePlayer
     {
+        private int adrenaline;
+
+        public int Kills { get; set; }
+        public int Deaths { get; set; }
         public bool IsSelectionClass { get; set; } 
         public StateUser IsStateUser { get; set; }
         public PlayerData Data { get; set; }
         public Team PlayerTeam { get; set; }
+        public PlayerTextDraw Stats { get; set; }
+
+        public int Adrenaline
+        {
+            get { return adrenaline; }
+            set
+            {
+                if (value <= 100)
+                    adrenaline = value;
+            }
+        }
 
         public Player()
         {
             Data = new PlayerData();
             IsStateUser = StateUser.None;
+            Stats = new PlayerTextDraw(this);
+            TextDrawPlayer.CreateTDStats(Stats);
+        }
+
+        public void UpdateAdrenaline(int adrenaline)
+        {
+            Adrenaline += adrenaline;
+            if(Adrenaline <= 100)
+                TextDrawPlayer.UpdateTdStats(this);
         }
 
         public void SetForceClass()
@@ -23,6 +49,7 @@ namespace CaptureTheFlag
             if(Team != NoTeam)
                 --PlayerTeam.Members;
             GameMode.TdGlobal.Hide(this);
+            TextDrawPlayer.Hide(this);
             ForceClassSelection();
             ToggleSpectating(true);
             ToggleSpectating(false);
