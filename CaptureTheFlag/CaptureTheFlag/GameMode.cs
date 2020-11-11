@@ -77,6 +77,7 @@ namespace CaptureTheFlag
                 --player.PlayerTeam.Members;
                 TdGlobal.UpdateCountUsers();
             }
+            TextDrawPlayer.Destroy(player);
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
@@ -135,6 +136,7 @@ namespace CaptureTheFlag
                 player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
             TdGlobal.Show(player);
             TdGlobal.UpdateCountUsers();
+            TextDrawPlayer.Show(player);
         }
 
         protected override void OnPlayerSpawned(BasePlayer sender, SpawnEventArgs e)
@@ -165,21 +167,26 @@ namespace CaptureTheFlag
             base.OnPlayerDied(sender, e);
             var player = sender as Player;
             var killer = e.Killer as Player;
-            ++player.Data.Deaths;
+            ++player.Data.TotalDeaths;
+            ++player.Deaths;
             ++player.PlayerTeam.Deaths;
             BasePlayer.SendDeathMessageToAll(killer, player, e.DeathReason);
             if (player.IsStateUser == StateUser.Force)
                 player.IsStateUser = StateUser.Kill;
 
-            if (killer != null)
-            {
-                ++killer.Score;
-                ++killer.PlayerTeam.Kills;
-                ++killer.Data.Kills;
-            }
-
             if (player.IsCapturedFlag())
                 player.PlayerTeam.TeamRival.Drop(player, killer);
+
+            if (killer != null)
+            {
+                ++killer.PlayerTeam.Kills;
+                ++killer.Data.TotalKills;
+                ++killer.Kills;
+                if (killer.Kills % 2 == 0)
+                    ++killer.Adrenaline;
+                TextDrawPlayer.UpdateTdStats(killer);
+            }
+            TextDrawPlayer.UpdateTdStats(player);
         }
 
         protected override void OnPlayerTakeDamage(BasePlayer sender, DamageEventArgs e)
