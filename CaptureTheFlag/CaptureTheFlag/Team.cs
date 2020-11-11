@@ -74,6 +74,13 @@ namespace CaptureTheFlag
             TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
             TdScore.Show();
         }
+
+        public void ResetStats()
+        {
+            Score = 0;
+            Kills = 0;
+            Deaths = 0;
+        }
         
         public bool GetMessageTeamEnable(out string message, bool msgComplete = true)
         {
