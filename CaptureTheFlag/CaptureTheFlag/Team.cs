@@ -122,8 +122,7 @@ namespace CaptureTheFlag
             {
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} capturó la bandera {NameColor} del equipo {NameTeam}.");
                 player.SendClientMessage($"{Color.Pink}[!]: {Color.White}Capturaste la bandera, debes llevarla a tu base.");
-                player.SendClientMessage($"{Color.Pink}[!]: {Color.White}Obtuviste +6 de score por capturar la bandera.");
-                player.Score += 6;
+                player.Adrenaline += 4;
             }
             else
             {
@@ -135,15 +134,14 @@ namespace CaptureTheFlag
         public void Carry(Player player)
         {
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} llevó la bandera {NameColor} del equipo {NameTeam} a su base.");
-            player.SendClientMessage($"{Color.Pink}[!]: {Color.White}Obtuviste +10 de score por llevar la bandera a tu base.");
             BasePlayer.GameTextForAll($"~>~{TeamRival.ColorGameText}+1 score team {TeamRival.NameTeam}", 5000, 3);
             player.RemoveAttachedObject(0);
             Flag.Create(); 
             Flag.PlayerCaptured = null;
             Flag.IsPositionBase = true;
-            TeamRival.Score++;
+            ++TeamRival.Kills;
             TeamRival.UpdateTdScore();
-            player.Score += 10;
+            player.Adrenaline += 6;
         }
 
         public void Recover(Player player)
@@ -151,18 +149,14 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = true;
             Flag.Create();
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} recuperó la bandera {NameColor} del equipo {NameTeam}.");
-            player.SendClientMessage($"{Color.Pink}[!]: {Color.White}Obtuviste +4 de score por recuperar la bandera.");
-            player.Score += 4;
+            player.Adrenaline += 3;
         }
 
         public void Drop(Player player, Player killer)
         {
             Drop(player);
             if (killer != null)
-            {
-                killer.SendClientMessage($"{Color.Pink}[!]: {Color.White}Obtuviste +4 de score por matar al portador.");
-                killer.Score += 4;
-            }
+                player.Adrenaline += 4;
         }
 
         public void Drop(Player player)
