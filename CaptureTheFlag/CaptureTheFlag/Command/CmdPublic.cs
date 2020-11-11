@@ -1,4 +1,5 @@
-﻿using SampSharp.GameMode;
+﻿using CaptureTheFlag.Textdraw;
+using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.Events;
@@ -74,6 +75,15 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.White}Aunque puede que la bandera quede en algún sitio que no sea la posición base y te toque buscarla." +
                 $"\n\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
                 $"\n{Color.White}Con el comando {Color.Pink}/tstats.", "Aceptar").Show(player);
+        }
+
+        [Command("re", Shortcut = "re")]
+        private static void ResetScore(Player player)
+        {
+            player.Kills = 0;
+            player.Deaths = 0;
+            TextDrawPlayer.UpdateTdStats(player);
+            BasePlayer.SendClientMessageToAll(Color.Yellow, $"** {player.Name} ha reseteado su score con {Color.Red}/re");
         }
 
         [Command("kill", Shortcut = "kill")]
