@@ -1,4 +1,5 @@
-﻿ using SampSharp.GameMode;
+﻿using CaptureTheFlag.Textdraw;
+using SampSharp.GameMode;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.World;
@@ -122,7 +123,7 @@ namespace CaptureTheFlag
             {
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} capturó la bandera {NameColor} del equipo {NameTeam}.");
                 player.SendClientMessage($"{Color.Pink}[!]: {Color.White}Capturaste la bandera, debes llevarla a tu base.");
-                player.Adrenaline += 4;
+                player.UpdateAdrenaline(4);
             }
             else
             {
@@ -141,7 +142,7 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = true;
             ++TeamRival.Kills;
             TeamRival.UpdateTdScore();
-            player.Adrenaline += 6;
+            player.UpdateAdrenaline(6);
         }
 
         public void Recover(Player player)
@@ -149,14 +150,14 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = true;
             Flag.Create();
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} recuperó la bandera {NameColor} del equipo {NameTeam}.");
-            player.Adrenaline += 3;
+            player.UpdateAdrenaline(3);
         }
 
         public void Drop(Player player, Player killer)
         {
             Drop(player);
             if (killer != null)
-                player.Adrenaline += 4;
+                killer.Adrenaline += 4;
         }
 
         public void Drop(Player player)
