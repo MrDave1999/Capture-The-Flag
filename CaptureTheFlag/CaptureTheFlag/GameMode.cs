@@ -143,6 +143,8 @@ namespace CaptureTheFlag
         {
             base.OnPlayerSpawned(sender, e);
             var player = sender as Player;
+            player.Health = 100;
+            player.TArmour.Hide();
             player.GiveWeapon(Weapon.Deagle, 3000);
             player.GiveWeapon(Weapon.Shotgun, 3000);
             player.GiveWeapon(Weapon.Sniper, 3000);
@@ -170,6 +172,7 @@ namespace CaptureTheFlag
             ++player.Data.TotalDeaths;
             ++player.Deaths;
             ++player.PlayerTeam.Deaths;
+            player.KillingSprees = 0;
             BasePlayer.SendDeathMessageToAll(killer, player, e.DeathReason);
             if (player.IsStateUser == StateUser.Force)
                 player.IsStateUser = StateUser.Kill;
@@ -182,8 +185,9 @@ namespace CaptureTheFlag
                 ++killer.PlayerTeam.Kills;
                 ++killer.Data.TotalKills;
                 ++killer.Kills;
-                if (killer.Kills % 2 == 0)
-                    ++killer.Adrenaline;
+                ++killer.Adrenaline;
+                ++killer.KillingSprees;
+                killer.ShowKillingSprees();
                 TextDrawPlayer.UpdateTdStats(killer);
             }
             TextDrawPlayer.UpdateTdStats(player);
@@ -196,11 +200,8 @@ namespace CaptureTheFlag
             int weaponid = (int)e.Weapon;
             if ((weaponid >= 0 && weaponid <= 15) || (weaponid >= 22 && weaponid <= 34))
                 player.PlaySound(17802);
-
-            if(e.OtherPlayer != null)
-            {
-                //code.
-            }
+            player.UpdateBarHealth(e.Amount);
+            if (e.OtherPlayer != null) { }
         }
 
         protected override void OnPlayerText(BasePlayer sender, TextEventArgs e)
@@ -219,7 +220,7 @@ namespace CaptureTheFlag
                 sender.SendClientMessage(Color.Red, $"Error: El comando {e.Text} es incorrecto. Usa /cmds para saber los comandos disponibles.");
                 sender.PlaySound(1140);
             }
-                e.Success = true;
+            e.Success = true;
         }
 
         protected override void LoadControllers(ControllerCollection controllers)
