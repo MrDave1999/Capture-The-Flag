@@ -9,6 +9,7 @@ namespace CaptureTheFlag
         public string password { get; set; }
         public int TotalKills { get; set; }
         public int TotalDeaths { get; set; }
+        public int KillingSprees { get; set; }
         public int LevelAdmin { get; set; }
         public int LevelVip { get; set; }
         public int LevelGame { get; set; }
