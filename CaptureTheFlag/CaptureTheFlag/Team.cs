@@ -140,12 +140,12 @@ namespace CaptureTheFlag
             Flag.Create(); 
             Flag.PlayerCaptured = null;
             Flag.IsPositionBase = true;
-            ++TeamRival.Kills;
+            ++TeamRival.Score;
             TeamRival.UpdateTdScore();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
             foreach(Player player1 in BasePlayer.GetAll<Player>())
                 if(player.Team == player1.Team && player != player1)
-                    player1.UpdateAdrenaline(4, "ayudar a capturar la bandera");
+                    player1.UpdateAdrenaline(3, "ayudar a capturar la bandera");
         }
 
         public void Recover(Player player)
