@@ -124,7 +124,6 @@ namespace CaptureTheFlag
             player.IsSelectionClass = false;
             player.GameText("_", 1000, 4);
             player.PlayerTeam.Members++;
-            player.SendClientMessage("\n\n");
             BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se añadió al equipo {player.PlayerTeam.NameTeam}.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Captura la bandera del equipo contrario.");
             if (player.PlayerTeam.Id == TeamID.Alpha)
@@ -136,6 +135,7 @@ namespace CaptureTheFlag
                 player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
             TdGlobal.Show(player);
             TdGlobal.UpdateCountUsers();
+            TextDrawPlayer.UpdateTdStats(player);
             TextDrawPlayer.Show(player);
         }
 
@@ -163,7 +163,7 @@ namespace CaptureTheFlag
                 player.Color = 0x0000FF00;
             }
         }
-        
+
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
         {
             base.OnPlayerDied(sender, e);
@@ -200,7 +200,7 @@ namespace CaptureTheFlag
             int weaponid = (int)e.Weapon;
             if ((weaponid >= 0 && weaponid <= 15) || (weaponid >= 22 && weaponid <= 34))
                 player.PlaySound(17802);
-            player.UpdateBarHealth(e.Amount);
+            player.UpdateBarHealth(e);
             if (e.OtherPlayer != null) { }
         }
 
