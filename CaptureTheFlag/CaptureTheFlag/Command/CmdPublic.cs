@@ -46,13 +46,28 @@ namespace CaptureTheFlag.Command
         [Command("cmds", Shortcut = "cmds")]
         private static void ListCommands(Player player)
         {
-            new MessageDialog("Comandos",
+            new MessageDialog(" ",
+                $"{Color.Orange}Comandos:" +
                 $"\n{Color.Yellow}/kill - {Color.White} Asesina al jugador (su vida queda en 0.0)." +
                 $"\n{Color.Yellow}/tstats - {Color.White} Muestra las estadísticas de ambos equipos (Alpha y Beta)." +
                 $"\n{Color.Yellow}/switch - {Color.White} Permite al jugador cambiarse de equipo." +
                 $"\n{Color.Yellow}/tc - {Color.White} Permite hablar en el Team Chat." +
-                $"\n{Color.Yellow}*{Color.White} También puedes hablar en el TeamChat con el signo de admiración: {Color.Pink}!Texto" +
-                $"\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar.", "Aceptar").Show(player);
+                $"\n{Color.Yellow}/re{Color.White} Reinicia a 0 los asesinatos y muertes por ronda." +
+                $"\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar." +
+                $"\n{Color.Yellow}/admins{Color.White} - Muestra la lista de administradores que están conectados." +
+                $"\n{Color.Yellow}/vips{Color.White} - Muestra los usuarios VIP que están conectados." +
+                $"\n{Color.Yellow}/stats{Color.White} - Muestra las estadísticas del jugador." +
+                $"\n{Color.Yellow}/combos{Color.White} - Muestra los combos que podrás canjear por adrenalina." +
+                $"\n{Color.Yellow}/ranks{Color.White} - Muestra la lista de rangos disponibles." +
+                $"\n{Color.Yellow}/weapons{Color.White} - Muestra la lista de armas a elegir." +
+                $"\n\n{Color.Orange}Teclas:" +
+                $"\n{Color.Yellow}Tecla H:{Color.White} Muestra el listado de combos a canjear (por adrenalina)." +
+                $"\n{Color.Yellow}Tecla Y:{Color.White} Muestra un menú de armas." +
+                $"\n{Color.Yellow}Tecla G:{Color.White} Muestra la lista de usuarios conectados (por equipo)." +
+                $"\n\n{Color.Orange}Signos:" +
+                $"\n{Color.Yellow}Signo (!):{Color.White} Permite hablar en el TeamChat (ejemplo: {Color.Pink}!texto{Color.White})." +
+                $"\n{Color.Yellow}Signo (#):{Color.White} Permite hablar en el AdminChat (ejemplo: {Color.Pink}#texto{Color.White})." +
+                $"\n{Color.Yellow}Signo ($):{Color.White} Permite hablar en el VipChat (ejemplo: {Color.Pink}$texto{Color.White}).", "Aceptar").Show(player);
         }
 
         [Command("help", Shortcut = "help")]
