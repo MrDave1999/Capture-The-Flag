@@ -18,6 +18,11 @@ namespace CaptureTheFlag.Textdraw
         public TextDraw TdClock { get; set; }       = new TextDraw();
         public TextDraw TdTimeLeft { get; set; }    = new TextDraw();
         public TextDraw TdCountUsers { get; set; }  = new TextDraw();
+        public TextDraw TdBox1 { get; set; }        = new TextDraw();
+        public TextDraw TdBox2 { get; set; }        = new TextDraw();
+        public TextDraw TdRank { get; set; }        = new TextDraw();
+        public TextDraw TdStar1 { get; set; }       = new TextDraw();
+        public TextDraw TdStar2 { get; set; }       = new TextDraw();
 
         public TextDrawGlobal()
         {
@@ -113,6 +118,60 @@ namespace CaptureTheFlag.Textdraw
             TdCountUsers.ForeColor = -1;
             TdCountUsers.BackColor = 255;
             TdCountUsers.Proportional = true;
+
+            TdBox1.Position = new Vector2(565.000000, 386.000000);
+            TdBox1.Text = "_";
+            TdBox1.Font = TextDrawFont.Normal;
+            TdBox1.LetterSize = new Vector2(0.600000, 3.599993);
+            TdBox1.Alignment = TextDrawAlignment.Center;
+            TdBox1.ForeColor = -1;
+            TdBox1.BackColor = 255;
+            TdBox1.BoxColor = 135;
+            TdBox1.UseBox = true;
+            TdBox1.Proportional = true;
+            TdBox1.Width = 302.500000f;
+            TdBox1.Height = 101.000000f; 
+
+            TdBox2.Position = new Vector2(499.000000, 386.000000);
+            TdBox2.Text = "_";
+            TdBox2.Font = TextDrawFont.Normal;
+            TdBox2.LetterSize = new Vector2(0.600000, 3.599993);
+            TdBox2.Alignment = TextDrawAlignment.Center;
+            TdBox2.ForeColor = -1;
+            TdBox2.BackColor = 255;
+            TdBox2.BoxColor = 135;
+            TdBox2.UseBox = true;
+            TdBox2.Proportional = true;
+            TdBox2.Width = 302.500000f;
+            TdBox2.Height = 16.000000f;
+
+            TdRank.Position = new Vector2(599.000000, 389.000000);
+            TdRank.Text = "Your rank is:";
+            TdRank.Font = TextDrawFont.Normal;
+            TdRank.LetterSize = new Vector2(0.337500, 1.249999);
+            TdRank.Outline = 1;
+            TdRank.Alignment = TextDrawAlignment.Right;
+            TdRank.ForeColor = 16711935;
+            TdRank.BackColor = 255; 
+            TdRank.Proportional = true;
+
+            TdStar1.Position = new Vector2(475.000000, 388.000000);
+            TdStar1.Text = "[]";
+            TdStar1.Font = TextDrawFont.Slim;
+            TdStar1.LetterSize = new Vector2(0.520833, 1.400000);
+            TdStar1.ForeColor = 16711935;
+            TdStar1.BackColor = 255;
+            TdStar1.BoxColor = 135;
+            TdStar1.Proportional = true;
+
+            TdStar2.Position = new Vector2(475.000000, 404.000000);
+            TdStar2.Text = "[]";
+            TdStar2.Font = TextDrawFont.Slim;
+            TdStar2.LetterSize = new Vector2(0.520833, 1.400000);
+            TdStar2.ForeColor = 16711935;
+            TdStar2.BackColor = 255;
+            TdStar2.BoxColor = 135;
+            TdStar2.Proportional = true;
         }
 
         public void Show(Player player)
@@ -125,6 +184,11 @@ namespace CaptureTheFlag.Textdraw
             TdClock.Show(player);
             TdTimeLeft.Show(player);
             TdCountUsers.Show(player);
+            TdBox1.Show(player);
+            TdBox2.Show(player);
+            TdRank.Show(player);
+            TdStar1.Show(player);
+            TdStar2.Show(player);
         }
 
         public void Hide(Player player)
@@ -137,6 +201,11 @@ namespace CaptureTheFlag.Textdraw
             TdClock.Hide(player);
             TdTimeLeft.Hide(player);
             TdCountUsers.Hide(player);
+            TdBox1.Hide(player);
+            TdBox2.Hide(player);
+            TdRank.Hide(player);
+            TdStar1.Hide(player);
+            TdStar2.Hide(player);
         }
 
         public void UpdateCountUsers()
