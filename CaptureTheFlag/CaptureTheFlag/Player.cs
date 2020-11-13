@@ -5,6 +5,8 @@ using SampSharp.GameMode;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.World;
 using SampSharp.GameMode.SAMP;
+using SampSharp.GameMode.Definitions;
+using SampSharp.GameMode.Events;
 
 namespace CaptureTheFlag
 {
@@ -84,12 +86,18 @@ namespace CaptureTheFlag
             bar.Show();
         }
 
-        public void UpdateBarHealth(float amount)
+        public void UpdateBarHealth(DamageEventArgs e)
         {
-            if (Armour != 0)
+            if (State == PlayerState.Wasted)
+            {
+                Armour = 0;
+                TArmour.Hide();
+                HealthBar(THealth, 0);
+            }
+            else if (e.Weapon != Weapon.Collision && Armour != 0)
             {
                 /* Calculate the player's current armour. */
-                float armour = Armour - amount;
+                float armour = (float)(Armour - Math.Ceiling(e.Amount));
                 if (armour > 0)
                     HealthBar(TArmour, armour);
                 else
@@ -101,10 +109,10 @@ namespace CaptureTheFlag
             else
             {
                 /* Calculate the player's current health. */
-                float health = Health - amount;
+                float health = (float)(Health - Math.Ceiling(e.Amount));
                 HealthBar(THealth, health >= 0 ? health : 0);
             }
-        }
+        } 
 
         public void UpdateAdrenaline(int won_adrenaline, string reason)
         {
@@ -127,9 +135,10 @@ namespace CaptureTheFlag
 
                 if (KillingSprees > Data.KillingSprees)
                     Data.KillingSprees = KillingSprees;
+
+                if (KillingSprees % 3 == 0)
+                    SendClientMessageToAll(Color.Red, $"[Killing-Sprees]: {Color.Orange}{Name} lleva {KillingSprees} asesinatos seguidos sin morir.");
             }
-            if(KillingSprees % 3 == 0)
-                SendClientMessageToAll(Color.Red, $"[Killing-Sprees]: {Color.Orange}{Name} lleva {KillingSprees} asesinatos seguidos sin morir.");
         }
 
         public void SetForceClass()
