@@ -188,6 +188,7 @@ namespace CaptureTheFlag
                 ++killer.Adrenaline;
                 ++killer.KillingSprees;
                 killer.ShowKillingSprees();
+                killer.SetNextRank();
                 TextDrawPlayer.UpdateTdStats(killer);
             }
             TextDrawPlayer.UpdateTdStats(player);
