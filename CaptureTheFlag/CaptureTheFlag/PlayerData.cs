@@ -4,6 +4,20 @@ using System.Text;
 
 namespace CaptureTheFlag
 {
+    /*
+        -> Stats Player:
+        Kills for Round,
+        Deaths for Round,
+        Total Kills,
+        Total Deaths,
+        Admin Level,
+        VIP Level,
+        Rank,
+        Game Level or Lvl,
+        DroppedFlags,
+        Killing Sprees,
+        Adrenaline
+    */
     public class PlayerData
     {
         public string password { get; set; }
