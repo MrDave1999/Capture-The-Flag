@@ -23,6 +23,21 @@ namespace CaptureTheFlag
         public PlayerTextDraw Stats { get; set; }
         public PlayerTextDraw THealth { get; set; }
         public PlayerTextDraw TArmour { get; set; }
+        public PlayerTextDraw TdRank { get; set; }
+
+        public Player()
+        {
+            Data = new PlayerData();
+            IsStateUser = StateUser.None;
+            Stats = new PlayerTextDraw(this);
+            THealth = new PlayerTextDraw(this);
+            TArmour = new PlayerTextDraw(this);
+            TdRank = new PlayerTextDraw(this);
+            TextDrawPlayer.CreateTDStats(Stats);
+            TextDrawPlayer.CreateTDHealth(THealth);
+            TextDrawPlayer.CreateTDArmour(TArmour);
+            TextDrawPlayer.CreateTDRank(TdRank);
+        }
 
         public int Adrenaline
         {
@@ -66,18 +81,6 @@ namespace CaptureTheFlag
                 HealthBar(TArmour, value);
                 base.Armour = value;
             }
-        }
-
-        public Player()
-        {
-            Data = new PlayerData();
-            IsStateUser = StateUser.None;
-            Stats = new PlayerTextDraw(this);
-            THealth = new PlayerTextDraw(this);
-            TArmour = new PlayerTextDraw(this);
-            TextDrawPlayer.CreateTDStats(Stats);
-            TextDrawPlayer.CreateTDHealth(THealth);
-            TextDrawPlayer.CreateTDArmour(TArmour);
         }
 
         public void HealthBar(PlayerTextDraw bar, float value)
@@ -143,10 +146,16 @@ namespace CaptureTheFlag
 
         public void SetNextRank()
         {
-            if(Data.LevelGame != Rank.MAX_RANK && Data.TotalKills == Rank.GetRequiredKills(Data.LevelGame + 1))
+            if(Data.LevelGame != Rank.MAX_RANK && Data.TotalKills >= Rank.GetRequiredKills(Data.LevelGame + 1))
             {
                 ++Data.LevelGame;
                 SendClientMessage(Color.Red, $"[Rank]: {Color.Orange}Subiste al rango {Rank.GetRankLevel(Data.LevelGame)} {Color.Red}¡Felicidades!");
+                SendClientMessage(Color.Red, $"[!]: {Color.White} Ganaste +100 de Adrenalina + Chaleco + Regeneración de salud.");
+                Adrenaline = 100;
+                Armour = 100;
+                Health = 100;
+                TextDrawPlayer.UpdateTdRank(this);
+
             }
         }
 
