@@ -26,7 +26,7 @@ namespace CaptureTheFlag
         public int KillingSprees { get; set; }
         public int LevelAdmin { get; set; }
         public int LevelVip { get; set; }
-        public int LevelGame { get; set; }
+        public int LevelGame { get; set; } = 1;
         public int DroppedFlags { get; set; }
     }
 }
