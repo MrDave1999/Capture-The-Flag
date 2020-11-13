@@ -49,10 +49,29 @@ namespace CaptureTheFlag.Textdraw
             armour.Proportional = true;
         }
 
+        public static void CreateTDRank(PlayerTextDraw rank)
+        {
+            rank.Position = new Vector2(607.000000, 402.000000);
+            rank.Text = "Noob";
+            rank.Font = TextDrawFont.Normal;
+            rank.LetterSize = new Vector2(0.337500, 1.249999);
+            rank.Outline = 1;
+            rank.Alignment = TextDrawAlignment.Right;
+            rank.ForeColor = -1;
+            rank.BackColor = 255;
+            rank.Proportional = true;
+        }
+
         public static void UpdateTdStats(Player player)
         {
-            player.Stats.Text = $"~g~~h~] ~w~KILLS: ~y~{player.Kills} ~g~~h~- ~w~DEATHS: ~y~{player.Deaths} ~g~~h~- ~w~LVL: ~y~{player.Data.LevelGame} ~g~~h~- ~w~KS: ~y~{player.Data.KillingSprees} ~g~~h~- ~w~ADRENALINE: ~y~{player.Adrenaline}/100~g~~h~ ]";
+            player.Stats.Text = $"~w~KILLS: ~y~{player.Kills}  ~w~DEATHS: ~y~{player.Deaths}  ~w~LVL: ~y~{player.Data.LevelGame}  ~w~KS: ~y~{player.Data.KillingSprees}  ~w~ADRENALINE: ~y~{player.Adrenaline}/100";
             player.Stats.Show();
+        }
+
+        public static void UpdateTdRank(Player player)
+        {
+            player.TdRank.Text = $"{Rank.GetRankLevel(player.Data.LevelGame)}";
+            player.TdRank.Show();
         }
 
         public static void Destroy(Player player)
@@ -60,12 +79,14 @@ namespace CaptureTheFlag.Textdraw
             player.Stats.Dispose();
             player.THealth.Dispose();
             player.TArmour.Dispose();
+            player.TdRank.Dispose();
         }
 
         public static void Show(Player player)
         {
             player.Stats.Show();
             player.THealth.Show();
+            player.TdRank.Show();
         }
 
         public static void Hide(Player player)
@@ -73,6 +94,7 @@ namespace CaptureTheFlag.Textdraw
             player.Stats.Hide();
             player.THealth.Hide();
             player.TArmour.Hide();
+            player.TdRank.Hide();
         }
 
     }
