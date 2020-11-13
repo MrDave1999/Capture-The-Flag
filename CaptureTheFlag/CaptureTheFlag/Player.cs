@@ -141,6 +141,15 @@ namespace CaptureTheFlag
             }
         }
 
+        public void SetNextRank()
+        {
+            if(Data.LevelGame != Rank.MAX_RANK && Data.TotalKills == Rank.GetRequiredKills(Data.LevelGame + 1))
+            {
+                ++Data.LevelGame;
+                SendClientMessage(Color.Red, $"[Rank]: {Color.Orange}Subiste al rango {Rank.GetRankLevel(Data.LevelGame)} {Color.Red}¡Felicidades!");
+            }
+        }
+
         public void SetForceClass()
         {
             if(Team != NoTeam)
