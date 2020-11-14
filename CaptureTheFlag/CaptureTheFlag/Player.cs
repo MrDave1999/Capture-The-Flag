@@ -42,7 +42,7 @@ namespace CaptureTheFlag
         public int Adrenaline
         {
             get { return adrenaline; }
-            set
+            set 
             {
                 /* This is used when adrenaline resets to zero. */
                 if (value == 0)
