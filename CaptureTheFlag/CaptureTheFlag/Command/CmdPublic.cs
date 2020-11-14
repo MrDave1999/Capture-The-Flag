@@ -129,6 +129,44 @@ namespace CaptureTheFlag.Command
                 "\nCaptured Flag by: " + (GameMode.TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{GameMode.TeamBeta.Flag.PlayerCaptured.Name}"), "Aceptar").Show(player);
         }
 
+        [Command("ranks", Shortcut = "ranks")]
+        private static void RanksDialog(Player player)
+        {
+            var ct = new TablistDialog("Ranks",
+                new[] {
+                    "Level",
+                    "Rank",
+                    "Kills Required"
+                }, "Cerrar", "");
+            for (int i = Rank.MAX_RANK; i != 0; --i)
+                ct.Add(i.ToString(), Rank.GetRankLevel(i), Rank.GetRequiredKills(i).ToString());
+            ct.Show(player);
+        }
+
+        [Command("stats", Shortcut = "stats")]
+        private static void StatsPlayer(Player player, int playerid = - 1)
+        {
+            Player player1 = (Player)(playerid != -1 ? BasePlayer.Find(playerid) : player);
+            if (player1 == null)
+            {
+                player.SendClientMessage(Color.Red, "Error: El jugador no se encuentra conectado.");
+                return;
+            }
+            new MessageDialog($"Name: {player1.Name}",
+                $"{Color.Yellow}ID: {Color.White}{player1.Id}" +
+                $"\n{Color.Yellow}Kills for Round: {Color.White}{player1.Kills}" +
+                $"\n{Color.Yellow}Deaths for Round: {Color.White}{player1.Deaths}" +
+                $"\n{Color.Yellow}Total Kills: {Color.White}{player1.Data.TotalKills}" +
+                $"\n{Color.Yellow}Total Deaths: {Color.White}{player1.Data.TotalDeaths}" +
+                $"\n{Color.Yellow}Admin Level: {Color.White}{player1.Data.LevelAdmin}" +
+                $"\n{Color.Yellow}VIP Level: {Color.White}{player1.Data.LevelVip}" +
+                $"\n{Color.Yellow}Rank: {Color.White}{Rank.GetRankLevel(player1.Data.LevelGame)}" +
+                $"\n{Color.Yellow}Level: {Color.White}{player1.Data.LevelGame}" +
+                $"\n{Color.Yellow}DroppedFlags: {Color.White}{player1.Data.DroppedFlags}" +
+                $"\n{Color.Yellow}Killing Sprees: {Color.White}{player1.Data.KillingSprees}" +
+            $"\n{Color.Yellow}Adrenaline: {Color.White}{player1.Adrenaline}/100", "Cerrar", "").Show(player);
+        }
+
         [Command("switch", Shortcut = "switch")]
         private static void ChangeTeam(Player player)
         {
