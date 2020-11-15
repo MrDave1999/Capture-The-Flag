@@ -131,6 +131,7 @@ namespace CaptureTheFlag
         {
             if (KillingSprees >= 2)
             {
+                GameText($"KILL X{KillingSprees}", 3000, 3);
                 Adrenaline += (4 + KillingSprees);
                 if (Health < 100)
                     /* The ternary operator condition is necessary so that it does not exceed the maximum health which is 100 percent. */
