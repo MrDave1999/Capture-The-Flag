@@ -198,11 +198,17 @@ namespace CaptureTheFlag
         {
             base.OnPlayerTakeDamage(sender, e);
             var player = sender as Player;
+            var issuerid = (Player)e.OtherPlayer;
             int weaponid = (int)e.Weapon;
             if ((weaponid >= 0 && weaponid <= 15) || (weaponid >= 22 && weaponid <= 34))
                 player.PlaySound(17802);
+            if (issuerid != null && weaponid == 34 && e.BodyPart == BodyPart.Head)
+            {
+                player.Health = 0;
+                ++issuerid.Data.Headshot;
+                player.GameText("Headshot", 3000, 3);
+            }
             player.UpdateBarHealth(e);
-            if (e.OtherPlayer != null) { }
         }
 
         protected override void OnPlayerText(BasePlayer sender, TextEventArgs e)
