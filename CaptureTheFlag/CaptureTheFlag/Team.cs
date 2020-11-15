@@ -135,7 +135,7 @@ namespace CaptureTheFlag
         public void Carry(Player player)
         {
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} llevó la bandera {NameColor} del equipo {NameTeam} a su base.");
-            BasePlayer.GameTextForAll($"~>~{TeamRival.ColorGameText}+1 score team {TeamRival.NameTeam}", 5000, 3);
+            BasePlayer.GameTextForAll($"{TeamRival.ColorGameText}+1 score team {TeamRival.NameTeam}", 5000, 3);
             player.RemoveAttachedObject(0);
             Flag.Create(); 
             Flag.PlayerCaptured = null;
