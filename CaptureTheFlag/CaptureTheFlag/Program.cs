@@ -9,7 +9,7 @@ namespace CaptureTheFlag
         public static void Main(string[] args)
         {
             new GameModeBuilder()
-                .UseEncoding(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "codepages\\cp1252.txt"))
+                .UseEncoding(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "codepages"+ Path.DirectorySeparatorChar + "cp1252.txt"))
                 .Use<GameMode>()
                 .Run();
         }
