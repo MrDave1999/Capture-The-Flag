@@ -1,4 +1,5 @@
-﻿using CaptureTheFlag.Textdraw;
+﻿using CaptureTheFlag.Map;
+using CaptureTheFlag.Textdraw;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
@@ -28,7 +29,7 @@ namespace CaptureTheFlag
         public DynamicMapIcon Icon { get; private set; }
         public DynamicCheckpoint Checkpoint { get; private set; }
 
-        public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag)
+        public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag, int interior)
         {
             Skin = skin;
             OtherColor = otherColor;
@@ -38,8 +39,8 @@ namespace CaptureTheFlag
             NameTeam = name;
             NameColor = namecolor;
             Flag = flag;
-            Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = 10, Color = Flag.ColorHex};
-            Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, 10, null, 10.0f);
+            Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = interior, Color = Flag.ColorHex};
+            Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, interior, null, 10.0f);
 
             Checkpoint.Enter += (sender, e) =>
             {
@@ -81,6 +82,14 @@ namespace CaptureTheFlag
             Score = 0;
             Kills = 0;
             Deaths = 0;
+        }
+
+        public void UpdateUtils()
+        {
+            Icon.Position = Flag.PositionBase;
+            Icon.Interior = CurrentMap.Interior;
+            Checkpoint.Position = Flag.PositionBase;
+            Checkpoint.Interior = CurrentMap.Interior;
         }
         
         public bool GetMessageTeamEnable(out string message, bool msgComplete = true)
