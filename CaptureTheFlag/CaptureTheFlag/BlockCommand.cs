@@ -1,4 +1,5 @@
-﻿using SampSharp.GameMode.SAMP;
+﻿using CaptureTheFlag.Map;
+using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands.PermissionCheckers;
 using SampSharp.GameMode.World;
 using System;
@@ -9,14 +10,19 @@ namespace CaptureTheFlag
 {
     public class BlockCommand : IPermissionChecker
     {
-        public string Message
+        public string Message 
         {
-            get { return $"{Color.Red}No puedes usar comandos en la selección de clases."; }
+            get { return " ";  }
         }
 
-        public bool Check(BasePlayer player)
+        public bool Check(BasePlayer sender)
         {
-            return !((Player)player).IsSelectionClass;
+            var player = sender as Player;
+            if (player.IsSelectionClass) 
+                return false;
+            if (CurrentMap.IsLoading) 
+                return false;
+            return true;
         }
     }
 }
