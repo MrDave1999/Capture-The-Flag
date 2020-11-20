@@ -164,7 +164,7 @@ namespace CaptureTheFlag
         {
             if(Team != NoTeam)
                 --PlayerTeam.Members;
-            GameMode.TdGlobal.Hide(this);
+            TextDrawGlobal.Hide(this);
             TextDrawPlayer.Hide(this);
             ForceClassSelection();
             ToggleSpectating(true);
@@ -202,6 +202,22 @@ namespace CaptureTheFlag
         public bool IsCapturedFlag()
         {
             return this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
+        }
+
+        public void GiveWeapon(Weapon weapon)
+        {
+            GiveWeapon(weapon, 99999999);
+        }
+
+        public new string[] ToString()
+        {
+             return new[]
+            {
+                $"{PlayerTeam.OtherColor}{Id}",
+                $"{PlayerTeam.OtherColor}{Name}",
+                $"{PlayerTeam.OtherColor}{Kills}",
+                $"{PlayerTeam.OtherColor}{Deaths}"
+            };
         }
     }
 
