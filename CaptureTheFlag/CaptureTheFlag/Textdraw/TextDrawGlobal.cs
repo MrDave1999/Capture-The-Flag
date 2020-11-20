@@ -8,28 +8,28 @@ using System.Text;
 
 namespace CaptureTheFlag.Textdraw
 {
-    public class TextDrawGlobal
+    public static class TextDrawGlobal
     {
-        public TextDraw TdCTF { get; set; }         = new TextDraw();
-        public TextDraw TdScoreAlpha { get; set; }  = new TextDraw();
-        public TextDraw TdScoreBeta { get; set; }   = new TextDraw();
-        public TextDraw TdFlagRed { get; set; }     = new TextDraw();
-        public TextDraw TdFlagBlue { get; set; }    = new TextDraw();
-        public TextDraw TdClock { get; set; }       = new TextDraw();
-        public TextDraw TdTimeLeft { get; set; }    = new TextDraw();
-        public TextDraw TdCountUsers { get; set; }  = new TextDraw();
-        public TextDraw TdBox1 { get; set; }        = new TextDraw();
-        public TextDraw TdBox2 { get; set; }        = new TextDraw();
-        public TextDraw TdRank { get; set; }        = new TextDraw();
-        public TextDraw TdStar1 { get; set; }       = new TextDraw();
-        public TextDraw TdStar2 { get; set; }       = new TextDraw();
+        public static TextDraw TdCTF { get; set; }         = new TextDraw();
+        public static TextDraw TdScoreAlpha { get; set; }  = new TextDraw();
+        public static TextDraw TdScoreBeta { get; set; }   = new TextDraw();
+        public static TextDraw TdFlagRed { get; set; }     = new TextDraw();
+        public static TextDraw TdFlagBlue { get; set; }    = new TextDraw();
+        public static TextDraw TdClock { get; set; }       = new TextDraw();
+        public static TextDraw TdTimeLeft { get; set; }    = new TextDraw();
+        public static TextDraw TdCountUsers { get; set; }  = new TextDraw();
+        public static TextDraw TdBox1 { get; set; }        = new TextDraw();
+        public static TextDraw TdBox2 { get; set; }        = new TextDraw();
+        public static TextDraw TdRank { get; set; }        = new TextDraw();
+        public static TextDraw TdStar1 { get; set; }       = new TextDraw();
+        public static TextDraw TdStar2 { get; set; }       = new TextDraw();
 
-        public TextDrawGlobal()
+        static TextDrawGlobal()
         {
             Create();
         }
 
-        public void Create()
+        public static void Create()
         {
             TdCTF.Position = new Vector2(483.000000, 4.000000);
             TdCTF.Text = "Capture The Flag";
@@ -174,7 +174,7 @@ namespace CaptureTheFlag.Textdraw
             TdStar2.Proportional = true;
         }
 
-        public void Show(Player player)
+        public static void Show(Player player)
         {
             TdCTF.Show(player);
             TdScoreAlpha.Show(player);
@@ -191,7 +191,7 @@ namespace CaptureTheFlag.Textdraw
             TdStar2.Show(player);
         }
 
-        public void Hide(Player player)
+        public static void Hide(Player player)
         {
             TdCTF.Hide(player);
             TdScoreAlpha.Hide(player);
@@ -208,7 +208,7 @@ namespace CaptureTheFlag.Textdraw
             TdStar2.Hide(player);
         }
 
-        public void UpdateCountUsers()
+        public static void UpdateCountUsers()
         {
             TdCountUsers.Text = $"users: ~r~{GameMode.TeamAlpha.Members}~w~/~b~{GameMode.TeamBeta.Members}";
             TdCountUsers.Show();
