@@ -9,6 +9,9 @@ using CaptureTheFlag.Textdraw;
 using SampSharp.Streamer.World;
 using CaptureTheFlag.Command;
 using CaptureTheFlag.Controller;
+using IniParser;
+using System.IO;
+using CaptureTheFlag.Map;
 
 namespace CaptureTheFlag
 {
@@ -16,8 +19,6 @@ namespace CaptureTheFlag
     {
         public static Team TeamAlpha { get; set; }
         public static Team TeamBeta { get; set; }
-        public static TextDrawGlobal TdGlobal { get; set; }
-        
 
         protected override void OnInitialized(EventArgs e)
         {
@@ -38,11 +39,13 @@ namespace CaptureTheFlag
             AddPlayerClass(SkinTeam.Alpha, new Vector3(0, 0, 0), 0);
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
 
-            TdGlobal = new TextDrawGlobal();
-            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TdGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, new Vector3(-1131.7461, 1029.1383, 1345.7311)));
-            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TdGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, new Vector3(-974.7156, 1089.7988, 1344.9755)));
+            CurrentMap.StartTimer();
+            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TextDrawGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), CurrentMap.Interior);
+            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TextDrawGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), CurrentMap.Interior);
             TeamAlpha.TeamRival = TeamBeta;
             TeamBeta.TeamRival = TeamAlpha;
+            Server.SendRconCommand($"mapname {CurrentMap.GetCurrentMap()}");
+            Server.SendRconCommand($"loadfs {CurrentMap.GetCurrentMap()}");
         }
 
         protected override void OnDialogResponse(BasePlayer player, DialogResponseEventArgs e)
@@ -75,7 +78,7 @@ namespace CaptureTheFlag
             if (player.Team != BasePlayer.NoTeam)
             {
                 --player.PlayerTeam.Members;
-                TdGlobal.UpdateCountUsers();
+                TextDrawGlobal.UpdateCountUsers();
             }
             TextDrawPlayer.Destroy(player);
         }
@@ -114,7 +117,12 @@ namespace CaptureTheFlag
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
         {
             var player = sender as Player;
-
+            if(CurrentMap.IsLoading)
+            {
+                e.PreventSpawning = true;
+                player.SendClientMessage(Color.Red, "Error: En 10 segundos se cargará el próximo mapa.");
+                return;
+            }
             if (player.PlayerTeam.GetMessageTeamEnable(out var msg))
             {
                 e.PreventSpawning = true;
@@ -133,8 +141,8 @@ namespace CaptureTheFlag
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Luego lleva la bandera a tu base.");
             if (player.PlayerTeam.Flag.PlayerCaptured != null)
                 player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
-            TdGlobal.Show(player);
-            TdGlobal.UpdateCountUsers();
+            TextDrawGlobal.Show(player);
+            TextDrawGlobal.UpdateCountUsers();
             TextDrawPlayer.UpdateTdStats(player);
             TextDrawPlayer.Show(player);
         }
@@ -145,25 +153,15 @@ namespace CaptureTheFlag
             var player = sender as Player;
             player.Health = 100;
             player.TArmour.Hide();
-            player.GiveWeapon(Weapon.Deagle, 3000);
-            player.GiveWeapon(Weapon.Shotgun, 3000);
-            player.GiveWeapon(Weapon.Sniper, 3000);
+            player.GiveWeapon(Weapon.Deagle);
+            player.GiveWeapon(Weapon.Shotgun);
+            player.GiveWeapon(Weapon.Sniper);
             player.GiveWeapon(Weapon.Knife, 1);
             player.Team = (int)player.PlayerTeam.Id;
             player.Skin = player.PlayerTeam.Skin;
-
-            if (player.PlayerTeam.Id == TeamID.Alpha)
-            {
-                player.SetPositionEx(new Vector3(-1131.5371, 1057.5098, 1346.4138), 270.4092f, 10);
-                player.Color = 0xFF000000;
-            }
-            else
-            {
-                player.SetPositionEx(new Vector3(-975.9757, 1060.9830, 1345.6719), 83.9741f, 10);
-                player.Color = 0x0000FF00;
-            }
+            player.Color = player.Team == (int)TeamID.Alpha ? 0xFF000000 : 0x0000FF00;
+            CurrentMap.SetPlayerPosition(player);
         }
-
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
         {
             base.OnPlayerDied(sender, e);
