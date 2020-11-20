@@ -56,7 +56,8 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar." +
                 $"\n{Color.Yellow}/admins{Color.White} - Muestra la lista de administradores que están conectados." +
                 $"\n{Color.Yellow}/vips{Color.White} - Muestra los usuarios VIP que están conectados." +
-                $"\n{Color.Yellow}/stats{Color.White} - Muestra las estadísticas del jugador." +
+                $"\n{Color.Yellow}/stats{Color.White} - Muestra las estadísticas de un jugador conectado." +
+                $"\n{Color.Yellow}/statsdb{Color.White} - Muestra las estadísticas de un jugador desconectado." +
                 $"\n{Color.Yellow}/combos{Color.White} - Muestra los combos que podrás canjear por adrenalina." +
                 $"\n{Color.Yellow}/ranks{Color.White} - Muestra la lista de rangos disponibles." +
                 $"\n{Color.Yellow}/weapons{Color.White} - Muestra la lista de armas a elegir." +
@@ -164,6 +165,7 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}Level: {Color.White}{player1.Data.LevelGame}" +
                 $"\n{Color.Yellow}DroppedFlags: {Color.White}{player1.Data.DroppedFlags}" +
                 $"\n{Color.Yellow}Killing Sprees: {Color.White}{player1.Data.KillingSprees}" +
+                $"\n{Color.Yellow}Headshot: {Color.White}{player1.Data.Headshot}" +
             $"\n{Color.Yellow}Adrenaline: {Color.White}{player1.Adrenaline}/100", "Cerrar", "").Show(player);
         }
 
@@ -183,8 +185,6 @@ namespace CaptureTheFlag.Command
             {
                 if (e.DialogButton == DialogButton.Left)
                 {
-                    var player = e.Player as Player;
-                    var ct = sender as TablistDialog;
                     if (player.PlayerTeam.Id == (TeamID)e.ListItem)
                     {
                         player.SendClientMessage(Color.Red, "Error: Ya formas parte de ese equipo.");
@@ -210,11 +210,52 @@ namespace CaptureTheFlag.Command
                     player.PlayerTeam = (e.ListItem == 0) ? GameMode.TeamAlpha : GameMode.TeamBeta;
                     ++player.PlayerTeam.Members;
                     BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
-                    GameMode.TdGlobal.UpdateCountUsers();
+                    TextDrawGlobal.UpdateCountUsers();
                     player.Spawn();
                 }
             };
         }
+
+        [Command("users", Shortcut = "users")]
+        private static void UsersList(Player player)
+        {
+            var users_alpha = new List<Player>(GameMode.TeamAlpha.Members);
+            var users_beta = new List<Player>(GameMode.TeamBeta.Members);
+            var users = new TablistDialog(
+                $"{GameMode.TeamAlpha.OtherColor}Alpha: {GameMode.TeamAlpha.Members} {GameMode.TeamBeta.OtherColor}Beta: {GameMode.TeamBeta.Members}",
+                new[] {
+                    "Id",
+                    "Name",
+                    "Kills",
+                    "Deaths"
+                }, "Cerrar", "");
+            int x = 0;
+            foreach (Player player1 in BasePlayer.All)
+            {
+                ++x;
+                if (player1.Team == BasePlayer.NoTeam) 
+                    continue;
+                (player1.Team == (int)TeamID.Alpha ? users_alpha : users_beta).Add(player1);
+            }
+            Console.WriteLine("Players: " + x);
+            users_alpha.Sort((a, b) => b.Kills - a.Kills);
+            users_beta.Sort((a, b) => b.Kills - a.Kills);
+            foreach (Player player1 in users_alpha)
+            {
+                users.Add(player1.ToString());
+                Console.WriteLine(player1.PlayerTeam);
+            }
+            if(users_alpha.Count > 0)
+                users.Add(" ", " ", " ", " ");
+            Console.WriteLine(" ");
+            Console.WriteLine("Count users_beta: " + users_beta.Count);
+            foreach (Player player1 in users_beta)
+            {
+                users.Add(player1.ToString());
+                Console.WriteLine(player1.PlayerTeam);
+            }
+            users.Show(player);
+        } 
 
         [Command("tc", Shortcut = "tc", UsageMessage = "/tc [message]")]
         public static void TeamChat(Player player, string msg)
