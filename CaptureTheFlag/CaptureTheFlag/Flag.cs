@@ -34,6 +34,7 @@ namespace CaptureTheFlag
         public void Create(Vector3 vector3)
         {
             Pickup.Create(Model, 1, vector3);
+            PositionBase = vector3;
         }
 
         public void Create()
@@ -47,16 +48,20 @@ namespace CaptureTheFlag
             Pickup.Create(Model, 1, player.Position);
         }
 
+        public void DeletePlayerCaptured()
+        {
+            if (PlayerCaptured != null)
+            {
+                PlayerCaptured.RemoveAttachedObject(0);
+                PlayerCaptured = null;
+            }
+            IsPositionBase = true;
+        }
+
         public static void RemoveAll()
         {
             foreach(Pickup pickup in Pickup.GetAll<Pickup>())
                 pickup.Dispose();
-        }
-
-        public static void CreateAll(Vector3 vector3)
-        {
-            GameMode.TeamAlpha.Flag.Create(vector3);
-            GameMode.TeamBeta.Flag.Create(vector3);
         }
     }
 
