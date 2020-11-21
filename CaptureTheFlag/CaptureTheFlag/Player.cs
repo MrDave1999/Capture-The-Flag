@@ -166,6 +166,7 @@ namespace CaptureTheFlag
                 --PlayerTeam.Members;
             TextDrawGlobal.Hide(this);
             TextDrawPlayer.Hide(this);
+            TextDrawEntry.Show(this);
             ForceClassSelection();
             ToggleSpectating(true);
             ToggleSpectating(false);
