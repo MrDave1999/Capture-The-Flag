@@ -51,11 +51,11 @@ namespace CaptureTheFlag.Map
                     {
                         IsLoading = true;
                         if (GameMode.TeamAlpha.Score > GameMode.TeamBeta.Score)
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Ronda]: {Color.Yellow}Esta partida la ganó el equipo Alpha.");
+                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Esta partida la ganó el equipo Alpha.");
                         else if (GameMode.TeamAlpha.Score == GameMode.TeamBeta.Score)
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Ronda]: {Color.Yellow}Hubo un empate! Ningún equipo ganó.");
+                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Hubo un empate! Ningún equipo ganó.");
                         else
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Ronda]: {Color.Yellow}Esta partida la ganó el equipo Beta.");
+                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Esta partida la ganó el equipo Beta.");
 
                         Server.SendRconCommand($"unloadfs {GetMapName(Id)}");
                         /*
@@ -79,6 +79,7 @@ namespace CaptureTheFlag.Map
                         GameMode.TeamAlpha.ResetStats();
                         GameMode.TeamBeta.ResetStats();
                         Server.SendRconCommand($"loadfs {GetMapName(Id)}");
+                        Server.SendRconCommand($"mapname {GetMapName(Id)}");
                     }
                     else if (timeLoading < 0)
                     {
