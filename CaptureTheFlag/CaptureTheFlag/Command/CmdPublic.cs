@@ -229,21 +229,31 @@ namespace CaptureTheFlag.Command
                     "Kills",
                     "Deaths"
                 }, "Cerrar", "");
+            int x = 0;
             foreach (Player player1 in BasePlayer.All)
             {
+                ++x;
                 if (player1.Team == BasePlayer.NoTeam) 
                     continue;
                 (player1.Team == (int)TeamID.Alpha ? users_alpha : users_beta).Add(player1);
             }
+            Console.WriteLine("Players: " + x);
             users_alpha.Sort((a, b) => b.Kills - a.Kills);
             users_beta.Sort((a, b) => b.Kills - a.Kills);
             foreach (Player player1 in users_alpha)
+            {
                 users.Add(player1.ToString());
+                Console.WriteLine(player1.PlayerTeam);
+            }
             if(users_alpha.Count > 0)
                 users.Add(" ", " ", " ", " ");
             Console.WriteLine(" ");
+            Console.WriteLine("Count users_beta: " + users_beta.Count);
             foreach (Player player1 in users_beta)
+            {
                 users.Add(player1.ToString());
+                Console.WriteLine(player1.PlayerTeam);
+            }
             users.Show(player);
         } 
 
