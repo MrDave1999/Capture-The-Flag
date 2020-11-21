@@ -49,7 +49,7 @@ namespace CaptureTheFlag.Map
         {
             var data = new IniDataParser().Parse(iniFile);
             string[] position = data[section][CurrentMap.GetCurrentMap()].Split(',');
-            return new Vector3(double.Parse(position[0]), double.Parse(position[1]), double.Parse(position[2]));
+            return new Vector3(ParseData.Double(position[0]), ParseData.Double(position[1]), ParseData.Double(position[2]));
         }
 
         public static void SpawnPositionRead()
@@ -62,19 +62,19 @@ namespace CaptureTheFlag.Map
             for(int i = 0; i < CurrentMap.MAX_SPAWNS; ++i)
             {
                 position = lines[i].Split(',');
-                CurrentMap.spawns[(int)TeamID.Alpha, i].X = double.Parse(position[0]);
-                CurrentMap.spawns[(int)TeamID.Alpha, i].Y = double.Parse(position[1]);
-                CurrentMap.spawns[(int)TeamID.Alpha, i].Z = double.Parse(position[2]);
-                CurrentMap.spawns[(int)TeamID.Alpha, i].Angle = float.Parse(position[3]);
+                CurrentMap.spawns[(int)TeamID.Alpha, i].X = ParseData.Double(position[0]);
+                CurrentMap.spawns[(int)TeamID.Alpha, i].Y = ParseData.Double(position[1]);
+                CurrentMap.spawns[(int)TeamID.Alpha, i].Z = ParseData.Double(position[2]);
+                CurrentMap.spawns[(int)TeamID.Alpha, i].Angle = ParseData.Float(position[3]);
             }
 
             for (int i = CurrentMap.MAX_SPAWNS + 1; i < len; ++i)
             {
                 position = lines[i].Split(',');
-                CurrentMap.spawns[(int)TeamID.Beta, j].X = double.Parse(position[0]);
-                CurrentMap.spawns[(int)TeamID.Beta, j].Y = double.Parse(position[1]);
-                CurrentMap.spawns[(int)TeamID.Beta, j].Z = double.Parse(position[2]);
-                CurrentMap.spawns[(int)TeamID.Beta, j++].Angle = float.Parse(position[3]);
+                CurrentMap.spawns[(int)TeamID.Beta, j].X = ParseData.Double(position[0]);
+                CurrentMap.spawns[(int)TeamID.Beta, j].Y = ParseData.Double(position[1]);
+                CurrentMap.spawns[(int)TeamID.Beta, j].Z = ParseData.Double(position[2]);
+                CurrentMap.spawns[(int)TeamID.Beta, j++].Angle = ParseData.Float(position[3]);
             }
         }
     }
