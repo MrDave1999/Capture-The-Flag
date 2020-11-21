@@ -77,6 +77,7 @@ namespace CaptureTheFlag
                 TextDrawGlobal.UpdateCountUsers();
             }
             TextDrawPlayer.Destroy(player);
+            player.Dispose();
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
