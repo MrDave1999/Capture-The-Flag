@@ -19,6 +19,7 @@ namespace CaptureTheFlag
     {
         public static Team TeamAlpha { get; set; }
         public static Team TeamBeta { get; set; }
+        public static readonly uint ColorWhite = 0xFFFFFF00;
 
         protected override void OnInitialized(EventArgs e)
         {
@@ -30,7 +31,6 @@ namespace CaptureTheFlag
 
             SetGameModeText("Capture The Flag");
             Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
-            Server.SendRconCommand("mapname RC Battlefield");
             Server.SendRconCommand("weburl www.");
             Server.SendRconCommand("language  Español Latino");
             UsePlayerPedAnimations();
@@ -57,7 +57,7 @@ namespace CaptureTheFlag
         protected override void OnPlayerConnected(BasePlayer sender, EventArgs e)
         {
             var player = sender as Player;
-            player.Color = Color.White;
+            player.Color = ColorWhite;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
@@ -96,7 +96,7 @@ namespace CaptureTheFlag
                 player.Spawn();
                 return;
             }
-            player.Color = Color.White;
+            player.Color = ColorWhite;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
             player.Position = new Vector3(-1389.137451, 3314.043701, 20.493314);
