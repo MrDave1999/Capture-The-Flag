@@ -57,15 +57,11 @@ namespace CaptureTheFlag
         protected override void OnPlayerConnected(BasePlayer sender, EventArgs e)
         {
             var player = sender as Player;
-            player.SendClientMessage(Color.Red, "=======================================================================");
-            player.SendClientMessage(Color.Yellow, "     Bienvenido a .:: Capture The Flag ::. |Team DeathMatch|");
-            player.SendClientMessage(Color.Yellow, "     ¿No sabes cuales son los comandos? Usa /cmds");
-            player.SendClientMessage(Color.Yellow, "     ¿No sabes como jugar? Usa /help");
-            player.SendClientMessage(Color.Red, "=======================================================================");
             player.Color = Color.White;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
+            TextDrawEntry.Show(player);
         }
 
         protected override void OnPlayerDisconnected(BasePlayer sender, DisconnectEventArgs e)
@@ -103,11 +99,11 @@ namespace CaptureTheFlag
             player.Color = Color.White;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
-            player.Position = new Vector3(512.993041, -17.125566, 1001.565307);
-            player.CameraPosition = new Vector3(513.012329, -12.488013, 1001.565307);
-            player.SetCameraLookAt(new Vector3(512.993041, -17.125566, 1001.565307));
-            player.Angle = 0.131221f;
-            player.Interior = 3;
+            player.Position = new Vector3(-1389.137451, 3314.043701, 20.493314);
+            player.CameraPosition = new Vector3(-1399.776000, 3310.254150, 21.525623);
+            player.SetCameraLookAt(new Vector3(-1395.072143, 3311.873291, 22.027709));
+            player.Angle = 111.68f;
+            player.Interior = 0;
             player.PlayerTeam = (e.ClassId == 0) ? (TeamAlpha) : (TeamBeta);
             player.PlayerTeam.GetMessageTeamEnable(out var msg);
             player.GameText(msg, 999999999, 6);
@@ -145,6 +141,7 @@ namespace CaptureTheFlag
             TextDrawGlobal.UpdateCountUsers();
             TextDrawPlayer.UpdateTdStats(player);
             TextDrawPlayer.Show(player);
+            TextDrawEntry.Hide(player);
         }
 
         protected override void OnPlayerSpawned(BasePlayer sender, SpawnEventArgs e)
