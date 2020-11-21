@@ -48,7 +48,8 @@ namespace CaptureTheFlag
                 if (value == 0)
                 {
                     adrenaline = 0;
-                    TextDrawPlayer.UpdateTdStats(this);
+                    if(!IsSelectionClass)
+                        TextDrawPlayer.UpdateTdStats(this);
                 }
                 else if (adrenaline < 100)
                 {
