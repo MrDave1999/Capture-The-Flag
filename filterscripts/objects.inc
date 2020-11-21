@@ -19,9 +19,10 @@ stock CountObjects()
 
 stock DestroyAllObjects()
 {
-	for(new i = 1; i <= countObjects; ++i)
+	for(new i = 21, total = 20 + countObjects; i <= total; ++i)
 		DestroyObject(i);
 	return 1;
 }
 
 #define CreateObject CreateObjectEx
+
