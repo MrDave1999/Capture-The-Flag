@@ -74,8 +74,8 @@ namespace CaptureTheFlag.Map
                         FileRead.SpawnPositionRead();
                         GameMode.TeamAlpha.Flag.Create(FileRead.FlagPositionRead("Red"));
                         GameMode.TeamBeta.Flag.Create(FileRead.FlagPositionRead("Blue"));
-                        GameMode.TeamAlpha.UpdateUtils();
-                        GameMode.TeamBeta.UpdateUtils();
+                        GameMode.TeamAlpha.UpdateIcon();
+                        GameMode.TeamBeta.UpdateIcon();
                         GameMode.TeamAlpha.ResetStats();
                         GameMode.TeamBeta.ResetStats();
                         Server.SendRconCommand($"loadfs {GetMapName(Id)}");
