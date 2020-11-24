@@ -27,7 +27,6 @@ namespace CaptureTheFlag
         public Team TeamRival { get; set; }
         public TextDraw TdScore { get; private set; }
         public DynamicMapIcon Icon { get; private set; }
-        public DynamicCheckpoint Checkpoint { get; private set; }
 
         public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag, int interior)
         {
@@ -40,30 +39,6 @@ namespace CaptureTheFlag
             NameColor = namecolor;
             Flag = flag;
             Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = interior, Color = Flag.ColorHex};
-            Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, interior, null, 10.0f);
-
-            Checkpoint.Enter += (sender, e) =>
-            {
-                if(e.Player.Team == (int)Id)
-                {
-                    if (!Flag.IsPositionBase)
-                    {
-                        if (TeamRival.Flag.PlayerCaptured == e.Player)
-                        {
-                            e.Player.SendClientMessage($"{Color.Yellow}¡Felicidades! {Color.White}Has llevado la bandera del equipo contrario a una zona segura.");
-                            e.Player.SendClientMessage($"{Color.Yellow}[!]: {Color.White}La bandera de tu equipo no está en la base, de este modo el equipo no sumará puntos.");
-                        }
-                        if (Flag.PlayerCaptured != null)
-                            e.Player.SendClientMessage($"{Color.Yellow}[INFO]: {Color.White}{Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
-                        else
-                            e.Player.SendClientMessage($"{Color.Yellow}[INFO]: {Color.White}La bandera de tu equipo fue soltada por algún jugador, debes recuperarla.");
-                    }
-                    else
-                    {
-                        //code.
-                    }
-                }
-            };
         }
 
         public bool IsFull()
@@ -84,12 +59,10 @@ namespace CaptureTheFlag
             Deaths = 0;
         }
 
-        public void UpdateUtils()
+        public void UpdateIcon()
         {
             Icon.Position = Flag.PositionBase;
             Icon.Interior = CurrentMap.Interior;
-            Checkpoint.Position = Flag.PositionBase;
-            Checkpoint.Interior = CurrentMap.Interior;
         }
         
         public bool GetMessageTeamEnable(out string message, bool msgComplete = true)
