@@ -263,7 +263,9 @@ public OnFilterScriptInit()
     CreateObject(4199,409.00698852539,-2495.7490234375,21.719999313354,0,0,0); // object (garages1_LAn) (124)
     CreateObject(4199,460.99099731445,-2497.662109375,25.979000091553,0,0,0); // object (garages1_LAn) (125)
     CreateObject(4199,461.02700805664,-2497.6560058594,25.979000091553,0,0,180); // object (garages1_LAn) (126)
-    print("d_dust5 map was load successfully!");
+    CreateObject(975, 555.78900, -2456.09204, 21.12770,   0.00000, 0.00000, 0.00000);
+	CreateObject(975, 551.40552, -2460.55835, 21.12770,   0.98000, 0.00000, -90.00000);
+	print("d_dust5 map was load successfully!");
 	printf("Total Objects: %d", CountObjects());
 	return 0;
 }
