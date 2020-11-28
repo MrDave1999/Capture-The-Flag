@@ -62,6 +62,7 @@ namespace CaptureTheFlag
             player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
             TextDrawEntry.Show(player);
+            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/2w63sen575omcdd/cecilia-krull-my-life-is-going-on.mp3");
         }
 
         protected override void OnPlayerDisconnected(BasePlayer sender, DisconnectEventArgs e)
