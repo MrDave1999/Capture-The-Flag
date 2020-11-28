@@ -61,6 +61,8 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}/combos{Color.White} - Muestra los combos que podrás canjear por adrenalina." +
                 $"\n{Color.Yellow}/ranks{Color.White} - Muestra la lista de rangos disponibles." +
                 $"\n{Color.Yellow}/weapons{Color.White} - Muestra la lista de armas a elegir." +
+                $"\n{Color.Yellow}/music{Color.White} - Permite escuchar música por medio de una URL." +
+                $"\n{Color.Yellow}/stop{Color.White} - Detiene la música." +
                 $"\n\n{Color.Orange}Teclas:" +
                 $"\n{Color.Yellow}Tecla H:{Color.White} Muestra el listado de combos a canjear (por adrenalina)." +
                 $"\n{Color.Yellow}Tecla Y:{Color.White} Muestra un menú de armas." +
@@ -106,6 +108,31 @@ namespace CaptureTheFlag.Command
         private static void Kill(Player player)
         {
             player.Health = 0;
+        }
+
+        [Command("stop", Shortcut = "stop")]
+        private static void StopMusic(Player player)
+        {
+            player.StopAudioStream();
+            player.GameText("STOP MUSIC", 2000, 3);
+        }
+
+        [Command("music", Shortcut = "music")]
+        private static void PlayMusic(Player player)
+        {
+            var music = new InputDialog(" ",
+                $"{Color.Yellow}Escribe la URL para reproducir la música. Los formatos válidos son mp3 y ogg/vorbis." +
+                "\nUn enlace a un archivo .pls (lista de reproducción) reproducirá esa lista de reproducción." +
+                $"\n\n{Color.Orange}Se recomienda los siguientes convertidores a MP3:" +
+                $"\n{Color.Yellow}notube.net" +
+                "\nytmp3.cc", 
+                false, "Reproducir", "Cerrar");
+            music.Response += (sender, e) =>
+            {
+                if(e.DialogButton == DialogButton.Left)
+                    player.PlayAudioStream(e.InputText);
+            };
+            music.Show(player);
         }
 
         [Command("tstats", Shortcut = "tstats")]
