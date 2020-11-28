@@ -3,3 +3,6 @@ CrackFactory
 TheConstruction
 Area66
 d_dust5
+Area51
+DesertGlory
+Compound
