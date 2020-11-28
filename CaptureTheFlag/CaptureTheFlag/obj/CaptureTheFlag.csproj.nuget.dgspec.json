@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\syslan\\Desktop\\Capture The Flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj": {}
+    "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj": {}
   },
   "projects": {
-    "C:\\Users\\syslan\\Desktop\\Capture The Flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj": {
+    "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\syslan\\Desktop\\Capture The Flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
+        "projectUniqueName": "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
         "projectName": "CaptureTheFlag",
-        "projectPath": "C:\\Users\\syslan\\Desktop\\Capture The Flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
+        "projectPath": "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
         "packagesPath": "C:\\Users\\syslan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\syslan\\Desktop\\Capture The Flag\\CaptureTheFlag\\CaptureTheFlag\\obj\\",
+        "outputPath": "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\syslan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\syslan\\Desktop": {},
           "http://nuget.timpotze.nl/api/v2/": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -46,6 +47,10 @@
             "SampSharp.Streamer": {
               "target": "Package",
               "version": "[0.9.0, )"
+            },
+            "ini-parser-netcore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             }
           },
           "imports": [
