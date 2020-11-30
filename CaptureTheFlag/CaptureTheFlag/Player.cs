@@ -229,6 +229,7 @@ namespace CaptureTheFlag
                 PlayerTeam = (Rand.Next(2) == (int)TeamID.Alpha) ? TeamAlpha : TeamBeta;
             else
                 PlayerTeam = TeamAlpha.IsFull() ? TeamBeta : TeamAlpha;
+            ++PlayerTeam.Members;
             Spawn();
         }
 
