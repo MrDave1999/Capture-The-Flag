@@ -230,6 +230,7 @@ namespace CaptureTheFlag
             else
                 PlayerTeam = TeamAlpha.IsFull() ? TeamBeta : TeamAlpha;
             ++PlayerTeam.Members;
+            TextDrawGlobal.UpdateCountUsers();
             Spawn();
         }
 
