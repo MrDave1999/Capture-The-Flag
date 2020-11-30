@@ -9,6 +9,7 @@ using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static CaptureTheFlag.GameMode;
 
 namespace CaptureTheFlag.Command
 {
@@ -17,19 +18,19 @@ namespace CaptureTheFlag.Command
         public static void SetInfo(this TablistDialog vs)
         {
             vs.Clear();
-            GameMode.TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
-            GameMode.TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
+            TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
+            TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
             vs.Add(new[]
             {       
-                $"{GameMode.TeamAlpha.OtherColor}{GameMode.TeamAlpha.NameTeam}",
-                $"{GameMode.TeamAlpha.OtherColor}{GameMode.TeamAlpha.Members}",
-                $"{GameMode.TeamAlpha.OtherColor}{msgAlpha}"
+                $"{TeamAlpha.OtherColor}{TeamAlpha.NameTeam}",
+                $"{TeamAlpha.OtherColor}{TeamAlpha.Members}",
+                $"{TeamAlpha.OtherColor}{msgAlpha}"
             });
             vs.Add(new[]
             {
-                $"{GameMode.TeamBeta.OtherColor}{GameMode.TeamBeta.NameTeam}",
-                $"{GameMode.TeamBeta.OtherColor}{GameMode.TeamBeta.Members}",
-                $"{GameMode.TeamBeta.OtherColor}{msgBeta}"
+                $"{TeamBeta.OtherColor}{TeamBeta.NameTeam}",
+                $"{TeamBeta.OtherColor}{TeamBeta.Members}",
+                $"{TeamBeta.OtherColor}{msgBeta}"
             });
         }
 
@@ -85,7 +86,7 @@ namespace CaptureTheFlag.Command
                 $"\n\n{Color.Yellow}¿A dónde llevo la bandera?" +
                 $"\n{Color.White}Si capturaste la bandera, la debes llevar a la posición base donde se encuentre la bandera de tu equipo. " +
                 $"\n{Color.White}Esa “posición base” es identificada por un ícono que aparecerá en el mapa radar." +
-                $"\n{Color.White}Si eres del equipo {GameMode.TeamAlpha.OtherColor}Alpha{Color.White}, el ícono será de color {GameMode.TeamAlpha.OtherColor}Rojo {Color.White}y si eres del equipo {GameMode.TeamBeta.OtherColor}Beta{Color.White}, el ícono será de color {GameMode.TeamBeta.OtherColor}Azul." +
+                $"\n{Color.White}Si eres del equipo {TeamAlpha.OtherColor}Alpha{Color.White}, el ícono será de color {TeamAlpha.OtherColor}Rojo {Color.White}y si eres del equipo {TeamBeta.OtherColor}Beta{Color.White}, el ícono será de color {TeamBeta.OtherColor}Azul." +
                 $"\n\n{Color.Yellow}¿Qué pasa si no encuentro la bandera de mi equipo en la posición base?" +
                 $"\n{Color.White}Pues tu equipo no ganará puntos. En ese caso, debes recuperar la bandera de tu equipo." +
                 $"\n\n{Color.Yellow}¿Cómo recupero la bandera de mi equipo?" +
@@ -139,22 +140,22 @@ namespace CaptureTheFlag.Command
         private static void StatsTeam(Player player)
         {
             new MessageDialog("Stats Team",
-                GameMode.TeamAlpha.OtherColor +
+                TeamAlpha.OtherColor +
                 "Team: Alpha" +
                 "\nColor Team: Red" +
-                "\nUsers: " + GameMode.TeamAlpha.Members +
-                "\nScore: " + GameMode.TeamAlpha.Score +
-                "\nTotal Kills: " + GameMode.TeamAlpha.Kills +
-                "\nTotal Deaths: " + GameMode.TeamAlpha.Deaths +
-                "\nCaptured Flag by: " + (GameMode.TeamAlpha.Flag.PlayerCaptured == null ? "None" : $"{GameMode.TeamAlpha.Flag.PlayerCaptured.Name}") +
-                GameMode.TeamBeta.OtherColor +
+                "\nUsers: " + TeamAlpha.Members +
+                "\nScore: " + TeamAlpha.Score +
+                "\nTotal Kills: " + TeamAlpha.Kills +
+                "\nTotal Deaths: " + TeamAlpha.Deaths +
+                "\nCaptured Flag by: " + (TeamAlpha.Flag.PlayerCaptured == null ? "None" : $"{TeamAlpha.Flag.PlayerCaptured.Name}") +
+                TeamBeta.OtherColor +
                 "\n\nTeam: Beta" +
                 "\nColor Team: Blue" +
-                "\nUsers: " + GameMode.TeamBeta.Members +
-                "\nScore: " + GameMode.TeamBeta.Score +
-                "\nTotal Kills: " + GameMode.TeamBeta.Kills +
-                "\nTotal Deaths: " + GameMode.TeamBeta.Deaths +
-                "\nCaptured Flag by: " + (GameMode.TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{GameMode.TeamBeta.Flag.PlayerCaptured.Name}"), "Aceptar").Show(player);
+                "\nUsers: " + TeamBeta.Members +
+                "\nScore: " + TeamBeta.Score +
+                "\nTotal Kills: " + TeamBeta.Kills +
+                "\nTotal Deaths: " + TeamBeta.Deaths +
+                "\nCaptured Flag by: " + (TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{TeamBeta.Flag.PlayerCaptured.Name}"), "Aceptar").Show(player);
         }
 
         [Command("ranks", Shortcut = "ranks")]
@@ -199,8 +200,8 @@ namespace CaptureTheFlag.Command
         [Command("switch", Shortcut = "switch")]
         private static void ChangeTeam(Player player)
         {
-            GameMode.TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
-            GameMode.TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
+            TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
+            TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
             var ct = new TablistDialog("Change Team", 
                 new[] { 
                     "Name",
@@ -218,7 +219,7 @@ namespace CaptureTheFlag.Command
                         ct.ShowDialog(player);
                         return;
                     }
-                    if(GameMode.TeamAlpha.Members == GameMode.TeamBeta.Members)
+                    if(TeamAlpha.Members == TeamBeta.Members)
                     {
                         player.SendClientMessage(Color.Red, $"Error: No puedes cambiarte al equipo {(e.ListItem == 0 ? "Alpha" : "Beta")} porque el equipo {player.PlayerTeam.NameTeam} quedaría desequilibrado.");
                         ct.ShowDialog(player);
@@ -234,7 +235,7 @@ namespace CaptureTheFlag.Command
                     }
                     if (player.IsCapturedFlag())
                         player.Drop();
-                    player.PlayerTeam = (e.ListItem == 0) ? GameMode.TeamAlpha : GameMode.TeamBeta;
+                    player.PlayerTeam = (e.ListItem == 0) ? TeamAlpha : TeamBeta;
                     ++player.PlayerTeam.Members;
                     BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
                     TextDrawGlobal.UpdateCountUsers();
@@ -246,10 +247,10 @@ namespace CaptureTheFlag.Command
         [Command("users", Shortcut = "users")]
         private static void UsersList(Player player)
         {
-            var users_alpha = new List<Player>(GameMode.TeamAlpha.Members);
-            var users_beta = new List<Player>(GameMode.TeamBeta.Members);
+            var users_alpha = new List<Player>(TeamAlpha.Members);
+            var users_beta = new List<Player>(TeamBeta.Members);
             var users = new TablistDialog(
-                $"{GameMode.TeamAlpha.OtherColor}Alpha: {GameMode.TeamAlpha.Members} {GameMode.TeamBeta.OtherColor}Beta: {GameMode.TeamBeta.Members}",
+                $"{TeamAlpha.OtherColor}Alpha: {TeamAlpha.Members} {TeamBeta.OtherColor}Beta: {TeamBeta.Members}",
                 new[] {
                     "Id",
                     "Name",

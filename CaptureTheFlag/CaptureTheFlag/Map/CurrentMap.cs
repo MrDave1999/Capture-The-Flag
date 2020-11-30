@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.Rand;
+using static CaptureTheFlag.GameMode;
+using static SampSharp.GameMode.World.BasePlayer;
+using static CaptureTheFlag.Map.FileRead;
 
 namespace CaptureTheFlag.Map
 {
@@ -32,18 +35,18 @@ namespace CaptureTheFlag.Map
         {
             var timer = new Timer(1000, true);
             TextDraw tdTimeLeft = TextDrawGlobal.TdTimeLeft;
-            FileRead.ConfigMapRead();
+            ConfigMapRead();
             int timeLoading = MAX_TIME_LOADING;
             timeLeft = MAX_TIME_ROUND;
             spawns = new SpawnPoint[2, MAX_SPAWNS];
             mapName = new string[MAX_MAPS];
-            FileRead.NamesMapRead();
+            NamesMapRead();
             Id = Next(MAX_MAPS);
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Alpha, i] = new SpawnPoint();
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Beta, i] = new SpawnPoint();
-            FileRead.SpawnPositionRead();
+            SpawnPositionRead();
             timer.Tick += (sender, e) =>
             {
                 if (timeLeft < 0)
@@ -51,12 +54,12 @@ namespace CaptureTheFlag.Map
                     if (timeLoading == MAX_TIME_LOADING)
                     {
                         IsLoading = true;
-                        if (GameMode.TeamAlpha.Score > GameMode.TeamBeta.Score)
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Esta partida la ganó el equipo Alpha.");
-                        else if (GameMode.TeamAlpha.Score == GameMode.TeamBeta.Score)
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Hubo un empate! Ningún equipo ganó.");
+                        if (TeamAlpha.Score > TeamBeta.Score)
+                            SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Esta partida la ganó el equipo Alpha.");
+                        else if (TeamAlpha.Score == TeamBeta.Score)
+                            SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Hubo un empate! Ningún equipo ganó.");
                         else
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Esta partida la ganó el equipo Beta.");
+                            SendClientMessageToAll(Color.Red, $"[Round]: {Color.Yellow}Esta partida la ganó el equipo Beta.");
 
                         Server.SendRconCommand($"unloadfs {GetMapName(Id)}");
                         /*
@@ -65,29 +68,29 @@ namespace CaptureTheFlag.Map
                         */
                         Id = (ForceMap == -1) ? (Id + 1) % MAX_MAPS : ForceMap;
                         foreach (Player player in BasePlayer.GetAll<Player>())
-                            if (player.Team != BasePlayer.NoTeam)
+                            if (player.Team != NoTeam)
                                 player.ToggleControllable(false);
 
-                        BasePlayer.SendClientMessageToAll(Color.Yellow, $"** En {MAX_TIME_LOADING} segundos se cargará el próximo mapa: {Color.Red}{GetMapName(Id)}");
+                        SendClientMessageToAll(Color.Yellow, $"** En {MAX_TIME_LOADING} segundos se cargará el próximo mapa: {Color.Red}{GetMapName(Id)}");
                         Flag.RemoveAll();
-                        GameMode.TeamAlpha.Flag.DeletePlayerCaptured();
-                        GameMode.TeamBeta.Flag.DeletePlayerCaptured();
-                        FileRead.SpawnPositionRead();
-                        GameMode.TeamAlpha.Flag.Create(FileRead.FlagPositionRead("Red"));
-                        GameMode.TeamBeta.Flag.Create(FileRead.FlagPositionRead("Blue"));
-                        GameMode.TeamAlpha.UpdateIcon();
-                        GameMode.TeamBeta.UpdateIcon();
-                        GameMode.TeamAlpha.ResetStats();
-                        GameMode.TeamBeta.ResetStats();
+                        TeamAlpha.Flag.DeletePlayerCaptured();
+                        TeamBeta.Flag.DeletePlayerCaptured();
+                        SpawnPositionRead();
+                        TeamAlpha.Flag.Create(FlagPositionRead("Red"));
+                        TeamBeta.Flag.Create(FlagPositionRead("Blue"));
+                        TeamAlpha.UpdateIcon();
+                        TeamBeta.UpdateIcon();
+                        TeamAlpha.ResetStats();
+                        TeamBeta.ResetStats();
                         Server.SendRconCommand($"loadfs {GetMapName(Id)}");
                         Server.SendRconCommand($"mapname {GetMapName(Id)}");
                     }
                     else if (timeLoading < 0)
                     {
-                        BasePlayer.GameTextForAll("_", 1000, 4);
+                        GameTextForAll("_", 1000, 4);
                         IsLoading = false;
                         ForceMap = -1;
-                        BasePlayer.SendClientMessageToAll(Color.Yellow, "** El mapa se cargó con éxito!");
+                        SendClientMessageToAll(Color.Yellow, "** El mapa se cargó con éxito!");
                         foreach (Player player in BasePlayer.GetAll<Player>())
                         {
                             player.Kills = 0;
@@ -95,7 +98,7 @@ namespace CaptureTheFlag.Map
                             player.KillingSprees = 0;
                             player.Adrenaline = 0;
 
-                            if (player.Team != BasePlayer.NoTeam)
+                            if (player.Team != NoTeam)
                             {
                                 player.ToggleControllable(true);
                                 player.SetForceClass();
@@ -105,7 +108,7 @@ namespace CaptureTheFlag.Map
                         timeLoading = MAX_TIME_LOADING;
                         return;
                     }
-                    BasePlayer.GameTextForAll($"Cargando Mapa... ({timeLoading})", 99999999, 3);
+                    GameTextForAll($"Cargando Mapa... ({timeLoading})", 99999999, 3);
                     --timeLoading;
                 }
                 else

@@ -12,6 +12,7 @@ using CaptureTheFlag.Controller;
 using IniParser;
 using System.IO;
 using CaptureTheFlag.Map;
+using static CaptureTheFlag.Map.CurrentMap;
 
 namespace CaptureTheFlag
 {
@@ -39,13 +40,13 @@ namespace CaptureTheFlag
             AddPlayerClass(SkinTeam.Alpha, new Vector3(0, 0, 0), 0);
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
 
-            CurrentMap.StartTimer();
-            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TextDrawGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), CurrentMap.Interior);
-            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TextDrawGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), CurrentMap.Interior);
+            StartTimer();
+            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TextDrawGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), Interior);
+            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TextDrawGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), Interior);
             TeamAlpha.TeamRival = TeamBeta;
             TeamBeta.TeamRival = TeamAlpha;
-            Server.SendRconCommand($"mapname {CurrentMap.GetCurrentMap()}");
-            Server.SendRconCommand($"loadfs {CurrentMap.GetCurrentMap()}");
+            Server.SendRconCommand($"mapname {GetCurrentMap()}");
+            Server.SendRconCommand($"loadfs {GetCurrentMap()}");
         }
 
         protected override void OnDialogResponse(BasePlayer player, DialogResponseEventArgs e)
@@ -115,7 +116,7 @@ namespace CaptureTheFlag
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
         {
             var player = sender as Player;
-            if(CurrentMap.IsLoading)
+            if(IsLoading)
             {
                 e.PreventSpawning = true;
                 player.SendClientMessage(Color.Red, "Error: En 10 segundos se cargará el próximo mapa.");
@@ -161,7 +162,7 @@ namespace CaptureTheFlag
             player.Team = (int)player.PlayerTeam.Id;
             player.Skin = player.PlayerTeam.Skin;
             player.Color = player.Team == (int)TeamID.Alpha ? 0xFF000000 : 0x0000FF00;
-            CurrentMap.SetPlayerPosition(player);
+            SetPlayerPosition(player);
         }
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
         {
