@@ -6,6 +6,7 @@ using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static CaptureTheFlag.Rand;
 
 namespace CaptureTheFlag.Map
 {
@@ -19,7 +20,7 @@ namespace CaptureTheFlag.Map
         /* ** */
 
         public static int timeLeft;
-        private static readonly Random random = new Random();
+        
         public static int Id { get; set; }
         public static int Interior { get; set; }
         public static bool IsLoading { get; set; }
@@ -37,7 +38,7 @@ namespace CaptureTheFlag.Map
             spawns = new SpawnPoint[2, MAX_SPAWNS];
             mapName = new string[MAX_MAPS];
             FileRead.NamesMapRead();
-            Id = random.Next(MAX_MAPS);
+            Id = Next(MAX_MAPS);
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Alpha, i] = new SpawnPoint();
             for (int i = 0; i < MAX_SPAWNS; ++i)
@@ -119,7 +120,7 @@ namespace CaptureTheFlag.Map
         public static void SetPlayerPosition(Player player)
         {
             int teamid = player.Team;
-            int rand = random.Next(MAX_SPAWNS);
+            int rand = Next(MAX_SPAWNS);
             player.Position = new Vector3(spawns[teamid, rand].X, spawns[teamid, rand].Y, spawns[teamid, rand].Z);
             player.Angle = spawns[teamid, rand].Angle;
             player.Interior = Interior;
