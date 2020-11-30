@@ -7,6 +7,7 @@ using SampSharp.GameMode.World;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Events;
+using static CaptureTheFlag.GameMode;
 
 namespace CaptureTheFlag
 {
@@ -221,6 +222,16 @@ namespace CaptureTheFlag
                 $"{PlayerTeam.OtherColor}{Deaths}"
             };
         }
+
+        public void SetAutoAssign()
+        {
+            if (TeamAlpha.Members == TeamBeta.Members)
+                PlayerTeam = (Rand.Next(2) == (int)TeamID.Alpha) ? TeamAlpha : TeamBeta;
+            else
+                PlayerTeam = TeamAlpha.IsFull() ? TeamBeta : TeamAlpha;
+            Spawn();
+        }
+
     }
 
     public enum StateUser
