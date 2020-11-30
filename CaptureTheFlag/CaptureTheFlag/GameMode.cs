@@ -57,12 +57,12 @@ namespace CaptureTheFlag
         protected override void OnPlayerConnected(BasePlayer sender, EventArgs e)
         {
             var player = sender as Player;
+            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/80g6s720ogyoy98/intro-cs.mp3");
             player.Color = ColorWhite;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
             TextDrawEntry.Show(player);
-            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/2w63sen575omcdd/cecilia-krull-my-life-is-going-on.mp3");
         }
 
         protected override void OnPlayerDisconnected(BasePlayer sender, DisconnectEventArgs e)
@@ -127,6 +127,8 @@ namespace CaptureTheFlag
                 player.GameText(msg, 999999999, 6);
                 return;
             }
+            player.StopAudioStream();
+            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/mzt9qnigsh7pdfs/soundtrack.mp3");
             player.IsSelectionClass = false;
             player.GameText("_", 1000, 4);
             player.PlayerTeam.Members++;
