@@ -57,8 +57,13 @@ namespace CaptureTheFlag
                 if (value == 0)
                 {
                     adrenaline = 0;
-                    if(!IsSelectionClass)
+                    if (!IsSelectionClass)
                         TextDrawPlayer.UpdateTdStats(this);
+                }
+                else if (value < 0)
+                {
+                    adrenaline -= -value;
+                    TextDrawPlayer.UpdateTdStats(this);
                 }
                 else if (adrenaline < 100)
                 {
@@ -250,6 +255,20 @@ namespace CaptureTheFlag
             Spawn();
         }
 
+        public void HasAdrenaline(int amount)
+        {
+            if (Adrenaline < amount)
+            {
+                SendClientMessage(Color.Red, "Error: No tienes suficiente adrenalina.");
+                throw new Exception();
+            }
+        }
+
+        public void SetWeapon(Weapon weapon, int ammo)
+        {
+            SetAmmo(weapon, 0);
+            GiveWeapon(weapon, ammo);
+        }
     }
 
     public enum StateUser
