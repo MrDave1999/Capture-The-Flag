@@ -100,6 +100,7 @@ namespace CaptureTheFlag.Command
         [Command("re", Shortcut = "re")]
         private static void ResetScore(Player player)
         {
+            player.Adrenaline = 100;
             player.Kills = 0;
             player.Deaths = 0;
             TextDrawPlayer.UpdateTdStats(player);
@@ -169,6 +170,58 @@ namespace CaptureTheFlag.Command
                     foreach (Gun gun in player.ListGuns)
                         packet.Add(gun.Weapon.ToString());
                     packet.Show(player);
+                }
+            };
+        }
+
+        [Command("combos", Shortcut = "combos")]
+        public static void Combos(Player player)
+        {
+            var combos = new TablistDialog("Combos", new[] {"Combo", "Adrenalina"}, "Canjear", "Cerrar");
+            combos.Add(new[]{"150% Health + 100% Armour", "100"});
+            combos.Add(new[] { "2 Grenades + 20% Armour", "25" });
+            combos.Add(new[] { "2 Molotov cocktail + 20% Armour", "25" });
+            combos.Add(new[] { "10 Tear gas", "10" });
+            combos.Add(new[] { "3 Satchel charges + 30% Armour", "40" });
+            combos.Show(player);
+            combos.Response += (sender, e) =>
+            {
+                if (e.DialogButton == DialogButton.Left)
+                {
+                    switch(e.ListItem)
+                    {
+                        case 0:
+                            player.HasAdrenaline(100);
+                            player.Health = 150;
+                            player.Armour = 100;
+                            player.Adrenaline = 0;
+                            break;
+                        case 1:
+                            player.HasAdrenaline(25);
+                            player.SetWeapon(Weapon.Grenade, 2);
+                            player.Armour = 20;
+                            player.Adrenaline = -25;
+                            break;
+                        case 2:
+                            player.HasAdrenaline(25);
+                            player.SetWeapon(Weapon.Moltov, 2);
+                            player.Armour = 20;
+                            player.Adrenaline = -25;
+                            break;
+                        case 3:
+                            player.HasAdrenaline(10);
+                            player.SetWeapon(Weapon.Teargas, 10);
+                            player.Adrenaline = -10;
+                            break;
+                        default:
+                            player.HasAdrenaline(40);
+                            player.SetWeapon(Weapon.SatchelCharge, 3);
+                            player.GiveWeapon(Weapon.Detonator, 1);
+                            player.Armour = 30;
+                            player.Adrenaline = -40;
+                            break;
+                    }
+                    BasePlayer.SendClientMessageToAll(Color.Red, $"[Combo]: {Color.Yellow}{player.Name} canjeó su adrenalina por algún beneficio {Color.Red}(con /combos).");
                 }
             };
         }

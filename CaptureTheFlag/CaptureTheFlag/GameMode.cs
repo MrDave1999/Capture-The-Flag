@@ -97,6 +97,8 @@ namespace CaptureTheFlag
                 CmdPublic.Weapons(player);
             else if (e.NewKeys == Keys.No)
                 CmdPublic.UsersList(player);
+            else if (e.NewKeys == Keys.CtrlBack)
+                CmdPublic.Combos(player);
         }
 
         protected override void OnPlayerRequestClass(BasePlayer sender, RequestClassEventArgs e)
