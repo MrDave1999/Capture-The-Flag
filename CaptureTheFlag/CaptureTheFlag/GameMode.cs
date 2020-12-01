@@ -89,6 +89,16 @@ namespace CaptureTheFlag
             (e.Pickup.Model == FlagID.Alpha ? TeamAlpha : TeamBeta).ExecuteAction(player, e.Pickup);
         }
 
+        protected override void OnPlayerKeyStateChanged(BasePlayer sender, KeyStateChangedEventArgs e)
+        {
+            base.OnPlayerKeyStateChanged(sender, e);
+            var player = sender as Player;
+            if (e.NewKeys == Keys.Yes)
+                CmdPublic.Weapons(player);
+            else if (e.NewKeys == Keys.No)
+                CmdPublic.UsersList(player);
+        }
+
         protected override void OnPlayerRequestClass(BasePlayer sender, RequestClassEventArgs e)
         {
             var player = sender as Player;
@@ -155,10 +165,8 @@ namespace CaptureTheFlag
             var player = sender as Player;
             player.Health = 100;
             player.TArmour.Hide();
-            player.GiveWeapon(Weapon.Deagle);
-            player.GiveWeapon(Weapon.Shotgun);
-            player.GiveWeapon(Weapon.Sniper);
-            player.GiveWeapon(Weapon.Knife, 1);
+            foreach(Gun gun in player.ListGuns)
+                player.GiveWeapon(gun.Weapon);
             player.Team = (int)player.PlayerTeam.Id;
             player.Skin = player.PlayerTeam.Skin;
             player.Color = player.Team == (int)TeamID.Alpha ? 0xFF000000 : 0x0000FF00;
