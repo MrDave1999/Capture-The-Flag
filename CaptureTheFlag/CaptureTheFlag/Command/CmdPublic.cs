@@ -62,12 +62,13 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}/combos{Color.White} - Muestra los combos que podrás canjear por adrenalina." +
                 $"\n{Color.Yellow}/ranks{Color.White} - Muestra la lista de rangos disponibles." +
                 $"\n{Color.Yellow}/weapons{Color.White} - Muestra la lista de armas a elegir." +
+                $"\n{Color.Yellow}/packet{Color.White} - Muestra el paquete actual de armas del jugador." +
                 $"\n{Color.Yellow}/music{Color.White} - Permite escuchar música por medio de una URL." +
                 $"\n{Color.Yellow}/stop{Color.White} - Detiene la música." +
                 $"\n\n{Color.Orange}Teclas:" +
                 $"\n{Color.Yellow}Tecla H:{Color.White} Muestra el listado de combos a canjear (por adrenalina)." +
                 $"\n{Color.Yellow}Tecla Y:{Color.White} Muestra un menú de armas." +
-                $"\n{Color.Yellow}Tecla G:{Color.White} Muestra la lista de usuarios conectados (por equipo)." +
+                $"\n{Color.Yellow}Tecla N:{Color.White} Muestra la lista de usuarios conectados (por equipo)." +
                 $"\n\n{Color.Orange}Signos:" +
                 $"\n{Color.Yellow}Signo (!):{Color.White} Permite hablar en el TeamChat (ejemplo: {Color.Pink}!texto{Color.White})." +
                 $"\n{Color.Yellow}Signo (#):{Color.White} Permite hablar en el AdminChat (ejemplo: {Color.Pink}#texto{Color.White})." +
@@ -109,6 +110,67 @@ namespace CaptureTheFlag.Command
         private static void Kill(Player player)
         {
             player.Health = 0;
+        }
+
+        [Command("weapons", Shortcut = "weapons")]
+        public static void Weapons(Player player)
+        {
+            var weapons = new ListDialog("Weapons", "Seleccionar", "Cerrar");
+            foreach(Gun gun in Gun.GetInstanceArray())
+                weapons.AddItem(gun.Weapon.ToString());
+            weapons.Show(player);
+            weapons.Response += (sender, e) =>
+            {
+                if (e.DialogButton == DialogButton.Left)
+                {
+                    Gun gunSearch;
+                    /* Gets the weapon that the player selected in the dialog. */
+                    var itemWeapon = Gun.GetWeapon(e.ListItem);
+                    /* Check if the weapon the player selected is not in their current weapon pack. */
+                    if (player.ListGuns.Find(gun => gun.Weapon == itemWeapon) != null)
+                    {
+                        player.SendClientMessage(Color.Red, $"Error: {itemWeapon} ya se encuentra en el paquete de armas.");
+                        weapons.Show(player);
+                        return;
+                    }
+                    /* Get to which category the weapon the player selected belongs. */
+                    var slot = Gun.GetWeaponSlot(itemWeapon);
+                    /* Check if there is no weapon with the same category in the player's weapon pack. */
+                    if ((gunSearch = player.ListGuns.Find(gun => gun.Slot == slot)) != null)
+                        gunSearch.Weapon = itemWeapon;
+                    else
+                        player.ListGuns.Add(new Gun(itemWeapon));
+                    player.GiveWeapon(itemWeapon);
+                    player.SendClientMessage(Color.Red, $"[Weapon]: {Color.Yellow}{itemWeapon} se agregó en tu paquete de armas.");
+                    weapons.Show(player);
+                }
+            };
+        }
+
+        [Command("packet", Shortcut = "packet")]
+        public static void PacketWeapons(Player player)
+        {
+            if(player.ListGuns.Count == 0)
+            {
+                player.SendClientMessage(Color.Red, "Error: No tienes ningún elemento en tu paquete de armas.");
+                return;
+            }
+            var packet = new TablistDialog("Packet Weapons", 1, "Eliminar", "Cerrar");
+            foreach (Gun gun in player.ListGuns)
+                packet.Add(gun.Weapon.ToString());
+            packet.Show(player);
+            packet.Response += (sender, e) =>
+            {
+                if (e.DialogButton == DialogButton.Left)
+                {
+                    player.SendClientMessage(Color.Red, $"[Weapon]: {Color.Yellow}{player.ListGuns[e.ListItem].Weapon} se eliminó de tu paquetes de armas.");
+                    player.RemoveWeapon(e.ListItem);
+                    packet.Clear();
+                    foreach (Gun gun in player.ListGuns)
+                        packet.Add(gun.Weapon.ToString());
+                    packet.Show(player);
+                }
+            };
         }
 
         [Command("stop", Shortcut = "stop")]
@@ -181,6 +243,7 @@ namespace CaptureTheFlag.Command
                 player.SendClientMessage(Color.Red, "Error: El jugador no se encuentra conectado.");
                 return;
             }
+            var level = player1.Data.LevelGame;
             new MessageDialog($"Name: {player1.Name}",
                 $"{Color.Yellow}ID: {Color.White}{player1.Id}" +
                 $"\n{Color.Yellow}Kills for Round: {Color.White}{player1.Kills}" +
@@ -189,8 +252,9 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}Total Deaths: {Color.White}{player1.Data.TotalDeaths}" +
                 $"\n{Color.Yellow}Admin Level: {Color.White}{player1.Data.LevelAdmin}" +
                 $"\n{Color.Yellow}VIP Level: {Color.White}{player1.Data.LevelVip}" +
-                $"\n{Color.Yellow}Rank: {Color.White}{Rank.GetRankLevel(player1.Data.LevelGame)}" +
+                $"\n{Color.Yellow}Rank: {Color.White}{Rank.GetRankLevel(level)}" +
                 $"\n{Color.Yellow}Level: {Color.White}{player1.Data.LevelGame}" +
+                $"\n{Color.Yellow}Next Rank: {Color.White}{(level != Rank.MAX_RANK ? Rank.GetRankLevel(level + 1) : "None")}" +
                 $"\n{Color.Yellow}DroppedFlags: {Color.White}{player1.Data.DroppedFlags}" +
                 $"\n{Color.Yellow}Killing Sprees: {Color.White}{player1.Data.KillingSprees}" +
                 $"\n{Color.Yellow}Headshot: {Color.White}{player1.Data.Headshot}" +
@@ -245,7 +309,7 @@ namespace CaptureTheFlag.Command
         }
 
         [Command("users", Shortcut = "users")]
-        private static void UsersList(Player player)
+        public static void UsersList(Player player)
         {
             var users_alpha = new List<Player>(TeamAlpha.Members);
             var users_beta = new List<Player>(TeamBeta.Members);
