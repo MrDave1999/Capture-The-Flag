@@ -8,6 +8,7 @@ using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Events;
 using static CaptureTheFlag.GameMode;
+using System.Collections.Generic;
 
 namespace CaptureTheFlag
 {
@@ -39,6 +40,13 @@ namespace CaptureTheFlag
             TextDrawPlayer.CreateTDArmour(TArmour);
             TextDrawPlayer.CreateTDRank(TdRank);
         }
+
+        public List<Gun> ListGuns { get; set; } = new List<Gun>(10)
+        {
+            new Gun(Weapon.Deagle),
+            new Gun(Weapon.Shotgun),
+            new Gun(Weapon.Sniper)
+        };
 
         public int Adrenaline
         {
@@ -83,6 +91,14 @@ namespace CaptureTheFlag
                 HealthBar(TArmour, value);
                 base.Armour = value;
             }
+        }
+
+        public void RemoveWeapon(int index)
+        {
+            ResetWeapons();
+            ListGuns.RemoveAt(index);
+            foreach (Gun gun in ListGuns)
+                GiveWeapon(gun.Weapon);
         }
 
         public void HealthBar(PlayerTextDraw bar, float value)
