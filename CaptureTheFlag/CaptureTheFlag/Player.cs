@@ -15,6 +15,7 @@ namespace CaptureTheFlag
     public class Player : BasePlayer
     {
         private int adrenaline;
+        
         public int Kills { get; set; }
         public int Deaths { get; set; }
         public int KillingSprees { get; set; }
@@ -268,6 +269,16 @@ namespace CaptureTheFlag
         {
             SetAmmo(weapon, 0);
             GiveWeapon(weapon, ammo);
+        }
+
+        public override void ClearAnimations()
+        {
+            /* credits to simonepri (https://github.com/simonepri/) */
+            base.ClearAnimations();
+            ApplyAnimation("PED", "IDLE_STANCE", 4.0f, false, false, false, false, 1);
+            ApplyAnimation("PED", "IDLE_CHAT", 4.0f, false, false, false, false, 1);
+            ApplyAnimation("PED", "WALK_PLAYER", 4.0f, false, false, false, false, 1);
+            /* *** */
         }
     }
 

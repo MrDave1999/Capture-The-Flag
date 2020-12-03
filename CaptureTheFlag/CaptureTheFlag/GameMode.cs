@@ -13,6 +13,7 @@ using IniParser;
 using System.IO;
 using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
+using SampSharp.GameMode.Tools;
 
 namespace CaptureTheFlag
 {
@@ -93,11 +94,12 @@ namespace CaptureTheFlag
         {
             base.OnPlayerKeyStateChanged(sender, e);
             var player = sender as Player;
-            if (e.NewKeys == Keys.Yes)
+
+            if (KeyUtils.HasPressed(e, Keys.Yes))
                 CmdPublic.Weapons(player);
-            else if (e.NewKeys == Keys.No)
+            else if (KeyUtils.HasPressed(e, Keys.No))
                 CmdPublic.UsersList(player);
-            else if (e.NewKeys == Keys.CtrlBack)
+            else if (KeyUtils.HasPressed(e, Keys.CtrlBack))
                 CmdPublic.Combos(player);
         }
 
@@ -245,5 +247,19 @@ namespace CaptureTheFlag
             base.LoadControllers(controllers);
             controllers.Override(new PlayerController());
         }
+
+        protected override void OnPlayerUpdate(BasePlayer player, PlayerUpdateEventArgs e)
+        {
+            player.GetKeys(out var key, out var ud, out var lr);
+            if ((ud == KEY_UP || ud == KEY_DOWN || lr == KEY_LEFT || lr == KEY_RIGHT) && (((uint)key & KEY_SPRINT) != 0))
+                player.ClearAnimations();
+        }
+
+        public static readonly int KEY_UP = -128;
+        public static readonly int KEY_DOWN = 128;
+        public static readonly int KEY_LEFT = -128;
+        public static readonly int KEY_RIGHT = 128;
+        public static readonly uint KEY_SPRINT = 8; /* Key SPACE */
+
     }
 }
