@@ -9,6 +9,7 @@ using System.IO;
 using System.Text;
 using static CaptureTheFlag.Map.CurrentMap;
 using static CaptureTheFlag.ParseData;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag.Map
 {

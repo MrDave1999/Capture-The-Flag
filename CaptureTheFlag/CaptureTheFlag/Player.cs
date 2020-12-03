@@ -9,6 +9,7 @@ using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Events;
 using static CaptureTheFlag.GameMode;
 using System.Collections.Generic;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {
@@ -280,12 +281,5 @@ namespace CaptureTheFlag
             ApplyAnimation("PED", "WALK_PLAYER", 4.0f, false, false, false, false, 1);
             /* *** */
         }
-    }
-
-    public enum StateUser
-    {
-        Force,
-        Kill,
-        None
     }
 }

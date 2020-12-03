@@ -14,6 +14,7 @@ using System.IO;
 using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
 using SampSharp.GameMode.Tools;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {

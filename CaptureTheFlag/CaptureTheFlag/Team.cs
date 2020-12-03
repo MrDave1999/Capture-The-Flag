@@ -8,6 +8,7 @@ using SampSharp.Streamer.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {
@@ -153,17 +154,5 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = false;
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} dejó caer la bandera {NameColor} del equipo {NameTeam}.");
         }
-    }
-
-    public enum TeamID
-    {
-       Alpha,
-       Beta
-    }
-
-    public class SkinTeam
-    {
-        public static int Alpha { get; } = 170;
-        public static int Beta { get; } = 177;
     }
 }
