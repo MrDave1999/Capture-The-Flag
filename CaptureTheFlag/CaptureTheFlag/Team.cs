@@ -102,6 +102,13 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = false;
             Flag.AttachedObject(player);
             Flag.PlayerCaptured = player;
+            player.JumpTime = 0;
+            if (player.IsEnableSpeed())
+            {
+                player.SpeedTime = 0;
+                player.ClearAnimations();
+            }
+
             if (takeInPosBase)
             {
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} capturó la bandera {NameColor} del equipo {NameTeam}.");

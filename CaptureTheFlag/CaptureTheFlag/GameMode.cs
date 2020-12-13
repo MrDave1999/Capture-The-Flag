@@ -15,6 +15,7 @@ using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
 using SampSharp.GameMode.Tools;
 using CaptureTheFlag.Constants;
+using static CaptureTheFlag.Constants.OtherKeys;
 
 namespace CaptureTheFlag
 {
@@ -36,6 +37,8 @@ namespace CaptureTheFlag
             Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
             Server.SendRconCommand("weburl www.");
             Server.SendRconCommand("language  Español Latino");
+            Server.SendRconCommand("loadfs EntryMap");
+            Server.SendRconCommand("loadfs RemoveBuilding");
             UsePlayerPedAnimations();
             DisableInteriorEnterExits();
 
@@ -102,8 +105,14 @@ namespace CaptureTheFlag
                 CmdPublic.UsersList(player);
             else if (KeyUtils.HasPressed(e, Keys.CtrlBack))
                 CmdPublic.Combos(player);
-        }
 
+            if (player.IsEnableJump() && KeyUtils.HasPressed(e, Keys.Jump))
+                player.Velocity = new Vector3(player.Velocity.X, player.Velocity.Y, 0.24);
+
+            if(player.IsEnableSpeed() && KeyUtils.HasPressed(e, Keys.Sprint))
+                player.ApplyAnimation("PED", "sprint_civi", 100, true, true, true, true, 500);
+        }
+        
         protected override void OnPlayerRequestClass(BasePlayer sender, RequestClassEventArgs e)
         {
             var player = sender as Player;
@@ -249,18 +258,21 @@ namespace CaptureTheFlag
             controllers.Override(new PlayerController());
         }
 
-        protected override void OnPlayerUpdate(BasePlayer player, PlayerUpdateEventArgs e)
+        protected override void OnPlayerUpdate(BasePlayer sender, PlayerUpdateEventArgs e)
         {
+            var player = sender as Player;
+            if(player.SpeedTime != 0)
+            {
+                if (player.SpeedTime < Time.GetTime())
+                {
+                    player.ClearAnimations();
+                    player.SpeedTime = 0;
+                }
+                return;
+            }
             player.GetKeys(out var key, out var ud, out var lr);
             if ((ud == KEY_UP || ud == KEY_DOWN || lr == KEY_LEFT || lr == KEY_RIGHT) && (((uint)key & KEY_SPRINT) != 0))
                 player.ClearAnimations();
         }
-
-        public static readonly int KEY_UP = -128;
-        public static readonly int KEY_DOWN = 128;
-        public static readonly int KEY_LEFT = -128;
-        public static readonly int KEY_RIGHT = 128;
-        public static readonly uint KEY_SPRINT = 8; /* Key SPACE */
-
     }
 }

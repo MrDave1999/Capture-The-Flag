@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.GameMode;
 using CaptureTheFlag.Constants;
-
+using SampSharp.Streamer.World;
 namespace CaptureTheFlag.Command
 {
     static class ExtensionTablistDialog
@@ -41,10 +41,10 @@ namespace CaptureTheFlag.Command
             vs.Show(player);
         }
     }
-
+    
     [CommandGroup("public", PermissionChecker = typeof(BlockCommand))]
     public class CmdPublic
-    {
+    { 
         [Command("cmds", Shortcut = "cmds")]
         private static void ListCommands(Player player)
         {
@@ -101,11 +101,17 @@ namespace CaptureTheFlag.Command
         [Command("re", Shortcut = "re")]
         private static void ResetScore(Player player)
         {
-            player.Adrenaline = 100;
             player.Kills = 0;
             player.Deaths = 0;
             TextDrawPlayer.UpdateTdStats(player);
             BasePlayer.SendClientMessageToAll(Color.Yellow, $"** {player.Name} ha reseteado su score con {Color.Red}/re");
+        }
+
+        [Command("adre", Shortcut = "adre")]
+        private static void Test(Player player)
+        {
+            player.Adrenaline = 100;
+            TextDrawPlayer.UpdateTdStats(player);
         }
 
         [Command("kill", Shortcut = "kill")]
@@ -150,7 +156,7 @@ namespace CaptureTheFlag.Command
         }
 
         [Command("packet", Shortcut = "packet")]
-        public static void PacketWeapons(Player player)
+        private static void PacketWeapons(Player player)
         {
             if(player.ListGuns.Count == 0)
             {
@@ -180,6 +186,8 @@ namespace CaptureTheFlag.Command
         {
             var combos = new TablistDialog("Combos", new[] {"Combo", "Adrenalina"}, "Canjear", "Cerrar");
             combos.Add(new[]{"150% Health + 100% Armour", "100"});
+            combos.Add(new[] { "Jumps", "100" });
+            combos.Add(new[] { "Velocity", "100" });
             combos.Add(new[] { "2 Grenades + 20% Armour", "25" });
             combos.Add(new[] { "2 Molotov cocktail + 20% Armour", "25" });
             combos.Add(new[] { "10 Tear gas", "10" });
@@ -198,18 +206,42 @@ namespace CaptureTheFlag.Command
                             player.Adrenaline = 0;
                             break;
                         case 1:
+                            player.HasAdrenaline(100);
+                            if(player.IsCapturedFlag())
+                            {
+                                player.SendClientMessage(Color.Red, "Error: Lleva la bandera de forma legal, no seas cobarde jeje!");
+                                return;
+                            }
+                            player.SendClientMessage("** En 1 minuto el beneficio se terminará.");
+                            player.JumpTime = Time.GetTime() + (1 * 60000);
+                            player.Adrenaline = 0;
+                            player.GiveWeapon(Weapon.Parachute, 1);
+                            break;
+                        case 2:
+                            player.HasAdrenaline(100);
+                            if (player.IsCapturedFlag())
+                            {
+                                player.SendClientMessage(Color.Red, "Error: Lleva la bandera de forma legal, no seas cobarde jeje!");
+                                return;
+                            }
+                            player.SendClientMessage("** En 1 minuto el beneficio se terminará.");
+                            player.SendClientMessage(Color.Orange, $"[Uso]: {Color.White}Presiona y suelta la tecla [SPACE] para correr.");
+                            player.SpeedTime = Time.GetTime() + (1 * 60000);
+                            player.Adrenaline = 0;
+                            break;
+                        case 3:
                             player.HasAdrenaline(25);
                             player.SetWeapon(Weapon.Grenade, 2);
                             player.Armour = 20;
                             player.Adrenaline = -25;
                             break;
-                        case 2:
+                        case 4:
                             player.HasAdrenaline(25);
                             player.SetWeapon(Weapon.Moltov, 2);
                             player.Armour = 20;
                             player.Adrenaline = -25;
                             break;
-                        case 3:
+                        case 5:
                             player.HasAdrenaline(10);
                             player.SetWeapon(Weapon.Teargas, 10);
                             player.Adrenaline = -10;

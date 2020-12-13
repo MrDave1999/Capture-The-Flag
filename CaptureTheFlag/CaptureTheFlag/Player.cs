@@ -28,6 +28,8 @@ namespace CaptureTheFlag
         public PlayerTextDraw THealth { get; set; }
         public PlayerTextDraw TArmour { get; set; }
         public PlayerTextDraw TdRank { get; set; }
+        public double JumpTime { get; set; }
+        public double SpeedTime { get; set; }
 
         public Player()
         {
@@ -106,6 +108,16 @@ namespace CaptureTheFlag
             ListGuns.RemoveAt(index);
             foreach (Gun gun in ListGuns)
                 GiveWeapon(gun.Weapon);
+        }
+
+        public bool IsEnableJump()
+        {
+            return JumpTime > Time.GetTime();
+        }
+
+        public bool IsEnableSpeed()
+        {
+            return SpeedTime > Time.GetTime();
         }
 
         public void HealthBar(PlayerTextDraw bar, float value)
