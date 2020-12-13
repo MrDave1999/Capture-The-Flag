@@ -1,5 +1,5 @@
 ﻿//define DEBUG
-#undef DEBUG
+//#undef DEBUG
 
 using IniParser;
 using SampSharp.GameMode;
@@ -42,10 +42,10 @@ namespace CaptureTheFlag.Map
 
         public static void NamesMapRead()
         {
-            string[] lines = File.ReadAllLines(GetPath("names_maps.txt"));
-            int len = lines.Length;
+            string[] fileEntries = Directory.GetFiles(GetPath("spawn_position"));
+            int len = fileEntries.Length;
             for(int i = 0; i < len; ++i)
-                mapName[i] = lines[i];
+                mapName[i] = Path.GetFileName(fileEntries[i]).Replace(".txt", "");
         }
 
         public static Vector3 FlagPositionRead(string section)
