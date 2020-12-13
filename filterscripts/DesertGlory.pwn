@@ -1,4 +1,5 @@
 #include <a_samp>
+#define NAME_FS "DesertGlory"
 #include "objects"
 
 public OnFilterScriptInit()
@@ -263,14 +264,5 @@ public OnFilterScriptInit()
 	CreateObject(3119,-1493.3079834,-429.9500732,265.2618713,0.0000000,0.0000000,0.0000000); //object(cs_ry_props)(1)
 	CreateObject(3005,-1492.8847656,-438.7745056,264.9619446,0.0000000,0.0000000,0.0000000); //object(smash_box_stay)(1)
 	CreateObject(2890,-1596.5765381,-319.1381226,269.7819519,0.0000000,0.0000000,90.0000000); //object(kmb_skip)(1)
-    print("DesertGlory map was load successfully!");
-	printf("Total Objects: %d", CountObjects());
-	return 0;
-}
-
-public OnFilterScriptExit()
-{
-    DestroyAllObjects();
-    print("DesertGlory map was unload successfully!");
-	return 0;
+	return 1;
 }

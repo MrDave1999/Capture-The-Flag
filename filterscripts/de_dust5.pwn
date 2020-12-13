@@ -1,4 +1,5 @@
 #include <a_samp>
+#define NAME_FS "de_dust5"
 #include "objects"
 
 public OnFilterScriptInit()
@@ -265,14 +266,5 @@ public OnFilterScriptInit()
     CreateObject(4199,461.02700805664,-2497.6560058594,25.979000091553,0,0,180); // object (garages1_LAn) (126)
     CreateObject(975, 555.78900, -2456.09204, 21.12770,   0.00000, 0.00000, 0.00000);
 	CreateObject(975, 551.40552, -2460.55835, 21.12770,   0.98000, 0.00000, -90.00000);
-	print("d_dust5 map was load successfully!");
-	printf("Total Objects: %d", CountObjects());
-	return 0;
-}
-
-public OnFilterScriptExit()
-{
-    DestroyAllObjects();
-    print("d_dust5 map was unload successfully!");
-	return 0;
+	return 1;
 }

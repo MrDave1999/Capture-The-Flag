@@ -1,4 +1,5 @@
 #include <a_samp>
+#define NAME_FS "Area66"
 #include "objects"
 
 public OnFilterScriptInit()
@@ -121,14 +122,5 @@ public OnFilterScriptInit()
 	CreateObject(695,2278.3049300,-3764.2868700,7.4400300,0.0000000,0.0000000,0.0000000); //
 	CreateObject(695,2305.5549300,-3703.5092800,7.4400300,0.0000000,0.0000000,0.0000000); //
 	CreateObject(695,2180.3168900,-3497.4323700,7.4400300,0.0000000,0.0000000,-0.4200000); //
-	print("Area66 map was load successfully!");
-	printf("Total Objects: %d", CountObjects());
-	return 0;
-}
-
-public OnFilterScriptExit()
-{
-    DestroyAllObjects();
-    print("Area66 map was unload successfully!");
-	return 0;
+	return 1;
 }

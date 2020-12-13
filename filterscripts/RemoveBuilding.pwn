@@ -58,11 +58,11 @@ public OnPlayerConnect(playerid)
 	RemoveBuildingForPlayer(playerid, 3941, -1132.1094, 1077.7422, 1347.9063, 0.25);
 	RemoveBuildingForPlayer(playerid, 1596, -1132.6953, 1073.9922, 1354.7500, 0.25);
 	RemoveBuildingForPlayer(playerid, 1596, -973.5625, 1046.0703, 1353.9688, 0.25);
-	return 0;
+	return 1;
 }
 
 public OnFilterScriptInit()
 {
 	
-	return 0;
+	return 1;
 }

@@ -1,4 +1,5 @@
 #include <a_samp>
+#define NAME_FS "TheConstruction"
 #include "objects"
 
 public OnFilterScriptInit()
@@ -113,14 +114,5 @@ public OnFilterScriptInit()
 	CreateObject(3585,2218.3654785,1024.9951172,476.3040161,0.0000000,0.0000000,317.3939209); //
 	CreateObject(3632,2183.7658691,1091.9145508,476.2079773,69.7153320,0.0000000,5.9971924); //
 	CreateObject(3632,2217.2448730,1023.6416626,475.0195618,69.7137451,0.0000000,139.9930420); //
-    print("TheConstruction map was load successfully!");
-	printf("Total Objects: %d", CountObjects());
-	return 0;
-}
-
-public OnFilterScriptExit()
-{
-    DestroyAllObjects();
-    print("TheConstruction map was unload successfully!");
-	return 0;
+	return 1;
 }

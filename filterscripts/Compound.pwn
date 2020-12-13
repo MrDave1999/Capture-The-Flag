@@ -1,4 +1,5 @@
 #include <a_samp>
+#define NAME_FS "Compound"
 #include "objects"
 
 public OnFilterScriptInit()
@@ -422,14 +423,5 @@ public OnFilterScriptInit()
     CreateObject(7191, 2004.40, 235.97, 249.07,   0.00, 0.00, 179.71);
     CreateObject(7191, 1982.87, 336.28, 249.07,   0.00, 0.00, 269.45);
     CreateObject(3498, 1935.28, 304.55, 256.39,   0.00, 0.00, 0.00);
-	print("Compound map was load successfully!");
-	printf("Total Objects: %d", CountObjects());
-	return 0;
-}
-
-public OnFilterScriptExit()
-{
-    DestroyAllObjects();
-    print("Compound map was unload successfully!");
-	return 0;
+	return 1;
 }
