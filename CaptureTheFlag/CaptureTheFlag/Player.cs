@@ -293,5 +293,16 @@ namespace CaptureTheFlag
             ApplyAnimation("PED", "WALK_PLAYER", 4.0f, false, false, false, false, 1);
             /* *** */
         }
+
+        public static Player Find(Player player, int playerid)
+        {
+            Player player1 = (Player)Find(playerid);
+            if(player1 == null)
+            {
+                player.SendClientMessage(Color.Red, "Error: El jugador no está conectado.");
+                throw new Exception();
+            }
+            return player1;
+        }
     }
 }
