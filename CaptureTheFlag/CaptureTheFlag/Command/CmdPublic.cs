@@ -323,12 +323,7 @@ namespace CaptureTheFlag.Command
         [Command("stats", Shortcut = "stats")]
         private static void StatsPlayer(Player player, int playerid = - 1)
         {
-            Player player1 = (Player)(playerid != -1 ? BasePlayer.Find(playerid) : player);
-            if (player1 == null)
-            {
-                player.SendClientMessage(Color.Red, "Error: El jugador no se encuentra conectado.");
-                return;
-            }
+            Player player1 = (playerid != -1 ? Player.Find(player, playerid) : player);
             var level = player1.Data.LevelGame;
             new MessageDialog($"Name: {player1.Name}",
                 $"{Color.Yellow}ID: {Color.White}{player1.Id}" +
