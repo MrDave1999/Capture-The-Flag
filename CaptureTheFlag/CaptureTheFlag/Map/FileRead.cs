@@ -61,7 +61,16 @@ namespace CaptureTheFlag.Map
             string[] position;
             int len = lines.Length - 1;
             int j = 0;
-            Interior = int.Parse(lines[len]);
+            try
+            {
+                Interior = int.Parse(lines[len]);
+            }
+            catch (FormatException)
+            {
+                Interior = 0;
+                ++len;
+            }
+            Console.WriteLine("  Interior Map: " + Interior);
             for(int i = 0; i < MAX_SPAWNS; ++i)
             {
                 position = lines[i].Split(',');
