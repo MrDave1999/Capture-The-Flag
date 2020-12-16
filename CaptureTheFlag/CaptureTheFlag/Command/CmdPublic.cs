@@ -56,6 +56,7 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}/tc - {Color.White} Permite hablar en el Team Chat." +
                 $"\n{Color.Yellow}/re{Color.White} Reinicia a 0 los asesinatos y muertes por ronda." +
                 $"\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar." +
+                $"\n{Color.Yellow}/credits - {Color.White} Muestra las personas que han participado en la creación de la GM." +
                 $"\n{Color.Yellow}/admins{Color.White} - Muestra la lista de administradores que están conectados." +
                 $"\n{Color.Yellow}/vips{Color.White} - Muestra los usuarios VIP que están conectados." +
                 $"\n{Color.Yellow}/stats{Color.White} - Muestra las estadísticas de un jugador conectado." +
@@ -96,6 +97,24 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.White}Aunque puede que la bandera quede en algún sitio que no sea la posición base y te toque buscarla." +
                 $"\n\n{Color.Yellow}¿Cómo sé quien se robó la bandera de mi equipo?" +
                 $"\n{Color.White}Con el comando {Color.Pink}/tstats.", "Aceptar").Show(player);
+        }
+
+        [Command("credits", Shortcut = "credits")]
+        private static void Credits(Player player)
+        {
+            new MessageDialog("Créditos", 
+                $"{Color.Yellow}Capture The Flag es un proyecto Open Source." +
+                $"\n{Color.Orange}Repositorio: {Color.White}https://github.com/MrDave1999/Capture-The-Flag" +
+                $"\n{Color.Orange}Creador/Fundador: {Color.White}MrDave1999." +
+                $"\n{Color.Orange}Programador: {Color.White}MrDave1999." +
+                $"\n{Color.Orange}Mapeadores: {Color.White}DragonZafiro, Elorreli, amirab, JamesT85," +
+                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr, UnuAlex." +
+                $"\n{Color.Yellow}Agradecimientos a:" +
+                $"\n{Color.Orange}ikkentim {Color.White}por crear SampSharp." +
+                $"\n{Color.Orange}rickyah {Color.White}por crear ini-parser." +
+                $"\n{Color.Orange}Nickk888SAMP {Color.White}por crear NTD (TextDraw Editor)." +
+                $"\n{Color.Orange}samp-incognito {Color.White}por crear streamer-plugin." +
+                $"\n\n{Color.Yellow}¡Eres libre de contribuir en el proyecto!", "Aceptar").Show(player);
         }
 
         [Command("re", Shortcut = "re")]
