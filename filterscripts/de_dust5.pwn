@@ -4,7 +4,7 @@
 
 public OnFilterScriptInit()
 {
-	CreateObject(4867,468.22900390625,-2434.4509277344,11.335000038147,0,0,0); // object (lasrnway3_LAS) (1)
+    CreateObject(4867,468.22900390625,-2434.4509277344,11.335000038147,0,0,0); // object (lasrnway3_LAS) (1)
     CreateObject(4199,558.40399169922,-2436.5649414063,13.409999847412,0,0,90); // object (garages1_LAn) (1)
     CreateObject(4199,568.32598876953,-2457.4409179688,13.409999847412,0,0,0); // object (garages1_LAn) (2)
     CreateObject(4199,568.33001708984,-2488.9729003906,13.409999847412,0,0,0); // object (garages1_LAn) (3)
