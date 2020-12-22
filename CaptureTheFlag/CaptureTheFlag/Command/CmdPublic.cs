@@ -107,8 +107,8 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Orange}Repositorio: {Color.White}https://github.com/MrDave1999/Capture-The-Flag" +
                 $"\n{Color.Orange}Creador/Fundador: {Color.White}MrDave1999." +
                 $"\n{Color.Orange}Programador: {Color.White}MrDave1999." +
-                $"\n{Color.Orange}Mapeadores: {Color.White}DragonZafiro, Elorreli, amirab, JamesT85," +
-                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr, UnuAlex." +
+                $"\n{Color.Orange}Mapeadores: {Color.White}DragonZafiro, Elorreli, amirab, JamesT85, haubitze," +
+                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr, UnuAlex, SpikY_, Amads." +
                 $"\n{Color.Yellow}Agradecimientos a:" +
                 $"\n{Color.Orange}ikkentim {Color.White}por crear SampSharp." +
                 $"\n{Color.Orange}rickyah {Color.White}por crear ini-parser." +
@@ -389,16 +389,15 @@ namespace CaptureTheFlag.Command
                         ct.ShowDialog(player);
                         return;
                     }
-                    --player.PlayerTeam.Members;
                     if (player.PlayerTeam.TeamRival.IsFull())
                     {
                         player.SendClientMessage(Color.Red, "Error: El equipo no está disponible.");
-                        ++player.PlayerTeam.Members;
                         ct.ShowDialog(player);
                         return;
                     }
                     if (player.IsCapturedFlag())
                         player.Drop();
+                    --player.PlayerTeam.Members;
                     player.PlayerTeam = (e.ListItem == 0) ? TeamAlpha : TeamBeta;
                     ++player.PlayerTeam.Members;
                     BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
