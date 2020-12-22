@@ -45,7 +45,7 @@ namespace CaptureTheFlag.Command
 
         }
 
-        [Command("benefit", Shortcut = "benefit")]
+        [Command("benefit", Shortcut = "benefit", UsageMessage = "/benefit [playerid]")]
         private static void BenefitEnable(Player player, int playerid)
         {
             Player player1 = Player.Find(player, playerid);
