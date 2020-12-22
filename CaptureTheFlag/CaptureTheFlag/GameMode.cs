@@ -39,7 +39,7 @@ namespace CaptureTheFlag
             Server.SendRconCommand("language  Español Latino");
             Server.SendRconCommand("loadfs EntryMap");
             Server.SendRconCommand("loadfs RemoveBuilding");
-            UsePlayerPedAnimations();
+            //UsePlayerPedAnimations();
             DisableInteriorEnterExits();
 
             AddPlayerClass(SkinTeam.Alpha, new Vector3(0, 0, 0), 0);
@@ -268,11 +268,7 @@ namespace CaptureTheFlag
                     player.ClearAnimations();
                     player.SpeedTime = 0;
                 }
-                return;
             }
-            player.GetKeys(out var key, out var ud, out var lr);
-            if ((ud == KEY_UP || ud == KEY_DOWN || lr == KEY_LEFT || lr == KEY_RIGHT) && (((uint)key & KEY_SPRINT) != 0))
-                player.ClearAnimations();
         }
     }
 }
