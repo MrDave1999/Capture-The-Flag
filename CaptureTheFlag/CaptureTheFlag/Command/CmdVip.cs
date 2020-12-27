@@ -11,7 +11,8 @@ namespace CaptureTheFlag.Command
         [Command("test", Shortcut = "test")]
         public static void Test(Player player)
         {
-
+            if (player.IsVipLevel(1)) return;
+            //code..
         }
 
     }
