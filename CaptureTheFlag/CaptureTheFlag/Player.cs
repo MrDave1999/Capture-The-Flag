@@ -16,11 +16,11 @@ namespace CaptureTheFlag
     public class Player : BasePlayer
     {
         private int adrenaline;
-        
         public int Kills { get; set; }
         public int Deaths { get; set; }
         public int KillingSprees { get; set; }
         public bool IsSelectionClass { get; set; } 
+        public bool IsDead { get; set; }
         public StateUser IsStateUser { get; set; }
         public PlayerData Data { get; set; }
         public Team PlayerTeam { get; set; }
@@ -61,8 +61,7 @@ namespace CaptureTheFlag
                 if (value == 0)
                 {
                     adrenaline = 0;
-                    if (!IsSelectionClass)
-                        TextDrawPlayer.UpdateTdStats(this);
+                    TextDrawPlayer.UpdateTdStats(this);
                 }
                 else if (value < 0)
                 {
@@ -199,8 +198,6 @@ namespace CaptureTheFlag
 
         public void SetForceClass()
         {
-            if(Team != NoTeam)
-                --PlayerTeam.Members;
             TextDrawGlobal.Hide(this);
             TextDrawPlayer.Hide(this);
             TextDrawEntry.Show(this);
@@ -258,17 +255,6 @@ namespace CaptureTheFlag
             };
         }
 
-        public void SetAutoAssign()
-        {
-            if (TeamAlpha.Members == TeamBeta.Members)
-                PlayerTeam = (Rand.Next(2) == (int)TeamID.Alpha) ? TeamAlpha : TeamBeta;
-            else
-                PlayerTeam = TeamAlpha.IsFull() ? TeamBeta : TeamAlpha;
-            ++PlayerTeam.Members;
-            TextDrawGlobal.UpdateCountUsers();
-            Spawn();
-        }
-
         public void HasAdrenaline(int amount)
         {
             if (Adrenaline < amount)
@@ -296,13 +282,35 @@ namespace CaptureTheFlag
 
         public static Player Find(Player player, int playerid)
         {
-            Player player1 = (Player)Find(playerid);
-            if(player1 == null)
-            {
-                player.SendClientMessage(Color.Red, "Error: El jugador no está conectado.");
-                throw new Exception();
-            }
-            return player1;
+            foreach(Player player1 in GetAll())
+                if (player1.Id == playerid)
+                    return player1;
+            player.SendClientMessage(Color.Red, "Error: Jugador no conectado o se encuentra en la selección de clases.");
+            throw new Exception();
+        }
+
+        public static void Remove(Player player)
+        {
+            player.PlayerTeam.Players.Remove(player);
+        }
+
+        public static void Add(Player player)
+        {
+            player.PlayerTeam.Players.Add(player);
+        }
+
+        public static IEnumerable<Player> GetAll()
+        {
+            foreach (Player player in TeamAlpha.Players)
+                yield return player;
+
+            foreach (Player player in TeamBeta.Players)
+                yield return player;
+        }
+
+        public static int Count()
+        {
+            return TeamAlpha.Members + TeamBeta.Members;
         }
     }
 }

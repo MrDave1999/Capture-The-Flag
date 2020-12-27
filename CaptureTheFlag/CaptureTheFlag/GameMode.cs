@@ -6,16 +6,12 @@ using SampSharp.GameMode.Controllers;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Textdraw;
-using SampSharp.Streamer.World;
 using CaptureTheFlag.Command;
 using CaptureTheFlag.Controller;
-using IniParser;
-using System.IO;
 using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
 using SampSharp.GameMode.Tools;
 using CaptureTheFlag.Constants;
-using static CaptureTheFlag.Constants.OtherKeys;
 
 namespace CaptureTheFlag
 {
@@ -80,11 +76,10 @@ namespace CaptureTheFlag
                 player.Drop();
             if (player.Team != BasePlayer.NoTeam)
             {
-                --player.PlayerTeam.Members;
+                Player.Remove(player);
                 TextDrawGlobal.UpdateCountUsers();
             }
             TextDrawPlayer.Destroy(player);
-            player.Dispose();
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
@@ -123,6 +118,15 @@ namespace CaptureTheFlag
                 player.Spawn();
                 return;
             }
+
+            /* Check if the player has died before entering class selection. */
+            if (player.IsDead)
+            {
+                Player.Remove(player);
+                TextDrawGlobal.Hide(player);
+                TextDrawPlayer.Hide(player);
+            }
+
             player.Color = ColorWhite;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
@@ -135,6 +139,7 @@ namespace CaptureTheFlag
             player.PlayerTeam.GetMessageTeamEnable(out var msg);
             player.GameText(msg, 999999999, 6);
             player.PlaySound(1132);
+            player.IsDead = false;
         }   
          
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
@@ -156,7 +161,7 @@ namespace CaptureTheFlag
             player.PlayAudioStream("https://dl.dropboxusercontent.com/s/mzt9qnigsh7pdfs/soundtrack.mp3");
             player.IsSelectionClass = false;
             player.GameText("_", 1000, 4);
-            player.PlayerTeam.Members++;
+            Player.Add(player);
             BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se añadió al equipo {player.PlayerTeam.NameTeam}.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Captura la bandera del equipo contrario.");
             if (player.PlayerTeam.Id == TeamID.Alpha)
@@ -185,12 +190,14 @@ namespace CaptureTheFlag
             player.Skin = player.PlayerTeam.Skin;
             player.Color = player.Team == (int)TeamID.Alpha ? 0xFF000000 : 0x0000FF00;
             SetPlayerPosition(player);
+            player.IsDead = false;
         }
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
         {
             base.OnPlayerDied(sender, e);
             var player = sender as Player;
             var killer = e.Killer as Player;
+            player.IsDead = true;
             ++player.Data.TotalDeaths;
             ++player.Deaths;
             ++player.PlayerTeam.Deaths;
@@ -261,13 +268,10 @@ namespace CaptureTheFlag
         protected override void OnPlayerUpdate(BasePlayer sender, PlayerUpdateEventArgs e)
         {
             var player = sender as Player;
-            if(player.SpeedTime != 0)
+            if(player.SpeedTime != 0 && player.SpeedTime < Time.GetTime())
             {
-                if (player.SpeedTime < Time.GetTime())
-                {
-                    player.ClearAnimations();
-                    player.SpeedTime = 0;
-                }
+                player.ClearAnimations();
+                player.SpeedTime = 0;
             }
         }
     }

@@ -44,7 +44,32 @@ namespace CaptureTheFlag.Command
     
     [CommandGroup("public", PermissionChecker = typeof(BlockCommand))]
     public class CmdPublic
-    { 
+    {
+        [Command("listplayers", Shortcut = "listplayers")]
+        public static void ListPlayers(BasePlayer player)
+        { //test command 
+            player.SendClientMessage($"Players available: {Player.Count()}");
+            try
+            {
+                foreach (var p in Player.GetAll())
+                {
+                    player.SendClientMessage("Player: " + p.Name);
+                }
+            }
+            catch (Exception e)
+            {
+                player.SendClientMessage(Color.Red, e.Message);
+            }
+        }
+
+        [Command("adre", Shortcut = "adre")]
+        private static void Test(Player player)
+        { //test command
+            player.Adrenaline = 100;
+            player.Kills = Rand.Next(4000);
+            TextDrawPlayer.UpdateTdStats(player);
+        }
+
         [Command("cmds", Shortcut = "cmds")]
         private static void ListCommands(Player player)
         {
@@ -124,13 +149,6 @@ namespace CaptureTheFlag.Command
             player.Deaths = 0;
             TextDrawPlayer.UpdateTdStats(player);
             BasePlayer.SendClientMessageToAll(Color.Yellow, $"** {player.Name} ha reseteado su score con {Color.Red}/re");
-        }
-
-        [Command("adre", Shortcut = "adre")]
-        private static void Test(Player player)
-        {
-            player.Adrenaline = 100;
-            TextDrawPlayer.UpdateTdStats(player);
         }
 
         [Command("kill", Shortcut = "kill")]
@@ -397,9 +415,9 @@ namespace CaptureTheFlag.Command
                     }
                     if (player.IsCapturedFlag())
                         player.Drop();
-                    --player.PlayerTeam.Members;
+                    Player.Remove(player);
                     player.PlayerTeam = (e.ListItem == 0) ? TeamAlpha : TeamBeta;
-                    ++player.PlayerTeam.Members;
+                    Player.Add(player);
                     BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se cambió al equipo {player.PlayerTeam.NameTeam}.");
                     TextDrawGlobal.UpdateCountUsers();
                     player.Spawn();
@@ -410,8 +428,6 @@ namespace CaptureTheFlag.Command
         [Command("users", Shortcut = "users")]
         public static void UsersList(Player player)
         {
-            var users_alpha = new List<Player>(TeamAlpha.Members);
-            var users_beta = new List<Player>(TeamBeta.Members);
             var users = new TablistDialog(
                 $"{TeamAlpha.OtherColor}Alpha: {TeamAlpha.Members} {TeamBeta.OtherColor}Beta: {TeamBeta.Members}",
                 new[] {
@@ -420,20 +436,13 @@ namespace CaptureTheFlag.Command
                     "Kills",
                     "Deaths"
                 }, "Cerrar", "");
-            foreach (Player player1 in BasePlayer.All)
-            {
-                if (player1.Team == BasePlayer.NoTeam) 
-                    continue;
-                (player1.Team == (int)TeamID.Alpha ? users_alpha : users_beta).Add(player1);
-            }
-            users_alpha.Sort((a, b) => b.Kills - a.Kills);
-            users_beta.Sort((a, b) => b.Kills - a.Kills);
-            foreach (Player player1 in users_alpha)
+            TeamAlpha.Players.Sort((a, b) => b.Kills - a.Kills);
+            TeamBeta.Players.Sort((a, b) => b.Kills - a.Kills);
+            foreach (Player player1 in TeamAlpha.Players)
                 users.Add(player1.ToString());
-            if(users_alpha.Count > 0)
+            if(TeamAlpha.Members > 0)
                 users.Add(" ", " ", " ", " ");
-            Console.WriteLine(" ");
-            foreach (Player player1 in users_beta)
+            foreach (Player player1 in TeamBeta.Players)
                 users.Add(player1.ToString());
             users.Show(player);
         } 
@@ -446,9 +455,8 @@ namespace CaptureTheFlag.Command
                 player.SendClientMessage(Color.Red, "Error: Debes estar en un equipo para usar el TeamChat.");
                 return;
             }
-            foreach(Player player1 in BasePlayer.GetAll<Player>())
-                if(player.Team == player1.Team)
-                    player1.SendClientMessage($"{player.PlayerTeam.OtherColor}[Team Chat] {player.Name} [{player.Id}]: {msg}");
+            foreach(Player player1 in player.PlayerTeam.Players)
+                player1.SendClientMessage($"{player.PlayerTeam.OtherColor}[Team Chat] {player.Name} [{player.Id}]: {msg}");
         }
     }
 }

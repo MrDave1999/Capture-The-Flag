@@ -15,7 +15,7 @@ namespace CaptureTheFlag
     public class Team
     {
         public TeamID Id { get; private set; }
-        public int Members { get; set; }
+        public int Members => Players.Count;
         public int Score { get; set; }
         public int Kills { get; set; }
         public int Deaths { get; set; }
@@ -28,6 +28,7 @@ namespace CaptureTheFlag
         public Team TeamRival { get; set; }
         public TextDraw TdScore { get; private set; }
         public DynamicMapIcon Icon { get; private set; }
+        public List<Player> Players { get; set; } = new List<Player>();
 
         public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag, int interior)
         {
@@ -50,7 +51,7 @@ namespace CaptureTheFlag
         public void UpdateTdScore()
         {
             TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
-            TdScore.Show();
+            TdScore.ShowAll();
         }
 
         public void ResetStats()
@@ -134,8 +135,8 @@ namespace CaptureTheFlag
             TeamRival.UpdateTdScore();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
             ++player.Data.DroppedFlags;
-            foreach(Player player1 in BasePlayer.GetAll<Player>())
-                if(player.Team == player1.Team && player != player1)
+            foreach(Player player1 in player.PlayerTeam.Players)
+                if(player != player1)
                     player1.UpdateAdrenaline(3, "ayudar a capturar la bandera");
         }
 

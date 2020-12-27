@@ -68,9 +68,8 @@ namespace CaptureTheFlag.Map
                             Therefore, the sequence for the "map change" is not followed.
                         */
                         Id = (ForceMap == -1) ? (Id + 1) % MAX_MAPS : ForceMap;
-                        foreach (Player player in BasePlayer.GetAll<Player>())
-                            if (player.Team != NoTeam)
-                                player.ToggleControllable(false);
+                        foreach (Player player in Player.GetAll())
+                            player.ToggleControllable(false);
 
                         SendClientMessageToAll(Color.Yellow, $"** En {MAX_TIME_LOADING} segundos se cargará el próximo mapa: {Color.Red}{GetMapName(Id)}");
                         Flag.RemoveAll();
@@ -92,19 +91,17 @@ namespace CaptureTheFlag.Map
                         IsLoading = false;
                         ForceMap = -1;
                         SendClientMessageToAll(Color.Yellow, "** El mapa se cargó con éxito!");
-                        foreach (Player player in BasePlayer.GetAll<Player>())
+                        foreach (Player player in Player.GetAll())
                         {
                             player.Kills = 0;
                             player.Deaths = 0;
                             player.KillingSprees = 0;
                             player.Adrenaline = 0;
-
-                            if (player.Team != NoTeam)
-                            {
-                                player.ToggleControllable(true);
-                                player.SetForceClass();
-                            }
+                            player.ToggleControllable(true);
+                            player.SetForceClass();
                         }
+                        TeamAlpha.Players.Clear();
+                        TeamBeta.Players.Clear();
                         timeLeft = MAX_TIME_ROUND;
                         timeLoading = MAX_TIME_LOADING;
                         return;
