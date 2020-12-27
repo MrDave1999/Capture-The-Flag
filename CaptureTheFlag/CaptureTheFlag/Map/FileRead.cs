@@ -46,6 +46,7 @@ namespace CaptureTheFlag.Map
             int len = fileEntries.Length;
             for(int i = 0; i < len; ++i)
                 mapName[i] = Path.GetFileName(fileEntries[i]).Replace(".txt", "");
+            Rand.Shuffle(mapName);
         }
 
         public static Vector3 FlagPositionRead(string section)
