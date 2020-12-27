@@ -218,15 +218,21 @@ namespace CaptureTheFlag
         public bool IsAdminLevel(int levelid)
         {
             if (Data.LevelAdmin < levelid)
-                SendClientMessage($"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankAdmin(levelid)}) para usar este comando.");
-            return Data.LevelAdmin >= levelid;
+            {
+                SendClientMessage(Color.Red, $"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankAdmin(levelid)}) para usar este comando.");
+                return true;
+            }
+            return false;
         }
 
         public bool IsVipLevel(int levelid)
         {
             if (Data.LevelVip < levelid)
-                SendClientMessage($"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankVip(levelid)}) para usar este comando.");
-            return Data.LevelVip >= levelid;
+            {
+                SendClientMessage(Color.Red, $"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankVip(levelid)}) para usar este comando.");
+                return true;
+            }
+            return false;
         }
 
         public void Drop()
