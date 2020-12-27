@@ -18,6 +18,7 @@ namespace CaptureTheFlag.Command
         [Command("changemap", Shortcut = "changemap")]
         private static void ChangeMap(Player player)
         {
+            //if (player.IsAdminLevel(1)) return;
             var cm = new ListDialog($"Total Maps: {MAX_MAPS}", "Seleccionar", "Cerrar");
             foreach(string map in mapName)
                 cm.AddItem(map);
@@ -42,12 +43,19 @@ namespace CaptureTheFlag.Command
         [Command("resetflags", Shortcut = "resetflags")]
         private static void ResetFlags(Player player)
         {
-
+            //if (player.IsAdminLevel(1)) return;
+            Flag.RemoveAll();
+            TeamAlpha.Flag.DeletePlayerCaptured();
+            TeamBeta.Flag.DeletePlayerCaptured();
+            TeamAlpha.Flag.Create();
+            TeamBeta.Flag.Create();
+            BasePlayer.SendClientMessageToAll(Color.Yellow, "* Las banderas fueron reseteadas a su posición inicial.");
         }
 
         [Command("benefit", Shortcut = "benefit", UsageMessage = "/benefit [playerid]")]
         private static void BenefitEnable(Player player, int playerid)
         {
+            //if (player.IsAdminLevel(1)) return;
             Player player1 = Player.Find(player, playerid);
             player.SendClientMessage(Color.Orange, $"-> Name: {player1.Name} / ID: {player1.Id}");
             player.SendClientMessage(Color.Orange, $"-Jumps: {(player1.IsEnableJump() ? Time.Show(player1.JumpTime) : "No")}");
