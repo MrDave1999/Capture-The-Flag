@@ -6,12 +6,12 @@ using SampSharp.GameMode.Controllers;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Textdraw;
-using SampSharp.Streamer.World;
 using CaptureTheFlag.Command;
 using CaptureTheFlag.Controller;
-using IniParser;
-using System.IO;
 using CaptureTheFlag.Map;
+using static CaptureTheFlag.Map.CurrentMap;
+using SampSharp.GameMode.Tools;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {
@@ -29,23 +29,25 @@ namespace CaptureTheFlag
             Console.WriteLine("     Team DeathMatch");
             Console.WriteLine("----------------------------------\n");
 
-            SetGameModeText("Capture The Flag");
+            SetGameModeText("CTF ~v4.6.2-beta");
             Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
             Server.SendRconCommand("weburl www.");
             Server.SendRconCommand("language  Español Latino");
-            UsePlayerPedAnimations();
+            Server.SendRconCommand("loadfs EntryMap");
+            Server.SendRconCommand("loadfs RemoveBuilding");
+            //UsePlayerPedAnimations();
             DisableInteriorEnterExits();
 
             AddPlayerClass(SkinTeam.Alpha, new Vector3(0, 0, 0), 0);
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
 
-            CurrentMap.StartTimer();
-            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TextDrawGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), CurrentMap.Interior);
-            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TextDrawGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), CurrentMap.Interior);
+            StartTimer();
+            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TextDrawGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), Interior);
+            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TextDrawGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), Interior);
             TeamAlpha.TeamRival = TeamBeta;
             TeamBeta.TeamRival = TeamAlpha;
-            Server.SendRconCommand($"mapname {CurrentMap.GetCurrentMap()}");
-            Server.SendRconCommand($"loadfs {CurrentMap.GetCurrentMap()}");
+            Server.SendRconCommand($"mapname {GetCurrentMap()}");
+            Server.SendRconCommand($"loadfs {GetCurrentMap()}");
         }
 
         protected override void OnDialogResponse(BasePlayer player, DialogResponseEventArgs e)
@@ -57,6 +59,7 @@ namespace CaptureTheFlag
         protected override void OnPlayerConnected(BasePlayer sender, EventArgs e)
         {
             var player = sender as Player;
+            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/80g6s720ogyoy98/intro-cs.mp3");
             player.Color = ColorWhite;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
@@ -73,11 +76,10 @@ namespace CaptureTheFlag
                 player.Drop();
             if (player.Team != BasePlayer.NoTeam)
             {
-                --player.PlayerTeam.Members;
+                Player.Remove(player);
                 TextDrawGlobal.UpdateCountUsers();
             }
             TextDrawPlayer.Destroy(player);
-            player.Dispose();
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
@@ -87,6 +89,25 @@ namespace CaptureTheFlag
             (e.Pickup.Model == FlagID.Alpha ? TeamAlpha : TeamBeta).ExecuteAction(player, e.Pickup);
         }
 
+        protected override void OnPlayerKeyStateChanged(BasePlayer sender, KeyStateChangedEventArgs e)
+        {
+            base.OnPlayerKeyStateChanged(sender, e);
+            var player = sender as Player;
+
+            if (KeyUtils.HasPressed(e, Keys.Yes))
+                CmdPublic.Weapons(player);
+            else if (KeyUtils.HasPressed(e, Keys.No))
+                CmdPublic.UsersList(player);
+            else if (KeyUtils.HasPressed(e, Keys.CtrlBack))
+                CmdPublic.Combos(player);
+
+            if (player.IsEnableJump() && KeyUtils.HasPressed(e, Keys.Jump))
+                player.Velocity = new Vector3(player.Velocity.X, player.Velocity.Y, 0.24);
+
+            if(player.IsEnableSpeed() && KeyUtils.HasPressed(e, Keys.Sprint))
+                player.ApplyAnimation("PED", "sprint_civi", 100, true, true, true, true, 500);
+        }
+        
         protected override void OnPlayerRequestClass(BasePlayer sender, RequestClassEventArgs e)
         {
             var player = sender as Player;
@@ -97,6 +118,15 @@ namespace CaptureTheFlag
                 player.Spawn();
                 return;
             }
+
+            /* Check if the player has died before entering class selection. */
+            if (player.IsDead)
+            {
+                Player.Remove(player);
+                TextDrawGlobal.Hide(player);
+                TextDrawPlayer.Hide(player);
+            }
+
             player.Color = ColorWhite;
             player.Team = BasePlayer.NoTeam;
             player.IsSelectionClass = true;
@@ -109,12 +139,13 @@ namespace CaptureTheFlag
             player.PlayerTeam.GetMessageTeamEnable(out var msg);
             player.GameText(msg, 999999999, 6);
             player.PlaySound(1132);
+            player.IsDead = false;
         }   
          
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
         {
             var player = sender as Player;
-            if(CurrentMap.IsLoading)
+            if(IsLoading)
             {
                 e.PreventSpawning = true;
                 player.SendClientMessage(Color.Red, "Error: En 10 segundos se cargará el próximo mapa.");
@@ -126,9 +157,11 @@ namespace CaptureTheFlag
                 player.GameText(msg, 999999999, 6);
                 return;
             }
+            player.StopAudioStream();
+            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/mzt9qnigsh7pdfs/soundtrack.mp3");
             player.IsSelectionClass = false;
             player.GameText("_", 1000, 4);
-            player.PlayerTeam.Members++;
+            Player.Add(player);
             BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se añadió al equipo {player.PlayerTeam.NameTeam}.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Captura la bandera del equipo contrario.");
             if (player.PlayerTeam.Id == TeamID.Alpha)
@@ -151,20 +184,20 @@ namespace CaptureTheFlag
             var player = sender as Player;
             player.Health = 100;
             player.TArmour.Hide();
-            player.GiveWeapon(Weapon.Deagle);
-            player.GiveWeapon(Weapon.Shotgun);
-            player.GiveWeapon(Weapon.Sniper);
-            player.GiveWeapon(Weapon.Knife, 1);
+            foreach(Gun gun in player.ListGuns)
+                player.GiveWeapon(gun.Weapon);
             player.Team = (int)player.PlayerTeam.Id;
             player.Skin = player.PlayerTeam.Skin;
             player.Color = player.Team == (int)TeamID.Alpha ? 0xFF000000 : 0x0000FF00;
-            CurrentMap.SetPlayerPosition(player);
+            SetPlayerPosition(player);
+            player.IsDead = false;
         }
         protected override void OnPlayerDied(BasePlayer sender, DeathEventArgs e)
         {
             base.OnPlayerDied(sender, e);
             var player = sender as Player;
             var killer = e.Killer as Player;
+            player.IsDead = true;
             ++player.Data.TotalDeaths;
             ++player.Deaths;
             ++player.PlayerTeam.Deaths;
@@ -230,6 +263,16 @@ namespace CaptureTheFlag
         {
             base.LoadControllers(controllers);
             controllers.Override(new PlayerController());
+        }
+
+        protected override void OnPlayerUpdate(BasePlayer sender, PlayerUpdateEventArgs e)
+        {
+            var player = sender as Player;
+            if(player.SpeedTime != 0 && player.SpeedTime < Time.GetTime())
+            {
+                player.ClearAnimations();
+                player.SpeedTime = 0;
+            }
         }
     }
 }

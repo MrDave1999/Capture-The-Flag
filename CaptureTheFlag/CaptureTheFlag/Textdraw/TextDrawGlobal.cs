@@ -8,6 +8,15 @@ using System.Text;
 
 namespace CaptureTheFlag.Textdraw
 {
+    public static class ExtensionTextdraw
+    {
+        public static void ShowAll(this TextDraw td)
+        {
+            foreach (Player player in Player.GetAll())
+                td.Show(player);
+        }
+    }
+
     public static class TextDrawGlobal
     {
         public static TextDraw TdCTF { get; set; }         = new TextDraw();
@@ -211,7 +220,7 @@ namespace CaptureTheFlag.Textdraw
         public static void UpdateCountUsers()
         {
             TdCountUsers.Text = $"users: ~r~{GameMode.TeamAlpha.Members}~w~/~b~{GameMode.TeamBeta.Members}";
-            TdCountUsers.Show();
+            TdCountUsers.ShowAll();
         }
     }
 }

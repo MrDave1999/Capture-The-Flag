@@ -1,9 +1,10 @@
 #include <a_samp>
+#define NAME_FS "de_dust5"
 #include "objects"
 
 public OnFilterScriptInit()
 {
-	CreateObject(4867,468.22900390625,-2434.4509277344,11.335000038147,0,0,0); // object (lasrnway3_LAS) (1)
+    CreateObject(4867,468.22900390625,-2434.4509277344,11.335000038147,0,0,0); // object (lasrnway3_LAS) (1)
     CreateObject(4199,558.40399169922,-2436.5649414063,13.409999847412,0,0,90); // object (garages1_LAn) (1)
     CreateObject(4199,568.32598876953,-2457.4409179688,13.409999847412,0,0,0); // object (garages1_LAn) (2)
     CreateObject(4199,568.33001708984,-2488.9729003906,13.409999847412,0,0,0); // object (garages1_LAn) (3)
@@ -263,14 +264,7 @@ public OnFilterScriptInit()
     CreateObject(4199,409.00698852539,-2495.7490234375,21.719999313354,0,0,0); // object (garages1_LAn) (124)
     CreateObject(4199,460.99099731445,-2497.662109375,25.979000091553,0,0,0); // object (garages1_LAn) (125)
     CreateObject(4199,461.02700805664,-2497.6560058594,25.979000091553,0,0,180); // object (garages1_LAn) (126)
-    print("d_dust5 map was load successfully!");
-	printf("Total Objects: %d", CountObjects());
-	return 0;
-}
-
-public OnFilterScriptExit()
-{
-    DestroyAllObjects();
-    print("d_dust5 map was unload successfully!");
-	return 0;
+    CreateObject(975, 555.78900, -2456.09204, 21.12770,   0.00000, 0.00000, 0.00000);
+	CreateObject(975, 551.40552, -2460.55835, 21.12770,   0.98000, 0.00000, -90.00000);
+	return 1;
 }

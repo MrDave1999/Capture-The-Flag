@@ -7,6 +7,9 @@ using SampSharp.GameMode.World;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Events;
+using static CaptureTheFlag.GameMode;
+using System.Collections.Generic;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {
@@ -17,6 +20,7 @@ namespace CaptureTheFlag
         public int Deaths { get; set; }
         public int KillingSprees { get; set; }
         public bool IsSelectionClass { get; set; } 
+        public bool IsDead { get; set; }
         public StateUser IsStateUser { get; set; }
         public PlayerData Data { get; set; }
         public Team PlayerTeam { get; set; }
@@ -24,6 +28,8 @@ namespace CaptureTheFlag
         public PlayerTextDraw THealth { get; set; }
         public PlayerTextDraw TArmour { get; set; }
         public PlayerTextDraw TdRank { get; set; }
+        public double JumpTime { get; set; }
+        public double SpeedTime { get; set; }
 
         public Player()
         {
@@ -39,6 +45,13 @@ namespace CaptureTheFlag
             TextDrawPlayer.CreateTDRank(TdRank);
         }
 
+        public List<Gun> ListGuns { get; set; } = new List<Gun>(10)
+        {
+            new Gun(Weapon.Deagle),
+            new Gun(Weapon.Shotgun),
+            new Gun(Weapon.Sniper)
+        };
+
         public int Adrenaline
         {
             get { return adrenaline; }
@@ -48,8 +61,12 @@ namespace CaptureTheFlag
                 if (value == 0)
                 {
                     adrenaline = 0;
-                    if(!IsSelectionClass)
-                        TextDrawPlayer.UpdateTdStats(this);
+                    TextDrawPlayer.UpdateTdStats(this);
+                }
+                else if (value < 0)
+                {
+                    adrenaline -= -value;
+                    TextDrawPlayer.UpdateTdStats(this);
                 }
                 else if (adrenaline < 100)
                 {
@@ -82,6 +99,24 @@ namespace CaptureTheFlag
                 HealthBar(TArmour, value);
                 base.Armour = value;
             }
+        }
+
+        public void RemoveWeapon(int index)
+        {
+            ResetWeapons();
+            ListGuns.RemoveAt(index);
+            foreach (Gun gun in ListGuns)
+                GiveWeapon(gun.Weapon);
+        }
+
+        public bool IsEnableJump()
+        {
+            return JumpTime > Time.GetTime();
+        }
+
+        public bool IsEnableSpeed()
+        {
+            return SpeedTime > Time.GetTime();
         }
 
         public void HealthBar(PlayerTextDraw bar, float value)
@@ -163,8 +198,6 @@ namespace CaptureTheFlag
 
         public void SetForceClass()
         {
-            if(Team != NoTeam)
-                --PlayerTeam.Members;
             TextDrawGlobal.Hide(this);
             TextDrawPlayer.Hide(this);
             TextDrawEntry.Show(this);
@@ -185,15 +218,21 @@ namespace CaptureTheFlag
         public bool IsAdminLevel(int levelid)
         {
             if (Data.LevelAdmin < levelid)
-                SendClientMessage($"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankAdmin(levelid)}) para usar este comando.");
-            return Data.LevelAdmin >= levelid;
+            {
+                SendClientMessage(Color.Red, $"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankAdmin(levelid)}) para usar este comando.");
+                return true;
+            }
+            return false;
         }
 
         public bool IsVipLevel(int levelid)
         {
             if (Data.LevelVip < levelid)
-                SendClientMessage($"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankVip(levelid)}) para usar este comando.");
-            return Data.LevelVip >= levelid;
+            {
+                SendClientMessage(Color.Red, $"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankVip(levelid)}) para usar este comando.");
+                return true;
+            }
+            return false;
         }
 
         public void Drop()
@@ -221,12 +260,63 @@ namespace CaptureTheFlag
                 $"{PlayerTeam.OtherColor}{Deaths}"
             };
         }
-    }
 
-    public enum StateUser
-    {
-        Force,
-        Kill,
-        None
+        public void HasAdrenaline(int amount)
+        {
+            if (Adrenaline < amount)
+            {
+                SendClientMessage(Color.Red, "Error: No tienes suficiente adrenalina.");
+                throw new Exception();
+            }
+        }
+
+        public void SetWeapon(Weapon weapon, int ammo)
+        {
+            SetAmmo(weapon, 0);
+            GiveWeapon(weapon, ammo);
+        }
+
+        public override void ClearAnimations()
+        {
+            /* credits to simonepri (https://github.com/simonepri/) */
+            base.ClearAnimations();
+            ApplyAnimation("PED", "IDLE_STANCE", 4.0f, false, false, false, false, 1);
+            ApplyAnimation("PED", "IDLE_CHAT", 4.0f, false, false, false, false, 1);
+            ApplyAnimation("PED", "WALK_PLAYER", 4.0f, false, false, false, false, 1);
+            /* *** */
+        }
+
+        public static Player Find(Player player, int playerid)
+        {
+            foreach(Player player1 in GetAll())
+                if (player1.Id == playerid)
+                    return player1;
+            player.SendClientMessage(Color.Red, "Error: Jugador no conectado o se encuentra en la selección de clases.");
+            throw new Exception();
+        }
+
+        public static void Remove(Player player)
+        {
+            player.PlayerTeam.Players.Remove(player);
+        }
+
+        public static void Add(Player player)
+        {
+            player.PlayerTeam.Players.Add(player);
+        }
+
+        public static IEnumerable<Player> GetAll()
+        {
+            foreach (Player player in TeamAlpha.Players)
+                yield return player;
+
+            foreach (Player player in TeamBeta.Players)
+                yield return player;
+        }
+
+        public static int Count()
+        {
+            return TeamAlpha.Members + TeamBeta.Members;
+        }
     }
 }

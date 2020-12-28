@@ -8,13 +8,14 @@ using SampSharp.Streamer.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {
     public class Team
     {
         public TeamID Id { get; private set; }
-        public int Members { get; set; }
+        public int Members => Players.Count;
         public int Score { get; set; }
         public int Kills { get; set; }
         public int Deaths { get; set; }
@@ -27,7 +28,7 @@ namespace CaptureTheFlag
         public Team TeamRival { get; set; }
         public TextDraw TdScore { get; private set; }
         public DynamicMapIcon Icon { get; private set; }
-        public DynamicCheckpoint Checkpoint { get; private set; }
+        public List<Player> Players { get; set; } = new List<Player>();
 
         public Team(int skin, string otherColor, string colorGameText, TextDraw tdscore, TeamID teamid, string name, string namecolor, Flag flag, int interior)
         {
@@ -40,30 +41,6 @@ namespace CaptureTheFlag
             NameColor = namecolor;
             Flag = flag;
             Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = interior, Color = Flag.ColorHex};
-            Checkpoint = new DynamicCheckpoint(Flag.PositionBase, 1.5f, 0, interior, null, 10.0f);
-
-            Checkpoint.Enter += (sender, e) =>
-            {
-                if(e.Player.Team == (int)Id)
-                {
-                    if (!Flag.IsPositionBase)
-                    {
-                        if (TeamRival.Flag.PlayerCaptured == e.Player)
-                        {
-                            e.Player.SendClientMessage($"{Color.Yellow}¡Felicidades! {Color.White}Has llevado la bandera del equipo contrario a una zona segura.");
-                            e.Player.SendClientMessage($"{Color.Yellow}[!]: {Color.White}La bandera de tu equipo no está en la base, de este modo el equipo no sumará puntos.");
-                        }
-                        if (Flag.PlayerCaptured != null)
-                            e.Player.SendClientMessage($"{Color.Yellow}[INFO]: {Color.White}{Flag.PlayerCaptured.Name} capturó la bandera de tu equipo, debes recuperarla.");
-                        else
-                            e.Player.SendClientMessage($"{Color.Yellow}[INFO]: {Color.White}La bandera de tu equipo fue soltada por algún jugador, debes recuperarla.");
-                    }
-                    else
-                    {
-                        //code.
-                    }
-                }
-            };
         }
 
         public bool IsFull()
@@ -74,7 +51,7 @@ namespace CaptureTheFlag
         public void UpdateTdScore()
         {
             TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
-            TdScore.Show();
+            TdScore.ShowAll();
         }
 
         public void ResetStats()
@@ -84,12 +61,10 @@ namespace CaptureTheFlag
             Deaths = 0;
         }
 
-        public void UpdateUtils()
+        public void UpdateIcon()
         {
             Icon.Position = Flag.PositionBase;
             Icon.Interior = CurrentMap.Interior;
-            Checkpoint.Position = Flag.PositionBase;
-            Checkpoint.Interior = CurrentMap.Interior;
         }
         
         public bool GetMessageTeamEnable(out string message, bool msgComplete = true)
@@ -128,6 +103,13 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = false;
             Flag.AttachedObject(player);
             Flag.PlayerCaptured = player;
+            player.JumpTime = 0;
+            if (player.IsEnableSpeed())
+            {
+                player.SpeedTime = 0;
+                player.ClearAnimations();
+            }
+
             if (takeInPosBase)
             {
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} capturó la bandera {NameColor} del equipo {NameTeam}.");
@@ -153,8 +135,8 @@ namespace CaptureTheFlag
             TeamRival.UpdateTdScore();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
             ++player.Data.DroppedFlags;
-            foreach(Player player1 in BasePlayer.GetAll<Player>())
-                if(player.Team == player1.Team && player != player1)
+            foreach(Player player1 in player.PlayerTeam.Players)
+                if(player != player1)
                     player1.UpdateAdrenaline(3, "ayudar a capturar la bandera");
         }
 
@@ -180,17 +162,5 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = false;
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} dejó caer la bandera {NameColor} del equipo {NameTeam}.");
         }
-    }
-
-    public enum TeamID
-    {
-       Alpha,
-       Beta
-    }
-
-    public class SkinTeam
-    {
-        public static int Alpha { get; } = 170;
-        public static int Beta { get; } = 177;
     }
 }
