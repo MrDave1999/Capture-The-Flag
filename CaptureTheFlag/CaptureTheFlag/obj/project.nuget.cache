@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "iJh8PhxfgA/TcI6kaHcaW1f/n+3MKoRCmk5gK+nEku5SreYpm49azAMZFBbSSVaHG2wAxKme6tCjlqNjIE/cBw==",
+  "dgSpecHash": "CqCtIC9ujLiNMtmrH39Mj4dTVrPlwEWWxF0j9EclqQ+gSx3kN3wjofs/fJCv7s/KvDxGo6lbOpSzhN1foQX1sA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\syslan\\Desktop\\Capture The Flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
+  "projectFilePath": "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\syslan\\.nuget\\packages\\ini-parser-netcore\\3.0.0\\ini-parser-netcore.3.0.0.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
