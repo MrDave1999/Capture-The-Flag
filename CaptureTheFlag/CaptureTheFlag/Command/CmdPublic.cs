@@ -132,8 +132,8 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Orange}Repositorio: {Color.White}https://github.com/MrDave1999/Capture-The-Flag" +
                 $"\n{Color.Orange}Creador/Fundador: {Color.White}MrDave1999." +
                 $"\n{Color.Orange}Programador: {Color.White}MrDave1999." +
-                $"\n{Color.Orange}Mapeadores: {Color.White}DragonZafiro, Elorreli, amirab, JamesT85, haubitze," +
-                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr, UnuAlex, SpikY_, Amads." +
+                $"\n{Color.Orange}Mapeadores: {Color.White}DragonZafiro, Elorreli, amirab, JamesT85, haubitze, Amads," +
+                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr, UnuAlex, SpikY_, Niktia_Ruchkov." +
                 $"\n{Color.Yellow}Agradecimientos a:" +
                 $"\n{Color.Orange}ikkentim {Color.White}por crear SampSharp." +
                 $"\n{Color.Orange}rickyah {Color.White}por crear ini-parser." +
