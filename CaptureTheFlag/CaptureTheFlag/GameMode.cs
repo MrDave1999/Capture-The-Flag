@@ -231,7 +231,7 @@ namespace CaptureTheFlag
             int weaponid = (int)e.Weapon;
             if ((weaponid >= 0 && weaponid <= 15) || (weaponid >= 22 && weaponid <= 34))
                 player.PlaySound(17802);
-            if (issuerid != null && weaponid == 34 && e.BodyPart == BodyPart.Head)
+            if (issuerid != null && issuerid.Team != player.Team && weaponid == 34 && e.BodyPart == BodyPart.Head)
             {
                 player.Health = 0;
                 ++issuerid.Data.Headshot;
