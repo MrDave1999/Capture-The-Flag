@@ -47,9 +47,9 @@ namespace CaptureTheFlag
 
         public List<Gun> ListGuns { get; set; } = new List<Gun>(10)
         {
-            new Gun(Weapon.Deagle),
-            new Gun(Weapon.Shotgun),
-            new Gun(Weapon.Sniper)
+            Gun.GetWeapon(GunID.Deagle),
+            Gun.GetWeapon(GunID.Shotgun),
+            Gun.GetWeapon(GunID.Sniper)
         };
 
         public int Adrenaline

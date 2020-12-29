@@ -168,25 +168,23 @@ namespace CaptureTheFlag.Command
             {
                 if (e.DialogButton == DialogButton.Left)
                 {
-                    Gun gunSearch;
+                    int gunIndex;
                     /* Gets the weapon that the player selected in the dialog. */
                     var itemWeapon = Gun.GetWeapon(e.ListItem);
                     /* Check if the weapon the player selected is not in their current weapon pack. */
-                    if (player.ListGuns.Find(gun => gun.Weapon == itemWeapon) != null)
+                    if (player.ListGuns.Find(gun => gun == itemWeapon) != null)
                     {
-                        player.SendClientMessage(Color.Red, $"Error: {itemWeapon} ya se encuentra en el paquete de armas.");
+                        player.SendClientMessage(Color.Red, $"Error: {itemWeapon.Weapon} ya se encuentra en el paquete de armas.");
                         weapons.Show(player);
                         return;
                     }
-                    /* Get to which category the weapon the player selected belongs. */
-                    var slot = Gun.GetWeaponSlot(itemWeapon);
                     /* Check if there is no weapon with the same category in the player's weapon pack. */
-                    if ((gunSearch = player.ListGuns.Find(gun => gun.Slot == slot)) != null)
-                        gunSearch.Weapon = itemWeapon;
+                    if ((gunIndex = player.ListGuns.FindIndex(gun => gun.Slot == itemWeapon.Slot)) != -1)
+                        player.ListGuns[gunIndex] = itemWeapon;
                     else
-                        player.ListGuns.Add(new Gun(itemWeapon));
-                    player.GiveWeapon(itemWeapon);
-                    player.SendClientMessage(Color.Red, $"[Weapon]: {Color.Yellow}{itemWeapon} se agregó en tu paquete de armas.");
+                        player.ListGuns.Add(itemWeapon);
+                    player.GiveWeapon(itemWeapon.Weapon);
+                    player.SendClientMessage(Color.Red, $"[Weapon]: {Color.Yellow}{itemWeapon.Weapon} se agregó en tu paquete de armas.");
                     weapons.Show(player);
                 }
             };
