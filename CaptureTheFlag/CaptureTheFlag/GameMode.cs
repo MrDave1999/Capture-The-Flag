@@ -237,7 +237,8 @@ namespace CaptureTheFlag
                 ++issuerid.Data.Headshot;
                 player.GameText("Headshot", 3000, 3);
             }
-            player.UpdateBarHealth(e);
+            if((issuerid == null) || (issuerid.Team != player.Team))
+                player.UpdateBarHealth(e);
         }
 
         protected override void OnPlayerText(BasePlayer sender, TextEventArgs e)
