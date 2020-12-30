@@ -13,6 +13,8 @@ namespace CaptureTheFlag
                 .UseEncoding(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "codepages"+ Path.DirectorySeparatorChar + "cp1252.txt"))
                 .Use<GameMode>()
                 .Run();
+
+            new AntiCBug();
         }
     }
 }
