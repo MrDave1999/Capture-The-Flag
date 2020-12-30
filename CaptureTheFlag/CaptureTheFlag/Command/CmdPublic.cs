@@ -249,7 +249,7 @@ namespace CaptureTheFlag.Command
                                 return;
                             }
                             player.SendClientMessage("** En 1 minuto el beneficio se terminará.");
-                            player.JumpTime = Time.GetTime() + (1 * 60000);
+                            player.JumpTime = Time.GetTime() + (1 * 60);
                             player.Adrenaline = 0;
                             player.GiveWeapon(Weapon.Parachute, 1);
                             break;
@@ -262,7 +262,7 @@ namespace CaptureTheFlag.Command
                             }
                             player.SendClientMessage("** En 1 minuto el beneficio se terminará.");
                             player.SendClientMessage(Color.Orange, $"[Uso]: {Color.White}Presiona y suelta la tecla [SPACE] para correr.");
-                            player.SpeedTime = Time.GetTime() + (1 * 60000);
+                            player.SpeedTime = Time.GetTime() + (1 * 60);
                             player.Adrenaline = 0;
                             break;
                         case 3:

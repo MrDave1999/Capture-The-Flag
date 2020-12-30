@@ -13,7 +13,7 @@ using CaptureTheFlag.Constants;
 
 namespace CaptureTheFlag
 {
-    public class Player : BasePlayer
+    public partial class Player : BasePlayer
     {
         private int adrenaline;
         public int Kills { get; set; }
@@ -28,8 +28,8 @@ namespace CaptureTheFlag
         public PlayerTextDraw THealth { get; set; }
         public PlayerTextDraw TArmour { get; set; }
         public PlayerTextDraw TdRank { get; set; }
-        public double JumpTime { get; set; }
-        public double SpeedTime { get; set; }
+        public int JumpTime { get; set; }
+        public int SpeedTime { get; set; }
 
         public Player()
         {

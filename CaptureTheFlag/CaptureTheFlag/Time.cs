@@ -1,23 +1,31 @@
-﻿using System;
+﻿using SampSharp.Core.Natives.NativeObjects;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CaptureTheFlag
 {
-    public class Time
+	public class TimeNative : NativeObjectSingleton<TimeNative>
     {
-		private static readonly DateTime dt = new DateTime(1970, 1, 1);
-
-		/* Code by Tim Rogers (https://stackoverflow.com/a/8134182) */
-		public static double GetTime()
+		[NativeMethod]
+		public virtual int gettime()
 		{
-			return (DateTime.Now - dt).TotalMilliseconds;
+			throw new NativeNotImplementedException();
+		}
+	}
+
+	public class Time
+    {
+
+		public static int GetTime()
+        {
+			return TimeNative.Instance.gettime(); 
 		}
 
 		/* Displays the time in MM:SS format. */
-		public static string Show(double time)
+		public static string Show(int time)
         {
-			int dif = ((int)(time - GetTime())) / 1000;
+			int dif = time - GetTime();
 			return $"{dif / 60:D2}:{dif % 60:D2}";
 		}
 	}
