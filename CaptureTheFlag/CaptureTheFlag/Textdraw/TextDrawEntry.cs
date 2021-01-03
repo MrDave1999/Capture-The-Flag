@@ -1,4 +1,5 @@
-﻿using SampSharp.GameMode;
+﻿using CaptureTheFlag.PropertiesPlayer;
+using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using System;

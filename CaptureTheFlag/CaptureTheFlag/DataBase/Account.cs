@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using CaptureTheFlag.Constants;
 using SampSharp.GameMode.World;
+using CaptureTheFlag.PropertiesPlayer;
 
 namespace CaptureTheFlag.DataBase
 {

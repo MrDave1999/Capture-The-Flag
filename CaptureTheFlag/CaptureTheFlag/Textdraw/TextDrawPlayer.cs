@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
+using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;

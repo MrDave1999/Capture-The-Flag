@@ -1,4 +1,5 @@
-﻿using SampSharp.GameMode.Display;
+﻿using CaptureTheFlag.PropertiesPlayer;
+using SampSharp.GameMode.Display;
 using System;
 using System.Collections.Generic;
 using System.Text;

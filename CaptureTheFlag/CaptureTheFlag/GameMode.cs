@@ -13,6 +13,7 @@ using static CaptureTheFlag.Map.CurrentMap;
 using SampSharp.GameMode.Tools;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.DataBase;
+using CaptureTheFlag.PropertiesPlayer;
 
 namespace CaptureTheFlag
 {

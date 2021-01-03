@@ -11,6 +11,7 @@ using static CaptureTheFlag.GameMode;
 using static SampSharp.GameMode.World.BasePlayer;
 using static CaptureTheFlag.Map.FileRead;
 using CaptureTheFlag.Constants;
+using CaptureTheFlag.PropertiesPlayer;
 
 namespace CaptureTheFlag.Map
 {

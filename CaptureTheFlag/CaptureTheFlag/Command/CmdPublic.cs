@@ -12,6 +12,8 @@ using System.Text;
 using static CaptureTheFlag.GameMode;
 using CaptureTheFlag.Constants;
 using SampSharp.Streamer.World;
+using CaptureTheFlag.PropertiesPlayer;
+
 namespace CaptureTheFlag.Command
 {
     static class ExtensionTablistDialog
