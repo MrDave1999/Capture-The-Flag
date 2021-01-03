@@ -30,6 +30,7 @@ namespace CaptureTheFlag
         public PlayerTextDraw TdRank { get; set; }
         public int JumpTime { get; set; }
         public int SpeedTime { get; set; }
+        public AccountState Account { get; set; } = AccountState.None;
 
         public Player()
         {
