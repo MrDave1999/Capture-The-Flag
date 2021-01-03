@@ -103,7 +103,7 @@ namespace CaptureTheFlag.Command
         }
 
         [Command("help", Shortcut = "help")]
-        private static void Help(Player player)
+        public static void Help(Player player)
         {
             new MessageDialog("Ayuda",
                 $"{Color.Yellow}¿Qué es Capture The Flag?" +
@@ -357,12 +357,13 @@ namespace CaptureTheFlag.Command
         }
 
         [Command("stats", Shortcut = "stats")]
-        private static void StatsPlayer(Player player, int playerid = - 1)
+        public static void StatsPlayer(Player player, int playerid = - 1)
         {
             Player player1 = (playerid != -1 ? Player.Find(player, playerid) : player);
             var level = player1.Data.LevelGame;
             new MessageDialog($"Name: {player1.Name}",
                 $"{Color.Yellow}ID: {Color.White}{player1.Id}" +
+                $"\n{Color.Yellow}Registry Date: {Color.White}{player1.Data.RegistryDate}" +
                 $"\n{Color.Yellow}Kills for Round: {Color.White}{player1.Kills}" +
                 $"\n{Color.Yellow}Deaths for Round: {Color.White}{player1.Deaths}" +
                 $"\n{Color.Yellow}Total Kills: {Color.White}{player1.Data.TotalKills}" +
@@ -374,7 +375,7 @@ namespace CaptureTheFlag.Command
                 $"\n{Color.Yellow}Next Rank: {Color.White}{(level != Rank.MAX_RANK ? Rank.GetRankLevel(level + 1) : "None")}" +
                 $"\n{Color.Yellow}DroppedFlags: {Color.White}{player1.Data.DroppedFlags}" +
                 $"\n{Color.Yellow}Killing Sprees: {Color.White}{player1.Data.KillingSprees}" +
-                $"\n{Color.Yellow}Headshot: {Color.White}{player1.Data.Headshot}" +
+                $"\n{Color.Yellow}Headshots: {Color.White}{player1.Data.Headshots}" +
             $"\n{Color.Yellow}Adrenaline: {Color.White}{player1.Adrenaline}/100", "Cerrar", "").Show(player);
         }
 
