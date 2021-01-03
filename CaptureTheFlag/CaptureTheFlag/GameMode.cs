@@ -12,6 +12,7 @@ using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
 using SampSharp.GameMode.Tools;
 using CaptureTheFlag.Constants;
+using CaptureTheFlag.DataBase;
 
 namespace CaptureTheFlag
 {
@@ -48,6 +49,8 @@ namespace CaptureTheFlag
             TeamBeta.TeamRival = TeamAlpha;
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
+
+            new Account();
         }
 
         protected override void OnDialogResponse(BasePlayer player, DialogResponseEventArgs e)
@@ -58,6 +61,7 @@ namespace CaptureTheFlag
 
         protected override void OnPlayerConnected(BasePlayer sender, EventArgs e)
         {
+            base.OnPlayerConnected(sender, e);
             var player = sender as Player;
             player.PlayAudioStream("https://dl.dropboxusercontent.com/s/80g6s720ogyoy98/intro-cs.mp3");
             player.Color = ColorWhite;
@@ -144,8 +148,21 @@ namespace CaptureTheFlag
          
         protected override void OnPlayerRequestSpawn(BasePlayer sender, RequestSpawnEventArgs e)
         {
+            base.OnPlayerRequestSpawn(sender, e);
             var player = sender as Player;
-            if(IsLoading)
+            if (player.Account == AccountState.Login)
+            {
+                player.SendClientMessage(Color.Red, "Error: Debes iniciar sesión.");
+                e.PreventSpawning = true;
+                return;
+            }
+            if (player.Account == AccountState.Register)
+            {
+                player.SendClientMessage(Color.Red, "Error: Debes registrarte.");
+                e.PreventSpawning = true;
+                return;
+            }
+            if (IsLoading)
             {
                 e.PreventSpawning = true;
                 player.SendClientMessage(Color.Red, "Error: En 10 segundos se cargará el próximo mapa.");
@@ -234,7 +251,7 @@ namespace CaptureTheFlag
             if (issuerid != null && issuerid.Team != player.Team && weaponid == 34 && e.BodyPart == BodyPart.Head)
             {
                 player.Health = 0;
-                ++issuerid.Data.Headshot;
+                ++issuerid.Data.Headshots;
                 player.GameText("Headshot", 3000, 3);
             }
             if((issuerid == null) || (issuerid.Team != player.Team))
@@ -246,6 +263,11 @@ namespace CaptureTheFlag
             base.OnPlayerText(sender, e);
             var player = sender as Player;
             e.SendToPlayers = false;
+            if (player.Account == AccountState.Login)
+            {
+                player.SendClientMessage(Color.Red, "Error: Debes iniciar sesión.");
+                return;
+            }
             Chat.WriteText(player, e.Text);
         }
 
