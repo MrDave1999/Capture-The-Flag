@@ -6,7 +6,6 @@ namespace CaptureTheFlag
 {
     public class PlayerData
     {
-        public string password { get; set; }
         public int TotalKills { get; set; }
         public int TotalDeaths { get; set; }
         public int KillingSprees { get; set; }
@@ -14,6 +13,7 @@ namespace CaptureTheFlag
         public int LevelVip { get; set; }
         public int LevelGame { get; set; } = 1;
         public int DroppedFlags { get; set; }
-        public int Headshot { get; set; }
+        public int Headshots { get; set; }
+        public DateTime RegistryDate { get; set; }
     }
 }
