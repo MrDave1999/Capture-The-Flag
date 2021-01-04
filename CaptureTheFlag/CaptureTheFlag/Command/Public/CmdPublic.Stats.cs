@@ -27,7 +27,7 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Yellow}VIP Level: {Color.White}{player1.Data.LevelVip}" +
                 $"\n{Color.Yellow}Rank: {Color.White}{Rank.GetRankLevel(level)}" +
                 $"\n{Color.Yellow}Level: {Color.White}{player1.Data.LevelGame}" +
-                $"\n{Color.Yellow}Next Rank: {Color.White}{(level != Rank.MAX_RANK ? Rank.GetRankLevel(level + 1) : "None")}" +
+                $"\n{Color.Yellow}Next Rank: {Color.White}{Rank.GetNextRankLevel(level)}" +
                 $"\n{Color.Yellow}DroppedFlags: {Color.White}{player1.Data.DroppedFlags}" +
                 $"\n{Color.Yellow}Killing Sprees: {Color.White}{player1.Data.KillingSprees}" +
                 $"\n{Color.Yellow}Headshots: {Color.White}{player1.Data.Headshots}" +

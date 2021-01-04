@@ -119,7 +119,7 @@ namespace CaptureTheFlag.Command.Public
                 new[] {
                     "Level",
                     "Rank",
-                    "Kills Required"
+                    "Total Kills Required"
                 }, "Cerrar", "");
             for (int i = Rank.MAX_RANK; i != 0; --i)
                 ct.Add(i.ToString(), Rank.GetRankLevel(i), Rank.GetRequiredKills(i).ToString());

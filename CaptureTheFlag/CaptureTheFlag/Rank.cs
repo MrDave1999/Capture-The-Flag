@@ -46,10 +46,9 @@ namespace CaptureTheFlag
         private static string[] rankAdmin = new[]
         {
             "Ninguno",
-            "Postulante",
+            "Ayudante",
             "Moderador",
-            "Admin",
-            "Encargado",
+            "Administrator",
             "Dueño"
         };
 
@@ -66,6 +65,11 @@ namespace CaptureTheFlag
         public static string GetRankLevel(int level)
         {
             return rankGame[level - 1].nameRank;
+        }
+
+        public static string GetNextRankLevel(int level)
+        {
+            return (level != MAX_RANK) ? GetRankLevel(level + 1) : "None";
         }
 
         public static int GetRequiredKills(int level)
