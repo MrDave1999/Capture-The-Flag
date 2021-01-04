@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CaptureTheFlag.Command
+namespace CaptureTheFlag.Command.Vip
 {
     [CommandGroup("vip", PermissionChecker = typeof(BlockCommand))]
-    public class CmdVip
+    public partial class CmdVip
     {
         [Command("test", Shortcut = "test")]
         public static void Test(Player player)

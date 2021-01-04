@@ -1,5 +1,4 @@
-﻿using CaptureTheFlag.Map;
-using CaptureTheFlag.PropertiesPlayer;
+﻿using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
@@ -11,24 +10,23 @@ using System.Text;
 using static CaptureTheFlag.GameMode;
 using static CaptureTheFlag.Map.CurrentMap;
 
-namespace CaptureTheFlag.Command
+namespace CaptureTheFlag.Command.Admin
 {
-    [CommandGroup("admin", PermissionChecker = typeof(BlockCommand))]
-    public class CmdAdmin
+    public partial class CmdAdmin
     {
         [Command("changemap", Shortcut = "changemap")]
         private static void ChangeMap(Player player)
         {
             //if (player.IsAdminLevel(1)) return;
             var cm = new ListDialog($"Total Maps: {MAX_MAPS}", "Seleccionar", "Cerrar");
-            foreach(string map in mapName)
+            foreach (string map in mapName)
                 cm.AddItem(map);
             cm.Show(player);
             cm.Response += (sender, e) =>
             {
-                if(e.DialogButton == DialogButton.Left)
+                if (e.DialogButton == DialogButton.Left)
                 {
-                    if(e.ListItem == Id)
+                    if (e.ListItem == Id)
                     {
                         player.SendClientMessage(Color.Red, $"Error: {GetCurrentMap()} es el mapa actual (elige otro).");
                         cm.Show(player);
