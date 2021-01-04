@@ -39,6 +39,7 @@ namespace CaptureTheFlag.DataBase
         public static void StatsDb(Player player, string playername)
         {
             MySqlDataReader reader;
+            int level;
             if(!Exists(playername))
             {
                 player.SendClientMessage(Color.Red, "Error: Ese nombre no se encuentra en la base de datos del servidor.");
@@ -55,9 +56,12 @@ namespace CaptureTheFlag.DataBase
             stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
             stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
             stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
-            stats.Add(new[] { "Level Admin", reader.GetInt32("levelAdmin").ToString() });
-            stats.Add(new[] { "Level Vip", reader.GetInt32("levelVip").ToString() });
-            stats.Add(new[] { "Level Game", reader.GetInt32("levelGame").ToString() });
+            stats.Add(new[] { "Admin Level", reader.GetInt32("levelAdmin").ToString() });
+            stats.Add(new[] { "VIP Level", reader.GetInt32("levelVip").ToString() });
+            level = reader.GetInt32("levelGame");
+            stats.Add(new[] { "Game Level", level.ToString() });
+            stats.Add(new[] { "Rank", Rank.GetRankLevel(level) });
+            stats.Add(new[] { "Next Rank", Rank.GetNextRankLevel(level) });
             stats.Add(new[] { "Dropped Flags", reader.GetInt32("droppedFlags").ToString() });
             stats.Add(new[] { "Headshots", reader.GetInt32("headshots").ToString() });
             stats.Show(player);
