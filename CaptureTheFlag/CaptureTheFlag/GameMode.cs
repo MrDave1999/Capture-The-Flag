@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using SampSharp.GameMode;
 using SampSharp.GameMode.World;
 using SampSharp.GameMode.Events;
@@ -216,7 +216,7 @@ namespace CaptureTheFlag
             var player = sender as Player;
             var killer = e.Killer as Player;
             player.IsDead = true;
-            ++player.Data.TotalDeaths;
+            player.UpdateData("totalDeaths", ++player.Data.TotalDeaths);
             ++player.Deaths;
             ++player.PlayerTeam.Deaths;
             player.KillingSprees = 0;
@@ -230,7 +230,7 @@ namespace CaptureTheFlag
             if (killer != null)
             {
                 ++killer.PlayerTeam.Kills;
-                ++killer.Data.TotalKills;
+                killer.UpdateData("totalKills", ++killer.Data.TotalKills);
                 ++killer.Kills;
                 ++killer.Adrenaline;
                 ++killer.KillingSprees;
@@ -252,7 +252,7 @@ namespace CaptureTheFlag
             if (issuerid != null && issuerid.Team != player.Team && weaponid == 34 && e.BodyPart == BodyPart.Head)
             {
                 player.Health = 0;
-                ++issuerid.Data.Headshots;
+                issuerid.UpdateData("headshots", ++issuerid.Data.Headshots);
                 player.GameText("Headshot", 3000, 3);
             }
             if((issuerid == null) || (issuerid.Team != player.Team))

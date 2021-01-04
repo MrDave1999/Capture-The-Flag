@@ -37,7 +37,10 @@ namespace CaptureTheFlag.PropertiesPlayer
                     Health += (10 <= (100 - Health)) ? (10) : (100 - Health);
 
                 if (KillingSprees > Data.KillingSprees)
+                {
                     Data.KillingSprees = KillingSprees;
+                    UpdateData("killingSprees", Data.KillingSprees);
+                }
 
                 if (KillingSprees % 3 == 0)
                     SendClientMessageToAll(Color.Red, $"[Killing-Sprees]: {Color.Orange}{Name} lleva {KillingSprees} asesinatos seguidos sin morir.");
@@ -48,7 +51,7 @@ namespace CaptureTheFlag.PropertiesPlayer
         {
             if(Data.LevelGame != Rank.MAX_RANK && Data.TotalKills >= Rank.GetRequiredKills(Data.LevelGame + 1))
             {
-                ++Data.LevelGame;
+                UpdateData("levelGame", ++Data.LevelGame);
                 SendClientMessage(Color.Red, $"[Rank]: {Color.Orange}Subiste al rango {Rank.GetRankLevel(Data.LevelGame)} {Color.Red}¡Felicidades!");
                 SendClientMessage(Color.Red, $"[!]: {Color.White} Ganaste +100 de Adrenalina + Chaleco + Regeneración de salud.");
                 Adrenaline = 100;
@@ -127,6 +130,11 @@ namespace CaptureTheFlag.PropertiesPlayer
             ApplyAnimation("PED", "IDLE_CHAT", 4.0f, false, false, false, false, 1);
             ApplyAnimation("PED", "WALK_PLAYER", 4.0f, false, false, false, false, 1);
             /* *** */
+        }
+
+        public void UpdateData<T>(string campus, T newvalue)
+        {
+            DataBase.Account.Update(campus, newvalue, Name);
         }
     }
 }

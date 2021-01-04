@@ -135,7 +135,7 @@ namespace CaptureTheFlag
             ++TeamRival.Score;
             TeamRival.UpdateTdScore();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
-            ++player.Data.DroppedFlags;
+            player.UpdateData("droppedFlags", ++player.Data.DroppedFlags);
             foreach(Player player1 in player.PlayerTeam.Players)
                 if(player != player1)
                     player1.UpdateAdrenaline(3, "ayudar a capturar la bandera");
