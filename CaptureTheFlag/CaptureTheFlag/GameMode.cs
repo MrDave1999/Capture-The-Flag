@@ -14,6 +14,7 @@ using SampSharp.GameMode.Tools;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.DataBase;
 using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Command.Public;
 
 namespace CaptureTheFlag
 {

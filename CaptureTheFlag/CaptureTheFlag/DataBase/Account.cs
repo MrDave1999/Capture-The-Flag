@@ -10,6 +10,7 @@ using System.Text;
 using CaptureTheFlag.Constants;
 using SampSharp.GameMode.World;
 using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Command.Public;
 
 namespace CaptureTheFlag.DataBase
 {
