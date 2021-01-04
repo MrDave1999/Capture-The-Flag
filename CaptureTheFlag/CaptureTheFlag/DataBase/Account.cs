@@ -50,7 +50,7 @@ namespace CaptureTheFlag.DataBase
                     Create(player, e.InputText);
                     CmdPublic.Help(player);
                     player.Account = AccountState.None;
-                    player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Te has registrado de forma exitosa. {Color.Orange}Contraseña: {e.InputText}.");
+                    player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Te has registrado de forma exitosa. {Color.Orange}Contraseña: {e.InputText}");
                 }
                 else
                     register.Show(player);
@@ -69,7 +69,7 @@ namespace CaptureTheFlag.DataBase
                 {
                     Validate.IsEmpty(player, login, e.InputText);
                     Validate.PasswordRange(player, login, e.InputText);
-                    if (password != e.InputText)
+                    if (password != Encrypt(e.InputText))
                     {
                         login.Message = "La contraseña que ingresaste es incorrecta.\nIngrese una contraseña:";
                         login.Show(player);
@@ -101,7 +101,7 @@ namespace CaptureTheFlag.DataBase
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = "INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelAdmin, levelVip, levelGame, droppedFlags, headshots, registryDate) VALUES(@namePlayer, @pass, 0, 0, 0, 0, 0, 1, 0, 0, @registryDate);";
+            cmd.CommandText = "INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelAdmin, levelVip, levelGame, droppedFlags, headshots, registryDate) VALUES(@namePlayer, SHA2(@pass, 256), 0, 0, 0, 0, 0, 1, 0, 0, @registryDate);";
             cmd.Parameters.AddWithValue("@namePlayer", player.Name);
             cmd.Parameters.AddWithValue("@pass", password);
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
@@ -147,6 +147,15 @@ namespace CaptureTheFlag.DataBase
             {
                 cmd.Parameters.Clear();
             }
+        }
+
+        public static string Encrypt(string text)
+        {
+            cmd.CommandText = "SELECT SHA2(@text, 256);";
+            cmd.Parameters.AddWithValue("@text", text);
+            string str = (string)cmd.ExecuteScalar();
+            cmd.Parameters.Clear();
+            return str;
         }
     }  
 }

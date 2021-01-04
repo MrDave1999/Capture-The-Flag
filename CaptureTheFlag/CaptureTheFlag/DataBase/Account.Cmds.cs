@@ -17,7 +17,7 @@ namespace CaptureTheFlag.DataBase
         public static void ChangePassword(Player player, string newpassword)
         {
             Validate.PasswordRange(player, newpassword);
-            Update("pass", newpassword, player.Name);
+            Update("pass", Encrypt(newpassword), player.Name);
             player.SendClientMessage(Color.Orange, $"** La nueva contraseña de tu cuenta es: {newpassword}");
         }
 
