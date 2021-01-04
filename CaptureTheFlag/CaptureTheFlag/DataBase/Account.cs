@@ -13,7 +13,7 @@ using CaptureTheFlag.PropertiesPlayer;
 
 namespace CaptureTheFlag.DataBase
 {
-    public class Account
+    public partial class Account
     {
         private static MySqlCommand cmd;
 
@@ -24,7 +24,7 @@ namespace CaptureTheFlag.DataBase
             BaseMode.Instance.PlayerConnected += (sender, e) =>
             {
                 var player = sender as Player;
-                if (Exists(player))
+                if (Exists(player.Name))
                 {
                     player.Account = AccountState.Login;
                     ShowDialogLogin(player);
@@ -85,12 +85,12 @@ namespace CaptureTheFlag.DataBase
             };
         }
 
-        public static bool Exists(Player player)
+        public static bool Exists(string playername)
         {
             MySqlDataReader reader;
             bool exists;
             cmd.CommandText = "SELECT namePlayer FROM Players WHERE namePlayer = @namePlayer;";
-            cmd.Parameters.AddWithValue("@namePlayer", player.Name);
+            cmd.Parameters.AddWithValue("@namePlayer", playername);
             reader = cmd.ExecuteReader();
             exists = reader.Read();
             cmd.Parameters.Clear();
@@ -129,5 +129,25 @@ namespace CaptureTheFlag.DataBase
             cmd.Parameters.Clear();
             reader.Close();
         }
-    }
+
+        public static void Update<T>(string campus, T newvalue, string nameplayer)
+        {
+            try
+            {
+                cmd.CommandText = $"UPDATE Players SET {campus}=@{campus} WHERE namePlayer = @name_player;";
+                cmd.Parameters.AddWithValue("@" + campus, newvalue);
+                cmd.Parameters.AddWithValue("@name_player", nameplayer);
+                cmd.ExecuteNonQuery();
+            }
+            catch(MySqlException e)
+            {
+                Console.WriteLine("[Account.Update]: " + e.Message);
+            }
+            finally
+            {
+                cmd.Parameters.Clear();
+            }
+        }
+    }  
 }
+   
