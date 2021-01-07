@@ -37,15 +37,12 @@ namespace CaptureTheFlag
 
         private static string[] rankVip = new[]
         {
-            "Ninguno",
             "Silver",
-            "Gold",
-            "Premium"
+            "Gold"
         };
 
         private static string[] rankAdmin = new[]
         {
-            "Ninguno",
             "Ayudante",
             "Moderador",
             "Administrator",
