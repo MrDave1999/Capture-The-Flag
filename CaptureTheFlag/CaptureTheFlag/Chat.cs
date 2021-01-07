@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlag.Command;
+using CaptureTheFlag.Command.Admin;
 using CaptureTheFlag.Command.Public;
 using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.SAMP;
@@ -31,8 +32,10 @@ namespace CaptureTheFlag
                     CmdPublic.TeamChat(player, text);
                     break;
                 case '$': //VipChat
+                   //CmdVip.VipChat(player, text);
                     break;
                 case '#': //AdminChat
+                    CmdAdmin.AdminChat(player, text);
                     break;
                 default:
                     AlterString(text, symbol);
