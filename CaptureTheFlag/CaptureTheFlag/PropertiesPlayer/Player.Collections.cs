@@ -8,18 +8,39 @@ namespace CaptureTheFlag.PropertiesPlayer
 {
     public partial class Player : BasePlayer
     {
+        public static List<Player> Admins { get; set; } = new List<Player>();
+        public static List<Player> Vips { get; set; } = new List<Player>();
+
         public static Player Find(Player player, int playerid)
         {
-            foreach (Player player1 in GetAll())
-                if (player1.Id == playerid)
-                    return player1;
-            player.SendClientMessage(Color.Red, "Error: Jugador no conectado o se encuentra en la selección de clases.");
-            throw new Exception();
+            Player player1 = (Player)Find(playerid);
+            if (player1 == null || !player1.IsConnected)
+            {
+                player.SendClientMessage(Color.Red, "Error: El jugador no se encuentra conectado.");
+                throw new Exception();
+            }
+            return player1;
         }
 
         public static void Remove(Player player)
         {
             player.PlayerTeam.Players.Remove(player);
+        }
+
+        public static void AddAV(Player player)
+        {
+            if (player.Data.LevelAdmin > 0)
+                Admins.Add(player);
+            if (player.Data.LevelVip > 0)
+                Vips.Add(player);
+        }
+
+        public static void RemoveAV(Player player)
+        {
+            if (player.Data.LevelAdmin > 0)
+                Admins.Remove(player);
+            if (player.Data.LevelVip > 0)
+                Vips.Remove(player);
         }
 
         public static void Add(Player player)
