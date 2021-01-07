@@ -1,5 +1,4 @@
-﻿using CaptureTheFlag.Command;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
@@ -11,17 +10,14 @@ using CaptureTheFlag.Constants;
 using SampSharp.GameMode.World;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Command.Public;
+using static CaptureTheFlag.DataBase.DBCommand;
 
 namespace CaptureTheFlag.DataBase
 {
     public partial class Account
     {
-        private static MySqlCommand cmd;
-
         public Account()
         {
-            DBConnect.Open();
-            cmd = new MySqlCommand() { Connection = DBConnect.Connection };
             BaseMode.Instance.PlayerConnected += (sender, e) =>
             {
                 var player = sender as Player;
@@ -79,7 +75,7 @@ namespace CaptureTheFlag.DataBase
                     CmdPublic.StatsPlayer(player);
                     player.Account = AccountState.None;
                     player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Has iniciado sesión de forma exitosa!");
-
+                    Player.AddAV(player);
                 }
                 else
                     login.Show(player);

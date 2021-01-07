@@ -7,6 +7,7 @@ using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static CaptureTheFlag.DataBase.DBCommand;
 
 namespace CaptureTheFlag.DataBase
 {
