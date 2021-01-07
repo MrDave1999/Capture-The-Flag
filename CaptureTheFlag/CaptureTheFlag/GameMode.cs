@@ -15,6 +15,7 @@ using CaptureTheFlag.Constants;
 using CaptureTheFlag.DataBase;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Command.Public;
+using CaptureTheFlag.Command.Admin;
 
 namespace CaptureTheFlag
 {
@@ -52,6 +53,7 @@ namespace CaptureTheFlag
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
 
+            new DBCommand();
             new Account();
         }
 
@@ -86,6 +88,7 @@ namespace CaptureTheFlag
                 TextDrawGlobal.UpdateCountUsers();
             }
             TextDrawPlayer.Destroy(player);
+            Player.RemoveAV(player);
         }
 
         protected override void OnPlayerPickUpPickup(BasePlayer sender, PickUpPickupEventArgs e)
@@ -265,9 +268,9 @@ namespace CaptureTheFlag
             base.OnPlayerText(sender, e);
             var player = sender as Player;
             e.SendToPlayers = false;
-            if (player.Account == AccountState.Login)
+            if (player.IsSelectionClass)
             {
-                player.SendClientMessage(Color.Red, "Error: Debes iniciar sesión.");
+                player.SendClientMessage(Color.Red, "Error: No puedes escribir en el chat estando en la selección de clases.");
                 return;
             }
             Chat.WriteText(player, e.Text);
@@ -276,14 +279,17 @@ namespace CaptureTheFlag
         protected override void OnPlayerCommandText(BasePlayer sender, CommandTextEventArgs e)
         {
             base.OnPlayerCommandText(sender, e);
+            var player = sender as Player;
             if (!e.Success)
             {
-                sender.SendClientMessage(Color.Red, $"Error: El comando {e.Text} es incorrecto. Usa /cmds para saber los comandos disponibles.");
-                sender.PlaySound(1140);
+                player.SendClientMessage(Color.Red, $"Error: El comando {e.Text} es incorrecto. Usa /cmds para saber los comandos disponibles.");
+                player.PlaySound(1140);
             }
+            if(player.Data.LevelAdmin == 0)
+                CmdAdmin.SendMessageToAdmins($"* {player.Name}({player.Id}) usó el comando {e.Text}", Color.Gray);
             e.Success = true;
         }
-
+        
         protected override void LoadControllers(ControllerCollection controllers)
         {
             base.LoadControllers(controllers);
