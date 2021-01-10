@@ -35,7 +35,7 @@ namespace CaptureTheFlag.Command.Admin
         {
             if (player.IsAdminLevel(3)) return;
             new MessageDialog("Comandos - Administrador (Nivel 3)",
-                $"{Color.White}/goto, /get, /banip, /unbanip, /banname, /unbanname",
+                $"{Color.White}/goto, /get, /banip, /unbanip",
                 "Aceptar", "").Show(player);
         }
 
@@ -51,7 +51,7 @@ namespace CaptureTheFlag.Command.Admin
         [Command("admins", Shortcut = "admins")]
         private static void ListAdmins(Player player)
         {
-            if(Player.Admins.Count > 0)
+            if(Player.Admins.Count == 0)
             {
                 player.SendClientMessage(Color.Red, "Error: No hay administradores conectados.");
                 return;
@@ -59,7 +59,7 @@ namespace CaptureTheFlag.Command.Admin
             var admins = new TablistDialog($"Admins: {Player.Admins.Count}", new[] {"Name", "Level", "Rank"}, "Aceptar", "");
             Player.Admins.Sort((a, b) => b.Data.LevelAdmin - a.Data.LevelAdmin);
             foreach (Player player1 in Player.Admins)
-                admins.Add(new[] { player1.Name, player.Data.LevelAdmin.ToString(), Rank.GetRankAdmin(player.Data.LevelAdmin) });
+                admins.Add(new[] { player1.Name, player1.Data.LevelAdmin.ToString(), Rank.GetRankAdmin(player1.Data.LevelAdmin) });
             admins.Show(player);
         }
 
@@ -67,14 +67,14 @@ namespace CaptureTheFlag.Command.Admin
         private static void SendReport(Player player, int playerid, string reason)
         {
             Player player1 = Player.Find(player, playerid);
-            if(player1.Data.LevelAdmin > 0)
-            {
-                player.SendClientMessage(Color.Red, "Error: Usted no puede reportar a un administrador.");
-                return;
-            }
             if (player1 == player)
             {
                 player.SendClientMessage(Color.Red, "Error: No te puedes reportar a ti mismo.");
+                return;
+            }
+            if (player1.Data.LevelAdmin > 0)
+            {
+                player.SendClientMessage(Color.Red, "Error: Usted no puede reportar a un administrador.");
                 return;
             }
             if(Player.Admins.Count == 0)
