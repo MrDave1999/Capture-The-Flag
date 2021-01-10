@@ -51,12 +51,12 @@ namespace CaptureTheFlag
 
         public static string GetRankVip(int index)
         {
-            return rankVip[index];
+            return rankVip[index - 1];
         }
 
         public static string GetRankAdmin(int index)
         {
-            return rankAdmin[index];
+            return rankAdmin[index - 1];
         }
 
         public static string GetRankLevel(int level)
