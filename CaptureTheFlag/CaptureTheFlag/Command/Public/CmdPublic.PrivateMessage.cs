@@ -28,19 +28,13 @@ namespace CaptureTheFlag.Command.Public
             sender.PlaySound(1058);
             receiver.PlaySound(1058);
             receiver.LastPlayerPM = sender;
-            CmdAdmin.SendMessageToAdmins(msg, Color.Yellow);
         }
 
         [Command("pm", Shortcut = "pm", UsageMessage = "/pm [playerid] [message]")]
         private static void PM(Player player, int playerid, string message)
         {
             Player receiver = Player.Find(player, playerid);
-            if(receiver == player)
-            {
-                player.SendClientMessage(Color.Red, "Error: No te puedes enviar un mensaje privado a ti mismo.");
-                return;
-            }
-
+            if (player.Equals(receiver, "No te puedes enviar un mensaje privado a ti mismo.")) return;
             if(!receiver.IsEnablePrivateMessage)
             {
                 player.SendClientMessage(Color.Red, "Error: Ese jugador tiene los mensajes privados inhabilitado.");
