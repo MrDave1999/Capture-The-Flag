@@ -72,6 +72,8 @@ namespace CaptureTheFlag.DataBase
                         login.Show(player);
                         return;
                     }
+                    LoadAdminLevel(player);
+                    LoadVipLevel(player);
                     CmdPublic.StatsPlayer(player);
                     player.Account = AccountState.None;
                     player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Has iniciado sesión de forma exitosa!");
@@ -98,7 +100,7 @@ namespace CaptureTheFlag.DataBase
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = "INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelAdmin, levelVip, levelGame, droppedFlags, headshots, registryDate) VALUES(@namePlayer, SHA2(@pass, 256), 0, 0, 0, 0, 0, 1, 0, 0, @registryDate);";
+            cmd.CommandText = "INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate) VALUES(@namePlayer, SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate);";
             cmd.Parameters.AddWithValue("@namePlayer", player.Name);
             cmd.Parameters.AddWithValue("@pass", password);
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
@@ -117,33 +119,12 @@ namespace CaptureTheFlag.DataBase
             player.Data.TotalKills = reader.GetInt32("totalKills");
             player.Data.TotalDeaths = reader.GetInt32("totalDeaths");
             player.Data.KillingSprees = reader.GetInt32("killingSprees");
-            player.Data.LevelAdmin = reader.GetInt32("levelAdmin");
-            player.Data.LevelVip = reader.GetInt32("levelVip");
             player.Data.LevelGame = reader.GetInt32("levelGame");
             player.Data.DroppedFlags = reader.GetInt32("droppedFlags");
             player.Data.Headshots = reader.GetInt32("headshots");
             player.Data.RegistryDate = reader.GetDateTime("registryDate");
             cmd.Parameters.Clear();
             reader.Close();
-        }
-
-        public static void Update<T>(string campus, T newvalue, string nameplayer)
-        {
-            try
-            {
-                cmd.CommandText = $"UPDATE Players SET {campus}=@{campus} WHERE namePlayer = @name_player;";
-                cmd.Parameters.AddWithValue("@" + campus, newvalue);
-                cmd.Parameters.AddWithValue("@name_player", nameplayer);
-                cmd.ExecuteNonQuery();
-            }
-            catch(MySqlException e)
-            {
-                Console.WriteLine("[Account.Update]: " + e.Message);
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-            }
         }
 
         public static string Encrypt(string text)
