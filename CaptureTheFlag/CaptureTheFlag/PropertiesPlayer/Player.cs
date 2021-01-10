@@ -14,6 +14,8 @@ namespace CaptureTheFlag.PropertiesPlayer
         public int KillingSprees { get; set; }
         public bool IsSelectionClass { get; set; } 
         public bool IsDead { get; set; }
+        public int Warns { get; set; }
+        public bool IsMuted { get; set; }
         public StateUser IsStateUser { get; set; }
         public PlayerData Data { get; set; }
         public Team PlayerTeam { get; set; }
@@ -135,6 +137,32 @@ namespace CaptureTheFlag.PropertiesPlayer
         public void UpdateData<T>(string campus, T newvalue)
         {
             DataBase.Account.Update(campus, newvalue, Name);
+        }
+
+        public bool Equals(Player player, string msg)
+        {
+            if (this == player)
+            {
+                SendClientMessage(Color.Red, "Error: " + msg);
+                return true;
+            }
+            return false;
+        }
+
+        public override void Kick()
+        {
+            new Timer(500, false).Tick += (sender, e) =>
+            {
+                base.Kick();
+            };
+        }
+
+        public override void Ban(string reason)
+        {
+            new Timer(500, false).Tick += (sender, e) =>
+            {
+                base.Ban(reason);
+            };
         }
     }
 }
