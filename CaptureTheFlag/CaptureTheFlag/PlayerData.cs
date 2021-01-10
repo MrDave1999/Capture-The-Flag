@@ -15,5 +15,6 @@ namespace CaptureTheFlag
         public int DroppedFlags { get; set; }
         public int Headshots { get; set; }
         public DateTime RegistryDate { get; set; }
+        public int SkinId { get; set; } = -1;
     }
 }
