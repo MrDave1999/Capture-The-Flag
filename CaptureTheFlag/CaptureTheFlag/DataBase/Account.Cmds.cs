@@ -57,8 +57,6 @@ namespace CaptureTheFlag.DataBase
             stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
             stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
             stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
-            stats.Add(new[] { "Admin Level", reader.GetInt32("levelAdmin").ToString() });
-            stats.Add(new[] { "VIP Level", reader.GetInt32("levelVip").ToString() });
             level = reader.GetInt32("levelGame");
             stats.Add(new[] { "Game Level", level.ToString() });
             stats.Add(new[] { "Rank", Rank.GetRankLevel(level) });
