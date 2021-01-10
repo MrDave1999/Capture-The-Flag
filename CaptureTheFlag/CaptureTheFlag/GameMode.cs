@@ -273,6 +273,11 @@ namespace CaptureTheFlag
                 player.SendClientMessage(Color.Red, "Error: No puedes escribir en el chat estando en la selección de clases.");
                 return;
             }
+            if(player.IsMuted)
+            {
+                player.SendClientMessage(Color.Red, "Error: Usted se encuentra silenciado.");
+                return;
+            }
             Chat.WriteText(player, e.Text);
         }
 
