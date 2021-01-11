@@ -9,7 +9,7 @@ using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static CaptureTheFlag.GameMode;
+using static CaptureTheFlag.Events.GameMode;
 using CaptureTheFlag.Constants;
 using SampSharp.Streamer.World;
 using CaptureTheFlag.PropertiesPlayer;

@@ -74,14 +74,6 @@ namespace CaptureTheFlag.PropertiesPlayer
             IsStateUser = StateUser.Force;
         }
 
-        public void SetPositionEx(Vector3 vector3, float angle, int interior = 0, int virtualworld = 0)
-        {
-            Position = vector3;
-            Angle = angle;
-            Interior = interior;
-            VirtualWorld = virtualworld;
-        }
-
         public bool IsAdminLevel(int levelid)
         {
             if (Data.LevelAdmin < levelid)
@@ -111,7 +103,6 @@ namespace CaptureTheFlag.PropertiesPlayer
         {
             return this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
         }
-
 
         public new string[] ToString()
         {

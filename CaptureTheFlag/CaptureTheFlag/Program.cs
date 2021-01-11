@@ -1,4 +1,5 @@
-﻿using SampSharp.Core;
+﻿using CaptureTheFlag.Events;
+using SampSharp.Core;
 using System.IO;
 using System.Reflection;
 

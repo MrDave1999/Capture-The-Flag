@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using SampSharp.GameMode.SAMP;
-using static CaptureTheFlag.GameMode;
+using static CaptureTheFlag.Events.GameMode;
 
 namespace CaptureTheFlag.PropertiesPlayer
 {

@@ -5,7 +5,7 @@ using SampSharp.GameMode.SAMP.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static CaptureTheFlag.GameMode;
+using static CaptureTheFlag.Events.GameMode;
 
 namespace CaptureTheFlag.Command.Public
 {
