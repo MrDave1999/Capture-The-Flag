@@ -70,7 +70,7 @@ namespace CaptureTheFlag.Command.Admin
         {
             if (player.IsAdminLevel(1)) return;
             Player player1 = Player.Find(player, playerid);
-            player.SendClientMessage(Color.Yellow, $"* La IP del usuario {player.Name} es: {player1.IP}");
+            player.SendClientMessage(Color.Yellow, $"* La IP del usuario {player1.Name} es: {player1.IP}");
             SendMessageToAdmins(player, "ip");
         }
 

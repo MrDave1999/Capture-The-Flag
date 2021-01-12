@@ -34,7 +34,7 @@ namespace CaptureTheFlag.Command.Admin
         private static void Cmds_Administrator(Player player)
         {
             if (player.IsAdminLevel(3)) return;
-            new MessageDialog("Comandos - Administrador (Nivel 3)",
+            new MessageDialog("Comandos - Admin (Nivel 3)",
                 $"{Color.White}/goto, /get, /banip, /unbanip",
                 "Aceptar", "").Show(player);
         }

@@ -57,6 +57,7 @@ namespace CaptureTheFlag.Command.Admin
             if (player1.IsMuted)
             {
                 player1.SendClientMessage(Color.Red, $"* {player.Name} te ha quitado el silencio, por favor no volverlo a hacer.");
+                player.SendClientMessage(Color.Yellow, $"* Ahora el jugador {player1.Name} sí podrá escribir en el chat.");
                 player1.IsMuted = false;
                 SendMessageToAdmins(player, "unmute");
             }
@@ -80,7 +81,7 @@ namespace CaptureTheFlag.Command.Admin
             Player player1 = Player.Find(player, playerid);
             player.SendClientMessage(Color.Yellow, $"* Congelaste al jugador: {player1.Name}.");
             player1.SendClientMessage(Color.Yellow, $"* {player.Name} te ha congelado.");
-            player1.ToggleControllable(true);
+            player1.ToggleControllable(false);
             SendMessageToAdmins(player, "freeze");
         }
         [Command("unfreeze", Shortcut = "unfreeze", UsageMessage = "/unfreeze [playerid]")]
@@ -90,7 +91,7 @@ namespace CaptureTheFlag.Command.Admin
             Player player1 = Player.Find(player, playerid);
             player.SendClientMessage(Color.Yellow, $"* Descongelaste al jugador: {player1.Name}.");
             player1.SendClientMessage(Color.Yellow, $"* {player.Name} te ha descongelado.");
-            player1.ToggleControllable(false);
+            player1.ToggleControllable(true);
             SendMessageToAdmins(player, "unfreeze");
         }
 
