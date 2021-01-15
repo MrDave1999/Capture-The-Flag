@@ -38,10 +38,9 @@ namespace CaptureTheFlag.DataBase
 
         public static void LoadVipLevel(Player player)
         {
-            MySqlDataReader reader;
             cmd.CommandText = "SELECT * FROM Vips WHERE namePlayer = @namePlayer;";
             cmd.Parameters.AddWithValue("@namePlayer", player.Name);
-            reader = cmd.ExecuteReader();
+            var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 player.Data.LevelVip = reader.GetInt32("levelVip");
@@ -53,10 +52,9 @@ namespace CaptureTheFlag.DataBase
 
         public static void LoadAdminLevel(Player player)
         {
-            MySqlDataReader reader;
             cmd.CommandText = "SELECT * FROM Admins WHERE namePlayer = @namePlayer;";
             cmd.Parameters.AddWithValue("@namePlayer", player.Name);
-            reader = cmd.ExecuteReader();
+            var reader = cmd.ExecuteReader();
             if(reader.Read()) 
                 player.Data.LevelAdmin = reader.GetInt32("levelAdmin");
             cmd.Parameters.Clear();
