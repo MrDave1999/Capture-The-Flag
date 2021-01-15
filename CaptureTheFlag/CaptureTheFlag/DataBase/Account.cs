@@ -11,9 +11,11 @@ using SampSharp.GameMode.World;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Command.Public;
 using static CaptureTheFlag.DataBase.DBCommand;
+using SampSharp.GameMode.SAMP.Commands;
 
 namespace CaptureTheFlag.DataBase
 {
+    [CommandGroup("account", PermissionChecker = typeof(BlockCommand))]
     public partial class Account
     {
         public Account()
@@ -21,10 +23,10 @@ namespace CaptureTheFlag.DataBase
             BaseMode.Instance.PlayerConnected += (sender, e) =>
             {
                 var player = sender as Player;
-                if (Exists(player.Name))
+                if (Load(player, out var password))
                 {
                     player.Account = AccountState.Login;
-                    ShowDialogLogin(player);
+                    ShowDialogLogin(player, password);
                 }
                 else
                 {
@@ -55,11 +57,10 @@ namespace CaptureTheFlag.DataBase
             };
         }
 
-        public static void ShowDialogLogin(Player player)
+        public static void ShowDialogLogin(Player player, string password)
         {
             var login = new InputDialog($"{Color.Orange}Iniciar Sesión", "Esta cuenta sí está registrada.\nIngrese una contraseña:", true, "Aceptar", "");
             login.Show(player);
-            Load(player, out var password);
             login.Response += (sender, e) =>
             {
                 if (e.DialogButton == DialogButton.Left)
@@ -86,12 +87,10 @@ namespace CaptureTheFlag.DataBase
 
         public static bool Exists(string playername)
         {
-            MySqlDataReader reader;
-            bool exists;
             cmd.CommandText = "SELECT namePlayer FROM Players WHERE namePlayer = @namePlayer;";
             cmd.Parameters.AddWithValue("@namePlayer", playername);
-            reader = cmd.ExecuteReader();
-            exists = reader.Read();
+            var reader = cmd.ExecuteReader();
+            bool exists = reader.Read();
             cmd.Parameters.Clear();
             reader.Close();
             return exists;
@@ -108,23 +107,28 @@ namespace CaptureTheFlag.DataBase
             cmd.Parameters.Clear();
         }
 
-        public static void Load(Player player, out string password)
+        public static bool Load(Player player, out string password)
         {
-            MySqlDataReader reader;
             cmd.CommandText = "SELECT * FROM Players WHERE namePlayer = @namePlayer;";
             cmd.Parameters.AddWithValue("@namePlayer", player.Name);
-            reader = cmd.ExecuteReader();
-            reader.Read();
-            password = reader.GetString("pass"); 
-            player.Data.TotalKills = reader.GetInt32("totalKills");
-            player.Data.TotalDeaths = reader.GetInt32("totalDeaths");
-            player.Data.KillingSprees = reader.GetInt32("killingSprees");
-            player.Data.LevelGame = reader.GetInt32("levelGame");
-            player.Data.DroppedFlags = reader.GetInt32("droppedFlags");
-            player.Data.Headshots = reader.GetInt32("headshots");
-            player.Data.RegistryDate = reader.GetDateTime("registryDate");
+            var reader = cmd.ExecuteReader();
+            bool exists = reader.Read();
+            if (exists)
+            {
+                password = reader.GetString("pass");
+                player.Data.TotalKills = reader.GetInt32("totalKills");
+                player.Data.TotalDeaths = reader.GetInt32("totalDeaths");
+                player.Data.KillingSprees = reader.GetInt32("killingSprees");
+                player.Data.LevelGame = reader.GetInt32("levelGame");
+                player.Data.DroppedFlags = reader.GetInt32("droppedFlags");
+                player.Data.Headshots = reader.GetInt32("headshots");
+                player.Data.RegistryDate = reader.GetDateTime("registryDate");
+            }
+            else
+                password = null;
             cmd.Parameters.Clear();
             reader.Close();
+            return exists;
         }
 
         public static string Encrypt(string text)
@@ -134,6 +138,35 @@ namespace CaptureTheFlag.DataBase
             string str = (string)cmd.ExecuteScalar();
             cmd.Parameters.Clear();
             return str;
+        }
+
+        [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
+        public static void StatsDb(Player player, string playername)
+        {
+            cmd.CommandText = "SELECT * FROM Players WHERE namePlayer = @namePlayer;";
+            cmd.Parameters.AddWithValue("@namePlayer", playername);
+            var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                var stats = new TablistDialog("Stats", 2, "Aceptar", "");
+                stats.Add(new[] { "Name", reader.GetString("namePlayer") });
+                stats.Add(new[] { "Account Number", reader.GetInt32("accountNumber").ToString() });
+                stats.Add(new[] { "Registry Date", reader.GetDateTime("registryDate").ToString() });
+                stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
+                stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
+                stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
+                int level = reader.GetInt32("levelGame");
+                stats.Add(new[] { "Game Level", level.ToString() });
+                stats.Add(new[] { "Rank", Rank.GetRankLevel(level) });
+                stats.Add(new[] { "Next Rank", Rank.GetNextRankLevel(level) });
+                stats.Add(new[] { "Dropped Flags", reader.GetInt32("droppedFlags").ToString() });
+                stats.Add(new[] { "Headshots", reader.GetInt32("headshots").ToString() });
+                stats.Show(player);
+            }
+            else
+                player.SendClientMessage(Color.Red, "Error: Ese nombre no se encuentra en la base de datos del servidor.");
+            cmd.Parameters.Clear();
+            reader.Close();
         }
     }  
 }
