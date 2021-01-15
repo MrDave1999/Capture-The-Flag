@@ -155,5 +155,16 @@ namespace CaptureTheFlag.PropertiesPlayer
                 base.Ban(reason);
             };
         }
+
+        public override int Skin
+        {
+            get => base.Skin;
+            set
+            {
+                if(SpecialAction == SampSharp.GameMode.Definitions.SpecialAction.Duck)
+                    ToggleControllable(true);
+                base.Skin = value;
+            }
+        }
     }
 }

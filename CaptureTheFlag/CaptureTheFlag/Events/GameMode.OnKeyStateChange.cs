@@ -22,7 +22,7 @@ namespace CaptureTheFlag.Events
             else if (KeyUtils.HasPressed(e, Keys.CtrlBack))
                 CmdPublic.Combos(player);
 
-            if (player.IsEnableJump() && KeyUtils.HasPressed(e, Keys.Jump))
+            if (!player.IsCapturedFlag() && (player.JumpOn || player.IsEnableJump()) && KeyUtils.HasPressed(e, Keys.Jump))
                 player.Velocity = new Vector3(player.Velocity.X, player.Velocity.Y, 0.24);
 
             if (player.IsEnableSpeed() && KeyUtils.HasPressed(e, Keys.Sprint))

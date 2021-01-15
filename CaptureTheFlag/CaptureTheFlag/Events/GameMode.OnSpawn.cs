@@ -22,6 +22,8 @@ namespace CaptureTheFlag.Events
             player.Color = player.Team == (int)TeamID.Alpha ? 0xFF000000 : 0x0000FF00;
             CurrentMap.SetPlayerPosition(player);
             player.IsDead = false;
+            if (player.Data.SkinId != -1)
+                player.Skin = player.Data.SkinId;
         }
     }
 }

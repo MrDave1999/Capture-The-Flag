@@ -6,6 +6,9 @@ namespace CaptureTheFlag.PropertiesPlayer
     {
         public int JumpTime { get; set; }
         public int SpeedTime { get; set; }
+        public int HealthTime { get; set; }
+        public int ArmourTime { get; set; }
+        public bool JumpOn { get; set; }
 
 
         public bool IsEnableJump()
