@@ -1,7 +1,9 @@
-﻿using CaptureTheFlag.PropertiesPlayer;
+﻿using CaptureTheFlag.DataBase;
+using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
+using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,6 +56,33 @@ namespace CaptureTheFlag.Command.Public
                 "\nTotal Kills: " + TeamBeta.Kills +
                 "\nTotal Deaths: " + TeamBeta.Deaths +
                 "\nCaptured Flag by: " + (TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{TeamBeta.Flag.PlayerCaptured.Name}"), "Aceptar").Show(player);
+        }
+
+        [Command("changepass", Shortcut = "changepass", UsageMessage = "/changepass [password]")]
+        public static void ChangePassword(Player player, string newpassword)
+        {
+            Validate.PasswordRange(player, newpassword);
+            Account.Update("pass", Account.Encrypt(newpassword), player.Name);
+            player.SendClientMessage(Color.Orange, $"** La nueva contraseña de tu cuenta es: {newpassword}");
+        }
+
+        [Command("changename", Shortcut = "changename", UsageMessage = "/changename [name]")]
+        public static void ChangeName(Player player, string newname)
+        { 
+            if(Account.Exists(player.Name))
+            {
+                player.SendClientMessage(Color.Red, "Error: Ese nombre ya existe en la base de datos.");
+                return;
+            }
+            //The name to set. Must be 1-24 characters long and only contain valid characters (0-9, a-z, A-Z, [], (), \$ @ . _ and = only).
+            if (newname.Length < 3 || newname.Length > 20)
+            {
+                player.SendClientMessage(Color.Red, "Error: La longitud del nombre debe tener entre 3 y 20 caracteres.");
+                return;
+            }
+            BasePlayer.SendClientMessageToAll(Color.Yellow, $"[Anuncio]: {Color.Orange}{player.Name} cambió su nombre a {newname}");
+            Account.Update("namePlayer", newname, player.Name);
+            player.Name = newname;
         }
     }
 }
