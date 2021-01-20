@@ -110,7 +110,16 @@ namespace CaptureTheFlag
                 player.SpeedTime = 0;
                 player.ClearAnimations();
             }
-
+            if(player.IsEnableInvisible())
+            {
+                player.InvisibleTime = 0;
+                player.DisableInvisibility();
+            }
+            if (player.IsInvisible)
+            {
+                player.DisableInvisibility();
+                player.IsInvisible = false;
+            }
             if (takeInPosBase)
             {
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} capturó la bandera {NameColor} del equipo {NameTeam}.");

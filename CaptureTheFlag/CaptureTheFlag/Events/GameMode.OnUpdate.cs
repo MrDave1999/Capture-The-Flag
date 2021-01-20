@@ -15,6 +15,11 @@ namespace CaptureTheFlag.Events
                 player.ClearAnimations();
                 player.SpeedTime = 0;
             }
+            if (player.InvisibleTime != 0 && player.InvisibleTime < Time.GetTime())
+            {
+                player.DisableInvisibility();
+                player.InvisibleTime = 0;
+            }
         }
     }
 }

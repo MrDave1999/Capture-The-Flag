@@ -62,6 +62,7 @@ namespace CaptureTheFlag.Command.Admin
             player.SendClientMessage(Color.Orange, $"-> Name: {player1.Name} / ID: {player1.Id}");
             player.SendClientMessage(Color.Orange, $"-Jumps: {(player1.IsEnableJump() ? Time.Show(player1.JumpTime) : "No")}");
             player.SendClientMessage(Color.Orange, $"-Speed: {(player1.IsEnableSpeed() ? Time.Show(player1.SpeedTime) : "No")}");
+            player.SendClientMessage(Color.Orange, $"-Invisibility: {(player1.IsEnableInvisible() ? Time.Show(player1.InvisibleTime) : "No")}");
             SendMessageToAdmins(player, "benefit");
         }
 

@@ -33,7 +33,7 @@ namespace CaptureTheFlag.PropertiesPlayer
                     int missing_adrenaline = 100 - adrenaline;
                     adrenaline = (won_adrenaline <= missing_adrenaline) ? (value) : (adrenaline + missing_adrenaline);
                     if (adrenaline == 100)
-                        SendClientMessage(Color.Yellow, message: $"** Tu adrenalina está al 100 porciento ({Color.Red}usa /combos {Color.Yellow}para poder canjear la adrenalina por algún {Color.Red}beneficio{Color.Yellow}).");
+                        SendClientMessage(Color.Yellow, message: $"* Tu adrenalina está al 100 %% ({Color.Red}usa /combos {Color.Yellow}para poder canjear la adrenalina por algún {Color.Red}beneficio{Color.Yellow}).");
                 }
             }
         }

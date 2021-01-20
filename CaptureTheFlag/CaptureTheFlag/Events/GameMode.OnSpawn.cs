@@ -24,6 +24,11 @@ namespace CaptureTheFlag.Events
             player.IsDead = false;
             if (player.Data.SkinId != -1)
                 player.Skin = player.Data.SkinId;
+            if(player.IsInvisible)
+                player.EnableInvisibility();
+            if (player.IsEnableInvisible())
+                player.InvisibleTime = 0;
+            
         }
     }
 }

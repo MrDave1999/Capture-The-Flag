@@ -12,6 +12,8 @@ namespace CaptureTheFlag.Command.Public
 {
     public partial class CmdPublic
     {
+        static readonly int TIME = 1;
+
         [Command("weapons", Shortcut = "weapons")]
         public static void Weapons(Player player)
         {
@@ -78,6 +80,7 @@ namespace CaptureTheFlag.Command.Public
             combos.Add(new[] { "150% Health + 100% Armour", "100" });
             combos.Add(new[] { "Jumps", "100" });
             combos.Add(new[] { "Velocity", "100" });
+            combos.Add(new[] { "Invisibility", "100" });
             combos.Add(new[] { "2 Grenades + 20% Armour", "25" });
             combos.Add(new[] { "2 Molotov cocktail + 20% Armour", "25" });
             combos.Add(new[] { "10 Tear gas", "10" });
@@ -87,6 +90,11 @@ namespace CaptureTheFlag.Command.Public
             {
                 if (e.DialogButton == DialogButton.Left)
                 {
+                    if((e.ListItem >= 1 && e.ListItem <= 3) && (player.IsCapturedFlag()))
+                    {
+                        player.SendClientMessage(Color.Red, "Error: Lleva la bandera de forma legal, no seas cobarde jeje!");
+                        return;
+                    }
                     switch (e.ListItem)
                     {
                         case 0:
@@ -97,41 +105,38 @@ namespace CaptureTheFlag.Command.Public
                             break;
                         case 1:
                             player.HasAdrenaline(100);
-                            if (player.IsCapturedFlag())
-                            {
-                                player.SendClientMessage(Color.Red, "Error: Lleva la bandera de forma legal, no seas cobarde jeje!");
-                                return;
-                            }
-                            player.SendClientMessage("** En 1 minuto el beneficio se terminará.");
-                            player.JumpTime = Time.GetTime() + (1 * 60);
+                            player.SendClientMessage(Color.Yellow, "* En 1 minuto el beneficio se terminará.");
+                            player.JumpTime = Time.GetTime() + (TIME * 60);
                             player.Adrenaline = 0;
                             player.GiveWeapon(Weapon.Parachute, 1);
                             break;
                         case 2:
                             player.HasAdrenaline(100);
-                            if (player.IsCapturedFlag())
-                            {
-                                player.SendClientMessage(Color.Red, "Error: Lleva la bandera de forma legal, no seas cobarde jeje!");
-                                return;
-                            }
-                            player.SendClientMessage("** En 1 minuto el beneficio se terminará.");
-                            player.SendClientMessage(Color.Orange, $"[Uso]: {Color.White}Presiona y suelta la tecla [SPACE] para correr.");
-                            player.SpeedTime = Time.GetTime() + (1 * 60);
+                            player.SendClientMessage("* En 1 minuto el beneficio se terminará.");
+                            player.SendClientMessage(Color.Yellow, $"[Uso]: {Color.White}Presiona y suelta la tecla [SPACE] para correr.");
+                            player.SpeedTime = Time.GetTime() + (TIME * 60);
                             player.Adrenaline = 0;
                             break;
                         case 3:
+                            player.HasAdrenaline(100);
+                            player.SendClientMessage(Color.Yellow, "* En 1 minuto perderás la invisibilidad.");
+                            player.InvisibleTime = Time.GetTime() + (TIME * 60);
+                            player.Adrenaline = 0;
+                            player.EnableInvisibility();
+                            break;
+                        case 4:
                             player.HasAdrenaline(25);
                             player.SetWeapon(Weapon.Grenade, 2);
                             player.Armour = 20;
                             player.Adrenaline = -25;
                             break;
-                        case 4:
+                        case 5:
                             player.HasAdrenaline(25);
                             player.SetWeapon(Weapon.Moltov, 2);
                             player.Armour = 20;
                             player.Adrenaline = -25;
                             break;
-                        case 5:
+                        case 6:
                             player.HasAdrenaline(10);
                             player.SetWeapon(Weapon.Teargas, 10);
                             player.Adrenaline = -10;
