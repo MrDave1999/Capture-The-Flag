@@ -27,6 +27,13 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Yellow}/vips{Color.White} - Muestra los usuarios VIP que están conectados." +
                 $"\n{Color.Yellow}/stats{Color.White} - Muestra las estadísticas de un jugador conectado." +
                 $"\n{Color.Yellow}/statsdb{Color.White} - Muestra las estadísticas de un jugador desconectado." +
+                $"\n{Color.Yellow}/changepass{Color.White} - Cambia la contraseña de la cuenta del jugador." +
+                $"\n{Color.Yellow}/changename{Color.White} - Cambia el nombre de la cuenta del jugador." +
+                $"\n{Color.Yellow}/pm{Color.White} - Envía un mensaje privado a un jugador en especifico." +
+                $"\n{Color.Yellow}/ypm{Color.White} - Habilita los mensajes privados." +
+                $"\n{Color.Yellow}/npm{Color.White} - Inhabilita los mensajes privados." +
+                $"\n{Color.Yellow}/r{Color.White} - Envía un mensaje privado al último jugador que te envió un mensaje." +
+                $"\n{Color.Yellow}/report{Color.White} - Sirve para reportar a un jugador." +
                 $"\n{Color.Yellow}/combos{Color.White} - Muestra los combos que podrás canjear por adrenalina." +
                 $"\n{Color.Yellow}/ranks{Color.White} - Muestra la lista de rangos disponibles." +
                 $"\n{Color.Yellow}/weapons{Color.White} - Muestra la lista de armas a elegir." +
@@ -81,6 +88,8 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Orange}rickyah {Color.White}por crear ini-parser." +
                 $"\n{Color.Orange}Nickk888SAMP {Color.White}por crear NTD (TextDraw Editor)." +
                 $"\n{Color.Orange}samp-incognito {Color.White}por crear streamer-plugin." +
+                $"\n{Color.Orange}Ts-Pytham {Color.White}por colaborar con el sistema de administración." +
+                $"\n{Color.Orange}critical99 {Color.White}por hacer la versión YSF Lite." +
                 $"\n\n{Color.Yellow}¡Eres libre de contribuir en el proyecto!", "Aceptar").Show(player);
         }
     }
