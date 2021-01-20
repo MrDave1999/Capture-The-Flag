@@ -15,11 +15,16 @@ public OnPlayerConnect(playerid)
 	RemoveBuildingForPlayer(playerid, 11443, -1301.7188, 2527.4922, 86.6172, 0.25);
 	RemoveBuildingForPlayer(playerid, 11459, -1292.7969, 2529.0000, 86.5313, 0.25);
 	RemoveBuildingForPlayer(playerid, 11457, -1303.7734, 2550.2344, 86.2266, 0.25);
+	print("warzone PlayerConnected");
 	return 1;
 }
 
 public OnFilterScriptInit()
 {
+	for(new i = 0, len = GetPlayerPoolSize(); i <= len; ++i)
+	    if(IsPlayerConnected(i))
+   	 		OnPlayerConnect(i);
+
 	CreateObject(19543, -1335.97949, 2425.67969, 93.04828,   0.00000, 0.00000, -90.42001);
 	CreateObject(19545, -1335.81409, 2439.94556, 93.05431,   0.00000, 0.00000, -90.48000);
 	CreateObject(19543, -1335.74475, 2454.06543, 93.06335,   0.00000, 0.00000, -90.42001);
