@@ -1,8 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
-
+ 
 namespace CaptureTheFlag.DataBase
 {
     public static class DBConnect
@@ -11,14 +12,14 @@ namespace CaptureTheFlag.DataBase
 
         public static void Open()
         {
-            string cs = "server=localhost;port=3306;username=root;password=1234;database=gamemode;";
+            string cs = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
             try
             {
                 Connection = new MySqlConnection(cs);
                 Connection.Open();
                 Console.WriteLine("  The database connection was successful!");
             }
-            catch(MySqlException e)
+            catch (MySqlException e)
             {
                 Console.WriteLine("Error: " + e.Message);
             }
