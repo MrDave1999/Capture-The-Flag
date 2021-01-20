@@ -24,6 +24,7 @@ namespace CaptureTheFlag.Events
             if (player.IsDead)
             {
                 Player.Remove(player);
+                TextDrawGlobal.UpdateCountUsers();
                 TextDrawGlobal.Hide(player);
                 TextDrawPlayer.Hide(player);
             }
