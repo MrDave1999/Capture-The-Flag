@@ -25,7 +25,7 @@ namespace CaptureTheFlag.Events
             Console.WriteLine("     Team DeathMatch");
             Console.WriteLine("----------------------------------\n");
 
-            SetGameModeText("CTF ~v4.6.2-beta");
+            SetGameModeText("CTF ~v5.8.2-beta3");
             Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
             Server.SendRconCommand("weburl www.");
             Server.SendRconCommand("language  Español Latino");
@@ -52,6 +52,7 @@ namespace CaptureTheFlag.Events
         protected override void OnExited(EventArgs e)
         {
             base.OnExited(e);
+            DBConnect.Close();
         }
       
         protected override void LoadControllers(ControllerCollection controllers)
