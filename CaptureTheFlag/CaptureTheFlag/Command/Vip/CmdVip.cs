@@ -25,7 +25,17 @@ namespace CaptureTheFlag.Command.Vip
         {
             if (player.IsVipLevel(2)) return;
             new MessageDialog("Comandos - Gold (Nivel 2)",
-                $"{Color.White}/health, /armour, /jumpon, /jumpoff, /p",
+                $"{Color.White}/health, /armour, /jumpon, /jumpoff, /p, /nsay",
+                "Aceptar", "").Show(player);
+        }
+
+        [Command("3")]
+        private static void Cmds_Premium(Player player)
+        {
+            if (player.IsVipLevel(2)) return;
+            new MessageDialog("Comandos - Premium (Nivel 3)",
+                $"{Color.White}/invisible, /visible, /flame" +
+                $"\n{Color.Yellow}* Cada vez que inicie una partida tendrás 100 % de adrenalina.",
                 "Aceptar", "").Show(player);
         }
 

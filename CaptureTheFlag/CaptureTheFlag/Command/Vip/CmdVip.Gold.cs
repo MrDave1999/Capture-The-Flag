@@ -2,6 +2,7 @@
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
+using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -72,6 +73,13 @@ namespace CaptureTheFlag.Command.Vip
         {
             if (player.IsVipLevel(2)) return;
             player.GiveWeapon(Weapon.Parachute, 1);
+        }
+
+        [Command("nsay", Shortcut = "nsay", UsageMessage = "/nsay [message]")]
+        private static void NsayCommand(Player player, string message)
+        {
+            if (player.IsVipLevel(2)) return;
+            BasePlayer.SendClientMessageToAll($"{Color.Orange}.:: VIP Anónimo: {Color.White}| {message}");
         }
     }
 }

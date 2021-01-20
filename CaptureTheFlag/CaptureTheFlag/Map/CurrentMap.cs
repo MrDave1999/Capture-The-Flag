@@ -98,6 +98,8 @@ namespace CaptureTheFlag.Map
                             player.Deaths = 0;
                             player.KillingSprees = 0;
                             player.Adrenaline = 0;
+                            if (player.Data.LevelVip == 3)
+                                player.Adrenaline = 100;
                             player.ToggleControllable(true);
                             player.SetForceClass();
                         }

@@ -53,9 +53,9 @@ namespace CaptureTheFlag.Command.Admin
         private static void SetVip(Player player, int playerid, int levelid)
         {
             if (player.IsAdminLevel(4)) return;
-            if (levelid < 0 || levelid > 2)
+            if (levelid < 0 || levelid > 3)
             {
-                player.SendClientMessage(Color.Red, "Error: Ingresa un nivel válido [0/2].");
+                player.SendClientMessage(Color.Red, "Error: Ingresa un nivel válido [0/3].");
                 return;
             }
             Player player1 = Player.Find(player, playerid);
