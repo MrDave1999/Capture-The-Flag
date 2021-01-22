@@ -12,16 +12,16 @@ namespace CaptureTheFlag.DataBase
 
         public static void Open()
         {
-            string cs = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
             try
             {
+                string cs = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
                 Connection = new MySqlConnection(cs);
                 Connection.Open();
                 Console.WriteLine("  The database connection was successful!");
             }
-            catch (MySqlException e)
+            catch (Exception e) 
             {
-                Console.WriteLine("Error: " + e.Message);
+                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
             }
         }
 
