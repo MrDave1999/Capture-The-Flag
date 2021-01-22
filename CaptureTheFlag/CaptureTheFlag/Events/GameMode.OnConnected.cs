@@ -19,6 +19,7 @@ namespace CaptureTheFlag.Events
             player.IsSelectionClass = true;
             BasePlayer.SendDeathMessageToAll(null, player, Weapon.Connect);
             TextDrawEntry.Show(player);
+            player.RemoveAttachedObject(0);
         }
     }
 }
