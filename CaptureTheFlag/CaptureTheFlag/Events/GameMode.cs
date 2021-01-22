@@ -38,8 +38,29 @@ namespace CaptureTheFlag.Events
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
 
             StartTimer();
-            TeamAlpha = new Team(SkinTeam.Alpha, "{FF2040}", "~r~", TextDrawGlobal.TdScoreAlpha, TeamID.Alpha, "Alpha", "Roja", new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), Interior);
-            TeamBeta =  new Team(SkinTeam.Beta,  "{0088FF}", "~b~", TextDrawGlobal.TdScoreBeta,  TeamID.Beta,  "Beta",  "Azul", new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), Interior);
+            TeamAlpha = new Team(
+                skin: SkinTeam.Alpha, 
+                otherColor: "{FF2040}", 
+                colorGameText: "~r~", 
+                TextDrawGlobal.TdScoreAlpha, 
+                teamid: TeamID.Alpha, 
+                name: "Alpha", 
+                namecolor: "Roja", 
+                new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), 
+                Interior
+            );
+
+            TeamBeta =  new Team(
+                skin: SkinTeam.Beta,  
+                otherColor: "{0088FF}", 
+                colorGameText: "~b~", 
+                TextDrawGlobal.TdScoreBeta,  
+                teamid: TeamID.Beta,  
+                name: "Beta",  
+                namecolor: "Azul", 
+                new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), 
+                Interior
+            );
             TeamAlpha.TeamRival = TeamBeta;
             TeamBeta.TeamRival = TeamAlpha;
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
