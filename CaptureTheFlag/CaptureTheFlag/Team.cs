@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CaptureTheFlag.Constants;
+using CaptureTheFlag.PropertiesPlayer;
 
 namespace CaptureTheFlag
 {
@@ -109,7 +110,16 @@ namespace CaptureTheFlag
                 player.SpeedTime = 0;
                 player.ClearAnimations();
             }
-
+            if(player.IsEnableInvisible())
+            {
+                player.InvisibleTime = 0;
+                player.DisableInvisibility();
+            }
+            if (player.IsInvisible)
+            {
+                player.DisableInvisibility();
+                player.IsInvisible = false;
+            }
             if (takeInPosBase)
             {
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} capturó la bandera {NameColor} del equipo {NameTeam}.");
@@ -134,7 +144,7 @@ namespace CaptureTheFlag
             ++TeamRival.Score;
             TeamRival.UpdateTdScore();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
-            ++player.Data.DroppedFlags;
+            player.UpdateData("droppedFlags", ++player.Data.DroppedFlags);
             foreach(Player player1 in player.PlayerTeam.Players)
                 if(player != player1)
                     player1.UpdateAdrenaline(3, "ayudar a capturar la bandera");

@@ -7,10 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.Rand;
-using static CaptureTheFlag.GameMode;
+using static CaptureTheFlag.Events.GameMode;
 using static SampSharp.GameMode.World.BasePlayer;
 using static CaptureTheFlag.Map.FileRead;
 using CaptureTheFlag.Constants;
+using CaptureTheFlag.PropertiesPlayer;
 
 namespace CaptureTheFlag.Map
 {
@@ -97,6 +98,8 @@ namespace CaptureTheFlag.Map
                             player.Deaths = 0;
                             player.KillingSprees = 0;
                             player.Adrenaline = 0;
+                            if (player.Data.LevelVip == 3)
+                                player.Adrenaline = 100;
                             player.ToggleControllable(true);
                             player.SetForceClass();
                         }

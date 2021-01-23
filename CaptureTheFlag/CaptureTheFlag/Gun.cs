@@ -1,4 +1,5 @@
-﻿using SampSharp.GameMode.Definitions;
+﻿using CaptureTheFlag.Constants;
+using SampSharp.GameMode.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,29 +25,20 @@ namespace CaptureTheFlag
             new Gun(Weapon.Rifle,                   6)
         };
 
-        public Gun(Weapon weapon, int slot)
+        private Gun(Weapon weapon, int slot)
         {
             Weapon = weapon;
             Slot = slot;
         }
 
-        public Gun (Weapon weapon)
+        public static Gun GetWeapon(int index)
         {
-            Weapon = weapon;
-            Slot = GetWeaponSlot(weapon);
+            return guns[index];
         }
 
-        public static int GetWeaponSlot(Weapon weapon)
+        public static Gun GetWeapon(GunID index)
         {
-            foreach(Gun gun in guns)
-                if (gun.Weapon == weapon)
-                    return gun.Slot;
-            return -1;
-        }
-
-        public static Weapon GetWeapon(int index)
-        {
-            return guns[index].Weapon;
+            return guns[(int)index];
         }
 
         public static Gun[] GetInstanceArray()
