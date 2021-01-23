@@ -64,14 +64,6 @@ namespace CaptureTheFlag.Command.Public
             }
         }
 
-        [Command("adre", Shortcut = "adre")]
-        private static void Test(Player player)
-        { //test command
-            player.Adrenaline = 100;
-            player.Kills = Rand.Next(4000);
-            TextDrawPlayer.UpdateTdStats(player);
-        }
-
         [Command("re", Shortcut = "re")]
         private static void ResetScore(Player player)
         {
