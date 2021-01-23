@@ -12,7 +12,7 @@ namespace CaptureTheFlag.Command.Admin
     public partial class CmdAdmin
     {
         [Command("setlevel", Shortcut = "setlevel", UsageMessage = "/setlevel [playerid] [levelid]")]
-        public static void SetLevel(Player player, int playerid, int levelid)
+        private static void SetLevel(Player player, int playerid, int levelid)
         {
             if (player.IsAdminLevel(4)) return;
             if (levelid < 0 || levelid > 4)
