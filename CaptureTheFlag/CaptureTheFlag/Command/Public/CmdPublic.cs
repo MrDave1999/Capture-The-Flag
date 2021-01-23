@@ -13,6 +13,7 @@ using static CaptureTheFlag.Events.GameMode;
 using CaptureTheFlag.Constants;
 using SampSharp.Streamer.World;
 using CaptureTheFlag.PropertiesPlayer;
+using System.Linq;
 
 namespace CaptureTheFlag.Command.Public
 {
@@ -50,10 +51,10 @@ namespace CaptureTheFlag.Command.Public
         [Command("listplayers", Shortcut = "listplayers")]
         public static void ListPlayers(BasePlayer player)
         { //test command 
-            player.SendClientMessage($"Players available: {Player.Count()}");
+            player.SendClientMessage($"Players available: {BasePlayer.GetAll<BasePlayer>().Count()}");
             try
             {
-                foreach (var p in Player.GetAll())
+                foreach (var p in BasePlayer.GetAll<BasePlayer>())
                 {
                     player.SendClientMessage("Player: " + p.Name);
                 }
