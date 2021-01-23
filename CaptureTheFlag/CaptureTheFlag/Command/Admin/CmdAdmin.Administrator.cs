@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Textdraw;
 using SampSharp.GameMode;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
@@ -11,6 +12,40 @@ namespace CaptureTheFlag.Command.Admin
 {
     public partial class CmdAdmin
     {
+        [Command("setadre", Shortcut = "setadre", UsageMessage = "/setadre [playerid] [adrenaline]")]
+        private static void SetAdrenaline(Player player, int playerid, int adrenaline)
+        {
+            if (player.IsAdminLevel(3)) return;
+            if(adrenaline < 0 || adrenaline > 100)
+            {
+                player.SendClientMessage(Color.Red, "Error: La adrenalina debe estar entre el rango de 0 a 100.");
+                return;
+            }
+            Player player1 = Player.Find(player, playerid);
+            player1.Adrenaline = adrenaline;
+            TextDrawPlayer.UpdateTdStats(player1);
+            player.SendClientMessage(Color.Yellow, $"* Le diste al jugador {player1.Name} {adrenaline}%% de adrenalina.");
+            player1.SendClientMessage(Color.Yellow, $"* {player.Name} te estableció la adrenalina a {adrenaline}%%.");
+            SendMessageToAdmins(player, "setadre");
+        }
+
+        [Command("setkills", Shortcut = "setkills", UsageMessage = "/setkills [playerid] [kills]")]
+        private static void SetKills(Player player, int playerid, int kills)
+        {
+            if (player.IsAdminLevel(3)) return;
+            if(kills < 0)
+            {
+                player.SendClientMessage(Color.Red, "Error: Los kills no pueden ser negativo.");
+                return;
+            }
+            Player player1 = Player.Find(player, playerid);
+            player1.Kills = kills;
+            TextDrawPlayer.UpdateTdStats(player1);
+            player.SendClientMessage(Color.Yellow, $"* Le diste al jugador {player1.Name} {kills} kills.");
+            player1.SendClientMessage(Color.Yellow, $"* {player.Name} te estableció los kills a {kills}.");
+            SendMessageToAdmins(player, "setkills");
+        }
+
         [Command("goto", Shortcut = "goto", UsageMessage = "/goto [playerid]")]
         private static void Goto(Player player, int playerid)
         {
