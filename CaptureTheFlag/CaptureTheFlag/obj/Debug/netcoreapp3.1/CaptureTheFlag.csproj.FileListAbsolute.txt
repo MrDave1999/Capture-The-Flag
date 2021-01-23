@@ -30,7 +30,6 @@ C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csprojAssemblyReference.cache
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.AssemblyInfoInputs.cache
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.AssemblyInfo.cs
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csproj.CoreCompileInputs.cache
