@@ -75,11 +75,11 @@ namespace CaptureTheFlag.DataBase
                     }
                     LoadAdminLevel(player);
                     LoadVipLevel(player);
+                    if (player.Data.LevelVip == 3)
+                        player.Adrenaline = 100;
                     CmdPublic.StatsPlayer(player);
                     player.Account = AccountState.None;
                     player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Has iniciado sesión de forma exitosa!");
-                    if (player.Data.LevelVip == 3)
-                        player.Adrenaline = 100;
                     Player.AddAV(player);
                 }
                 else
