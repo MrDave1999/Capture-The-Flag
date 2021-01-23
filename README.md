@@ -26,6 +26,8 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 - [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) by create NTD (TextDraw Editor).
 - [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) by create streamer-plugin.
 - [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) by create gamemode.
+- [Ts-Pytham](https://github.com/Ts-Pytham) for collaborating with the administration system.
+- [critical99](https://gitlab.com/critical99/ysf) by create Lite version of IllidanS4 [YSF](https://github.com/IllidanS4/YSF).
 
 ### Mappers
 
@@ -42,3 +44,4 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 - Aim_Headshot2 by Niktia_Ruchkov.
 - de_dust2_x1 by SpikY_.
 - de_dust2_x2 by Amads.
+- WarZone by Samarchai.
