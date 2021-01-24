@@ -8,7 +8,7 @@ namespace CaptureTheFlag
 	public class TimeNative : NativeObjectSingleton<TimeNative>
     {
 		[NativeMethod]
-		public virtual int gettime()
+		public virtual int gettime(int hour = 0, int minute = 0, int second = 0)
 		{
 			throw new NativeNotImplementedException();
 		}
