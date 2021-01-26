@@ -4,6 +4,7 @@ using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
 using SampSharp.GameMode.World;
+using SampSharp.YSF;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -79,9 +80,15 @@ namespace CaptureTheFlag.Command.Admin
         {
             if(player.IsAdminLevel(2)) return;
             Player player1 = Player.Find(player, playerid);
+            if(player1.IsFreeze)
+            {
+                player.SendClientMessage(Color.Red, "Error: El jugador ya se encuentra congelado.");
+                return;
+            }
             player.SendClientMessage(Color.Yellow, $"* Congelaste al jugador: {player1.Name}.");
             player1.SendClientMessage(Color.Yellow, $"* {player.Name} te ha congelado.");
             player1.ToggleControllable(false);
+            player1.IsFreeze = true;
             SendMessageToAdmins(player, "freeze");
         }
         [Command("unfreeze", Shortcut = "unfreeze", UsageMessage = "/unfreeze [playerid]")]
@@ -89,9 +96,15 @@ namespace CaptureTheFlag.Command.Admin
         {
             if (player.IsAdminLevel(2)) return;
             Player player1 = Player.Find(player, playerid);
+            if (!player1.IsFreeze)
+            {
+                player.SendClientMessage(Color.Red, "Error: El jugador ya se encuentra descongelado.");
+                return;
+            }
             player.SendClientMessage(Color.Yellow, $"* Descongelaste al jugador: {player1.Name}.");
             player1.SendClientMessage(Color.Yellow, $"* {player.Name} te ha descongelado.");
             player1.ToggleControllable(true);
+            player1.IsFreeze = false;
             SendMessageToAdmins(player, "unfreeze");
         }
 

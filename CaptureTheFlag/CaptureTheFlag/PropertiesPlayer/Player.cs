@@ -16,6 +16,7 @@ namespace CaptureTheFlag.PropertiesPlayer
         public bool IsDead { get; set; }
         public int Warns { get; set; }
         public bool IsMuted { get; set; }
+        public bool IsFreeze { get; set; }
         public StateUser IsStateUser { get; set; }
         public PlayerData Data { get; set; }
         public Team PlayerTeam { get; set; }

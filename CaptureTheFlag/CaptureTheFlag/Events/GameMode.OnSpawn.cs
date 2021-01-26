@@ -28,7 +28,8 @@ namespace CaptureTheFlag.Events
                 player.EnableInvisibility();
             if (player.IsEnableInvisible())
                 player.InvisibleTime = 0;
-            
+            if (player.IsFreeze)
+                player.ToggleControllable(false); 
         }
     }
 }
