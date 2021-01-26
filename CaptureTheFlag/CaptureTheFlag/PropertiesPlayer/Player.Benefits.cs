@@ -1,23 +1,9 @@
 ﻿using SampSharp.Core.Natives.NativeObjects;
 using SampSharp.GameMode.World;
+using SampSharp.YSF;
 
 namespace CaptureTheFlag.PropertiesPlayer
 {
-    public class YsfNatives : NativeObjectSingleton<YsfNatives>
-    {
-        [NativeMethod]
-        public virtual int ShowPlayerForPlayer(int forplayerid, int playerid, bool setskin = false)
-        {
-            throw new NativeNotImplementedException();
-        }
-
-        [NativeMethod]
-        public virtual int HidePlayerForPlayer(int forplayerid, int playerid)
-        {
-            throw new NativeNotImplementedException();
-        }
-    }
-
     public partial class Player : BasePlayer 
     {
         public int JumpTime { get; set; }
@@ -27,7 +13,6 @@ namespace CaptureTheFlag.PropertiesPlayer
         public int ArmourTime { get; set; }
         public bool JumpOn { get; set; }
         public bool IsInvisible { get; set; }
-
 
         public bool IsEnableJump()
         {
@@ -44,22 +29,12 @@ namespace CaptureTheFlag.PropertiesPlayer
             return InvisibleTime > Time.GetTime();
         }
 
-        public void ShowPlayerForPlayer(Player forplayer)
-        {
-            YsfNatives.Instance.ShowPlayerForPlayer(forplayer.Id, Id);
-        }
-
-        public void HidePlayerForPlayer(Player forplayer)
-        {
-            YsfNatives.Instance.HidePlayerForPlayer(forplayer.Id, Id);
-        }
-
         public void EnableInvisibility()
         {
             foreach(Player player in GetAll<Player>())
             {
                 if (!player.IsConnected) continue;
-                HidePlayerForPlayer(player);
+                YSF.HidePlayerForPlayer(player, this);
             }
         }
 
@@ -68,7 +43,7 @@ namespace CaptureTheFlag.PropertiesPlayer
             foreach (Player player in GetAll<Player>())
             {
                 if (!player.IsConnected) continue;
-                ShowPlayerForPlayer(player);
+                YSF.ShowPlayerForPlayer(player, this);
                 Skin = (Data.SkinId != -1) ? Data.SkinId : PlayerTeam.Skin;
                 Team = (int)PlayerTeam.Id;
                 if(IsCapturedFlag())
