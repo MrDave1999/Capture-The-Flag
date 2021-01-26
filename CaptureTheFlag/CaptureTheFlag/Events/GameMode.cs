@@ -33,10 +33,10 @@ namespace CaptureTheFlag.Events
             Server.SendRconCommand("loadfs RemoveBuilding");
             //UsePlayerPedAnimations();
             DisableInteriorEnterExits();
-
             AddPlayerClass(SkinTeam.Alpha, new Vector3(0, 0, 0), 0);
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
-
+            TextDrawGlobal.Create();
+            TextDrawEntry.Create();
             StartTimer();
             TeamAlpha = new Team(
                 skin: SkinTeam.Alpha, 
@@ -81,6 +81,8 @@ namespace CaptureTheFlag.Events
             TeamBeta.Icon.Dispose();
             DBConnect.Close();
             TimerLeft.Dispose();
+            TextDrawGlobal.Destroy();
+            TextDrawEntry.Destroy();
         }
       
         protected override void LoadControllers(ControllerCollection controllers)

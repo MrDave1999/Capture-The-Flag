@@ -4,26 +4,29 @@ using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace CaptureTheFlag.Textdraw
 {
     public static class TextDrawEntry
     {
-        public static TextDraw TdBoxBlue { get; set; }      = new TextDraw();
-        public static TextDraw TdBarCmds { get; set; }      = new TextDraw();
-        public static TextDraw TdGoat { get; set; }         = new TextDraw();
-        public static TextDraw TdCapture { get; set; }      = new TextDraw();
-        public static TextDraw TdThe { get; set; }          = new TextDraw();
-        public static TextDraw TdFlag { get; set; }         = new TextDraw();
-
-        static TextDrawEntry()
-        {
-            Create();
-        }
+        public static TextDraw TdBoxBlue { get; set; }     
+        public static TextDraw TdBarCmds { get; set; }   
+        public static TextDraw TdGoat { get; set; }     
+        public static TextDraw TdCapture { get; set; }    
+        public static TextDraw TdThe { get; set; }         
+        public static TextDraw TdFlag { get; set; }         
 
         public static void Create()
         {
+            TdBoxBlue   = new TextDraw();
+            TdBarCmds   = new TextDraw();
+            TdGoat      = new TextDraw();
+            TdCapture   = new TextDraw();
+            TdThe       = new TextDraw();
+            TdFlag      = new TextDraw();
+
             TdBoxBlue.Position = new Vector2(319.000000, 430.000000);
             TdBoxBlue.Text = "_";
             TdBoxBlue.Font = TextDrawFont.Normal;
@@ -117,6 +120,16 @@ namespace CaptureTheFlag.Textdraw
             TdCapture.Hide(player);
             TdThe.Hide(player);
             TdFlag.Hide(player);
+        }
+
+        public static void Destroy()
+        {
+            TdBoxBlue.Dispose();
+            TdBarCmds.Dispose();
+            TdGoat.Dispose();
+            TdCapture.Dispose();
+            TdThe.Dispose();
+            TdFlag.Dispose();
         }
     }
 }

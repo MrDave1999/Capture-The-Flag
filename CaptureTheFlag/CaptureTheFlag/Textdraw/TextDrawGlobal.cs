@@ -4,9 +4,7 @@ using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Reflection;
 
 namespace CaptureTheFlag.Textdraw
 {
@@ -21,27 +19,36 @@ namespace CaptureTheFlag.Textdraw
 
     public static class TextDrawGlobal
     {
-        public static TextDraw TdCTF { get; set; }         = new TextDraw();
-        public static TextDraw TdScoreAlpha { get; set; }  = new TextDraw();
-        public static TextDraw TdScoreBeta { get; set; }   = new TextDraw();
-        public static TextDraw TdFlagRed { get; set; }     = new TextDraw();
-        public static TextDraw TdFlagBlue { get; set; }    = new TextDraw();
-        public static TextDraw TdClock { get; set; }       = new TextDraw();
-        public static TextDraw TdTimeLeft { get; set; }    = new TextDraw();
-        public static TextDraw TdCountUsers { get; set; }  = new TextDraw();
-        public static TextDraw TdBox1 { get; set; }        = new TextDraw();
-        public static TextDraw TdBox2 { get; set; }        = new TextDraw();
-        public static TextDraw TdRank { get; set; }        = new TextDraw();
-        public static TextDraw TdStar1 { get; set; }       = new TextDraw();
-        public static TextDraw TdStar2 { get; set; }       = new TextDraw();
-
-        static TextDrawGlobal()
-        {
-            Create();
-        }
+        public static TextDraw TdCTF { get; set; }         
+        public static TextDraw TdScoreAlpha { get; set; }  
+        public static TextDraw TdScoreBeta { get; set; }   
+        public static TextDraw TdFlagRed { get; set; }    
+        public static TextDraw TdFlagBlue { get; set; }    
+        public static TextDraw TdClock { get; set; }       
+        public static TextDraw TdTimeLeft { get; set; }    
+        public static TextDraw TdCountUsers { get; set; }  
+        public static TextDraw TdBox1 { get; set; }        
+        public static TextDraw TdBox2 { get; set; }       
+        public static TextDraw TdRank { get; set; }        
+        public static TextDraw TdStar1 { get; set; }       
+        public static TextDraw TdStar2 { get; set; }       
 
         public static void Create()
         {
+            TdCTF           = new TextDraw();
+            TdScoreAlpha    = new TextDraw();
+            TdScoreBeta     = new TextDraw();
+            TdFlagRed       = new TextDraw();
+            TdFlagBlue      = new TextDraw();
+            TdClock         = new TextDraw();
+            TdTimeLeft      = new TextDraw();
+            TdCountUsers    = new TextDraw();
+            TdBox1          = new TextDraw();
+            TdBox2          = new TextDraw();
+            TdRank          = new TextDraw();
+            TdStar1         = new TextDraw();
+            TdStar2         = new TextDraw();
+
             TdCTF.Position = new Vector2(483.000000, 4.000000);
             TdCTF.Text = "Capture The Flag";
             TdCTF.Font = TextDrawFont.Diploma;
@@ -217,6 +224,23 @@ namespace CaptureTheFlag.Textdraw
             TdRank.Hide(player);
             TdStar1.Hide(player);
             TdStar2.Hide(player);
+        }
+
+        public static void Destroy()
+        {
+            TdCTF.Dispose();
+            TdScoreAlpha.Dispose();
+            TdScoreBeta.Dispose();
+            TdFlagRed.Dispose();
+            TdFlagBlue.Dispose();
+            TdClock.Dispose();
+            TdTimeLeft.Dispose();
+            TdCountUsers.Dispose();
+            TdBox1.Dispose();
+            TdBox2.Dispose();
+            TdRank.Dispose();
+            TdStar1.Dispose();
+            TdStar2.Dispose();
         }
 
         public static void UpdateCountUsers()
