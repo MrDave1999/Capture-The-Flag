@@ -73,7 +73,14 @@ namespace CaptureTheFlag.Events
         protected override void OnExited(EventArgs e)
         {
             base.OnExited(e);
+            Server.SendRconCommand("unloadfs EntryMap");
+            Server.SendRconCommand("unloadfs RemoveBuilding");
+            Server.SendRconCommand($"unloadfs {GetCurrentMap()}");
+            Flag.RemoveAll();
+            TeamAlpha.Icon.Dispose();
+            TeamBeta.Icon.Dispose();
             DBConnect.Close();
+            TimerLeft.Dispose();
         }
       
         protected override void LoadControllers(ControllerCollection controllers)

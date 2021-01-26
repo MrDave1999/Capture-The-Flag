@@ -32,10 +32,11 @@ namespace CaptureTheFlag.Map
         public static int ForceMap { get; set; } = -1;
         public static SpawnPoint[,] spawns;
         public static string[] mapName;
+        public static Timer TimerLeft;
 
         public static void StartTimer()
         {
-            var timer = new Timer(1000, true);
+            TimerLeft = new Timer(1000, true);
             TextDraw tdTimeLeft = TextDrawGlobal.TdTimeLeft;
             ConfigMapRead();
             int timeLoading = MAX_TIME_LOADING;
@@ -49,7 +50,7 @@ namespace CaptureTheFlag.Map
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Beta, i] = new SpawnPoint();
             SpawnPositionRead();
-            timer.Tick += (sender, e) =>
+            TimerLeft.Tick += (sender, e) =>
             {
                 if (timeLeft < 0)
                 {
