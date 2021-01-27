@@ -58,6 +58,19 @@ public OnPlayerConnect(playerid)
 	RemoveBuildingForPlayer(playerid, 3941, -1132.1094, 1077.7422, 1347.9063, 0.25);
 	RemoveBuildingForPlayer(playerid, 1596, -1132.6953, 1073.9922, 1354.7500, 0.25);
 	RemoveBuildingForPlayer(playerid, 1596, -973.5625, 1046.0703, 1353.9688, 0.25);
+	
+	//Remove objects from WarZone map.
+	RemoveBuildingForPlayer(playerid, 11447, -1309.6016, 2492.4766, 86.0078, 0.25);
+	RemoveBuildingForPlayer(playerid, 11440, -1321.2109, 2503.3438, 85.4609, 0.25);
+	RemoveBuildingForPlayer(playerid, 11441, -1310.7734, 2514.0078, 86.1641, 0.25);
+	RemoveBuildingForPlayer(playerid, 11445, -1289.3672, 2513.6094, 86.6172, 0.25);
+	RemoveBuildingForPlayer(playerid, 11444, -1325.6719, 2527.7031, 86.1250, 0.25);
+	RemoveBuildingForPlayer(playerid, 11446, -1334.3828, 2524.6016, 86.1641, 0.25);
+	RemoveBuildingForPlayer(playerid, 11442, -1314.8359, 2526.4688, 86.3984, 0.25);
+	RemoveBuildingForPlayer(playerid, 11458, -1316.8516, 2542.6719, 86.8281, 0.25);
+	RemoveBuildingForPlayer(playerid, 11443, -1301.7188, 2527.4922, 86.6172, 0.25);
+	RemoveBuildingForPlayer(playerid, 11459, -1292.7969, 2529.0000, 86.5313, 0.25);
+	RemoveBuildingForPlayer(playerid, 11457, -1303.7734, 2550.2344, 86.2266, 0.25);
 	return 1;
 }
 
