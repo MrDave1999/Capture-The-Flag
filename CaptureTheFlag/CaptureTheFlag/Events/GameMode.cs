@@ -8,6 +8,9 @@ using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.DataBase;
+using SampSharp.GameMode.Events;
+using CaptureTheFlag.PropertiesPlayer;
+using SampSharp.GameMode.World;
 
 namespace CaptureTheFlag.Events
 {
@@ -89,6 +92,23 @@ namespace CaptureTheFlag.Events
         {
             base.LoadControllers(controllers);
             controllers.Override(new PlayerController());
+        }
+
+        protected override void OnRconLoginAttempt(RconLoginAttemptEventArgs e)
+        {
+            base.OnRconLoginAttempt(e);
+            if (e.SuccessfulLogin) 
+            {
+                foreach(Player player in BasePlayer.GetAll<Player>())
+                {
+                    if(player.IsConnected && e.IP == player.IP && player.Data.LevelAdmin != 4)
+                    {
+                        player.SendClientMessage(Color.Red, "Error: Usted no tiene el rango necesario para iniciar como RCON.");
+                        player.Kick();
+                        break;
+                    }
+                }
+            }
         }
     }
 }
