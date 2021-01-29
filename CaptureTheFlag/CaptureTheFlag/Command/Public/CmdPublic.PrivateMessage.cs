@@ -77,7 +77,7 @@ namespace CaptureTheFlag.Command.Public
             Player receiver = player.LastPlayerPM;
             if(receiver == null)
             {
-                player.SendClientMessage(Color.Yellow, "Error: Nadie te ha enviado un mensaje privado.");
+                player.SendClientMessage(Color.Red, "Error: Nadie te ha enviado un mensaje privado.");
                 return;
             }
             if(!receiver.IsConnected)
