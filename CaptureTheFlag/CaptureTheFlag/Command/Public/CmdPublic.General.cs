@@ -90,6 +90,7 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Orange}samp-incognito {Color.White}por crear streamer-plugin." +
                 $"\n{Color.Orange}Ts-Pytham {Color.White}por colaborar con el sistema de administración." +
                 $"\n{Color.Orange}critical99 {Color.White}por hacer la versión YSF Lite." +
+                $"\n{Color.Orange}BlasterDv {Color.White}por crear el Wrapper SampSharp.YSF." +
                 $"\n\n{Color.Yellow}¡Eres libre de contribuir en el proyecto!", "Aceptar").Show(player);
         }
     }
