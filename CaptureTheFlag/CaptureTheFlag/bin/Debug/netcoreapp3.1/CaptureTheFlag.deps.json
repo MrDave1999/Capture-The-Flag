@@ -11,6 +11,7 @@
           "MySql.Data": "8.0.22",
           "SampSharp.GameMode": "0.9.1",
           "SampSharp.Streamer": "0.9.0",
+          "SampSharp.YSF": "0.1.0-beta1",
           "ini-parser-netcore": "3.0.0"
         },
         "runtime": {
@@ -265,6 +266,17 @@
           "lib/netstandard2.0/SampSharp.Streamer.dll": {
             "assemblyVersion": "0.9.0.0",
             "fileVersion": "0.9.0.0"
+          }
+        }
+      },
+      "SampSharp.YSF/0.1.0-beta1": {
+        "dependencies": {
+          "SampSharp.GameMode": "0.9.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SampSharp.YSF.dll": {
+            "assemblyVersion": "0.1.0.0",
+            "fileVersion": "0.1.0.0"
           }
         }
       },
@@ -1261,6 +1273,13 @@
       "sha512": "sha512-z1EgpqUheNa1q/4Lv8bWlY2MOzTj22ZGXRV9z4R7tEh265V6LDC4AnF8BJ7YPttm5znpFuBve/EA7mACXNCy8Q==",
       "path": "sampsharp.streamer/0.9.0",
       "hashPath": "sampsharp.streamer.0.9.0.nupkg.sha512"
+    },
+    "SampSharp.YSF/0.1.0-beta1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C5VMv4uR95n2yVFm754/vlvqPq+Mz7N6G2ZSVVnaJ1Ahro52htrVH1QEketyVC88tMwb9NSiC0Si0s4ubsSqVA==",
+      "path": "sampsharp.ysf/0.1.0-beta1",
+      "hashPath": "sampsharp.ysf.0.1.0-beta1.nupkg.sha512"
     },
     "SSH.NET/2016.1.0": {
       "type": "package",

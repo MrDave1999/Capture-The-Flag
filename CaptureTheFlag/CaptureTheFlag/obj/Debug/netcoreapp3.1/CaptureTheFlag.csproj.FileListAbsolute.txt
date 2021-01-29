@@ -32,8 +32,10 @@ C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.AssemblyInfoInputs.cache
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.AssemblyInfo.cs
-C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csproj.CoreCompileInputs.cache
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csproj.CopyComplete
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.dll
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.pdb
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.genruntimeconfig.cache
+C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug\netcoreapp3.1\SampSharp.YSF.dll
+C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csproj.CoreCompileInputs.cache
+C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csprojAssemblyReference.cache

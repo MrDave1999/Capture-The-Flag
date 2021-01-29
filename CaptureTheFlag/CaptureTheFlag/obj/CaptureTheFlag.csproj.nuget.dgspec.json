@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[0.9.0, )"
             },
+            "SampSharp.YSF": {
+              "target": "Package",
+              "version": "[0.1.0-beta1, )"
+            },
             "ini-parser-netcore": {
               "target": "Package",
               "version": "[3.0.0, )"

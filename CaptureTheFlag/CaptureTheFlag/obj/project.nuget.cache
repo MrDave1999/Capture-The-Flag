@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0VSMHQDbp+gHcw8nKTkdUUaYMBRoQxnOUWTE6VZbJJ5NgCwWpBs+bT3Z5dL/2Hu3EZE8DbSQnSbQ2t414Yt0OQ==",
+  "dgSpecHash": "CUsQpc7sOTPxkRfZ1j2ytx0CMVmqJ5CmjtrkcLO1o4gC7DkIbCVu5xE89UHsqLWybNG8YYdhF9abmKtD2AGWpg==",
   "success": true,
   "projectFilePath": "C:\\Users\\syslan\\Desktop\\Capture-the-flag\\CaptureTheFlag\\CaptureTheFlag\\CaptureTheFlag.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "C:\\Users\\syslan\\.nuget\\packages\\sampsharp.core\\0.9.1\\sampsharp.core.0.9.1.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\sampsharp.gamemode\\0.9.1\\sampsharp.gamemode.0.9.1.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\sampsharp.streamer\\0.9.0\\sampsharp.streamer.0.9.0.nupkg.sha512",
+    "C:\\Users\\syslan\\.nuget\\packages\\sampsharp.ysf\\0.1.0-beta1\\sampsharp.ysf.0.1.0-beta1.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\ssh.net\\2016.1.0\\ssh.net.2016.1.0.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\sshnet.security.cryptography\\1.2.0\\sshnet.security.cryptography.1.2.0.nupkg.sha512",
     "C:\\Users\\syslan\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
