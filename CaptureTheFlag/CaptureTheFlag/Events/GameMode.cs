@@ -86,6 +86,7 @@ namespace CaptureTheFlag.Events
             TimerLeft.Dispose();
             TextDrawGlobal.Destroy();
             TextDrawEntry.Destroy();
+            Console.WriteLine("  The gamemode was unloading correctly.");
         }
       
         protected override void LoadControllers(ControllerCollection controllers)
