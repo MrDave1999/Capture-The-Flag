@@ -100,7 +100,7 @@ namespace CaptureTheFlag.Command.Admin
         {
             foreach (Player player1 in Player.Admins)
                 if(player1 != player)
-                    player1.SendClientMessage(Color.Orange, $"* El {Rank.GetRankAdmin(player.Data.LevelAdmin)} {player.Name} usó el comando /{command}");
+                    player1.SendClientMessage(Color.Orange, $"[{Rank.GetRankAdmin(player.Data.LevelAdmin)}]: {player.Name} usó el comando /{command}");
         }
     }
 }
