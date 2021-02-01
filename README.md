@@ -2,7 +2,7 @@
 [![CTF](https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/.NET%20Core-SampSharp.net-blue)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/GameMode-CSharp-yellow)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/Release-v6.1.4-green)](https://github.com/MrDave1999/Capture-the-flag)
+[![CTF](https://img.shields.io/badge/Release-v6.1.5-green)](https://github.com/MrDave1999/Capture-the-flag)
 
 Capture the flag is a gamemode for [SA-MP](https://www.sa-mp.com/) created with [sampsharp](https://github.com/ikkentim/SampSharp)
 
@@ -32,8 +32,8 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 #### SA-MP CTF Server Download
 - This package includes .NET Core (x86) for gamemode to work.
 
-  - [SA-MP CTF Windows Server](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.1.4/Windows.Server.zip)
-  - [SA-MP CTF Linux Server (x86)](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.1.4/Linux.Server.zip)
+  - [SA-MP CTF Windows Server](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.1.5/Windows.Server.zip)
+  - [SA-MP CTF Linux Server (x86)](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.1.5/Linux.Server.zip)
 
 #### .NET Core Download 
 
