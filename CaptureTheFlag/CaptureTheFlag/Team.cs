@@ -49,10 +49,10 @@ namespace CaptureTheFlag
             return Members > TeamRival.Members;
         }
 
-        public void UpdateTdScore()
+        public TextDraw UpdateTdScore()
         {
             TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
-            TdScore.ShowAll();
+            return TdScore;
         }
 
         public void ResetStats()
@@ -60,6 +60,7 @@ namespace CaptureTheFlag
             Score = 0;
             Kills = 0;
             Deaths = 0;
+            UpdateTdScore();
         }
 
         public void UpdateIcon()
@@ -142,7 +143,7 @@ namespace CaptureTheFlag
             Flag.PlayerCaptured = null;
             Flag.IsPositionBase = true;
             ++TeamRival.Score;
-            TeamRival.UpdateTdScore();
+            TeamRival.UpdateTdScore().ShowAll();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
             player.UpdateData("droppedFlags", ++player.Data.DroppedFlags);
             foreach(Player player1 in player.PlayerTeam.Players)
