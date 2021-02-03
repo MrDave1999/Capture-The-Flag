@@ -14,10 +14,7 @@ namespace CaptureTheFlag.Events
             base.OnPlayerSpawned(sender, e);
             var player = sender as Player;
             player.Health = 100;
-            if (player.Armour == 0)
-                player.TArmour.Hide();
-            else
-                player.TArmour.Show();
+            player.TArmour.Hide();
             foreach (Gun gun in player.ListGuns)
                 player.GiveWeapon(gun.Weapon);
             player.Team = (int)player.PlayerTeam.Id;
