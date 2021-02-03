@@ -82,8 +82,6 @@ namespace CaptureTheFlag.Map
                         TeamBeta.Flag.Create(FlagPositionRead("Blue"));
                         TeamAlpha.UpdateIcon();
                         TeamBeta.UpdateIcon();
-                        TeamAlpha.ResetStats();
-                        TeamBeta.ResetStats();
                         Server.SendRconCommand($"loadfs {GetMapName(Id)}");
                         Server.SendRconCommand($"mapname {GetMapName(Id)}");
                     }
@@ -106,6 +104,8 @@ namespace CaptureTheFlag.Map
                         }
                         TeamAlpha.Players.Clear();
                         TeamBeta.Players.Clear();
+                        TeamAlpha.ResetStats();
+                        TeamBeta.ResetStats();
                         timeLeft = MAX_TIME_ROUND;
                         timeLoading = MAX_TIME_LOADING;
                         return;
@@ -116,7 +116,6 @@ namespace CaptureTheFlag.Map
                 else
                 {
                     tdTimeLeft.Text = $"{timeLeft / 60:D2}:{timeLeft % 60:D2}";
-                    tdTimeLeft.Show();
                     --timeLeft;
                 }
             };

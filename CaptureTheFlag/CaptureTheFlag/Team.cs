@@ -49,10 +49,9 @@ namespace CaptureTheFlag
             return Members > TeamRival.Members;
         }
 
-        public TextDraw UpdateTdScore()
+        public void UpdateTdScore()
         {
             TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
-            return TdScore;
         }
 
         public void ResetStats()
@@ -143,7 +142,7 @@ namespace CaptureTheFlag
             Flag.PlayerCaptured = null;
             Flag.IsPositionBase = true;
             ++TeamRival.Score;
-            TeamRival.UpdateTdScore().ShowAll();
+            TeamRival.UpdateTdScore();
             player.UpdateAdrenaline(10, "llevar la bandera tu base");
             player.UpdateData("droppedFlags", ++player.Data.DroppedFlags);
             foreach(Player player1 in player.PlayerTeam.Players)
