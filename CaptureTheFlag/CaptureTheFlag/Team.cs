@@ -163,6 +163,7 @@ namespace CaptureTheFlag
             Drop(player);
             if (killer != null)
                 killer.UpdateAdrenaline(4, "matar al portador");
+            player.RemoveAttachedObject(0);
         }
 
         public void Drop(Player player)
