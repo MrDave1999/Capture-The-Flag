@@ -57,15 +57,8 @@ namespace CaptureTheFlag
             Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = interior, Color = Flag.ColorHex};
         }
 
-        public bool IsFull()
-        {
-            return Members > TeamRival.Members;
-        }
-
-        public void UpdateTdScore()
-        {
-            TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
-        }
+        public bool IsFull() => Members > TeamRival.Members;
+        public void UpdateTdScore() => TdScore.Text = $"{ColorGameText}{NameTeam}: {Score}";
 
         public void ResetStats()
         {

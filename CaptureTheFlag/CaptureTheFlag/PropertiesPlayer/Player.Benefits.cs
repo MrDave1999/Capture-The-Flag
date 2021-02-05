@@ -14,20 +14,9 @@ namespace CaptureTheFlag.PropertiesPlayer
         public bool JumpOn { get; set; }
         public bool IsInvisible { get; set; }
 
-        public bool IsEnableJump()
-        {
-            return JumpTime > Time.GetTime();
-        }
-
-        public bool IsEnableSpeed()
-        {
-            return SpeedTime > Time.GetTime();
-        }
-
-        public bool IsEnableInvisible()
-        {
-            return InvisibleTime > Time.GetTime();
-        }
+        public bool IsEnableJump() => JumpTime > Time.GetTime();
+        public bool IsEnableSpeed() => SpeedTime > Time.GetTime();
+        public bool IsEnableInvisible() => InvisibleTime > Time.GetTime();
 
         public void EnableInvisibility()
         {

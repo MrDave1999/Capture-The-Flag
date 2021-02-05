@@ -22,10 +22,7 @@ namespace CaptureTheFlag.PropertiesPlayer
             return player1;
         }
 
-        public static void Remove(Player player)
-        {
-            player.PlayerTeam.Players.Remove(player);
-        }
+        public static void Remove(Player player) => player.PlayerTeam.Players.Remove(player);
 
         public static void AddAV(Player player)
         {
@@ -43,10 +40,7 @@ namespace CaptureTheFlag.PropertiesPlayer
                 Vips.Remove(player);
         }
 
-        public static void Add(Player player)
-        {
-            player.PlayerTeam.Players.Add(player);
-        }
+        public static void Add(Player player) => player.PlayerTeam.Players.Add(player);
 
         public static IEnumerable<Player> GetAll()
         {
@@ -57,10 +51,6 @@ namespace CaptureTheFlag.PropertiesPlayer
                 yield return player;
         }
 
-        public static int Count()
-        {
-            return TeamAlpha.Members + TeamBeta.Members;
-        }
-
+        public static int Count() => TeamAlpha.Members + TeamBeta.Members;
     }
 }

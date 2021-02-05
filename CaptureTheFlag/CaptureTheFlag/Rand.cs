@@ -8,10 +8,7 @@ namespace CaptureTheFlag
     {
         private static readonly Random random = new Random();
 
-        public static int Next(int max)
-        {
-            return random.Next(max);
-        }
+        public static int Next(int max) => random.Next(max);
 
         public static void Shuffle<T>(T[]array)
         {

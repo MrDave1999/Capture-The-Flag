@@ -130,15 +130,7 @@ namespace CaptureTheFlag.Map
             player.Interior = Interior;
         }
 
-        public static string GetMapName(int mapid)
-        {
-            return mapName[mapid];
-        }
-
-        public static string GetCurrentMap()
-        {
-            return mapName[Id];
-        }
-
+        public static string GetMapName(int mapid) => mapName[mapid];
+        public static string GetCurrentMap() => mapName[Id];
     }
 }
