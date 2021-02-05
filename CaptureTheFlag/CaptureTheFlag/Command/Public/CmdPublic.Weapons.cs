@@ -48,7 +48,7 @@ namespace CaptureTheFlag.Command.Public
         }
 
         [Command("packet", Shortcut = "packet")]
-        private static void PacketWeapons(Player player)
+        public static void PacketWeapons(Player player)
         {
             if (player.ListGuns.Count == 0)
             {
