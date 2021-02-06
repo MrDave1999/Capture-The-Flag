@@ -21,16 +21,21 @@ namespace CaptureTheFlag.Events
                 CmdPublic.UsersList(player);
             else if (HasPressed(e, Keys.CtrlBack))
                 CmdPublic.Combos(player);
-            else if ((((e.OldKeys & Keys.Walk) != 0) && ((e.NewKeys & Keys.Crouch) != 0)) && !HasReleased(e, Keys.Walk))
+            else if (Pressed(e, Keys.Walk, Keys.Crouch))
             {
                 if (player.SpecialAction == SpecialAction.Duck)
                     player.ToggleControllable(true);
                 CmdPublic.PacketWeapons(player);
             }
+            else if (Pressed(e, Keys.Walk, Keys.Sprint))
+                CmdPublic.ListCommands(player);
             if (!player.IsCapturedFlag() && (player.JumpOn || player.IsEnableJump()) && HasPressed(e, Keys.Jump))
                 player.Velocity = new Vector3(player.Velocity.X, player.Velocity.Y, 0.24);
             if (player.IsEnableSpeed() && HasPressed(e, Keys.Sprint))
                 player.ApplyAnimation("PED", "sprint_civi", 100, true, true, true, true, 500);
         }
+
+        private bool Pressed(KeyStateChangedEventArgs e, Keys key1, Keys key2)
+            => (((e.OldKeys & key1) != 0) && ((e.NewKeys & key2) != 0)) && !HasReleased(e, key1);
     }
 }
