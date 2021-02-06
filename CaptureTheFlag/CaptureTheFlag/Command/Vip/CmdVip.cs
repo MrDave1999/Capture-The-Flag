@@ -34,7 +34,7 @@ namespace CaptureTheFlag.Command.Vip
         {
             if (player.IsVipLevel(2)) return;
             new MessageDialog("Comandos - Premium (Nivel 3)",
-                $"{Color.White}/invisible, /visible, /flame" +
+                $"{Color.White}/invisible, /visible, /flame, /clearchat" +
                 $"\n{Color.Yellow}* Cada vez que inicie una partida tendrás 100 % de adrenalina.",
                 "Aceptar", "").Show(player);
         }
