@@ -15,7 +15,6 @@ using SampSharp.GameMode.SAMP.Commands;
 
 namespace CaptureTheFlag.DataBase
 {
-    [CommandGroup("account", PermissionChecker = typeof(BlockCommand))]
     public partial class Account
     {
         public Account()
@@ -141,7 +140,13 @@ namespace CaptureTheFlag.DataBase
             cmd.Parameters.Clear();
             return str;
         }
+    }  
+}
 
+namespace CaptureTheFlag.Command.Public
+{
+    public partial class CmdPublic
+    {
         [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
         public static void StatsDb(Player player, string playername)
         {
@@ -170,6 +175,6 @@ namespace CaptureTheFlag.DataBase
             cmd.Parameters.Clear();
             reader.Close();
         }
-    }  
+    }
 }
    
