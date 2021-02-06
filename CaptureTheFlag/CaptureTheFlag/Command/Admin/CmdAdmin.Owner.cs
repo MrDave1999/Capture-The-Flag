@@ -1,4 +1,5 @@
-﻿using CaptureTheFlag.PropertiesPlayer;
+﻿using CaptureTheFlag.Map;
+using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
 using SampSharp.GameMode.World;
@@ -11,6 +12,20 @@ namespace CaptureTheFlag.Command.Admin
 {
     public partial class CmdAdmin
     {
+        [Command("settimeleft", Shortcut = "settimeleft", UsageMessage = "/settimeleft [minutes]")]
+        private static void SetTimeLeft(Player player, int minutes)
+        {
+            if (player.IsAdminLevel(4)) return;
+            if(minutes < 0 || minutes > 60)
+            {
+                player.SendClientMessage(Color.Red, "Error: Los minutos deben estar en el rango de 0 a 60.");
+                return;
+            }
+            CurrentMap.timeLeft = minutes * 60;
+            BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} cambió el tiempo de la partida a {Color.Orange}{minutes} {(minutes == 1 ? "minuto" : "minutos")}.");
+            SendMessageToAdmins(player, "settimeleft");
+        }
+
         [Command("setlevel", Shortcut = "setlevel", UsageMessage = "/setlevel [playerid] [levelid]")]
         private static void SetLevel(Player player, int playerid, int levelid)
         {
