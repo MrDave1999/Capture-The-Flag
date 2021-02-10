@@ -29,6 +29,11 @@ namespace CaptureTheFlag.Events
             }
             else if (Pressed(e, Keys.Walk, Keys.Sprint))
                 CmdPublic.ListCommands(player);
+            else if (HasPressed(e, Keys.AnalogLeft))
+                CmdPublic.TopTen(player);
+            else if (HasPressed(e, Keys.AnalogRight))
+                CmdPublic.Help(player);
+
             if (!player.IsCapturedFlag() && (player.JumpOn || player.IsEnableJump()) && HasPressed(e, Keys.Jump))
                 player.Velocity = new Vector3(player.Velocity.X, player.Velocity.Y, 0.24);
             if (player.IsEnableSpeed() && HasPressed(e, Keys.Sprint))
