@@ -95,8 +95,17 @@ namespace CaptureTheFlag.PropertiesPlayer
             return false;
         }
 
-        public void Drop() => PlayerTeam.TeamRival.Drop(this);
+        public bool IsGameLevel(int levelid)
+        {
+            if(Data.LevelGame < levelid)
+            {
+                SendClientMessage(Color.Red, $"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankLevel(levelid)}) para usar este comando.");
+                return true;
+            }
+            return false;
+        }
 
+        public void Drop() => PlayerTeam.TeamRival.Drop(this);
         public bool IsCapturedFlag() => this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
 
         public new string[] ToString()
