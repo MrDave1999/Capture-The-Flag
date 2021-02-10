@@ -1,5 +1,6 @@
 ﻿using CaptureTheFlag.DataBase;
 using CaptureTheFlag.PropertiesPlayer;
+using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
@@ -58,17 +59,28 @@ namespace CaptureTheFlag.Command.Public
                 "\nCaptured Flag by: " + (TeamBeta.Flag.PlayerCaptured == null ? "None" : $"{TeamBeta.Flag.PlayerCaptured.Name}"), "Aceptar").Show(player);
         }
 
-        [Command("changepass", Shortcut = "changepass", UsageMessage = "/changepass [password]")]
-        public static void ChangePassword(Player player, string newpassword)
+        [Command("changepass", Shortcut = "changepass")]
+        public static void ChangePassword(Player player)
         {
-            Validate.PasswordRange(player, newpassword);
-            Account.Update("pass", Account.Encrypt(newpassword), player.Name);
-            player.SendClientMessage(Color.Orange, $"** La nueva contraseña de tu cuenta es: {newpassword}");
+            if (player.IsGameLevel(2)) return;
+            var dialogPass = new InputDialog("Password New", "Ingrese su nueva contraseña:", true, "Aceptar", "Cerrar");
+            dialogPass.Show(player);
+            dialogPass.Response += (sender, e) =>
+            {
+                if(e.DialogButton == DialogButton.Left)
+                {
+                    Validate.IsEmpty(player, dialogPass, e.InputText);
+                    Validate.PasswordRange(player, dialogPass, e.InputText);
+                    Account.Update("pass", Account.Encrypt(e.InputText), player.Name);
+                    player.SendClientMessage(Color.Orange, $"** La nueva contraseña de tu cuenta es: {e.InputText}");
+                }
+            };
         }
 
         [Command("changename", Shortcut = "changename", UsageMessage = "/changename [name]")]
         public static void ChangeName(Player player, string newname)
-        { 
+        {
+            if (player.IsGameLevel(2)) return;
             if(Account.Exists(newname))
             {
                 player.SendClientMessage(Color.Red, "Error: Ese nombre ya existe en la base de datos.");
