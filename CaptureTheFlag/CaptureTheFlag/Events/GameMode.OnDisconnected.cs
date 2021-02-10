@@ -22,6 +22,7 @@ namespace CaptureTheFlag.Events
                 TextDrawGlobal.UpdateCountUsers();
             }
             TextDrawPlayer.Destroy(player);
+            TextDrawGlobal.Hide(player);
             Player.RemoveAV(player);
         }
     }
