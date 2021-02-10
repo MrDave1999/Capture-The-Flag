@@ -88,20 +88,16 @@ namespace CaptureTheFlag.DataBase
 
         public static bool Exists(string playername)
         {
-            cmd.CommandText = "SELECT namePlayer FROM Players WHERE namePlayer = @namePlayer;";
-            cmd.Parameters.AddWithValue("@namePlayer", playername);
-            var reader = cmd.ExecuteReader();
+            cmd.CommandText = $"SELECT namePlayer FROM Players WHERE namePlayer = '{playername}';";
+            using var reader = cmd.ExecuteReader();
             bool exists = reader.Read();
-            cmd.Parameters.Clear();
-            reader.Close();
             return exists;
         }
 
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = "INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate) VALUES(@namePlayer, SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate);";
-            cmd.Parameters.AddWithValue("@namePlayer", player.Name);
+            cmd.CommandText = $"INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate) VALUES('{player.Name}', SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate);";
             cmd.Parameters.AddWithValue("@pass", password);
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
             cmd.ExecuteNonQuery();
@@ -110,9 +106,8 @@ namespace CaptureTheFlag.DataBase
 
         public static bool Load(Player player, out string password)
         {
-            cmd.CommandText = "SELECT * FROM Players WHERE namePlayer = @namePlayer;";
-            cmd.Parameters.AddWithValue("@namePlayer", player.Name);
-            var reader = cmd.ExecuteReader();
+            cmd.CommandText = $"SELECT * FROM Players WHERE namePlayer = '{player.Name}';";
+            using var reader = cmd.ExecuteReader();
             bool exists = reader.Read();
             if (exists)
             {
@@ -127,8 +122,6 @@ namespace CaptureTheFlag.DataBase
             }
             else
                 password = null;
-            cmd.Parameters.Clear();
-            reader.Close();
             return exists;
         }
 
@@ -150,9 +143,8 @@ namespace CaptureTheFlag.Command.Public
         [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
         public static void StatsDb(Player player, string playername)
         {
-            cmd.CommandText = "SELECT * FROM Players WHERE namePlayer = @namePlayer;";
-            cmd.Parameters.AddWithValue("@namePlayer", playername);
-            var reader = cmd.ExecuteReader();
+            cmd.CommandText = $"SELECT * FROM Players WHERE namePlayer = '{playername}';";
+            using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 var stats = new TablistDialog("Stats", 2, "Aceptar", "");
@@ -172,8 +164,6 @@ namespace CaptureTheFlag.Command.Public
             }
             else
                 player.SendClientMessage(Color.Red, "Error: Ese nombre no se encuentra en la base de datos del servidor.");
-            cmd.Parameters.Clear();
-            reader.Close();
         }
     }
 }
