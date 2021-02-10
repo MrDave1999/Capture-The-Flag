@@ -69,7 +69,7 @@ namespace CaptureTheFlag.Command.Public
         [Command("changename", Shortcut = "changename", UsageMessage = "/changename [name]")]
         public static void ChangeName(Player player, string newname)
         { 
-            if(Account.Exists(player.Name))
+            if(Account.Exists(newname))
             {
                 player.SendClientMessage(Color.Red, "Error: Ese nombre ya existe en la base de datos.");
                 return;
