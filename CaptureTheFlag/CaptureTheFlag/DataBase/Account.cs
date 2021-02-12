@@ -88,7 +88,7 @@ namespace CaptureTheFlag.DataBase
 
         public static bool Exists(string playername)
         {
-            cmd.CommandText = $"SELECT namePlayer FROM Players WHERE namePlayer = '{playername}';";
+            cmd.CommandText = $"SELECT namePlayer FROM players WHERE namePlayer = '{playername}';";
             using var reader = cmd.ExecuteReader();
             bool exists = reader.Read();
             return exists;
@@ -97,7 +97,7 @@ namespace CaptureTheFlag.DataBase
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = $"INSERT INTO Players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate) VALUES('{player.Name}', SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate);";
+            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate) VALUES('{player.Name}', SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate);";
             cmd.Parameters.AddWithValue("@pass", password);
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
             cmd.ExecuteNonQuery();
@@ -106,7 +106,7 @@ namespace CaptureTheFlag.DataBase
 
         public static bool Load(Player player, out string password)
         {
-            cmd.CommandText = $"SELECT * FROM Players WHERE namePlayer = '{player.Name}';";
+            cmd.CommandText = $"SELECT * FROM players WHERE namePlayer = '{player.Name}';";
             using var reader = cmd.ExecuteReader();
             bool exists = reader.Read();
             if (exists)
@@ -143,7 +143,7 @@ namespace CaptureTheFlag.Command.Public
         [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
         public static void StatsDb(Player player, string playername)
         {
-            cmd.CommandText = $"SELECT * FROM Players WHERE namePlayer = '{playername}';";
+            cmd.CommandText = $"SELECT * FROM players WHERE namePlayer = '{playername}';";
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {

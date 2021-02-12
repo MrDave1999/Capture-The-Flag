@@ -9,7 +9,7 @@ namespace CaptureTheFlag.DataBase
 {
     public partial class Account
     {
-        public static void Update<T>(string campus, T newvalue, string nameplayer, string nametable = "Players")
+        public static void Update<T>(string campus, T newvalue, string nameplayer, string nametable = "players")
         {
             cmd.CommandText = $"UPDATE {nametable} SET {campus}=@{campus} WHERE namePlayer = @name_player;";
             cmd.Parameters.AddWithValue("@" + campus, newvalue);
@@ -20,19 +20,19 @@ namespace CaptureTheFlag.DataBase
 
         public static void InsertVipLevel(Player player, int levelid)
         {
-            cmd.CommandText = $"INSERT INTO Vips(namePlayer, levelVip, skinid) VALUES('{player.Name}', {levelid}, -1);";
+            cmd.CommandText = $"INSERT INTO vips(namePlayer, levelVip, skinid) VALUES('{player.Name}', {levelid}, -1);";
             cmd.ExecuteNonQuery();
         }
 
         public static void InsertAdminLevel(Player player, int levelid)
         {
-            cmd.CommandText = $"INSERT INTO Admins(namePlayer, levelAdmin) VALUES('{player.Name}', {levelid});";
+            cmd.CommandText = $"INSERT INTO admins(namePlayer, levelAdmin) VALUES('{player.Name}', {levelid});";
             cmd.ExecuteNonQuery();
         }
 
         public static void LoadVipLevel(Player player)
         {
-            cmd.CommandText = $"SELECT * FROM Vips WHERE namePlayer = '{player.Name}';";
+            cmd.CommandText = $"SELECT * FROM vips WHERE namePlayer = '{player.Name}';";
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -43,7 +43,7 @@ namespace CaptureTheFlag.DataBase
 
         public static void LoadAdminLevel(Player player)
         {
-            cmd.CommandText = $"SELECT * FROM Admins WHERE namePlayer = '{player.Name}';";
+            cmd.CommandText = $"SELECT * FROM admins WHERE namePlayer = '{player.Name}';";
             using var reader = cmd.ExecuteReader();
             if (reader.Read()) 
                 player.Data.LevelAdmin = reader.GetInt32("levelAdmin");

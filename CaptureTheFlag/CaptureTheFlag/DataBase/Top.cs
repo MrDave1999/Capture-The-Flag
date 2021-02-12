@@ -20,7 +20,7 @@ namespace CaptureTheFlag.DataBase
         {
             int position = 0;
             var dialogTop = new TablistDialog("Top Ten", new[] { "Position", "Name", $"{nameColumn}" }, "Atrás", "Cerrar");
-            cmd.CommandText = $"SELECT namePlayer, {campus} FROM Players ORDER BY {campus} DESC LIMIT 10;";
+            cmd.CommandText = $"SELECT namePlayer, {campus} FROM players ORDER BY {campus} DESC LIMIT 10;";
             using var reader = cmd.ExecuteReader();
             while(reader.Read())
                 dialogTop.Add(new[] { $"#{++position}", reader.GetString("namePlayer"), reader.GetInt32(campus).ToString() });
