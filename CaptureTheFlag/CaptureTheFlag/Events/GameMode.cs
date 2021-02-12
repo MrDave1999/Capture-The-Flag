@@ -28,7 +28,7 @@ namespace CaptureTheFlag.Events
             Console.WriteLine("     Team DeathMatch");
             Console.WriteLine("----------------------------------\n");
 
-            SetGameModeText("CTF ~v6.1.5");
+            SetGameModeText("CTF ~v6.5.8");
             Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
             Server.SendRconCommand("weburl www.");
             Server.SendRconCommand("language  Español Latino");
