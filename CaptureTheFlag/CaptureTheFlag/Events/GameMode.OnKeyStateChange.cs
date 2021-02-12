@@ -15,20 +15,20 @@ namespace CaptureTheFlag.Events
             base.OnPlayerKeyStateChanged(sender, e);
             var player = sender as Player;
 
-            if (HasPressed(e, Keys.Yes))
-                CmdPublic.Weapons(player);
-            else if (HasPressed(e, Keys.No))
-                CmdPublic.UsersList(player);
-            else if (HasPressed(e, Keys.CtrlBack))
-                CmdPublic.Combos(player);
-            else if (Pressed(e, Keys.Walk, Keys.Crouch))
+            if (Pressed(e, Keys.Walk, Keys.Crouch))
             {
                 if (player.SpecialAction == SpecialAction.Duck)
                     player.ToggleControllable(true);
                 CmdPublic.PacketWeapons(player);
             }
-            else if (Pressed(e, Keys.Walk, Keys.Sprint))
+            else if (Pressed(e, Keys.Walk, Keys.CtrlBack))
                 CmdPublic.ListCommands(player);
+            else if (HasPressed(e, Keys.Yes))
+                CmdPublic.Weapons(player);
+            else if (HasPressed(e, Keys.No))
+                CmdPublic.UsersList(player);
+            else if (HasPressed(e, Keys.CtrlBack))
+                CmdPublic.Combos(player);
             else if (HasPressed(e, Keys.AnalogLeft))
                 CmdPublic.TopTen(player);
             else if (HasPressed(e, Keys.AnalogRight))

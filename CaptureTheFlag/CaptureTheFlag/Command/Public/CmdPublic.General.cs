@@ -47,7 +47,7 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Yellow}Tecla Y:{Color.White} Invoca al comando /weapons." +
                 $"\n{Color.Yellow}Tecla N:{Color.White} Muestra la lista de usuarios conectados (por equipo)." +
                 $"\n{Color.Yellow}ALT + C:{Color.White} Invoca al comando /packet." +
-                $"\n{Color.Yellow}ALT + SPACE:{Color.White} Invoca al comando /cmds." +
+                $"\n{Color.Yellow}ALT + H:{Color.White} Invoca al comando /cmds." +
                 $"\n{Color.Yellow}NUM 4:{Color.White} Invoca al comando /top." +
                 $"\n{Color.Yellow}NUM 6:{Color.White} Invoca al comando /help." +
                 $"\n\n{Color.Orange}Signos:" +
