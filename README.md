@@ -2,7 +2,7 @@
 [![CTF](https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/.NET%20Core-SampSharp.net-blue)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/GameMode-CSharp-yellow)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/Release-v6.1.5-green)](https://github.com/MrDave1999/Capture-the-flag)
+[![CTF](https://img.shields.io/badge/Release-v6.5.8-green)](https://github.com/MrDave1999/Capture-the-flag)
 
 Capture the flag is a gamemode for [SA-MP](https://www.sa-mp.com/) created with [sampsharp](https://github.com/ikkentim/SampSharp)
 
@@ -26,14 +26,15 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 - The game mode has a basic administration system with 4 levels: Assistant, Moderator, Administrator and Owner.
 - Each player has their own rank. The gamemode has 15 ranks that are obtained for a certain amount of kills.
   You can see the available ranges with the `/ranks` command.
+- You can see the top 10 players in terms of kills, deaths, dropped flags, headshots and killing sprees with the `/top` command.
 
 ## Installation
 
 #### SA-MP CTF Server Download
 - This package includes .NET Core (x86) for gamemode to work.
 
-  - [SA-MP CTF Windows Server](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.1.5/Windows.Server.zip)
-  - [SA-MP CTF Linux Server (x86)](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.1.5/Linux.Server.zip)
+  - [SA-MP CTF Windows Server](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.5.8/Windows.Server.zip)
+  - [SA-MP CTF Linux Server (x86)](https://github.com/MrDave1999/Capture-The-Flag/releases/download/6.5.8/Linux.Server.zip)
 
 #### .NET Core Download 
 
