@@ -32,9 +32,7 @@ namespace CaptureTheFlag.Controller
         }
 
         protected override ICommand CreateCommand(CommandPath[] commandPaths, string displayName, bool ignoreCase, IPermissionChecker[] permissionCheckers, MethodInfo method, string usageMessage)
-        {
-            return new MyCommand(commandPaths, displayName, ignoreCase, permissionCheckers, method, $"{Color.Red}Usage: {usageMessage}");
-        }
+            => new MyCommand(commandPaths, displayName, ignoreCase, permissionCheckers, method, $"{Color.Red}Usage: {usageMessage}");
     }
 
     public class MyCommand : DefaultCommand

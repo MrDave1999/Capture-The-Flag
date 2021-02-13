@@ -12,7 +12,7 @@ namespace CaptureTheFlag.Command.Public
     public partial class CmdPublic
     {
         [Command("cmds", Shortcut = "cmds")]
-        private static void ListCommands(Player player)
+        public static void ListCommands(Player player)
         {
             new MessageDialog(" ",
                 $"{Color.Orange}Comandos:" +
@@ -40,10 +40,16 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Yellow}/packet{Color.White} - Muestra el paquete actual de armas del jugador." +
                 $"\n{Color.Yellow}/music{Color.White} - Permite escuchar música por medio de una URL." +
                 $"\n{Color.Yellow}/stop{Color.White} - Detiene la música." +
+                $"\n{Color.Yellow}/map{Color.White} - Muestra el mapa actual del servidor." +
+                $"\n{Color.Yellow}/top{Color.White} - Muestra un menú de Tops como por ejemplo: TopKills, TopDeaths, etc." +
                 $"\n\n{Color.Orange}Teclas:" +
-                $"\n{Color.Yellow}Tecla H:{Color.White} Muestra el listado de combos a canjear (por adrenalina)." +
-                $"\n{Color.Yellow}Tecla Y:{Color.White} Muestra un menú de armas." +
+                $"\n{Color.Yellow}Tecla H:{Color.White} Invoca al comando /combos." +
+                $"\n{Color.Yellow}Tecla Y:{Color.White} Invoca al comando /weapons." +
                 $"\n{Color.Yellow}Tecla N:{Color.White} Muestra la lista de usuarios conectados (por equipo)." +
+                $"\n{Color.Yellow}ALT + C:{Color.White} Invoca al comando /packet." +
+                $"\n{Color.Yellow}ALT + H:{Color.White} Invoca al comando /cmds." +
+                $"\n{Color.Yellow}NUM 4:{Color.White} Invoca al comando /top." +
+                $"\n{Color.Yellow}NUM 6:{Color.White} Invoca al comando /help." +
                 $"\n\n{Color.Orange}Signos:" +
                 $"\n{Color.Yellow}Signo (!):{Color.White} Permite hablar en el TeamChat (ejemplo: {Color.Pink}!texto{Color.White})." +
                 $"\n{Color.Yellow}Signo (#):{Color.White} Permite hablar en el AdminChat (ejemplo: {Color.Pink}#texto{Color.White})." +

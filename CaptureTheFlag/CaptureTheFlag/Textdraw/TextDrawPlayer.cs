@@ -66,13 +66,11 @@ namespace CaptureTheFlag.Textdraw
         public static void UpdateTdStats(Player player)
         {
             player.Stats.Text = $"~w~KILLS: ~y~{player.Kills}  ~w~DEATHS: ~y~{player.Deaths}  ~w~LVL: ~y~{player.Data.LevelGame}  ~w~KS: ~y~{player.Data.KillingSprees}  ~w~ADRENALINE: ~y~{player.Adrenaline}/100";
-            player.Stats.Show();
         }
 
         public static void UpdateTdRank(Player player)
         {
             player.TdRank.Text = $"{Rank.GetRankLevel(player.Data.LevelGame)}";
-            player.TdRank.Show();
         }
 
         public static void Destroy(Player player)
@@ -97,6 +95,5 @@ namespace CaptureTheFlag.Textdraw
             player.TArmour.Hide();
             player.TdRank.Hide();
         }
-
     }
 }

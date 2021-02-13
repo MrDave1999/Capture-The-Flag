@@ -50,5 +50,13 @@ namespace CaptureTheFlag.Command.Vip
             if (player.IsVipLevel(3)) return;
             player.GiveWeapon(Weapon.FlameThrower);
         }
+
+        [Command("clearchat", Shortcut = "clearchat")]
+        private static void ClearChat(Player player)
+        {
+            if (player.IsVipLevel(3)) return;
+            for (int i = 0; i != 100; ++i)
+                player.SendClientMessage(" ");
+        }
     }
 }

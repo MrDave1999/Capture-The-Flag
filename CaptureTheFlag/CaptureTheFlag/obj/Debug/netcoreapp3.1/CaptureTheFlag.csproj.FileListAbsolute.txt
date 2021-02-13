@@ -38,3 +38,4 @@ C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.genruntimeconfig.cache
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\bin\Debug\netcoreapp3.1\SampSharp.YSF.dll
 C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csproj.CoreCompileInputs.cache
+C:\Users\syslan\Desktop\Capture-the-flag\CaptureTheFlag\CaptureTheFlag\obj\Debug\netcoreapp3.1\CaptureTheFlag.csprojAssemblyReference.cache

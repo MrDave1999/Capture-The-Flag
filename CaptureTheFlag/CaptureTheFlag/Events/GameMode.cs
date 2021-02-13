@@ -28,7 +28,7 @@ namespace CaptureTheFlag.Events
             Console.WriteLine("     Team DeathMatch");
             Console.WriteLine("----------------------------------\n");
 
-            SetGameModeText("CTF ~v6.1.5");
+            SetGameModeText("CTF ~v6.5.8");
             Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
             Server.SendRconCommand("weburl www.");
             Server.SendRconCommand("language  Español Latino");
@@ -49,6 +49,7 @@ namespace CaptureTheFlag.Events
                 teamid: TeamID.Alpha, 
                 name: "Alpha", 
                 namecolor: "Roja", 
+                colorEnglish: "Red",
                 new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), 
                 Interior
             );
@@ -60,7 +61,8 @@ namespace CaptureTheFlag.Events
                 TextDrawGlobal.TdScoreBeta,  
                 teamid: TeamID.Beta,  
                 name: "Beta",  
-                namecolor: "Azul", 
+                namecolor: "Azul",
+                colorEnglish: "Blue",
                 new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), 
                 Interior
             );

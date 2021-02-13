@@ -56,6 +56,7 @@ namespace CaptureTheFlag.Events
             TextDrawGlobal.Show(player);
             TextDrawGlobal.UpdateCountUsers();
             TextDrawPlayer.UpdateTdStats(player);
+            TextDrawPlayer.UpdateTdRank(player);
             TextDrawPlayer.Show(player);
             TextDrawEntry.Hide(player);
         }

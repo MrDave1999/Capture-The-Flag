@@ -9,18 +9,12 @@ namespace CaptureTheFlag
     {
 		[NativeMethod]
 		public virtual int gettime(int hour = 0, int minute = 0, int second = 0)
-		{
-			throw new NativeNotImplementedException();
-		}
+			=> throw new NativeNotImplementedException();
 	}
 
 	public class Time
     {
-
-		public static int GetTime()
-        {
-			return TimeNative.Instance.gettime(); 
-		}
+		public static int GetTime() => TimeNative.Instance.gettime(); 
 
 		/* Displays the time in MM:SS format. */
 		public static string Show(int time)

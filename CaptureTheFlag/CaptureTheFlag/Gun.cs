@@ -31,19 +31,8 @@ namespace CaptureTheFlag
             Slot = slot;
         }
 
-        public static Gun GetWeapon(int index)
-        {
-            return guns[index];
-        }
-
-        public static Gun GetWeapon(GunID index)
-        {
-            return guns[(int)index];
-        }
-
-        public static Gun[] GetInstanceArray()
-        {
-            return guns;
-        }
+        public static Gun GetWeapon(int index) => guns[index];
+        public static Gun GetWeapon(GunID index) => guns[(int)index];
+        public static Gun[] GetInstanceArray() => guns;
     }
 }

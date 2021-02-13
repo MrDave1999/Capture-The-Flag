@@ -22,17 +22,12 @@ namespace CaptureTheFlag.PropertiesPlayer
                 GiveWeapon(gun.Weapon);
         }
 
-        public void GiveWeapon(Weapon weapon)
-        {
-            GiveWeapon(weapon, 99999999);
-        }
+        public void GiveWeapon(Weapon weapon) => GiveWeapon(weapon, 99999999);
 
         public void SetWeapon(Weapon weapon, int ammo)
         {
             SetAmmo(weapon, 0);
             GiveWeapon(weapon, ammo);
         }
-
-
     }
 }

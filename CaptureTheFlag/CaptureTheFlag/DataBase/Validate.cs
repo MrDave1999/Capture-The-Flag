@@ -19,15 +19,6 @@ namespace CaptureTheFlag.DataBase
             }
         }
 
-        public static void PasswordRange(Player player, string password)
-        {
-            if (password.Length < 4 || password.Length > 20)
-            {
-                player.SendClientMessage(Color.Red, "Error: La contraseña debe tener entre 4 y 20 caracteres.");   
-                throw new Exception();
-            }
-        }
-
         public static void IsEmpty(Player player, InputDialog dialog, string text)
         {
             if(text.Trim().Length == 0)

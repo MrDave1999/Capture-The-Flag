@@ -95,15 +95,18 @@ namespace CaptureTheFlag.PropertiesPlayer
             return false;
         }
 
-        public void Drop()
+        public bool IsGameLevel(int levelid)
         {
-            PlayerTeam.TeamRival.Drop(this);
+            if(Data.LevelGame < levelid)
+            {
+                SendClientMessage(Color.Red, $"Error: Debes ser nivel {levelid} (Rango: {Rank.GetRankLevel(levelid)}) para usar este comando.");
+                return true;
+            }
+            return false;
         }
 
-        public bool IsCapturedFlag()
-        {
-            return this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
-        }
+        public void Drop() => PlayerTeam.TeamRival.Drop(this);
+        public bool IsCapturedFlag() => this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
 
         public new string[] ToString()
         {
@@ -126,10 +129,7 @@ namespace CaptureTheFlag.PropertiesPlayer
             /* *** */
         }
 
-        public void UpdateData<T>(string campus, T newvalue)
-        {
-            DataBase.Account.Update(campus, newvalue, Name);
-        }
+        public void UpdateData<T>(string campus, T newvalue) => DataBase.Account.Update(campus, newvalue, Name);
 
         public bool Equals(Player player, string msg)
         {
@@ -141,21 +141,8 @@ namespace CaptureTheFlag.PropertiesPlayer
             return false;
         }
 
-        public override void Kick()
-        {
-            new Timer(500, false).Tick += (sender, e) =>
-            {
-                base.Kick();
-            };
-        }
-
-        public override void Ban(string reason)
-        {
-            new Timer(500, false).Tick += (sender, e) =>
-            {
-                base.Ban(reason);
-            };
-        }
+        public override void Kick() => new Timer(500, false).Tick += (sender, e) => base.Kick();
+        public override void Ban(string reason) => new Timer(500, false).Tick += (sender, e) => base.Ban(reason);
 
         public override int Skin
         {

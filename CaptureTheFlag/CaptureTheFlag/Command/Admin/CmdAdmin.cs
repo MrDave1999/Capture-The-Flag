@@ -44,7 +44,7 @@ namespace CaptureTheFlag.Command.Admin
         {
             if (player.IsAdminLevel(4)) return;
             new MessageDialog("Comandos - Dueño (Nivel 4)",
-                $"{Color.White}/setlevel, /setvip, /lockserver, /unlockserver, /restartserver",
+                $"{Color.White}/setlevel, /setvip, /lockserver, /unlockserver, /restartserver, /settimeleft",
                 "Aceptar", "").Show(player);
         }
 

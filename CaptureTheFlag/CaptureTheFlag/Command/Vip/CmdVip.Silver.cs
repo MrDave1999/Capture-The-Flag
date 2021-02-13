@@ -34,7 +34,7 @@ namespace CaptureTheFlag.Command.Vip
                 player.SendClientMessage(Color.Red, $"Error: El skin (id:{player.Skin}) ya se encuentra guardado en la base de datos.");
                 return;
             }
-            Account.Update("skinid", player.Skin, player.Name, "Vips");
+            Account.Update("skinid", player.Skin, player.Name, "vips");
             player.GameText("Skin saved", 3000, 4);
             player.SendClientMessage(Color.Yellow, $"** El skin (id:{player.Skin}) se guardó en la base de datos de forma exitosa.");
             player.SendClientMessage(Color.Orange, "* Por cada re-spawn, aparecerás con el skin que hayas guardado.");
@@ -51,7 +51,7 @@ namespace CaptureTheFlag.Command.Vip
                 player.SendClientMessage(Color.Red, "Error: No has guardado ningún skin (use /sskin).");
                 return;
             }
-            Account.Update("skinid", -1, player.Name, "Vips");
+            Account.Update("skinid", -1, player.Name, "vips");
             player.GameText("Skin removed", 3000, 4);
             player.SendClientMessage(Color.Yellow, $"** El skin (id:{player.Skin}) fue removido, ya no aparecerás con este skin.");
             player.Data.SkinId = -1;

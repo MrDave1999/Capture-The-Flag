@@ -50,29 +50,10 @@ namespace CaptureTheFlag
             "Dueño"
         };
 
-        public static string GetRankVip(int index)
-        {
-            return rankVip[index - 1];
-        }
-
-        public static string GetRankAdmin(int index)
-        {
-            return rankAdmin[index - 1];
-        }
-
-        public static string GetRankLevel(int level)
-        {
-            return rankGame[level - 1].nameRank;
-        }
-
-        public static string GetNextRankLevel(int level)
-        {
-            return (level != MAX_RANK) ? GetRankLevel(level + 1) : "None";
-        }
-
-        public static int GetRequiredKills(int level)
-        {
-            return rankGame[level - 1].kills;
-        }
+        public static string GetRankVip(int index) => rankVip[index - 1];
+        public static string GetRankAdmin(int index) => rankAdmin[index - 1];
+        public static string GetRankLevel(int level) => rankGame[level - 1].nameRank;
+        public static string GetNextRankLevel(int level) => (level != MAX_RANK) ? GetRankLevel(level + 1) : "None";
+        public static int GetRequiredKills(int level) => rankGame[level - 1].kills;
     }
 }

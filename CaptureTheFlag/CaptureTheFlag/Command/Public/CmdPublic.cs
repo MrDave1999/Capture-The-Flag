@@ -14,6 +14,7 @@ using CaptureTheFlag.Constants;
 using SampSharp.Streamer.World;
 using CaptureTheFlag.PropertiesPlayer;
 using System.Linq;
+using CaptureTheFlag.Map;
 
 namespace CaptureTheFlag.Command.Public
 {
@@ -75,10 +76,11 @@ namespace CaptureTheFlag.Command.Public
         }
 
         [Command("kill", Shortcut = "kill")]
-        private static void Kill(Player player)
-        {
-            player.Health = 0;
-        }
+        private static void Kill(Player player) => player.Health = 0;
+
+        [Command("map", Shortcut = "map")]
+        private static void MapName(Player player)
+            => player.SendClientMessage(Color.Yellow, $"* Mapa actual: {Color.Orange}{CurrentMap.GetCurrentMap()}.");
 
         [Command("stop", Shortcut = "stop")]
         private static void StopMusic(Player player)

@@ -1,4 +1,5 @@
-﻿using CaptureTheFlag.PropertiesPlayer;
+﻿using CaptureTheFlag.Map;
+using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
 using SampSharp.GameMode.World;
@@ -11,6 +12,20 @@ namespace CaptureTheFlag.Command.Admin
 {
     public partial class CmdAdmin
     {
+        [Command("settimeleft", Shortcut = "settimeleft", UsageMessage = "/settimeleft [minutes]")]
+        private static void SetTimeLeft(Player player, int minutes)
+        {
+            if (player.IsAdminLevel(4)) return;
+            if(minutes < 0 || minutes > 60)
+            {
+                player.SendClientMessage(Color.Red, "Error: Los minutos deben estar en el rango de 0 a 60.");
+                return;
+            }
+            CurrentMap.timeLeft = minutes * 60;
+            BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} cambió el tiempo de la partida a {Color.Orange}{minutes} {(minutes == 1 ? "minuto" : "minutos")}.");
+            SendMessageToAdmins(player, "settimeleft");
+        }
+
         [Command("setlevel", Shortcut = "setlevel", UsageMessage = "/setlevel [playerid] [levelid]")]
         private static void SetLevel(Player player, int playerid, int levelid)
         {
@@ -35,12 +50,12 @@ namespace CaptureTheFlag.Command.Admin
             else if (levelid == 0)
             {
                 Player.Admins.Remove(player1);
-                DeleteLevel(player1, "Admins");
+                DeleteLevel(player1, "admins");
                 player1.SendClientMessage(Color.Red, "* Ya no formas parte del STAFF.");
                 player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango a {player1.Name}");
             }
             else
-                Update("levelAdmin", levelid, player1.Name, "Admins");
+                Update("levelAdmin", levelid, player1.Name, "admins");
 
             player1.GameText(levelid < player1.Data.LevelAdmin ? "demoted Admin" : "promoted Admin", 4000, 3);
             if (levelid != 0)
@@ -73,12 +88,12 @@ namespace CaptureTheFlag.Command.Admin
             else if (levelid == 0)
             {
                 Player.Vips.Remove(player1);
-                DeleteLevel(player1, "Vips");
+                DeleteLevel(player1, "vips");
                 player1.SendClientMessage(Color.Red, "* Ya no eres usuario VIP.");
                 player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango VIP a {player1.Name}");
             }
             else
-                Update("levelVip", levelid, player1.Name, "Vips");
+                Update("levelVip", levelid, player1.Name, "vips");
 
             player1.GameText(levelid < player1.Data.LevelVip ? "demoted VIP" : "promoted VIP", 4000, 3);
             if(levelid != 0)

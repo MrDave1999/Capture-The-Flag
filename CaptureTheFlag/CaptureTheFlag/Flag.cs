@@ -28,9 +28,7 @@ namespace CaptureTheFlag
         }
 
         public void AttachedObject(Player player)
-        {
-            player.SetAttachedObject(0, Model, Bone.Spine, new Vector3(-0.057000, -0.108999, 0.075000), new Vector3(171.500030, 66.200012, -4.100002), new Vector3(1.0, 1.0, 1.0), ColorHex, ColorHex);
-        }
+            => player.SetAttachedObject(0, Model, Bone.Spine, new Vector3(-0.057000, -0.108999, 0.075000), new Vector3(171.500030, 66.200012, -4.100002), new Vector3(1.0, 1.0, 1.0), ColorHex, ColorHex);
 
         public void Create(Vector3 vector3)
         {
@@ -38,16 +36,9 @@ namespace CaptureTheFlag
             PositionBase = vector3;
         }
 
-        public void Create()
-        {
-            Pickup.Create(Model, 1, PositionBase);
+        public void Create() => Pickup.Create(Model, 1, PositionBase);
             
-        }
-
-        public void Create(Player player)
-        {
-            Pickup.Create(Model, 1, player.Position);
-        }
+        public void Create(Player player) => Pickup.Create(Model, 1, player.Position);
 
         public void DeletePlayerCaptured()
         {
