@@ -1,0 +1,2 @@
+mysqldump -u username -p dbname > filename.sql   ; export.
+mysql -u username -p dbname < filename.sql       ; import.
