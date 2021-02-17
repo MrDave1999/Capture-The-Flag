@@ -38,8 +38,28 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 
 #### .NET Core Download 
 
-  - [.NET Core Windows (x86)](https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-3.1.11-windows-x86-installer)
+  - [.NET Core Windows (x86)](https://download.visualstudio.microsoft.com/download/pr/11da2dd3-9946-49f4-9758-868dcfd9b479/5cc2813259ae85912c3484151637782e/dotnet-runtime-3.1.11-win-x86.exe)
   - [.NET Core Linux (x86)](https://deploy.timpotze.nl/packages/dotnet20200127.zip)
+
+## Build
+
+If you want to rebuild the project from `0`, you should download these dependencies (or packages):
+
+- [SampSharp.GameMode](https://www.nuget.org/packages/SampSharp.GameMode/0.9.1)
+- [SampSharp.Streamer](https://www.nuget.org/packages/SampSharp.Streamer/0.9.0)
+- [SampSharp.YSF](https://www.nuget.org/packages/SampSharp.YSF/0.1.0-beta1)
+- [MySql.Data](https://www.nuget.org/packages/MySql.Data/8.0.22)
+- [ini-parser-netcore](https://www.nuget.org/packages/ini-parser-netcore/3.0.0)
+
+**Note:** You can also install the package from the `NuGet package manager` that Visual Studio brings.
+
+Some plugins you will need:
+
+- [YSF-Lite](https://gitlab.com/critical99/ysf/-/releases)
+- [Streamer](https://github.com/samp-incognito/samp-streamer-plugin/releases)
+- [SampSharp](https://github.com/ikkentim/SampSharp/releases)
+
+**Note:** Each plugin goes in the `plugins` folder.
 
 ## Images
 
