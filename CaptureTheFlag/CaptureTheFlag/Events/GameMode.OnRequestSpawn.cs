@@ -30,7 +30,7 @@ namespace CaptureTheFlag.Events
             if (CurrentMap.IsLoading)
             {
                 e.PreventSpawning = true;
-                player.SendClientMessage(Color.Red, "Error: En 10 segundos se cargará el próximo mapa.");
+                player.SendClientMessage(Color.Red, $"Error: En {CurrentMap.MAX_TIME_LOADING} segundos se cargará el próximo mapa.");
                 return;
             }
             if (player.PlayerTeam.GetMessageTeamEnable(out var msg))
