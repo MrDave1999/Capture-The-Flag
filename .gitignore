@@ -1,4 +1,6 @@
 server_log.txt
+crashinfo.txt
+samp.ban
 plugins/
 pawno/
 include/
