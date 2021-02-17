@@ -61,6 +61,8 @@ Some plugins you will need:
 
 **Note:** Each plugin goes in the `plugins` folder.
 
+The .NET Core Runtime should be added in the `CaptureTheFlag/runtimes` folder.
+
 ## Images
 
 ![img1](https://i.ibb.co/6Fm35n8/sa-mp-000.png)
