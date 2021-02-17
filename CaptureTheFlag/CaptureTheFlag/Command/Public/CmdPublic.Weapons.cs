@@ -63,7 +63,7 @@ namespace CaptureTheFlag.Command.Public
             {
                 if (e.DialogButton == DialogButton.Left)
                 {
-                    player.SendClientMessage(Color.Red, $"[Weapon]: {Color.Yellow}{player.ListGuns[e.ListItem].Weapon} se eliminó de tu paquetes de armas.");
+                    player.SendClientMessage(Color.Red, $"[Weapon]: {Color.Yellow}{player.ListGuns[e.ListItem].Weapon} se eliminó de tu paquete de armas.");
                     player.RemoveWeapon(e.ListItem);
                     packet.Clear();
                     foreach (Gun gun in player.ListGuns)
