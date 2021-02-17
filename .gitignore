@@ -1,0 +1,8 @@
+server_log.txt
+plugins/
+pawno/
+include/
+CaptureTheFlag/runtimes/
+CaptureTheFlag/.vs/
+CaptureTheFlag/CaptureTheFlag/bin/
+CaptureTheFlag/CaptureTheFlag/obj/
