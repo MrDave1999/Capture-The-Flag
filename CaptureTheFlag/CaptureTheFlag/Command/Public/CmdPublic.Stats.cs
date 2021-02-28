@@ -21,6 +21,7 @@ namespace CaptureTheFlag.Command.Public
             var level = player1.Data.LevelGame;
             new MessageDialog($"Name: {player1.Name}",
                 $"{Color.Yellow}ID: {Color.White}{player1.Id}" +
+                $"\n{Color.Yellow}Account Number: {Color.White}{player1.Data.AccountNumber}" +
                 $"\n{Color.Yellow}Registry Date: {Color.White}{player1.Data.RegistryDate}" +
                 $"\n{Color.Yellow}Kills for Round: {Color.White}{player1.Kills}" +
                 $"\n{Color.Yellow}Deaths for Round: {Color.White}{player1.Deaths}" +
@@ -71,7 +72,7 @@ namespace CaptureTheFlag.Command.Public
                 {
                     Validate.IsEmpty(player, dialogPass, e.InputText);
                     Validate.PasswordRange(player, dialogPass, e.InputText);
-                    Account.Update("pass", Account.Encrypt(e.InputText), player.Name);
+                    player.UpdateData("pass", Account.Encrypt(e.InputText));
                     player.SendClientMessage(Color.Orange, $"** La nueva contraseña de tu cuenta es: {e.InputText}");
                 }
             };
@@ -93,7 +94,7 @@ namespace CaptureTheFlag.Command.Public
                 return;
             }
             BasePlayer.SendClientMessageToAll(Color.Yellow, $"[Anuncio]: {Color.Orange}{player.Name} cambió su nombre a {newname}");
-            Account.Update("namePlayer", newname, player.Name);
+            player.UpdateData("namePlayer", newname);
             player.Name = newname;
         }
     }

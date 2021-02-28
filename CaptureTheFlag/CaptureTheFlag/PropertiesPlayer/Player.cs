@@ -129,8 +129,6 @@ namespace CaptureTheFlag.PropertiesPlayer
             /* *** */
         }
 
-        public void UpdateData<T>(string campus, T newvalue) => DataBase.Account.Update(campus, newvalue, Name);
-
         public bool Equals(Player player, string msg)
         {
             if (this == player)

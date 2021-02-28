@@ -9,7 +9,16 @@ namespace CaptureTheFlag.DataBase
 {
     public partial class Account
     {
-        public static void Update<T>(string campus, T newvalue, string nameplayer, string nametable = "players")
+        public static void Update<T>(string campus, T newvalue, long accountNumber)
+        {
+            cmd.CommandText = $"UPDATE players SET {campus}=@{campus} WHERE accountNumber = @accountNumber;";
+            cmd.Parameters.AddWithValue("@" + campus, newvalue);
+            cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+        }
+
+        public static void Update<T>(string campus, T newvalue, string nameplayer, string nametable)
         {
             cmd.CommandText = $"UPDATE {nametable} SET {campus}=@{campus} WHERE namePlayer = @name_player;";
             cmd.Parameters.AddWithValue("@" + campus, newvalue);
@@ -54,5 +63,14 @@ namespace CaptureTheFlag.DataBase
             cmd.CommandText = $"DELETE FROM {typelevel} WHERE namePlayer = '{player.Name}';";
             cmd.ExecuteNonQuery();
         }
+    }
+}
+
+namespace CaptureTheFlag.PropertiesPlayer
+{
+    public partial class Player
+    {
+        public void UpdateData<T>(string campus, T newvalue) 
+            => DataBase.Account.Update(campus, newvalue, Data.AccountNumber);
     }
 }

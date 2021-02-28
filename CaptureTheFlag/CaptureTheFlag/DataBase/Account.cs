@@ -102,6 +102,7 @@ namespace CaptureTheFlag.DataBase
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
+            player.Data.AccountNumber = cmd.LastInsertedId;
         }
 
         public static bool Load(Player player, out string password)
@@ -112,6 +113,7 @@ namespace CaptureTheFlag.DataBase
             if (exists)
             {
                 password = reader.GetString("pass");
+                player.Data.AccountNumber = reader.GetInt32("accountNumber");
                 player.Data.TotalKills = reader.GetInt32("totalKills");
                 player.Data.TotalDeaths = reader.GetInt32("totalDeaths");
                 player.Data.KillingSprees = reader.GetInt32("killingSprees");

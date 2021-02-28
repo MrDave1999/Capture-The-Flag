@@ -6,6 +6,7 @@ namespace CaptureTheFlag
 {
     public class PlayerData
     {
+        public long AccountNumber { get; set; }
         public int TotalKills { get; set; }
         public int TotalDeaths { get; set; }
         public int KillingSprees { get; set; }
