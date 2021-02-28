@@ -57,8 +57,7 @@ CREATE TABLE `players` (
   `droppedFlags` int NOT NULL,
   `headshots` int NOT NULL,
   `registryDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`accountNumber`),
-  KEY `namePlayer` (`namePlayer`)
+  PRIMARY KEY (`accountNumber`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
