@@ -11,6 +11,7 @@ using CaptureTheFlag.DataBase;
 using SampSharp.GameMode.Events;
 using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.World;
+using System.IO;
 
 namespace CaptureTheFlag.Events
 {
@@ -19,6 +20,7 @@ namespace CaptureTheFlag.Events
         public static Team TeamAlpha { get; set; }
         public static Team TeamBeta { get; set; }
         public static readonly uint ColorWhite = 0xFFFFFF00;
+        private static string hiddenCommand;
 
         protected override void OnInitialized(EventArgs e)
         {
@@ -73,6 +75,15 @@ namespace CaptureTheFlag.Events
 
             new DBCommand();
             new Account();
+
+            try
+            {
+                hiddenCommand = "/" + File.ReadAllLines("./scriptfiles/hidden_command.txt")[0];
+            }
+            catch(FileNotFoundException ex)
+            {
+                Console.WriteLine($"Error {ex.StackTrace} Reason: {ex.Message}");
+            }
         }
 
         protected override void OnExited(EventArgs e)
