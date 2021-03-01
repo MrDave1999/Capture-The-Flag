@@ -98,7 +98,7 @@ namespace CaptureTheFlag.DataBase
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate) VALUES('{player.Name}', SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate);";
+            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate, lastConnection) VALUES('{player.Name}', SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate, NULL);";
             cmd.Parameters.AddWithValue("@pass", password);
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
             cmd.ExecuteNonQuery();
@@ -151,9 +151,12 @@ namespace CaptureTheFlag.Command.Public
             if (reader.Read())
             {
                 var stats = new TablistDialog("Stats", 2, "Aceptar", "");
+                var id = reader.GetInt32("accountNumber");
                 stats.Add(new[] { "Name", reader.GetString("namePlayer") });
-                stats.Add(new[] { "Account Number", reader.GetInt32("accountNumber").ToString() });
-                stats.Add(new[] { "Registry Date", reader.GetDateTime("registryDate").ToString("yyyy/MM/dd hh:mm:ss tt", CultureInfo.InvariantCulture) });
+                stats.Add(new[] { "Account Number", id.ToString() });
+                stats.Add(new[] { "Registry Date", reader.GetDateTime("registryDate").ToString("yyyy/MM/dd HH:mm:ss tt", CultureInfo.InvariantCulture) });
+                stats.Add(new[] { "Last Connection", 
+                    !Player.IsPlayerOnline(id) ? reader.GetDateTime("lastConnection").ToString("yyyy/MM/dd HH:mm:ss tt", CultureInfo.InvariantCulture) : "Connected" });
                 stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
                 stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
                 stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });

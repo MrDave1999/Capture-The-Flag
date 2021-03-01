@@ -52,7 +52,7 @@ namespace CaptureTheFlag.Command.Public
                 player.SendClientMessage(Color.Red, "Error: No tienes suficiente salud para usar este comando.");
                 return;
             }
-            Player.UserAFKs.Add(new UserAFK() { Player = player, EntryHour = DateTime.Now.ToString("hh:mm:ss tt", CultureInfo.InvariantCulture) });
+            Player.UserAFKs.Add(new UserAFK() { Player = player, EntryHour = DateTime.Now.ToString("HH:mm:ss tt", CultureInfo.InvariantCulture) });
             player.SetNoTeam();
             player.ToggleControllable(false);
             player.ResetWeapons();

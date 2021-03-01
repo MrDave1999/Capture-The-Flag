@@ -162,5 +162,13 @@ namespace CaptureTheFlag.PropertiesPlayer
                 base.Skin = value;
             }
         }
+
+        public static bool IsPlayerOnline(int accountNumber)
+        {
+            foreach(Player player in GetAll<Player>())
+                if (player.IsConnected && accountNumber == player.Data.AccountNumber)
+                    return true;
+            return false;
+        }
     }
 }

@@ -5,6 +5,7 @@ using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Events;
 using SampSharp.GameMode.World;
+using System;
 
 namespace CaptureTheFlag.Events
 {
@@ -27,6 +28,7 @@ namespace CaptureTheFlag.Events
             Player.RemoveAV(player);
             if (player.AFK)
                 Player.UserAFKs.Remove(new UserAFK() { Player = player });
+            player.UpdateData("lastConnection", DateTime.Now);
         }
     }
 }
