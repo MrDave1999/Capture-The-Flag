@@ -12,7 +12,10 @@ namespace CaptureTheFlag.Events
         {
             base.OnPlayerPickUpPickup(sender, e);
             var player = sender as Player;
-            (e.Pickup.Model == FlagID.Alpha ? TeamAlpha : TeamBeta).ExecuteAction(player, e.Pickup);
+            if(e.Pickup.Model == FlagID.Alpha)
+                TeamAlpha.ExecuteAction(player, e.Pickup);
+            else if(e.Pickup.Model == FlagID.Beta)
+                TeamBeta.ExecuteAction(player, e.Pickup);
         }
     }
 }

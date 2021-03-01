@@ -31,6 +31,7 @@ namespace CaptureTheFlag
         public TextDraw TdScore { get; private set; }
         public DynamicMapIcon Icon { get; private set; }
         public List<Player> Players { get; set; } = new List<Player>();
+        public Pickup Arrow { get; set; }
 
         public Team(
             int skin, 
@@ -111,6 +112,12 @@ namespace CaptureTheFlag
             Flag.AttachedObject(player);
             Flag.PlayerCaptured = player;
             player.JumpTime = 0;
+            Arrow = Pickup.Create(1318, 1, Flag.PositionBase);
+            Arrow.PickUp += (sender, e) =>
+            {
+                if(e.Player.Team == (int)Id)
+                    e.Player.GameText($"{ColorGameText}recovers the {ColorEnglish} flag!", 5000, 3);
+            };
             if (player.IsEnableSpeed())
             {
                 player.SpeedTime = 0;
@@ -146,7 +153,8 @@ namespace CaptureTheFlag
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} llevó la bandera {NameColor} del equipo {NameTeam} a su base.");
             BasePlayer.GameTextForAll($"{TeamRival.ColorGameText}+1 score team {TeamRival.NameTeam}", 5000, 3);
             player.RemoveAttachedObject(0);
-            Flag.Create(); 
+            Flag.Create();
+            Arrow.Dispose();
             Flag.PlayerCaptured = null;
             Flag.IsPositionBase = true;
             ++TeamRival.Score;
@@ -162,6 +170,7 @@ namespace CaptureTheFlag
         {
             Flag.IsPositionBase = true;
             Flag.Create();
+            Arrow.Dispose();
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} recuperó la bandera {NameColor} del equipo {NameTeam}.");
             BasePlayer.GameTextForAll($"{ColorGameText}{ColorEnglish} flag recovered!", 5000, 3);
             player.UpdateAdrenaline(4, "recuperar la bandera");
