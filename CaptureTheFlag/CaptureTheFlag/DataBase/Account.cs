@@ -12,6 +12,7 @@ using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Command.Public;
 using static CaptureTheFlag.DataBase.DBCommand;
 using SampSharp.GameMode.SAMP.Commands;
+using System.Globalization;
 
 namespace CaptureTheFlag.DataBase
 {
@@ -152,7 +153,7 @@ namespace CaptureTheFlag.Command.Public
                 var stats = new TablistDialog("Stats", 2, "Aceptar", "");
                 stats.Add(new[] { "Name", reader.GetString("namePlayer") });
                 stats.Add(new[] { "Account Number", reader.GetInt32("accountNumber").ToString() });
-                stats.Add(new[] { "Registry Date", reader.GetDateTime("registryDate").ToString() });
+                stats.Add(new[] { "Registry Date", reader.GetDateTime("registryDate").ToString("yyyy/MM/dd hh:mm:ss tt", CultureInfo.InvariantCulture) });
                 stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
                 stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
                 stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
