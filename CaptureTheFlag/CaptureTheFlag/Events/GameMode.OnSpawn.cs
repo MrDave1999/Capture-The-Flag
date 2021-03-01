@@ -13,6 +13,11 @@ namespace CaptureTheFlag.Events
         {
             base.OnPlayerSpawned(sender, e);
             var player = sender as Player;
+            if(player.PlayerTeam == null)
+            {
+                player.SetForceClass();
+                return;
+            }
             player.Health = 100;
             if (player.Armour == 0)
                 player.TArmour.Hide();

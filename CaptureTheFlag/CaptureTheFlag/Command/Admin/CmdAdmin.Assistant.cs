@@ -1,4 +1,6 @@
-﻿using CaptureTheFlag.PropertiesPlayer;
+﻿using CaptureTheFlag.Events;
+using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Textdraw;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
@@ -83,6 +85,8 @@ namespace CaptureTheFlag.Command.Admin
             if (player.Equals(player1, "No te puedes observar a ti mismo.")) return;
             if (player.IsCapturedFlag())
                 player.Drop();
+            player.SetNoTeam();
+            TextDrawGlobal.UpdateCountUsers();
             player.SendClientMessage(Color.Yellow, $"* Estás observando al usuario {player1.Name}");
             player.ToggleSpectating(true);
             player.SpectatePlayer(player1);
@@ -96,7 +100,7 @@ namespace CaptureTheFlag.Command.Admin
             if (player.State == PlayerState.Spectating)
             {
                 player.SendClientMessage(Color.Yellow, $"* Dejaste de observar al usuario.");
-                player.ToggleSpectating(false);
+                player.SetForceClass();
                 SendMessageToAdmins(player, "specoff");
             }
             else

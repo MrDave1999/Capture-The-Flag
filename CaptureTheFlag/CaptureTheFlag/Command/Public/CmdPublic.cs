@@ -76,7 +76,15 @@ namespace CaptureTheFlag.Command.Public
         }
 
         [Command("kill", Shortcut = "kill")]
-        private static void Kill(Player player) => player.Health = 0;
+        private static void Kill(Player player)
+        {
+            if(player.Team == BasePlayer.NoTeam)
+            {
+                player.SendClientMessage(Color.Red, "Error: No puedes usar este comando.");
+                return;
+            }
+            player.Health = 0;
+        }
 
         [Command("map", Shortcut = "map")]
         private static void MapName(Player player)
@@ -124,6 +132,11 @@ namespace CaptureTheFlag.Command.Public
         [Command("switch", Shortcut = "switch")]
         private static void ChangeTeam(Player player)
         {
+            if(player.Team == BasePlayer.NoTeam)
+            {
+                player.SendClientMessage(Color.Red, "Error: Usted no pertenece a ningún equipo.");
+                return;
+            }
             TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
             TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
             var ct = new TablistDialog("Change Team", 

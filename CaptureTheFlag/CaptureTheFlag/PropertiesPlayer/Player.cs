@@ -4,6 +4,7 @@ using SampSharp.GameMode.Display;
 using SampSharp.GameMode.World;
 using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Constants;
+using CaptureTheFlag.Events;
 
 namespace CaptureTheFlag.PropertiesPlayer
 {
@@ -62,6 +63,14 @@ namespace CaptureTheFlag.PropertiesPlayer
                 Health = 100;
                 TextDrawPlayer.UpdateTdRank(this);
             }
+        }
+
+        public void SetNoTeam()
+        {
+            Remove(this);
+            Team = NoTeam;
+            PlayerTeam = null;
+            Color = GameMode.ColorWhite;
         }
 
         public void SetForceClass()
