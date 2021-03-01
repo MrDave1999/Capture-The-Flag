@@ -1,17 +1,30 @@
 ﻿using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Textdraw;
 using SampSharp.GameMode;
+using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
 using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CaptureTheFlag.Command.Admin
 {
     public partial class CmdAdmin
     {
+        [Command("banips", Shortcut = "banips")]
+        private static void BanIps(Player player)
+        {
+            if (player.IsAdminLevel(3)) return;
+            string[] lists = File.ReadAllLines("./samp.ban");
+            var dialog = new ListDialog("Ban IPs", "Cerrar", "");
+            foreach(string info in lists)
+                dialog.AddItem(info);
+            dialog.Show(player);
+        }
+
         [Command("setadre", Shortcut = "setadre", UsageMessage = "/setadre [playerid] [adrenaline]")]
         private static void SetAdrenaline(Player player, int playerid, int adrenaline)
         {
