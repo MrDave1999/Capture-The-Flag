@@ -44,6 +44,7 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Yellow}/top{Color.White} - Muestra un menú de Tops como por ejemplo: TopKills, TopDeaths, etc." +
                 $"\n{Color.Yellow}/afk{Color.White} - Permite que el jugador pueda alejarse del teclado por tiempo indeterminado." +
                 $"\n{Color.Yellow}/outafk{Color.White} - Permite al jugador salirse del modo AFK." +
+                $"\n{Color.Yellow}/afks{Color.White} - Muestra un listado de los jugadores que están en AFK." +
                 $"\n\n{Color.Orange}Teclas:" +
                 $"\n{Color.Yellow}Tecla H:{Color.White} Invoca al comando /combos." +
                 $"\n{Color.Yellow}Tecla Y:{Color.White} Invoca al comando /weapons." +

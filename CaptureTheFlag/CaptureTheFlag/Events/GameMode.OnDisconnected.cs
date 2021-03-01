@@ -1,3 +1,4 @@
+using CaptureTheFlag.Command.Public;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Textdraw;
 using SampSharp.GameMode;
@@ -24,6 +25,8 @@ namespace CaptureTheFlag.Events
             TextDrawPlayer.Destroy(player);
             TextDrawGlobal.Hide(player);
             Player.RemoveAV(player);
+            if (player.AFK)
+                Player.UserAFKs.Remove(new UserAFK() { Player = player });
         }
     }
 }

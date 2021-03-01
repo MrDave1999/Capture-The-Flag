@@ -68,6 +68,7 @@ namespace CaptureTheFlag.PropertiesPlayer
         public void SetNoTeam()
         {
             Remove(this);
+            TextDrawGlobal.UpdateCountUsers();
             Team = NoTeam;
             PlayerTeam = null;
             Color = GameMode.ColorWhite;
@@ -115,7 +116,7 @@ namespace CaptureTheFlag.PropertiesPlayer
         }
 
         public void Drop() => PlayerTeam.TeamRival.Drop(this);
-        public bool IsCapturedFlag() => this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
+        public bool IsCapturedFlag() => PlayerTeam != null && this == PlayerTeam.TeamRival.Flag.PlayerCaptured;
 
         public new string[] ToString()
         {
