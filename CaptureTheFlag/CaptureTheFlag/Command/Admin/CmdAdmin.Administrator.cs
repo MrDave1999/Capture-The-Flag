@@ -18,11 +18,23 @@ namespace CaptureTheFlag.Command.Admin
         private static void BanIps(Player player)
         {
             if (player.IsAdminLevel(3)) return;
-            string[] lists = File.ReadAllLines("./samp.ban");
-            var dialog = new ListDialog("Ban IPs", "Cerrar", "");
-            foreach(string info in lists)
-                dialog.AddItem(info);
-            dialog.Show(player);
+            try
+            {
+                var lists = File.ReadAllLines("./samp.ban");
+                if(lists.Length == 0)
+                {
+                    player.SendClientMessage(Color.Red, "Error: No se encontró ninguna IP prohíbida.");
+                    return;
+                }
+                var dialog = new ListDialog($"Ban IPs: ({lists.Length})", "Cerrar", "");
+                foreach (string info in lists)
+                    dialog.AddItem(info);
+                dialog.Show(player);
+            }
+            catch(FileNotFoundException)
+            {
+                player.SendClientMessage(Color.Red, "Error: No se encontró ninguna IP prohíbida.");
+            }
         }
 
         [Command("setadre", Shortcut = "setadre", UsageMessage = "/setadre [playerid] [adrenaline]")]
