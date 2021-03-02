@@ -181,7 +181,6 @@ namespace CaptureTheFlag
             Drop(player);
             if (killer != null)
                 killer.UpdateAdrenaline(4, "matar al portador");
-            player.RemoveAttachedObject(0);
         }
 
         public void Drop(Player player)
@@ -191,6 +190,7 @@ namespace CaptureTheFlag
             Flag.IsPositionBase = false;
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} dejó caer la bandera {NameColor} del equipo {NameTeam}.");
             BasePlayer.GameTextForAll($"{ColorGameText}{ColorEnglish} flag dropped!", 5000, 3);
+            player.RemoveAttachedObject(0);
         }
     }
 }
