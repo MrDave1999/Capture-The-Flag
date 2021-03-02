@@ -22,7 +22,11 @@ namespace CaptureTheFlag.PropertiesPlayer
             return player1;
         }
 
-        public static void Remove(Player player) => player.PlayerTeam.Players.Remove(player);
+        public static void Remove(Player player)
+        {
+            if(player.PlayerTeam != null)
+                player.PlayerTeam.Players.Remove(player);
+        }
 
         public static void AddAV(Player player)
         {

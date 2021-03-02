@@ -82,12 +82,30 @@ namespace CaptureTheFlag.Command.Admin
         {
             if (player.IsAdminLevel(1)) return;
             Player player1 = Player.Find(player, playerid);
-            if (player.Equals(player1, "No te puedes observar a ti mismo.")) return;
+            if (player.Equals(player1, "No te puedes observar a ti mismo."))
+                return;
+            if (player.AFK)
+            {
+                player.SendClientMessage(Color.Red, "Error: Estás en AFK. Usa /outafk.");
+                return;
+            }
+            if (player1.IsSelectionClass)
+            {
+                player.SendClientMessage(Color.Red, "Error: Ese jugador se encuentra en la selección de clases.");
+                return;
+            }
+            if (player1.State == PlayerState.Spectating)
+            {
+                player.SendClientMessage(Color.Red, "Error: Ese jugador se encuentra en modo espectador.");
+                return;
+            }
             if (player.IsCapturedFlag())
                 player.Drop();
             player.SetNoTeam();
             TextDrawGlobal.UpdateCountUsers();
             player.SendClientMessage(Color.Yellow, $"* Estás observando al usuario {player1.Name}");
+            player.Interior = player1.Interior;
+            player.VirtualWorld = player1.VirtualWorld;
             player.ToggleSpectating(true);
             player.SpectatePlayer(player1);
             SendMessageToAdmins(player, "spec");
