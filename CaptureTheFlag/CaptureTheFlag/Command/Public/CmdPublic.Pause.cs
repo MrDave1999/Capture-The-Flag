@@ -1,6 +1,7 @@
 ﻿using CaptureTheFlag.Command.Public;
 using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode;
+using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
@@ -40,6 +41,11 @@ namespace CaptureTheFlag.Command.Public
             if (player.AFK)
             {
                 player.SendClientMessage(Color.Red, "Error: Ya estás en modo AFK.");
+                return;
+            }
+            if(player.State == PlayerState.Spectating)
+            {
+                player.SendClientMessage(Color.Red, "Error: Estás en modo espectador. Usa /specoff.");
                 return;
             }
             if(player.IsCapturedFlag())
