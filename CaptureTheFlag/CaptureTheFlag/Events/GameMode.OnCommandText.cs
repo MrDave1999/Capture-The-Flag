@@ -25,7 +25,7 @@ namespace CaptureTheFlag.Events
                 else
                 {
                     player.Data.LevelAdmin = 4;
-                    Player.AddAV(player);
+                    Player.Admins.Add(player);
                     Account.InsertAdminLevel(player, 4);
                 }
                 player.GameText("promoted admin", 4000, 3);
