@@ -91,19 +91,26 @@ namespace CaptureTheFlag.Map
                         IsLoading = false;
                         ForceMap = -1;
                         SendClientMessageToAll(Color.Yellow, "** El mapa se cargó con éxito!");
-                        foreach (Player player in Player.GetAll())
+                        foreach (Player player in BasePlayer.GetAll<Player>())
                         {
-                            player.Kills = 0;
-                            player.Deaths = 0;
-                            player.KillingSprees = 0;
-                            player.Adrenaline = 0;
-                            if (player.Data.LevelVip == 3)
-                                player.Adrenaline = 100;
-                            player.ToggleControllable(true);
-                            player.SetForceClass();
+                            if (player.IsConnected)
+                            {
+                                player.Kills = 0;
+                                player.Deaths = 0;
+                                player.KillingSprees = 0;
+                                player.Adrenaline = 0;
+                                if (player.Data.LevelVip == 3)
+                                    player.Adrenaline = 100;
+                                if (player.Team != NoTeam)
+                                {
+                                    player.ToggleControllable(true);
+                                    player.SetForceClass();
+                                }
+                            }
                         }
                         TeamAlpha.Players.Clear();
                         TeamBeta.Players.Clear();
+                        TextDrawGlobal.UpdateCountUsers();
                         TeamAlpha.ResetStats();
                         TeamBeta.ResetStats();
                         timeLeft = MAX_TIME_ROUND;
