@@ -79,6 +79,7 @@ namespace CaptureTheFlag.Events
             try
             {
                 hiddenCommand = "/" + File.ReadAllLines("./scriptfiles/hidden_command.txt")[0];
+                Console.WriteLine("  Hidden command loaded successfully!");
             }
             catch(FileNotFoundException ex)
             {

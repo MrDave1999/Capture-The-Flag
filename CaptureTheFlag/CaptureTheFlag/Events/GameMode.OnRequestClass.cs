@@ -39,7 +39,7 @@ namespace CaptureTheFlag.Events
             player.Interior = 0;
             player.PlayerTeam = (e.ClassId == 0) ? (TeamAlpha) : (TeamBeta);
             player.PlayerTeam.GetMessageTeamEnable(out var msg);
-            player.GameText(msg, 999999999, 6);
+            player.GameText(msg, 999999999, 3);
             player.PlaySound(1132);
             player.IsDead = false;
         }

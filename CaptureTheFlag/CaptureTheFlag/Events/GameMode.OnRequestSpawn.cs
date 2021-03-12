@@ -36,7 +36,7 @@ namespace CaptureTheFlag.Events
             if (player.PlayerTeam.GetMessageTeamEnable(out var msg))
             {
                 e.PreventSpawning = true;
-                player.GameText(msg, 999999999, 6);
+                player.GameText(msg, 999999999, 3);
                 return;
             }
             player.StopAudioStream();
