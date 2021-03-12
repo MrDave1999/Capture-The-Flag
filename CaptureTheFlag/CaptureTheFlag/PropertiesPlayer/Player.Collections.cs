@@ -28,7 +28,7 @@ namespace CaptureTheFlag.PropertiesPlayer
                 player.PlayerTeam.Players.Remove(player);
         }
 
-        public static void AddAV(Player player)
+        public static void AddLevels(Player player)
         {
             if (player.Data.LevelAdmin > 0)
                 Admins.Add(player);
@@ -36,7 +36,7 @@ namespace CaptureTheFlag.PropertiesPlayer
                 Vips.Add(player);
         }
 
-        public static void RemoveAV(Player player)
+        public static void RemoveLevels(Player player)
         {
             if (player.Data.LevelAdmin > 0)
                 Admins.Remove(player);

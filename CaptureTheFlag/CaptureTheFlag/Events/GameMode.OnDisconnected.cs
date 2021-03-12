@@ -25,7 +25,7 @@ namespace CaptureTheFlag.Events
             }
             TextDrawPlayer.Destroy(player);
             TextDrawGlobal.Hide(player);
-            Player.RemoveAV(player);
+            Player.RemoveLevels(player);
             if (player.AFK)
                 Player.UserAFKs.Remove(new UserAFK() { Player = player });
             player.UpdateData("lastConnection", DateTime.Now);
