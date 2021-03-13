@@ -23,7 +23,7 @@ namespace CaptureTheFlag.Command.Public
             new MessageDialog($"Name: {player1.Name}",
                 $"{Color.Yellow}ID: {Color.White}{player1.Id}" +
                 $"\n{Color.Yellow}Account Number: {Color.White}{player1.Data.AccountNumber}" +
-                $"\n{Color.Yellow}Registry Date: {Color.White}{player1.Data.RegistryDate.ToString("yyyy/MM/dd HH:mm:ss tt", CultureInfo.InvariantCulture)}" +
+                $"\n{Color.Yellow}Registry Date: {Color.White}{ParseData.ToStringDateTime(player1.Data.RegistryDate)}" +
                 $"\n{Color.Yellow}Kills for Round: {Color.White}{player1.Kills}" +
                 $"\n{Color.Yellow}Deaths for Round: {Color.White}{player1.Deaths}" +
                 $"\n{Color.Yellow}Total Kills: {Color.White}{player1.Data.TotalKills}" +

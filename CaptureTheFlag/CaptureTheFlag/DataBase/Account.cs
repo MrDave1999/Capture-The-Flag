@@ -154,9 +154,9 @@ namespace CaptureTheFlag.Command.Public
                 var id = reader.GetInt32("accountNumber");
                 stats.Add(new[] { "Name", reader.GetString("namePlayer") });
                 stats.Add(new[] { "Account Number", id.ToString() });
-                stats.Add(new[] { "Registry Date", reader.GetDateTime("registryDate").ToString("yyyy/MM/dd HH:mm:ss tt", CultureInfo.InvariantCulture) });
+                stats.Add(new[] { "Registry Date", ParseData.ToStringDateTime(reader.GetDateTime("registryDate"))});
                 stats.Add(new[] { "Last Connection", 
-                    !Player.IsPlayerOnline(id) ? reader.GetDateTime("lastConnection").ToString("yyyy/MM/dd HH:mm:ss tt", CultureInfo.InvariantCulture) : "Connected" });
+                    !Player.IsPlayerOnline(id) ? ParseData.ToStringTime(reader.GetDateTime("lastConnection")) : "Connected" });
                 stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
                 stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
                 stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
