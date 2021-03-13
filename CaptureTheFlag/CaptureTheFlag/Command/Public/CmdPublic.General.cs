@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlag.PropertiesPlayer;
+using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
@@ -14,49 +15,56 @@ namespace CaptureTheFlag.Command.Public
         [Command("cmds", Shortcut = "cmds")]
         public static void ListCommands(Player player)
         {
-            new MessageDialog(" ",
-                $"{Color.Orange}Comandos:" +
-                $"\n{Color.Yellow}/kill - {Color.White} Asesina al jugador (su vida queda en 0.0)." +
-                $"\n{Color.Yellow}/tstats - {Color.White} Muestra las estadísticas de ambos equipos (Alpha y Beta)." +
-                $"\n{Color.Yellow}/switch - {Color.White} Permite al jugador cambiarse de equipo." +
-                $"\n{Color.Yellow}/tc - {Color.White} Permite hablar en el Team Chat." +
-                $"\n{Color.Yellow}/re{Color.White} Reinicia a 0 los asesinatos y muertes por ronda." +
-                $"\n{Color.Yellow}/help - {Color.White} Muestra información sobre como se debe jugar." +
-                $"\n{Color.Yellow}/credits - {Color.White} Muestra las personas que han participado en la creación de la GM." +
-                $"\n{Color.Yellow}/admins{Color.White} - Muestra la lista de administradores que están conectados." +
-                $"\n{Color.Yellow}/vips{Color.White} - Muestra los usuarios VIP que están conectados." +
-                $"\n{Color.Yellow}/stats{Color.White} - Muestra las estadísticas de un jugador conectado." +
-                $"\n{Color.Yellow}/statsdb{Color.White} - Muestra las estadísticas de un jugador desconectado." +
-                $"\n{Color.Yellow}/changepass{Color.White} - Cambia la contraseña de la cuenta del jugador." +
-                $"\n{Color.Yellow}/changename{Color.White} - Cambia el nombre de la cuenta del jugador." +
-                $"\n{Color.Yellow}/pm{Color.White} - Envía un mensaje privado a un jugador en especifico." +
-                $"\n{Color.Yellow}/ypm{Color.White} - Habilita los mensajes privados." +
-                $"\n{Color.Yellow}/npm{Color.White} - Inhabilita los mensajes privados." +
-                $"\n{Color.Yellow}/r{Color.White} - Envía un mensaje privado al último jugador que te envió un mensaje." +
-                $"\n{Color.Yellow}/report{Color.White} - Sirve para reportar a un jugador." +
-                $"\n{Color.Yellow}/combos{Color.White} - Muestra los combos que podrás canjear por adrenalina." +
-                $"\n{Color.Yellow}/ranks{Color.White} - Muestra la lista de rangos disponibles." +
-                $"\n{Color.Yellow}/weapons{Color.White} - Muestra la lista de armas a elegir." +
-                $"\n{Color.Yellow}/packet{Color.White} - Muestra el paquete actual de armas del jugador." +
-                $"\n{Color.Yellow}/music{Color.White} - Permite escuchar música por medio de una URL." +
-                $"\n{Color.Yellow}/stop{Color.White} - Detiene la música." +
-                $"\n{Color.Yellow}/map{Color.White} - Muestra el mapa actual del servidor." +
-                $"\n{Color.Yellow}/top{Color.White} - Muestra un menú de Tops como por ejemplo: TopKills, TopDeaths, etc." +
-                $"\n{Color.Yellow}/afk{Color.White} - Permite que el jugador pueda alejarse del teclado por tiempo indeterminado." +
-                $"\n{Color.Yellow}/outafk{Color.White} - Permite al jugador salirse del modo AFK." +
-                $"\n{Color.Yellow}/afks{Color.White} - Muestra un listado de los jugadores que están en AFK." +
-                $"\n\n{Color.Orange}Teclas:" +
-                $"\n{Color.Yellow}Tecla H:{Color.White} Invoca al comando /combos." +
-                $"\n{Color.Yellow}Tecla Y:{Color.White} Invoca al comando /weapons." +
-                $"\n{Color.Yellow}Tecla N:{Color.White} Muestra la lista de usuarios conectados (por equipo)." +
-                $"\n{Color.Yellow}ALT + C:{Color.White} Invoca al comando /packet." +
-                $"\n{Color.Yellow}ALT + H:{Color.White} Invoca al comando /cmds." +
-                $"\n{Color.Yellow}NUM 4:{Color.White} Invoca al comando /top." +
-                $"\n{Color.Yellow}NUM 6:{Color.White} Invoca al comando /help." +
-                $"\n\n{Color.Orange}Signos:" +
-                $"\n{Color.Yellow}Signo (!):{Color.White} Permite hablar en el TeamChat (ejemplo: {Color.Pink}!texto{Color.White})." +
-                $"\n{Color.Yellow}Signo (#):{Color.White} Permite hablar en el AdminChat (ejemplo: {Color.Pink}#texto{Color.White})." +
-                $"\n{Color.Yellow}Signo ($):{Color.White} Permite hablar en el VipChat (ejemplo: {Color.Pink}$texto{Color.White}).", "Aceptar").Show(player);
+            var dialog = new ListDialog("Menu", "Seleccionar", "Cerrar");
+            dialog.AddItems(new[]
+            {
+                "General",
+                "Armas",
+                "Mensajes Privados",
+                "AFK",
+                "Estadísticas",
+                "Atajos",
+                "Signos",
+                "Otros comandos"
+            });
+            var category = new CategoryCommand() { DialogMain = dialog };
+            dialog.Response += (sender, e) =>
+            {
+                if(e.DialogButton == DialogButton.Left)
+                {
+                    category.DialogCategory.Message = "";
+                    category.DialogCategory.Caption = dialog.Items[e.ListItem];
+                    switch (e.ListItem)
+                    {
+                        case 0:
+                            category.ShowGeneral();
+                            break;
+                        case 1:
+                            category.ShowWeapons();
+                            break;
+                        case 2:
+                            category.ShowPM();
+                            break;
+                        case 3:
+                            category.ShowAFK();
+                            break;
+                        case 4:
+                            category.ShowStats();
+                            break;
+                        case 5:
+                            category.ShowShortcurts();
+                            break;
+                        case 6:
+                            category.ShowSigns();
+                            break;
+                        case 7:
+                            category.ShowOthers();
+                            break;
+                    }
+                    category.DialogCategory.Show(player);
+                }
+            };
+            dialog.Show(player);
         }
 
         [Command("help", Shortcut = "help")]
@@ -101,6 +109,31 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Orange}critical99 {Color.White}por hacer la versión YSF Lite." +
                 $"\n{Color.Orange}BlasterDv {Color.White}por crear el Wrapper SampSharp.YSF." +
                 $"\n\n{Color.Yellow}¡Eres libre de contribuir en el proyecto!", "Aceptar").Show(player);
+        }
+
+        [Command("rules", Shortcut = "rules")]
+        private static void Rules(Player player)
+        {
+            new MessageDialog("Reglas",
+                $"{Color.Yellow}1. {Color.White}No insultes a ningún jugador." +
+                $"\n{Color.Yellow}2. {Color.White}Prohíbido el uso de Cheats/Mods/Hacks para tu ventaja {Color.Orange}[Castigo: /Ban]." +
+                $"\n{Color.Yellow}3. {Color.White}No hagas Spam/Publicidad/Flood de otros servidores." +
+                $"\n{Color.Yellow}4. {Color.White}Está prohíbido el uso de armas rápidas (micro-uzi, sawn-off, etc)." +
+                $"\nSi vez que alguien no cumplen con las reglas pon {Color.Yellow}/report id razon", "Aceptar").Show(player);
+        }
+
+        [Command("infoadmin", Shortcut = "infoadmin")]
+        private static void InfoAdmin(Player player)
+        {
+            new MessageDialog(" ",
+                $"{Color.Yellow}¿Quieres formar parte del STAFF?" +
+                $"\nCumple con estos 5 requerimientos:" +
+                $"\n{Color.Orange}1-. {Color.White}Hacer 3 videos del servidor." +
+                $"\n{Color.Orange}2-. {Color.White}Hacer 5 posts de taringa del servidor." +
+                $"\n{Color.Orange}3-. {Color.White}Hacer 2 blogs del servidor." +
+                $"\n{Color.Orange}4-. {Color.White}Traer mínimo a 6 jugadores al servidor." +
+                $"\n{Color.Orange}5-. {Color.White}Tener mínimo 100 kills." +
+                $"\n{Color.Yellow}Si cumples con estos requerimientos, tendrás un puesto asegurado en el STAFF.", "Aceptar").Show(player);
         }
     }
 }
