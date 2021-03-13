@@ -77,20 +77,21 @@ namespace CaptureTheFlag.Command.Vip
         {
             if (player.IsVipLevel(1)) return;
             var dweather = new ListDialog("Climas", "Aceptar", "Cerrar");
-
-            dweather.AddItem("Restaurar día y sol");
-            dweather.AddItem("Noche");
-            dweather.AddItem("Madrugada");
-            dweather.AddItem("Mañana");
-            dweather.AddItem("Día");
-            dweather.AddItem("Tarde");
-            dweather.AddItem("Lluvia");
-            dweather.AddItem("Soleado");
-            dweather.AddItem("Niebla");
-            dweather.AddItem("Tormenta de Arena");
-            dweather.AddItem("Cielo Gris");
-            dweather.AddItem("Cielo Rojo");
-            dweather.AddItem("Cielo Purpura");
+            dweather.AddItems(new[] {
+                "Restaurar día y sol",
+                "Noche",
+                "Madrugada",
+                "Mañana",
+                "Día",
+                "Tarde",
+                "Lluvia",
+                "Soleado",
+                "Niebla",
+                "Tormenta de Arena",
+                "Cielo Gris",
+                "Cielo Rojo",
+                "Cielo Purpura"
+            });
             dweather.Show(player);
             dweather.Response += (sender, e) =>
             {
