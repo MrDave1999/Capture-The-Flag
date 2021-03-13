@@ -156,7 +156,7 @@ namespace CaptureTheFlag.Command.Public
                 stats.Add(new[] { "Account Number", id.ToString() });
                 stats.Add(new[] { "Registry Date", ParseData.ToStringDateTime(reader.GetDateTime("registryDate"))});
                 stats.Add(new[] { "Last Connection", 
-                    !Player.IsPlayerOnline(id) ? ParseData.ToStringTime(reader.GetDateTime("lastConnection")) : "Connected" });
+                    !Player.IsPlayerOnline(id) ? ParseData.ToStringDateTime(reader.GetDateTime("lastConnection")) : "Connected" });
                 stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
                 stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
                 stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
