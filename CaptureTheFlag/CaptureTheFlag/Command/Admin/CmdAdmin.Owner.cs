@@ -50,7 +50,7 @@ namespace CaptureTheFlag.Command.Admin
             else if (levelid == 0)
             {
                 Player.Admins.Remove(player1);
-                DeleteLevel(player1, "admins");
+                Delete(player1, "admins");
                 player1.SendClientMessage(Color.Red, "* Ya no formas parte del STAFF.");
                 player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango a {player1.Name}");
             }
@@ -88,7 +88,7 @@ namespace CaptureTheFlag.Command.Admin
             else if (levelid == 0)
             {
                 Player.Vips.Remove(player1);
-                DeleteLevel(player1, "vips");
+                Delete(player1, "vips");
                 player1.SendClientMessage(Color.Red, "* Ya no eres usuario VIP.");
                 player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango VIP a {player1.Name}");
             }

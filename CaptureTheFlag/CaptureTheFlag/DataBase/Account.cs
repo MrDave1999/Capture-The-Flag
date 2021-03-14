@@ -13,14 +13,16 @@ using CaptureTheFlag.Command.Public;
 using static CaptureTheFlag.DataBase.DBCommand;
 using SampSharp.GameMode.SAMP.Commands;
 using System.Globalization;
+using SampSharp.GameMode.Controllers;
 
 namespace CaptureTheFlag.DataBase
 {
-    public partial class Account
+    [Controller]
+    public partial class Account : IEventListener
     {
-        public Account()
+        public void RegisterEvents(BaseMode gameMode)
         {
-            BaseMode.Instance.PlayerConnected += (sender, e) =>
+            gameMode.PlayerConnected += (sender, e) =>
             {
                 var player = sender as Player;
                 if (Load(player, out var password))
@@ -137,40 +139,5 @@ namespace CaptureTheFlag.DataBase
             return str;
         }
     }  
-}
-
-namespace CaptureTheFlag.Command.Public
-{
-    public partial class CmdPublic
-    {
-        [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
-        public static void StatsDb(Player player, string playername)
-        {
-            cmd.CommandText = $"SELECT * FROM players WHERE namePlayer = '{playername}';";
-            using var reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                var stats = new TablistDialog("Stats", 2, "Aceptar", "");
-                var id = reader.GetInt32("accountNumber");
-                stats.Add(new[] { "Name", reader.GetString("namePlayer") });
-                stats.Add(new[] { "Account Number", id.ToString() });
-                stats.Add(new[] { "Registry Date", ParseData.ToStringDateTime(reader.GetDateTime("registryDate"))});
-                stats.Add(new[] { "Last Connection", 
-                    !Player.IsPlayerOnline(id) ? ParseData.ToStringDateTime(reader.GetDateTime("lastConnection")) : "Connected" });
-                stats.Add(new[] { "Total Kills", reader.GetInt32("totalKills").ToString() });
-                stats.Add(new[] { "Total Deaths", reader.GetInt32("totalDeaths").ToString() });
-                stats.Add(new[] { "Killing Sprees", reader.GetInt32("killingSprees").ToString() });
-                int level = reader.GetInt32("levelGame");
-                stats.Add(new[] { "Game Level", level.ToString() });
-                stats.Add(new[] { "Rank", Rank.GetRankLevel(level) });
-                stats.Add(new[] { "Next Rank", Rank.GetNextRankLevel(level) });
-                stats.Add(new[] { "Dropped Flags", reader.GetInt32("droppedFlags").ToString() });
-                stats.Add(new[] { "Headshots", reader.GetInt32("headshots").ToString() });
-                stats.Show(player);
-            }
-            else
-                player.SendClientMessage(Color.Red, "Error: Ese nombre no se encuentra en la base de datos del servidor.");
-        }
-    }
 }
    

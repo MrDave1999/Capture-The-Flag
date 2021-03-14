@@ -74,8 +74,6 @@ namespace CaptureTheFlag.Events
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
 
             new DBCommand();
-            new Account();
-
             try
             {
                 hiddenCommand = "/" + File.ReadAllLines("./scriptfiles/hidden_command.txt")[0];
