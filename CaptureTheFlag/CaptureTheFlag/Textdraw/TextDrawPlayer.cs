@@ -65,7 +65,7 @@ namespace CaptureTheFlag.Textdraw
 
         public static void UpdateTdStats(Player player)
         {
-            player.Stats.Text = $"~w~KILLS: ~y~{player.Kills}  ~w~DEATHS: ~y~{player.Deaths}  ~w~LVL: ~y~{player.Data.LevelGame}  ~w~KS: ~y~{player.Data.KillingSprees}  ~w~ADRENALINE: ~y~{player.Adrenaline}/100";
+            player.Stats.Text = $"~w~KILLS: ~y~{player.Kills}  ~w~DEATHS: ~y~{player.Deaths}  ~w~LVL: ~y~{player.Data.LevelGame}  ~w~SPREE: ~y~{player.Data.KillingSprees}  ~w~ADRENALINE: ~y~{player.Adrenaline}/100";
         }
 
         public static void UpdateTdRank(Player player)
