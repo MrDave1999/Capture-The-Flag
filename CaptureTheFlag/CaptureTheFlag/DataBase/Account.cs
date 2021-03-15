@@ -98,7 +98,8 @@ namespace CaptureTheFlag.DataBase
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate, lastConnection) VALUES('{player.Name}', SHA2('{password}', 256), 0, 0, 0, 1, 0, 0, @registryDate, NULL);";
+            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate, lastConnection) VALUES('{player.Name}', SHA2(@password, 256), 0, 0, 0, 1, 0, 0, @registryDate, NULL);";
+            cmd.Parameters.AddWithValue("@password", password);
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
@@ -132,8 +133,11 @@ namespace CaptureTheFlag.DataBase
 
         public static string Encrypt(string text)
         {
-            cmd.CommandText = $"SELECT SHA2('{text}', 256);";
-            return (string)cmd.ExecuteScalar(); 
+            cmd.CommandText = $"SELECT SHA2(@text, 256);";
+            cmd.Parameters.AddWithValue("@text", text);
+            string password = (string)cmd.ExecuteScalar();
+            cmd.Parameters.Clear();
+            return password;
         }
     }  
 }

@@ -28,7 +28,7 @@ namespace CaptureTheFlag.Events
             Player.RemoveLevels(player);
             if (player.AFK)
                 Player.UserAFKs.Remove(new UserAFK() { Player = player });
-            player.UpdateData("lastConnection", DateTime.Now);
+            player.UpdateData("lastConnection", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }
