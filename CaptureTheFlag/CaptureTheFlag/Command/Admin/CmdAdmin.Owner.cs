@@ -55,7 +55,7 @@ namespace CaptureTheFlag.Command.Admin
                 player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango a {player1.Name}");
             }
             else
-                Update("levelAdmin", levelid, player1.Name, "admins");
+                player.UpdateAdminLevel(levelid);
 
             player1.GameText(levelid < player1.Data.LevelAdmin ? "demoted Admin" : "promoted Admin", 4000, 3);
             if (levelid != 0)
@@ -93,7 +93,7 @@ namespace CaptureTheFlag.Command.Admin
                 player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango VIP a {player1.Name}");
             }
             else
-                Update("levelVip", levelid, player1.Name, "vips");
+                player.UpdateVipLevel(levelid);
 
             player1.GameText(levelid < player1.Data.LevelVip ? "demoted VIP" : "promoted VIP", 4000, 3);
             if(levelid != 0)

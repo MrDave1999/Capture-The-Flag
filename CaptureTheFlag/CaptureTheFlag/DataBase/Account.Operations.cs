@@ -1,4 +1,4 @@
-﻿using CaptureTheFlag.PropertiesPlayer;
+﻿ using CaptureTheFlag.PropertiesPlayer;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,27 +9,15 @@ namespace CaptureTheFlag.DataBase
 {
     public partial class Account
     {
-        public static void Update<T>(string campus, T newvalue, long accountNumber)
+        public static void Update<T>(string campus, T newvalue, Player player, string tablename = "players")
         {
-            cmd.CommandText = $"UPDATE players SET {campus}=@{campus} WHERE accountNumber = @accountNumber;";
-            cmd.Parameters.AddWithValue("@" + campus, newvalue);
-            cmd.Parameters.AddWithValue("@accountNumber", accountNumber);
+            cmd.CommandText = $"UPDATE {tablename} SET {campus}='{newvalue}' WHERE accountNumber = '{player.Data.AccountNumber}';";
             cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-        }
-
-        public static void Update<T>(string campus, T newvalue, string nameplayer, string nametable)
-        {
-            cmd.CommandText = $"UPDATE {nametable} SET {campus}=@{campus} WHERE namePlayer = @name_player;";
-            cmd.Parameters.AddWithValue("@" + campus, newvalue);
-            cmd.Parameters.AddWithValue("@name_player", nameplayer);
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
         }
 
         public static void Delete(Player player, string tablename)
         {
-            cmd.CommandText = $"DELETE FROM {tablename} WHERE namePlayer = '{player.Name}';";
+            cmd.CommandText = $"DELETE FROM {tablename} WHERE accountNumber = '{player.Data.AccountNumber}';";
             cmd.ExecuteNonQuery();
         }
     }
@@ -40,6 +28,15 @@ namespace CaptureTheFlag.PropertiesPlayer
     public partial class Player
     {
         public void UpdateData<T>(string campus, T newvalue) 
-            => DataBase.Account.Update(campus, newvalue, Data.AccountNumber);
+            => DataBase.Account.Update(campus, newvalue, this);
+
+        public void UpdateAdminLevel(int newvalue)
+            => DataBase.Account.Update("levelAdmin", newvalue, this, "admins");
+
+        public void UpdateVipLevel(int newvalue)
+            => DataBase.Account.Update("levelVip", newvalue, this, "vips");
+
+        public void UpdateSkin(int newvalue)
+            => DataBase.Account.Update("skinid", newvalue, this, "vips");
     }
 }

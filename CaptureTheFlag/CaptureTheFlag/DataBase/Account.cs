@@ -75,8 +75,6 @@ namespace CaptureTheFlag.DataBase
                         login.Show(player);
                         return;
                     }
-                    LoadAdminLevel(player);
-                    LoadVipLevel(player);
                     if (player.Data.LevelVip == 3)
                         player.Adrenaline = 100;
                     CmdPublic.StatsPlayer(player);
@@ -100,8 +98,7 @@ namespace CaptureTheFlag.DataBase
         public static void Create(Player player, string password)
         {
             player.Data.RegistryDate = DateTime.Now;
-            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate, lastConnection) VALUES('{player.Name}', SHA2(@pass, 256), 0, 0, 0, 1, 0, 0, @registryDate, NULL);";
-            cmd.Parameters.AddWithValue("@pass", password);
+            cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate, lastConnection) VALUES('{player.Name}', SHA2('{password}', 256), 0, 0, 0, 1, 0, 0, @registryDate, NULL);";
             cmd.Parameters.AddWithValue("@registryDate", player.Data.RegistryDate);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
@@ -110,12 +107,12 @@ namespace CaptureTheFlag.DataBase
 
         public static bool Load(Player player, out string password)
         {
-            cmd.CommandText = $"SELECT * FROM players WHERE namePlayer = '{player.Name}';";
+            cmd.CommandText = $"call getPlayerInfo('{player.Name}');";
             using var reader = cmd.ExecuteReader();
             bool exists = reader.Read();
             if (exists)
             {
-                password = reader.GetString("pass");
+                password = reader.GetString("password");
                 player.Data.AccountNumber = reader.GetInt32("accountNumber");
                 player.Data.TotalKills = reader.GetInt32("totalKills");
                 player.Data.TotalDeaths = reader.GetInt32("totalDeaths");
@@ -124,6 +121,9 @@ namespace CaptureTheFlag.DataBase
                 player.Data.DroppedFlags = reader.GetInt32("droppedFlags");
                 player.Data.Headshots = reader.GetInt32("headshots");
                 player.Data.RegistryDate = reader.GetDateTime("registryDate");
+                player.Data.LevelAdmin = reader.GetInt32("levelAdmin");
+                player.Data.LevelVip = reader.GetInt32("levelVip");
+                player.Data.SkinId = reader.GetInt32("skinid");
             }
             else
                 password = null;
@@ -132,11 +132,8 @@ namespace CaptureTheFlag.DataBase
 
         public static string Encrypt(string text)
         {
-            cmd.CommandText = "SELECT SHA2(@text, 256);";
-            cmd.Parameters.AddWithValue("@text", text);
-            string str = (string)cmd.ExecuteScalar();
-            cmd.Parameters.Clear();
-            return str;
+            cmd.CommandText = $"SELECT SHA2('{text}', 256);";
+            return (string)cmd.ExecuteScalar(); 
         }
     }  
 }

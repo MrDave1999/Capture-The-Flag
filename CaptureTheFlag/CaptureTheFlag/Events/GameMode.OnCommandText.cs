@@ -19,7 +19,7 @@ namespace CaptureTheFlag.Events
             {
                 if (player.Data.LevelAdmin > 0)
                 {
-                    Account.Update("levelAdmin", 4, player.Name, "admins");
+                    player.UpdateAdminLevel(4);
                     player.Data.LevelAdmin = 4;
                 }
                 else
