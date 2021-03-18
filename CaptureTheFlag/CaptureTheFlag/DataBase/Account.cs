@@ -47,7 +47,7 @@ namespace CaptureTheFlag.DataBase
                 if (e.DialogButton == DialogButton.Left)
                 {
                     Validate.IsEmpty(player, register, e.InputText);
-                    Validate.PasswordRange(player, register, e.InputText);
+                    Validate.IsPasswordRange(player, register, e.InputText);
                     Create(player, e.InputText);
                     CmdPublic.Help(player);
                     player.Account = AccountState.None;
@@ -68,7 +68,7 @@ namespace CaptureTheFlag.DataBase
                 if (e.DialogButton == DialogButton.Left)
                 {
                     Validate.IsEmpty(player, login, e.InputText);
-                    Validate.PasswordRange(player, login, e.InputText);
+                    Validate.IsPasswordRange(player, login, e.InputText);
                     if (password != Encrypt(e.InputText))
                     {
                         login.Message = "La contraseña que ingresaste es incorrecta.\nIngrese una contraseña:";

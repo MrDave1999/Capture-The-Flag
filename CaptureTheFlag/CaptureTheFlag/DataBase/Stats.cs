@@ -14,13 +14,16 @@ namespace CaptureTheFlag.Command.Public
         [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
         public static void StatsDb(Player player, string playername)
         {
-            cmd.CommandText = $"SELECT * FROM players WHERE namePlayer = '{playername}';";
+            if (!Validate.IsNameRange(player, playername)) return;
+            if (!Validate.IsValidName(player, playername)) return;
+            cmd.CommandText = $"call getPlayerInfo('{playername}');";
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 var stats = new TablistDialog("Stats", 2, "Aceptar", "");
                 var id = reader.GetInt32("accountNumber");
-                stats.Add(new[] { "Name", reader.GetString("namePlayer") });
+                var skinid = reader.GetInt32("skinid");
+                stats.Add(new[] { "Name", reader.GetString("name") });
                 stats.Add(new[] { "Account Number", id.ToString() });
                 stats.Add(new[] { "Registry Date", ParseData.ToStringDateTime(reader.GetDateTime("registryDate")) });
                 stats.Add(new[] { "Last Connection",
@@ -34,6 +37,9 @@ namespace CaptureTheFlag.Command.Public
                 stats.Add(new[] { "Next Rank", Rank.GetNextRankLevel(level) });
                 stats.Add(new[] { "Dropped Flags", reader.GetInt32("droppedFlags").ToString() });
                 stats.Add(new[] { "Headshots", reader.GetInt32("headshots").ToString() });
+                stats.Add(new[] { "Admin Level", reader.GetInt32("levelAdmin").ToString() });
+                stats.Add(new[] { "VIP Level", reader.GetInt32("levelVip").ToString() });
+                stats.Add(new[] { "Saved Skin", skinid == -1 ? "None" : skinid.ToString() });
                 stats.Show(player);
             }
             else

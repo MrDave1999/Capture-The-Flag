@@ -72,7 +72,7 @@ namespace CaptureTheFlag.Command.Public
                 if(e.DialogButton == DialogButton.Left)
                 {
                     Validate.IsEmpty(player, dialogPass, e.InputText);
-                    Validate.PasswordRange(player, dialogPass, e.InputText);
+                    Validate.IsPasswordRange(player, dialogPass, e.InputText);
                     player.UpdateData("pass", Account.Encrypt(e.InputText));
                     player.SendClientMessage(Color.Orange, $"** La nueva contraseña de tu cuenta es: {e.InputText}");
                 }
@@ -83,15 +83,11 @@ namespace CaptureTheFlag.Command.Public
         public static void ChangeName(Player player, string newname)
         {
             if (player.IsGameLevel(2)) return;
-            if(Account.Exists(newname))
+            if (!Validate.IsNameRange(player, newname)) return;
+            if (!Validate.IsValidName(player, newname)) return;
+            if (Account.Exists(newname))
             {
                 player.SendClientMessage(Color.Red, "Error: Ese nombre ya existe en la base de datos.");
-                return;
-            }
-            //The name to set. Must be 1-24 characters long and only contain valid characters (0-9, a-z, A-Z, [], (), \$ @ . _ and = only).
-            if (newname.Length < 3 || newname.Length > 20)
-            {
-                player.SendClientMessage(Color.Red, "Error: La longitud del nombre debe tener entre 3 y 20 caracteres.");
                 return;
             }
             BasePlayer.SendClientMessageToAll(Color.Yellow, $"[Anuncio]: {Color.Orange}{player.Name} cambió su nombre a {newname}");
