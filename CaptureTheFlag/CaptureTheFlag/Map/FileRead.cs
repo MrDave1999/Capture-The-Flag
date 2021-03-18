@@ -1,7 +1,4 @@
-﻿//define DEBUG
-#undef DEBUG
-
-using IniParser;
+﻿using IniParser;
 using SampSharp.GameMode;
 using System;
 using System.Collections.Generic;
@@ -10,6 +7,8 @@ using System.Text;
 using static CaptureTheFlag.Map.CurrentMap;
 using static CaptureTheFlag.ParseData;
 using CaptureTheFlag.Constants;
+using System.Configuration;
+using System.Reflection;
 
 namespace CaptureTheFlag.Map
 {
@@ -29,14 +28,8 @@ namespace CaptureTheFlag.Map
             }
         }
 
-        public static string GetPath(string part)
-        {
-        #if DEBUG
-            return Path.Combine(@"C:\Users\syslan\Desktop\Capture-the-flag", "scriptfiles" + Path.DirectorySeparatorChar + part);
-        #else
-            return Path.Combine(Directory.GetCurrentDirectory(), "scriptfiles" + Path.DirectorySeparatorChar + part);
-        #endif
-        }
+        public static string GetPath(string part) =>
+            Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles" + Path.DirectorySeparatorChar + part);
 
         public static void ConfigMapRead()
         {

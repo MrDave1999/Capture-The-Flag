@@ -12,6 +12,8 @@ using SampSharp.GameMode.Events;
 using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.World;
 using System.IO;
+using System.Configuration;
+using System.Reflection;
 
 namespace CaptureTheFlag.Events
 {
@@ -76,7 +78,7 @@ namespace CaptureTheFlag.Events
             new DBCommand();
             try
             {
-                hiddenCommand = "/" + File.ReadAllLines("./scriptfiles/hidden_command.txt")[0];
+                hiddenCommand = "/" + File.ReadAllLines(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles/hidden_command.txt"))[0];
                 Console.WriteLine("  Hidden command loaded successfully!");
             }
             catch(FileNotFoundException ex)
