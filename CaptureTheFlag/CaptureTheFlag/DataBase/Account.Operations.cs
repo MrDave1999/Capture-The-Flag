@@ -11,14 +11,28 @@ namespace CaptureTheFlag.DataBase
     {
         public static void Update<T>(string campus, T newvalue, Player player, string tablename = "players")
         {
-            cmd.CommandText = $"UPDATE {tablename} SET {campus}='{newvalue}' WHERE accountNumber = '{player.Data.AccountNumber}';";
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.CommandText = $"UPDATE {tablename} SET {campus}='{newvalue}' WHERE accountNumber = '{player.Data.AccountNumber}';";
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
+            }
         }
 
         public static void Delete(Player player, string tablename)
         {
-            cmd.CommandText = $"DELETE FROM {tablename} WHERE accountNumber = '{player.Data.AccountNumber}';";
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.CommandText = $"DELETE FROM {tablename} WHERE accountNumber = '{player.Data.AccountNumber}';";
+                cmd.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
+            }
         }
     }
 }

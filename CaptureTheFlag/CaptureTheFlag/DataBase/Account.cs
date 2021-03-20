@@ -25,15 +25,22 @@ namespace CaptureTheFlag.DataBase
             gameMode.PlayerConnected += (sender, e) =>
             {
                 var player = sender as Player;
-                if (Load(player, out var password))
+                try
                 {
-                    player.Account = AccountState.Login;
-                    ShowDialogLogin(player, password);
+                    if (Load(player, out var password))
+                    {
+                        player.Account = AccountState.Login;
+                        ShowDialogLogin(player, password);
+                    }
+                    else
+                    {
+                        player.Account = AccountState.Register;
+                        ShowDialogRegister(player);
+                    }
                 }
-                else
+                catch(MySqlException ex)
                 {
-                    player.Account = AccountState.Register;
-                    ShowDialogRegister(player);
+                    Console.WriteLine($"Error {ex.StackTrace} Reason: {ex.Message}");
                 }
             };
         }
