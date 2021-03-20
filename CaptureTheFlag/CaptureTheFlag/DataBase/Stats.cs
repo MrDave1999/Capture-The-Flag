@@ -7,15 +7,12 @@ using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.DataBase.DBCommand;
 
-namespace CaptureTheFlag.Command.Public
+namespace CaptureTheFlag.DataBase
 {
-    public partial class CmdPublic
+    public class Stats
     {
-        [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
-        public static void StatsDb(Player player, string playername)
+        public static void ShowStatsDb(Player player, string playername)
         {
-            if (!Validate.IsNameRange(player, playername)) return;
-            if (!Validate.IsValidName(player, playername)) return;
             cmd.CommandText = $"call getPlayerInfo('{playername}');";
             using var reader = cmd.ExecuteReader();
             if (reader.Read())

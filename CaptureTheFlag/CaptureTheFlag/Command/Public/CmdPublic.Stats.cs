@@ -39,6 +39,14 @@ namespace CaptureTheFlag.Command.Public
             $"\n{Color.Yellow}Adrenaline: {Color.White}{player1.Adrenaline}/100", "Cerrar", "").Show(player);
         }
 
+        [Command("statsdb", Shortcut = "statsdb", UsageMessage = "/statsdb [playername]")]
+        public static void StatsDb(Player player, string playername)
+        {
+            if (!Validate.IsNameRange(player, playername)) return;
+            if (!Validate.IsValidName(player, playername)) return;
+            Stats.ShowStatsDb(player, playername);
+        }
+
         [Command("tstats", Shortcut = "tstats")]
         private static void StatsTeam(Player player)
         {
