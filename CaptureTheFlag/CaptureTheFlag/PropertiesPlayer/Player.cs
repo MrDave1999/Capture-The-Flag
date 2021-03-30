@@ -5,6 +5,7 @@ using SampSharp.GameMode.World;
 using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.Events;
+using System;
 
 namespace CaptureTheFlag.PropertiesPlayer
 {
@@ -169,6 +170,12 @@ namespace CaptureTheFlag.PropertiesPlayer
                 if (player.IsConnected && accountNumber == player.Data.AccountNumber)
                     return true;
             return false;
+        }
+
+        public void SendErrorMessage(Exception e)
+        {
+            SendClientMessage(Color.Red, $"Error: {e.Message}");
+            Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
         }
     }
 }

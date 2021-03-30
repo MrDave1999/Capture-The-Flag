@@ -47,7 +47,7 @@ namespace CaptureTheFlag.DataBase
             }
             catch (MySqlException e)
             {
-                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
+                player.SendErrorMessage(e);
             }
         }
     }
