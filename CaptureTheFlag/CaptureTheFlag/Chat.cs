@@ -30,25 +30,55 @@ namespace CaptureTheFlag
             switch (symbol)
             {
                 case '!': //TeamChat
-                    CmdPublic.TeamChat(player, text);
+                    if (player.Team != BasePlayer.NoTeam)
+                    {
+                        CmdPublic.TeamChat(player, text);
+                        return;
+                    }
                     break;
                 case '$': //VipChat
-                    CmdVip.VipChat(player, text);
+                    if (player.Data.LevelVip > 0)
+                    {
+                        CmdVip.VipChat(player, text);
+                        return;
+                    }
                     break;
                 case '#': //AdminChat
-                    CmdAdmin.AdminChat(player, text);
+                    if (player.Data.LevelAdmin > 0)
+                    {
+                        CmdAdmin.AdminChat(player, text);
+                        return;
+                    }
                     break;
-                default:
-                    AlterString(text, symbol);
-                    if(player.Data.LevelAdmin >= 1)
-                        BasePlayer.SendClientMessageToAll($"{player.Color}{player.Name} {{00FF00}}[{player.Id}]: {Color.White}{text}");
-                    else if(player.Data.LevelVip >= 1)
-                        BasePlayer.SendClientMessageToAll($"{player.Color}{player.Name} {Color.Yellow}[{player.Id}]: {Color.White}{text}");
-                    else
-                        BasePlayer.SendClientMessageToAll($"{player.Color}{player.Name} {Color.White}[{player.Id}]: {text}");
+                case '&': //Asay
+                    if(player.Data.LevelAdmin > 0)
+                    {
+                        CmdAdmin.Asay(player, text);
+                        return;
+                    }
+                    break;
+                case '@': //Vsay
+                    if(player.Data.LevelVip > 0)
+                    {
+                        CmdVip.Vsay(player, text);
+                        return;
+                    }
+                    break;
+                case '~': //Nsay
+                    if(player.Data.LevelVip >= 2)
+                    {
+                        CmdVip.Nsay(player, text);
+                        return;
+                    }
                     break;
             }
+            AlterString(text, symbol);
+            if (player.Data.LevelAdmin >= 1)
+                BasePlayer.SendClientMessageToAll($"{player.Color}{player.Name} {{00FF00}}[{player.Id}]: {Color.White}{text}");
+            else if (player.Data.LevelVip >= 1)
+                BasePlayer.SendClientMessageToAll($"{player.Color}{player.Name} {Color.Yellow}[{player.Id}]: {Color.White}{text}");
+            else
+                BasePlayer.SendClientMessageToAll($"{player.Color}{player.Name} {Color.White}[{player.Id}]: {text}");
         }
-
     }
 }
