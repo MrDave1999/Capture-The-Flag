@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using SampSharp.GameMode.Display;
+using SampSharp.GameMode.World;
 
 namespace CaptureTheFlag.Command.Vip
 {
@@ -164,5 +165,19 @@ namespace CaptureTheFlag.Command.Vip
                 foreach (Player player1 in Player.Vips)
                     player1.SendClientMessage($"{{8b0000}}[Vip Chat] {player.Name} [{player.Id}]: {msg}");
         }
+
+        [Command("vsay", Shortcut = "vsay", UsageMessage = "/vsay [message]")]
+        public static void Vsay(Player player, string msg)
+        {
+            if (player.IsVipLevel(1)) return;
+            BasePlayer.SendClientMessageToAll($"{colours[player.Data.LevelVip - 1]}>>| {Rank.GetRankVip(player.Data.LevelVip)} |<< {player.Name}: {Color.White}{msg}");
+        }
+
+        private static string[] colours = new[]
+        {
+            "{FF8A33}", 
+            "{22C87F}",
+            "{C8A522}"
+        };
     }
 }
