@@ -27,6 +27,18 @@ namespace CaptureTheFlag.DataBase
                 var player = sender as Player;
                 try
                 {
+                    DateTime? expiryDate;
+                    if((expiryDate = IsBanned(player)) != null)
+                    {
+                        if (expiryDate > DateTime.Now)
+                        {
+                            player.SendClientMessage(Color.Red, $"* Esta cuenta está prohíbida. La cuenta quedará desbloqueada en esta fecha y hora: {ParseData.ToStringDateTime((DateTime)expiryDate)}.");
+                            player.Kick();
+                            return;
+                        }
+                        DeleteBan(player.Name);
+                    }
+
                     if (Load(player, out var password))
                     {
                         player.Account = AccountState.Login;
@@ -40,7 +52,7 @@ namespace CaptureTheFlag.DataBase
                 }
                 catch(MySqlException ex)
                 {
-                    Console.WriteLine($"Error {ex.StackTrace} Reason: {ex.Message}");
+                    player.SendErrorMessage(ex);
                 }
             };
         }
