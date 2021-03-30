@@ -164,11 +164,11 @@ namespace CaptureTheFlag.Command.Admin
             SendMessageToAdmins($"[Admin Chat] {player.Name} [{player.Id}]: {msg}", 0x33FF33AA);
         }
 
-        [Command("say", Shortcut = "say", UsageMessage = "/say [message]")]
-        private static void Say(Player player, string msg)
+        [Command("asay", Shortcut = "asay", UsageMessage = "/asay [message]")]
+        public static void Asay(Player player, string msg)
         {
             if (player.IsAdminLevel(1)) return;
-            BasePlayer.SendClientMessageToAll($"{colours[player.Data.LevelAdmin - 1]}..:: {Rank.GetRankAdmin(player.Data.LevelAdmin)} ::.. {player.Name}: {Color.White}{msg}");
+            BasePlayer.SendClientMessageToAll($"{colours[player.Data.LevelAdmin - 1]}»|» {Rank.GetRankAdmin(player.Data.LevelAdmin)} «|« {player.Name}: {Color.White}{msg}");
         }
 
         private static string[] colours = new[]
