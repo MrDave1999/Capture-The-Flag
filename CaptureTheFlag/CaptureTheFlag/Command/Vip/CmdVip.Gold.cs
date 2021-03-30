@@ -76,10 +76,10 @@ namespace CaptureTheFlag.Command.Vip
         }
 
         [Command("nsay", Shortcut = "nsay", UsageMessage = "/nsay [message]")]
-        private static void NsayCommand(Player player, string message)
+        public static void Nsay(Player player, string message)
         {
             if (player.IsVipLevel(2)) return;
-            BasePlayer.SendClientMessageToAll($"{Color.Orange}.:: VIP Anónimo: {Color.White}| {message}");
+            BasePlayer.SendClientMessageToAll($"{Color.Orange}.:: Usuario Anónimo: {Color.White}| {message}");
         }
     }
 }
