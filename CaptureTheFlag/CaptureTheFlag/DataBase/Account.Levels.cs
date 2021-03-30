@@ -11,28 +11,14 @@ namespace CaptureTheFlag.DataBase
     {
         public static void InsertVipLevel(Player player, int levelid)
         {
-            try
-            {
-                cmd.CommandText = $"INSERT INTO vips(accountNumber, levelVip, skinid) VALUES('{player.Data.AccountNumber}', {levelid}, -1);";
-                cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
-            }
+            cmd.CommandText = $"INSERT INTO vips(accountNumber, levelVip, skinid) VALUES('{player.Data.AccountNumber}', {levelid}, -1);";
+            cmd.ExecuteNonQuery();
         }
 
         public static void InsertAdminLevel(Player player, int levelid)
         {
-            try
-            {
-                cmd.CommandText = $"INSERT INTO admins(accountNumber, levelAdmin) VALUES('{player.Data.AccountNumber}', {levelid});";
-                cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
-            }
+            cmd.CommandText = $"INSERT INTO admins(accountNumber, levelAdmin) VALUES('{player.Data.AccountNumber}', {levelid});";
+            cmd.ExecuteNonQuery();
         }
     }
 }
