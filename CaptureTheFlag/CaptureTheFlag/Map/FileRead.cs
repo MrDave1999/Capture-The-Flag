@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using static CaptureTheFlag.Map.CurrentMap;
-using static CaptureTheFlag.ParseData;
+using static CaptureTheFlag.Utils.ParseData;
 using CaptureTheFlag.Constants;
 using System.Configuration;
 using System.Reflection;
+using CaptureTheFlag.Utils;
 
 namespace CaptureTheFlag.Map
 {

@@ -5,6 +5,7 @@ using SampSharp.GameMode.Events;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.World;
 using CaptureTheFlag.DataBase;
+using CaptureTheFlag.DataBase.PlayerAccount;
 
 namespace CaptureTheFlag.Events
 {

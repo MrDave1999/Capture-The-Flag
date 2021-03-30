@@ -14,8 +14,9 @@ using static CaptureTheFlag.DataBase.DBCommand;
 using SampSharp.GameMode.SAMP.Commands;
 using System.Globalization;
 using SampSharp.GameMode.Controllers;
+using CaptureTheFlag.Utils;
 
-namespace CaptureTheFlag.DataBase
+namespace CaptureTheFlag.DataBase.PlayerAccount
 {
     [Controller]
     public partial class Account : IEventListener
@@ -42,67 +43,18 @@ namespace CaptureTheFlag.DataBase
                     if (Load(player, out var password))
                     {
                         player.Account = AccountState.Login;
-                        ShowDialogLogin(player, password);
+                        player.ShowDialogLogin(password);
                     }
                     else
                     {
                         player.Account = AccountState.Register;
-                        ShowDialogRegister(player);
+                        player.ShowDialogRegister();
                     }
                 }
                 catch(MySqlException ex)
                 {
                     player.SendErrorMessage(ex);
                 }
-            };
-        }
-
-        public static void ShowDialogRegister(Player player)
-        {
-            var register = new InputDialog($"{Color.Yellow}Regístrate", $"Esta cuenta no está registrada.\nIngrese una contraseña:", true, "Aceptar", "");
-            register.Show(player);
-            register.Response += (sender, e) =>
-            {
-                if (e.DialogButton == DialogButton.Left)
-                {
-                    Validate.IsEmpty(player, register, e.InputText);
-                    Validate.IsPasswordRange(player, register, e.InputText);
-                    Create(player, e.InputText);
-                    CmdPublic.Help(player);
-                    player.Account = AccountState.None;
-                    player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Te has registrado de forma exitosa. {Color.Orange}Contraseña: {e.InputText}");
-                }
-                else
-                    register.Show(player);
-
-            };
-        }
-
-        public static void ShowDialogLogin(Player player, string password)
-        {
-            var login = new InputDialog($"{Color.Orange}Iniciar Sesión", "Esta cuenta sí está registrada.\nIngrese una contraseña:", true, "Aceptar", "");
-            login.Show(player);
-            login.Response += (sender, e) =>
-            {
-                if (e.DialogButton == DialogButton.Left)
-                {
-                    Validate.IsEmpty(player, login, e.InputText);
-                    Validate.IsPasswordRange(player, login, e.InputText);
-                    if (password != Encrypt(e.InputText))
-                    {
-                        login.Message = "La contraseña que ingresaste es incorrecta.\nIngrese una contraseña:";
-                        login.Show(player);
-                        return;
-                    }
-                    if (player.Data.LevelVip == 3)
-                        player.Adrenaline = 100;
-                    CmdPublic.StatsPlayer(player);
-                    player.Account = AccountState.None;
-                    player.SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Has iniciado sesión de forma exitosa!");
-                    Player.AddLevels(player);
-                }
-                else
-                    login.Show(player);
             };
         }
 

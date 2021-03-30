@@ -7,7 +7,7 @@ using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static CaptureTheFlag.DataBase.Account;
+using static CaptureTheFlag.DataBase.PlayerAccount.Account;
 
 namespace CaptureTheFlag.Command.Admin
 {

@@ -6,7 +6,7 @@ using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static CaptureTheFlag.Rand;
+using static CaptureTheFlag.Utils.Rand;
 using static CaptureTheFlag.Events.GameMode;
 using static SampSharp.GameMode.World.BasePlayer;
 using static CaptureTheFlag.Map.FileRead;

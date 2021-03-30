@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.DataBase.DBCommand;
 
-namespace CaptureTheFlag.DataBase
+namespace CaptureTheFlag.DataBase.PlayerAccount
 {
     public partial class Account
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CaptureTheFlag
+namespace CaptureTheFlag.PropertiesPlayer
 {
     public class PlayerData
     {

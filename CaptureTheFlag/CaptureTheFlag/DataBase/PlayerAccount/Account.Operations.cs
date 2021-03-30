@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.DataBase.DBCommand;
+using CaptureTheFlag.DataBase.PlayerAccount;
 
-namespace CaptureTheFlag.DataBase
+namespace CaptureTheFlag.DataBase.PlayerAccount
 {
     public partial class Account
     {
@@ -28,15 +29,15 @@ namespace CaptureTheFlag.PropertiesPlayer
     public partial class Player
     {
         public void UpdateData<T>(string campus, T newvalue) 
-            => DataBase.Account.Update(campus, newvalue, this);
+            => DataBase.PlayerAccount.Account.Update(campus, newvalue, this);
 
         public void UpdateAdminLevel(int newvalue)
-            => DataBase.Account.Update("levelAdmin", newvalue, this, "admins");
+            => DataBase.PlayerAccount.Account.Update("levelAdmin", newvalue, this, "admins");
 
         public void UpdateVipLevel(int newvalue)
-            => DataBase.Account.Update("levelVip", newvalue, this, "vips");
+            => DataBase.PlayerAccount.Account.Update("levelVip", newvalue, this, "vips");
 
         public void UpdateSkin(int newvalue)
-            => DataBase.Account.Update("skinid", newvalue, this, "vips");
+            => DataBase.PlayerAccount.Account.Update("skinid", newvalue, this, "vips");
     }
 }

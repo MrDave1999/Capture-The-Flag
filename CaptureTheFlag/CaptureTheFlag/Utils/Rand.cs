@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CaptureTheFlag
+namespace CaptureTheFlag.Utils
 {
     public static class Rand
     {
         private static readonly Random random = new Random();
-
         public static int Next(int max) => random.Next(max);
 
         public static void Shuffle<T>(T[]array)

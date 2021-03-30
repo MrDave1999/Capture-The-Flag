@@ -1,4 +1,5 @@
-﻿using SampSharp.Core.Natives.NativeObjects;
+﻿using CaptureTheFlag.Utils;
+using SampSharp.Core.Natives.NativeObjects;
 using SampSharp.GameMode.World;
 using SampSharp.YSF;
 
