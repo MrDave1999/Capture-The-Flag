@@ -50,5 +50,41 @@ namespace CaptureTheFlag.Utils
             }
             return true;
         }
+
+        public static void IsTotalDaysRange(Player player, int days)
+        {
+            if (days < 1 || days > 365)
+            {
+                player.SendClientMessage(Color.Red, "Error: Los días deben estar entre 1 a 365 días.");
+                throw new Exception();
+            }
+        }
+
+        public static void IsHoursRange(Player player, int hours)
+        {
+            if (hours < 0 || hours > 23)
+            {
+                player.SendClientMessage(Color.Red, "Error: Las horas deben estar entre 0 a 23 horas.");
+                throw new Exception();
+            }
+        }
+
+        public static void IsMinutesRange(Player player, int minutes)
+        {
+            if (minutes < 0 || minutes > 59)
+            {
+                player.SendClientMessage(Color.Red, "Error: Los minutos deben estar entre 0 a 59 minutos.");
+                throw new Exception();
+            }
+        }
+
+        public static void IsSecondsRange(Player player, int seconds)
+        {
+            if (seconds < 0 || seconds > 59)
+            {
+                player.SendClientMessage(Color.Red, "Error: Los segundos deben estar entre 0 a 59 segundos.");
+                throw new Exception();
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CaptureTheFlag.Data;
 using CaptureTheFlag.Map;
 using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Utils;
 using MySql.Data.MySqlClient;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
@@ -18,11 +19,7 @@ namespace CaptureTheFlag.Command.Admin
         private static void SetTimeLeft(Player player, int minutes)
         {
             if (player.IsAdminLevel(4)) return;
-            if(minutes < 0 || minutes >= 60)
-            {
-                player.SendClientMessage(Color.Red, "Error: Los minutos deben estar en el rango de 0 a 59.");
-                return;
-            }
+            Validate.IsMinutesRange(player, minutes);
             CurrentMap.timeLeft = minutes * 60;
             BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} cambió el tiempo de la partida a {Color.Orange}{minutes} {(minutes == 1 ? "minuto" : "minutos")}.");
             SendMessageToAdmins(player, "settimeleft");

@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static CaptureTheFlag.Utils.Validate;
 
 namespace CaptureTheFlag.Command.Admin
 {
@@ -77,26 +78,10 @@ namespace CaptureTheFlag.Command.Admin
         {
             if (player.IsAdminLevel(3)) return;
             Player player1 = Player.Find(player, playerid);
-            if (days < 1 || days > 365)
-            {
-                player.SendClientMessage(Color.Red, "Error: Los días deben estar entre 1 a 365 días.");
-                return;
-            }
-            if(hours < 0 || hours > 23)
-            {
-                player.SendClientMessage(Color.Red, "Error: Las horas deben estar entre 0 a 23 horas.");
-                return;
-            }
-            if(minutes < 0 || minutes > 59)
-            {
-                player.SendClientMessage(Color.Red, "Error: Los minutos deben estar entre 0 a 59 minutos.");
-                return;
-            }
-            if(seconds < 0 || seconds > 59)
-            {
-                player.SendClientMessage(Color.Red, "Error: Los segundos deben estar entre 0 a 59 segundos.");
-                return;
-            }
+            IsTotalDaysRange(player, days);
+            IsHoursRange(player, hours);
+            IsMinutesRange(player, minutes);
+            IsSecondsRange(player, seconds);
             if (reason.Length > 50)
             {
                 player.SendClientMessage(Color.Red, "Error: La razón no puede tener mas de 50 caracteres.");
@@ -120,8 +105,8 @@ namespace CaptureTheFlag.Command.Admin
         private static void DeleteNameBan(Player player, string name)
         {
             if (player.IsAdminLevel(3)) return;
-            if (!Validate.IsNameRange(player, name)) return;
-            if (!Validate.IsValidName(player, name)) return;
+            if (!IsNameRange(player, name)) return;
+            if (!IsValidName(player, name)) return;
             try
             {
                 if (Account.DeleteBan(name) == 0)
