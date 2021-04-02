@@ -1,5 +1,7 @@
-﻿using CaptureTheFlag.Events;
+﻿using CaptureTheFlag.Data;
+using CaptureTheFlag.Events;
 using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Teams;
 using CaptureTheFlag.Textdraw;
 using CaptureTheFlag.Utils;
 using SampSharp.GameMode;
@@ -169,15 +171,7 @@ namespace CaptureTheFlag.Command.Admin
         public static void Asay(Player player, string msg)
         {
             if (player.IsAdminLevel(1)) return;
-            BasePlayer.SendClientMessageToAll($"{colours[player.Data.LevelAdmin - 1]}»|» {Rank.GetRankAdmin(player.Data.LevelAdmin)} «|« {player.Name}: {Color.White}{msg}");
+            BasePlayer.SendClientMessageToAll($"{Colors.GetColorAdmin(player.Data.LevelAdmin)}»|» {Rank.GetRankAdmin(player.Data.LevelAdmin)} «|« {player.Name}: {Color.White}{msg}");
         }
-
-        private static string[] colours = new[]
-        {
-            "{FFFF00}", //yellow
-            "{00FFFF}", //cian
-            "{FF0000}", //red
-            "{FF00FF}", //magenta
-        };
     }
 }

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CaptureTheFlag
+namespace CaptureTheFlag.Data
 {
     public class Gun
     {

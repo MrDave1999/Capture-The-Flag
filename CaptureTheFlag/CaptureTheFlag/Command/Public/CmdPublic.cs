@@ -15,6 +15,8 @@ using SampSharp.Streamer.World;
 using CaptureTheFlag.PropertiesPlayer;
 using System.Linq;
 using CaptureTheFlag.Map;
+using CaptureTheFlag.Permission;
+using CaptureTheFlag.Data;
 
 namespace CaptureTheFlag.Command.Public
 {

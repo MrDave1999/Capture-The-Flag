@@ -23,7 +23,7 @@ namespace CaptureTheFlag.Events
                 player.SendClientMessage(Color.Red, "Error: Usted se encuentra silenciado.");
                 return;
             }
-            Chat.WriteText(player, e.Text);
+            player.SendMessageToChat(e.Text);
         }
     }
 }

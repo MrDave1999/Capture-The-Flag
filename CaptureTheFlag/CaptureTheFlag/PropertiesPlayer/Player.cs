@@ -6,6 +6,8 @@ using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.Events;
 using System;
+using CaptureTheFlag.Data;
+using CaptureTheFlag.Teams;
 
 namespace CaptureTheFlag.PropertiesPlayer
 {

@@ -14,6 +14,7 @@ using SampSharp.GameMode.World;
 using System.IO;
 using System.Configuration;
 using System.Reflection;
+using CaptureTheFlag.Teams;
 
 namespace CaptureTheFlag.Events
 {

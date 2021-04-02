@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CaptureTheFlag
+namespace CaptureTheFlag.Permission
 {
     public class BlockCommand : IPermissionChecker
     {

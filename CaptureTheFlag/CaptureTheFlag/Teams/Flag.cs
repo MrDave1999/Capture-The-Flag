@@ -9,7 +9,7 @@ using System.Dynamic;
 using System.Text;
 using CaptureTheFlag.PropertiesPlayer;
 
-namespace CaptureTheFlag
+namespace CaptureTheFlag.Teams
 {
     public class Flag
     {

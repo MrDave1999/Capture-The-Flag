@@ -4,6 +4,7 @@ using SampSharp.GameMode;
 using SampSharp.GameMode.Events;
 using SampSharp.GameMode.World;
 using CaptureTheFlag.Map;
+using CaptureTheFlag.Data;
 
 namespace CaptureTheFlag.Events
 {

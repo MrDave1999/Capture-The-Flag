@@ -1,4 +1,5 @@
-﻿using CaptureTheFlag.Map;
+﻿using CaptureTheFlag.Data;
+using CaptureTheFlag.Map;
 using CaptureTheFlag.PropertiesPlayer;
 using MySql.Data.MySqlClient;
 using SampSharp.GameMode.SAMP;

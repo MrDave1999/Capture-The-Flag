@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlag.Constants;
+using CaptureTheFlag.Data;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.World;
 using System.Collections.Generic;
