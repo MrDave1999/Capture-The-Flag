@@ -41,6 +41,14 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
   - [.NET Core Windows (x86)](https://download.visualstudio.microsoft.com/download/pr/11da2dd3-9946-49f4-9758-868dcfd9b479/5cc2813259ae85912c3484151637782e/dotnet-runtime-3.1.11-win-x86.exe)
   - [.NET Core Linux (x86)](https://deploy.timpotze.nl/packages/dotnet20200127.zip)
 
+You will probably have to install two packages to be able to run gamemode on Linux: `libicu` and `libssl`.
+
+Example in Ubuntu:
+```
+sudo apt-get install libssl1.0.0:i386
+sudo apt-get install libicu-dev:i386
+```
+
 ## Build
 
 If you want to rebuild the project from `0`, you should download these dependencies (or packages):
@@ -63,13 +71,23 @@ Some plugins you will need:
 
 The .NET Core Runtime should be added in the `CaptureTheFlag/runtimes` folder.
 
-## Images
+## Frequently Asked Questions
 
-![img1](https://i.ibb.co/6Fm35n8/sa-mp-000.png)
-![img2](https://i.ibb.co/WKXyxdn/sa-mp-001.png)
-![img3](https://i.ibb.co/560HSpP/sa-mp-002.png)
-![img4](https://i.ibb.co/6JGVFk8/sa-mp-003.png)
-![img5](https://i.ibb.co/bNd0P65/sa-mp-004.png)
+#### How do I edit the connection string?
+
+Go to the [CaptureTheFlag.dll.config](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/CaptureTheFlag.dll.config) file and modify the `connectionString` tag.
+
+#### How can I become an administrator on the server?
+
+Go to the [config_server.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_server.ini) file and modify the `hidden command`, then log in to the server and type the command.
+
+#### How do I change the length of the game?
+
+Go to the [config_map.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_maps.ini) file and modify the `MAX_TIME_ROUND` property, the time must be expressed in "seconds".
+
+## Images
+![image](https://user-images.githubusercontent.com/43916038/114632050-6d19fa80-9c83-11eb-812e-0241a288564d.png)
+![image](https://user-images.githubusercontent.com/43916038/114632071-77d48f80-9c83-11eb-9ff5-61609b64289e.png)
 
 ## Credits
 
