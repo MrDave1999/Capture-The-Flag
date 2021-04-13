@@ -75,15 +75,15 @@ The .NET Core Runtime should be added in the `CaptureTheFlag/runtimes` folder.
 
 #### How do I edit the connection string?
 
-Go to the [CaptureTheFlag.dll.config](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/CaptureTheFlag.dll.config) file and modify the `connectionString` tag.
+Go to the [CaptureTheFlag.dll.config](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/CaptureTheFlag.dll.config#L5) file and modify the `connectionString` tag.
 
 #### How can I become an administrator on the server?
 
-Go to the [config_server.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_server.ini) file and modify the `hidden command`, then log in to the server and type the command.
+Go to the [config_server.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_server.ini#L4) file and modify the `hidden command`, then log in to the server and type the command.
 
 #### How do I change the length of the game?
 
-Go to the [config_map.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_maps.ini) file and modify the `MAX_TIME_ROUND` property, the time must be expressed in "seconds".
+Go to the [config_map.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_maps.ini#L3) file and modify the `MAX_TIME_ROUND` property, the time must be expressed in "seconds".
 
 ## Images
 ![image](https://user-images.githubusercontent.com/43916038/114632050-6d19fa80-9c83-11eb-812e-0241a288564d.png)
