@@ -88,6 +88,10 @@ namespace CaptureTheFlag.Command.Public
             player.Health = 0;
         }
 
+        [Command("datetime", Shortcut = "datetime")]
+        private static void DateTimeServer(Player player) =>
+            player.SendClientMessage(Color.Orange, $"--> Fecha y hora local del servidor: {Color.White}{DateTime.Now}");
+
         [Command("map", Shortcut = "map")]
         private static void MapName(Player player)
             => player.SendClientMessage(Color.Yellow, $"* Mapa actual: {Color.Orange}{CurrentMap.GetCurrentMap()}.");

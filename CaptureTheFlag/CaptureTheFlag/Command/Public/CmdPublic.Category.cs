@@ -106,6 +106,7 @@ namespace CaptureTheFlag.Command.Public
         {
             DialogCategory.Message =
                 $"{Color.Yellow}/kill{Color.White} - Asesina al jugador (su vida queda en 0.0)." +
+                $"\n{Color.Yellow}/datetime{Color.White} - Obtiene la fecha y hora local del servidor." +
                 $"\n{Color.Yellow}/switch{Color.White} - Permite al jugador cambiarse de equipo." +
                 $"\n{Color.Yellow}/tc{Color.White} - Permite hablar en el Team Chat." +
                 $"\n{Color.Yellow}/re{Color.White} - Reinicia a 0 los asesinatos y muertes por ronda." +
