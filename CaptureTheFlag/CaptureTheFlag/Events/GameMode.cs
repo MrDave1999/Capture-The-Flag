@@ -15,6 +15,7 @@ using System.IO;
 using System.Configuration;
 using System.Reflection;
 using CaptureTheFlag.Teams;
+using IniParser;
 
 namespace CaptureTheFlag.Events
 {
@@ -33,10 +34,6 @@ namespace CaptureTheFlag.Events
             Console.WriteLine("     Team DeathMatch");
             Console.WriteLine("----------------------------------\n");
 
-            SetGameModeText("CTF ~v7.13.2");
-            Server.SendRconCommand("hostname .:: Capture The Flag ::. |Team DeathMatch|");
-            Server.SendRconCommand("weburl www.");
-            Server.SendRconCommand("language  Español Latino");
             Server.SendRconCommand("loadfs EntryMap");
             Server.SendRconCommand("loadfs RemoveBuilding");
             //UsePlayerPedAnimations();
@@ -45,7 +42,22 @@ namespace CaptureTheFlag.Events
             AddPlayerClass(SkinTeam.Beta, new Vector3(0, 0, 0), 0);
             TextDrawGlobal.Create();
             TextDrawEntry.Create();
-            StartTimer();
+
+            try
+            {
+                var data = new IniDataParser().Parse(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles/config_server.ini")));
+                Server.SendRconCommand($"hostname {data["server"]["hostname"]}");
+                Server.SendRconCommand($"language {data["server"]["language"]}");
+                hiddenCommand = data["server"]["hidden_command"];
+                SetGameModeText(data["server"]["gamemode_text"]);
+                StartTimer(data["server"]["name_map"]);
+                Console.WriteLine("  config_server.ini loaded successfully!");
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"Error {ex.StackTrace} Reason: {ex.Message}");
+            }
+
             TeamAlpha = new Team(
                 skin: SkinTeam.Alpha, 
                 otherColor: "{FF2040}", 
@@ -75,17 +87,7 @@ namespace CaptureTheFlag.Events
             TeamBeta.TeamRival = TeamAlpha;
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
-
             new DBCommand();
-            try
-            {
-                hiddenCommand = "/" + File.ReadAllLines(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles/hidden_command.txt"))[0];
-                Console.WriteLine("  Hidden command loaded successfully!");
-            }
-            catch(FileNotFoundException ex)
-            {
-                Console.WriteLine($"Error {ex.StackTrace} Reason: {ex.Message}");
-            }
         }
 
         protected override void OnExited(EventArgs e)

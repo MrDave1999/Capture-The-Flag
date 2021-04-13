@@ -35,7 +35,7 @@ namespace CaptureTheFlag.Map
         public static string[] mapName;
         public static Timer TimerLeft;
 
-        public static void StartTimer()
+        public static void StartTimer(string namemap)
         {
             TimerLeft = new Timer(1000, true);
             TextDraw tdTimeLeft = TextDrawGlobal.TdTimeLeft;
@@ -45,7 +45,7 @@ namespace CaptureTheFlag.Map
             spawns = new SpawnPoint[2, MAX_SPAWNS];
             mapName = new string[MAX_MAPS];
             NamesMapRead();
-            Id = Next(MAX_MAPS);
+            Id = (namemap == "null") ? Next(MAX_MAPS) : GetMapId(namemap);
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Alpha, i] = new SpawnPoint();
             for (int i = 0; i < MAX_SPAWNS; ++i)
@@ -140,5 +140,13 @@ namespace CaptureTheFlag.Map
 
         public static string GetMapName(int mapid) => mapName[mapid];
         public static string GetCurrentMap() => mapName[Id];
+        public static int GetMapId(string nameSearch)
+        {
+            int len = mapName.Length;
+            for (int i = 0; i != len; ++i)
+                if(nameSearch.Equals(mapName[i], StringComparison.OrdinalIgnoreCase))
+                    return i;
+            return 0;
+        }
     }
 }
