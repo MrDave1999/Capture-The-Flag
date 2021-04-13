@@ -17,6 +17,7 @@ using System.Linq;
 using CaptureTheFlag.Map;
 using CaptureTheFlag.Permission;
 using CaptureTheFlag.Data;
+using CaptureTheFlag.Utils;
 
 namespace CaptureTheFlag.Command.Public
 {
@@ -90,7 +91,7 @@ namespace CaptureTheFlag.Command.Public
 
         [Command("datetime", Shortcut = "datetime")]
         private static void DateTimeServer(Player player) =>
-            player.SendClientMessage(Color.Orange, $"--> Fecha y hora local del servidor: {Color.White}{DateTime.Now}");
+            player.SendClientMessage(Color.Orange, $"--> Fecha y hora local del servidor: {Color.White}{ParseData.ToStringDateTime(DateTime.Now)}");
 
         [Command("map", Shortcut = "map")]
         private static void MapName(Player player)
