@@ -16,11 +16,15 @@ namespace CaptureTheFlag.Utils
     {
 		public static int GetTime() => TimeNative.Instance.gettime(); 
 
-		/* Displays the time in MM:SS format. */
+		/* Displays the time in HH:MM:SS format. */
 		public static string Show(int time)
         {
 			int dif = time - GetTime();
-			return $"{dif / 60:D2}:{dif % 60:D2}";
+			dif = (dif > 0) ? dif : -dif;
+			string hour = $"{dif / 3600:D2}";
+			string minutes = $"{(dif / 60) % 60:D2}";
+			string seconds = $"{dif % 60:D2}";
+			return ((dif / 3600) > 0) ? $"{hour}:{minutes}:{seconds}": $"{minutes}:{seconds}";
 		}
 	}
 }

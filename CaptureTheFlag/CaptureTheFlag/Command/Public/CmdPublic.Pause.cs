@@ -27,11 +27,12 @@ namespace CaptureTheFlag.Command.Public
     {
         public Player Player { get; set; }
         public string EntryHour { get; set; }
+        public int TimeInAFK { get; set; } = Time.GetTime();
 
         public bool Equals(UserAFK userAFK) => Player.Id == userAFK.Player.Id;
 
         public new string[] ToString()
-            => new[]{ Player.Id.ToString(), Player.Name, EntryHour };
+            => new[]{ Player.Id.ToString(), Player.Name, EntryHour, Time.Show(TimeInAFK) };
     }
 
     public partial class CmdPublic
@@ -93,7 +94,7 @@ namespace CaptureTheFlag.Command.Public
                 player.SendClientMessage(Color.Red, "Error: No hay ningún jugador en AFK.");
                 return;
             }
-            var dialog = new TablistDialog($"AFK users: {Player.UserAFKs.Count}", new[] { "Id", "Name", "Entry Hour"}, "Cerrar", "");
+            var dialog = new TablistDialog($"AFK users: {Player.UserAFKs.Count}", new[] { "Id", "Name", "Entry Hour", "Time in AFK"}, "Cerrar", "");
             foreach(UserAFK player1 in Player.UserAFKs)
                 dialog.Add(player1.ToString());
             dialog.Show(player);
