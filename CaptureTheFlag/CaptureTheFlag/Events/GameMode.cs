@@ -98,7 +98,6 @@ namespace CaptureTheFlag.Events
             Flag.RemoveAll();
             TeamAlpha.Icon.Dispose();
             TeamBeta.Icon.Dispose();
-            DBConnect.Close();
             TimerLeft.Dispose();
             TextDrawGlobal.Destroy();
             TextDrawEntry.Destroy();

@@ -11,8 +11,8 @@ namespace CaptureTheFlag.DataBase
 
         public DbCommand()
         {
-            DBConnect.Open();
-            cmd = new MySqlCommand() { Connection = DBConnect.Connection };
+            DbConnection.Open();
+            cmd = new MySqlCommand() { Connection = DbConnection.Connection };
         }
     }
 }

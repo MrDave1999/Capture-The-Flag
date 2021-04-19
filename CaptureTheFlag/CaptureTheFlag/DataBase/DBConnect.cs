@@ -6,7 +6,7 @@ using System.Text;
  
 namespace CaptureTheFlag.DataBase
 {
-    public static class DBConnect
+    public static class DbConnection
     {
         public static MySqlConnection Connection { get; set; }
 
