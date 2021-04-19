@@ -1,7 +1,7 @@
 ﻿using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
-using static CaptureTheFlag.DataBase.DBCommand;
+using static CaptureTheFlag.DataBase.DbCommand;
 using System;
 using System.Collections.Generic;
 using System.Text;

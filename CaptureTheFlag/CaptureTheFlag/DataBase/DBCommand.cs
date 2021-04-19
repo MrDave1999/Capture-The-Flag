@@ -5,11 +5,11 @@ using System.Text;
 
 namespace CaptureTheFlag.DataBase
 {
-    public class DBCommand
+    public class DbCommand
     {
         public static MySqlCommand cmd;
 
-        public DBCommand()
+        public DbCommand()
         {
             DBConnect.Open();
             cmd = new MySqlCommand() { Connection = DBConnect.Connection };

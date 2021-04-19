@@ -10,7 +10,7 @@ using CaptureTheFlag.Constants;
 using SampSharp.GameMode.World;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Command.Public;
-using static CaptureTheFlag.DataBase.DBCommand;
+using static CaptureTheFlag.DataBase.DbCommand;
 using SampSharp.GameMode.SAMP.Commands;
 using System.Globalization;
 using SampSharp.GameMode.Controllers;

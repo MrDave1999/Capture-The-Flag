@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static CaptureTheFlag.DataBase.DBCommand;
+using static CaptureTheFlag.DataBase.DbCommand;
 using CaptureTheFlag.DataBase.PlayerAccount;
 
 namespace CaptureTheFlag.DataBase.PlayerAccount

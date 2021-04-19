@@ -87,7 +87,6 @@ namespace CaptureTheFlag.Events
             TeamBeta.TeamRival = TeamAlpha;
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
-            new DBCommand();
         }
 
         protected override void OnExited(EventArgs e)
