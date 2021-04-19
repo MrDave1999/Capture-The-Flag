@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.DataBase.DbCommand;
+using static CaptureTheFlag.DataBase.DbConnection;
 
 namespace CaptureTheFlag.DataBase.PlayerAccount
 {
@@ -13,6 +14,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
     {
         public static DateTime? IsBanned(Player player)
         {
+            using var con = CreateConnection();
             cmd.CommandText = $"SELECT expiryDate FROM banned_players WHERE bannedPlayer = '{player.Name}';";
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -22,6 +24,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
 
         public static DateTime? InsertBan(Player bannedPlayer, Player adminPlayer, string reason, int days, int hours, int minutes, int seconds)
         {
+            using var con = CreateConnection();
             var startDate = DateTime.Now;
             var result = startDate + new TimeSpan(days, 0, 0, 0);
             var expiryDate = new DateTime(result.Year, result.Month, result.Day, hours, minutes, seconds);
@@ -36,6 +39,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
 
         public static int DeleteBan(string name)
         {
+            using var con = CreateConnection();
             cmd.CommandText = $"DELETE FROM banned_players WHERE bannedPlayer = '{name}';";
             return cmd.ExecuteNonQuery();
         }
@@ -43,6 +47,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
         public static bool ShowBans(Player player)
         {
             long rows = 0;
+            using var con = CreateConnection();
             cmd.CommandText = $"SELECT * FROM banned_players;";
             using var reader = cmd.ExecuteReader();
             if(reader.HasRows)

@@ -2,6 +2,7 @@
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
 using static CaptureTheFlag.DataBase.DbCommand;
+using static CaptureTheFlag.DataBase.DbConnection;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,7 @@ namespace CaptureTheFlag.DataBase
         {
             try
             {
+                using var con = CreateConnection();
                 int position = 0;
                 var dialogTop = new TablistDialog("Top Ten", new[] { "Position", "Name", $"{nameColumn}" }, "Atrás", "Cerrar");
                 cmd.CommandText = $"SELECT namePlayer, {campus} FROM players ORDER BY {campus} DESC LIMIT 10;";

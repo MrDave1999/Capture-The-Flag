@@ -1,40 +1,43 @@
 ﻿using MySql.Data.MySqlClient;
+using SampSharp.GameMode;
+using SampSharp.GameMode.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
+using static CaptureTheFlag.DataBase.DbCommand;
  
 namespace CaptureTheFlag.DataBase
 {
-    public static class DbConnection
+    [Controller]
+    public class DbConnection : IEventListener
     {
-        public static MySqlConnection Connection { get; set; }
+        public static string ConnectionString { get; set; }
 
-        public static void Open()
+        public void RegisterEvents(BaseMode gameMode) =>
+            gameMode.Initialized += (sender, e) => CheckConnection();
+
+        public static void CheckConnection()
         {
             try
             {
-                string cs = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
-                Connection = new MySqlConnection(cs);
-                Connection.Open();
+                ConnectionString = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
+                using var con = new MySqlConnection(ConnectionString);
+                con.Open();
                 Console.WriteLine("  The database connection was successful!");
             }
-            catch (Exception e) 
+            catch (MySqlException e) 
             {
                 Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
             }
         }
 
-        public static void Close()
+        public static MySqlConnection CreateConnection()
         {
-            try
-            {
-                Connection.Close();
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
+            var con = new MySqlConnection(ConnectionString);
+            con.Open();
+            cmd.Connection = con;
+            return con;
         }
     }
 }

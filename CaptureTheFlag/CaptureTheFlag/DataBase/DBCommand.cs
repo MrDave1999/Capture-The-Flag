@@ -7,12 +7,6 @@ namespace CaptureTheFlag.DataBase
 {
     public class DbCommand
     {
-        public static MySqlCommand cmd;
-
-        public DbCommand()
-        {
-            DbConnection.Open();
-            cmd = new MySqlCommand() { Connection = DbConnection.Connection };
-        }
+        public static MySqlCommand cmd = new MySqlCommand();
     }
 }

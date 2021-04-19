@@ -11,6 +11,7 @@ using SampSharp.GameMode.World;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Command.Public;
 using static CaptureTheFlag.DataBase.DbCommand;
+using static CaptureTheFlag.DataBase.DbConnection;
 using SampSharp.GameMode.SAMP.Commands;
 using System.Globalization;
 using SampSharp.GameMode.Controllers;
@@ -60,14 +61,15 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
 
         public static bool Exists(string playername)
         {
+            using var con = CreateConnection();
             cmd.CommandText = $"SELECT namePlayer FROM players WHERE namePlayer = '{playername}';";
             using var reader = cmd.ExecuteReader();
-            bool exists = reader.Read();
-            return exists;
+            return reader.Read();
         }
 
         public static void Create(Player player, string password)
         {
+            using var con = CreateConnection();
             player.Data.RegistryDate = DateTime.Now;
             cmd.CommandText = $"INSERT INTO players(namePlayer, pass, totalKills, totalDeaths, killingSprees, levelGame, droppedFlags, headshots, registryDate, lastConnection) VALUES('{player.Name}', SHA2(@password, 256), 0, 0, 0, 1, 0, 0, @registryDate, NULL);";
             cmd.Parameters.AddWithValue("@password", password);
@@ -79,6 +81,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
 
         public static bool Load(Player player, out string password)
         {
+            using var con = CreateConnection();
             cmd.CommandText = $"call getPlayerInfo('{player.Name}');";
             using var reader = cmd.ExecuteReader();
             bool exists = reader.Read();
@@ -104,6 +107,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
 
         public static string Encrypt(string text)
         {
+            using var con = CreateConnection();
             cmd.CommandText = $"SELECT SHA2(@text, 256);";
             cmd.Parameters.AddWithValue("@text", text);
             string password = (string)cmd.ExecuteScalar();
