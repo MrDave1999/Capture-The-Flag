@@ -32,8 +32,10 @@ stock DestroyAllObjects()
 public OnFilterScriptInit()
 {
 	OnFilterScriptInitEx();
+	/*
 	printf("  %s map was load successfully!", NAME_FS);
 	printf("  Total [CreateObjects]: %d / Initial ID: %d / End ID: %d", countObjects, initId, endID);
+	*/
 	return 1;
 }
 
@@ -46,7 +48,7 @@ public OnFilterScriptExit()
 		OnFilterScriptExitEx();
 	#endif
     DestroyAllObjects();
-    printf("  %s map was unload successfully!", NAME_FS);
+    /* printf("  %s map was unload successfully!", NAME_FS); */
 	return 1;
 }
 

@@ -88,7 +88,7 @@ namespace CaptureTheFlag.Map
                     Interior = 0;
                     ++len;
                 }
-                Console.WriteLine("  Interior Map: " + Interior);
+                /*Console.WriteLine("  Interior Map: " + Interior);*/
                 for (int i = 0; i < MAX_SPAWNS; ++i)
                 {
                     position = lines[i].Split(',');
