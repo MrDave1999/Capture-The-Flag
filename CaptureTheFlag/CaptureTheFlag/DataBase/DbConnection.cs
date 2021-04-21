@@ -13,6 +13,7 @@ namespace CaptureTheFlag.DataBase
     public class DbConnection : IEventListener
     {
         public static string ConnectionString { get; set; }
+        public static MySqlConnection Connection { get; set; }
 
         public void RegisterEvents(BaseMode gameMode) =>
             gameMode.Initialized += (sender, e) => CheckConnection();
@@ -22,11 +23,12 @@ namespace CaptureTheFlag.DataBase
             try
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
-                using var con = new MySqlConnection(ConnectionString);
-                con.Open();
+                Connection = new MySqlConnection(ConnectionString);
+                cmd.Connection = Connection;
+                using var con = CreateConnection();
                 Console.WriteLine("  The database connection was successful!");
             }
-            catch (MySqlException e) 
+            catch (Exception e) 
             {
                 Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
             }
@@ -34,10 +36,8 @@ namespace CaptureTheFlag.DataBase
 
         public static MySqlConnection CreateConnection()
         {
-            var con = new MySqlConnection(ConnectionString);
-            con.Open();
-            cmd.Connection = con;
-            return con;
+            Connection.Open();
+            return Connection;
         }
     }
 }
