@@ -8,7 +8,8 @@ using SampSharp.GameMode.SAMP.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static CaptureTheFlag.DataBase.DBCommand;
+using static CaptureTheFlag.DataBase.DbCommand;
+using static CaptureTheFlag.DataBase.DbConnection;
 
 namespace CaptureTheFlag.DataBase.PlayerAccount
 {
@@ -18,6 +19,7 @@ namespace CaptureTheFlag.DataBase.PlayerAccount
         {
             try
             {
+                using var con = CreateConnection();
                 cmd.CommandText = $"call getPlayerInfo('{playername}');";
                 using var reader = cmd.ExecuteReader();
                 if (reader.Read())

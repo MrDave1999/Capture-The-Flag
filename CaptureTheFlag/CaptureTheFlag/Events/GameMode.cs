@@ -28,7 +28,6 @@ namespace CaptureTheFlag.Events
 
         protected override void OnInitialized(EventArgs e)
         {
-            base.OnInitialized(e); 
             Console.WriteLine("\n----------------------------------");
             Console.WriteLine(" GameMode Capture The Flag");
             Console.WriteLine("     Team DeathMatch");
@@ -87,7 +86,7 @@ namespace CaptureTheFlag.Events
             TeamBeta.TeamRival = TeamAlpha;
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
-            new DBCommand();
+            base.OnInitialized(e);
         }
 
         protected override void OnExited(EventArgs e)
@@ -99,7 +98,6 @@ namespace CaptureTheFlag.Events
             Flag.RemoveAll();
             TeamAlpha.Icon.Dispose();
             TeamBeta.Icon.Dispose();
-            DBConnect.Close();
             TimerLeft.Dispose();
             TextDrawGlobal.Destroy();
             TextDrawEntry.Destroy();
