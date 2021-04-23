@@ -14,7 +14,7 @@ namespace CaptureTheFlag.Events
         {
             base.OnPlayerSpawned(sender, e);
             var player = sender as Player;
-            if(player.PlayerTeam == null)
+            if(player.PlayerTeam == null || CurrentMap.IsLoading)
             {
                 player.SetForceClass();
                 return;
