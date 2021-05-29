@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CaptureTheFlag.Map
+namespace CaptureTheFlag.Utils
 {
     public class SpawnPoint
     {

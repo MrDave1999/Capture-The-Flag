@@ -1,27 +1,24 @@
-﻿using IniParser;
+﻿using CaptureTheFlag.Constants;
+using CaptureTheFlag.Utils;
+using IniParser;
 using SampSharp.GameMode;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using static CaptureTheFlag.Map.CurrentMap;
 using static CaptureTheFlag.Utils.ParseData;
-using CaptureTheFlag.Constants;
-using System.Configuration;
-using System.Reflection;
-using CaptureTheFlag.Utils;
 
 namespace CaptureTheFlag.Map
 {
-    public static class FileRead
+    public partial class CurrentMap
     {
-        private static readonly string iniFile;
+        private static readonly string iniFlag;
 
-        static FileRead()
+        static CurrentMap()
         {
             try
             {
-                iniFile = File.ReadAllText(GetPath("flag_position.ini"));
+                iniFlag = File.ReadAllText(Scriptfiles.GetPath("flag_position.ini"));
             }
             catch (FileNotFoundException e)
             {
@@ -29,53 +26,52 @@ namespace CaptureTheFlag.Map
             }
         }
 
-        public static string GetPath(string part) =>
-            Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles" + Path.DirectorySeparatorChar + part);
-
-        public static void ConfigMapRead()
+        public static void LoadConfigMap()
         {
             try
             {
-                var data = new IniDataParser().Parse(File.ReadAllText(GetPath("config_maps.ini")));
-                MAX_MAPS = int.Parse(data["Map"]["MAX_MAPS"]);
-                MAX_TIME_ROUND = int.Parse(data["Map"]["MAX_TIME_ROUND"]);
-                MAX_SPAWNS = int.Parse(data["Map"]["MAX_SPAWNS"]);
-                MAX_TIME_LOADING = int.Parse(data["Map"]["MAX_TIME_LOADING"]);
-            }   
+                var dini = new Dini("config.ini", "Map");
+                MAX_MAPS = int.Parse(dini.Read("MAX_MAPS"));
+                MAX_TIME_ROUND = int.Parse(dini.Read("MAX_TIME_ROUND"));
+                MAX_SPAWNS = int.Parse(dini.Read("MAX_SPAWNS"));
+                MAX_TIME_LOADING = int.Parse(dini.Read("MAX_TIME_LOADING"));
+                LoadMapNames();
+            }
             catch (FileNotFoundException e)
             {
                 Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
             }
         }
 
-        public static void NamesMapRead()
+        public static void LoadMapNames()
         {
             try
             {
-                string[] fileEntries = Directory.GetFiles(GetPath("spawn_position"));
+                mapName = new string[MAX_MAPS];
+                string[] fileEntries = Directory.GetFiles(Scriptfiles.GetPath("spawn_position"));
                 int len = fileEntries.Length;
                 for (int i = 0; i < len; ++i)
                     mapName[i] = Path.GetFileName(fileEntries[i]).Replace(".txt", "");
                 Rand.Shuffle(mapName);
             }
-            catch(DirectoryNotFoundException e)
+            catch (DirectoryNotFoundException e)
             {
                 Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
             }
         }
 
-        public static Vector3 FlagPositionRead(string section)
+        public static Vector3 LoadFlagPosition(string section)
         {
-            var data = new IniDataParser().Parse(iniFile);
+            var data = new IniDataParser().Parse(iniFlag);
             string[] position = data[section][GetCurrentMap()].Split(',');
             return new Vector3(Double(position[0]), Double(position[1]), Double(position[2]));
         }
 
-        public static void SpawnPositionRead()
+        public static void LoadSpawnPositions()
         {
             try
             {
-                string[] lines = File.ReadAllLines(GetPath($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt"));
+                string[] lines = File.ReadAllLines(Scriptfiles.GetPath($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt"));
                 string[] position;
                 int len = lines.Length - 1;
                 int j = 0;
@@ -107,7 +103,7 @@ namespace CaptureTheFlag.Map
                     spawns[(int)TeamID.Beta, j++].Angle = Float(position[3]);
                 }
             }
-            catch(FileNotFoundException e)
+            catch (FileNotFoundException e)
             {
                 Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
             }

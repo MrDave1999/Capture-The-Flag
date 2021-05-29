@@ -7,15 +7,11 @@ using CaptureTheFlag.Controller;
 using CaptureTheFlag.Map;
 using static CaptureTheFlag.Map.CurrentMap;
 using CaptureTheFlag.Constants;
-using CaptureTheFlag.DataBase;
-using SampSharp.GameMode.Events;
-using CaptureTheFlag.PropertiesPlayer;
-using SampSharp.GameMode.World;
 using System.IO;
-using System.Configuration;
 using System.Reflection;
 using CaptureTheFlag.Teams;
 using IniParser;
+using CaptureTheFlag.Utils;
 
 namespace CaptureTheFlag.Events
 {
@@ -44,13 +40,13 @@ namespace CaptureTheFlag.Events
 
             try
             {
-                var data = new IniDataParser().Parse(File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles/config_server.ini")));
-                Server.SendRconCommand($"hostname {data["server"]["hostname"]}");
-                Server.SendRconCommand($"language {data["server"]["language"]}");
-                hiddenCommand = data["server"]["hidden_command"];
-                SetGameModeText(data["server"]["gamemode_text"]);
-                StartTimer(data["server"]["name_map"]);
-                Console.WriteLine("  config_server.ini loaded successfully!");
+                var dini = new Dini("config.ini", "Server");
+                Server.SendRconCommand($"hostname {dini.Read("HOSTNAME")}");
+                Server.SendRconCommand($"language {dini.Read("LANGUAGE")}");
+                hiddenCommand = dini.Read("HIDDEN_COMMAND");
+                SetGameModeText(dini.Read("GAMEMODE_TEXT"));
+                var name = dini.Read("NAME_MAP");
+                StartTimer(name.Length == 0 ? null : name);
             }
             catch (FileNotFoundException ex)
             {
@@ -66,7 +62,7 @@ namespace CaptureTheFlag.Events
                 name: "Alpha", 
                 namecolor: "Roja", 
                 colorEnglish: "Red",
-                new Flag(FlagID.Alpha, Color.Red, FileRead.FlagPositionRead("Red")), 
+                new Flag(FlagID.Alpha, Color.Red, LoadFlagPosition("Red")), 
                 Interior
             );
 
@@ -79,7 +75,7 @@ namespace CaptureTheFlag.Events
                 name: "Beta",  
                 namecolor: "Azul",
                 colorEnglish: "Blue",
-                new Flag(FlagID.Beta, Color.Blue, FileRead.FlagPositionRead("Blue")), 
+                new Flag(FlagID.Beta, Color.Blue, LoadFlagPosition("Blue")), 
                 Interior
             );
             TeamAlpha.TeamRival = TeamBeta;
@@ -88,43 +84,11 @@ namespace CaptureTheFlag.Events
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
             base.OnInitialized(e);
         }
-
-        protected override void OnExited(EventArgs e)
-        {
-            base.OnExited(e);
-            Server.SendRconCommand("unloadfs EntryMap");
-            Server.SendRconCommand("unloadfs RemoveBuilding");
-            Server.SendRconCommand($"unloadfs {GetCurrentMap()}");
-            Flag.RemoveAll();
-            TeamAlpha.Icon.Dispose();
-            TeamBeta.Icon.Dispose();
-            TimerLeft.Dispose();
-            TextDrawGlobal.Destroy();
-            TextDrawEntry.Destroy();
-            Console.WriteLine("  The gamemode was unloading correctly.");
-        }
       
         protected override void LoadControllers(ControllerCollection controllers)
         {
             base.LoadControllers(controllers);
             controllers.Override(new PlayerController());
-        }
-
-        protected override void OnRconLoginAttempt(RconLoginAttemptEventArgs e)
-        {
-            base.OnRconLoginAttempt(e);
-            if (e.SuccessfulLogin) 
-            {
-                foreach(Player player in BasePlayer.GetAll<Player>())
-                {
-                    if(player.IsConnected && e.IP == player.IP && player.Data.LevelAdmin != 4)
-                    {
-                        player.SendClientMessage(Color.Red, "Error: Usted no tiene el rango necesario para iniciar como RCON.");
-                        player.Kick();
-                        break;
-                    }
-                }
-            }
         }
     }
 }

@@ -8,9 +8,10 @@ using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.Utils.Rand;
 using static SampSharp.GameMode.World.BasePlayer;
-using static CaptureTheFlag.Map.FileRead;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.PropertiesPlayer;
+using CaptureTheFlag.Utils;
+using System.IO;
 
 namespace CaptureTheFlag.Map
 {
@@ -33,22 +34,20 @@ namespace CaptureTheFlag.Map
         public static string[] mapName;
         public static Timer TimerLeft;
 
-        public static void StartTimer(string namemap)
+        public static void StartTimer(string nameMap)
         {
+            LoadConfigMap();
             TimerLeft = new Timer(1000, true);
             TextDraw tdTimeLeft = TextDrawGlobal.TdTimeLeft;
-            ConfigMapRead();
             int timeLoading = MAX_TIME_LOADING;
             timeLeft = MAX_TIME_ROUND;
+            Id = (nameMap == null) ? Next(MAX_MAPS) : GetMapId(nameMap);
             spawns = new SpawnPoint[2, MAX_SPAWNS];
-            mapName = new string[MAX_MAPS];
-            NamesMapRead();
-            Id = (namemap == "null") ? Next(MAX_MAPS) : GetMapId(namemap);
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Alpha, i] = new SpawnPoint();
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Beta, i] = new SpawnPoint();
-            SpawnPositionRead();
+            LoadSpawnPositions();
             TimerLeft.Tick += (sender, e) =>
             {
                 if (timeLeft < 0)

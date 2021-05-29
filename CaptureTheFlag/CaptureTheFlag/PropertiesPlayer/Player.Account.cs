@@ -57,7 +57,7 @@ namespace CaptureTheFlag.PropertiesPlayer
                     AddLevels(this);
                 }
                 else
-                    login.Show(this);
+                    base.Kick();
             };
         }
     }
