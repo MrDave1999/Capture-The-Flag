@@ -29,7 +29,7 @@ namespace CaptureTheFlag.Map
                 This verifies if any player has actually forced the map change. 
                 Therefore, the sequence for the "map change" is not followed.
             */
-            Id = (ForceMap == -1) ? (Id + 1) % MAX_MAPS : ForceMap;
+            Id = (ForceMap == -1) ? GetNextMapId() : ForceMap;
             foreach (Player player in Player.GetAll())
                 player.ToggleControllable(false);
 

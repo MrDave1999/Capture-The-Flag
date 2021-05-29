@@ -27,6 +27,8 @@ namespace CaptureTheFlag.Command.Admin
             var cm = new ListDialog($"Total Maps: {MAX_MAPS}", "Seleccionar", "Cerrar");
             foreach (string map in mapName)
                 cm.AddItem(map);
+            cm.Items[Id] = $"{Color.Red}{GetCurrentMap()} {Color.Green}(MAPA ACTUAL)";
+            cm.Items[GetNextMapId()] = $"{Color.Red}{GetNextMap()} {Color.Green}(PRÓXIMO MAPA)";
             cm.Show(player);
             cm.Response += (sender, e) =>
             {
@@ -38,9 +40,20 @@ namespace CaptureTheFlag.Command.Admin
                         cm.Show(player);
                         return;
                     }
-                    ForceMap = e.ListItem;
-                    timeLeft = 5;
-                    BasePlayer.SendClientMessageToAll(Color.Red, $"[Change Map]: {Color.Yellow}{player.Name} Forzó el cambio de mapa a: {Color.Red}{GetMapName(e.ListItem)}.");
+                    var confirm = new MessageDialog("Confimación", "Deseas forzar el cambio de mapa?", "Si", "No");
+                    confirm.Show(player);
+                    confirm.Response += (sender, ex) =>
+                    {
+                        if (ex.DialogButton == DialogButton.Left)
+                        {
+                            timeLeft = 5;
+                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Change Map]: {Color.Yellow}{player.Name} Forzó el cambio de mapa a: {Color.Red}{GetMapName(e.ListItem)}.");
+                        }
+                        else
+                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Next Map]: {Color.Yellow}{player.Name} decidió que el próximo mapa será en: {Color.Red}{GetMapName(e.ListItem)}.");
+
+                        ForceMap = e.ListItem;
+                    };
                 }
             };
             SendMessageToAdmins(player, "changemap");

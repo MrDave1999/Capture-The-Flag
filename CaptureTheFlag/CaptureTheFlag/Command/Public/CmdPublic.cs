@@ -97,6 +97,10 @@ namespace CaptureTheFlag.Command.Public
         private static void MapName(Player player)
             => player.SendClientMessage(Color.Yellow, $"* Mapa actual: {Color.Orange}{CurrentMap.GetCurrentMap()}.");
 
+        [Command("nextmap", Shortcut = "nextmap")]
+        private static void NextMap(Player player)
+            => player.SendClientMessage(Color.Yellow, $"* Próximo actual: {Color.Orange}{CurrentMap.GetNextMap()}.");
+
         [Command("stop", Shortcut = "stop")]
         private static void StopMusic(Player player)
         {

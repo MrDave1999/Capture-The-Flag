@@ -117,7 +117,8 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Yellow}/report{Color.White} - Sirve para reportar a un jugador." +
                 $"\n{Color.Yellow}/music{Color.White} - Permite escuchar música por medio de una URL." +
                 $"\n{Color.Yellow}/stop{Color.White} - Detiene la música." +
-                $"\n{Color.Yellow}/map{Color.White} - Muestra el mapa actual del servidor."
+                $"\n{Color.Yellow}/map{Color.White} - Muestra el mapa actual del servidor." +
+                $"\n{Color.Yellow}/nextmap{Color.White} - Muestra el próximo mapa del servidor."
             ;
         }
 
