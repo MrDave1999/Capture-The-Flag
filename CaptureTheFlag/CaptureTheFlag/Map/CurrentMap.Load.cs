@@ -71,41 +71,33 @@ namespace CaptureTheFlag.Map
         {
             try
             {
-                string[] lines = File.ReadAllLines(Scriptfiles.GetPath($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt"));
-                string[] position;
-                int len = lines.Length - 1;
-                int j = 0;
-                try
-                {
-                    Interior = int.Parse(lines[len]);
-                }
-                catch (FormatException)
-                {
-                    Interior = 0;
-                    ++len;
-                }
-                /*Console.WriteLine("  Interior Map: " + Interior);*/
-                for (int i = 0; i < MAX_SPAWNS; ++i)
-                {
-                    position = lines[i].Split(',');
-                    spawns[(int)TeamID.Alpha, i].X = Double(position[0]);
-                    spawns[(int)TeamID.Alpha, i].Y = Double(position[1]);
-                    spawns[(int)TeamID.Alpha, i].Z = Double(position[2]);
-                    spawns[(int)TeamID.Alpha, i].Angle = Float(position[3]);
-                }
-
-                for (int i = MAX_SPAWNS + 1; i < len; ++i)
-                {
-                    position = lines[i].Split(',');
-                    spawns[(int)TeamID.Beta, j].X = Double(position[0]);
-                    spawns[(int)TeamID.Beta, j].Y = Double(position[1]);
-                    spawns[(int)TeamID.Beta, j].Z = Double(position[2]);
-                    spawns[(int)TeamID.Beta, j++].Angle = Float(position[3]);
-                }
+                var sectionFile = new SectionFile($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt");
+                LoadPositionsTeam(sectionFile, TeamID.Alpha);
+                LoadPositionsTeam(sectionFile, TeamID.Beta);
+                var sectionInterior = sectionFile.GetContentSection("Interior");
+                Interior = sectionInterior != null ? int.Parse(sectionInterior[0]) : 0;
             }
             catch (FileNotFoundException e)
             {
                 Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
+            }
+        }
+
+        public static void LoadPositionsTeam(SectionFile sectionFile, TeamID teamId)
+        {
+            var section = sectionFile.GetContentSection(teamId.ToString());
+            string[] position;
+            for (int i = 0; i < MAX_SPAWNS; ++i)
+            {
+                position = section[i].Split(',');
+                spawns[(int)teamId, i].X         = Double(position[0]);
+                spawns[(int)teamId, i].Y         = Double(position[1]);
+                spawns[(int)teamId, i].Z         = Double(position[2]);
+                spawns[(int)teamId, i].Angle     = Float (position[3]);
             }
         }
     }
