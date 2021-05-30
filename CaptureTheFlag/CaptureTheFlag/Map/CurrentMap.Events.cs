@@ -37,7 +37,7 @@ namespace CaptureTheFlag.Map
             Flag.RemoveAll();
             TeamAlpha.Flag.DeletePlayerCaptured();
             TeamBeta.Flag.DeletePlayerCaptured();
-            LoadSpawnPositions();
+            LoadMapData();
             TeamAlpha.Flag.Create(LoadFlagPosition("Red"));
             TeamBeta.Flag.Create(LoadFlagPosition("Blue"));
             TeamAlpha.UpdateIcon();
@@ -76,6 +76,8 @@ namespace CaptureTheFlag.Map
             TeamAlpha.ResetStats();
             TeamBeta.ResetStats();
             timeLeft = MAX_TIME_ROUND;
+            Server.SetWeather(Weather);
+            Server.SetWorldTime(WorldTime);
         }
     }
 }

@@ -82,6 +82,8 @@ namespace CaptureTheFlag.Events
             TeamBeta.TeamRival = TeamAlpha;
             Server.SendRconCommand($"mapname {GetCurrentMap()}");
             Server.SendRconCommand($"loadfs {GetCurrentMap()}");
+            Server.SetWeather(Weather);
+            Server.SetWorldTime(WorldTime);
             base.OnInitialized(e);
         }
       

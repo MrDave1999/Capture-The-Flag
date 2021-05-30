@@ -2,6 +2,7 @@
 using CaptureTheFlag.Utils;
 using IniParser;
 using SampSharp.GameMode;
+using SampSharp.GameMode.SAMP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,7 +68,7 @@ namespace CaptureTheFlag.Map
             return new Vector3(Double(position[0]), Double(position[1]), Double(position[2]));
         }
 
-        public static void LoadSpawnPositions()
+        public static void LoadMapData()
         {
             try
             {
@@ -75,7 +76,11 @@ namespace CaptureTheFlag.Map
                 LoadPositionsTeam(sectionFile, TeamID.Alpha);
                 LoadPositionsTeam(sectionFile, TeamID.Beta);
                 var sectionInterior = sectionFile.GetContentSection("Interior");
+                var sectionWeather = sectionFile.GetContentSection("Weather");
+                var sectionWorldTime = sectionFile.GetContentSection("WorldTime");
                 Interior = sectionInterior != null ? int.Parse(sectionInterior[0]) : 0;
+                Weather = sectionWeather != null ? int.Parse(sectionWeather[0]) : 10;
+                WorldTime = sectionWorldTime != null ? int.Parse(sectionWorldTime[0]) : 12;
             }
             catch (FileNotFoundException e)
             {

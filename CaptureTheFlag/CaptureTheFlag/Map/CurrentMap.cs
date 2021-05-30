@@ -28,6 +28,8 @@ namespace CaptureTheFlag.Map
         
         public static int Id { get; set; }
         public static int Interior { get; set; }
+        public static int Weather { get; set; }
+        public static int WorldTime { get; set; }
         public static bool IsLoading { get; set; }
         public static int ForceMap { get; set; } = -1;
         public static SpawnPoint[,] spawns;
@@ -47,7 +49,7 @@ namespace CaptureTheFlag.Map
                 spawns[(int)TeamID.Alpha, i] = new SpawnPoint();
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Beta, i] = new SpawnPoint();
-            LoadSpawnPositions();
+            LoadMapData();
             TimerLeft.Tick += (sender, e) =>
             {
                 if (timeLeft < 0)
