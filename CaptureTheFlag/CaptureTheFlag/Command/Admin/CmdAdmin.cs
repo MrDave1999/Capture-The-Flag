@@ -30,6 +30,8 @@ namespace CaptureTheFlag.Command.Admin
                 $"\n{Color.Yellow}/warn{Color.White} - Permite advertir a un jugador." +
                 $"\n{Color.Yellow}/slap{Color.White} - Le da una bofetada a un jugador." +
                 $"\n{Color.Yellow}/setworld{Color.White} - Establece el mundo virtual a un jugador." +
+                $"\n{Color.Yellow}/setalltime{Color.White} - Establece la hora mundial (para todos los jugadores) en una hora específica." +
+                $"\n{Color.Yellow}/setallweather{Color.White} - Establece el clima mundial para todos los jugadores." +
                 $"\n{Color.Yellow}/ac{Color.White} -  Permite hablar en el AdminChat." +
                 $"\n{Color.Yellow}/benefit{Color.White} - Muestra los beneficios (canjeados por adrenalina) de algún jugador." +
                 $"\n{Color.Yellow}/asay{Color.White} - Te permite hablar como administrador." +

@@ -173,6 +173,28 @@ namespace CaptureTheFlag.Command.Admin
             SendMessageToAdmins(player, "setworld");
         }
 
+        [Command("setallweather", Shortcut = "setallweather", UsageMessage = "/setallweather [weatherid]")]
+        private static void SetAllWeather(Player player, int weatherid)
+        {
+            if (player.IsAdminLevel(1)) return;
+            if(weatherid < 0 || weatherid > 20)
+            {
+                player.SendClientMessage(Color.Red, "Error: El ID del clima debe estar entre el rango de 0 a 20.");
+                return;
+            }
+            Server.SetWeather(weatherid);
+            SendMessageToAdmins(player, "setallweather");
+        }
+
+        [Command("setalltime", Shortcut = "setalltime", UsageMessage = "/setalltime [hour]")]
+        private static void SetAllWorldTime(Player player, int hour)
+        {
+            if (player.IsAdminLevel(1)) return;
+            Validate.IsHoursRange(player, hour);
+            Server.SetWorldTime(hour);
+            SendMessageToAdmins(player, "setalltime");
+        }
+
         [Command("ac", Shortcut = "ac", UsageMessage = "/ac [message]")]
         public static void AdminChat(Player player, string msg)
         {
