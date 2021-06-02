@@ -8,7 +8,7 @@ namespace CaptureTheFlag.Utils
 {
     public class Scriptfiles
     {
-        public static string GetPath(string filename)
-            => Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles" + Path.DirectorySeparatorChar + filename);
+        public static string GetPath(string path)
+            => Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "scriptfiles" + Path.DirectorySeparatorChar + path);
     }
 }

@@ -72,7 +72,8 @@ namespace CaptureTheFlag.Map
         {
             try
             {
-                var sectionFile = new SectionFile($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt");
+                var path = Scriptfiles.GetPath($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt");
+                var sectionFile = new IniDataSection(path);
                 LoadPositionsTeam(sectionFile, TeamID.Alpha);
                 LoadPositionsTeam(sectionFile, TeamID.Beta);
                 var sectionInterior = sectionFile.GetContentSection("Interior");
@@ -92,7 +93,7 @@ namespace CaptureTheFlag.Map
             }
         }
 
-        public static void LoadPositionsTeam(SectionFile sectionFile, TeamID teamId)
+        public static void LoadPositionsTeam(IniDataSection sectionFile, TeamID teamId)
         {
             var section = sectionFile.GetContentSection(teamId.ToString());
             string[] position;
