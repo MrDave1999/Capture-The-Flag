@@ -49,10 +49,10 @@ namespace CaptureTheFlag.Map
             try
             {
                 mapName = new string[MAX_MAPS];
-                string[] fileEntries = Directory.GetFiles(Scriptfiles.GetPath("spawn_position"));
+                string[] fileEntries = Directory.GetFiles(Scriptfiles.GetPath("maps"));
                 int len = fileEntries.Length;
                 for (int i = 0; i < len; ++i)
-                    mapName[i] = Path.GetFileName(fileEntries[i]).Replace(".txt", "");
+                    mapName[i] = Path.GetFileName(fileEntries[i]).Replace(".ini", "");
                 Rand.Shuffle(mapName);
             }
             catch (DirectoryNotFoundException e)
@@ -72,7 +72,7 @@ namespace CaptureTheFlag.Map
         {
             try
             {
-                var path = Scriptfiles.GetPath($"spawn_position{Path.DirectorySeparatorChar}{GetCurrentMap()}.txt");
+                var path = Scriptfiles.GetPath($"maps{Path.DirectorySeparatorChar}{GetCurrentMap()}.ini");
                 var sectionFile = new IniDataSection(path);
                 LoadPositionsTeam(sectionFile, TeamID.Alpha);
                 LoadPositionsTeam(sectionFile, TeamID.Beta);
