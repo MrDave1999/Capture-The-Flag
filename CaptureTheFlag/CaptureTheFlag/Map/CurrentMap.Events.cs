@@ -68,6 +68,8 @@ namespace CaptureTheFlag.Map
                         player.ToggleControllable(true);
                         player.SetForceClass();
                     }
+                    player.Team = NoTeam;
+                    player.Color = ColorWhite;
                 }
             }
             TeamAlpha.Players.Clear();
