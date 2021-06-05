@@ -44,6 +44,11 @@ namespace CaptureTheFlag.Command.Admin
                     confirm.Show(player);
                     confirm.Response += (sender, ex) =>
                     {
+                        if (IsLoading)
+                        {
+                            player.SendClientMessage(Color.Red, $"Error: El mapa {GetCurrentMap()} se está cargando. ");
+                            return;
+                        }
                         if (ex.DialogButton == DialogButton.Left)
                         {
                             timeLeft = 5;
