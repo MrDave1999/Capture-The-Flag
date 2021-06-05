@@ -27,16 +27,15 @@ namespace CaptureTheFlag.Map
             }
         }
 
+        /* Load the general map configuration. */
         public static void LoadConfigMap()
         {
             try
             {
                 var dini = new Dini("config.ini", "Map");
-                MAX_MAPS = int.Parse(dini.Read("MAX_MAPS"));
                 MAX_TIME_ROUND = int.Parse(dini.Read("MAX_TIME_ROUND"));
                 MAX_SPAWNS = int.Parse(dini.Read("MAX_SPAWNS"));
                 MAX_TIME_LOADING = int.Parse(dini.Read("MAX_TIME_LOADING"));
-                LoadMapNames();
             }
             catch (FileNotFoundException e)
             {
@@ -48,10 +47,10 @@ namespace CaptureTheFlag.Map
         {
             try
             {
-                mapName = new string[MAX_MAPS];
                 string[] fileEntries = Directory.GetFiles(Scriptfiles.GetPath("maps"));
-                int len = fileEntries.Length;
-                for (int i = 0; i < len; ++i)
+                MAX_MAPS = fileEntries.Length;
+                mapName = new string[MAX_MAPS];
+                for (int i = 0; i < MAX_MAPS; ++i)
                     mapName[i] = Path.GetFileName(fileEntries[i]).Replace(".ini", "");
                 Rand.Shuffle(mapName);
             }
@@ -68,6 +67,7 @@ namespace CaptureTheFlag.Map
             return new Vector3(Double(position[0]), Double(position[1]), Double(position[2]));
         }
 
+        /* Loads the specific data of a map. */
         public static void LoadMapData()
         {
             try

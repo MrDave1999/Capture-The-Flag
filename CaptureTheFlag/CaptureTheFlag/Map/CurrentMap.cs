@@ -39,6 +39,7 @@ namespace CaptureTheFlag.Map
         public static void StartTimer(string nameMap)
         {
             LoadConfigMap();
+            LoadMapNames();
             TimerLeft = new Timer(1000, true);
             TextDraw tdTimeLeft = TextDrawGlobal.TdTimeLeft;
             int timeLoading = MAX_TIME_LOADING;
