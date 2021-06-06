@@ -79,12 +79,9 @@ namespace CaptureTheFlag.Map
                 var sectionFile = new IniDataSection(path);
                 LoadPositionsTeam(sectionFile, TeamID.Alpha);
                 LoadPositionsTeam(sectionFile, TeamID.Beta);
-                var sectionInterior = sectionFile.GetContentSection("Interior");
-                var sectionWeather = sectionFile.GetContentSection("Weather");
-                var sectionWorldTime = sectionFile.GetContentSection("WorldTime");
-                Interior = sectionInterior != null ? int.Parse(sectionInterior[0]) : Interior;
-                Weather = sectionWeather != null ? int.Parse(sectionWeather[0]) : Weather;
-                WorldTime = sectionWorldTime != null ? int.Parse(sectionWorldTime[0]) : WorldTime;
+                Interior = Int(sectionFile.GetContentSection("Interior")?[0]) ?? Interior;
+                Weather = Int(sectionFile.GetContentSection("Weather")?[0]) ?? Weather;
+                WorldTime = Int(sectionFile.GetContentSection("WorldTime")?[0]) ?? WorldTime;
             }
             catch (FileNotFoundException e)
             {
