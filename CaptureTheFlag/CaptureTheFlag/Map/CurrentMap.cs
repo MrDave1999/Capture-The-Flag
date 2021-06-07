@@ -18,6 +18,9 @@ namespace CaptureTheFlag.Map
     public partial class CurrentMap
     {
         /* *** Constants */
+        public static int DEFAULT_INTERIOR;
+        public static int DEFAULT_WEATHER;
+        public static int DEFAULT_WORLDTIME;
         public static int MAX_SPAWNS;
         public static int MAX_TIME_ROUND;
         public static int MAX_TIME_LOADING;

@@ -36,9 +36,9 @@ namespace CaptureTheFlag.Map
                 MAX_TIME_ROUND = int.Parse(dini.Read("MAX_TIME_ROUND"));
                 MAX_SPAWNS = int.Parse(dini.Read("MAX_SPAWNS"));
                 MAX_TIME_LOADING = int.Parse(dini.Read("MAX_TIME_LOADING"));
-                Interior = int.Parse(dini.Read("INTERIOR"));
-                Weather = int.Parse(dini.Read("WEATHER"));
-                WorldTime = int.Parse(dini.Read("WORLD_TIME"));
+                DEFAULT_INTERIOR = int.Parse(dini.Read("INTERIOR"));
+                DEFAULT_WEATHER = int.Parse(dini.Read("WEATHER"));
+                DEFAULT_WORLDTIME = int.Parse(dini.Read("WORLD_TIME"));
             }
             catch (FileNotFoundException e)
             {
@@ -79,9 +79,9 @@ namespace CaptureTheFlag.Map
                 var sectionFile = new IniDataSection(path);
                 LoadPositionsTeam(sectionFile, TeamID.Alpha);
                 LoadPositionsTeam(sectionFile, TeamID.Beta);
-                Interior = Int(sectionFile.GetContentSection("Interior")?[0]) ?? Interior;
-                Weather = Int(sectionFile.GetContentSection("Weather")?[0]) ?? Weather;
-                WorldTime = Int(sectionFile.GetContentSection("WorldTime")?[0]) ?? WorldTime;
+                Interior = Int(sectionFile.GetContentSection("Interior")?[0]) ?? DEFAULT_INTERIOR;
+                Weather = Int(sectionFile.GetContentSection("Weather")?[0]) ?? DEFAULT_WEATHER;
+                WorldTime = Int(sectionFile.GetContentSection("WorldTime")?[0]) ?? DEFAULT_WORLDTIME;
             }
             catch (FileNotFoundException e)
             {
