@@ -2,7 +2,7 @@
 [![CTF](https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/.NET%20Core-SampSharp.net-blue)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/GameMode-CSharp-yellow)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/Release-v7.13.4-green)](https://github.com/MrDave1999/Capture-the-flag)
+[![CTF](https://img.shields.io/badge/Release-v8.0.0-green)](https://github.com/MrDave1999/Capture-the-flag)
 
 Capture the flag is a gamemode for [SA-MP](https://www.sa-mp.com/) created with [sampsharp](https://github.com/ikkentim/SampSharp)
 
@@ -14,12 +14,12 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 
 ## Main features
 
-- The game mode has a total of 20 maps. Every 20 minutes the map will be changed.
+- The game mode has a total of 21 maps. Every 20 minutes the map will be changed.
 - Every time you capture, recover and carry the flag, the player will earn a percentage of adrenaline. That "adrenaline" can be changed for some benefit with the `/combos` command or the H key. Some benefits that the player can redeem are: Invisibility, Jumps, Speed.
 - You can create your own weapon pack with the `/weapons` command (or with the Y key). For each respawn, you will have the same weapons.
 - You can remove a weapon from your weapon pack with the `/packet` command.
 - The game mode has a killing sprees system. This way, players will know if any player has had a good killing streak.
-- The game mode has a save system with MySQL 8.0. So that players can create their account and save their statistics.
+- The game mode has a save system with MySQL `8.0.22`. So that players can create their account and save their statistics.
 - You can talk to your team members "privately" using the exclamation point (!).
   Example: `!hello guys`.
 - The game mode has a basic VIP system with 3 levels: Silver, Gold and Premium.
@@ -33,8 +33,8 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 #### SA-MP CTF Server Download
 - This package includes .NET Core (x86) for gamemode to work.
 
-  - [SA-MP CTF Windows Server](https://github.com/MrDave1999/Capture-The-Flag/releases/download/7.13.4/Windows.Server.zip)
-  - [SA-MP CTF Linux Server (x86)](https://github.com/MrDave1999/Capture-The-Flag/releases/download/7.13.4/Linux.Server.zip)
+  - [SA-MP CTF Windows Server](https://github.com/MrDave1999/Capture-The-Flag/releases/download/8.0.0/Windows.Server.zip)
+  - [SA-MP CTF Linux Server (x86)](https://github.com/MrDave1999/Capture-The-Flag/releases/download/8.0.0/Linux.Server.zip)
 
 #### .NET Core Download 
 
@@ -57,7 +57,7 @@ If you want to rebuild the project from `0`, you should download these dependenc
 - [SampSharp.Streamer](https://www.nuget.org/packages/SampSharp.Streamer/0.9.0)
 - [SampSharp.YSF](https://www.nuget.org/packages/SampSharp.YSF/0.1.0-beta1)
 - [MySql.Data](https://www.nuget.org/packages/MySql.Data/8.0.22)
-- [ini-parser-netcore](https://www.nuget.org/packages/ini-parser-netcore/3.0.0)
+- [ini-parser-netcore](https://www.nuget.org/packages/ini-parser-netcore3.1/)
 
 **Note:** You can also install the package from the `NuGet package manager` that Visual Studio brings.
 
@@ -79,11 +79,11 @@ Go to the [CaptureTheFlag.dll.config](https://github.com/MrDave1999/Capture-The-
 
 #### How can I become an administrator on the server?
 
-Go to the [config_server.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_server.ini#L4) file and modify the `hidden command`, then log in to the server and type the command.
+Go to the [config.ini](https://github.com/ctf-samp/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config.ini#L4) file and modify the `hidden command`, then log in to the server and type the command.
 
 #### How do I change the length of the game?
 
-Go to the [config_map.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config_maps.ini#L3) file and modify the `MAX_TIME_ROUND` property, the time must be expressed in "seconds".
+Go to the [config.ini](https://github.com/ctf-samp/Capture-The-Flag/blob/main/CaptureTheFlag/CaptureTheFlag/bin/Debug/netcoreapp3.1/scriptfiles/config.ini#L11) file and modify the `MAX_TIME_ROUND` property, the time must be expressed in `seconds`.
 
 ## Images
 ![image](https://user-images.githubusercontent.com/43916038/114632050-6d19fa80-9c83-11eb-812e-0241a288564d.png)
@@ -93,6 +93,7 @@ Go to the [config_map.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/m
 
 - [ikkentim](https://github.com/ikkentim/SampSharp) by create SampSharp.
 - [rickyah](https://github.com/rickyah/ini-parser) by create ini-parser.
+  - [MrDave1999 forked](https://github.com/mrdave1999/ini-parser) the original repository and released a version for `.NET Core 3.1` and added new functionality without altering the existing parser.
 - [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) by create NTD (TextDraw Editor).
 - [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) by create streamer-plugin.
 - [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) by create gamemode.
@@ -116,3 +117,4 @@ Go to the [config_map.ini](https://github.com/MrDave1999/Capture-The-Flag/blob/m
 - de_dust2_x1 by SpikY_.
 - de_dust2_x2 by Amads.
 - WarZone by Samarchai.
+- cs_assault by Ghost-X.
