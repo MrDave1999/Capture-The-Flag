@@ -182,9 +182,9 @@ namespace CaptureTheFlag.Command.Admin
         private static void SetAllWeather(Player player, int weatherid)
         {
             if (player.IsAdminLevel(1)) return;
-            if(weatherid < 0 || weatherid > 20)
+            if(weatherid < 0 || weatherid > 255)
             {
-                player.SendClientMessage(Color.Red, "Error: El ID del clima debe estar entre el rango de 0 a 20.");
+                player.SendClientMessage(Color.Red, "Error: El ID del clima debe estar entre el rango de 0 a 255.");
                 return;
             }
             Server.SetWeather(weatherid);
