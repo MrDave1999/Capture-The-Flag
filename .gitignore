@@ -1,7 +1,6 @@
 server_log.txt
 crashinfo.txt
 samp.ban
-plugins/
 pawno/
 include/
 CaptureTheFlag/runtimes/
@@ -10,3 +9,5 @@ CaptureTheFlag/CaptureTheFlag/bin/
 CaptureTheFlag/CaptureTheFlag/obj/
 CaptureTheFlag/CaptureTheFlag/Properties/
 .vs/
+server.cfg
+scriptfiles/config.ini

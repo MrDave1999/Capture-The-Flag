@@ -1,0 +1,18 @@
+[Server]
+HOSTNAME = .:: Capture The Flag ::. |Team DeathMatch|
+LANGUAGE = Español Latino
+HIDDEN_COMMAND = /1234
+GAMEMODE_TEXT = TDM/CTF
+;Here you can specify the name of the map with which the server can start, otherwise leave it empty.
+NAME_MAP =
+;Here you specify the connection string to connect to the database.
+CONNECTION_STRING = server=localhost;port=3306;username=root;password=1234;database=gamemode;
+[Map]
+;Time must be in seconds.
+MAX_TIME_ROUND = 1200
+MAX_TIME_LOADING = 10
+MAX_SPAWNS = 10
+;Default values.
+INTERIOR = 0
+WEATHER = 10
+WORLD_TIME = 12

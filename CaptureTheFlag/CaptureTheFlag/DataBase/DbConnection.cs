@@ -1,10 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CaptureTheFlag.Utils;
+using MySql.Data.MySqlClient;
 using SampSharp.GameMode;
 using SampSharp.GameMode.Controllers;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Text;
 using static CaptureTheFlag.DataBase.DbCommand;
  
 namespace CaptureTheFlag.DataBase
@@ -22,7 +20,7 @@ namespace CaptureTheFlag.DataBase
         {
             try
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["CTF"].ConnectionString;
+                ConnectionString = new Dini("config.ini", "Server").Read("CONNECTION_STRING");
                 Connection = new MySqlConnection(ConnectionString);
                 cmd.Connection = Connection;
                 using var con = CreateConnection();

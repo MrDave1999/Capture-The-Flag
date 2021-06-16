@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlag.Events;
+using CaptureTheFlag.Utils;
 using SampSharp.Core;
 using System;
 using System.IO;
@@ -14,7 +15,7 @@ namespace CaptureTheFlag
             {
                 new GameModeBuilder()
                     .RedirectConsoleOutput()
-                    .UseEncoding(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "codepages" + Path.DirectorySeparatorChar + "cp1252.txt"))
+                    .UseEncoding(Scriptfiles.GetPath($"codepages{Path.DirectorySeparatorChar}cp1252.txt"))
                     .Use<GameMode>()
                     .Run();
             }
