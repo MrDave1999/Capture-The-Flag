@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "CaptureTheFlag": {
-      "commandName": "Executable",
-      "executablePath": "C:\\Users\\syslan\\Desktop\\Capture-The-Flag\\samp-server.exe",
-      "workingDirectory": "C:\\Users\\syslan\\Desktop\\Capture-The-Flag"
-    }
-  }
-}
