@@ -11,3 +11,4 @@ CaptureTheFlag/CaptureTheFlag/Properties/
 .vs/
 server.cfg
 scriptfiles/config.ini
+CompileApp.*
