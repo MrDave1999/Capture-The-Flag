@@ -98,8 +98,10 @@ namespace CaptureTheFlag.Command.Public
                 $"\n{Color.Orange}Creador/Fundador: {Color.White}MrDave1999." +
                 $"\n{Color.Orange}Programador: {Color.White}MrDave1999." +
                 $"\n{Color.Orange}Mapeadores: {Color.White}DragonZafiro, Elorreli, amirab, JamesT85," +
-                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr, UnuAlex," +
-                 $"\nSpikY_, Niktia_Ruchkov, Amads, Samarchai, haubitze, Ghost-X." +
+                $"\nTheYoungCapone, B4MB1[MC], Sleyer, mihaibr," +
+                $"\nUnuAlex, SpikY_, Niktia_Ruchkov, Amads," +
+                $"\nSamarchai, haubitze, Ghost-X, Zniper, Dr.Pawno." +
+                $"\n" +
                 $"\n{Color.Yellow}Agradecimientos a:" +
                 $"\n{Color.Orange}ikkentim {Color.White}por crear SampSharp." +
                 $"\n{Color.Orange}rickyah {Color.White}por crear ini-parser." +
