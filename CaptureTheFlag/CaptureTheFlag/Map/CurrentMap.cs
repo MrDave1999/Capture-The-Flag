@@ -47,7 +47,15 @@ namespace CaptureTheFlag.Map
             TextDraw tdTimeLeft = TextDrawGlobal.TdTimeLeft;
             int timeLoading = MAX_TIME_LOADING;
             timeLeft = MAX_TIME_ROUND;
-            Id = (nameMap == null) ? Next(MAX_MAPS) : GetMapId(nameMap);
+            if (nameMap == null)
+                Id = Next(MAX_MAPS);
+            else if (GetMapId(nameMap, out int id))
+                Id = id;
+            else
+            {
+                Id = Next(MAX_MAPS);
+                Console.WriteLine($"  Error: Map {nameMap} does not exist!\n");
+            }
             spawns = new SpawnPoint[2, MAX_SPAWNS];
             for (int i = 0; i < MAX_SPAWNS; ++i)
                 spawns[(int)TeamID.Alpha, i] = new SpawnPoint();
@@ -90,13 +98,18 @@ namespace CaptureTheFlag.Map
         public static string GetCurrentMap() => mapName[Id];
         public static int GetNextMapId() => ForceMap == -1 ? (Id + 1) % MAX_MAPS : ForceMap;
         public static string GetNextMap() => mapName[GetNextMapId()];
-        public static int GetMapId(string nameSearch)
+        public static bool GetMapId(string nameSearch, out int id)
         {
-            int len = mapName.Length;
-            for (int i = 0; i != len; ++i)
-                if(nameSearch.Equals(mapName[i], StringComparison.OrdinalIgnoreCase))
-                    return i;
-            return 0;
+            for (int i = 0, len = mapName.Length; i != len; ++i)
+            {
+                if (nameSearch.Equals(mapName[i], StringComparison.OrdinalIgnoreCase))
+                {
+                    id = i;
+                    return true;
+                }
+            }
+            id = -1;
+            return false;
         }
     }
 }
