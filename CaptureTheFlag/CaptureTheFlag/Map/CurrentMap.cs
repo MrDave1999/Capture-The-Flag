@@ -97,7 +97,7 @@ namespace CaptureTheFlag.Map
         public static string GetMapName(int mapid) => mapName[mapid];
         public static string GetCurrentMap() => mapName[Id];
         public static int GetNextMapId() => ForceMap == -1 ? (Id + 1) % MAX_MAPS : ForceMap;
-        public static string GetNextMap() => mapName[GetNextMapId()];
+        public static string GetNextMapName() => mapName[GetNextMapId()];
         public static bool GetMapId(string nameSearch, out int id)
         {
             id = Array.FindIndex(mapName, name => name.Equals(nameSearch, StringComparison.OrdinalIgnoreCase));
