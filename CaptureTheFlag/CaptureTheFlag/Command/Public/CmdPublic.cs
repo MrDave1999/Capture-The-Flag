@@ -1,8 +1,6 @@
 ﻿using CaptureTheFlag.Textdraw;
-using SampSharp.GameMode;
 using SampSharp.GameMode.Definitions;
 using SampSharp.GameMode.Display;
-using SampSharp.GameMode.Events;
 using SampSharp.GameMode.SAMP;
 using SampSharp.GameMode.SAMP.Commands;
 using SampSharp.GameMode.World;
@@ -11,44 +9,16 @@ using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.Events.GameMode;
 using CaptureTheFlag.Constants;
-using SampSharp.Streamer.World;
 using CaptureTheFlag.PropertiesPlayer;
 using System.Linq;
 using CaptureTheFlag.Map;
 using CaptureTheFlag.Permission;
 using CaptureTheFlag.Data;
 using CaptureTheFlag.Utils;
+using CaptureTheFlag.Dialogs.Extensions;
 
 namespace CaptureTheFlag.Command.Public
 {
-    static class ExtensionTablistDialog
-    {
-        public static void SetInfo(this TablistDialog vs)
-        {
-            vs.Clear();
-            TeamAlpha.GetMessageTeamEnable(out var msgAlpha, false);
-            TeamBeta.GetMessageTeamEnable(out var msgBeta, false);
-            vs.Add(new[]
-            {       
-                $"{TeamAlpha.OtherColor}{TeamAlpha.NameTeam}",
-                $"{TeamAlpha.OtherColor}{TeamAlpha.Members}",
-                $"{TeamAlpha.OtherColor}{msgAlpha}"
-            });
-            vs.Add(new[]
-            {
-                $"{TeamBeta.OtherColor}{TeamBeta.NameTeam}",
-                $"{TeamBeta.OtherColor}{TeamBeta.Members}",
-                $"{TeamBeta.OtherColor}{msgBeta}"
-            });
-        }
-
-        public static void ShowDialog(this TablistDialog vs, Player player)
-        {
-            vs.SetInfo();
-            vs.Show(player);
-        }
-    }
-    
     [CommandGroup("public", PermissionChecker = typeof(BlockCommand))]
     public partial class CmdPublic
     {
