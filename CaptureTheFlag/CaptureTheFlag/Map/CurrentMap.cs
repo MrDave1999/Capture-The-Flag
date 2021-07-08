@@ -100,16 +100,8 @@ namespace CaptureTheFlag.Map
         public static string GetNextMap() => mapName[GetNextMapId()];
         public static bool GetMapId(string nameSearch, out int id)
         {
-            for (int i = 0, len = mapName.Length; i != len; ++i)
-            {
-                if (nameSearch.Equals(mapName[i], StringComparison.OrdinalIgnoreCase))
-                {
-                    id = i;
-                    return true;
-                }
-            }
-            id = -1;
-            return false;
+            id = Array.FindIndex(mapName, name => name.Equals(nameSearch, StringComparison.OrdinalIgnoreCase));
+            return id != -1;
         }
     }
 }
