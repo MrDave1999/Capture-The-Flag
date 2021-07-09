@@ -8,6 +8,8 @@ using SampSharp.GameMode.SAMP;
 using CaptureTheFlag.Teams;
 using SampSharp.GameMode.World;
 using CaptureTheFlag.Textdraw;
+using SampSharp.GameMode.Events;
+using SampSharp.GameMode.Definitions;
 
 namespace CaptureTheFlag.Map
 {
@@ -80,6 +82,25 @@ namespace CaptureTheFlag.Map
             timeLeft = MAX_TIME_ROUND;
             Server.SetWeather(Weather);
             Server.SetWorldTime(WorldTime);
+        }
+
+        /* When the map change is confirmed, this occurs if the player wishes to force the map change later or immediately.. */
+        public static void OnConfirmMapChange(int mapId, DialogResponseEventArgs e)
+        {
+            var player = e.Player as Player;
+            if (IsLoading)
+            {
+                player.SendClientMessage(Color.Red, $"Error: El mapa {GetCurrentMap()} se está cargando. ");
+                return;
+            }
+            if (e.DialogButton == DialogButton.Left)
+            {
+                timeLeft = 5;
+                SendClientMessageToAll(Color.Red, $"[Change Map]: {Color.Yellow}{player.Name} forzó el cambio de mapa a: {Color.Red}{GetMapName(mapId)}.");
+            }
+            else
+                SendClientMessageToAll(Color.Red, $"[Next Map]: {Color.Yellow}{player.Name} decidió que el próximo mapa será en: {Color.Red}{GetMapName(mapId)}.");
+            ForceMap = mapId;
         }
     }
 }
