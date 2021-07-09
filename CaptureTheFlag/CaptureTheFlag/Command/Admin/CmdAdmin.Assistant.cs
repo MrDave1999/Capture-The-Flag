@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlag.Data;
+using CaptureTheFlag.Dialogs;
 using CaptureTheFlag.Events;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Teams;
@@ -21,44 +22,43 @@ namespace CaptureTheFlag.Command.Admin
     public partial class CmdAdmin
     {
         [Command("changemap", Shortcut = "changemap")]
-        private static void ChangeMap(Player player)
+        private static void ChangeMap(Player player, string value = null)
         {
             if (player.IsAdminLevel(1)) return;
-            var cm = new ListDialog($"Total Maps: {MAX_MAPS}", "Seleccionar", "Cerrar");
-            foreach (string map in mapName)
-                cm.AddItem(map);
-            cm.Items[Id] = $"{Color.Red}{GetCurrentMap()} {Color.Green}(MAPA ACTUAL)";
-            cm.Items[GetNextMapId()] = $"{Color.Red}{GetNextMap()} {Color.Green}(PRÓXIMO MAPA)";
+            var cm = new ListDialogEx("", "Seleccionar", "Cerrar");
+            int nextmap = GetNextMapId();
+            for (int i = 0; i < MAX_MAPS; ++i)
+            {
+                if (value == null || mapName[i].StartsWith(value, StringComparison.OrdinalIgnoreCase))
+                {
+                    cm.AddItem(i, mapName[i]);
+                    if (i == Id)
+                        cm.Items[^1] = $"{mapName[i]}{Color.Red} -> (MAPA ACTUAL)";
+                    if (i == nextmap)
+                        cm.Items[^1] = $"{mapName[i]}{Color.Green} -> (PRÓXIMO MAPA)";
+                }
+            }
+            if(cm.Items.Count == 0)
+            {
+                player.SendClientMessage(Color.Red, "Error: No se encontraron coincidencias.");
+                return;
+            }
+            cm.Caption = $"MAPS: {cm.Items.Count}/{MAX_MAPS}";
             cm.Show(player);
             cm.Response += (sender, e) =>
             {
+                var itemId = cm.Ids[e.ListItem];
                 if (e.DialogButton == DialogButton.Left)
                 {
-                    if (e.ListItem == Id)
+                    if (itemId == Id)
                     {
                         player.SendClientMessage(Color.Red, $"Error: {GetCurrentMap()} es el mapa actual (elige otro).");
                         cm.Show(player);
                         return;
                     }
-                    var confirm = new MessageDialog("Confimación", "Deseas forzar el cambio de mapa?", "Si", "No");
+                    var confirm = new MessageDialog("Confimación", "¿Deseas forzar el cambio de mapa ahora mismo?", "Si", "No");
                     confirm.Show(player);
-                    confirm.Response += (sender, ex) =>
-                    {
-                        if (IsLoading)
-                        {
-                            player.SendClientMessage(Color.Red, $"Error: El mapa {GetCurrentMap()} se está cargando. ");
-                            return;
-                        }
-                        if (ex.DialogButton == DialogButton.Left)
-                        {
-                            timeLeft = 5;
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Change Map]: {Color.Yellow}{player.Name} Forzó el cambio de mapa a: {Color.Red}{GetMapName(e.ListItem)}.");
-                        }
-                        else
-                            BasePlayer.SendClientMessageToAll(Color.Red, $"[Next Map]: {Color.Yellow}{player.Name} decidió que el próximo mapa será en: {Color.Red}{GetMapName(e.ListItem)}.");
-
-                        ForceMap = e.ListItem;
-                    };
+                    confirm.Response += (sender, ex) => OnConfirmMapChange(itemId, ex);
                 }
             };
             SendMessageToAdmins(player, "changemap");
