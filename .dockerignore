@@ -1,0 +1,13 @@
+/**/bin/
+/**/obj/
+/**/dependencies/
+.vscode/
+plugins/
+*.exe
+*.dll
+*.so
+announce
+samp03svr
+samp-npc
+server.cfg
+server_log.txt
