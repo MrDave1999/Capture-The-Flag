@@ -4,13 +4,13 @@ using SampSharp.GameMode;
 using SampSharp.GameMode.Controllers;
 using System;
 using static CaptureTheFlag.DataBase.DbCommand;
- 
+using DotEnv.Core;
+
 namespace CaptureTheFlag.DataBase
 {
     [Controller]
     public class DbConnection : IEventListener
     {
-        public static string ConnectionString { get; set; }
         public static MySqlConnection Connection { get; set; }
 
         public void RegisterEvents(BaseMode gameMode) =>
@@ -20,8 +20,7 @@ namespace CaptureTheFlag.DataBase
         {
             try
             {
-                ConnectionString = new Dini("config.ini", "Server").Read("CONNECTION_STRING");
-                Connection = new MySqlConnection(ConnectionString);
+                Connection = new MySqlConnection(EnvReader.Instance["CONNECTION_STRING"]);
                 cmd.Connection = Connection;
                 using var con = CreateConnection();
                 Console.WriteLine("  The database connection was successful!");

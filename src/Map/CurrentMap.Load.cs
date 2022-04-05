@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using static CaptureTheFlag.Utils.ParseData;
+using DotEnv.Core;
 
 namespace CaptureTheFlag.Map
 {
@@ -30,20 +31,12 @@ namespace CaptureTheFlag.Map
         /* Load the general map configuration. */
         public static void LoadConfigMap()
         {
-            try
-            {
-                var dini = new Dini("config.ini", "Map");
-                MAX_TIME_ROUND = int.Parse(dini.Read("MAX_TIME_ROUND"));
-                MAX_SPAWNS = int.Parse(dini.Read("MAX_SPAWNS"));
-                MAX_TIME_LOADING = int.Parse(dini.Read("MAX_TIME_LOADING"));
-                DEFAULT_INTERIOR = int.Parse(dini.Read("INTERIOR"));
-                DEFAULT_WEATHER = int.Parse(dini.Read("WEATHER"));
-                DEFAULT_WORLDTIME = int.Parse(dini.Read("WORLD_TIME"));
-            }
-            catch (FileNotFoundException e)
-            {
-                Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
-            }
+            MAX_TIME_ROUND = int.Parse(EnvReader.Instance["MAX_TIME_ROUND"]);
+            MAX_SPAWNS = int.Parse(EnvReader.Instance["MAX_SPAWNS"]);
+            MAX_TIME_LOADING = int.Parse(EnvReader.Instance["MAX_TIME_LOADING"]);
+            DEFAULT_INTERIOR = int.Parse(EnvReader.Instance["INTERIOR"]);
+            DEFAULT_WEATHER = int.Parse(EnvReader.Instance["WEATHER"]);
+            DEFAULT_WORLDTIME = int.Parse(EnvReader.Instance["WORLD_TIME"]);
         }
 
         public static void LoadMapNames()
@@ -100,10 +93,10 @@ namespace CaptureTheFlag.Map
             for (int i = 0; i < MAX_SPAWNS; ++i)
             {
                 position = section[i].Split(',');
-                spawns[(int)teamId, i].X         = Double(position[0]);
-                spawns[(int)teamId, i].Y         = Double(position[1]);
-                spawns[(int)teamId, i].Z         = Double(position[2]);
-                spawns[(int)teamId, i].Angle     = Float (position[3]);
+                spawns[(int)teamId, i].X = Double(position[0]);
+                spawns[(int)teamId, i].Y = Double(position[1]);
+                spawns[(int)teamId, i].Z = Double(position[2]);
+                spawns[(int)teamId, i].Angle = Float(position[3]);
             }
         }
     }

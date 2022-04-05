@@ -12,6 +12,7 @@ using System.Reflection;
 using CaptureTheFlag.Teams;
 using IniParser;
 using CaptureTheFlag.Utils;
+using DotEnv.Core;
 
 namespace CaptureTheFlag.Events
 {
@@ -38,20 +39,15 @@ namespace CaptureTheFlag.Events
             TextDrawGlobal.Create();
             TextDrawEntry.Create();
 
-            try
-            {
-                var dini = new Dini("config.ini", "Server");
-                Server.SendRconCommand($"hostname {dini.Read("HOSTNAME")}");
-                Server.SendRconCommand($"language {dini.Read("LANGUAGE")}");
-                hiddenCommand = dini.Read("HIDDEN_COMMAND");
-                SetGameModeText(dini.Read("GAMEMODE_TEXT"));
-                var name = dini.Read("NAME_MAP");
-                StartTimer(name.Length == 0 ? null : name);
-            }
-            catch (FileNotFoundException ex)
-            {
-                Console.WriteLine($"Error {ex.StackTrace} Reason: {ex.Message}");
-            }
+
+            var envVars = new EnvLoader().Load(out var result);
+            Console.WriteLine(result.ErrorMessages);
+            Server.SendRconCommand($"hostname {envVars["HOSTNAME"]}");
+            Server.SendRconCommand($"language {envVars["LANGUAGE"]}");
+            hiddenCommand = envVars["HIDDEN_COMMAND"];
+            SetGameModeText(envVars["GAMEMODE_TEXT"]);
+            var mapName = envVars["MAPNAME"];
+            StartTimer(string.IsNullOrWhiteSpace(mapName) ? null : mapName);
 
             TeamAlpha = new Team(
                 skin: SkinTeam.Alpha, 
