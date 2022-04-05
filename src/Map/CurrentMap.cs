@@ -12,6 +12,7 @@ using CaptureTheFlag.Constants;
 using CaptureTheFlag.PropertiesPlayer;
 using CaptureTheFlag.Utils;
 using System.IO;
+using Timer = SampSharp.GameMode.SAMP.Timer;
 
 namespace CaptureTheFlag.Map
 {

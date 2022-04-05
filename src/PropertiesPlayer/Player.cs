@@ -8,6 +8,7 @@ using CaptureTheFlag.Events;
 using System;
 using CaptureTheFlag.Data;
 using CaptureTheFlag.Teams;
+using Timer = SampSharp.GameMode.SAMP.Timer;
 
 namespace CaptureTheFlag.PropertiesPlayer
 {

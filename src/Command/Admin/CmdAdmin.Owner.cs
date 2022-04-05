@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static CaptureTheFlag.DataBase.PlayerAccount.Account;
+using Timer = SampSharp.GameMode.SAMP.Timer;
 
 namespace CaptureTheFlag.Command.Admin
 {
