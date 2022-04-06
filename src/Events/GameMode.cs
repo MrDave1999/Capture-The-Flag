@@ -42,11 +42,11 @@ namespace CaptureTheFlag.Events
 
             var envVars = new EnvLoader().Load(out var result);
             Console.WriteLine(result.ErrorMessages);
-            Server.SendRconCommand($"hostname {envVars["HOSTNAME"]}");
+            Server.SendRconCommand($"hostname {envVars["HOST_NAME"]}");
             Server.SendRconCommand($"language {envVars["LANGUAGE"]}");
             hiddenCommand = envVars["HIDDEN_COMMAND"];
-            SetGameModeText(envVars["GAMEMODE_TEXT"]);
-            var mapName = envVars["MAPNAME"];
+            SetGameModeText(envVars["GAME_MODE_TEXT"]);
+            var mapName = envVars["MAP_NAME"];
             StartTimer(string.IsNullOrWhiteSpace(mapName) ? null : mapName);
 
             TeamAlpha = new Team(
