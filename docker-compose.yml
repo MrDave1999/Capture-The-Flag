@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  sampserver:
+    restart: always
+    build: .
+    env_file: .env
+    command: bash -c "./wait-for-it.sh -t 60 mysql:${DB_PORT} && ./samp03svr"
+    ports:
+      - ${PORT}:7777/udp
+    environment:
+      - TZ=${TZ}
+
+  mysql:
+    restart: always
+    image: mysql:8.0.22
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backup_db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  mysql_data:
+
+networks:
+  default:
+    name: 'gamemode-ctf'
