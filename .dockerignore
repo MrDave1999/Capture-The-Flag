@@ -1,8 +1,9 @@
-/**/bin/
-/**/obj/
-/**/dependencies/
+**/bin
+**/obj
+**/dependencies
 .vscode/
 plugins/
+.git/
 *.exe
 *.dll
 *.so
