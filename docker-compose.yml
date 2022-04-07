@@ -1,11 +1,14 @@
 version: "3.9"
 
 services:
-  sampserver:
+  app:
     restart: always
     build: .
     env_file: .env
-    command: bash -c "./wait-for-it.sh -t 60 mysql:${DB_PORT} && ./samp03svr"
+    command: >
+      bash -c "./wait-for-it.sh -t 60 mysql:${DB_PORT} 
+      && sed -i 's/lagcompmode 1/lagcompmode ${LAG_COMP_MODE}/' server.cfg 
+      && ./samp03svr"
     ports:
       - ${PORT}:7777/udp
     environment:
