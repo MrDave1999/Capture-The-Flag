@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "mp-jetdoor-map",
+  "entry": "mp_jetdoor.pwn",
+  "output": "../mp_jetdoor.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

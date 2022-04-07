@@ -1,0 +1,7 @@
+{
+  "user": "MrDave1999",
+  "repo": "remove-building",
+  "entry": "RemoveBuilding.pwn",
+  "output": "../RemoveBuilding.amx",
+  "dependencies": ["sampctl/samp-stdlib"]
+}

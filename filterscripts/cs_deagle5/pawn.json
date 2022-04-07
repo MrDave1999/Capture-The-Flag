@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "cs-deagle5-map",
+  "entry": "cs_deagle5.pwn",
+  "output": "../cs_deagle5.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "user": "MrDave1999",
+  "repo": "entry-map",
+  "entry": "EntryMap.pwn",
+  "output": "../EntryMap.amx",
+  "dependencies": ["sampctl/samp-stdlib"]
+}

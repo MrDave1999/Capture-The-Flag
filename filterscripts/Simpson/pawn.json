@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "simpson-map",
+  "entry": "Simpson.pwn",
+  "output": "../Simpson.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

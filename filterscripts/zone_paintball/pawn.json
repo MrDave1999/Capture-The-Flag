@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "zone-paintball-map",
+  "entry": "zone_paintball.pwn",
+  "output": "../zone_paintball.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

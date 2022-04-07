@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "desert-glory-map",
+  "entry": "DesertGlory.pwn",
+  "output": "../DesertGlory.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}
