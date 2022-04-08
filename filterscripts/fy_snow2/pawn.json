@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "fy-snow2-map",
+  "entry": "fy_snow2.pwn",
+  "output": "../fy_snow2.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

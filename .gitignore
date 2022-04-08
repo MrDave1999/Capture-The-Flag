@@ -22,6 +22,7 @@ plugins/
 *.exe
 *.dll
 *.so
+filterscripts/*.amx
 announce
 samp03svr
 samp-npc
@@ -38,9 +39,6 @@ samp.ban
 
 # IDE files (compiler, includes, etc)
 pawno/
-
-# include files
-include/
 
 # User-specific files
 *.rsuser

@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "warzone-map",
+  "entry": "WarZone.pwn",
+  "output": "../WarZone.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "de-dust2-small-map",
+  "entry": "de_dust2_small.pwn",
+  "output": "../de_dust2_small.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

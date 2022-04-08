@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "mp-island-map",
+  "entry": "mp_island.pwn",
+  "output": "../mp_island.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

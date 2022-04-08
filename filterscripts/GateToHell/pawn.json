@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "gate-to-hell-map",
+  "entry": "GateToHell.pwn",
+  "output": "../GateToHell.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

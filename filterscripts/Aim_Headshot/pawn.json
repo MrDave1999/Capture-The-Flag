@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "aim-headshot-map",
+  "entry": "Aim_Headshot.pwn",
+  "output": "../Aim_Headshot.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}

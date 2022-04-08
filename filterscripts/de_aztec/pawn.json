@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "de-aztec-map",
+  "entry": "de_aztec.pwn",
+  "output": "../de_aztec.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}
