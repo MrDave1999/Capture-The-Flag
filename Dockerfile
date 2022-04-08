@@ -64,8 +64,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apit/lists/*
 
 COPY gamemodes gamemodes
-COPY scriptfiles scriptfiles
-
 COPY wait-for-it.sh .
 RUN chmod u+x wait-for-it.sh
 
@@ -74,4 +72,5 @@ COPY --from=samp-server /sampserver .
 RUN echo "coreclr dotnet/runtime" >> server.cfg \
     && echo "gamemode bin/CaptureTheFlag.dll" >> server.cfg
 
+COPY scriptfiles scriptfiles
 COPY --from=build-env /app/out bin
