@@ -1,0 +1,12 @@
+{
+  "user": "MrDave1999",
+  "repo": "fy-iceworld2-map",
+  "entry": "fy_iceworld2.pwn",
+  "output": "../fy_iceworld2.amx",
+  "dependencies": ["sampctl/samp-stdlib"],
+  "build": {
+    "includes": [
+       "../../include"
+    ]
+  }
+}
