@@ -18,6 +18,7 @@ namespace CaptureTheFlag.Teams
         public Color ColorHex { get; private set; }
         public int Model { get; private set; }
         public Vector3 PositionBase { get; set; }
+        private Pickup Pickup { get; set; }
 
         public Flag(int modelid, Color color, Vector3 vector3)
         {
@@ -32,13 +33,19 @@ namespace CaptureTheFlag.Teams
 
         public void Create(Vector3 vector3)
         {
-            Pickup.Create(Model, 1, vector3);
+            Pickup = Pickup.Create(Model, 1, vector3);
             PositionBase = vector3;
         }
 
-        public void Create() => Pickup.Create(Model, 1, PositionBase);
-            
-        public void Create(Player player) => Pickup.Create(Model, 1, player.Position);
+        public void Create()
+            => Pickup = Pickup.Create(Model, 1, PositionBase);
+ 
+
+        public void Create(Player player)
+            => Pickup = Pickup.Create(Model, 1, player.Position);
+
+        public void Delete()
+            => Pickup.Dispose();
 
         public void DeletePlayerCaptured()
         {

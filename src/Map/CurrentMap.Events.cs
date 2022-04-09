@@ -44,6 +44,8 @@ namespace CaptureTheFlag.Map
             TeamBeta.Flag.Create(LoadFlagPosition("Blue"));
             TeamAlpha.UpdateIcon();
             TeamBeta.UpdateIcon();
+            TeamAlpha.Timer.Stop();
+            TeamBeta.Timer.Stop();
             Server.SendRconCommand($"loadfs {GetMapName(Id)}");
             Server.SendRconCommand($"mapname {GetMapName(Id)}");
         }

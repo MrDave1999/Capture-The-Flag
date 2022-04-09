@@ -44,6 +44,8 @@ namespace CaptureTheFlag.Teams
                 BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} tomó la bandera {NameColor} del equipo {NameTeam}.");
                 player.SendClientMessage($"{Color.Pink}[!]: {Color.White}Debes llevar esa bandera a tu base.");
                 BasePlayer.GameTextForAll($"~n~~n~~n~{ColorGameText}la bandera {NameColor} fue tomada!", 5000, 3);
+                Timer.Stop();
+
             }
             player.GameText($"~n~~n~~n~{ColorGameText}lleva la bandera {NameColor} a tu base!", 5000, 3);
         }
@@ -74,6 +76,7 @@ namespace CaptureTheFlag.Teams
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} recuperó la bandera {NameColor} del equipo {NameTeam}.");
             BasePlayer.GameTextForAll($"~n~~n~~n~{ColorGameText}la bandera {NameColor} fue recuperada!", 5000, 3);
             player.UpdateAdrenaline(4, "recuperar la bandera");
+            Timer.Stop();
         }
 
         public void Drop(Player player, Player killer)
@@ -91,6 +94,7 @@ namespace CaptureTheFlag.Teams
             BasePlayer.SendClientMessageToAll($"{OtherColor}[Team {NameTeam}]: {player.Name} dejó caer la bandera {NameColor} del equipo {NameTeam}.");
             BasePlayer.GameTextForAll($"~n~~n~~n~{ColorGameText}la bandera {NameColor} fue soltada!", 5000, 3);
             player.RemoveAttachedObject(0);
+            Timer.Start();
         }
     }
 }

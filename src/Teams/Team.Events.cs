@@ -1,5 +1,6 @@
 ﻿using CaptureTheFlag.PropertiesPlayer;
 using SampSharp.GameMode.Events;
+using SampSharp.GameMode.World;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,16 @@ namespace CaptureTheFlag.Teams
                 player.GameText($"~n~~n~~n~{ColorGameText}lleva la bandera {NameColor} a tu base!", 5000, 3);
             else
                 player.GameText($"~n~~n~~n~{ColorGameText}la bandera {NameColor} ya fue capturada!", 5000, 3);
+        }
+
+        // This callback is called when the flag is not retrieved for a period of time.
+        private void OnFlagIsNotRetrievedPeriodOfTime(object sender, EventArgs e)
+        {
+            Flag.Delete();
+            Flag.Create();
+            Flag.IsPositionBase = true;
+            PickupInfo.Dispose();
+            BasePlayer.SendClientMessageToAll($"{OtherColor}[Auto-Return]: La bandera {NameColor} regresó a su posición inicial.");
         }
     }
 }

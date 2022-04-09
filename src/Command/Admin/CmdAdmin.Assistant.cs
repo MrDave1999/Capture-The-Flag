@@ -73,6 +73,8 @@ namespace CaptureTheFlag.Command.Admin
             TeamBeta.Flag.DeletePlayerCaptured();
             TeamAlpha.Flag.Create();
             TeamBeta.Flag.Create();
+            TeamAlpha.Timer.Stop();
+            TeamBeta.Timer.Stop();
             BasePlayer.SendClientMessageToAll(Color.Yellow, "* Las banderas fueron reseteadas a su posición inicial.");
             SendMessageToAdmins(player, "resetflags");
         }

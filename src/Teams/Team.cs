@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Text;
 using CaptureTheFlag.Constants;
 using CaptureTheFlag.PropertiesPlayer;
+using Timer = SampSharp.GameMode.SAMP.Timer;
+using DotEnv.Core;
 
 namespace CaptureTheFlag.Teams
 {
@@ -32,6 +34,7 @@ namespace CaptureTheFlag.Teams
         public DynamicMapIcon Icon { get; private set; }
         public List<Player> Players { get; set; } = new List<Player>();
         public Pickup PickupInfo { get; set; }
+        public Timer Timer { get; set; }
 
         public Team(
             int skin, 
@@ -56,6 +59,9 @@ namespace CaptureTheFlag.Teams
             ColorEnglish = colorEnglish;
             Flag = flag;
             Icon = new DynamicMapIcon(Flag.PositionBase, 0) { StreamDistance = 5000f, Interior = interior, Color = Flag.ColorHex};
+            int interval = EnvReader.Instance.GetIntValue("FLAG_RETURN_TIME") * 1000;
+            Timer = new Timer(interval, isRepeating: false, running: false);
+            Timer.Tick += OnFlagIsNotRetrievedPeriodOfTime;
         }
 
         public bool IsFull() => Members > TeamRival.Members;
