@@ -40,7 +40,7 @@ namespace CaptureTheFlag.Events
                 return;
             }
             player.StopAudioStream();
-            player.PlayAudioStream("https://dl.dropboxusercontent.com/s/mzt9qnigsh7pdfs/soundtrack.mp3");
+            // player.PlayAudioStream("https://dl.dropboxusercontent.com/s/mzt9qnigsh7pdfs/soundtrack.mp3");
             player.IsSelectionClass = false;
             player.GameText("_", 1000, 4);
             Player.Add(player);
