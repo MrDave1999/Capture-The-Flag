@@ -23,7 +23,7 @@ namespace CaptureTheFlag.PropertiesPlayer
                     Validate.IsEmpty(this, register, e.InputText);
                     Validate.IsPasswordRange(this, register, e.InputText);
                     DataBase.PlayerAccount.Account.Create(this, e.InputText);
-                    CmdPublic.Help(this);
+                    // CmdPublic.Help(this);
                     Account = AccountState.None;
                     SendClientMessage(Color.Orange, $"[Cuenta]: {Color.Yellow}Te has registrado de forma exitosa. {Color.Orange}Contraseña: {e.InputText}");
                 }
