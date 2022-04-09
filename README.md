@@ -30,7 +30,7 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 
 ## Deployment with Docker
 
-**1.** Copy the contents of `.env.example` to .env:
+**1.** Copy the contents of `.env.example` to `.env`:
 
 **On Linux:**
 ```sh
@@ -80,7 +80,7 @@ Go to the `.env` file and modify the `MAX_TIME_LOADING` key, the time must be ex
 - [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) by create streamer-plugin.
 - [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) by create gamemode.
 - [Ts-Pytham](https://github.com/Ts-Pytham) for collaborating with the administration system.
-- [critical99](https://gitlab.com/critical99/ysf) by create Lite version of IllidanS4 [YSF](https://github.com/IllidanS4/YSF).
+- [IllidanS4](https://github.com/IllidanS4/YSF) by create YSF-plugin.
 - [BlasterDv](https://github.com/BlasterDv/SampSharp-YSF) by create Wrapper SampSharp.YSF of the YSF plugin.
 
 ### Mappers
