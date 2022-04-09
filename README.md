@@ -30,7 +30,15 @@ In this video you can find a demo of how the gamemode is looking: https://youtu.
 
 ## Deployment with Docker
 
-**1.** Copy the contents of `.env.example` to `.env`:
+**1.** Clone the repository:
+```sh
+git clone https://github.com/MrDave1999/Capture-The-Flag.git
+```
+**2.** Change directory:
+```sh
+cd Capture-The-Flag
+```
+**3.** Copy the contents of `.env.example` to `.env`:
 
 **On Linux:**
 ```sh
@@ -41,11 +49,11 @@ cp .env.example .env
 copy .env.example .env
 ```
 
-**2.** Build the image and initiate services:
+**4.** Build the image and initiate services:
 ```sh
 docker-compose up --build -d
 ```
-**3.** Add the server IP in your SA-MP client:
+**5.** Add the server IP in your SA-MP client:
 ```
 localhost:7777
 ```
