@@ -15,7 +15,7 @@ namespace CaptureTheFlag.Events
             e.SendToPlayers = false;
             if (player.IsSelectionClass)
             {
-                player.SendClientMessage(Color.Red, "Error: No puedes escribir en el chat estando en la selección de clases.");
+                player.SendClientMessage(Color.Red, "Error: No puedes escribir en el chat estando en la selecciÃ³n de clases.");
                 return;
             }
             if (player.IsMuted)

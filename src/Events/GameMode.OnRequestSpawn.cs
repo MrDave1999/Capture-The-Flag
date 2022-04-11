@@ -17,7 +17,7 @@ namespace CaptureTheFlag.Events
             var player = sender as Player;
             if (player.Account == AccountState.Login)
             {
-                player.SendClientMessage(Color.Red, "Error: Debes iniciar sesiÛn.");
+                player.SendClientMessage(Color.Red, "Error: Debes iniciar sesi√≥n.");
                 e.PreventSpawning = true;
                 return;
             }
@@ -30,7 +30,7 @@ namespace CaptureTheFlag.Events
             if (CurrentMap.IsLoading)
             {
                 e.PreventSpawning = true;
-                player.SendClientMessage(Color.Red, $"Error: En {CurrentMap.MAX_TIME_LOADING} segundos se cargar· el prÛximo mapa.");
+                player.SendClientMessage(Color.Red, $"Error: En {CurrentMap.MAX_TIME_LOADING} segundos se cargar√° el pr√≥ximo mapa.");
                 return;
             }
             if (player.PlayerTeam.GetMessageTeamEnable(out var msg))
@@ -44,15 +44,15 @@ namespace CaptureTheFlag.Events
             player.IsSelectionClass = false;
             player.GameText("_", 1000, 4);
             Player.Add(player);
-            BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se aÒadiÛ al equipo {player.PlayerTeam.NameTeam}.");
+            BasePlayer.SendClientMessageToAll($"{player.PlayerTeam.OtherColor}[Team {player.PlayerTeam.NameTeam}]: {player.Name} se a√±adi√≥ al equipo {player.PlayerTeam.NameTeam}.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Captura la bandera del equipo contrario.");
             if (player.PlayerTeam.Id == TeamID.Alpha)
-                player.SendClientMessage($"{Color.Pink}[!] {Color.White}GuÌate con el {TeamBeta.OtherColor}Ìcono Azul {Color.White}que aparece en el mapa radar.");
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Gu√≠ate con el {TeamBeta.OtherColor}√≠cono Azul {Color.White}que aparece en el mapa radar.");
             else
-                player.SendClientMessage($"{Color.Pink}[!] {Color.White}GuÌate con el {TeamAlpha.OtherColor}Ìcono Rojo {Color.White}que aparece en el mapa radar.");
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}Gu√≠ate con el {TeamAlpha.OtherColor}√≠cono Rojo {Color.White}que aparece en el mapa radar.");
             player.SendClientMessage($"{Color.Pink}[!] {Color.White}Luego lleva la bandera a tu base.");
             if (player.PlayerTeam.Flag.PlayerCaptured != null)
-                player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} capturÛ la bandera de tu equipo, debes recuperarla.");
+                player.SendClientMessage($"{Color.Pink}[!] {Color.White}{player.PlayerTeam.Flag.PlayerCaptured.Name} captur√≥ la bandera de tu equipo, debes recuperarla.");
             TextDrawGlobal.Show(player);
             TextDrawGlobal.UpdateCountUsers();
             TextDrawPlayer.UpdateTdStats(player);
