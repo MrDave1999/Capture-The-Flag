@@ -43,7 +43,7 @@ namespace CaptureTheFlag.Events
             var envVars = new EnvLoader().Load(out var result);
             Console.WriteLine(result.ErrorMessages);
             Server.SendRconCommand($"hostname {envVars["HOST_NAME"]}");
-            Server.SendRconCommand($"language {envVars["LANGUAGE"]}");
+            Server.SendRconCommand($"language {envVars["LANGUAGE_NAME"]}");
             Server.SendRconCommand($"weburl {envVars["WEB_URL"]}");
             hiddenCommand = envVars["HIDDEN_COMMAND"];
             SetGameModeText(envVars["GAME_MODE_TEXT"]);
