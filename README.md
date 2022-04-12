@@ -58,6 +58,31 @@ docker-compose up --build -d
 localhost:7777
 ```
 
+## Deployment without Docker
+
+**1.** You must download the SA-MP server [here](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) (choose the `.zip` file depending on the operating system you use.).
+
+**2.** Once downloaded, modify the `.env` file according to your needs (for example, you need to specify the credentials you will use to connect to the database).
+
+**3.** Download [MySQL Server 8.0](https://dev.mysql.com/downloads/mysql/).
+
+**4.** You must create the database:
+```sql
+CREATE DATABASE gamemode;
+```
+**5.** You must import the database:
+```sql
+mysql -h localhost -u MyUserName -p gamemode < gamemode.sql
+```
+**6.** This step should only be followed if you are using a Linux distribution. You need to install certain **32-bit packages** to be able to run the samp-server without problems.
+
+An example in Ubuntu:
+```sh
+sudo dpkg --add-architecture i386
+sudo apt-get update && apt-get install libc6:i386 libstdc++6:i386 libssl1.1:i386 libicu-dev:i386
+```
+**7.** Finally run the samp-server and enjoy :)
+
 ## Frequently Asked Questions
 
 #### How do I edit the connection string?
