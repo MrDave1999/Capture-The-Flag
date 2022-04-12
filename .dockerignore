@@ -2,6 +2,7 @@
 **/obj
 **/dependencies
 filterscripts/*.amx
+dotnet/runtime/
 .vscode/
 plugins/
 .git/
