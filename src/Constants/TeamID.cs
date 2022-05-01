@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace CaptureTheFlag.Constants;
 
-namespace CaptureTheFlag.Constants
+public enum TeamID
 {
-    public enum TeamID
-    {
-        Alpha,
-        Beta
-    }
+    Alpha,
+    Beta
 }

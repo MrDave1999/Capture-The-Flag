@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0051: Quitar miembros privados no utilizados
+dotnet_diagnostic.IDE0051.severity = silent

@@ -16,6 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ini-parser-netcore3.1" Version="3.0.0" />
     <PackageReference Include="MySql.Data" Version="8.0.22" />
     <PackageReference Include="SampSharp.GameMode" Version="0.10.0" />

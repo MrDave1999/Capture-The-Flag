@@ -1,12 +1,4 @@
-﻿ using CaptureTheFlag.PropertiesPlayer;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static CaptureTheFlag.DataBase.DbCommand;
-using static CaptureTheFlag.DataBase.DbConnection;
-
-namespace CaptureTheFlag.DataBase.PlayerAccount
+﻿namespace CaptureTheFlag.DataBase.PlayerAccount
 {
     public partial class Account
     {
@@ -30,7 +22,7 @@ namespace CaptureTheFlag.PropertiesPlayer
 {
     public partial class Player
     {
-        public void UpdateData<T>(string campus, T newvalue) 
+        public void UpdateData<T>(string campus, T newvalue)
             => DataBase.PlayerAccount.Account.Update(campus, newvalue, this);
 
         public void UpdateAdminLevel(int newvalue)
