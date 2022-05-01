@@ -1,8 +1,4 @@
-﻿using CaptureTheFlag.Events;
-using CaptureTheFlag.Utils;
-using SampSharp.Core;
-
-try
+﻿try
 {
     new GameModeBuilder()
         .RedirectConsoleOutput()

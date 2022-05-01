@@ -1,147 +1,132 @@
-﻿using CaptureTheFlag.Data;
-using CaptureTheFlag.Map;
-using CaptureTheFlag.PropertiesPlayer;
-using CaptureTheFlag.Utils;
-using MySql.Data.MySqlClient;
-using SampSharp.GameMode.SAMP;
-using SampSharp.GameMode.SAMP.Commands;
-using SampSharp.GameMode.World;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static CaptureTheFlag.DataBase.PlayerAccount.Account;
-using Timer = SampSharp.GameMode.SAMP.Timer;
+﻿namespace CaptureTheFlag.Command.Admin;
 
-namespace CaptureTheFlag.Command.Admin
+public partial class CmdAdmin
 {
-    public partial class CmdAdmin
+    [Command("settimeleft", Shortcut = "settimeleft", UsageMessage = "/settimeleft [minutes]")]
+    private static void SetTimeLeft(Player player, int minutes)
     {
-        [Command("settimeleft", Shortcut = "settimeleft", UsageMessage = "/settimeleft [minutes]")]
-        private static void SetTimeLeft(Player player, int minutes)
+        if (player.IsAdminLevel(4)) return;
+        Validate.IsMinutesRange(player, minutes);
+        CurrentMap.timeLeft = minutes * 60;
+        BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} cambió el tiempo de la partida a {Color.Orange}{minutes} {(minutes == 1 ? "minuto" : "minutos")}.");
+        SendMessageToAdmins(player, "settimeleft");
+    }
+
+    [Command("setlevel", Shortcut = "setlevel", UsageMessage = "/setlevel [playerid] [levelid]")]
+    private static void SetLevel(Player player, int playerid, int levelid)
+    {
+        if (player.IsAdminLevel(4)) return;
+        if (levelid < 0 || levelid > 4)
         {
-            if (player.IsAdminLevel(4)) return;
-            Validate.IsMinutesRange(player, minutes);
-            CurrentMap.timeLeft = minutes * 60;
-            BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} cambió el tiempo de la partida a {Color.Orange}{minutes} {(minutes == 1 ? "minuto" : "minutos")}.");
-            SendMessageToAdmins(player, "settimeleft");
+            player.SendClientMessage(Color.Red, "Error: Ingresa un nivel válido [0/4].");
+            return;
         }
-
-        [Command("setlevel", Shortcut = "setlevel", UsageMessage = "/setlevel [playerid] [levelid]")]
-        private static void SetLevel(Player player, int playerid, int levelid)
+        Player player1 = Player.Find(player, playerid);
+        if(levelid == player1.Data.LevelAdmin)
         {
-            if (player.IsAdminLevel(4)) return;
-            if (levelid < 0 || levelid > 4)
-            {
-                player.SendClientMessage(Color.Red, "Error: Ingresa un nivel válido [0/4].");
-                return;
-            }
-            Player player1 = Player.Find(player, playerid);
-            if(levelid == player1.Data.LevelAdmin)
-            {
-                player.SendClientMessage(Color.Red, "Error: Ese jugador ya tiene ese nivel.");
-                return;
-            }
-            try
-            {
-                if (player1.Data.LevelAdmin == 0)
-                {
-                    Player.Admins.Add(player1);
-                    InsertAdminLevel(player1, levelid);
-                }
-                else if (levelid == 0)
-                {
-                    Player.Admins.Remove(player1);
-                    Delete(player1, "admins");
-                    player1.SendClientMessage(Color.Red, "* Ya no formas parte del STAFF.");
-                    player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango a {player1.Name}");
-                }
-                else
-                    player.UpdateAdminLevel(levelid);
-
-                player1.GameText(levelid < player1.Data.LevelAdmin ? "demoted Admin" : "promoted Admin", 4000, 3);
-                if (levelid != 0)
-                    BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le dio el rango de {Rank.GetRankAdmin(levelid)} al jugador {player1.Name}");
-                player1.Data.LevelAdmin = levelid;
-                SendMessageToAdmins(player, "setlevel");
-            }
-            catch(MySqlException e)
-            {
-                player.SendErrorMessage(e);
-            }
+            player.SendClientMessage(Color.Red, "Error: Ese jugador ya tiene ese nivel.");
+            return;
         }
-
-        [Command("setvip", Shortcut = "setvip", UsageMessage = "/setvip [playerid] [levelid]")]
-        private static void SetVip(Player player, int playerid, int levelid)
+        try
         {
-            if (player.IsAdminLevel(4)) return;
-            if (levelid < 0 || levelid > 3)
+            if (player1.Data.LevelAdmin == 0)
             {
-                player.SendClientMessage(Color.Red, "Error: Ingresa un nivel válido [0/3].");
-                return;
+                Player.Admins.Add(player1);
+                InsertAdminLevel(player1, levelid);
             }
-            Player player1 = Player.Find(player, playerid);
-            if (levelid == player1.Data.LevelVip)
+            else if (levelid == 0)
             {
-                player.SendClientMessage(Color.Red, "Error: Ese jugador ya tiene ese nivel.");
-                return;
+                Player.Admins.Remove(player1);
+                Delete(player1, "admins");
+                player1.SendClientMessage(Color.Red, "* Ya no formas parte del STAFF.");
+                player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango a {player1.Name}");
             }
-            try
-            {
-                if (player1.Data.LevelVip == 0)
-                {
-                    Player.Vips.Add(player1);
-                    InsertVipLevel(player1, levelid);
-                }
-                else if (levelid == 0)
-                {
-                    Player.Vips.Remove(player1);
-                    Delete(player1, "vips");
-                    player1.SendClientMessage(Color.Red, "* Ya no eres usuario VIP.");
-                    player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango VIP a {player1.Name}");
-                }
-                else
-                    player.UpdateVipLevel(levelid);
+            else
+                player.UpdateAdminLevel(levelid);
 
-                player1.GameText(levelid < player1.Data.LevelVip ? "demoted VIP" : "promoted VIP", 4000, 3);
-                if (levelid != 0)
-                    BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le dio el rango de {Rank.GetRankVip(levelid)} al jugador {player1.Name}");
-                player1.Data.LevelVip = levelid;
-                SendMessageToAdmins(player, "setvip");
-            }
-            catch(MySqlException e)
-            {
-                player.SendErrorMessage(e);
-            }
+            player1.GameText(levelid < player1.Data.LevelAdmin ? "demoted Admin" : "promoted Admin", 4000, 3);
+            if (levelid != 0)
+                BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le dio el rango de {Rank.GetRankAdmin(levelid)} al jugador {player1.Name}");
+            player1.Data.LevelAdmin = levelid;
+            SendMessageToAdmins(player, "setlevel");
         }
-
-        [Command("lockserver", Shortcut = "lockserver", UsageMessage = "/lockserver [password]")]
-        private static void LockServer(Player player, string password)
+        catch(MySqlException e)
         {
-            if (player.IsAdminLevel(4)) return;
-            Server.SendRconCommand($"password {password}");
-            BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le puso contraseña al servidor. Ahora nadie podrá entrar.");
-            SendMessageToAdmins(player, "lockserver");
+            player.SendErrorMessage(e);
         }
+    }
 
-        [Command("unlockserver", Shortcut = "unlockserver")]
-        private static void UnLockServer(Player player)
+    [Command("setvip", Shortcut = "setvip", UsageMessage = "/setvip [playerid] [levelid]")]
+    private static void SetVip(Player player, int playerid, int levelid)
+    {
+        if (player.IsAdminLevel(4)) return;
+        if (levelid < 0 || levelid > 3)
         {
-            if (player.IsAdminLevel(4)) return;
-            Server.SendRconCommand("password 0");
-            BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le quito la contraseña al servidor. Ahora la gente sí podrá entrar.");
-            SendMessageToAdmins(player, "unlockserver");
+            player.SendClientMessage(Color.Red, "Error: Ingresa un nivel válido [0/3].");
+            return;
         }
-
-        [Command("restartserver", Shortcut = "restartserver")]
-        private static void RestartServer(Player player)
+        Player player1 = Player.Find(player, playerid);
+        if (levelid == player1.Data.LevelVip)
         {
-            if (player.IsAdminLevel(4)) return;
-            BasePlayer.SendClientMessageToAll(Color.Yellow, "[Anuncio]: El servidor se reiniciará en 5 segundos.");
-            new Timer(5000, false).Tick += (sender, e) =>
+            player.SendClientMessage(Color.Red, "Error: Ese jugador ya tiene ese nivel.");
+            return;
+        }
+        try
+        {
+            if (player1.Data.LevelVip == 0)
             {
-                Server.SendRconCommand("gmx");
-            };
-            SendMessageToAdmins(player, "restartserver");
+                Player.Vips.Add(player1);
+                InsertVipLevel(player1, levelid);
+            }
+            else if (levelid == 0)
+            {
+                Player.Vips.Remove(player1);
+                Delete(player1, "vips");
+                player1.SendClientMessage(Color.Red, "* Ya no eres usuario VIP.");
+                player.SendClientMessage(Color.Yellow, $"* Le quitaste el rango VIP a {player1.Name}");
+            }
+            else
+                player.UpdateVipLevel(levelid);
+
+            player1.GameText(levelid < player1.Data.LevelVip ? "demoted VIP" : "promoted VIP", 4000, 3);
+            if (levelid != 0)
+                BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le dio el rango de {Rank.GetRankVip(levelid)} al jugador {player1.Name}");
+            player1.Data.LevelVip = levelid;
+            SendMessageToAdmins(player, "setvip");
         }
+        catch(MySqlException e)
+        {
+            player.SendErrorMessage(e);
+        }
+    }
+
+    [Command("lockserver", Shortcut = "lockserver", UsageMessage = "/lockserver [password]")]
+    private static void LockServer(Player player, string password)
+    {
+        if (player.IsAdminLevel(4)) return;
+        Server.SendRconCommand($"password {password}");
+        BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le puso contraseña al servidor. Ahora nadie podrá entrar.");
+        SendMessageToAdmins(player, "lockserver");
+    }
+
+    [Command("unlockserver", Shortcut = "unlockserver")]
+    private static void UnLockServer(Player player)
+    {
+        if (player.IsAdminLevel(4)) return;
+        Server.SendRconCommand("password 0");
+        BasePlayer.SendClientMessageToAll(Color.Yellow, $"* {player.Name} le quito la contraseña al servidor. Ahora la gente sí podrá entrar.");
+        SendMessageToAdmins(player, "unlockserver");
+    }
+
+    [Command("restartserver", Shortcut = "restartserver")]
+    private static void RestartServer(Player player)
+    {
+        if (player.IsAdminLevel(4)) return;
+        BasePlayer.SendClientMessageToAll(Color.Yellow, "[Anuncio]: El servidor se reiniciará en 5 segundos.");
+        new Timer(5000, false).Tick += (sender, e) =>
+        {
+            Server.SendRconCommand("gmx");
+        };
+        SendMessageToAdmins(player, "restartserver");
     }
 }

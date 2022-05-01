@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CaptureTheFlag.Command.Admin;
-using CaptureTheFlag.PropertiesPlayer;
-using SampSharp.GameMode.SAMP;
-using SampSharp.GameMode.SAMP.Commands;
-
-namespace CaptureTheFlag.PropertiesPlayer
+﻿namespace CaptureTheFlag.PropertiesPlayer
 {
     public partial class Player
     {

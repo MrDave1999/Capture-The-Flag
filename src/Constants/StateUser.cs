@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace CaptureTheFlag.Constants;
 
-namespace CaptureTheFlag.Constants
+public enum StateUser
 {
-    public enum StateUser
-    {
-        Force,
-        Kill,
-        None
-    }
+    Force,
+    Kill,
+    None
 }

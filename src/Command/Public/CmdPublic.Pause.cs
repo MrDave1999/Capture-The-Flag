@@ -1,18 +1,4 @@
-﻿using CaptureTheFlag.Command.Public;
-using CaptureTheFlag.PropertiesPlayer;
-using CaptureTheFlag.Utils;
-using SampSharp.GameMode;
-using SampSharp.GameMode.Definitions;
-using SampSharp.GameMode.Display;
-using SampSharp.GameMode.SAMP;
-using SampSharp.GameMode.SAMP.Commands;
-using SampSharp.GameMode.World;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-
-namespace CaptureTheFlag.PropertiesPlayer
+﻿namespace CaptureTheFlag.PropertiesPlayer
 {
     public partial class Player
     {
