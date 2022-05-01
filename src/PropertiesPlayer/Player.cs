@@ -14,6 +14,10 @@ public partial class Player : BasePlayer
     public PlayerData Data { get; set; }
     public Team PlayerTeam { get; set; }
     public AccountState Account { get; set; } = AccountState.None;
+    public bool AFK { get; set; }
+    public static List<UserAFK> UserAFKs = new List<UserAFK>();
+    public Player LastPlayerPM { get; set; }
+    public bool IsEnablePrivateMessage { get; set; } = true;
 
     public Player()
     {
@@ -168,4 +172,16 @@ public partial class Player : BasePlayer
         SendClientMessage(Color.Red, $"Error: {e.Message}");
         Console.WriteLine($"Error {e.StackTrace} Reason: {e.Message}");
     }
+
+    public void UpdateData<T>(string campus, T newvalue)
+    => DataBase.PlayerAccount.Account.Update(campus, newvalue, this);
+
+    public void UpdateAdminLevel(int newvalue)
+        => DataBase.PlayerAccount.Account.Update("levelAdmin", newvalue, this, "admins");
+
+    public void UpdateVipLevel(int newvalue)
+        => DataBase.PlayerAccount.Account.Update("levelVip", newvalue, this, "vips");
+
+    public void UpdateSkin(int newvalue)
+        => DataBase.PlayerAccount.Account.Update("skinid", newvalue, this, "vips");
 }
