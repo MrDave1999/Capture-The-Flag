@@ -174,7 +174,7 @@ public partial class Player : BasePlayer
     }
 
     public void UpdateData<T>(string campus, T newvalue)
-    => DataBase.PlayerAccount.Account.Update(campus, newvalue, this);
+        => DataBase.PlayerAccount.Account.Update(campus, newvalue, this);
 
     public void UpdateAdminLevel(int newvalue)
         => DataBase.PlayerAccount.Account.Update("levelAdmin", newvalue, this, "admins");
