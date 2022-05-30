@@ -2,20 +2,40 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "PowerShell",
-      "type": "shell",
-      "command": "${workspaceRoot}/pawno/pawncc.exe",
-      "args": ["${file}", "--%", "-Dfilterscripts", "-;+", "-(+", "-d3"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "isBackground": false,
-      "presentation": {
-        "reveal": "silent",
-        "panel": "dedicated"
-      },
-      "problemMatcher": "$pawncc"
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "build",
+            "${workspaceFolder}/src/CaptureTheFlag.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "publish",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "publish",
+            "${workspaceFolder}/src/CaptureTheFlag.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "watch",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "watch",
+            "run",
+            "--project",
+            "${workspaceFolder}/src/CaptureTheFlag.csproj"
+        ],
+        "problemMatcher": "$msCompile"
     }
   ]
 }
