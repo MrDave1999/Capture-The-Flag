@@ -4,8 +4,7 @@
 [![CTF](https://img.shields.io/badge/GameMode-CSharp-yellow)](https://github.com/MrDave1999/Capture-the-flag)
 [![CTF](https://img.shields.io/badge/Team%20DeathMatch-+Ranks-green)](https://github.com/MrDave1999/Capture-the-flag)
 
-**Capture The Flag** is a gamemode for [SA-MP](https://www.sa-mp.com/) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas) created with [sampsharp](https://github.com/ikkentim/SampSharp).
-
+**Capture The Flag** is a gamemode for [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas) created with [sampsharp](https://github.com/ikkentim/SampSharp).
 Capture The Flag is a style of play in which two teams try to catch a flag and carry it to a certain location to score points.
 To play, players are divided into two teams (Alpha and Beta), each on a field. To earn points, you must capture the flag and take it to a certain location.
 Currently, the gamemode has more than 10 maps and every 20 minutes there is a map change.
