@@ -61,7 +61,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl1.1:i386 \
     libicu-dev:i386 \
     tzdata \
-    && rm -rf /var/lib/apit/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 COPY gamemodes gamemodes
 COPY wait-for-it.sh .
