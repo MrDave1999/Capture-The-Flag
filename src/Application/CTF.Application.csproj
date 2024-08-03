@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\CTF.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
