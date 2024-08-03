@@ -10,6 +10,7 @@ public class Startup : IStartup
             .Build();
 
         services.AddPersistenceSQLiteServices(configuration);
+        services.AddApplicationServices();
 
         // TODO: Add services and systems to the services collection
         services.AddSystem<System1>();
