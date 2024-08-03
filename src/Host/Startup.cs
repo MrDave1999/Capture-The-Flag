@@ -9,6 +9,8 @@ public class Startup : IStartup
             .AddEnvironmentVariables()
             .Build();
 
+        services.AddPersistenceSQLiteServices(configuration);
+
         // TODO: Add services and systems to the services collection
         services.AddSystem<System1>();
     }
