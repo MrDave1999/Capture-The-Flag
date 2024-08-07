@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTF.Application", "src\Application\CTF.Application.csproj", "{451E4CB5-45B7-4B55-BCA5-11AD05307328}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTF.Domain", "src\Domain\CTF.Domain.csproj", "{39B26114-3C80-41CF-AEFF-8CE4D17C4CEE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTF.Host", "src\Host\CTF.Host.csproj", "{08C99C11-F517-4179-86AE-9B74F3AA8E75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{5288534A-0560-492B-AFD0-972CBBF1FB73}"
@@ -21,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.SQLite.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.MariaDB.Tests", "tests\Persistence.MariaDB.Tests\Persistence.MariaDB.Tests.csproj", "{56312FEF-E7A6-4D5C-A9D7-8F4B734981F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTF.Domain.Tests", "tests\Domain.Tests\CTF.Domain.Tests.csproj", "{0E7EC0C1-817D-42B4-9A40-833D295B15C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTF.Application.Tests", "tests\Application.Tests\CTF.Application.Tests.csproj", "{0E7EC0C1-817D-42B4-9A40-833D295B15C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3B682FEF-739A-498C-84E9-C83A992AD968}"
 	ProjectSection(SolutionItems) = preProject
@@ -41,10 +39,6 @@ Global
 		{451E4CB5-45B7-4B55-BCA5-11AD05307328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451E4CB5-45B7-4B55-BCA5-11AD05307328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{451E4CB5-45B7-4B55-BCA5-11AD05307328}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39B26114-3C80-41CF-AEFF-8CE4D17C4CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39B26114-3C80-41CF-AEFF-8CE4D17C4CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39B26114-3C80-41CF-AEFF-8CE4D17C4CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39B26114-3C80-41CF-AEFF-8CE4D17C4CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08C99C11-F517-4179-86AE-9B74F3AA8E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08C99C11-F517-4179-86AE-9B74F3AA8E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08C99C11-F517-4179-86AE-9B74F3AA8E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
