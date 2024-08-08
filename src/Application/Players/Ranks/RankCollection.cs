@@ -23,7 +23,7 @@ internal class RankCollection
 
     private RankCollection() { }
     public static int Max => s_ranks.Length;
-    public static IEnumerable<IRank> GetAll() => s_ranks;
+    public static IReadOnlyList<IRank> GetAll() => s_ranks;
     public static Result<IRank> GetById(RankId id)
     {
         if ((int)id < 0 || (int)id >= Max)
