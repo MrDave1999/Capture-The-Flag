@@ -87,14 +87,14 @@ public class RankCollectionTests
     {
         // Arrange
         RankId previousRank = RankId.Noob;
-        string expectedRank = RankId.Medium.ToString();
+        string expectedNextRank = RankId.Medium.ToString();
 
         // Act
         Result<IRank> result = RankCollection.GetNextRank(previousRank);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
-        result.Value.Name.Should().Be(expectedRank);
+        result.Value.Name.Should().Be(expectedNextRank);
     }
 
     [Test]
@@ -102,13 +102,13 @@ public class RankCollectionTests
     {
         // Arrange
         RankId previousRank = RankId.Legendary;
-        string expectedValue = "None";
+        string expectedNextRank = "None";
 
         // Act
         Result<IRank> result = RankCollection.GetNextRank(previousRank);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
-        result.Value.Name.Should().Be(expectedValue);
+        result.Value.Name.Should().Be(expectedNextRank);
     }
 }
