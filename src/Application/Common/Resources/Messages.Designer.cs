@@ -59,5 +59,14 @@ namespace CTF.Application.Common.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid range has been passed.
+        /// </summary>
+        internal static string InvalidRank {
+            get {
+                return ResourceManager.GetString("InvalidRank", resourceCulture);
+            }
+        }
     }
 }
