@@ -12,8 +12,8 @@ public class Startup : IStartup
         services.AddPersistenceSQLiteServices(configuration);
         services.AddApplicationServices();
 
-        // TODO: Add services and systems to the services collection
-        services.AddSystem<System1>();
+        // Add systems to the services collection
+        services.AddSystemsInAssembly(typeof(ApplicationServicesExtensions).Assembly);
     }
 
     public void Configure(IEcsBuilder builder)
