@@ -13,7 +13,9 @@ public class Startup : IStartup
         services.AddApplicationServices();
 
         // Add systems to the services collection
-        services.AddSystemsInAssembly(typeof(ApplicationServicesExtensions).Assembly);
+        services
+            .AddSystemsInAssembly(typeof(ApplicationServicesExtensions).Assembly)
+            .AddSystemsInAssembly(typeof(Startup).Assembly);
     }
 
     public void Configure(IEcsBuilder builder)
