@@ -17,8 +17,8 @@ internal class WeaponPack : IEnumerable<IWeapon>
         // GTA San Andreas does not allow a player to have two weapons with the same slot.
         // Checks if there is no weapon with the same slot in the player's weapon pack.
         int index = _weapons.FindIndex(w => w.Slot == weapon.Slot);
-        bool hasWeaponWithSameCategory = index != -1;
-        if (hasWeaponWithSameCategory)
+        bool hasWeaponWithSameSlot = index != -1;
+        if (hasWeaponWithSameSlot)
             _weapons[index] = weapon;
         else
             _weapons.Add(weapon);
