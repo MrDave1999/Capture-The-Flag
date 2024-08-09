@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmptyWeaponPackage" xml:space="preserve">
+    <value>You have no items in your weapon package</value>
+  </data>
   <data name="InvalidRank" xml:space="preserve">
-    <value>Invalid range has been passed</value>
+    <value>Invalid rank has been passed</value>
+  </data>
+  <data name="InvalidWeapon" xml:space="preserve">
+    <value>Invalid weapon has been passed</value>
+  </data>
+  <data name="WeaponAlreadyExists" xml:space="preserve">
+    <value>{Name} is already in the weapon package</value>
+  </data>
+  <data name="WeaponNotFound" xml:space="preserve">
+    <value>Weapon has not been found</value>
+  </data>
+  <data name="WeaponSuccessfullyAdded" xml:space="preserve">
+    <value>{Name} was added to your weapon package</value>
+  </data>
+  <data name="WeaponSuccessfullyRemoved" xml:space="preserve">
+    <value>{Name} has been removed from your weapon package</value>
   </data>
 </root>
