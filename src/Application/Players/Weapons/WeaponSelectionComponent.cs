@@ -2,9 +2,5 @@
 
 internal class WeaponSelectionComponent : Component
 {
-    public List<IWeapon> SelectedWeapons { get; } = 
-    [
-        GtaWeapons.GetById(Weapon.Knife).Value,
-        GtaWeapons.GetById(Weapon.Deagle).Value
-    ];
+    public WeaponPack SelectedWeapons { get; } = new();
 }
