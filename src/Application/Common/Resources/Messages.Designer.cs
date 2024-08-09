@@ -61,11 +61,65 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid range has been passed.
+        ///   Looks up a localized string similar to You have no items in your weapon package.
+        /// </summary>
+        internal static string EmptyWeaponPackage {
+            get {
+                return ResourceManager.GetString("EmptyWeaponPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid rank has been passed.
         /// </summary>
         internal static string InvalidRank {
             get {
                 return ResourceManager.GetString("InvalidRank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid weapon has been passed.
+        /// </summary>
+        internal static string InvalidWeapon {
+            get {
+                return ResourceManager.GetString("InvalidWeapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {Name} is already in the weapon package.
+        /// </summary>
+        internal static string WeaponAlreadyExists {
+            get {
+                return ResourceManager.GetString("WeaponAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weapon has not been found.
+        /// </summary>
+        internal static string WeaponNotFound {
+            get {
+                return ResourceManager.GetString("WeaponNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {Name} was added to your weapon package.
+        /// </summary>
+        internal static string WeaponSuccessfullyAdded {
+            get {
+                return ResourceManager.GetString("WeaponSuccessfullyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {Name} has been removed from your weapon package.
+        /// </summary>
+        internal static string WeaponSuccessfullyRemoved {
+            get {
+                return ResourceManager.GetString("WeaponSuccessfullyRemoved", resourceCulture);
             }
         }
     }

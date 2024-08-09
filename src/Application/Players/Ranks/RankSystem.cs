@@ -3,7 +3,7 @@
 internal class RankSystem : ISystem
 {
     [PlayerCommand("ranks")]
-    public void ViewRanks(Player player, IDialogService dialogService)
+    public void ShowRanks(Player player, IDialogService dialogService)
     {
         var columnHeaders = new[] 
         {

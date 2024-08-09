@@ -2,9 +2,9 @@
 
 internal interface IRank
 {
-    public RankId Id { get; }
-    public string Name { get; }
-    public int RequiredKills { get; }
-    public bool IsMax();
-    public bool IsNotMax();
+    RankId Id { get; }
+    string Name { get; }
+    int RequiredKills { get; }
+    bool IsMax();
+    bool IsNotMax();
 }
