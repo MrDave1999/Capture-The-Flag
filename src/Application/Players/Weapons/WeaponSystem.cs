@@ -13,6 +13,8 @@ internal class WeaponSystem : ISystem
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
+        // Don't user foreach for performance reasons.
+        // OnPlayerSpawn is invoked too often.
         for (int i = 0; i < selectedWeapons.Items; i++)
         {
             IWeapon weapon = selectedWeapons[i];
