@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the result of an operation that does not return a value.
 /// </summary>
-internal readonly ref struct Result
+public readonly ref struct Result
 {
     public Result() { }
 
