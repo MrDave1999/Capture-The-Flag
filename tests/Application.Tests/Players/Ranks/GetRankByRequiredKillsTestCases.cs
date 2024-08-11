@@ -48,7 +48,7 @@ public class GetRankByRequiredKillsTestCases : IEnumerable<(RankId, int)>
         yield return (RankId.SuperPro,     699);
         yield return (RankId.Legendary,    700);
         yield return (RankId.Legendary,    720);
-        yield return (RankId.Legendary,    800);
+        yield return (RankId.Legendary,    749);
     }
 
     IEnumerator IEnumerable.GetEnumerator() 
