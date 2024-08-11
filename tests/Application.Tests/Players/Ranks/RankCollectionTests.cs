@@ -111,4 +111,32 @@ public class RankCollectionTests
         result.IsSuccess.Should().BeTrue();
         result.Value.Name.Should().Be(expectedNextRank);
     }
+
+    [Test]
+    public void GetByRequiredKills_WhenKillsIsNegative_ShouldReturnsFailureResult()
+    {
+        // Arrange
+        var expectedMessage = Messages.ValueCannotBeNegative;
+        int kills = -1;
+
+        // Act
+        Result<IRank> result = RankCollection.GetByRequiredKills(kills);
+
+        // Asserts
+        result.IsSuccess.Should().BeFalse();
+        result.Message.Should().Be(expectedMessage);
+    }
+
+    [TestCaseSource(typeof(GetRankByRequiredKillsTestCases))]
+    public void GetByRequiredKills_WhenRankIsObtainedByKills_ShouldReturnsSuccessResult((RankId ExpectedRankId, int Kills) rank)
+    {
+        // Arrange
+
+        // Act
+        Result<IRank> result = RankCollection.GetByRequiredKills(rank.Kills);
+
+        // Asserts
+        result.IsSuccess.Should().BeTrue();
+        result.Value.Id.Should().Be(rank.ExpectedRankId);
+    }
 }

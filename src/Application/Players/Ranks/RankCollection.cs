@@ -32,6 +32,24 @@ internal class RankCollection
         Rank rank = s_ranks[(int)id];
         return Result<IRank>.Success(rank);
     }
+    public static Result<IRank> GetByRequiredKills(int value)
+    {
+        if (value < 0)
+            return Result<IRank>.Failure(Messages.ValueCannotBeNegative);
+
+        foreach (IRank rank in s_ranks)
+        {
+            if (rank.IsMax())
+                break;
+
+            IRank nextRank = GetNextRank(rank.Id).Value;
+            if (value >= rank.RequiredKills && value < nextRank.RequiredKills)
+                return Result<IRank>.Success(rank);
+        }
+
+        IRank maxRank = s_ranks[Max - 1];
+        return Result<IRank>.Success(maxRank);
+    }
     public static Result<IRank> GetNextRank(RankId previous)
     {
         if ((int)previous < 0 || (int)previous >= Max)
