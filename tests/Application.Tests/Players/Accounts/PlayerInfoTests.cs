@@ -249,6 +249,8 @@ public class PlayerInfoTests
     [TestCase(RankId.Advanced, 251)]
     [TestCase(RankId.Hitman,   300)]
     [TestCase(RankId.Hitman,   301)]
+    [TestCase(RankId.SuperPro, 700)]
+    [TestCase(RankId.SuperPro, 701)]
     public void CanMoveUpToNextRank_WhenPlayerDoesHaveRequiredKills_ShouldReturnsTrue(RankId currentRank, int kills)
     {
         // Arrange
@@ -273,6 +275,8 @@ public class PlayerInfoTests
     [TestCase(RankId.Advanced, 201)]
     [TestCase(RankId.Hitman,   250)]
     [TestCase(RankId.Hitman,   251)]
+    [TestCase(RankId.SuperPro, 600)]
+    [TestCase(RankId.SuperPro, 601)]
     public void CanMoveUpToNextRank_WhenPlayerDoesNotHaveRequiredKills_ShouldReturnsFalse(RankId currentRank, int kills)
     {
         // Arrange
