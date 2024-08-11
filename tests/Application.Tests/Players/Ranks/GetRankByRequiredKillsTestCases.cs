@@ -1,8 +1,8 @@
 ﻿namespace CTF.Application.Tests.Players.Ranks;
 
-public class GetRankByRequiredKillsTestCases : IEnumerable<(RankId, int)>
+public class GetRankByRequiredKillsTestCases : IEnumerable<(RankId, int Kills)>
 {
-    public IEnumerator<(RankId, int)> GetEnumerator()
+    public IEnumerator<(RankId, int Kills)> GetEnumerator()
     {
         yield return (RankId.Noob,         0);
         yield return (RankId.Noob,         20);
