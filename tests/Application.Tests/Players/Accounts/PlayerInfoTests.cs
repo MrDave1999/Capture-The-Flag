@@ -239,14 +239,22 @@ public class PlayerInfoTests
         actual.Should().BeFalse();
     }
 
-    [TestCase(50)]
-    [TestCase(51)]
-    public void CanMoveUpToNextRank_WhenPlayerDoesHaveRequiredKills_ShouldReturnsTrue(int requiredKills)
+    [TestCase(RankId.Noob,     50)]
+    [TestCase(RankId.Noob,     51)]
+    [TestCase(RankId.Medium,   100)]
+    [TestCase(RankId.Medium,   101)]
+    [TestCase(RankId.Junior,   150)]
+    [TestCase(RankId.Junior,   151)]
+    [TestCase(RankId.Advanced, 250)]
+    [TestCase(RankId.Advanced, 251)]
+    [TestCase(RankId.Hitman,   300)]
+    [TestCase(RankId.Hitman,   301)]
+    public void CanMoveUpToNextRank_WhenPlayerDoesHaveRequiredKills_ShouldReturnsTrue(RankId currentRank, int kills)
     {
         // Arrange
         var player = new PlayerInfo();
-        player.SetRank(RankId.Noob);
-        player.SetTotalKills(requiredKills);
+        player.SetRank(currentRank);
+        player.SetTotalKills(kills);
 
         // Act
         bool actual = player.CanMoveUpToNextRank();
@@ -255,13 +263,22 @@ public class PlayerInfoTests
         actual.Should().BeTrue();
     }
 
-    [Test]
-    public void CanMoveUpToNextRank_WhenPlayerDoesNotHaveRequiredKills_ShouldReturnsFalse()
+    [TestCase(RankId.Noob,     10)]
+    [TestCase(RankId.Noob,     11)]
+    [TestCase(RankId.Medium,   50)]
+    [TestCase(RankId.Medium,   51)]
+    [TestCase(RankId.Junior,   100)]
+    [TestCase(RankId.Junior,   101)]
+    [TestCase(RankId.Advanced, 200)]
+    [TestCase(RankId.Advanced, 201)]
+    [TestCase(RankId.Hitman,   250)]
+    [TestCase(RankId.Hitman,   251)]
+    public void CanMoveUpToNextRank_WhenPlayerDoesNotHaveRequiredKills_ShouldReturnsFalse(RankId currentRank, int kills)
     {
         // Arrange
         var player = new PlayerInfo();
-        player.SetRank(RankId.Noob);
-        player.SetTotalKills(10);
+        player.SetRank(currentRank);
+        player.SetTotalKills(kills);
 
         // Act
         bool actual = player.CanMoveUpToNextRank();
