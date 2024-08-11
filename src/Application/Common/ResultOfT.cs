@@ -4,7 +4,7 @@
 /// Represents the result of an operation that returns a value.
 /// </summary>
 /// <typeparam name="TValue">A value associated to the result.</typeparam>
-internal readonly ref struct Result<TValue>
+public readonly ref struct Result<TValue>
 {
     public Result() { }
 

@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Ranks;
 
-internal enum RankId
+public enum RankId
 {
     Noob,
     Medium,

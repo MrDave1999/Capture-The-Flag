@@ -61,11 +61,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Points must be between 1 to 100.
+        /// </summary>
+        internal static string AddPoints {
+            get {
+                return ResourceManager.GetString("AddPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have no items in your weapon package.
         /// </summary>
         internal static string EmptyWeaponPackage {
             get {
                 return ResourceManager.GetString("EmptyWeaponPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be 3-20 characters long and only contain valid characters (0-9, a-z, A-Z, [], (), $, @ . _ and = only).
+        /// </summary>
+        internal static string InvalidNickName {
+            get {
+                return ResourceManager.GetString("InvalidNickName", resourceCulture);
             }
         }
         
@@ -79,11 +97,83 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Role ID must be between 0 and 3.
+        /// </summary>
+        internal static string InvalidRole {
+            get {
+                return ResourceManager.GetString("InvalidRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skin ID must be between 0 and 311.
+        /// </summary>
+        internal static string InvalidSkin {
+            get {
+                return ResourceManager.GetString("InvalidSkin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid weapon has been passed.
         /// </summary>
         internal static string InvalidWeapon {
             get {
                 return ResourceManager.GetString("InvalidWeapon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name cannot be empty.
+        /// </summary>
+        internal static string NameCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("NameCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password cannot be empty.
+        /// </summary>
+        internal static string PasswordCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("PasswordCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must be between 5 and 20 characters.
+        /// </summary>
+        internal static string PasswordLength {
+            get {
+                return ResourceManager.GetString("PasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name must be between 3 and 20 characters.
+        /// </summary>
+        internal static string PlayerNameLength {
+            get {
+                return ResourceManager.GetString("PlayerNameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Points must be between -1 to -100.
+        /// </summary>
+        internal static string SubtractPoints {
+            get {
+                return ResourceManager.GetString("SubtractPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value cannot be negative.
+        /// </summary>
+        internal static string ValueCannotBeNegative {
+            get {
+                return ResourceManager.GetString("ValueCannotBeNegative", resourceCulture);
             }
         }
         
