@@ -1,4 +1,5 @@
-﻿global using NUnit.Framework;
+﻿global using System.Collections;
+global using NUnit.Framework;
 global using FluentAssertions;
 global using SampSharp.Entities.SAMP;
 
