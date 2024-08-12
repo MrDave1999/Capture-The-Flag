@@ -17,11 +17,35 @@ public partial class PlayerInfo
     public PlayerStatsPerRound StatsPerRound { get; } = new();
     public int TotalKills { get; private set; }
     public int TotalDeaths { get; private set; }
+
+    /// <summary>
+    /// Indicates the maximum killing spree.
+    /// </summary>
     public int MaxKillingSpree { get; private set; }
+
+    /// <summary>
+    /// Indicates the number of times a player has captured the opposing team's flag and brought it back to their own base.
+    /// </summary>
     public int CarriedFlags { get; private set; }
+
+    /// <summary>
+    /// Indicates the number of times a player has captured the opposing team's flag from their base.
+    /// </summary>
     public int CapturedFlags {  get; private set; }
+
+    /// <summary>
+    /// Indicates the number of times a player has dropped the opposing team's flag.
+    /// </summary>
     public int DroppedFlags { get; private set; }
+
+    /// <summary>
+    /// Indicates the number of times a player has returned the flag to their team's base.
+    /// </summary>
     public int ReturnedFlags { get; private set; }
+
+    /// <summary>
+    /// Indicates the number of shots that the player has made at the heads of other players.
+    /// </summary>
     public int HeadShots { get; private set; }
     public RoleId RoleId { get; private set; } = RoleId.Basic;
     public int SkinId { get; private set; } = NoSkin;
