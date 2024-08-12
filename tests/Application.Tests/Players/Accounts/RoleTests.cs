@@ -65,6 +65,36 @@ public class RoleTests
         actual.Should().BeFalse();
     }
 
+    [TestCase(RoleId.Basic)]
+    [TestCase(RoleId.VIP)]
+    [TestCase(RoleId.Moderator)]
+    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanAdmin_ShouldReturnsTrue(RoleId roleId)
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        player.SetRole(roleId);
+
+        // Act
+        bool actual = player.HasLowerRoleThan(RoleId.Admin);
+
+        // Assert
+        actual.Should().BeTrue();
+    }
+
+    [Test]
+    public void HasLowerRoleThan_WhenPlayerDoesNotHaveRoleLowerThanAdmin_ShouldReturnsFalse()
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        player.SetRole(RoleId.Admin);
+
+        // Act
+        bool actual = player.HasLowerRoleThan(RoleId.Admin);
+
+        // Assert
+        actual.Should().BeFalse();
+    }
+
     [Test]
     public void IsVIP_WhenPlayerIsVIP_ShouldReturnsTrue()
     {

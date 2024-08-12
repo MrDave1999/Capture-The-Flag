@@ -117,6 +117,7 @@ public partial class PlayerInfo
     public void RemoveSkin() => SkinId = NoSkin;
     public bool HasSkin() => SkinId != NoSkin;
     public bool HasRole(RoleId id) => RoleId == id;
+    public bool HasLowerRoleThan(RoleId id) => RoleId < id;
     public bool HasRank(RankId id) => RankId == id;
     public bool IsVIP() => HasRole(RoleId.VIP);
     public bool IsModerator() => HasRole(RoleId.Moderator);
