@@ -82,7 +82,7 @@ public class RoleTests
     }
 
     [Test]
-    public void HasLowerRoleThan_WhenPlayerDoesNotHaveRoleLowerThanAdmin_ShouldReturnsFalse()
+    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanAdmin_ShouldReturnsFalse()
     {
         // Arrange
         var player = new PlayerInfo();
