@@ -26,7 +26,7 @@ public partial class PlayerInfo
     /// <summary>
     /// Indicates the number of times a player has captured the opposing team's flag and brought it back to their own base.
     /// </summary>
-    public int CarriedFlags { get; private set; }
+    public int BroughtFlags { get; private set; }
 
     /// <summary>
     /// Indicates the number of times a player has captured the opposing team's flag from their base.
@@ -84,7 +84,7 @@ public partial class PlayerInfo
 
     public void AddTotalKills() => TotalKills++;
     public void AddTotalDeaths() => TotalDeaths++;
-    public void AddCarriedFlags() => CarriedFlags++;
+    public void AddBroughtFlags() => BroughtFlags++;
     public void AddCapturedFlags() => CapturedFlags++;
     public void AddDroppedFlags() => DroppedFlags++;
     public void AddReturnedFlags() => ReturnedFlags++;
