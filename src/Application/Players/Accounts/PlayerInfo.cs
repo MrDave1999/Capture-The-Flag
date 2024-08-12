@@ -18,7 +18,7 @@ public partial class PlayerInfo
     public int TotalKills { get; private set; }
     public int TotalDeaths { get; private set; }
     public int MaxKillingSpree { get; private set; }
-    public int DeliveredFlags { get; private set; }
+    public int CarriedFlags { get; private set; }
     public int CapturedFlags {  get; private set; }
     public int DroppedFlags { get; private set; }
     public int ReturnedFlags { get; private set; }
@@ -60,7 +60,7 @@ public partial class PlayerInfo
 
     public void AddTotalKills() => TotalKills++;
     public void AddTotalDeaths() => TotalDeaths++;
-    public void AddDeliveredFlags() => DeliveredFlags++;
+    public void AddCarriedFlags() => CarriedFlags++;
     public void AddCapturedFlags() => CapturedFlags++;
     public void AddDroppedFlags() => DroppedFlags++;
     public void AddReturnedFlags() => ReturnedFlags++;
