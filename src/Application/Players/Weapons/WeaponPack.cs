@@ -11,6 +11,7 @@ internal class WeaponPack : IEnumerable<IWeapon>
     public int Items => _weapons.Count;
     public IWeapon this[int index] => _weapons[index];
     public bool IsEmpty() => _weapons.Count == 0;
+
     public void Add(IWeapon weapon)
     {
         ArgumentNullException.ThrowIfNull(weapon);
@@ -23,6 +24,7 @@ internal class WeaponPack : IEnumerable<IWeapon>
         else
             _weapons.Add(weapon);
     }
+
     public void Remove(IWeapon weapon) => _weapons.Remove(weapon);
     public bool Exists(IWeapon weapon) => _weapons.Find(w => w == weapon) is not null;
     public void Clear() => _weapons.Clear();

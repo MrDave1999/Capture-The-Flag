@@ -24,6 +24,7 @@ internal class RankCollection
     private RankCollection() { }
     public static int Max => s_ranks.Length;
     public static IReadOnlyList<IRank> GetAll() => s_ranks;
+
     public static Result<IRank> GetById(RankId id)
     {
         if ((int)id < 0 || (int)id >= Max)
@@ -32,6 +33,7 @@ internal class RankCollection
         Rank rank = s_ranks[(int)id];
         return Result<IRank>.Success(rank);
     }
+
     public static Result<IRank> GetByRequiredKills(int value)
     {
         if (value < 0)
@@ -50,6 +52,7 @@ internal class RankCollection
         IRank maxRank = s_ranks[Max - 1];
         return Result<IRank>.Success(maxRank);
     }
+
     public static Result<IRank> GetNextRank(RankId previous)
     {
         if ((int)previous < 0 || (int)previous >= Max)

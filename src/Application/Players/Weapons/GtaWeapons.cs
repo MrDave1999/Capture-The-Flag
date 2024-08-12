@@ -19,6 +19,7 @@ internal class GtaWeapons
     private GtaWeapons() { }
     public static int Max => s_weapons.Length;
     public static IReadOnlyList<IWeapon> GetAll() => s_weapons;
+
     public static Result<IWeapon> GetById(Weapon id)
     {
         GtaWeapon weapon = s_weapons.FirstOrDefault(weapon => weapon.Id == id);
@@ -26,6 +27,7 @@ internal class GtaWeapons
             Result<IWeapon>.Failure(Messages.WeaponNotFound) : 
             Result<IWeapon>.Success(weapon);
     }
+
     public static Result<IWeapon> GetByIndex(int index)
     {
         if(index < 0 || index >= Max)
@@ -34,6 +36,7 @@ internal class GtaWeapons
         GtaWeapon weapon = s_weapons[index];
         return Result<IWeapon>.Success(weapon);
     }
+
     public static Result<IWeapon> GetByName(string weaponName)
     {
         ArgumentNullException.ThrowIfNull(weaponName);
