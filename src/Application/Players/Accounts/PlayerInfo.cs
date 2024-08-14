@@ -53,6 +53,28 @@ public partial class PlayerInfo
     public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
     public DateTime LastConnection { get; private set; } = DateTime.UtcNow;
 
+    public bool HasSurpassedMaxKillingSpree() => StatsPerRound.KillingSpree > MaxKillingSpree;
+    public bool HasSkin() => SkinId != NoSkin;
+    public bool HasRole(RoleId id) => RoleId == id;
+    public bool HasLowerRoleThan(RoleId id) => RoleId < id;
+    public bool HasRank(RankId id) => RankId == id;
+    public bool IsVIP() => HasRole(RoleId.VIP);
+    public bool IsModerator() => HasRole(RoleId.Moderator);
+    public bool IsAdmin() => HasRole(RoleId.Admin);
+    public bool IsNotVIP() => !IsVIP();
+    public bool IsNotModerator() => !IsModerator();
+    public bool IsNotAdmin() => !IsAdmin();
+    public void SetLastConnection() => LastConnection = DateTime.UtcNow;
+    public void SetMaxKillingSpree(int value) => MaxKillingSpree = value;
+    public void RemoveSkin() => SkinId = NoSkin;
+    public void AddTotalKills() => TotalKills++;
+    public void AddTotalDeaths() => TotalDeaths++;
+    public void AddBroughtFlags() => BroughtFlags++;
+    public void AddCapturedFlags() => CapturedFlags++;
+    public void AddDroppedFlags() => DroppedFlags++;
+    public void AddReturnedFlags() => ReturnedFlags++;
+    public void AddHeadShots() => HeadShots++;
+
     public Result SetName(string value)
     {
         ArgumentNullException.ThrowIfNull(value);
@@ -81,14 +103,6 @@ public partial class PlayerInfo
         Password = value;
         return Result.Success();
     }
-
-    public void AddTotalKills() => TotalKills++;
-    public void AddTotalDeaths() => TotalDeaths++;
-    public void AddBroughtFlags() => BroughtFlags++;
-    public void AddCapturedFlags() => CapturedFlags++;
-    public void AddDroppedFlags() => DroppedFlags++;
-    public void AddReturnedFlags() => ReturnedFlags++;
-    public void AddHeadShots() => HeadShots++;
 
     public Result SetTotalKills(int value)
     {
@@ -134,21 +148,6 @@ public partial class PlayerInfo
         SkinId = id;
         return Result.Success();
     }
-
-    public void SetLastConnection() => LastConnection = DateTime.UtcNow;
-    public bool HasSurpassedMaxKillingSpree() => StatsPerRound.KillingSpree > MaxKillingSpree;
-    public void SetMaxKillingSpree(int value) => MaxKillingSpree = value;
-    public void RemoveSkin() => SkinId = NoSkin;
-    public bool HasSkin() => SkinId != NoSkin;
-    public bool HasRole(RoleId id) => RoleId == id;
-    public bool HasLowerRoleThan(RoleId id) => RoleId < id;
-    public bool HasRank(RankId id) => RankId == id;
-    public bool IsVIP() => HasRole(RoleId.VIP);
-    public bool IsModerator() => HasRole(RoleId.Moderator);
-    public bool IsAdmin() => HasRole(RoleId.Admin);
-    public bool IsNotVIP() => !IsVIP();
-    public bool IsNotModerator() => !IsModerator();
-    public bool IsNotAdmin() => !IsAdmin();
 
     public bool CanMoveUpToNextRank()
     {
