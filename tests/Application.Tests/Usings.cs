@@ -8,3 +8,4 @@ global using CTF.Application.Common.Resources;
 global using CTF.Application.Players.Ranks;
 global using CTF.Application.Players.Weapons;
 global using CTF.Application.Players.Accounts;
+global using CTF.Application.Flags;
