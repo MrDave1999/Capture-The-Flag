@@ -32,7 +32,7 @@ internal class WeaponSystem : ISystem
         foreach (IWeapon weapon in weapons)
             dialog.Add(weapon.Name);
 
-        ListDialogResponse response = await dialogService.Show(player, dialog);
+        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.Response == DialogResponse.RightButtonOrCancel)
             return;
 
@@ -68,7 +68,7 @@ internal class WeaponSystem : ISystem
         foreach (IWeapon weapon in selectedWeapons)
             dialog.Add(weapon.Name);
 
-        ListDialogResponse response = await dialogService.Show(player, dialog);
+        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
         if (response.Response == DialogResponse.RightButtonOrCancel)
             return;
 

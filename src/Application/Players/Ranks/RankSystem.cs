@@ -19,6 +19,6 @@ internal class RankSystem : ISystem
         foreach (IRank rank in ranks)
             dialog.Add(rank.Name, rank.RequiredKills.ToString());
 
-        dialogService.Show(player, dialog);
+        dialogService.ShowAsync(player, dialog);
     }
 }
