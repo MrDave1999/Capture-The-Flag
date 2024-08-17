@@ -12,10 +12,8 @@ public class FlagTests
             Name = "Red",
             ColorHex = Color.Red
         };
-        Player player = (Player)Activator.CreateInstance(type: typeof(Player), nonPublic: true);
-        flag.GetType()
-            .GetProperty(name: nameof(Flag.FlagCarrier))
-            .SetValue(flag, player);
+        var fakeCarrier = new FakeCarrier();
+        flag.SetCarrier(fakeCarrier);
 
         // Act
         bool actual = flag.IsCaptured();
@@ -64,6 +62,25 @@ public class FlagTests
     }
 
     [Test]
+    public void SetCarrier_WhenArgumentIsValid_ShouldSetPlayerAsCarrier()
+    {
+        // Arrange
+        var flag = new Flag
+        {
+            Model = FlagModel.Red,
+            Name = "Red",
+            ColorHex = Color.Red
+        };
+        var fakeCarrier = new FakeCarrier();
+
+        // Act
+        flag.SetCarrier(fakeCarrier);
+
+        // Assert
+        flag.FlagCarrier.Should().Be(fakeCarrier);
+    }
+
+    [Test]
     public void RemoveCarrier_WhenNoPlayerHasCapturedFlag_ShouldNotThrowNullReferenceException()
     {
         // Arrange
@@ -79,5 +96,25 @@ public class FlagTests
 
         // Assert
         act.Should().NotThrow<NullReferenceException>();
+    }
+
+    [Test]
+    public void RemoveCarrier_WhenPlayerHasCapturedFlag_ShouldRemoveFlagOfThatPlayer()
+    {
+        // Arrange
+        var flag = new Flag
+        {
+            Model = FlagModel.Red,
+            Name = "Red",
+            ColorHex = Color.Red
+        };
+        var fakeCarrier = new FakeCarrier();
+        flag.SetCarrier(fakeCarrier);
+
+        // Act
+        flag.RemoveCarrier();
+
+        // Assert
+        flag.FlagCarrier.Should().BeNull();
     }
 }
