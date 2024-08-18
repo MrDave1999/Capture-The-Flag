@@ -1,7 +1,8 @@
 ﻿namespace CTF.Application.Teams;
 
-internal enum TeamId
+public enum TeamId
 {
     Alpha,
-    Beta
+    Beta,
+    NoTeam = 0xFF
 }
