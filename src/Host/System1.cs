@@ -11,6 +11,7 @@ public class System1 : ISystem
 
         serverService.AddPlayerClass(8, new Vector3(0, 0, 7), 0);
         serverService.SetGameModeText("Blank game mode");
+        serverService.UsePlayerPedAnims();
 
         // TODO: Put logic to initialize your game mode here
     }
