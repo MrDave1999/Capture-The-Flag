@@ -124,6 +124,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player &apos;{Name}&apos; is a member that already exists.
+        /// </summary>
+        internal static string MemberAlreadyExists {
+            get {
+                return ResourceManager.GetString("MemberAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name cannot be empty.
         /// </summary>
         internal static string NameCannotBeEmpty {
@@ -156,6 +165,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PlayerNameLength {
             get {
                 return ResourceManager.GetString("PlayerNameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player &apos;{Name}&apos; is not found.
+        /// </summary>
+        internal static string PlayerNotFound {
+            get {
+                return ResourceManager.GetString("PlayerNotFound", resourceCulture);
             }
         }
         

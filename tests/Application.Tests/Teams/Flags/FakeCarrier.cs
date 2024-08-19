@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Tests.Flags;
+﻿namespace CTF.Application.Tests.Teams.Flags;
 
 public class FakeCarrier : Player
 {

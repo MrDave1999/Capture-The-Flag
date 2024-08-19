@@ -1,8 +1,9 @@
-﻿namespace CTF.Application.Flags;
+﻿namespace CTF.Application.Teams.Flags;
 
 internal class Flag
 {
     public required FlagModel Model { get; init; }
+    public required FlagIcon Icon { get; init; }
     public required string Name { get; init; } = string.Empty;
     public required Color ColorHex { get; init; }
 
@@ -12,12 +13,12 @@ internal class Flag
     /// <remarks>
     /// It is <c>null</c> when no player holds the flag.
     /// </remarks>
-    public Player FlagCarrier { get; private set; }
+    public Player Carrier { get; private set; }
 
     /// <summary>
     /// Checks if the flag has been captured by a player.
     /// </summary>
-    public bool IsCaptured() => FlagCarrier is not null;
+    public bool IsCaptured() => Carrier is not null;
 
     /// <summary>
     /// Sets the player who holds the flag.
@@ -25,7 +26,7 @@ internal class Flag
     public void SetCarrier(Player player)
     {
         ArgumentNullException.ThrowIfNull(player);
-        FlagCarrier = player;
+        Carrier = player;
         player.SetAttachedObject(
             index: 0, 
             modelId: (int)Model, 
@@ -42,10 +43,10 @@ internal class Flag
     /// </summary>
     public void RemoveCarrier()
     {
-        if (FlagCarrier is not null)
+        if (Carrier is not null)
         {
-            FlagCarrier.RemoveAttachedObject(0);
-            FlagCarrier = default;
+            Carrier.RemoveAttachedObject(0);
+            Carrier = default;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Flags;
+﻿namespace CTF.Application.Teams.Flags;
 
 internal class FlagInitialLocation
 {

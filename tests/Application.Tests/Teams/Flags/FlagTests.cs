@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Tests.Flags;
+﻿namespace CTF.Application.Tests.Teams.Flags;
 
 public class FlagTests
 {
@@ -9,6 +9,7 @@ public class FlagTests
         var flag = new Flag
         {
             Model = FlagModel.Red,
+            Icon = FlagIcon.Red,
             Name = "Red",
             ColorHex = Color.Red
         };
@@ -29,6 +30,7 @@ public class FlagTests
         var flag = new Flag
         {
             Model = FlagModel.Red,
+            Icon = FlagIcon.Red,
             Name = "Red",
             ColorHex = Color.Red
         };
@@ -47,6 +49,7 @@ public class FlagTests
         var flag = new Flag
         {
             Model = FlagModel.Red,
+            Icon = FlagIcon.Red,
             Name = "Red",
             ColorHex = Color.Red
         };
@@ -68,6 +71,7 @@ public class FlagTests
         var flag = new Flag
         {
             Model = FlagModel.Red,
+            Icon = FlagIcon.Red,
             Name = "Red",
             ColorHex = Color.Red
         };
@@ -77,7 +81,7 @@ public class FlagTests
         flag.SetCarrier(fakeCarrier);
 
         // Assert
-        flag.FlagCarrier.Should().Be(fakeCarrier);
+        flag.Carrier.Should().Be(fakeCarrier);
     }
 
     [Test]
@@ -87,6 +91,7 @@ public class FlagTests
         var flag = new Flag
         {
             Model = FlagModel.Red,
+            Icon = FlagIcon.Red,
             Name = "Red",
             ColorHex = Color.Red
         };
@@ -105,6 +110,7 @@ public class FlagTests
         var flag = new Flag
         {
             Model = FlagModel.Red,
+            Icon = FlagIcon.Red,
             Name = "Red",
             ColorHex = Color.Red
         };
@@ -115,6 +121,6 @@ public class FlagTests
         flag.RemoveCarrier();
 
         // Assert
-        flag.FlagCarrier.Should().BeNull();
+        flag.Carrier.Should().BeNull();
     }
 }

@@ -138,6 +138,9 @@
   <data name="InvalidWeapon" xml:space="preserve">
     <value>Invalid weapon has been passed</value>
   </data>
+  <data name="MemberAlreadyExists" xml:space="preserve">
+    <value>Player '{Name}' is a member that already exists</value>
+  </data>
   <data name="NameCannotBeEmpty" xml:space="preserve">
     <value>Name cannot be empty</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="PlayerNameLength" xml:space="preserve">
     <value>Name must be between 3 and 20 characters</value>
+  </data>
+  <data name="PlayerNotFound" xml:space="preserve">
+    <value>Player '{Name}' is not found</value>
   </data>
   <data name="SubtractPoints" xml:space="preserve">
     <value>Points must be between -1 to -100</value>
