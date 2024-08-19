@@ -171,4 +171,70 @@ public class PlayerStatsPerRoundTests
         result.IsSuccess.Should().BeTrue();
         stats.Points.Should().Be(expectedPoints);
     }
+
+    [Test]
+    public void AddKills_WhenKillIsAdded_ShouldUpdateKills()
+    {
+        // Arrange
+        var stats = new PlayerStatsPerRound();
+        int expectedKills = 2;
+
+        // Act
+        stats.AddKills();
+        stats.AddKills();
+
+        // Assert
+        stats.Kills.Should().Be(expectedKills);
+    }
+
+    [Test]
+    public void AddDeaths_WhenDeathIsAdded_ShouldUpdateDeaths()
+    {
+        // Arrange
+        var stats = new PlayerStatsPerRound();
+        int expectedDeaths = 2;
+
+        // Act
+        stats.AddDeaths();
+        stats.AddDeaths();
+
+        // Assert
+        stats.Deaths.Should().Be(expectedDeaths);
+    }
+
+    [Test]
+    public void AddKillingSpree_WhenKillingSpreeIsAdded_ShouldUpdateKillingSpree()
+    {
+        // Arrange
+        var stats = new PlayerStatsPerRound();
+        int expectedKillingSpree = 2;
+
+        // Act
+        stats.AddKillingSpree();
+        stats.AddKillingSpree();
+
+        // Assert
+        stats.KillingSpree.Should().Be(expectedKillingSpree);
+    }
+
+    [Test]
+    public void ResetStats_WhenStatsAreReset_ShouldUpdateStats()
+    {
+        // Arrange
+        var stats = new PlayerStatsPerRound();
+        stats.AddKills();
+        stats.AddKills();
+        stats.AddDeaths();
+        stats.AddDeaths();
+        stats.AddKillingSpree();
+        stats.AddKillingSpree();
+
+        // Act
+        stats.ResetStats();
+
+        // Asserts
+        stats.Kills.Should().Be(0);
+        stats.Deaths.Should().Be(0);
+        stats.KillingSpree.Should().Be(0);
+    }
 }
