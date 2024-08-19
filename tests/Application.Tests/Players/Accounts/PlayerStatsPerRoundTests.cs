@@ -228,6 +228,7 @@ public class PlayerStatsPerRoundTests
         stats.AddDeaths();
         stats.AddKillingSpree();
         stats.AddKillingSpree();
+        stats.AddPoints(15);
 
         // Act
         stats.ResetStats();
@@ -236,5 +237,6 @@ public class PlayerStatsPerRoundTests
         stats.Kills.Should().Be(0);
         stats.Deaths.Should().Be(0);
         stats.KillingSpree.Should().Be(0);
+        stats.Points.Should().Be(0);
     }
 }
