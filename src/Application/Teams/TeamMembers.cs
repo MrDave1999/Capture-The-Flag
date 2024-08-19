@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams;
 
-internal class TeamMembers : IEnumerable<Player>
+public class TeamMembers : IEnumerable<Player>
 {
     private readonly Dictionary<int, Player> _players = [];
     public bool IsEmpty() => _players.Count == 0;

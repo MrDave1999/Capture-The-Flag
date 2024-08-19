@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Flags;
 
-internal enum FlagStatus
+public enum FlagStatus
 {
     /// <summary>
     /// Indicates that the flag is on its base.

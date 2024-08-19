@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Flags;
 
-internal enum FlagIcon
+public enum FlagIcon
 {
     None = 1,
     Red = 20,

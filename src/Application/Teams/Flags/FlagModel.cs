@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Flags;
 
-internal enum FlagModel
+public enum FlagModel
 {
     None = 0,
     Red = 19306,

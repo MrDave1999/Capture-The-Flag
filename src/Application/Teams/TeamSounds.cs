@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams;
 
-internal class TeamSounds
+public class TeamSounds
 {
     public string FlagDropped { get; init; } = string.Empty;
     public string FlagReturned { get; init; } = string.Empty;

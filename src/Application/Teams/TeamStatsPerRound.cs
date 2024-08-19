@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams;
 
-internal class TeamStatsPerRound
+public class TeamStatsPerRound
 {
     public int Score { get; private set; }
     public int Kills { get; private set; }

@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams;
 
-internal enum SkinTeamId
+public enum SkinTeamId
 {
     NoTeam = 0,
     Alpha = 170,

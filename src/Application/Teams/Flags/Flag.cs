@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams.Flags;
 
-internal class Flag
+public class Flag
 {
     public required FlagModel Model { get; init; }
     public required FlagIcon Icon { get; init; }
