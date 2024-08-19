@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts;
 
-internal enum AccountStatus
+public enum AccountStatus
 {
     LoggedIn,
     Registered

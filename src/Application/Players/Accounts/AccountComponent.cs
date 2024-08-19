@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts;
 
-internal class AccountComponent : Component
+public class AccountComponent : Component
 {
     public PlayerInfo PlayerInfo { get; }
     public AccountStatus Status { get; }

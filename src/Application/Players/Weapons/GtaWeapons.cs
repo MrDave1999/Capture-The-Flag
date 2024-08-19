@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
-internal class GtaWeapons
+public class GtaWeapons
 {
     private static readonly GtaWeapon[] s_weapons =
     [
