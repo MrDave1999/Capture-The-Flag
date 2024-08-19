@@ -115,6 +115,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255.
+        /// </summary>
+        internal static string InvalidTeam {
+            get {
+                return ResourceManager.GetString("InvalidTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid weapon has been passed.
         /// </summary>
         internal static string InvalidWeapon {

@@ -50,6 +50,7 @@ public partial class PlayerInfo
     public RoleId RoleId { get; private set; } = RoleId.Basic;
     public int SkinId { get; private set; } = NoSkin;
     public RankId RankId { get; private set; } = RankId.Noob;
+    public Team Team { get; private set; } = Team.None;
     public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
     public DateTime LastConnection { get; private set; } = DateTime.UtcNow;
 
@@ -147,6 +148,25 @@ public partial class PlayerInfo
 
         SkinId = id;
         return Result.Success();
+    }
+
+    public Result SetTeam(TeamId id)
+    {
+        Result<Team> result = id switch
+        {
+            TeamId.Alpha  => Result<Team>.Success(Team.Alpha),
+            TeamId.Beta   => Result<Team>.Success(Team.Beta),
+            TeamId.NoTeam => Result<Team>.Success(Team.None),
+            _ => Result<Team>.Failure()
+        };
+
+        if (result.IsSuccess)
+        {
+            Team = result.Value;
+            return Result.Success();
+        }
+
+        return Result.Failure(Messages.InvalidTeam);
     }
 
     public bool CanMoveUpToNextRank()

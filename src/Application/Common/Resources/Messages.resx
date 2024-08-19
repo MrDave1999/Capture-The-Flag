@@ -135,6 +135,9 @@
   <data name="InvalidSkin" xml:space="preserve">
     <value>Skin ID must be between 0 and 311</value>
   </data>
+  <data name="InvalidTeam" xml:space="preserve">
+    <value>Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255</value>
+  </data>
   <data name="InvalidWeapon" xml:space="preserve">
     <value>Invalid weapon has been passed</value>
   </data>

@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Teams;
 
-internal class Team 
+public class Team 
 {
     public static readonly Team Alpha;
     public static readonly Team Beta;
