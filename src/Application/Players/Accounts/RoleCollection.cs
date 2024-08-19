@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Accounts;
 
-internal class RoleCollection
+public class RoleCollection
 {
     private RoleCollection() { }
     private static readonly RoleId[] s_roles = Enum.GetValues<RoleId>();

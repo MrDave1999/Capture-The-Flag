@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
-internal interface IWeapon
+public interface IWeapon
 {
     const int UnlimitedAmmo = 99999999;
     Weapon Id { get; }

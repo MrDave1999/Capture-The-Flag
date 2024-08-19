@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
-internal class WeaponPack : IEnumerable<IWeapon>
+public class WeaponPack : IEnumerable<IWeapon>
 {
     private readonly List<IWeapon> _weapons =
     [

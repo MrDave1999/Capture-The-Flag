@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Ranks;
 
-internal class RankSystem : ISystem
+public class RankSystem : ISystem
 {
     [PlayerCommand("ranks")]
     public void ShowRanks(Player player, IDialogService dialogService)

@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Ranks;
 
-internal class RankCollection
+public class RankCollection
 {
     private static readonly Rank[] s_ranks = 
     [

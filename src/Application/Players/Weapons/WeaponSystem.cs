@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Weapons;
 
-internal class WeaponSystem : ISystem
+public class WeaponSystem : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
