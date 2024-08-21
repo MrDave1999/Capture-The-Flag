@@ -3,10 +3,9 @@
 public class AccountComponent : Component
 {
     public PlayerInfo PlayerInfo { get; }
-    public AccountStatus Status { get; }
-    public AccountComponent(PlayerInfo player, AccountStatus status)
+    public AccountComponent(PlayerInfo player)
     {
+        ArgumentNullException.ThrowIfNull(player);
         PlayerInfo = player;
-        Status = status;
     }
 }
