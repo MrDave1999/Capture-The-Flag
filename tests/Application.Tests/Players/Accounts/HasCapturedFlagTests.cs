@@ -10,6 +10,22 @@ public class HasCapturedFlagTests
     }
 
     [Test]
+    public void HasCapturedFlag_WhenPlayerIsNotAssignedToAnyTeam_ShouldReturnsFalse()
+    {
+        // Arrange
+        var fakePlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.NoTeam);
+        var player = new PlayerInfo(fakePlayer.Entity);
+        player.SetTeam(TeamId.NoTeam);
+        player.SetName("Bob");
+
+        // Act
+        bool actual = player.HasCapturedFlag();
+
+        // Assert
+        actual.Should().BeFalse();
+    }
+
+    [Test]
     public void HasCapturedFlag_WhenPlayerFromTheAlphaTeamHasCapturedTheFlagOfTheBetaTeam_ShouldReturnsTrue()
     {
         // Arrange

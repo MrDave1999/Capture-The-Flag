@@ -32,7 +32,7 @@ public partial class PlayerInfo
     /// <summary>
     /// Indicates the number of times a player has captured the opposing team's flag from their base.
     /// </summary>
-    public int CapturedFlags {  get; private set; }
+    public int CapturedFlags { get; private set; }
 
     /// <summary>
     /// Indicates the number of times a player has dropped the opposing team's flag.
@@ -83,7 +83,7 @@ public partial class PlayerInfo
         if (string.IsNullOrWhiteSpace(value))
             return Result.Failure(Messages.NameCannotBeEmpty);
 
-        if(value.Length < 3 || value.Length > 20)
+        if (value.Length < 3 || value.Length > 20)
             return Result.Failure(Messages.PlayerNameLength);
 
         if (!PlayerNameRegex().IsMatch(value))
@@ -93,7 +93,7 @@ public partial class PlayerInfo
         return Result.Success();
     }
 
-    public Result SetPassword(string value) 
+    public Result SetPassword(string value)
     {
         ArgumentNullException.ThrowIfNull(value);
         if (string.IsNullOrWhiteSpace(value))
@@ -137,14 +137,14 @@ public partial class PlayerInfo
     {
         if (id < 0 || (int)id >= RankCollection.Max)
             return Result.Failure(Messages.InvalidRank);
-        
+
         RankId = id;
         return Result.Success();
     }
 
     public Result SetSkin(int id)
     {
-        if(id < 0 || id > 311) 
+        if (id < 0 || id > 311)
             return Result.Failure(Messages.InvalidSkin);
 
         SkinId = id;
@@ -175,6 +175,9 @@ public partial class PlayerInfo
     /// </summary>
     public bool HasCapturedFlag()
     {
+        if (Team == Team.None) 
+            return false;
+
         Flag rivalTeamFlag = Team.RivalTeam.Flag;
         if(rivalTeamFlag.IsCaptured())
         {
