@@ -17,7 +17,7 @@ public class GtaWeapons
     ];
 
     private GtaWeapons() { }
-    public static int Max => s_weapons.Length;
+    public static int Count => s_weapons.Length;
     public static IReadOnlyList<IWeapon> GetAll() => s_weapons;
 
     public static Result<IWeapon> GetById(Weapon id)
@@ -30,7 +30,7 @@ public class GtaWeapons
 
     public static Result<IWeapon> GetByIndex(int index)
     {
-        if(index < 0 || index >= Max)
+        if(index < 0 || index >= Count)
             return Result<IWeapon>.Failure(Messages.InvalidWeapon);
 
         GtaWeapon weapon = s_weapons[index];

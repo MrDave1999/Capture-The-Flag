@@ -97,7 +97,7 @@ public class GtaWeaponsTests
     public void GetByIndex_WhenIndexIsMax_ShouldReturnsFailureResult()
     {
         // Arrange
-        int index = GtaWeapons.Max;
+        int index = GtaWeapons.Count;
         string expectedMessage = Messages.InvalidWeapon;
 
         // Act

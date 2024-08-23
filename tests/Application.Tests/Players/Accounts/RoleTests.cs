@@ -2,7 +2,7 @@
 
 public class RoleTests
 {
-    static readonly int[] InvalidRoleCases = [-1, -2, RoleCollection.Max];
+    static readonly int[] InvalidRoleCases = [-1, -2, RoleCollection.Count];
 
     [TestCaseSource(nameof(InvalidRoleCases))]
     public void SetRole_WhenRoleIdIsInvalid_ShouldReturnsFailureResult(int value)
