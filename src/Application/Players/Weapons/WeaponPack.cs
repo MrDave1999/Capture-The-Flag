@@ -8,7 +8,7 @@ public class WeaponPack : IEnumerable<IWeapon>
         GtaWeapons.GetById(Weapon.Deagle).Value
     ];
 
-    public int Items => _weapons.Count;
+    public int TotalItems => _weapons.Count;
     public IWeapon this[int index] => _weapons[index];
     public bool IsEmpty() => _weapons.Count == 0;
 

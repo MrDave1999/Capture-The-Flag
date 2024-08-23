@@ -15,7 +15,7 @@ public class WeaponSystem : ISystem
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
         // Don't user foreach for performance reasons.
         // OnPlayerSpawn is invoked too often.
-        for (int i = 0; i < selectedWeapons.Items; i++)
+        for (int i = 0; i < selectedWeapons.TotalItems; i++)
         {
             IWeapon weapon = selectedWeapons[i];
             player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
