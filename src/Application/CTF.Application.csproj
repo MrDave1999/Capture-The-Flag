@@ -29,4 +29,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="Maps\Files\*.ini" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
