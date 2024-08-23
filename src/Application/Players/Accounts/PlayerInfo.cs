@@ -138,7 +138,7 @@ public partial class PlayerInfo
 
     public Result SetRole(RoleId id)
     {
-        if (id < 0 || (int)id >= RoleCollection.Max)
+        if (id < 0 || (int)id >= RoleCollection.Count)
             return Result.Failure(Messages.InvalidRole);
 
         RoleId = id;
@@ -147,7 +147,7 @@ public partial class PlayerInfo
 
     public Result SetRank(RankId id)
     {
-        if (id < 0 || (int)id >= RankCollection.Max)
+        if (id < 0 || (int)id >= RankCollection.Count)
             return Result.Failure(Messages.InvalidRank);
 
         RankId = id;
@@ -218,7 +218,7 @@ public partial class PlayerInfo
             StatsPerRound.Deaths,
             StatsPerRound.KillingSpree,
             StatsPerRound.Points,
-            MaxRank = RankCollection.Max,
+            MaxRank = RankCollection.Count,
             Level = (int)RankId,
             RankName = rankResult.Value.Name
         };

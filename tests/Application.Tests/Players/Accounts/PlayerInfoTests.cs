@@ -2,7 +2,7 @@
 
 public class PlayerInfoTests
 {
-    static readonly int[] InvalidRankCases = [-1, -2, RankCollection.Max];
+    static readonly int[] InvalidRankCases = [-1, -2, RankCollection.Count];
     static readonly int[] InvalidSkinCases = [-1, -2, 312];
 
     [TestCaseSource(nameof(InvalidRankCases))]
@@ -296,7 +296,7 @@ public class PlayerInfoTests
     {
         // Arrange
         var player = new PlayerInfo();
-        int maxRank = RankCollection.Max;
+        int maxRank = RankCollection.Count;
         var expectedString =
             "~w~KILLS: ~y~0 ~w~DEATHS: ~y~0 ~w~SPREE: ~y~0 " +
             $"~w~POINTS: ~y~0/100 ~w~LEVEL: ~y~0/{maxRank} ~w~RANK: ~y~Noob";

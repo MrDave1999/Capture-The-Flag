@@ -22,12 +22,12 @@ public class RankCollection
     ];
 
     private RankCollection() { }
-    public static int Max => s_ranks.Length;
+    public static int Count => s_ranks.Length;
     public static IReadOnlyList<IRank> GetAll() => s_ranks;
 
     public static Result<IRank> GetById(RankId id)
     {
-        if ((int)id < 0 || (int)id >= Max)
+        if ((int)id < 0 || (int)id >= Count)
             return Result<IRank>.Failure(Messages.InvalidRank);
 
         Rank rank = s_ranks[(int)id];
@@ -49,16 +49,16 @@ public class RankCollection
                 return Result<IRank>.Success(rank);
         }
 
-        IRank maxRank = s_ranks[Max - 1];
+        IRank maxRank = s_ranks[Count - 1];
         return Result<IRank>.Success(maxRank);
     }
 
     public static Result<IRank> GetNextRank(RankId previous)
     {
-        if ((int)previous < 0 || (int)previous >= Max)
+        if ((int)previous < 0 || (int)previous >= Count)
             return Result<IRank>.Failure(Messages.InvalidRank);
 
-        Rank rank = ((int)previous + 1 == Max) ? 
+        Rank rank = ((int)previous + 1 == Count) ? 
             Rank.None :
             s_ranks[(int)previous + 1];
 
@@ -79,7 +79,7 @@ public class RankCollection
             Name = id.ToString();
             RequiredKills = requiredKills;
         }
-        public bool IsMax() => Max == (int)Id + 1;
+        public bool IsMax() => Count == (int)Id + 1;
         public bool IsNotMax() => !IsMax();
     }
 }

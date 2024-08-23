@@ -22,7 +22,7 @@ public class RankCollectionTests
     public void GetById_WhenRankIsMax_ShouldReturnsFailureResult()
     {
         // Arrange
-        int max = RankCollection.Max;
+        int max = RankCollection.Count;
         RankId rankId = (RankId)max;
         string expectedMessage = Messages.InvalidRank;
 
@@ -70,7 +70,7 @@ public class RankCollectionTests
     public void GetNextRank_WhenRankIsMax_ShouldReturnsFailureResult()
     {
         // Arrange
-        int max = RankCollection.Max;
+        int max = RankCollection.Count;
         RankId rankId = (RankId)max;
         string expectedMessage = Messages.InvalidRank;
 
