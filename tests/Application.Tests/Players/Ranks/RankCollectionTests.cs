@@ -2,28 +2,13 @@
 
 public class RankCollectionTests
 {
-    [TestCase(-1)]
-    [TestCase(1000)]
+    static readonly int[] InvalidRankCases = [-1, 1000, RankCollection.Count];
+
+    [TestCaseSource(nameof(InvalidRankCases))]
     public void GetById_WhenRankIsInvalid_ShouldReturnsFailureResult(int value)
     {
         // Arrange
         RankId rankId = (RankId)value;
-        string expectedMessage = Messages.InvalidRank;
-
-        // Act
-        Result<IRank> result = RankCollection.GetById(rankId);
-
-        // Asserts
-        result.IsSuccess.Should().BeFalse();
-        result.Message.Should().Be(expectedMessage);
-    }
-
-    [Test]
-    public void GetById_WhenRankIsMax_ShouldReturnsFailureResult()
-    {
-        // Arrange
-        int max = RankCollection.Count;
-        RankId rankId = (RankId)max;
         string expectedMessage = Messages.InvalidRank;
 
         // Act
@@ -50,28 +35,11 @@ public class RankCollectionTests
         result.Message.Should().BeEmpty();
     }
 
-    [TestCase(-1)]
-    [TestCase(1000)]
+    [TestCaseSource(nameof(InvalidRankCases))]
     public void GetNextRank_WhenRankIsInvalid_ShouldReturnsFailureResult(int value)
     {
         // Arrange
         RankId rankId = (RankId)value;
-        string expectedMessage = Messages.InvalidRank;
-
-        // Act
-        Result<IRank> result = RankCollection.GetNextRank(rankId);
-
-        // Asserts
-        result.IsSuccess.Should().BeFalse();
-        result.Message.Should().Be(expectedMessage);
-    }
-
-    [Test]
-    public void GetNextRank_WhenRankIsMax_ShouldReturnsFailureResult()
-    {
-        // Arrange
-        int max = RankCollection.Count;
-        RankId rankId = (RankId)max;
         string expectedMessage = Messages.InvalidRank;
 
         // Act
