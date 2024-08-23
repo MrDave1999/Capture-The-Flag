@@ -11,3 +11,4 @@ global using CTF.Application.Players.Weapons;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Teams;
 global using CTF.Application.Teams.Flags;
+global using CTF.Application.Maps;
