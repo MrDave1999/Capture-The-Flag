@@ -2,6 +2,8 @@
 
 public class GtaWeaponsTests
 {
+    static readonly int[] InvalidWeaponIndexCases = [-1, 1000, GtaWeapons.Count];
+
     [Test]
     public void GetById_WhenWeaponIdIsNotFound_ShouldReturnsFailureResult()
     {
@@ -78,26 +80,10 @@ public class GtaWeaponsTests
         result.Value.Id.Should().Be(expectedWeaponId);
     }
 
-    [TestCase(-1)]
-    [TestCase(1000)]
+    [TestCaseSource(nameof(InvalidWeaponIndexCases))]
     public void GetByIndex_WhenIndexIsInvalid_ShouldReturnsFailureResult(int index)
     {
         // Arrange
-        string expectedMessage = Messages.InvalidWeapon;
-
-        // Act
-        Result<IWeapon> result = GtaWeapons.GetByIndex(index);
-
-        // Asserts
-        result.IsSuccess.Should().BeFalse();
-        result.Message.Should().Be(expectedMessage);
-    }
-
-    [Test]
-    public void GetByIndex_WhenIndexIsMax_ShouldReturnsFailureResult()
-    {
-        // Arrange
-        int index = GtaWeapons.Count;
         string expectedMessage = Messages.InvalidWeapon;
 
         // Act
