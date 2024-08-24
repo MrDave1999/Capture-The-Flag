@@ -79,6 +79,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid map id has been passed.
+        /// </summary>
+        internal static string InvalidMap {
+            get {
+                return ResourceManager.GetString("InvalidMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Must be 3-20 characters long and only contain valid characters (0-9, a-z, A-Z, [], (), $, @ . _ and = only).
         /// </summary>
         internal static string InvalidNickName {
@@ -133,6 +142,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The spawn location list cannot be empty.
+        /// </summary>
+        internal static string LocationListCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("LocationListCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map has not been found.
+        /// </summary>
+        internal static string MapNotFound {
+            get {
+                return ResourceManager.GetString("MapNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Player &apos;{Name}&apos; is a member that already exists.
         /// </summary>
         internal static string MemberAlreadyExists {
@@ -183,6 +210,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PlayerNotFound {
             get {
                 return ResourceManager.GetString("PlayerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A spawn location can only be obtained for the alpha or beta team.
+        /// </summary>
+        internal static string SpawnLocationFailure {
+            get {
+                return ResourceManager.GetString("SpawnLocationFailure", resourceCulture);
             }
         }
         
