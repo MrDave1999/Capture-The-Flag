@@ -79,6 +79,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The interval must be between 0 to {Max}.
+        /// </summary>
+        internal static string InvalidInterval {
+            get {
+                return ResourceManager.GetString("InvalidInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid map id has been passed.
         /// </summary>
         internal static string InvalidMap {

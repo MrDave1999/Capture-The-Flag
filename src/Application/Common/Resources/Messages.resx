@@ -123,6 +123,9 @@
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
   </data>
+  <data name="InvalidInterval" xml:space="preserve">
+    <value>The interval must be between 0 to {Max}</value>
+  </data>
   <data name="InvalidMap" xml:space="preserve">
     <value>Invalid map id has been passed</value>
   </data>
