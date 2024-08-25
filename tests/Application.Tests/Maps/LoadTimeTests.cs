@@ -50,7 +50,7 @@ public class LoadTimeTests
     }
 
     [TestCaseSource(nameof(ExpectedIntervalCases))]
-    public void Decrease_WhenIntervalIsNotEqualsToZero_ShouldContinueToDecrease(int expectedInterval)
+    public void Decrease_WhenLoadTimeIsNotCompleted_ShouldContinueToDecrease(int expectedInterval)
     {
         // Arrange
         var expectedText = $"Loading map... ({expectedInterval})";

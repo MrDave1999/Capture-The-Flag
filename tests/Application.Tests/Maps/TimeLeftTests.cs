@@ -160,7 +160,7 @@ public class TimeLeftTests
     }
 
     [TestCaseSource(typeof(DecreaseTimeLeftTestCases))]
-    public void Decrease_WhenTimeRemainingIsNotZero_ShouldContinueToDecrease(string expectedText)
+    public void Decrease_WhenTimeRemainingIsNotCompleted_ShouldContinueToDecrease(string expectedText)
     {
         // Arrange
 
