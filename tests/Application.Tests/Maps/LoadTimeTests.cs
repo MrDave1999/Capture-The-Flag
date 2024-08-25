@@ -19,7 +19,7 @@ public class LoadTimeTests
         static void OnLoadedMap() { }
 
         // Act
-        Action act = () => 
+        Action act = () =>
         {
             var loadTime = new LoadTime(onLoadingMap, OnLoadedMap);
         };
@@ -68,9 +68,11 @@ public class LoadTimeTests
     public void Decrease_WhenIntervalIsEqualsToZero_ShouldInvokeOnLoadedMap()
     {
         // Arrange
+        bool loadedMap = false;
         static void OnLoadingMap() { }
-        static void OnLoadedMap() => throw new Exception(nameof(OnLoadedMap));
+        void OnLoadedMap() => loadedMap = true;
         var loadTime = new LoadTime(OnLoadingMap, OnLoadedMap);
+        int expectedInterval = LoadTime.MaxLoadTime;
         loadTime.Decrease(); // 5
         loadTime.Decrease(); // 4
         loadTime.Decrease(); // 3
@@ -80,14 +82,11 @@ public class LoadTimeTests
 
         // Act
         // Invoke to OnLoadedMap
-        Action act = loadTime.Decrease;
+        loadTime.Decrease();
 
         // Asserts
-        act.Should()
-           .Throw<Exception>()
-           .WithMessage(nameof(OnLoadedMap));
-
-        loadTime.Interval.Should().Be(LoadTime.MaxLoadTime);
+        loadedMap.Should().BeTrue();
+        loadTime.Interval.Should().Be(expectedInterval);
         loadTime.GameText.Should().BeEmpty();
     }
 
@@ -95,17 +94,19 @@ public class LoadTimeTests
     public void Decrease_WhenIntervalIsEqualsToMaxLoadTime_ShouldInvokeOnLoadingMap()
     {
         // Arrange
-        static void OnLoadingMap() => throw new Exception(nameof(OnLoadingMap));
+        bool loadingMap = false;
+        void OnLoadingMap() => loadingMap = true;
         static void OnLoadedMap() { }
         var loadTime = new LoadTime(OnLoadingMap, OnLoadedMap);
+        int expectedInterval = 5;
 
         // Act
         // Invoke to OnLoadingMap
-        Action act = loadTime.Decrease;
+        loadTime.Decrease();
 
-        // Assert
-        act.Should()
-           .Throw<Exception>()
-           .WithMessage(nameof(OnLoadingMap));
+        // Asserts
+        loadingMap.Should().BeTrue();
+        loadTime.Interval.Should().Be(expectedInterval);
+        loadTime.GameText.Should().NotBeEmpty();
     }
 }
