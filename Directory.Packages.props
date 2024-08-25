@@ -8,7 +8,7 @@
     <PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
     <PackageVersion Include="SampSharp.Entities" Version="0.10.1" />
-    <PackageVersion Include="SampSharp.CTF.Entities" Version="0.10.5" />
+    <PackageVersion Include="SampSharp.CTF.Entities" Version="0.10.6" />
     <PackageVersion Include="SmartFormat" Version="3.5.0" />
     <PackageVersion Include="MySqlConnector" Version="2.3.7" />
     <PackageVersion Include="Microsoft.Data.Sqlite" Version="8.0.7" />
