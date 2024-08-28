@@ -65,6 +65,27 @@ public class CurrentMapTests
     }
 
     [Test]
+    public void Constructor_WhenFlagLocationsIsNull_ShouldThrowArgumentNullException()
+    {
+        // Arrange
+        IMap map = MapCollection.GetById(0).Value;
+        List<SpawnLocation> betaTeamLocations = [SpawnLocation.Empty];
+        List<SpawnLocation> alphaTeamLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = default;
+
+        // Act
+        Action act = () =>
+        {
+            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations, flagLocations);
+        };
+
+        // Assert
+        act.Should()
+           .Throw<ArgumentNullException>()
+           .WithParameterName(nameof(flagLocations));
+    }
+
+    [Test]
     public void Constructor_WhenAlphaTeamLocationsIsEmpty_ShouldThrowArgumentException()
     {
         // Arrange

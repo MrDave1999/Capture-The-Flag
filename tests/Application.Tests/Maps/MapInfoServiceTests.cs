@@ -15,6 +15,22 @@ public class MapInfoServiceTests
         currentMap.Should().NotBeNull();
     }
 
+    [Test]
+    public void Load_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+    {
+        // Arrange
+        var service = new MapInfoService();
+        IMap map = default;
+
+        // Act
+        Action act = () => service.Load(map);
+
+        // Assert
+        act.Should()
+           .Throw<ArgumentNullException>()
+           .WithParameterName(nameof(map));
+    }
+
     [TestCaseSource(typeof(MapInfoServiceTestCases))]
     public void Load_WhenMapIsLoadedFromFileSystem_ShouldCreateInstanceOfTypeCurrentMap(CurrentMap expectedCurrentMap)
     {
