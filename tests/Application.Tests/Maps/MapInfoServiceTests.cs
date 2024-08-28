@@ -61,7 +61,12 @@ public class MapInfoServiceTests
                     new SpawnLocation(-247.4499f,-99.9677f,3.1172f,345.0341f),
                     new SpawnLocation(-235.9863f,-102.5671f,3.1094f,345.3474f),
                     new SpawnLocation(-220.4884f,-110.9102f,3.1172f,352.5542f)
-                ]);
+                ],
+                flagLocations: new FlagLocations 
+                { 
+                    Red  = new Vector3(-151.8033f,52.8696f,4.2508f),
+                    Blue = new Vector3(-247.5084f,-56.7737f,4.2713f)
+                });
 
             yield return new CurrentMap(
                 map: GetMap("RC_Battlefield"),
@@ -91,6 +96,11 @@ public class MapInfoServiceTests
                     new SpawnLocation(-976.4217f,1024.6754f,1345.0288f,92.1208f),
                     new SpawnLocation(-976.2883f,1020.3914f,1345.0339f,93.3741f)
                 ],
+                flagLocations: new FlagLocations
+                {
+                    Red  = new Vector3(-1131.7461f,1029.1383f,1345.7311f),
+                    Blue = new Vector3(-974.7156f,1089.7988f,1344.9755f)
+                },
                 interior: 10);
 
             yield return new CurrentMap(
@@ -121,6 +131,11 @@ public class MapInfoServiceTests
                     new SpawnLocation(870.1289f,-2393.8157f,23.9384f,92.4852f),
                     new SpawnLocation(864.5809f,-2400.9045f,25.0956f,94.6786f)
                 ],
+                flagLocations: new FlagLocations
+                {
+                    Red  = new Vector3(606.5786f,-2404.3359f,9.8766f),
+                    Blue = new Vector3(755.5378f,-2410.6455f,30.1338f)
+                },
                 worldTime: 23);
 
             yield return new CurrentMap(
@@ -151,6 +166,11 @@ public class MapInfoServiceTests
                     new SpawnLocation(2553.0278f,-1305.5601f,1031.4219f,277.2793f),
                     new SpawnLocation(2560.5957f,-1291.2533f,1031.4219f,265.3724f)
                 ],
+                flagLocations: new FlagLocations
+                {
+                    Red  = new Vector3(2579.7329f,-1285.4033f,1054.6406f),
+                    Blue = new Vector3(2568.5762f,-1296.0222f,1031.4219f)
+                },
                 interior: 2,
                 weather: 9,
                 worldTime: 22);

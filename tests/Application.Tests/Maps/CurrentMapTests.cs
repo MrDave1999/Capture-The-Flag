@@ -7,12 +7,13 @@ public class CurrentMapTests
     {
         // Arrange
         IMap map = default;
-        List<SpawnLocation> locations = [SpawnLocation.Empty];
+        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
 
         // Act
         Action act = () =>
         {
-            var currentMap = new CurrentMap(map, locations, locations);
+            var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
         };
 
         // Assert
@@ -28,11 +29,12 @@ public class CurrentMapTests
         IMap map = MapCollection.GetById(0).Value;
         List<SpawnLocation> alphaTeamLocations = default;
         List<SpawnLocation> betaTeamLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
 
         // Act
         Action act = () =>
         {
-            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations);
+            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations, flagLocations);
         };
 
         // Assert
@@ -48,11 +50,12 @@ public class CurrentMapTests
         IMap map = MapCollection.GetById(0).Value;
         List<SpawnLocation> betaTeamLocations = default;
         List<SpawnLocation> alphaTeamLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
 
         // Act
         Action act = () =>
         {
-            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations);
+            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations, flagLocations);
         };
 
         // Assert
@@ -68,11 +71,12 @@ public class CurrentMapTests
         IMap map = MapCollection.GetById(0).Value;
         List<SpawnLocation> alphaTeamLocations = [];
         List<SpawnLocation> betaTeamLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
 
         // Act
         Action act = () =>
         {
-            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations);
+            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations, flagLocations);
         };
 
         // Assert
@@ -88,11 +92,12 @@ public class CurrentMapTests
         IMap map = MapCollection.GetById(0).Value;
         List<SpawnLocation> alphaTeamLocations = [SpawnLocation.Empty];
         List<SpawnLocation> betaTeamLocations = [];
+        FlagLocations flagLocations = FlagLocations.Empty;
 
         // Act
         Action act = () =>
         {
-            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations);
+            var currentMap = new CurrentMap(map, alphaTeamLocations, betaTeamLocations, flagLocations);
         };
 
         // Assert
@@ -105,8 +110,9 @@ public class CurrentMapTests
     public void NextMap_WhenMapIsObtained_ShouldReturnsNextMap((IMap Map, IMap Expected) data)
     {
         // Arrange
-        List<SpawnLocation> locations = [SpawnLocation.Empty];
-        var currentMap = new CurrentMap(data.Map, locations, locations);
+        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
+        var currentMap = new CurrentMap(data.Map, spawnLocations, spawnLocations, flagLocations);
 
         // Act
         IMap actual = currentMap.NextMap;
@@ -120,8 +126,9 @@ public class CurrentMapTests
     {
         // Arrange
         IMap map = MapCollection.GetByName("RC_Battlefield").Value;
-        List<SpawnLocation> locations = [SpawnLocation.Empty];
-        var currentMap = new CurrentMap(map, locations, locations);
+        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
+        var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
         var expectedString = "Map: ~w~RC_Battlefield";
 
         // Act
@@ -137,8 +144,9 @@ public class CurrentMapTests
         // Arrange
         IMap map = MapCollection.GetById(0).Value;
         IMap nextMap = default;
-        List<SpawnLocation> locations = [SpawnLocation.Empty];
-        var currentMap = new CurrentMap(map, locations, locations);
+        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
+        var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
 
         // Act
         Action act = () => currentMap.SetNextMap(nextMap);
@@ -155,9 +163,10 @@ public class CurrentMapTests
     {
         // Arrange
         IMap map = MapCollection.GetById(0).Value;
-        List<SpawnLocation> locations = [SpawnLocation.Empty];
-        var currentMap = new CurrentMap(map, locations, locations);
-        SpawnLocation expectedSpawnLocation = locations[0];
+        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
+        var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
+        SpawnLocation expectedSpawnLocation = spawnLocations[0];
 
         // Act
         SpawnLocation actual = currentMap.GetRandomSpawnLocation(team);
@@ -171,9 +180,10 @@ public class CurrentMapTests
     {
         // Arrange
         IMap map = MapCollection.GetById(0).Value;
-        List<SpawnLocation> locations = [SpawnLocation.Empty];
+        List<SpawnLocation> spawnLocations = [SpawnLocation.Empty];
+        FlagLocations flagLocations = FlagLocations.Empty;
         TeamId team = TeamId.NoTeam;
-        var currentMap = new CurrentMap(map, locations, locations);
+        var currentMap = new CurrentMap(map, spawnLocations, spawnLocations, flagLocations);
 
         // Act
         Action act = () => currentMap.GetRandomSpawnLocation(team);
