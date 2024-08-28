@@ -14,6 +14,7 @@ public class CurrentMap
     public string Name { get; }
     public IReadOnlyList<SpawnLocation> AlphaTeamLocations { get; }
     public IReadOnlyList<SpawnLocation> BetaTeamLocations { get; }
+    public FlagLocations FlagLocations { get; }
     public int Interior { get; }
     public int Weather { get; }
     public int WorldTime { get; }
@@ -24,6 +25,7 @@ public class CurrentMap
         IMap map, 
         IReadOnlyList<SpawnLocation> alphaTeamLocations, 
         IReadOnlyList<SpawnLocation> betaTeamLocations,
+        FlagLocations flagLocations,
         int interior  = DefaultInterior,
         int weather   = DefaultWeather,
         int worldTime = DefaultWorldTime)
@@ -31,6 +33,7 @@ public class CurrentMap
         ArgumentNullException.ThrowIfNull(map);
         ArgumentNullException.ThrowIfNull(alphaTeamLocations);
         ArgumentNullException.ThrowIfNull(betaTeamLocations);
+        ArgumentNullException.ThrowIfNull(flagLocations);
 
         if (alphaTeamLocations.Count == 0)
             throw new ArgumentException(Messages.LocationListCannotBeEmpty, nameof(alphaTeamLocations));
