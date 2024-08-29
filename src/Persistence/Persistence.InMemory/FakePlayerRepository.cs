@@ -23,13 +23,13 @@ internal class FakePlayerRepository(Dictionary<string, FakePlayer> players) : IP
         playerInfo.SetRole(fakePlayer.RoleId);
         playerInfo.SetRank(fakePlayer.RankId);
         playerInfo.SetSkin(fakePlayer.SkinId);
-        playerInfo.SetValue(fakePlayer.BroughtFlags,   propertyName: nameof(PlayerInfo.BroughtFlags));
-        playerInfo.SetValue(fakePlayer.CapturedFlags,  propertyName: nameof(PlayerInfo.CapturedFlags));
-        playerInfo.SetValue(fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
-        playerInfo.SetValue(fakePlayer.ReturnedFlags,  propertyName: nameof(PlayerInfo.ReturnedFlags));
-        playerInfo.SetValue(fakePlayer.HeadShots,      propertyName: nameof(PlayerInfo.HeadShots));
-        playerInfo.SetValue(fakePlayer.CreatedAt,      propertyName: nameof(PlayerInfo.CreatedAt));
-        playerInfo.SetValue(fakePlayer.LastConnection, propertyName: nameof(PlayerInfo.LastConnection));
+        playerInfo.SetValue(value: fakePlayer.BroughtFlags,   propertyName: nameof(PlayerInfo.BroughtFlags));
+        playerInfo.SetValue(value: fakePlayer.CapturedFlags,  propertyName: nameof(PlayerInfo.CapturedFlags));
+        playerInfo.SetValue(value: fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
+        playerInfo.SetValue(value: fakePlayer.ReturnedFlags,  propertyName: nameof(PlayerInfo.ReturnedFlags));
+        playerInfo.SetValue(value: fakePlayer.HeadShots,      propertyName: nameof(PlayerInfo.HeadShots));
+        playerInfo.SetValue(value: fakePlayer.CreatedAt,      propertyName: nameof(PlayerInfo.CreatedAt));
+        playerInfo.SetValue(value: fakePlayer.LastConnection, propertyName: nameof(PlayerInfo.LastConnection));
         return playerInfo;
     }
 
