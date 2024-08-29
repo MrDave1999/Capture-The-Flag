@@ -1,6 +1,8 @@
 ﻿global using System.Collections;
 global using System.Globalization;
+global using System.Reflection;
 global using System.Text.RegularExpressions;
+global using System.Runtime.CompilerServices;
 global using SampSharp.Core;
 global using SampSharp.Entities;
 global using SampSharp.Entities.SAMP;
