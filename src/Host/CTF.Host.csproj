@@ -5,6 +5,7 @@
     </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Persistence\Persistence.InMemory\Persistence.InMemory.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.MariaDB\Persistence.MariaDB.csproj" />
     <ProjectReference Include="..\Persistence\Persistence.SQLite\Persistence.SQLite.csproj" />
   </ItemGroup>

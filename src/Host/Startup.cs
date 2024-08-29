@@ -9,7 +9,7 @@ public class Startup : IStartup
             .AddEnvironmentVariables()
             .Build();
 
-        services.AddPersistenceSQLiteServices(configuration);
+        services.ChooseDatabaseProvider(configuration);
         services.AddApplicationServices();
 
         // Add systems to the services collection
