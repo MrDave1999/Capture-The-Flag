@@ -23,6 +23,8 @@ internal class FakePlayerRepository(Dictionary<string, FakePlayer> players) : IP
         playerInfo.SetRole(fakePlayer.RoleId);
         playerInfo.SetRank(fakePlayer.RankId);
         playerInfo.SetSkin(fakePlayer.SkinId);
+        // Reflection is used here because these properties are immutable.
+        // What we did here is what ORMs like EF Core do, so it's nothing new.
         playerInfo.SetValue(value: fakePlayer.BroughtFlags,   propertyName: nameof(PlayerInfo.BroughtFlags));
         playerInfo.SetValue(value: fakePlayer.CapturedFlags,  propertyName: nameof(PlayerInfo.CapturedFlags));
         playerInfo.SetValue(value: fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
