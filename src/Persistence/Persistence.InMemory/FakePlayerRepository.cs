@@ -23,13 +23,13 @@ internal class FakePlayerRepository(Dictionary<string, FakePlayer> players) : IP
         playerInfo.SetRole(fakePlayer.RoleId);
         playerInfo.SetRank(fakePlayer.RankId);
         playerInfo.SetSkin(fakePlayer.SkinId);
-        playerInfo.SetValue(fakePlayer.BroughtFlags);
-        playerInfo.SetValue(fakePlayer.CapturedFlags);
-        playerInfo.SetValue(fakePlayer.DroppedFlags);
-        playerInfo.SetValue(fakePlayer.ReturnedFlags);
-        playerInfo.SetValue(fakePlayer.HeadShots);
-        playerInfo.SetValue(fakePlayer.CreatedAt);
-        playerInfo.SetValue(fakePlayer.LastConnection);
+        playerInfo.SetValue(fakePlayer.BroughtFlags,   propertyName: nameof(PlayerInfo.BroughtFlags));
+        playerInfo.SetValue(fakePlayer.CapturedFlags,  propertyName: nameof(PlayerInfo.CapturedFlags));
+        playerInfo.SetValue(fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
+        playerInfo.SetValue(fakePlayer.ReturnedFlags,  propertyName: nameof(PlayerInfo.ReturnedFlags));
+        playerInfo.SetValue(fakePlayer.HeadShots,      propertyName: nameof(PlayerInfo.HeadShots));
+        playerInfo.SetValue(fakePlayer.CreatedAt,      propertyName: nameof(PlayerInfo.CreatedAt));
+        playerInfo.SetValue(fakePlayer.LastConnection, propertyName: nameof(PlayerInfo.LastConnection));
         return playerInfo;
     }
 

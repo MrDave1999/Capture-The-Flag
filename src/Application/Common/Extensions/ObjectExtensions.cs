@@ -16,10 +16,11 @@ public static class ObjectExtensions
     public static void SetValue<T>(
         this T @object,
         object value,
-        [CallerArgumentExpression(nameof(value))] string propertyName = null) where T : class
+        string propertyName) where T : class
     {
         ArgumentNullException.ThrowIfNull(@object);
         ArgumentNullException.ThrowIfNull(value);
+        ArgumentNullException.ThrowIfNull(propertyName);
         Type type = @object.GetType();
         PropertyInfo propertyInfo = type.GetProperty(propertyName) ??
             throw new InvalidOperationException($"Property '{propertyName}' was not found in type '{type.Name}'.");
