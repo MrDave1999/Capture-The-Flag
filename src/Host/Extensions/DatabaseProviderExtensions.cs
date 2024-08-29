@@ -14,9 +14,9 @@ public static class DatabaseProviderExtensions
         };
 
         string selectedProvider = configuration["DatabaseProvider"];
-        if (providers.TryGetValue(selectedProvider, out Action databaseProvider))
+        if (providers.TryGetValue(selectedProvider, out Action addPersistenceServices))
         {
-            databaseProvider();
+            addPersistenceServices();
             return;
         }
 
