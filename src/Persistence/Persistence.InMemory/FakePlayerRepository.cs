@@ -1,9 +1,14 @@
 ﻿namespace Persistence.InMemory;
 
-internal class FakePlayerRepository(Dictionary<string, FakePlayer> players) : IPlayerRepository
+internal class FakePlayerRepository(
+    Dictionary<string, FakePlayer> players,
+    IPasswordHasher passwordHasher) : IPlayerRepository
 {
     public void Create(PlayerInfo player)
-        => players.Add(player.Name, new FakePlayer(player.Name, player.Password));
+    {
+        var passwordHash = passwordHasher.HashPassword(player.Password);
+        players.Add(player.Name, new FakePlayer(player.Name, passwordHash));
+    }
 
     public bool Exists(string name)
         => players.TryGetValue(name, out _);
@@ -16,7 +21,9 @@ internal class FakePlayerRepository(Dictionary<string, FakePlayer> players) : IP
 
         var playerInfo = new PlayerInfo(playerId);
         playerInfo.SetName(fakePlayer.Name);
-        playerInfo.SetPassword(fakePlayer.Password);
+        // The public setter is used only for plaintext passwords.
+        // For that reason, we use Reflection to set the already encrypted password.
+        playerInfo.SetValue(value: fakePlayer.Password, propertyName: nameof(PlayerInfo.Password));
         playerInfo.SetTotalKills(fakePlayer.TotalKills);
         playerInfo.SetTotalDeaths(fakePlayer.TotalDeaths);
         playerInfo.SetMaxKillingSpree(fakePlayer.MaxKillingSpree);
@@ -60,7 +67,7 @@ internal class FakePlayerRepository(Dictionary<string, FakePlayer> players) : IP
         => players[player.Name].Name = player.Name;
 
     public void UpdatePassword(PlayerInfo player)
-        => players[player.Name].Password = player.Password;
+       => players[player.Name].Password = passwordHasher.HashPassword(player.Password);
 
     public void UpdateRank(PlayerInfo player)
         => players[player.Name].RankId = player.RankId;
