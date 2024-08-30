@@ -8,6 +8,7 @@ global using SampSharp.Entities;
 global using SampSharp.Entities.SAMP;
 global using Color = SampSharp.Entities.SAMP.Color;
 global using SampSharp.Entities.SAMP.Commands;
+global using SampSharp.Streamer.Entities;
 global using SmartFormat;
 global using SeztionParser;
 global using Microsoft.Extensions.DependencyInjection;
