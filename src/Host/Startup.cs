@@ -11,6 +11,7 @@ public class Startup : IStartup
 
         services.ChooseDatabaseProvider(configuration);
         services.AddApplicationServices();
+        services.AddSingleton<IPasswordHasher, PasswordHasherBcrypt>();
 
         // Add systems to the services collection
         services
