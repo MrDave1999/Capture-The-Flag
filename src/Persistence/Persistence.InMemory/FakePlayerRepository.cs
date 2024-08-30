@@ -23,7 +23,7 @@ internal class FakePlayerRepository(
         playerInfo.SetName(fakePlayer.Name);
         // The public setter is used only for plaintext passwords.
         // For that reason, we use Reflection to set the already encrypted password.
-        playerInfo.SetValue(value: fakePlayer.Password, propertyName: nameof(PlayerInfo.Password));
+        playerInfo.SetValue(value: fakePlayer.PasswordHash, propertyName: nameof(PlayerInfo.Password));
         playerInfo.SetTotalKills(fakePlayer.TotalKills);
         playerInfo.SetTotalDeaths(fakePlayer.TotalDeaths);
         playerInfo.SetMaxKillingSpree(fakePlayer.MaxKillingSpree);
@@ -67,7 +67,7 @@ internal class FakePlayerRepository(
         => players[player.Name].Name = player.Name;
 
     public void UpdatePassword(PlayerInfo player)
-       => players[player.Name].Password = passwordHasher.HashPassword(player.Password);
+       => players[player.Name].PasswordHash = passwordHasher.HashPassword(player.Password);
 
     public void UpdateRank(PlayerInfo player)
         => players[player.Name].RankId = player.RankId;
