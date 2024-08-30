@@ -4,14 +4,14 @@ internal class FakePlayer
 {
     private const int NoSkin = -1;
     public FakePlayer() { }
-    public FakePlayer(string name, string password)
+    public FakePlayer(string name, string passwordHash)
     {
         Name = name;
-        Password = password;
+        PasswordHash = passwordHash;
     }
 
     public string Name { get; set; }
-    public string Password { get; set; }
+    public string PasswordHash { get; set; }
     public int TotalKills { get; set; }
     public int TotalDeaths { get; set; }
     public int MaxKillingSpree { get; set; }

@@ -14,7 +14,7 @@ internal static class FakePlayerSeedData
             new()
             {
                 Name = "Admin_Player",
-                Password = Password,
+                PasswordHash = Password,
                 RoleId = RoleId.Admin,
                 RankId = RankId.Noob,
                 SkinId = 146
@@ -22,7 +22,7 @@ internal static class FakePlayerSeedData
             new()
             {
                 Name = "Moderator_Player",
-                Password = Password,
+                PasswordHash = Password,
                 RoleId = RoleId.Moderator,
                 RankId = RankId.Noob,
                 SkinId = 146
@@ -30,7 +30,7 @@ internal static class FakePlayerSeedData
             new()
             {
                 Name = "VIP_Player",
-                Password = Password,
+                PasswordHash = Password,
                 RoleId = RoleId.VIP,
                 RankId = RankId.Noob,
                 SkinId = 146
@@ -38,7 +38,7 @@ internal static class FakePlayerSeedData
             new()
             {
                 Name = "Basic_Player",
-                Password = Password,
+                PasswordHash = Password,
                 RoleId = RoleId.Basic,
                 RankId = RankId.Noob,
                 SkinId = 146
