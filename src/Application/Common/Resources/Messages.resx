@@ -120,6 +120,9 @@
   <data name="AddPoints" xml:space="preserve">
     <value>Points must be between 1 to 100</value>
   </data>
+  <data name="CreatePlayerAccount" xml:space="preserve">
+    <value>You have successfully registered. Password: {Password}</value>
+  </data>
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
   </data>
@@ -150,6 +153,9 @@
   <data name="LocationListCannotBeEmpty" xml:space="preserve">
     <value>The spawn location list cannot be empty</value>
   </data>
+  <data name="LoginOrRegisterToContinue" xml:space="preserve">
+    <value>Please log in or register to continue</value>
+  </data>
   <data name="MapNotFound" xml:space="preserve">
     <value>Map has not been found</value>
   </data>
@@ -177,6 +183,9 @@
   <data name="SubtractPoints" xml:space="preserve">
     <value>Points must be between -1 to -100</value>
   </data>
+  <data name="SuccessfulLogin" xml:space="preserve">
+    <value>You have successfully logged in</value>
+  </data>
   <data name="ValueCannotBeNegative" xml:space="preserve">
     <value>The value cannot be negative</value>
   </data>
@@ -191,5 +200,8 @@
   </data>
   <data name="WeaponSuccessfullyRemoved" xml:space="preserve">
     <value>{Name} has been removed from your weapon package</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>The password you entered is incorrect. Please try again</value>
   </data>
 </root>
