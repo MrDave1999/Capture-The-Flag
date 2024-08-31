@@ -70,6 +70,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have successfully registered. Password: {Password}.
+        /// </summary>
+        internal static string CreatePlayerAccount {
+            get {
+                return ResourceManager.GetString("CreatePlayerAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have no items in your weapon package.
         /// </summary>
         internal static string EmptyWeaponPackage {
@@ -160,6 +169,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please log in or register to continue.
+        /// </summary>
+        internal static string LoginOrRegisterToContinue {
+            get {
+                return ResourceManager.GetString("LoginOrRegisterToContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map has not been found.
         /// </summary>
         internal static string MapNotFound {
@@ -241,6 +259,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have successfully logged in.
+        /// </summary>
+        internal static string SuccessfulLogin {
+            get {
+                return ResourceManager.GetString("SuccessfulLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value cannot be negative.
         /// </summary>
         internal static string ValueCannotBeNegative {
@@ -282,6 +309,15 @@ namespace CTF.Application.Common.Resources {
         internal static string WeaponSuccessfullyRemoved {
             get {
                 return ResourceManager.GetString("WeaponSuccessfullyRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password you entered is incorrect. Please try again.
+        /// </summary>
+        internal static string WrongPassword {
+            get {
+                return ResourceManager.GetString("WrongPassword", resourceCulture);
             }
         }
     }

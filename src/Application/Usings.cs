@@ -14,6 +14,7 @@ global using SeztionParser;
 global using Microsoft.Extensions.DependencyInjection;
 
 global using CTF.Application.Common;
+global using CTF.Application.Common.Services;
 global using CTF.Application.Common.Resources;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.Ranks;
