@@ -1,11 +1,12 @@
-﻿namespace CTF.Application.Players.Accounts.Systems;
+﻿using ConnectedPlayer = SampSharp.Entities.SAMP.Player;
+
+namespace CTF.Application.Players.Accounts.Systems;
 
 public class AccountSystem(
     IDialogService dialogService,
     IPlayerRepository playerRepository,
     IPasswordHasher passwordHasher) : ISystem
 {
-    private Player _connectedPlayer;
     private readonly InputDialog _signupDialog = new()
     {
         IsPassword = true,
@@ -22,66 +23,69 @@ public class AccountSystem(
     };
 
     [Event]
-    public void OnPlayerConnect(Player player)
+    public void OnPlayerConnect(ConnectedPlayer connectedPlayer)
     {
-        _connectedPlayer = player;
-        PlayerInfo playerInfo = playerRepository.GetOrDefault(player.Entity, player.Name);
+        PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Entity, connectedPlayer.Name);
         if(playerInfo is null)
         {
-            ShowSignupDialog(new PlayerInfo(_connectedPlayer.Entity));
+            ShowSignupDialog(connectedPlayer, new PlayerInfo(connectedPlayer.Entity));
             return;
         }
-        ShowLoginDialog(playerInfo);
+        ShowLoginDialog(connectedPlayer, playerInfo);
     }
 
-    private async void ShowSignupDialog(PlayerInfo playerInfo)
+    private async void ShowSignupDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
     {
-        InputDialogResponse response = await dialogService.ShowAsync(_connectedPlayer, _signupDialog);
+        InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _signupDialog);
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
-            ShowSignupDialog(playerInfo);
+            ShowSignupDialog(connectedPlayer, playerInfo);
             return;
         }
 
         var enteredPassword = response.InputText;
-        CreatePlayerAccount(playerInfo, enteredPassword);
+        CreatePlayerAccount(connectedPlayer, playerInfo, enteredPassword);
     }
 
-    private void CreatePlayerAccount(PlayerInfo playerInfo, string enteredPassword)
+    private void CreatePlayerAccount(
+        ConnectedPlayer connectedPlayer, 
+        PlayerInfo playerInfo,
+        string enteredPassword)
     {
         Result passwordResult = playerInfo.SetPassword(enteredPassword);
         if (passwordResult.IsFailed)
         {
-            _connectedPlayer.SendClientMessage(Color.Red, passwordResult.Message);
-            ShowSignupDialog(playerInfo);
+            connectedPlayer.SendClientMessage(Color.Red, passwordResult.Message);
+            ShowSignupDialog(connectedPlayer, playerInfo);
             return;
         }
 
-        _connectedPlayer.AddComponent<AccountComponent>(playerInfo);
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo);
         var message = Smart.Format(Messages.CreatePlayerAccount, new { Password = enteredPassword });
-        _connectedPlayer.SendClientMessage(Color.Red, message);
-        playerInfo.SetName(_connectedPlayer.Name);
+        connectedPlayer.SendClientMessage(Color.Red, message);
+        playerInfo.SetName(connectedPlayer.Name);
         playerRepository.Create(playerInfo);
     }
 
-    private async void ShowLoginDialog(PlayerInfo playerInfo)
+    private async void ShowLoginDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
     {
-        InputDialogResponse response = await dialogService.ShowAsync(_connectedPlayer, _loginDialog);
+        InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _loginDialog);
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
-            ShowLoginDialog(playerInfo);
+            ShowLoginDialog(connectedPlayer, playerInfo);
             return;
         }
 
-        bool isWrongPassword = !passwordHasher.Verify(response.InputText, passwordHash: playerInfo.Password);
+        var enteredPassword = response.InputText;
+        bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: playerInfo.Password);
         if (isWrongPassword) 
         {
-            _connectedPlayer.SendClientMessage(Color.Red, Messages.WrongPassword);
-            ShowLoginDialog(playerInfo);
+            connectedPlayer.SendClientMessage(Color.Red, Messages.WrongPassword);
+            ShowLoginDialog(connectedPlayer, playerInfo);
             return;
         }
 
-        _connectedPlayer.AddComponent<AccountComponent>(playerInfo);
-        _connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo);
+        connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
     }
 }
