@@ -165,6 +165,9 @@
   <data name="NameCannotBeEmpty" xml:space="preserve">
     <value>Name cannot be empty</value>
   </data>
+  <data name="NextRank" xml:space="preserve">
+    <value>You moved up to {Name} rank, congratulations!</value>
+  </data>
   <data name="PasswordCannotBeEmpty" xml:space="preserve">
     <value>Password cannot be empty</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="PlayerNotFound" xml:space="preserve">
     <value>Player '{Name}' is not found</value>
+  </data>
+  <data name="RankUpAward" xml:space="preserve">
+    <value>You have gained +100 points, +100 armour, and +100 health</value>
   </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>

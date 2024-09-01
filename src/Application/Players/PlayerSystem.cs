@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players;
 
-public class PlayerSystem : ISystem
+public class PlayerSystem(IPlayerRepository playerRepository) : ISystem
 {
     [Event]
     public bool OnPlayerRequestSpawn(Player player)
@@ -14,5 +14,28 @@ public class PlayerSystem : ISystem
         }
 
         return true;
+    }
+
+    [Event]
+    public void OnPlayerDeath(Player player, Player killer, Weapon reason)
+    {
+        if (killer.IsInvalidPlayer())
+            return;
+
+        PlayerInfo killerInfo = killer.GetComponent<AccountComponent>().PlayerInfo;
+        killerInfo.StatsPerRound.AddKills();
+        killerInfo.AddTotalKills();
+        playerRepository.UpdateTotalKills(killerInfo);
+        if (killerInfo.CanMoveUpToNextRank())
+        {
+            IRank nextRank = RankCollection.GetNextRank(killerInfo.RankId).Value;
+            killer.SendClientMessage(Color.Yellow, Smart.Format(Messages.NextRank, nextRank));
+            killer.SendClientMessage(Color.Orange, Messages.RankUpAward);
+            killer.Armour = 100;
+            killer.Health = 100;
+            killerInfo.StatsPerRound.AddPoints(100);
+            killerInfo.SetRank(nextRank.Id);
+            playerRepository.UpdateRank(killerInfo);
+        }
     }
 }
