@@ -205,6 +205,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You moved up to {Name} rank, congratulations!.
+        /// </summary>
+        internal static string NextRank {
+            get {
+                return ResourceManager.GetString("NextRank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password cannot be empty.
         /// </summary>
         internal static string PasswordCannotBeEmpty {
@@ -237,6 +246,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PlayerNotFound {
             get {
                 return ResourceManager.GetString("PlayerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have gained +100 points, +100 armour, and +100 health.
+        /// </summary>
+        internal static string RankUpAward {
+            get {
+                return ResourceManager.GetString("RankUpAward", resourceCulture);
             }
         }
         
