@@ -3,13 +3,15 @@
 internal class FakePlayer
 {
     private const int NoSkin = -1;
-    public FakePlayer() { }
+    public FakePlayer() => Id = PlayerIdValueGenerator.Instance.Next();
     public FakePlayer(string name, string passwordHash)
     {
+        Id = PlayerIdValueGenerator.Instance.Next();
         Name = name;
         PasswordHash = passwordHash;
     }
 
+    public int Id { get; }
     public string Name { get; set; }
     public string PasswordHash { get; set; }
     public int TotalKills { get; set; }

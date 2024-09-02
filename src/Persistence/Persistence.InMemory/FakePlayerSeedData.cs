@@ -7,7 +7,7 @@ internal static class FakePlayerSeedData
     /// This password is for test purposes only.
     /// </summary>
     private const string Password = "$2a$10$60QnEiafBCLfVBMfQkExVeolyBxVHWcSQKTvkxVJj9FUozRpRP/GW";
-    public static Dictionary<string, FakePlayer> Create()
+    public static Dictionary<int, FakePlayer> Create()
     {
         FakePlayer[] players =
         [
@@ -44,6 +44,6 @@ internal static class FakePlayerSeedData
                 SkinId = 146
             }
         ];
-        return players.ToDictionary(player => player.Name, player => player);
+        return players.ToDictionary(player => player.Id, player => player);
     }
 }
