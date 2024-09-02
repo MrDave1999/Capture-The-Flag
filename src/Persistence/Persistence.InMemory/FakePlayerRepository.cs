@@ -1,21 +1,28 @@
 ﻿namespace Persistence.InMemory;
 
 internal class FakePlayerRepository(
-    Dictionary<string, FakePlayer> players,
+    Dictionary<int, FakePlayer> players,
     IPasswordHasher passwordHasher) : IPlayerRepository
 {
     public void Create(PlayerInfo player)
     {
         var passwordHash = passwordHasher.HashPassword(player.Password);
-        players.Add(player.Name, new FakePlayer(player.Name, passwordHash));
+        var fakePlayer = new FakePlayer(player.Name, passwordHash);
+        players.Add(fakePlayer.Id, fakePlayer);
+        // The Account ID is immutable and lacks a public setter; Reflection is used to modify it.
+        player.SetValue(value: fakePlayer.Id, propertyName: nameof(PlayerInfo.AccountId));
     }
 
     public bool Exists(string name)
-        => players.TryGetValue(name, out _);
+        => players.Any(player => player.Value.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
     public PlayerInfo GetOrDefault(EntityId playerId, string name)
     {
-        players.TryGetValue(name, out FakePlayer fakePlayer);
+        FakePlayer fakePlayer = players
+            .Where(player => player.Value.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+            .Select(player => player.Value)
+            .FirstOrDefault();
+
         if (fakePlayer is null)
             return default;
 
@@ -32,6 +39,7 @@ internal class FakePlayerRepository(
         playerInfo.SetSkin(fakePlayer.SkinId);
         // Reflection is used here because these properties are immutable.
         // What we did here is what ORMs like EF Core do, so it's nothing new.
+        playerInfo.SetValue(value: fakePlayer.Id,             propertyName: nameof(PlayerInfo.AccountId));
         playerInfo.SetValue(value: fakePlayer.BroughtFlags,   propertyName: nameof(PlayerInfo.BroughtFlags));
         playerInfo.SetValue(value: fakePlayer.CapturedFlags,  propertyName: nameof(PlayerInfo.CapturedFlags));
         playerInfo.SetValue(value: fakePlayer.DroppedFlags,   propertyName: nameof(PlayerInfo.DroppedFlags));
@@ -43,44 +51,44 @@ internal class FakePlayerRepository(
     }
 
     public void UpdateBroughtFlags(PlayerInfo player) 
-        => players[player.Name].BroughtFlags = player.BroughtFlags;
+        => players[player.AccountId].BroughtFlags = player.BroughtFlags;
 
     public void UpdateCapturedFlags(PlayerInfo player)
-        => players[player.Name].CapturedFlags = player.CapturedFlags;
+        => players[player.AccountId].CapturedFlags = player.CapturedFlags;
 
     public void UpdateDroppedFlags(PlayerInfo player)
-        => players[player.Name].DroppedFlags = player.DroppedFlags;
+        => players[player.AccountId].DroppedFlags = player.DroppedFlags;
 
     public void UpdateReturnedFlags(PlayerInfo player)
-        => players[player.Name].ReturnedFlags = player.ReturnedFlags;
+        => players[player.AccountId].ReturnedFlags = player.ReturnedFlags;
 
     public void UpdateHeadShots(PlayerInfo player)
-        => players[player.Name].HeadShots = player.HeadShots;
+        => players[player.AccountId].HeadShots = player.HeadShots;
 
     public void UpdateLastConnection(PlayerInfo player)
-        => players[player.Name].LastConnection = player.LastConnection;
+        => players[player.AccountId].LastConnection = player.LastConnection;
 
     public void UpdateMaxKillingSpree(PlayerInfo player)
-        => players[player.Name].MaxKillingSpree = player.MaxKillingSpree;
+        => players[player.AccountId].MaxKillingSpree = player.MaxKillingSpree;
 
     public void UpdateName(PlayerInfo player)
-        => players[player.Name].Name = player.Name;
+        => players[player.AccountId].Name = player.Name;
 
     public void UpdatePassword(PlayerInfo player)
-       => players[player.Name].PasswordHash = passwordHasher.HashPassword(player.Password);
+       => players[player.AccountId].PasswordHash = passwordHasher.HashPassword(player.Password);
 
     public void UpdateRank(PlayerInfo player)
-        => players[player.Name].RankId = player.RankId;
+        => players[player.AccountId].RankId = player.RankId;
 
     public void UpdateRole(PlayerInfo player)
-        => players[player.Name].RoleId = player.RoleId;
+        => players[player.AccountId].RoleId = player.RoleId;
 
     public void UpdateSkin(PlayerInfo player)
-        => players[player.Name].SkinId = player.SkinId;
+        => players[player.AccountId].SkinId = player.SkinId;
 
     public void UpdateTotalDeaths(PlayerInfo player)
-        => players[player.Name].TotalDeaths = player.TotalDeaths;
+        => players[player.AccountId].TotalDeaths = player.TotalDeaths;
 
     public void UpdateTotalKills(PlayerInfo player)
-        => players[player.Name].TotalKills = player.TotalKills;
+        => players[player.AccountId].TotalKills = player.TotalKills;
 }
