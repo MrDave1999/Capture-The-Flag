@@ -70,6 +70,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {OldName} changed their name to {NewName}.
+        /// </summary>
+        internal static string ChangeName {
+            get {
+                return ResourceManager.GetString("ChangeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have successfully registered. Password: {Password}.
         /// </summary>
         internal static string CreatePlayerAccount {
@@ -228,6 +237,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PasswordLength {
             get {
                 return ResourceManager.GetString("PasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That player name already exists.
+        /// </summary>
+        internal static string PlayerNameAlreadyExists {
+            get {
+                return ResourceManager.GetString("PlayerNameAlreadyExists", resourceCulture);
             }
         }
         
