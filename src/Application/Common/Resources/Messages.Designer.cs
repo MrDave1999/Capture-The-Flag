@@ -70,15 +70,6 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {OldName} changed their name to {NewName}.
-        /// </summary>
-        internal static string ChangeName {
-            get {
-                return ResourceManager.GetString("ChangeName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You have successfully registered. Password: {Password}.
         /// </summary>
         internal static string CreatePlayerAccount {
@@ -214,6 +205,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {OldName} changed their name to {NewName}.
+        /// </summary>
+        internal static string NameSuccessfullyChanged {
+            get {
+                return ResourceManager.GetString("NameSuccessfullyChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You moved up to {Name} rank, congratulations!.
         /// </summary>
         internal static string NextRank {
@@ -237,6 +237,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PasswordLength {
             get {
                 return ResourceManager.GetString("PasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password successfully changed. New password: {NewPassword}.
+        /// </summary>
+        internal static string PasswordSuccessfullyChanged {
+            get {
+                return ResourceManager.GetString("PasswordSuccessfullyChanged", resourceCulture);
             }
         }
         
