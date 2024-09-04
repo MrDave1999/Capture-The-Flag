@@ -14,9 +14,9 @@ public class HasCapturedFlagTests
     {
         // Arrange
         var fakePlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.NoTeam);
-        var player = new PlayerInfo(fakePlayer.Entity);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.NoTeam);
-        player.SetName("Bob");
+        player.SetName(fakePlayer.Name);
 
         // Act
         bool actual = player.HasCapturedFlag();
@@ -25,13 +25,15 @@ public class HasCapturedFlagTests
         actual.Should().BeFalse();
     }
 
-    [Test]
-    public void HasCapturedFlag_WhenPlayerFromTheAlphaTeamHasCapturedTheFlagOfTheBetaTeam_ShouldReturnsTrue()
+    [TestCase("Bob")]
+    [TestCase("BOB")]
+    [TestCase("bob")]
+    public void HasCapturedFlag_WhenPlayerFromTheAlphaTeamHasCapturedTheFlagOfTheBetaTeam_ShouldReturnsTrue(string playerName)
     {
         // Arrange
         Team betaTeam = Team.Beta;
-        var alphaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.Alpha);
-        var player = new PlayerInfo(alphaTeamPlayer.Entity);
+        var alphaTeamPlayer = new FakePlayer(id: 1, playerName, team: TeamId.Alpha);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.Alpha);
         player.SetName("Bob");
         betaTeam.Flag.SetCarrier(alphaTeamPlayer);
@@ -43,13 +45,15 @@ public class HasCapturedFlagTests
         actual.Should().BeTrue();
     }
 
-    [Test]
-    public void HasCapturedFlag_WhenPlayerFromTheBetaTeamHasCapturedTheFlagOfTheAlphaTeam_ShouldReturnsTrue()
+    [TestCase("Bob")]
+    [TestCase("BOB")]
+    [TestCase("bob")]
+    public void HasCapturedFlag_WhenPlayerFromTheBetaTeamHasCapturedTheFlagOfTheAlphaTeam_ShouldReturnsTrue(string playerName)
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
-        var betaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.Beta);
-        var player = new PlayerInfo(betaTeamPlayer.Entity);
+        var betaTeamPlayer = new FakePlayer(id: 1, playerName, team: TeamId.Beta);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.Beta);
         player.SetName("Bob");
         alphaTeam.Flag.SetCarrier(betaTeamPlayer);
@@ -68,9 +72,9 @@ public class HasCapturedFlagTests
         Team betaTeam = Team.Beta;
         var alphaTeamPlayer1 = new FakePlayer(id: 1, name: "Bob", team: TeamId.Alpha);
         var alphaTeamPlayer2 = new FakePlayer(id: 2, name: "Alice", team: TeamId.Alpha);
-        var player = new PlayerInfo(alphaTeamPlayer1.Entity);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.Alpha);
-        player.SetName("Bob");
+        player.SetName(alphaTeamPlayer1.Name);
         betaTeam.Flag.SetCarrier(alphaTeamPlayer2);
 
         // Act
@@ -87,9 +91,9 @@ public class HasCapturedFlagTests
         Team alphaTeam = Team.Alpha;
         var betaTeamPlayer1 = new FakePlayer(id: 1, name: "Bob", team: TeamId.Beta);
         var betaTeamPlayer2 = new FakePlayer(id: 2, name: "Alice", team: TeamId.Beta);
-        var player = new PlayerInfo(betaTeamPlayer1.Entity);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.Beta);
-        player.SetName("Bob");
+        player.SetName(betaTeamPlayer1.Name);
         alphaTeam.Flag.SetCarrier(betaTeamPlayer2);
 
         // Act
@@ -105,9 +109,9 @@ public class HasCapturedFlagTests
         // Arrange
         Team alphaTeam = Team.Alpha;
         var betaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.Beta);
-        var player = new PlayerInfo(betaTeamPlayer.Entity);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.Beta);
-        player.SetName("Bob");
+        player.SetName(betaTeamPlayer.Name);
         alphaTeam.Flag.RemoveCarrier();
 
         // Act
@@ -123,9 +127,9 @@ public class HasCapturedFlagTests
         // Arrange
         Team betaTeam = Team.Beta;
         var alphaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: TeamId.Alpha);
-        var player = new PlayerInfo(alphaTeamPlayer.Entity);
+        var player = new PlayerInfo();
         player.SetTeam(TeamId.Alpha);
-        player.SetName("Bob");
+        player.SetName(alphaTeamPlayer.Name);
         betaTeam.Flag.RemoveCarrier();
 
         // Act

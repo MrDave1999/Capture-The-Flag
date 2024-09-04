@@ -25,10 +25,10 @@ public class AccountSystem(
     [Event]
     public void OnPlayerConnect(ConnectedPlayer connectedPlayer)
     {
-        PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Entity, connectedPlayer.Name);
+        PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
         if(playerInfo is null)
         {
-            ShowSignupDialog(connectedPlayer, new PlayerInfo(connectedPlayer.Entity));
+            ShowSignupDialog(connectedPlayer, new PlayerInfo());
             return;
         }
         ShowLoginDialog(connectedPlayer, playerInfo);

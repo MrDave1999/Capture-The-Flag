@@ -16,7 +16,7 @@ internal class FakePlayerRepository(
     public bool Exists(string name)
         => players.Any(player => player.Value.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
-    public PlayerInfo GetOrDefault(EntityId playerId, string name)
+    public PlayerInfo GetOrDefault(string name)
     {
         FakePlayer fakePlayer = players
             .Where(player => player.Value.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
@@ -26,7 +26,7 @@ internal class FakePlayerRepository(
         if (fakePlayer is null)
             return default;
 
-        var playerInfo = new PlayerInfo(playerId);
+        var playerInfo = new PlayerInfo();
         playerInfo.SetName(fakePlayer.Name);
         // The public setter is used only for plaintext passwords.
         // For that reason, we use Reflection to set the already encrypted password.

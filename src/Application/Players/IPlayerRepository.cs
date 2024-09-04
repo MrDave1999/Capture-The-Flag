@@ -2,7 +2,7 @@
 
 public interface IPlayerRepository
 {
-    PlayerInfo GetOrDefault(EntityId playerId, string name);
+    PlayerInfo GetOrDefault(string name);
     bool Exists(string name);
     void Create(PlayerInfo player);
     void UpdateName(PlayerInfo player);
