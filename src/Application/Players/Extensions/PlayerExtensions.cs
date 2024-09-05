@@ -10,13 +10,13 @@ public static class PlayerExtensions
     /// An instance of type <see cref="PlayerInfo"/>.
     /// </returns>
     /// <exception cref="InvalidOperationException">
-    /// when the player is not assigned the <see cref="AccountComponent"/> component.
+    /// when the <see cref="AccountComponent"/> component is not attached to the player.
     /// </exception>
     public static PlayerInfo GetInfo(this Player player)
     {
         AccountComponent accountComponent = player.GetComponent<AccountComponent>();
         return accountComponent is null ?
-            throw new InvalidOperationException($"The player is not assigned the {nameof(AccountComponent)} component") :
+            throw new InvalidOperationException($"The '{nameof(AccountComponent)}' component is not attached to the player") :
             accountComponent.PlayerInfo;
     }
 }
