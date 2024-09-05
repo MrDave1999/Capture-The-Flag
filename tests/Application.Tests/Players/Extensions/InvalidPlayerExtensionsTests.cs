@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Tests.Players;
+﻿namespace CTF.Application.Tests.Players.Extensions;
 
 public class InvalidPlayerExtensionsTests
 {

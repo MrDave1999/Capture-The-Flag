@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players;
+﻿namespace CTF.Application.Players.Extensions;
 
 public static class InvalidPlayerExtensions
 {

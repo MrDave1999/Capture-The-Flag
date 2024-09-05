@@ -88,6 +88,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You do not have enough points to obtain this combo.
+        /// </summary>
+        internal static string InsufficientPoints {
+            get {
+                return ResourceManager.GetString("InsufficientPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The interval must be between 0 to {Max}.
         /// </summary>
         internal static string InvalidInterval {
@@ -282,6 +291,15 @@ namespace CTF.Application.Common.Resources {
         internal static string RankUpAward {
             get {
                 return ResourceManager.GetString("RankUpAward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} redeemed their points for the benefit: {BenefitName}.
+        /// </summary>
+        internal static string RedeemedPoints {
+            get {
+                return ResourceManager.GetString("RedeemedPoints", resourceCulture);
             }
         }
         
