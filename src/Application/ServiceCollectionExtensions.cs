@@ -6,7 +6,8 @@ public static class ApplicationServicesExtensions
     {
         services
             .AddSingleton<ServerTimeService>()
-            .AddSingleton<MapInfoService>();
+            .AddSingleton<MapInfoService>()
+            .AddComboServices();
 
         return services;
     }
