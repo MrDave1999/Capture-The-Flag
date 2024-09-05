@@ -43,16 +43,21 @@ public class HealthArmourExtensionsTests
         player.Health.Should().Be(expectedHealth);
     }
 
-    [Test]
-    public void AddHealth_WhenAmountIsNegative_ShouldConvertToPositiveAndIncreaseHealth()
+    [TestCase(50, -20, 70)]
+    [TestCase(99, -1, 100)]
+    [TestCase(98, -2, 100)]
+    [TestCase(80, -20, 100)]
+    [TestCase(70, -10, 80)]
+    public void AddHealth_WhenAmountIsNegative_ShouldConvertToPositiveAndIncreaseHealth(
+        float currentHealth,
+        float amount,
+        float expectedHealth)
     {
         // Arrange
         var player = new FakePlayer(id: 1, name: "Bob")
         {
-            Health = 50
+            Health = currentHealth
         };
-        float amount = -20;
-        float expectedHealth = 70;
 
         // Act
         player.AddHealth(amount);
@@ -138,16 +143,21 @@ public class HealthArmourExtensionsTests
         player.Armour.Should().Be(expectedArmour);
     }
 
-    [Test]
-    public void AddArmour_WhenAmountIsNegative_ShouldConvertToPositiveAndIncreaseArmour()
+    [TestCase(50, -20, 70)]
+    [TestCase(99, -1, 100)]
+    [TestCase(98, -2, 100)]
+    [TestCase(80, -20, 100)]
+    [TestCase(70, -10, 80)]
+    public void AddArmour_WhenAmountIsNegative_ShouldConvertToPositiveAndIncreaseArmour(
+        float currentArmour,
+        float amount,
+        float expectedArmour)
     {
         // Arrange
         var player = new FakePlayer(id: 1, name: "Bob")
         {
-            Armour = 50
+            Armour = currentArmour
         };
-        float amount = -20;
-        float expectedArmour = 70;
 
         // Act
         player.AddArmour(amount);
