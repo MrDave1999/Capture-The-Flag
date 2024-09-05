@@ -22,7 +22,7 @@ public class PlayerSystem(IPlayerRepository playerRepository) : ISystem
         if (killer.IsInvalidPlayer())
             return;
 
-        PlayerInfo killerInfo = killer.GetComponent<AccountComponent>().PlayerInfo;
+        PlayerInfo killerInfo = killer.GetInfo();
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
         playerRepository.UpdateTotalKills(killerInfo);

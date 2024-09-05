@@ -26,7 +26,7 @@ public class ChangePasswordSystem(
 
     private void ChangePassword(Player player, string enteredPassword)
     {
-        PlayerInfo playerInfo = player.GetComponent<AccountComponent>().PlayerInfo;
+        PlayerInfo playerInfo = player.GetInfo();
         Result result = playerInfo.SetPassword(enteredPassword);
         if (result.IsFailed)
         {

@@ -5,7 +5,7 @@ public class PlayerStatsSystem(IDialogService dialogService) : ISystem
     [PlayerCommand("stats")]
     public void ShowStats(Player player)
     {
-        PlayerInfo playerInfo = player.GetComponent<AccountComponent>().PlayerInfo;
+        PlayerInfo playerInfo = player.GetInfo();
         var content =
         $"""
         Kills for Round: {playerInfo.StatsPerRound.Kills}
