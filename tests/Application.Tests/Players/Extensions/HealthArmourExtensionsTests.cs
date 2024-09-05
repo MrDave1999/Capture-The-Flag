@@ -2,16 +2,21 @@
 
 public class HealthArmourExtensionsTests
 {
-    [Test]
-    public void AddHealth_WhenAmountIsPositiveAndBelowLimit_ShouldIncreaseHealth()
+    [TestCase(50, 20, 70)]
+    [TestCase(90, 10, 100)]
+    [TestCase(80, 20, 100)]
+    [TestCase(70, 10, 80)]
+    [TestCase(100, 0, 100)]
+    public void AddHealth_WhenAmountIsPositiveAndBelowLimit_ShouldIncreaseHealth(
+        float currentHealth, 
+        float amount,
+        float expectedHealth)
     {
         // Arrange
         var player = new FakePlayer(id: 1, name: "Bob")
         {
-            Health = 50
+            Health = currentHealth
         };
-        int amount = 20;
-        int expectedHealth = 70;
 
         // Act
         player.AddHealth(amount);
@@ -28,8 +33,8 @@ public class HealthArmourExtensionsTests
         {
             Health = 90
         };
-        int amount = 20;
-        int expectedHealth = 100;
+        float amount = 20;
+        float expectedHealth = 100;
 
         // Act
         player.AddHealth(amount);
@@ -46,8 +51,8 @@ public class HealthArmourExtensionsTests
         {
             Health = 50
         };
-        int amount = -20;
-        int expectedHealth = 70;
+        float amount = -20;
+        float expectedHealth = 70;
 
         // Act
         player.AddHealth(amount);
@@ -64,8 +69,8 @@ public class HealthArmourExtensionsTests
         {
             Health = 50
         };
-        int amount = 0;
-        int expectedHealth = 50;
+        float amount = 0;
+        float expectedHealth = 50;
 
         // Act
         player.AddHealth(amount);
@@ -82,8 +87,8 @@ public class HealthArmourExtensionsTests
         {
             Health = 100
         };
-        int amount = 10;
-        int expectedHealth = 100;
+        float amount = 10;
+        float expectedHealth = 100;
 
         // Act
         player.AddHealth(amount);
@@ -92,16 +97,21 @@ public class HealthArmourExtensionsTests
         player.Health.Should().Be(expectedHealth);
     }
 
-    [Test]
-    public void AddArmour_WhenAmountIsPositiveAndBelowLimit_ShouldIncreaseArmour()
+    [TestCase(50, 20, 70)]
+    [TestCase(90, 10, 100)]
+    [TestCase(80, 20, 100)]
+    [TestCase(70, 10, 80)]
+    [TestCase(100, 0, 100)]
+    public void AddArmour_WhenAmountIsPositiveAndBelowLimit_ShouldIncreaseArmour(
+        float currentArmour,
+        float amount,
+        float expectedArmour)
     {
         // Arrange
         var player = new FakePlayer(id: 1, name: "Bob")
         {
-            Armour = 50
+            Armour = currentArmour
         };
-        int amount = 20;
-        int expectedArmour = 70;
 
         // Act
         player.AddArmour(amount);
@@ -118,8 +128,8 @@ public class HealthArmourExtensionsTests
         {
             Armour = 90
         };
-        int amount = 20;
-        int expectedArmour = 100;
+        float amount = 20;
+        float expectedArmour = 100;
 
         // Act
         player.AddArmour(amount);
@@ -136,8 +146,8 @@ public class HealthArmourExtensionsTests
         {
             Armour = 50
         };
-        int amount = -20;
-        int expectedArmour = 70;
+        float amount = -20;
+        float expectedArmour = 70;
 
         // Act
         player.AddArmour(amount);
@@ -154,8 +164,8 @@ public class HealthArmourExtensionsTests
         {
             Armour = 50
         };
-        int amount = 0;
-        int expectedArmour = 50;
+        float amount = 0;
+        float expectedArmour = 50;
 
         // Act
         player.AddArmour(amount);
@@ -172,8 +182,8 @@ public class HealthArmourExtensionsTests
         {
             Armour = 100
         };
-        int amount = 10;
-        int expectedArmour = 100;
+        float amount = 10;
+        float expectedArmour = 100;
 
         // Act
         player.AddArmour(amount);
