@@ -7,7 +7,7 @@ public static class HealthArmourExtensions
     /// </summary>
     /// <param name="player">The current player.</param>
     /// <param name="amount">The amount of health to be added.</param>
-    public static void AddHealth(this Player player, int amount)
+    public static void AddHealth(this Player player, float amount)
     {
         if(amount < 0) 
             amount = -amount;
@@ -23,7 +23,7 @@ public static class HealthArmourExtensions
     /// </summary>
     /// <param name="player">The current player.</param>
     /// <param name="amount">The amount of armour to be added.</param>
-    public static void AddArmour(this Player player, int amount)
+    public static void AddArmour(this Player player, float amount)
     {
         if (amount < 0)
             amount = -amount;
