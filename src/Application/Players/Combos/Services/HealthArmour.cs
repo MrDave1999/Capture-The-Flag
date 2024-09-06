@@ -1,6 +1,6 @@
-﻿namespace CTF.Application.Players.Combos.Benefits;
+﻿namespace CTF.Application.Players.Combos.Services;
 
-public class HealthArmour : IBenefit
+public class HealthArmour : ICombo
 {
     public string Name => "100 Health, 100 Armour and FlameThrower";
     public int RequiredPoints => 100;

@@ -1,6 +1,6 @@
-﻿namespace CTF.Application.Players.Combos.Benefits;
+﻿namespace CTF.Application.Players.Combos.Services;
 
-public class TearGasHealth : IBenefit
+public class TearGasHealth : ICombo
 {
     public string Name => "20 Tear gas and 30 Health";
     public int RequiredPoints => 20;
