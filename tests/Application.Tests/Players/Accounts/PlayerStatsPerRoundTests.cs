@@ -173,7 +173,7 @@ public class PlayerStatsPerRoundTests
     }
 
     [Test]
-    public void AddKills_WhenKillIsAdded_ShouldUpdateKills()
+    public void AddKills_WhenCalledTwice_ShouldBeIncreasedTo2()
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -188,7 +188,7 @@ public class PlayerStatsPerRoundTests
     }
 
     [Test]
-    public void AddDeaths_WhenDeathIsAdded_ShouldUpdateDeaths()
+    public void AddDeaths_WhenCalledTwice_ShouldBeIncreasedTo2()
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -203,7 +203,7 @@ public class PlayerStatsPerRoundTests
     }
 
     [Test]
-    public void AddKillingSpree_WhenKillingSpreeIsAdded_ShouldUpdateKillingSpree()
+    public void AddKillingSpree_WhenCalledTwice_ShouldBeIncreasedTo2()
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
@@ -218,7 +218,7 @@ public class PlayerStatsPerRoundTests
     }
 
     [Test]
-    public void ResetStats_WhenStatsAreReset_ShouldUpdateStats()
+    public void ResetStats_WhenCalled_ShouldResetAllStatsToZero()
     {
         // Arrange
         var stats = new PlayerStatsPerRound();

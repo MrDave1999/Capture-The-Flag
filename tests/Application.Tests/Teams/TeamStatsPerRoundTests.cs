@@ -3,7 +3,7 @@
 public class TeamStatsPerRoundTests
 {
     [Test]
-    public void AddScore_WhenScoreIsAdded_ShouldUpdateScore()
+    public void AddScore_WhenCalledTwice_ShouldBeIncreasedTo2()
     {
         // Arrange
         var stats = new TeamStatsPerRound();
@@ -18,7 +18,7 @@ public class TeamStatsPerRoundTests
     }
 
     [Test]
-    public void AddKills_WhenKillIsAdded_ShouldUpdateKills()
+    public void AddKills_WhenCalledTwice_ShouldBeIncreasedTo2()
     {
         // Arrange
         var stats = new TeamStatsPerRound();
@@ -33,7 +33,7 @@ public class TeamStatsPerRoundTests
     }
 
     [Test]
-    public void AddDeaths_WhenDeathIsAdded_ShouldUpdateDeaths()
+    public void AddDeaths_WhenCalledTwice_ShouldBeIncreasedTo2()
     {
         // Arrange
         var stats = new TeamStatsPerRound();
@@ -48,7 +48,7 @@ public class TeamStatsPerRoundTests
     }
 
     [Test]
-    public void Reset_WhenStatsAreReset_ShouldUpdateStats()
+    public void Reset_WhenCalled_ShouldResetAllStatsToZero()
     {
         // Arrange
         var stats = new TeamStatsPerRound();
