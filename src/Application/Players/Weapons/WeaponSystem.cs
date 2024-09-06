@@ -2,6 +2,15 @@
 
 public class WeaponSystem : ISystem
 {
+    private readonly ListDialog _weaponsDialog;
+    public WeaponSystem()
+    {
+        _weaponsDialog = new ListDialog("Weapons", "Select", "Close");
+        var weapons = GtaWeapons.GetAll();
+        foreach (IWeapon weapon in weapons)
+            _weaponsDialog.Add(weapon.Name);
+    }
+
     [Event]
     public void OnPlayerConnect(Player player)
     {
@@ -27,12 +36,7 @@ public class WeaponSystem : ISystem
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
-        var dialog = new ListDialog("Weapons", "Select", "Close");
-        var weapons = GtaWeapons.GetAll();
-        foreach (IWeapon weapon in weapons)
-            dialog.Add(weapon.Name);
-
-        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
+        ListDialogResponse response = await dialogService.ShowAsync(player, _weaponsDialog);
         if (response.Response == DialogResponse.RightButtonOrCancel)
             return;
 
