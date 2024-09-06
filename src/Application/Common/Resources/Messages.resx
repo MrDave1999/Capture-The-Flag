@@ -196,7 +196,7 @@
     <value>You have gained +100 points, +100 armour, and +100 health</value>
   </data>
   <data name="RedeemedPoints" xml:space="preserve">
-    <value>{PlayerName} redeemed their points for the benefit: {BenefitName}</value>
+    <value>{PlayerName} redeemed their points for the combo: {ComboName}</value>
   </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>

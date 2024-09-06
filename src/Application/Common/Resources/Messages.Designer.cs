@@ -295,7 +295,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} redeemed their points for the benefit: {BenefitName}.
+        ///   Looks up a localized string similar to {PlayerName} redeemed their points for the combo: {ComboName}.
         /// </summary>
         internal static string RedeemedPoints {
             get {
