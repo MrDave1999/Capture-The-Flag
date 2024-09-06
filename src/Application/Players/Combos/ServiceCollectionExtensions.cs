@@ -5,11 +5,11 @@ public static class ComboServicesExtensions
     public static IServiceCollection AddComboServices(this IServiceCollection services)
     {
         services
-            .AddSingleton<ICombo, HealthArmour>()
-            .AddSingleton<ICombo, GrenadesArmour>()
-            .AddSingleton<ICombo, MolotovArmour>()
-            .AddSingleton<ICombo, SatchelChargesArmour>()
-            .AddSingleton<ICombo, TearGasHealth>();
+            .AddSingleton<ICombo, FlamethrowerVitality>()
+            .AddSingleton<ICombo, GrenadesVitality>()
+            .AddSingleton<ICombo, MolotovVitality>()
+            .AddSingleton<ICombo, SatchelChargesVitality>()
+            .AddSingleton<ICombo, TearGasVitality>();
 
         return services;
     }

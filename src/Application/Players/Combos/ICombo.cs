@@ -6,7 +6,18 @@
 /// </summary>
 public interface ICombo
 {
+    /// <summary>
+    /// Gets the name of a combo, e.g., 100 Health and 100 Armour.
+    /// </summary>
     string Name { get; }
+
+    /// <summary>
+    /// Gets the required points that a player must have to acquire the combo.
+    /// </summary>
     int RequiredPoints { get; }
+
+    /// <summary>
+    /// Assigns a combo to a player, e.g., 100 Health and 100 Armour.
+    /// </summary>
     void Give(Player player);
 }

@@ -54,6 +54,5 @@ public class ComboSystem : ISystem
         });
         _worldService.SendClientMessage(Color.Yellow, message);
         selectedCombo.Give(player);
-        ShowCombos(player);
     }
 }
