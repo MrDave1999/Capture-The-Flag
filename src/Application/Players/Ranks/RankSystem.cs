@@ -2,23 +2,28 @@
 
 public class RankSystem : ISystem
 {
-    [PlayerCommand("ranks")]
-    public void ShowRanks(Player player, IDialogService dialogService)
+    private readonly TablistDialog _tablistDialog;
+    public RankSystem()
     {
-        var columnHeaders = new[] 
+        var columnHeaders = new[]
         {
             "Rank",
             "Total Required Kills"
         };
-        var dialog = new TablistDialog(
-            caption: "Ranks", 
-            button1: "Close", 
+        _tablistDialog = new TablistDialog(
+            caption: "Ranks",
+            button1: "Close",
             button2: null,
             columnHeaders);
+
         var ranks = RankCollection.GetAll();
         foreach (IRank rank in ranks)
-            dialog.Add(rank.Name, rank.RequiredKills.ToString());
+            _tablistDialog.Add(rank.Name, rank.RequiredKills.ToString());
+    }
 
-        dialogService.ShowAsync(player, dialog);
+    [PlayerCommand("ranks")]
+    public void ShowRanks(Player player, IDialogService dialogService)
+    {
+        dialogService.ShowAsync(player, _tablistDialog);
     }
 }
