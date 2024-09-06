@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Combos.Benefits;
 
-public class MolotovAmour : IBenefit
+public class MolotovArmour : IBenefit
 {
     public string Name => "2 Molotov cocktail and 20 Armour";
     public int RequiredPoints => 25;
