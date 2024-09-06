@@ -7,8 +7,8 @@ public static class ComboServicesExtensions
         services
             .AddSingleton<IBenefit, HealthArmour>()
             .AddSingleton<IBenefit, GrenadesArmour>()
-            .AddSingleton<IBenefit, MolotovAmour>()
-            .AddSingleton<IBenefit, SatchelChargesAmour>()
+            .AddSingleton<IBenefit, MolotovArmour>()
+            .AddSingleton<IBenefit, SatchelChargesArmour>()
             .AddSingleton<IBenefit, TearGasHealth>();
 
         return services;
