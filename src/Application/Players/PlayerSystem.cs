@@ -26,6 +26,11 @@ public class PlayerSystem(IPlayerRepository playerRepository) : ISystem
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
         playerRepository.UpdateTotalKills(killerInfo);
+        SetNextRank(killer, killerInfo);
+    }
+
+    private void SetNextRank(Player killer, PlayerInfo killerInfo)
+    {
         if (killerInfo.CanMoveUpToNextRank())
         {
             IRank nextRank = RankCollection.GetNextRank(killerInfo.RankId).Value;
