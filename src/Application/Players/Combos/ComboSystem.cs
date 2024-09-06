@@ -5,16 +5,16 @@ public class ComboSystem : ISystem
     private readonly IDialogService _dialogService;
     private readonly TablistDialog _tablistDialog;
     private readonly IWorldService _worldService;
-    private readonly IEnumerable<IBenefit> _benefits;
+    private readonly IEnumerable<ICombo> _combos;
 
     public ComboSystem(
         IDialogService dialogService,
         IWorldService worldService,
-        IEnumerable<IBenefit> benefits)
+        IEnumerable<ICombo> combos)
     {
         _dialogService = dialogService;
         _worldService = worldService;
-        _benefits = benefits;
+        _combos = combos;
         var columnHeaders = new[]
         {
             "Combo",
@@ -26,8 +26,8 @@ public class ComboSystem : ISystem
             button2: "Close",
             columnHeaders);
 
-        foreach (IBenefit benefit in benefits)
-            _tablistDialog.Add(benefit.Name, benefit.RequiredPoints.ToString());
+        foreach (ICombo combo in combos)
+            _tablistDialog.Add(combo.Name, combo.RequiredPoints.ToString());
     }
 
     [PlayerCommand("combos")]
@@ -38,9 +38,9 @@ public class ComboSystem : ISystem
             return;
 
         string selectedItemName = response.Item.Columns[0];
-        IBenefit selectedBenefit = _benefits.First(benefit => benefit.Name == selectedItemName);
+        ICombo selectedCombo = _combos.First(combo => combo.Name == selectedItemName);
         PlayerStatsPerRound playerStats = player.GetInfo().StatsPerRound;
-        if(playerStats.HasInsufficientPoints(selectedBenefit.RequiredPoints))
+        if(playerStats.HasInsufficientPoints(selectedCombo.RequiredPoints))
         {
             player.SendClientMessage(Color.Red, Messages.InsufficientPoints);
             ShowCombos(player);
@@ -50,10 +50,10 @@ public class ComboSystem : ISystem
         var message = Smart.Format(Messages.RedeemedPoints, new 
         { 
             PlayerName  = player.Name,
-            BenefitName = selectedBenefit.Name
+            ComboName = selectedCombo.Name
         });
         _worldService.SendClientMessage(Color.Yellow, message);
-        selectedBenefit.Give(player);
+        selectedCombo.Give(player);
         ShowCombos(player);
     }
 }

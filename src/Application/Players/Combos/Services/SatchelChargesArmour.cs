@@ -1,6 +1,6 @@
-﻿namespace CTF.Application.Players.Combos.Benefits;
+﻿namespace CTF.Application.Players.Combos.Services;
 
-public class SatchelChargesArmour : IBenefit
+public class SatchelChargesArmour : ICombo
 {
     public string Name => "4 Satchel charges and 30 Armour";
     public int RequiredPoints => 40;
