@@ -22,7 +22,7 @@ global using CTF.Application.Common.Extensions;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.Ranks;
 global using CTF.Application.Players.Combos;
-global using CTF.Application.Players.Combos.Benefits;
+global using CTF.Application.Players.Combos.Services;
 global using CTF.Application.Players.Extensions;
 global using CTF.Application.Teams;
 global using CTF.Application.Teams.Flags;
