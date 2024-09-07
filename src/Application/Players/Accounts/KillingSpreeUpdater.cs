@@ -15,7 +15,7 @@ public class KillingSpreeUpdater(
             playerInfo.StatsPerRound.AddPoints(earnedPoints);
             player.AddHealth(10);
 
-            if (currentKillingSpree > playerInfo.MaxKillingSpree)
+            if (playerInfo.HasSurpassedMaxKillingSpree())
             {
                 playerInfo.SetMaxKillingSpree(currentKillingSpree);
                 playerRepository.UpdateMaxKillingSpree(playerInfo);
