@@ -1,10 +1,10 @@
 ﻿namespace CTF.Application.Players.Accounts;
 
-public class KillingSpreeUpgrade(
+public class KillingSpreeUpdater(
     IWorldService worldService,
     IPlayerRepository playerRepository)
 {
-    public void Increase(Player player, PlayerInfo playerInfo)
+    public void Update(Player player, PlayerInfo playerInfo)
     {
         playerInfo.StatsPerRound.AddKillingSpree();
         int currentKillingSpree = playerInfo.StatsPerRound.KillingSpree;

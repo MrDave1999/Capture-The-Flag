@@ -4,7 +4,7 @@ public class PlayerSystem(
     IWorldService worldService,
     IPlayerRepository playerRepository,
     RankUpgrade rankUpgrade,
-    KillingSpreeUpgrade killingSpreeUpgrade) : ISystem
+    KillingSpreeUpdater killingSpreeUpdater) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -49,7 +49,7 @@ public class PlayerSystem(
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
         playerRepository.UpdateTotalKills(killerInfo);
-        killingSpreeUpgrade.Increase(killer, killerInfo);
+        killingSpreeUpdater.Update(killer, killerInfo);
         rankUpgrade.RankUp(killer, killerInfo);
     }
 }
