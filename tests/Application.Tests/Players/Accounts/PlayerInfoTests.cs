@@ -98,7 +98,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalKills_WhenKillsIsNegative_ShouldReturnsFailureResult()
+    public void SetTotalKills_WhenArgumentIsNegative_ShouldReturnsFailureResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -115,7 +115,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalKills_WhenKillsIsPositive_ShouldReturnsSuccessResult()
+    public void SetTotalKills_WhenArgumentIsPositive_ShouldReturnsSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -130,7 +130,22 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalDeaths_WhenDeathsIsNegative_ShouldReturnsFailureResult()
+    public void AddTotalKills_WhenCalledTwice_ShouldBeIncreasedTo2()
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        int expectedKills = 2;
+
+        // Act
+        player.AddTotalKills();
+        player.AddTotalKills();
+
+        // Assert
+        player.TotalKills.Should().Be(expectedKills);
+    }
+
+    [Test]
+    public void SetTotalDeaths_WhenArgumentIsNegative_ShouldReturnsFailureResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -147,7 +162,7 @@ public class PlayerInfoTests
     }
 
     [Test]
-    public void SetTotalDeaths_WhenDeathsIsPositive_ShouldReturnsSuccessResult()
+    public void SetTotalDeaths_WhenArgumentIsPositive_ShouldReturnsSuccessResult()
     {
         // Arrange
         var player = new PlayerInfo();
@@ -159,6 +174,21 @@ public class PlayerInfoTests
         // Asserts
         result.IsSuccess.Should().BeTrue();
         player.TotalDeaths.Should().Be(deaths);
+    }
+
+    [Test]
+    public void AddTotalDeaths_WhenCalledTwice_ShouldBeIncreasedTo2()
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        int expectedDeaths = 2;
+
+        // Act
+        player.AddTotalDeaths();
+        player.AddTotalDeaths();
+
+        // Assert
+        player.TotalDeaths.Should().Be(expectedDeaths);
     }
 
     [Test]
