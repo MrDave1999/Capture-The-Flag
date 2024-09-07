@@ -1,6 +1,8 @@
 ﻿namespace CTF.Application.Players;
 
-public class PlayerSystem(IPlayerRepository playerRepository) : ISystem
+public class PlayerSystem(
+    IPlayerRepository playerRepository,
+    RankUpgrade rankUpgrade) : ISystem
 {
     [Event]
     public bool OnPlayerRequestSpawn(Player player)
@@ -26,21 +28,6 @@ public class PlayerSystem(IPlayerRepository playerRepository) : ISystem
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
         playerRepository.UpdateTotalKills(killerInfo);
-        SetNextRank(killer, killerInfo);
-    }
-
-    private void SetNextRank(Player killer, PlayerInfo killerInfo)
-    {
-        if (killerInfo.CanMoveUpToNextRank())
-        {
-            IRank nextRank = RankCollection.GetNextRank(killerInfo.RankId).Value;
-            killer.SendClientMessage(Color.Yellow, Smart.Format(Messages.NextRank, nextRank));
-            killer.SendClientMessage(Color.Orange, Messages.RankUpAward);
-            killer.Armour = 100;
-            killer.Health = 100;
-            killerInfo.StatsPerRound.AddPoints(100);
-            killerInfo.SetRank(nextRank.Id);
-            playerRepository.UpdateRank(killerInfo);
-        }
+        rankUpgrade.RankUp(killer, killerInfo);
     }
 }
