@@ -2,6 +2,7 @@
 
 public class PlayerStatsPerRound
 {
+    private const int RequiredNumberOfConsecutiveKills = 3;
     public int Kills { get; private set; }
     public int Deaths { get; private set; }
     public int KillingSpree { get; private set; }
@@ -12,6 +13,8 @@ public class PlayerStatsPerRound
     public void AddKillingSpree() => KillingSpree++;
     public bool HasSufficientPoints(int amount) => Points >= amount;
     public bool HasInsufficientPoints(int amount) => !HasSufficientPoints(amount);
+    public bool HasConsecutiveKills() 
+        => KillingSpree >= 3 && KillingSpree % RequiredNumberOfConsecutiveKills == 0;
 
     public Result AddPoints(int value)
     {
