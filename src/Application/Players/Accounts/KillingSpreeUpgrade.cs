@@ -21,7 +21,7 @@ public class KillingSpreeUpgrade(
                 playerRepository.UpdateMaxKillingSpree(playerInfo);
             }
 
-            if (playerInfo.StatsPerRound.HasConsecutiveKills())
+            if (currentKillingSpree % 3 == 0)
             {
                 var message = Smart.Format(Messages.ConsecutiveKills, new 
                 {
