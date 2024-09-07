@@ -120,6 +120,9 @@
   <data name="AddPoints" xml:space="preserve">
     <value>Points must be between 1 to 100</value>
   </data>
+  <data name="ConsecutiveKills" xml:space="preserve">
+    <value>{PlayerName} has had {Kills} consecutive kills without dying</value>
+  </data>
   <data name="CreatePlayerAccount" xml:space="preserve">
     <value>You have successfully registered. Password: {Password}</value>
   </data>
