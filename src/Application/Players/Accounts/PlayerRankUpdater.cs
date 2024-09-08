@@ -1,8 +1,8 @@
-﻿namespace CTF.Application.Players.Ranks;
+﻿namespace CTF.Application.Players.Accounts;
 
-public class RankUpgrade(IPlayerRepository playerRepository)
+public class PlayerRankUpdater(IPlayerRepository playerRepository)
 {
-    public void RankUp(Player player, PlayerInfo playerInfo)
+    public void Update(Player player, PlayerInfo playerInfo)
     {
         if (playerInfo.CanMoveUpToNextRank())
         {
