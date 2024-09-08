@@ -70,6 +70,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has had {Kills} consecutive kills without dying.
+        /// </summary>
+        internal static string ConsecutiveKills {
+            get {
+                return ResourceManager.GetString("ConsecutiveKills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have successfully registered. Password: {Password}.
         /// </summary>
         internal static string CreatePlayerAccount {

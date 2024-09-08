@@ -8,6 +8,7 @@ public static class ApplicationServicesExtensions
             .AddSingleton<ServerTimeService>()
             .AddSingleton<MapInfoService>()
             .AddSingleton<RankUpgrade>()
+            .AddSingleton<KillingSpreeUpdater>()
             .AddComboServices();
 
         return services;

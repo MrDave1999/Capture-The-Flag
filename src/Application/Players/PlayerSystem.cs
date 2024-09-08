@@ -1,9 +1,23 @@
 ﻿namespace CTF.Application.Players;
 
 public class PlayerSystem(
+    IWorldService worldService,
     IPlayerRepository playerRepository,
-    RankUpgrade rankUpgrade) : ISystem
+    RankUpgrade rankUpgrade,
+    KillingSpreeUpdater killingSpreeUpdater) : ISystem
 {
+    [Event]
+    public void OnPlayerConnect(Player player)
+    {
+        worldService.SendDeathMessage(killer: null, player, Weapon.Connect);
+    }
+
+    [Event]
+    public void OnPlayerDisconnect(Player player, DisconnectReason reason) 
+    {
+        worldService.SendDeathMessage(killer: null, player, Weapon.Disconnect);
+    }
+
     [Event]
     public bool OnPlayerRequestSpawn(Player player)
     {
@@ -19,8 +33,15 @@ public class PlayerSystem(
     }
 
     [Event]
-    public void OnPlayerDeath(Player player, Player killer, Weapon reason)
+    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
     {
+        worldService.SendDeathMessage(killer, deadPlayer, reason);
+        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
+        deadPlayerInfo.StatsPerRound.AddDeaths();
+        deadPlayerInfo.StatsPerRound.ResetKillingSpree();
+        deadPlayerInfo.AddTotalDeaths();
+        playerRepository.UpdateTotalDeaths(deadPlayerInfo);
+
         if (killer.IsInvalidPlayer())
             return;
 
@@ -28,6 +49,7 @@ public class PlayerSystem(
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
         playerRepository.UpdateTotalKills(killerInfo);
+        killingSpreeUpdater.Update(killer, killerInfo);
         rankUpgrade.RankUp(killer, killerInfo);
     }
 }
