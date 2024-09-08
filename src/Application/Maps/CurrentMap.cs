@@ -45,6 +45,7 @@ public class CurrentMap
         Name = map.Name;
         AlphaTeamLocations = alphaTeamLocations;
         BetaTeamLocations = betaTeamLocations;
+        FlagLocations = flagLocations;
         Interior = interior;
         Weather = weather;
         WorldTime = worldTime;
