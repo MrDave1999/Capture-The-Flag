@@ -3,7 +3,7 @@
 public class PlayerSystem(
     IWorldService worldService,
     IPlayerRepository playerRepository,
-    RankUpgrade rankUpgrade,
+    PlayerRankUpdater playerRankUpdater,
     KillingSpreeUpdater killingSpreeUpdater) : ISystem
 {
     [Event]
@@ -50,6 +50,6 @@ public class PlayerSystem(
         killerInfo.AddTotalKills();
         playerRepository.UpdateTotalKills(killerInfo);
         killingSpreeUpdater.Update(killer, killerInfo);
-        rankUpgrade.RankUp(killer, killerInfo);
+        playerRankUpdater.Update(killer, killerInfo);
     }
 }
