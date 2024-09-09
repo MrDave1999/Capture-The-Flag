@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players;
 
-public class PlayerSystem(
+public class PlayerDeathSystem(
     IWorldService worldService,
     IPlayerRepository playerRepository,
     PlayerRankUpdater playerRankUpdater,
