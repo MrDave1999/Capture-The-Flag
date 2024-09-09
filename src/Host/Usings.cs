@@ -6,6 +6,7 @@ global using SampSharp.Streamer.Entities;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
 global using CTF.Application;
+global using CTF.Application.Teams;
 global using CTF.Application.Common.Services;
 global using CTF.Host.Extensions;
 global using CTF.Host.Services;
