@@ -23,9 +23,24 @@ public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
         }
         player.GetComponent<ClassSelectionComponent>().IsInClassSelection = false;
         player.GameText("_", 1000, 4);
-        PlayerInfo playerInfo = accountComponent.PlayerInfo;
-        playerInfo.SetTeam((TeamId)player.Team);
+        accountComponent.PlayerInfo.SetTeam(selectedTeam.Id);
+        selectedTeam.Members.Add(player);
         return true;
+    }
+
+    [Event]
+    public void OnPlayerDisconnect(Player player, DisconnectReason reason)
+    {
+        var accountComponent = player.GetComponent<AccountComponent>();
+        bool isNotLoggedInOrRegistered = accountComponent is null;
+        if (isNotLoggedInOrRegistered)
+            return;
+
+        PlayerInfo playerInfo = accountComponent.PlayerInfo;
+        if (playerInfo.Team == Team.None)
+            return;
+
+        playerInfo.Team.Members.Remove(player);
     }
 
     [Event]
