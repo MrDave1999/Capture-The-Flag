@@ -43,7 +43,7 @@ public class AccountSystem(
             return;
         }
 
-        var enteredPassword = response.InputText;
+        var enteredPassword = response.InputText ?? string.Empty;
         CreatePlayerAccount(connectedPlayer, playerInfo, enteredPassword);
     }
 
@@ -76,7 +76,7 @@ public class AccountSystem(
             return;
         }
 
-        var enteredPassword = response.InputText;
+        var enteredPassword = response.InputText ?? string.Empty;
         bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: playerInfo.Password);
         if (isWrongPassword) 
         {
