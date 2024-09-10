@@ -20,7 +20,7 @@ public class ChangePasswordSystem(
         if (response.Response == DialogResponse.RightButtonOrCancel)
             return;
 
-        var enteredPassword = response.InputText;
+        var enteredPassword = response.InputText ?? string.Empty;
         ChangePassword(player, enteredPassword);
     }
 
