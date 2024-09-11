@@ -3,6 +3,6 @@
 public enum FlagIcon
 {
     None = 1,
-    Red = 20,
-    Blue = 30
+    Red = 0,
+    Blue = Red
 }
