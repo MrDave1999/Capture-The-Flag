@@ -48,6 +48,7 @@ public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
         player.Angle = spawnLocation.Angle;
         player.Interior = _currentMap.Interior;
         player.Color = playerInfo.Team.ColorHex;
+        player.Team = (int)playerInfo.Team.Id;
         if (playerInfo.HasSkin())
         {
             player.Skin = playerInfo.SkinId;
