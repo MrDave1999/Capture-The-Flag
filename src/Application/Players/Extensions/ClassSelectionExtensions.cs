@@ -8,7 +8,7 @@ public static class ClassSelectionExtensions
     public static bool IsNotInClassSelection(this Player player)
         => !player.IsInClassSelection();
 
-    public static bool HasForcedClassSelection(this Player player)
+    public static bool HasForcedClassSelectionAfterDeath(this Player player)
         => !player.IsInClassSelection();
 
     public static void SetInClassSelection(this Player player)

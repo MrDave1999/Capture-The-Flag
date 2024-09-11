@@ -11,7 +11,7 @@ public class ClassSelectionSystem : ISystem
     [Event]
     public void OnPlayerRequestClass(Player player, int classId)
     {
-        if(player.HasForcedClassSelection()) 
+        if(player.HasForcedClassSelectionAfterDeath()) 
         {
             player.SetSpawnInfo(player.Team, player.Skin, player.Position, player.Angle);
             player.Spawn();
