@@ -15,7 +15,7 @@ public class Team
             Name       = "Alpha",
             ColorName  = "Red",
             GameText   = "~r~",
-            ColorHex   = new Color(255, 32, 64),
+            ColorHex   = new Color(255, 32, 64, 00),
             Sounds     = TeamSounds.Alpha,
             Flag       = new Flag
             {
@@ -33,7 +33,7 @@ public class Team
             Name       = "Beta",
             ColorName  = "Blue",
             GameText   = "~b~",
-            ColorHex   = new Color(0, 136, 255),
+            ColorHex   = new Color(0, 136, 255, 00),
             Sounds     = TeamSounds.Beta,
             Flag       = new Flag
             {
@@ -53,7 +53,7 @@ public class Team
             Name       = "NoTeam",
             ColorName  = "White",
             GameText   = "~w~",
-            ColorHex   = Color.White,
+            ColorHex   = new Color(255, 255, 255, 00),
             Sounds     = TeamSounds.None,
             Flag       = new Flag
             {
