@@ -192,6 +192,21 @@ public class PlayerInfoTests
     }
 
     [Test]
+    public void AddHeadShots_WhenCalledTwice_ShouldBeIncreasedTo2()
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        int expectedHeadShots = 2;
+
+        // Act
+        player.AddHeadShots();
+        player.AddHeadShots();
+
+        // Assert
+        player.HeadShots.Should().Be(expectedHeadShots);
+    }
+
+    [Test]
     public void HasSurpassedMaxKillingSpree_WhenNewRecordIsAchieved_ShouldReturnsTrue()
     {
         // Arrange
