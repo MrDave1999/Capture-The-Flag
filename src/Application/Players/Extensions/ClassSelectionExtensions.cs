@@ -14,6 +14,6 @@ public static class ClassSelectionExtensions
     public static void EnableClassSelection(this Player player)
         => player.GetComponent<ClassSelectionComponent>().IsInClassSelection = true;
 
-    public static void RemoveFromClassSelection(this Player player)
+    public static void DisableClassSelection(this Player player)
         => player.GetComponent<ClassSelectionComponent>().IsInClassSelection = false;
 }
