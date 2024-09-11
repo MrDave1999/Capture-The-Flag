@@ -7,9 +7,7 @@ public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
     [Event]
     public bool OnPlayerRequestSpawn(Player player)
     {
-        var accountComponent = player.GetComponent<AccountComponent>();
-        bool isNotLoggedInOrRegistered = accountComponent is null;
-        if (isNotLoggedInOrRegistered)
+        if (player.IsNotLoggedInOrRegistered())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
             return false;
@@ -23,7 +21,7 @@ public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
         }
         player.DisableClassSelection();
         player.GameText("_", 1000, 4);
-        accountComponent.PlayerInfo.SetTeam(selectedTeam.Id);
+        player.GetInfo().SetTeam(selectedTeam.Id);
         selectedTeam.Members.Add(player);
         return true;
     }
@@ -31,12 +29,10 @@ public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
     {
-        var accountComponent = player.GetComponent<AccountComponent>();
-        bool isNotLoggedInOrRegistered = accountComponent is null;
-        if (isNotLoggedInOrRegistered)
+        if (player.IsNotLoggedInOrRegistered())
             return;
 
-        PlayerInfo playerInfo = accountComponent.PlayerInfo;
+        PlayerInfo playerInfo = player.GetInfo();
         if (playerInfo.Team == Team.None)
             return;
 

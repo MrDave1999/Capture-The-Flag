@@ -19,4 +19,7 @@ public static class PlayerExtensions
             throw new InvalidOperationException($"The '{nameof(AccountComponent)}' component is not attached to the player") :
             accountComponent.PlayerInfo;
     }
+
+    public static bool IsNotLoggedInOrRegistered(this Player player)
+        => player.GetComponent<AccountComponent>() is null;
 }
