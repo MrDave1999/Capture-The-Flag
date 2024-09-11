@@ -5,6 +5,7 @@ public class ClassSelectionSystem : ISystem
     [Event]
     public void OnPlayerConnect(Player player)
     {
+        player.Color = Color.White;
         player.AddComponent<ClassSelectionComponent>();
         player.RemoveAttachedObject(0);
     }
