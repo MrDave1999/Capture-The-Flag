@@ -11,6 +11,13 @@ public class ClassSelectionSystem : ISystem
     [Event]
     public void OnPlayerRequestClass(Player player, int classId)
     {
+        if(player.HasForcedClassSelectionAfterDeath()) 
+        {
+            player.SetSpawnInfo(player.Team, player.Skin, player.Position, player.Angle);
+            player.Spawn();
+            return;
+        }
+
         player.Color = Color.White;
         player.Position = new Vector3(-1389.137451, 3314.043701, 20.493314);
         player.CameraPosition = new Vector3(-1399.776000, 3310.254150, 21.525623);
