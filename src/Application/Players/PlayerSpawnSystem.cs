@@ -21,7 +21,7 @@ public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
             player.GameText(gameText, 999999999, 3);
             return false;
         }
-        player.RemoveFromClassSelection();
+        player.DisableClassSelection();
         player.GameText("_", 1000, 4);
         accountComponent.PlayerInfo.SetTeam(selectedTeam.Id);
         selectedTeam.Members.Add(player);
