@@ -58,7 +58,7 @@ public class Team
             Flag       = new Flag
             {
                 Model  = FlagModel.None,
-                Icon   = FlagIcon.None,
+                Icon   = FlagIcon.White,
                 Name   = "NoTeam",
                 ColorHex = Color.White
             },

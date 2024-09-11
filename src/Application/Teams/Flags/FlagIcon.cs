@@ -2,7 +2,7 @@
 
 public enum FlagIcon
 {
-    None = 1,
+    White = 1,
     Red = 0,
     Blue = Red
 }
