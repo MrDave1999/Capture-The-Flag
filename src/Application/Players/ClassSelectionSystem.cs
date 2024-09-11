@@ -6,6 +6,7 @@ public class ClassSelectionSystem : ISystem
     public void OnPlayerConnect(Player player)
     {
         player.AddComponent<ClassSelectionComponent>();
+        player.RemoveAttachedObject(0);
     }
 
     [Event]
