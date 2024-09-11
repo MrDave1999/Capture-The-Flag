@@ -11,7 +11,7 @@ public static class ClassSelectionExtensions
     public static bool HasForcedClassSelectionAfterDeath(this Player player)
         => !player.IsInClassSelection();
 
-    public static void SetInClassSelection(this Player player)
+    public static void EnableClassSelection(this Player player)
         => player.GetComponent<ClassSelectionComponent>().IsInClassSelection = true;
 
     public static void RemoveFromClassSelection(this Player player)
