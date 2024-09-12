@@ -5,7 +5,7 @@ public class ClassSelectionSystem : ISystem
     [Event]
     public void OnPlayerConnect(Player player)
     {
-        player.Color = Color.White;
+        player.Color = Team.None.ColorHex;
         player.AddComponent<ClassSelectionComponent>();
         player.RemoveAttachedObject(0);
     }
@@ -20,7 +20,7 @@ public class ClassSelectionSystem : ISystem
             return;
         }
 
-        player.Color = Color.White;
+        player.Color = Team.None.ColorHex;
         player.Position = new Vector3(-1389.137451, 3314.043701, 20.493314);
         player.CameraPosition = new Vector3(-1399.776000, 3310.254150, 21.525623);
         player.SetCameraLookAt(new Vector3(-1395.072143, 3311.873291, 22.027709));
