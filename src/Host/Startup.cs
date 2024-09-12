@@ -9,11 +9,16 @@ public class Startup : IStartup
             .AddEnvironmentVariables()
             .Build();
 
+        var serverSettings = configuration
+            .GetRequiredSection("ServerInfo")
+            .Get<ServerSettings>();
+
         services.ChooseDatabaseProvider(configuration);
         services.AddApplicationServices();
         services
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
-            .AddSingleton<IStreamerService, StreamerService>();
+            .AddSingleton<IStreamerService, StreamerService>()
+            .AddSingleton(serverSettings);
 
         // Add systems to the services collection
         services
