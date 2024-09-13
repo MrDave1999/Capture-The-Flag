@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players;
+﻿namespace CTF.Application.Players.ClassSelection;
 
 public class ClassSelectionComponent : Component
 {

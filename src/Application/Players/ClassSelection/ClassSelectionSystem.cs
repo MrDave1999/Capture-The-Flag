@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players;
+﻿namespace CTF.Application.Players.ClassSelection;
 
 public class ClassSelectionSystem(ClassSelectionTextDraw classSelectionTextDraw) : ISystem
 {
@@ -17,7 +17,7 @@ public class ClassSelectionSystem(ClassSelectionTextDraw classSelectionTextDraw)
     [Event]
     public void OnPlayerRequestClass(Player player, int classId)
     {
-        if(player.HasForcedClassSelectionAfterDeath()) 
+        if (player.HasForcedClassSelectionAfterDeath())
         {
             player.SetSpawnInfo(player.Team, player.Skin, player.Position, player.Angle);
             player.Spawn();
