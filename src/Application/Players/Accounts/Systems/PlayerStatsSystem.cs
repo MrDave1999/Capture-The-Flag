@@ -1,7 +1,21 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
-public class PlayerStatsSystem(IDialogService dialogService) : ISystem
+public class PlayerStatsSystem(
+    IDialogService dialogService,
+    PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
+    [Event]
+    public void OnPlayerConnect(Player player)
+    {
+        playerStatsRenderer.CreateTextDraw(player);
+    }
+
+    [Event]
+    public void OnPlayerSpawn(Player player)
+    {
+        playerStatsRenderer.UpdateTextDraw(player);
+    }
+
     [PlayerCommand("stats")]
     public void ShowStats(Player player)
     {

@@ -4,7 +4,8 @@ public class PlayerDeathSystem(
     IWorldService worldService,
     IPlayerRepository playerRepository,
     PlayerRankUpdater playerRankUpdater,
-    KillingSpreeUpdater killingSpreeUpdater) : ISystem
+    KillingSpreeUpdater killingSpreeUpdater,
+    PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -37,5 +38,6 @@ public class PlayerDeathSystem(
         playerRepository.UpdateTotalKills(killerInfo);
         killingSpreeUpdater.Update(killer, killerInfo);
         playerRankUpdater.Update(killer, killerInfo);
+        playerStatsRenderer.UpdateTextDraw(killer);
     }
 }
