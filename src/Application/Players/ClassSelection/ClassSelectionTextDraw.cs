@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players;
+﻿namespace CTF.Application.Players.ClassSelection;
 
 public class ClassSelectionTextDraw
 {
@@ -93,4 +93,3 @@ public class ClassSelectionTextDraw
         _blueCommandListBox.Selectable = false;
     }
 }
- 

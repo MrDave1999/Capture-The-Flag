@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Extensions;
+﻿namespace CTF.Application.Players.ClassSelection;
 
 public static class ClassSelectionExtensions
 {
