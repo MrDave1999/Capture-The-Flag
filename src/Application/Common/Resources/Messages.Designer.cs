@@ -97,6 +97,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team&apos;s flag and bring it back to their own base to score a point.
+        /// </summary>
+        internal static string GameModeDescription {
+            get {
+                return ResourceManager.GetString("GameModeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough points to obtain this combo.
         /// </summary>
         internal static string InsufficientPoints {
