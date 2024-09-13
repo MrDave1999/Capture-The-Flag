@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts;
+﻿namespace CTF.Application.Players.Accounts.Services;
 
 public class PlayerRankUpdater(IPlayerRepository playerRepository)
 {

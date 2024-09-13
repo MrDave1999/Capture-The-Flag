@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.Accounts;
+﻿namespace CTF.Application.Players.Accounts.Services;
 
 public class KillingSpreeUpdater(
     IWorldService worldService,
@@ -23,7 +23,7 @@ public class KillingSpreeUpdater(
 
             if (currentKillingSpree % 3 == 0)
             {
-                var message = Smart.Format(Messages.ConsecutiveKills, new 
+                var message = Smart.Format(Messages.ConsecutiveKills, new
                 {
                     PlayerName = player.Name,
                     Kills = currentKillingSpree
