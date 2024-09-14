@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.ClassSelection;
+﻿namespace CTF.Application.Teams.ClassSelection;
 
 public class ClassSelectionTextDrawRenderer
 {
