@@ -6,7 +6,8 @@ public static class TeamServicesExtensions
     {
         services
             .AddSingleton<TeamPickupService>()
-            .AddSingleton<TeamIconService>();
+            .AddSingleton<TeamIconService>()
+            .AddSingleton<TeamTextDrawRenderer>();
 
         return services;
     }

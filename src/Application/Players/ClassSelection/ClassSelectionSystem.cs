@@ -1,6 +1,8 @@
 ﻿namespace CTF.Application.Players.ClassSelection;
 
-public class ClassSelectionSystem(ClassSelectionTextDraw classSelectionTextDraw) : ISystem
+public class ClassSelectionSystem(
+    ClassSelectionTextDraw classSelectionTextDraw,
+    TeamTextDrawRenderer teamTextDraw) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -61,6 +63,7 @@ public class ClassSelectionSystem(ClassSelectionTextDraw classSelectionTextDraw)
         player.GetInfo().SetTeam(selectedTeam.Id);
         selectedTeam.Members.Add(player);
         classSelectionTextDraw.Hide(player);
+        teamTextDraw.UpdateTeamMembers(selectedTeam);
         return true;
     }
 
@@ -75,5 +78,6 @@ public class ClassSelectionSystem(ClassSelectionTextDraw classSelectionTextDraw)
             return;
 
         playerInfo.Team.Members.Remove(player);
+        teamTextDraw.UpdateTeamMembers(playerInfo.Team);
     }
 }
