@@ -2,15 +2,15 @@
 
 public class TeamIconService
 {
-    private readonly CurrentMap _currentMap;
+    private readonly MapInfoService _mapInfoService;
     private readonly IStreamerService _streamerService;
     private DynamicMapIcon _redMapIcon;
     private DynamicMapIcon _blueMapIcon;
 
     public TeamIconService(MapInfoService mapInfoService, IStreamerService streamerService)
     {
+        _mapInfoService = mapInfoService;
         _streamerService = streamerService;
-        _currentMap = mapInfoService.Read();
         CreateFromBasePosition(Team.Alpha);
         CreateFromBasePosition(Team.Beta);
     }
@@ -18,19 +18,21 @@ public class TeamIconService
     public void CreateFromBasePosition(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
-        if(team.Id == TeamId.Alpha)
+        CurrentMap currentMap = _mapInfoService.Read();
+        if (team.Id == TeamId.Alpha)
         {
-            CreateFromVector3(team, _currentMap.FlagLocations.Red);
+            CreateFromVector3(team, currentMap.FlagLocations.Red);
         }
         else if(team.Id == TeamId.Beta) 
         {
-            CreateFromVector3(team, _currentMap.FlagLocations.Blue);
+            CreateFromVector3(team, currentMap.FlagLocations.Blue);
         }
     }
 
     public void CreateFromVector3(Team team, Vector3 position) 
     {
         ArgumentNullException.ThrowIfNull(team);
+        CurrentMap currentMap = _mapInfoService.Read();
         Destroy(team);
         if (team.Id == TeamId.Alpha)
         {
@@ -38,7 +40,7 @@ public class TeamIconService
                 position: position,
                 mapIcon: (MapIcon)Team.Alpha.Flag.Icon,
                 streamDistance: 5000f,
-                interior: _currentMap.Interior,
+                interior: currentMap.Interior,
                 color: Team.Alpha.Flag.ColorHex
             );
         }
@@ -48,7 +50,7 @@ public class TeamIconService
                 position: position,
                 mapIcon: (MapIcon)Team.Beta.Flag.Icon,
                 streamDistance: 5000f,
-                interior: _currentMap.Interior,
+                interior: currentMap.Interior,
                 color: Team.Beta.Flag.ColorHex
             );
         }

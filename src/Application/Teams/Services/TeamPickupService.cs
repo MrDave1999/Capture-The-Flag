@@ -2,7 +2,7 @@
 
 public class TeamPickupService
 {
-    private readonly CurrentMap _currentMap;
+    private readonly MapInfoService _mapInfoService;
     private readonly IWorldService _worldService;
     private Pickup _redFlagPickup;
     private Pickup _blueFlagPickup;
@@ -11,8 +11,8 @@ public class TeamPickupService
 
     public TeamPickupService(MapInfoService mapInfoService, IWorldService worldService)
     {
+        _mapInfoService = mapInfoService;
         _worldService = worldService;
-        _currentMap = mapInfoService.Read();
         CreateFlagFromBasePosition(Team.Alpha);
         CreateFlagFromBasePosition(Team.Beta);
     }
@@ -20,13 +20,14 @@ public class TeamPickupService
     public void CreateFlagFromBasePosition(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
+        CurrentMap currentMap = _mapInfoService.Read();
         if (team.Id == TeamId.Alpha)
         {
-            CreateFlagFromVector3(team, _currentMap.FlagLocations.Red);
+            CreateFlagFromVector3(team, currentMap.FlagLocations.Red);
         }
         else if(team.Id == TeamId.Beta) 
         {
-            CreateFlagFromVector3(team, _currentMap.FlagLocations.Blue);
+            CreateFlagFromVector3(team, currentMap.FlagLocations.Blue);
         }
     }
 
@@ -76,13 +77,14 @@ public class TeamPickupService
     public void CreatePickupWithInfo(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
+        CurrentMap currentMap = _mapInfoService.Read();
         DestroyPickupWithInfo(team);
         if (team.Id == TeamId.Alpha)
         {
             _alphaPickupInfo = _worldService.CreatePickup(
                 model: 1239,
                 type: PickupType.ScriptedActionsOnlyEveryFewSeconds,
-                position: _currentMap.FlagLocations.Red
+                position: currentMap.FlagLocations.Red
             );
         }
         else if(team.Id == TeamId.Beta)
@@ -90,7 +92,7 @@ public class TeamPickupService
             _betaPickupInfo = _worldService.CreatePickup(
                 model: 1239,
                 type: PickupType.ScriptedActionsOnlyEveryFewSeconds,
-                position: _currentMap.FlagLocations.Blue
+                position: currentMap.FlagLocations.Blue
             );
         }
     }

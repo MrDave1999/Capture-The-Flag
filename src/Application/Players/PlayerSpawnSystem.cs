@@ -2,16 +2,15 @@
 
 public class PlayerSpawnSystem(MapInfoService mapInfoService) : ISystem
 {
-    private readonly CurrentMap _currentMap = mapInfoService.Read();
-
     [Event]
     public void OnPlayerSpawn(Player player)
     {
+        CurrentMap currentMap = mapInfoService.Read();
         PlayerInfo playerInfo = player.GetInfo();
-        SpawnLocation spawnLocation = _currentMap.GetRandomSpawnLocation(playerInfo.Team.Id);
+        SpawnLocation spawnLocation = currentMap.GetRandomSpawnLocation(playerInfo.Team.Id);
         player.Position = spawnLocation.Position;
         player.Angle = spawnLocation.Angle;
-        player.Interior = _currentMap.Interior;
+        player.Interior = currentMap.Interior;
         player.Color = playerInfo.Team.ColorHex;
         player.Team = (int)playerInfo.Team.Id;
         if (playerInfo.HasSkin())
