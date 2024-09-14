@@ -42,18 +42,6 @@ public class TeamTextDrawRenderer
         _betaTeamMembers.Hide(player);
     }
 
-    public void Destroy()
-    {
-        _redFlag.Destroy();
-        _blueFlag.Destroy();
-        _alphaScore.Destroy();
-        _betaScore.Destroy();
-        _redRic.Destroy();
-        _blueRic.Destroy();
-        _alphaTeamMembers.Destroy();
-        _betaTeamMembers.Destroy();
-    }
-
     public void UpdateTeamScore(Team team)
     {
         if(team.Id == TeamId.Alpha)

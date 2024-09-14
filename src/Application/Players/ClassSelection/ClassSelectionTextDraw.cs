@@ -29,14 +29,6 @@ public class ClassSelectionTextDraw
         _blueCommandListBox.Hide(player);
     }
 
-    public void Destroy()
-    {
-        _gameModeDescription.Destroy();
-        _commandList.Destroy();
-        _blueCommandListBox.Destroy();
-        _gameModeTitle.Destroy();
-    }
-
     private void Initialize()
     {
         _gameModeTitle = _worldService.CreateTextDraw(new Vector2(483.000000, 4.000000), string.Empty);
