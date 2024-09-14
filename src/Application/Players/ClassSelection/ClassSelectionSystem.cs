@@ -1,8 +1,8 @@
 ﻿namespace CTF.Application.Players.ClassSelection;
 
 public class ClassSelectionSystem(
-    ClassSelectionTextDrawRenderer classSelectionTextDraw,
-    TeamTextDrawRenderer teamTextDraw) : ISystem
+    ClassSelectionTextDrawRenderer classSelectionTextDrawRenderer,
+    TeamTextDrawRenderer teamTextDrawRenderer) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -10,7 +10,7 @@ public class ClassSelectionSystem(
         player.Color = Team.None.ColorHex;
         player.AddComponent<ClassSelectionComponent>();
         player.RemoveAttachedObject(0);
-        classSelectionTextDraw.Show(player);
+        classSelectionTextDrawRenderer.Show(player);
     }
 
     /// <summary>
@@ -62,8 +62,8 @@ public class ClassSelectionSystem(
         player.GameText("_", 1000, 4);
         player.GetInfo().SetTeam(selectedTeam.Id);
         selectedTeam.Members.Add(player);
-        classSelectionTextDraw.Hide(player);
-        teamTextDraw.UpdateTeamMembers(selectedTeam);
+        classSelectionTextDrawRenderer.Hide(player);
+        teamTextDrawRenderer.UpdateTeamMembers(selectedTeam);
         return true;
     }
 
@@ -78,6 +78,6 @@ public class ClassSelectionSystem(
             return;
 
         playerInfo.Team.Members.Remove(player);
-        teamTextDraw.UpdateTeamMembers(playerInfo.Team);
+        teamTextDrawRenderer.UpdateTeamMembers(playerInfo.Team);
     }
 }

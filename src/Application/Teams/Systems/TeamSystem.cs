@@ -1,10 +1,10 @@
 ﻿namespace CTF.Application.Teams.Systems;
 
-public class TeamSystem(TeamTextDrawRenderer teamTextDraw) : ISystem
+public class TeamSystem(TeamTextDrawRenderer teamTextDrawRenderer) : ISystem
 {
     [Event]
     public void OnPlayerSpawn(Player player)
     {
-        teamTextDraw.Show(player);
+        teamTextDrawRenderer.Show(player);
     }
 }
