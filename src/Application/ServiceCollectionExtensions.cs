@@ -11,7 +11,6 @@ public static class ApplicationServicesExtensions
             .AddSingleton<KillingSpreeUpdater>()
             .AddSingleton<PlayerStatsRenderer>()
             .AddSingleton<MapTextDrawRenderer>()
-            .AddSingleton<ClassSelectionTextDrawRenderer>()
             .AddComboServices()
             .AddTeamServices();
 
