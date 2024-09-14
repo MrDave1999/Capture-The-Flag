@@ -1,7 +1,7 @@
 ﻿namespace CTF.Application.Players.ClassSelection;
 
 public class ClassSelectionSystem(
-    ClassSelectionTextDraw classSelectionTextDraw,
+    ClassSelectionTextDrawRenderer classSelectionTextDraw,
     TeamTextDrawRenderer teamTextDraw) : ISystem
 {
     [Event]

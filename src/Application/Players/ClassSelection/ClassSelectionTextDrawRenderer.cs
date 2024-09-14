@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.ClassSelection;
 
-public class ClassSelectionTextDraw
+public class ClassSelectionTextDrawRenderer
 {
     private readonly IWorldService _worldService;
     private TextDraw _gameModeTitle;
@@ -8,7 +8,7 @@ public class ClassSelectionTextDraw
     private TextDraw _commandList;
     private TextDraw _blueCommandListBox;
 
-    public ClassSelectionTextDraw(IWorldService worldService)
+    public ClassSelectionTextDrawRenderer(IWorldService worldService)
     {
         _worldService = worldService;
         Initialize();
