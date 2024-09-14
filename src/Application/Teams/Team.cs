@@ -79,8 +79,8 @@ public class Team
     public TeamStatsPerRound StatsPerRound { get; } = new();
     public bool IsFlagInBase { get; set; } = true;
 
-    public virtual string GetMembersAsText() => $"{GameText}{Members.Count}";
-    public virtual string GetScoreAsText() => $"{GameText}{Name}: {StatsPerRound.Score}";
+    public virtual string GetMembersAsText() => $"{Members.Count}";
+    public virtual string GetScoreAsText() => $"{Name}: {StatsPerRound.Score}";
     public virtual bool IsFull() => Members.Count > RivalTeam.Members.Count;
     public virtual bool IsWinner() => StatsPerRound.Score > RivalTeam.StatsPerRound.Score;
     public virtual void Reset()
