@@ -10,6 +10,7 @@ public static class ApplicationServicesExtensions
             .AddSingleton<PlayerRankUpdater>()
             .AddSingleton<KillingSpreeUpdater>()
             .AddSingleton<PlayerStatsRenderer>()
+            .AddSingleton<MapTextDrawRenderer>()
             .AddSingleton<ClassSelectionTextDraw>()
             .AddComboServices()
             .AddTeamServices();

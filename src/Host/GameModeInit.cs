@@ -4,6 +4,7 @@ public class GameModeInit(
     IWorldService worldService,
     IServerService serverService,
     MapInfoService mapInfoService,
+    MapTextDrawRenderer mapTextDraw,
     TeamPickupService teamPickupService,
     TeamIconService teamIconService,
     ServerSettings serverSettings) : ISystem
@@ -35,6 +36,7 @@ public class GameModeInit(
         CurrentMap currentMap = mapInfoService.Read();
         serverService.SendRconCommand($"mapname {currentMap.Name}");
         serverService.SendRconCommand($"loadfs {currentMap.Name}");
+        mapTextDraw.UpdateMapName();
 
         worldService.SetWeather(currentMap.Weather);
         serverService.SetWorldTime(currentMap.WorldTime);
