@@ -6,12 +6,8 @@ public static class ApplicationServicesExtensions
     {
         services
             .AddSingleton<ServerTimeService>()
-            .AddSingleton<MapInfoService>()
-            .AddSingleton<PlayerRankUpdater>()
-            .AddSingleton<KillingSpreeUpdater>()
-            .AddSingleton<PlayerStatsRenderer>()
-            .AddSingleton<MapTextDrawRenderer>()
-            .AddComboServices()
+            .AddPlayerServices()
+            .AddMapServices()
             .AddTeamServices();
 
         return services;
