@@ -15,7 +15,7 @@ public class TeamTests
         // Arrange
         Team alphaTeam = Team.Alpha;
         alphaTeam.Members.Add(new FakePlayer(id: 1, name: "Bob"));
-        var expectedString = "~r~1";
+        var expectedString = "1";
 
         // Act
         string actual = alphaTeam.GetMembersAsText();
@@ -30,7 +30,7 @@ public class TeamTests
         // Arrange
         Team alphaTeam = Team.Alpha;
         alphaTeam.StatsPerRound.AddScore();
-        var expectedString = "~r~Alpha: 1";
+        var expectedString = "Alpha: 1";
 
         // Act
         string actual = alphaTeam.GetScoreAsText();
