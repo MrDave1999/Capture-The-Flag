@@ -2,6 +2,7 @@
 
 public class PlayerStatsSystem(
     IDialogService dialogService,
+    IPlayerRepository playerRepository,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [Event]
@@ -14,6 +15,14 @@ public class PlayerStatsSystem(
     public void OnPlayerSpawn(Player player)
     {
         playerStatsRenderer.UpdateTextDraw(player);
+    }
+
+    [Event]
+    public void OnPlayerDisconnect(Player player, DisconnectReason reason)
+    {
+        PlayerInfo playerInfo = player.GetInfo();
+        playerInfo.SetLastConnection();
+        playerRepository.UpdateLastConnection(playerInfo);
     }
 
     [PlayerCommand("stats")]
