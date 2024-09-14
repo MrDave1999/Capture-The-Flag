@@ -1,10 +1,10 @@
 ﻿namespace CTF.Application.Maps.Systems;
 
-public class MapSystem(MapTextDrawRenderer mapTextDraw) : ISystem
+public class MapSystem(MapTextDrawRenderer mapTextDrawRenderer) : ISystem
 {
     [Event]
     public void OnPlayerSpawn(Player player)
     {
-        mapTextDraw.Show(player);
+        mapTextDrawRenderer.Show(player);
     }
 }
