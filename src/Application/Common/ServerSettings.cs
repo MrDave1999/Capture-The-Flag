@@ -1,4 +1,4 @@
-﻿namespace CTF.Host.Settings;
+﻿namespace CTF.Application.Common;
 
 public class ServerSettings
 {
