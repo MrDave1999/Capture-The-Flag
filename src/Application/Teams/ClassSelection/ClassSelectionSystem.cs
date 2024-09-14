@@ -5,6 +5,13 @@ public class ClassSelectionSystem(
     TeamTextDrawRenderer teamTextDrawRenderer) : ISystem
 {
     [Event]
+    public void OnGameModeInit(IServerService serverService)
+    {
+        serverService.AddPlayerClass((int)Team.Alpha.SkinId, new Vector3(0, 0, 0), 0);
+        serverService.AddPlayerClass((int)Team.Beta.SkinId, new Vector3(0, 0, 0), 0);
+    }
+
+    [Event]
     public void OnPlayerConnect(Player player)
     {
         player.Color = Team.None.ColorHex;
