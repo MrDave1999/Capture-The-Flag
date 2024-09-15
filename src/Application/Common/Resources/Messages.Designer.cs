@@ -70,6 +70,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This round was won by the Alpha team.
+        /// </summary>
+        internal static string AlphaIsWinner {
+            get {
+                return ResourceManager.GetString("AlphaIsWinner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This round was won by the Beta team.
+        /// </summary>
+        internal static string BetaIsWinner {
+            get {
+                return ResourceManager.GetString("BetaIsWinner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has had {Kills} consecutive kills without dying.
         /// </summary>
         internal static string ConsecutiveKills {
@@ -205,11 +223,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait while the map is being loaded.
+        /// </summary>
+        internal static string MapIsLoading {
+            get {
+                return ResourceManager.GetString("MapIsLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map has not been found.
         /// </summary>
         internal static string MapNotFound {
             get {
                 return ResourceManager.GetString("MapNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {Name} has been successfully loaded.
+        /// </summary>
+        internal static string MapSuccessfullyLoaded {
+            get {
+                return ResourceManager.GetString("MapSuccessfullyLoaded", resourceCulture);
             }
         }
         
@@ -237,6 +273,15 @@ namespace CTF.Application.Common.Resources {
         internal static string NameSuccessfullyChanged {
             get {
                 return ResourceManager.GetString("NameSuccessfullyChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The next map will be loaded soon: {Name}.
+        /// </summary>
+        internal static string NextMapWillBeLoadedSoon {
+            get {
+                return ResourceManager.GetString("NextMapWillBeLoadedSoon", resourceCulture);
             }
         }
         
@@ -345,6 +390,15 @@ namespace CTF.Application.Common.Resources {
         internal static string SuccessfulLogin {
             get {
                 return ResourceManager.GetString("SuccessfulLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It&apos;s a tie! Both teams couldn&apos;t beat each other this time.
+        /// </summary>
+        internal static string TiedTeams {
+            get {
+                return ResourceManager.GetString("TiedTeams", resourceCulture);
             }
         }
         
