@@ -16,4 +16,12 @@ public static class ClassSelectionExtensions
 
     public static void DisableClassSelection(this Player player)
         => player.GetComponent<ClassSelectionComponent>().IsInClassSelection = false;
+
+    public static void RedirectToClassSelection(this Player player)
+    {
+        player.EnableClassSelection();
+        player.ForceClassSelection();
+        player.ToggleSpectating(true);
+        player.ToggleSpectating(false);
+    }
 }

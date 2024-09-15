@@ -19,7 +19,6 @@ public class CurrentMap
     public int Weather { get; }
     public int WorldTime { get; }
     public IMap NextMap => _nextMap;
-    public int IsLoading { get; set; }
 
     public CurrentMap(
         IMap map, 

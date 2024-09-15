@@ -6,6 +6,7 @@ public static class MapServicesExtensions
     {
         services
             .AddSingleton<MapInfoService>()
+            .AddSingleton<MapRotationService>()
             .AddSingleton<MapTextDrawRenderer>();
 
         return services;

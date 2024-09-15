@@ -2,7 +2,8 @@
 
 public class ClassSelectionSystem(
     ClassSelectionTextDrawRenderer classSelectionTextDrawRenderer,
-    TeamTextDrawRenderer teamTextDrawRenderer) : ISystem
+    TeamTextDrawRenderer teamTextDrawRenderer,
+    MapRotationService mapRotationService) : ISystem
 {
     [Event]
     public void OnGameModeInit(IServerService serverService)
@@ -56,6 +57,11 @@ public class ClassSelectionSystem(
         if (player.IsNotLoggedInOrRegistered())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
+            return false;
+        }
+        if (mapRotationService.IsMapLoading())
+        {
+            player.SendClientMessage(Color.Red, Messages.MapIsLoading);
             return false;
         }
         Team selectedTeam = player.Team == (int)TeamId.Alpha ? Team.Alpha : Team.Beta;
