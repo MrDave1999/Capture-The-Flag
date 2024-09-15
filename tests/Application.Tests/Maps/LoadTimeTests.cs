@@ -2,7 +2,7 @@
 
 public class LoadTimeTests
 {
-    static readonly int[] ExpectedIntervalCases = [5, 4, 3, 2, 1, 0];
+    static readonly int[] ExpectedIntervalCases = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
     private readonly LoadTime _loadTime;
     public LoadTimeTests()
     {
@@ -73,6 +73,10 @@ public class LoadTimeTests
         void OnLoadedMap() => loadedMap = true;
         var loadTime = new LoadTime(OnLoadingMap, OnLoadedMap);
         int expectedInterval = LoadTime.MaxLoadTime;
+        loadTime.Decrease(); // 9
+        loadTime.Decrease(); // 8
+        loadTime.Decrease(); // 7
+        loadTime.Decrease(); // 6
         loadTime.Decrease(); // 5
         loadTime.Decrease(); // 4
         loadTime.Decrease(); // 3
@@ -98,7 +102,7 @@ public class LoadTimeTests
         void OnLoadingMap() => loadingMap = true;
         static void OnLoadedMap() { }
         var loadTime = new LoadTime(OnLoadingMap, OnLoadedMap);
-        int expectedInterval = 5;
+        int expectedInterval = 9;
 
         // Act
         // Invoke to OnLoadingMap

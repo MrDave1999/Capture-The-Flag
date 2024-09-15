@@ -8,7 +8,7 @@ public class LoadTime
     private readonly Action _onLoadingMap;
     private readonly Action _onLoadedMap;
     private int _interval = MaxLoadTime;
-    public const int MaxLoadTime = 6;
+    public const int MaxLoadTime = 10;
 
     /// <summary>
     /// Displays the load time in the game.
