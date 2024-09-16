@@ -35,9 +35,9 @@ public class MapTextDrawRenderer
         _mapName.Text = currentMap.GetMapNameAsText();
     }
 
-    public void UpdateTimeLeft(string text)
+    public void UpdateTimeLeft(TimeLeft timeLeft)
     {
-        _timeLeft.Text = text;
+        _timeLeft.Text = timeLeft.TextDraw;
     }
 
     private void Initialize()

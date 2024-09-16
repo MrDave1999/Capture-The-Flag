@@ -67,7 +67,7 @@ public class MapRotationService
         }
 
         _timeLeft.Decrease();
-        _mapTextDrawRenderer.UpdateTimeLeft(text: _timeLeft.TextDraw);
+        _mapTextDrawRenderer.UpdateTimeLeft(_timeLeft);
     }
 
     private void OnLoadingMap()
