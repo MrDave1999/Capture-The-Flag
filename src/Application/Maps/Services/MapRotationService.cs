@@ -129,6 +129,6 @@ public class MapRotationService
         _teamTextDrawRenderer.UpdateTeamMembers(Team.Beta);
         _worldService.SetWeather(currentMap.Weather);
         _serverService.SetWorldTime(currentMap.WorldTime);
-        _mapTextDrawRenderer.UpdateMapName();
+        _mapTextDrawRenderer.UpdateMapName(currentMap);
     }
 }

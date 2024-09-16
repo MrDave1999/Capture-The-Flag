@@ -20,7 +20,7 @@ public class SetDefaultMapSystem(
         CurrentMap currentMap = mapInfoService.Read();
         serverService.SendRconCommand($"mapname {currentMap.Name}");
         serverService.SendRconCommand($"loadfs {currentMap.Name}");
-        mapTextDrawRenderer.UpdateMapName();
+        mapTextDrawRenderer.UpdateMapName(currentMap);
 
         worldService.SetWeather(currentMap.Weather);
         serverService.SetWorldTime(currentMap.WorldTime);
