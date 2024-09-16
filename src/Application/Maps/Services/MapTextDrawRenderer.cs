@@ -3,15 +3,13 @@
 public class MapTextDrawRenderer
 {
     private readonly IWorldService _worldService;
-    private readonly MapInfoService _mapInfoService;
     private TextDraw _mapName;
     private TextDraw _timer;
     private TextDraw _timeLeft;
 
-    public MapTextDrawRenderer(IWorldService worldService, MapInfoService mapInfoService)
+    public MapTextDrawRenderer(IWorldService worldService)
     {
         _worldService = worldService;
-        _mapInfoService = mapInfoService;
         Initialize();
     }
 
@@ -29,9 +27,8 @@ public class MapTextDrawRenderer
         _timeLeft.Hide(player);
     }
 
-    public void UpdateMapName()
+    public void UpdateMapName(CurrentMap currentMap)
     {
-        CurrentMap currentMap = _mapInfoService.Read();
         _mapName.Text = currentMap.GetMapNameAsText();
     }
 
