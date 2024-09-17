@@ -195,6 +195,9 @@
   <data name="NextRank" xml:space="preserve">
     <value>You moved up to {Name} rank, congratulations!</value>
   </data>
+  <data name="NoPermissions" xml:space="preserve">
+    <value>You do not have permissions to use this command</value>
+  </data>
   <data name="PasswordCannotBeEmpty" xml:space="preserve">
     <value>Password cannot be empty</value>
   </data>

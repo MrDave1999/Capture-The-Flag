@@ -295,6 +295,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You do not have permissions to use this command.
+        /// </summary>
+        internal static string NoPermissions {
+            get {
+                return ResourceManager.GetString("NoPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password cannot be empty.
         /// </summary>
         internal static string PasswordCannotBeEmpty {
