@@ -95,6 +95,66 @@ public class RoleTests
         actual.Should().BeFalse();
     }
 
+    [TestCase(RoleId.Basic)]
+    [TestCase(RoleId.VIP)]
+    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanModerator_ShouldReturnsTrue(RoleId roleId)
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        player.SetRole(roleId);
+
+        // Act
+        bool actual = player.HasLowerRoleThan(RoleId.Moderator);
+
+        // Assert
+        actual.Should().BeTrue();
+    }
+
+    [TestCase(RoleId.Moderator)]
+    [TestCase(RoleId.Admin)]
+    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanModerator_ShouldReturnsFalse(RoleId roleId)
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        player.SetRole(roleId);
+
+        // Act
+        bool actual = player.HasLowerRoleThan(RoleId.Moderator);
+
+        // Assert
+        actual.Should().BeFalse();
+    }
+
+    [Test]
+    public void HasLowerRoleThan_WhenPlayerHasLowerRoleThanVIP_ShouldReturnsTrue()
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        player.SetRole(RoleId.Basic);
+
+        // Act
+        bool actual = player.HasLowerRoleThan(RoleId.VIP);
+
+        // Assert
+        actual.Should().BeTrue();
+    }
+
+    [TestCase(RoleId.VIP)]
+    [TestCase(RoleId.Moderator)]
+    [TestCase(RoleId.Admin)]
+    public void HasLowerRoleThan_WhenPlayerHasNoLowerRoleThanVIP_ShouldReturnsFalse(RoleId roleId)
+    {
+        // Arrange
+        var player = new PlayerInfo();
+        player.SetRole(roleId);
+
+        // Act
+        bool actual = player.HasLowerRoleThan(RoleId.VIP);
+
+        // Assert
+        actual.Should().BeFalse();
+    }
+
     [Test]
     public void IsVIP_WhenPlayerIsVIP_ShouldReturnsTrue()
     {
