@@ -16,7 +16,7 @@ public class MapRotationSystem(
     [Event]
     public void OnGameModeInit()
     {
-        mapRotationService.StartRotation();
+        mapRotationService.StartRotationTimer();
     }
 
     [PlayerCommand("startrt")]
@@ -25,7 +25,7 @@ public class MapRotationSystem(
         if (player.HasLowerRoleThan(RoleId.Moderator))
             return;
 
-        mapRotationService.StartRotation();
+        mapRotationService.StartRotationTimer();
     }
 
     [PlayerCommand("stoprt")]
@@ -34,7 +34,7 @@ public class MapRotationSystem(
         if (player.HasLowerRoleThan(RoleId.Moderator))
             return;
 
-        mapRotationService.StopRotation();
+        mapRotationService.StopRotationTimer();
     }
 
     [PlayerCommand("settimeleft")]

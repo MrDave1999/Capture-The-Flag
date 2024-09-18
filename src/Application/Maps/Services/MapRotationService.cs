@@ -43,12 +43,12 @@ public class MapRotationService
         _isMapLoading = false;
     }
 
-    public void StartRotation()
+    public void StartRotationTimer()
     {
         _timerReference ??= _timerService.Start(action: OnTimer, interval: TimeSpan.FromMilliseconds(1000));
     }
 
-    public void StopRotation() 
+    public void StopRotationTimer() 
     {
         if (_timerReference is null)
             return;
