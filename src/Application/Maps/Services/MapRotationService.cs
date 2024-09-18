@@ -127,7 +127,7 @@ public class MapRotationService
             playerInfo.StatsPerRound.ResetStats();
             playerInfo.SetTeam(TeamId.NoTeam);
             player.Team = (int)TeamId.NoTeam;
-            player.ToggleControllable(false);
+            player.ToggleControllable(true);
             player.Health = 100;
             player.RedirectToClassSelection();
             _playerStatsRenderer.HideTextDraw(player);
