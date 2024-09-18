@@ -100,6 +100,9 @@ public class MapRotationSystem(
             button2: "No"
         );
         MessageDialogResponse confirmationDialogResponse = await dialogService.ShowAsync(player, confirmationDialog);
+        if (confirmationDialogResponse.Response == DialogResponse.Disconnected)
+            return;
+        
         if (mapRotationService.IsMapLoading())
         {
             player.SendClientMessage(Color.Red, Messages.MapIsLoading);
