@@ -223,6 +223,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} forced the map change to {MapName}.
+        /// </summary>
+        internal static string MapChangeForced {
+            get {
+                return ResourceManager.GetString("MapChangeForced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please wait while the map is being loaded.
         /// </summary>
         internal static string MapIsLoading {
@@ -277,6 +286,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} decided that the next map will be in {MapName}.
+        /// </summary>
+        internal static string NextMapSelection {
+            get {
+                return ResourceManager.GetString("NextMapSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The next map will be loaded soon: {Name}.
         /// </summary>
         internal static string NextMapWillBeLoadedSoon {
@@ -291,6 +309,15 @@ namespace CTF.Application.Common.Resources {
         internal static string NextRank {
             get {
                 return ResourceManager.GetString("NextRank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No match found.
+        /// </summary>
+        internal static string NoMatchFound {
+            get {
+                return ResourceManager.GetString("NoMatchFound", resourceCulture);
             }
         }
         
