@@ -84,8 +84,21 @@ public class MapRotationService
         _serverService.SendRconCommand($"unloadfs {currentMap.Name}");
 
         IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
-        foreach (Player player in players)
-            player.ToggleControllable(false);
+        if (currentMap.Id == currentMap.NextMap.Id)
+        {
+            foreach (Player player in players)
+            {
+                player.Position = new Vector3(0, 0, 0);
+                player.Angle = 0;
+                player.Interior = 0;
+                player.ToggleControllable(false);
+            }
+        }
+        else
+        {
+            foreach (Player player in players)
+                player.ToggleControllable(false);
+        }
 
         string message = Smart.Format(Messages.NextMapWillBeLoadedSoon, new { currentMap.NextMap.Name });
         _worldService.SendClientMessage(Color.Orange, message);
@@ -114,7 +127,7 @@ public class MapRotationService
             playerInfo.StatsPerRound.ResetStats();
             playerInfo.SetTeam(TeamId.NoTeam);
             player.Team = (int)TeamId.NoTeam;
-            player.ToggleControllable(false);
+            player.ToggleControllable(true);
             player.Health = 100;
             player.RedirectToClassSelection();
             _playerStatsRenderer.HideTextDraw(player);
