@@ -19,6 +19,24 @@ public class MapRotationSystem(
         mapRotationService.StartRotation();
     }
 
+    [PlayerCommand("startrt")]
+    public void StartRotationTimer(Player player)
+    {
+        if (player.HasLowerRoleThan(RoleId.Moderator))
+            return;
+
+        mapRotationService.StartRotation();
+    }
+
+    [PlayerCommand("stoprt")]
+    public void StopRotationTimer(Player player)
+    {
+        if (player.HasLowerRoleThan(RoleId.Moderator))
+            return;
+
+        mapRotationService.StopRotation();
+    }
+
     [PlayerCommand("settimeleft")]
     public void SetTimeLeft(Player player, int minutes)
     {
