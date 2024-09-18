@@ -171,6 +171,9 @@
   <data name="LoginOrRegisterToContinue" xml:space="preserve">
     <value>Please log in or register to continue</value>
   </data>
+  <data name="MapChangeForced" xml:space="preserve">
+    <value>{PlayerName} forced the map change to {MapName}</value>
+  </data>
   <data name="MapIsLoading" xml:space="preserve">
     <value>Please wait while the map is being loaded</value>
   </data>
@@ -189,11 +192,17 @@
   <data name="NameSuccessfullyChanged" xml:space="preserve">
     <value>{OldName} changed their name to {NewName}</value>
   </data>
+  <data name="NextMapSelection" xml:space="preserve">
+    <value>{PlayerName} decided that the next map will be in {MapName}</value>
+  </data>
   <data name="NextMapWillBeLoadedSoon" xml:space="preserve">
     <value>The next map will be loaded soon: {Name}</value>
   </data>
   <data name="NextRank" xml:space="preserve">
     <value>You moved up to {Name} rank, congratulations!</value>
+  </data>
+  <data name="NoMatchFound" xml:space="preserve">
+    <value>No match found</value>
   </data>
   <data name="NoPermissions" xml:space="preserve">
     <value>You do not have permissions to use this command</value>
