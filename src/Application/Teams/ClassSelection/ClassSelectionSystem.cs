@@ -3,7 +3,8 @@
 public class ClassSelectionSystem(
     ClassSelectionTextDrawRenderer classSelectionTextDrawRenderer,
     TeamTextDrawRenderer teamTextDrawRenderer,
-    MapRotationService mapRotationService) : ISystem
+    MapRotationService mapRotationService,
+    ServerSettings serverSettings) : ISystem
 {
     [Event]
     public void OnGameModeInit(IServerService serverService)
@@ -18,6 +19,7 @@ public class ClassSelectionSystem(
         player.Color = Team.None.ColorHex;
         player.AddComponent<ClassSelectionComponent>();
         player.RemoveAttachedObject(0);
+        player.PlayAudioStream(serverSettings.IntroAudioUrl);
         classSelectionTextDrawRenderer.Show(player);
     }
 
@@ -74,6 +76,7 @@ public class ClassSelectionSystem(
         player.DisableClassSelection();
         player.GameText("_", 1000, 4);
         player.GetInfo().SetTeam(selectedTeam.Id);
+        player.StopAudioStream();
         selectedTeam.Members.Add(player);
         classSelectionTextDrawRenderer.Hide(player);
         teamTextDrawRenderer.UpdateTeamMembers(selectedTeam);
