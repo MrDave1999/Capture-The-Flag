@@ -34,7 +34,7 @@ public class ComboSystem : ISystem
     public async void ShowCombos(Player player)
     {
         TablistDialogResponse response = await _dialogService.ShowAsync(player, _tablistDialog);
-        if (response.Response == DialogResponse.RightButtonOrCancel)
+        if (response.IsRightButtonOrDisconnected())
             return;
 
         string selectedItemName = response.Item.Columns[0];
