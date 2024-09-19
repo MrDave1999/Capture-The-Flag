@@ -17,7 +17,7 @@ public class ChangePasswordSystem(
     public async void ShowPasswordDialog(Player player)
     {
         InputDialogResponse response = await dialogService.ShowAsync(player, _passwordDialog);
-        if (response.Response == DialogResponse.RightButtonOrCancel)
+        if (response.IsRightButtonOrDisconnected())
             return;
 
         var enteredPassword = response.InputText ?? string.Empty;

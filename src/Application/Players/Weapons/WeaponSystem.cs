@@ -37,7 +37,7 @@ public class WeaponSystem : ISystem
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
         ListDialogResponse response = await dialogService.ShowAsync(player, _weaponsDialog);
-        if (response.Response == DialogResponse.RightButtonOrCancel)
+        if (response.IsRightButtonOrDisconnected())
             return;
 
         IWeapon weaponSelectedFromDialog = GtaWeapons.GetByIndex(response.ItemIndex).Value;
@@ -73,7 +73,7 @@ public class WeaponSystem : ISystem
             dialog.Add(weapon.Name);
 
         ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
-        if (response.Response == DialogResponse.RightButtonOrCancel)
+        if (response.IsRightButtonOrDisconnected())
             return;
 
         IWeapon weaponSelectedFromDialog = GtaWeapons.GetByName(response.Item.Text).Value;

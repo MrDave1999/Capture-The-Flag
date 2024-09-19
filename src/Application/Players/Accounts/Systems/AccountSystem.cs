@@ -37,6 +37,9 @@ public class AccountSystem(
     private async void ShowSignupDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
     {
         InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _signupDialog);
+        if (response.Response == DialogResponse.Disconnected)
+            return;
+
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
             ShowSignupDialog(connectedPlayer, playerInfo);
@@ -70,6 +73,9 @@ public class AccountSystem(
     private async void ShowLoginDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
     {
         InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _loginDialog);
+        if (response.Response == DialogResponse.Disconnected)
+            return;
+
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
             ShowLoginDialog(connectedPlayer, playerInfo);
