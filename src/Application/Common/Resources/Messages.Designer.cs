@@ -88,6 +88,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~n~~n~~n~~b~The blue flag is not at its base position.
+        /// </summary>
+        internal static string BlueFlagIsNotAtBasePosition {
+            get {
+                return ResourceManager.GetString("BlueFlagIsNotAtBasePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has had {Kills} consecutive kills without dying.
         /// </summary>
         internal static string ConsecutiveKills {
@@ -331,6 +340,60 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~n~~n~~n~Defend this flag from enemy capture!.
+        /// </summary>
+        internal static string OnFlagAtBasePosition {
+            get {
+                return ResourceManager.GetString("OnFlagAtBasePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has captured the {TeamName} team&apos;s {ColorName} flag! Keep an eye on the score!.
+        /// </summary>
+        internal static string OnFlagCaptured {
+            get {
+                return ResourceManager.GetString("OnFlagCaptured", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has dropped the {TeamName} team&apos;s {ColorName} flag! Retrieve it before the enemy does!.
+        /// </summary>
+        internal static string OnFlagDropped {
+            get {
+                return ResourceManager.GetString("OnFlagDropped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has returned the {TeamName} team&apos;s {ColorName} flag to its base! Keep up the defense!.
+        /// </summary>
+        internal static string OnFlagReturned {
+            get {
+                return ResourceManager.GetString("OnFlagReturned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} scored a point for the {TeamName} team by bringing the {RivalName} flag back to {TeamName} team&apos;s base!.
+        /// </summary>
+        internal static string OnFlagScore {
+            get {
+                return ResourceManager.GetString("OnFlagScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has taken the {TeamName} team&apos;s {ColorName} flag! Keep an eye on the score!.
+        /// </summary>
+        internal static string OnFlagTaken {
+            get {
+                return ResourceManager.GetString("OnFlagTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password cannot be empty.
         /// </summary>
         internal static string PasswordCannotBeEmpty {
@@ -399,6 +462,15 @@ namespace CTF.Application.Common.Resources {
         internal static string RedeemedPoints {
             get {
                 return ResourceManager.GetString("RedeemedPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ~n~~n~~n~~r~The red flag is not at its base position.
+        /// </summary>
+        internal static string RedFlagIsNotAtBasePosition {
+            get {
+                return ResourceManager.GetString("RedFlagIsNotAtBasePosition", resourceCulture);
             }
         }
         
