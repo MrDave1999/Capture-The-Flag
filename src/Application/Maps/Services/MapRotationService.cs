@@ -104,6 +104,8 @@ public class MapRotationService
         _worldService.SendClientMessage(Color.Orange, message);
         IMap nextMap = currentMap.NextMap;
         _mapInfoService.Load(nextMap);
+        Team.Alpha.Flag.RemoveCarrier();
+        Team.Beta.Flag.RemoveCarrier();
         _teamPickupService.DestroyAllPickups();
         _teamPickupService.CreateFlagFromBasePosition(Team.Alpha);
         _teamPickupService.CreateFlagFromBasePosition(Team.Beta);
