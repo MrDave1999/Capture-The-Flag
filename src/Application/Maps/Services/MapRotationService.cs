@@ -104,8 +104,10 @@ public class MapRotationService
         _worldService.SendClientMessage(Color.Orange, message);
         IMap nextMap = currentMap.NextMap;
         _mapInfoService.Load(nextMap);
+        _teamPickupService.DestroyAllPickups();
         _teamPickupService.CreateFlagFromBasePosition(Team.Alpha);
         _teamPickupService.CreateFlagFromBasePosition(Team.Beta);
+        _teamIconService.DestroyAll();
         _teamIconService.CreateFromBasePosition(Team.Alpha);
         _teamIconService.CreateFromBasePosition(Team.Beta);
         _serverService.SendRconCommand($"loadfs {nextMap.Name}");
