@@ -223,7 +223,7 @@
     <value>{PlayerName} has returned the {TeamName} team's {ColorName} flag to its base! Keep up the defense!</value>
   </data>
   <data name="OnFlagScore" xml:space="preserve">
-    <value>{PlayerName} has brought the {RivalName} flag to the {TeamName} team's base. Point scored!</value>
+    <value>{PlayerName} has brought the {ColorName} flag to the {TeamName} team's base. Point scored!</value>
   </data>
   <data name="OnFlagTaken" xml:space="preserve">
     <value>{PlayerName} has taken the {TeamName} team's {ColorName} flag! Keep an eye on the score!</value>

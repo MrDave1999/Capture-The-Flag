@@ -376,7 +376,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has brought the {RivalName} flag to the {TeamName} team&apos;s base. Point scored!.
+        ///   Looks up a localized string similar to {PlayerName} has brought the {ColorName} flag to the {TeamName} team&apos;s base. Point scored!.
         /// </summary>
         internal static string OnFlagScore {
             get {
