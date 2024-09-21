@@ -7,8 +7,10 @@ public static class TeamServicesExtensions
         services
             .AddSingleton<TeamPickupService>()
             .AddSingleton<TeamIconService>()
+            .AddSingleton<TeamSoundsService>()
             .AddSingleton<TeamTextDrawRenderer>()
-            .AddSingleton<ClassSelectionTextDrawRenderer>();
+            .AddSingleton<ClassSelectionTextDrawRenderer>()
+            .AddFlagServices();
 
         return services;
     }
