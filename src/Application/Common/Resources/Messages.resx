@@ -211,7 +211,7 @@
     <value>You do not have permissions to use this command</value>
   </data>
   <data name="OnFlagAtBasePosition" xml:space="preserve">
-    <value>~n~~n~~n~Defend this flag from enemy capture!</value>
+    <value>~n~~n~~n~{GameText}Defend this flag from enemy capture!</value>
   </data>
   <data name="OnFlagCaptured" xml:space="preserve">
     <value>{PlayerName} has captured the {TeamName} team's {ColorName} flag! Keep an eye on the score!</value>
@@ -223,7 +223,7 @@
     <value>{PlayerName} has returned the {TeamName} team's {ColorName} flag to its base! Keep up the defense!</value>
   </data>
   <data name="OnFlagScore" xml:space="preserve">
-    <value>{PlayerName} scored a point for the {TeamName} team by bringing the {RivalName} flag back to {TeamName} team's base!</value>
+    <value>{PlayerName} has brought the {RivalName} flag to the {TeamName} team's base. Point scored!</value>
   </data>
   <data name="OnFlagTaken" xml:space="preserve">
     <value>{PlayerName} has taken the {TeamName} team's {ColorName} flag! Keep an eye on the score!</value>

@@ -340,7 +340,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~n~~n~~n~Defend this flag from enemy capture!.
+        ///   Looks up a localized string similar to ~n~~n~~n~{GameText}Defend this flag from enemy capture!.
         /// </summary>
         internal static string OnFlagAtBasePosition {
             get {
@@ -376,7 +376,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} scored a point for the {TeamName} team by bringing the {RivalName} flag back to {TeamName} team&apos;s base!.
+        ///   Looks up a localized string similar to {PlayerName} has brought the {RivalName} flag to the {TeamName} team&apos;s base. Point scored!.
         /// </summary>
         internal static string OnFlagScore {
             get {
