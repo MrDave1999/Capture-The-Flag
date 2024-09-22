@@ -77,7 +77,7 @@ public class Team
     public Team RivalTeam { get; private set; }
     public TeamMembers Members { get; } = [];
     public TeamStatsPerRound StatsPerRound { get; } = new();
-    public bool IsFlagInBase { get; set; } = true;
+    public bool IsFlagAtBasePosition { get; set; } = true;
 
     public virtual string GetMembersAsText() => $"{Members.Count}";
     public virtual string GetScoreAsText() => $"{Name}: {StatsPerRound.Score}";
@@ -88,7 +88,7 @@ public class Team
         StatsPerRound.Reset();
         Members.Clear();
         Flag.RemoveCarrier();
-        IsFlagInBase = true;
+        IsFlagAtBasePosition = true;
     }
 
     public virtual string GetAvailabilityMessage(bool entireMessage = true)
@@ -108,18 +108,18 @@ public class Team
     public virtual FlagStatus GetFlagStatus(Player flagPicker)
     {
         ArgumentNullException.ThrowIfNull(flagPicker);
-        if (IsFlagInBase)
+        if (IsFlagAtBasePosition)
         {
             if (flagPicker.Team == (int)RivalTeam.Id)
             {
-                IsFlagInBase = false;
+                IsFlagAtBasePosition = false;
                 Flag.SetCarrier(flagPicker);
                 return FlagStatus.Captured;
             }
 
             if (flagPicker == RivalTeam.Flag.Carrier)
             {
-                RivalTeam.IsFlagInBase = true;
+                RivalTeam.IsFlagAtBasePosition = true;
                 RivalTeam.Flag.RemoveCarrier();
                 StatsPerRound.AddScore();
                 return FlagStatus.Brought;
@@ -130,11 +130,11 @@ public class Team
 
         if (flagPicker.Team == (int)Id)
         {
-            IsFlagInBase = true;
+            IsFlagAtBasePosition = true;
             return FlagStatus.Returned;
         }
 
-        IsFlagInBase = false;
+        IsFlagAtBasePosition = false;
         Flag.SetCarrier(flagPicker);
         return FlagStatus.Taken;
     }
@@ -153,7 +153,7 @@ public class Team
             StatsPerRound.Reset();
             Members.Clear();
             Flag.RemoveCarrier();
-            IsFlagInBase = true;
+            IsFlagAtBasePosition = true;
         }
     }
 }

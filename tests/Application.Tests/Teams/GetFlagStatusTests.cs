@@ -37,7 +37,7 @@ public class GetFlagStatusTests
 
         // Asserts
         actual.Should().Be(expectedStatus);
-        betaTeam.IsFlagInBase.Should().BeFalse();
+        betaTeam.IsFlagAtBasePosition.Should().BeFalse();
         betaTeam.Flag.Carrier.Should().Be(alphaTeamPlayer);
     }
 
@@ -55,7 +55,7 @@ public class GetFlagStatusTests
 
         // Asserts
         actual.Should().Be(expectedStatus);
-        alphaTeam.IsFlagInBase.Should().BeFalse();
+        alphaTeam.IsFlagAtBasePosition.Should().BeFalse();
         alphaTeam.Flag.Carrier.Should().Be(betaTeamPlayer);
     }
 
@@ -76,7 +76,7 @@ public class GetFlagStatusTests
         // Asserts
         actual.Should().Be(expectedStatus);
         betaTeam.Flag.Carrier.Should().BeNull();
-        betaTeam.IsFlagInBase.Should().BeTrue();
+        betaTeam.IsFlagAtBasePosition.Should().BeTrue();
         alphaTeam.StatsPerRound.Score.Should().Be(expectedScore);
     }
 
@@ -97,7 +97,7 @@ public class GetFlagStatusTests
         // Asserts
         actual.Should().Be(expectedStatus);
         alphaTeam.Flag.Carrier.Should().BeNull();
-        alphaTeam.IsFlagInBase.Should().BeTrue();
+        alphaTeam.IsFlagAtBasePosition.Should().BeTrue();
         betaTeam.StatsPerRound.Score.Should().Be(expectedScore);
     }
 
@@ -115,7 +115,7 @@ public class GetFlagStatusTests
         // Asserts
         actual.Should().Be(expectedStatus);
         alphaTeam.Flag.Carrier.Should().BeNull();
-        alphaTeam.IsFlagInBase.Should().BeTrue();
+        alphaTeam.IsFlagAtBasePosition.Should().BeTrue();
     }
 
     [Test]
@@ -132,7 +132,7 @@ public class GetFlagStatusTests
         // Asserts
         actual.Should().Be(expectedStatus);
         betaTeam.Flag.Carrier.Should().BeNull();
-        betaTeam.IsFlagInBase.Should().BeTrue();
+        betaTeam.IsFlagAtBasePosition.Should().BeTrue();
     }
 
     [Test]
@@ -142,14 +142,14 @@ public class GetFlagStatusTests
         Team alphaTeam = Team.Alpha;
         var alphaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: alphaTeam.Id);
         var expectedStatus = FlagStatus.Returned;
-        alphaTeam.IsFlagInBase = false;
+        alphaTeam.IsFlagAtBasePosition = false;
 
         // Act
         FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
-        alphaTeam.IsFlagInBase.Should().BeTrue();
+        alphaTeam.IsFlagAtBasePosition.Should().BeTrue();
         alphaTeam.Flag.Carrier.Should().BeNull();
     }
 
@@ -160,14 +160,14 @@ public class GetFlagStatusTests
         Team betaTeam = Team.Beta;
         var betaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: betaTeam.Id);
         var expectedStatus = FlagStatus.Returned;
-        betaTeam.IsFlagInBase = false;
+        betaTeam.IsFlagAtBasePosition = false;
 
         // Act
         FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
-        betaTeam.IsFlagInBase.Should().BeTrue();
+        betaTeam.IsFlagAtBasePosition.Should().BeTrue();
         betaTeam.Flag.Carrier.Should().BeNull();
     }
 
@@ -179,14 +179,14 @@ public class GetFlagStatusTests
         Team betaTeam = Team.Beta;
         var betaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: betaTeam.Id);
         var expectedStatus = FlagStatus.Taken;
-        alphaTeam.IsFlagInBase = false;
+        alphaTeam.IsFlagAtBasePosition = false;
 
         // Act
         FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
-        alphaTeam.IsFlagInBase.Should().BeFalse();
+        alphaTeam.IsFlagAtBasePosition.Should().BeFalse();
         alphaTeam.Flag.Carrier.Should().Be(betaTeamPlayer);
     }
 
@@ -198,14 +198,14 @@ public class GetFlagStatusTests
         Team betaTeam = Team.Beta;
         var alphaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: alphaTeam.Id);
         var expectedStatus = FlagStatus.Taken;
-        betaTeam.IsFlagInBase = false;
+        betaTeam.IsFlagAtBasePosition = false;
 
         // Act
         FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
 
         // Asserts
         actual.Should().Be(expectedStatus);
-        betaTeam.IsFlagInBase.Should().BeFalse();
+        betaTeam.IsFlagAtBasePosition.Should().BeFalse();
         betaTeam.Flag.Carrier.Should().Be(alphaTeamPlayer);
     }
 }
