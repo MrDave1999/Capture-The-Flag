@@ -24,7 +24,7 @@ public class OnFlagScore(
         {
             PlayerName = player.Name,
             TeamName = team.Name,
-            ColorName = team.RivalTeam.ColorName
+            team.RivalTeam.ColorName
         });
         worldService.SendClientMessage(team.ColorHex, message);
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} team scores!", 5000, 3);

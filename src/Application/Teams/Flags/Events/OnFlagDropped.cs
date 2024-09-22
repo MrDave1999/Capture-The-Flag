@@ -20,7 +20,7 @@ public class OnFlagDropped(
         {
             PlayerName = player.Name,
             TeamName = team.Name,
-            ColorName = team.ColorName
+            team.ColorName
         });
         worldService.SendClientMessage(team.ColorHex, message);
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag dropped!", 5000, 3);

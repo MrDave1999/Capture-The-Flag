@@ -21,7 +21,7 @@ public class OnFlagCaptured(
         {
             PlayerName = player.Name,
             TeamName = team.Name,
-            ColorName = team.ColorName
+            team.ColorName
         });
         worldService.SendClientMessage(team.ColorHex, message);
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag captured!", 5000, 3);
