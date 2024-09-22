@@ -5,11 +5,13 @@
 /// </summary>
 public class TimeLeft
 {
-    private const int MaxRoundTime = 900;
+    private const int MaxRoundTime = 3600;
+    private const int DefaultRoundTime = 900;
+
     /// <summary>
     /// Represents the interval in seconds.
     /// </summary>
-    private int _interval = MaxRoundTime;
+    private int _interval = DefaultRoundTime;
 
     /// <summary>
     /// Represents the time left in a text draw.
@@ -65,7 +67,7 @@ public class TimeLeft
 
     public void Reset()
     {
-        _interval = MaxRoundTime;
+        _interval = DefaultRoundTime;
         UpdateTextDraw();
     }
 

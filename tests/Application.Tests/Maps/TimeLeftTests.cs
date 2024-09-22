@@ -46,8 +46,8 @@ public class TimeLeftTests
 
     [TestCase(-1)]
     [TestCase(-2)]
-    [TestCase(16)]
-    [TestCase(17)]
+    [TestCase(61)]
+    [TestCase(62)]
     public void SetInterval_WhenMinutesIntervalIsOutOfRange_ShouldReturnsFailureResult(int value)
     {
         // Arrange
@@ -73,6 +73,9 @@ public class TimeLeftTests
     [TestCase(12, "12:00")]
     [TestCase(14, "14:00")]
     [TestCase(15, "15:00")]
+    [TestCase(30, "30:00")]
+    [TestCase(45, "45:00")]
+    [TestCase(60, "60:00")]
     public void SetInterval_WhenMinutesIntervalIsNotOutOfRange_ShouldReturnsSuccessResult(int value, string expectedText)
     {
         // Arrange
@@ -89,8 +92,8 @@ public class TimeLeftTests
 
     [TestCase(-1)]
     [TestCase(-2)]
-    [TestCase(901)]
-    [TestCase(902)]
+    [TestCase(3601)]
+    [TestCase(3602)]
     public void SetInterval_WhenSecondsIntervalIsOutOfRange_ShouldReturnsFailureResult(int value)
     {
         // Arrange
@@ -106,16 +109,19 @@ public class TimeLeftTests
         timeLeft.TextDraw.Should().Be(expectedText);
     }
 
-    [TestCase(0,   "00:00")]
-    [TestCase(1,   "00:01")]
-    [TestCase(5,   "00:05")]
-    [TestCase(60,  "01:00")]
-    [TestCase(300, "05:00")]
-    [TestCase(428, "07:08")]
-    [TestCase(590, "09:50")]
-    [TestCase(608, "10:08")]
-    [TestCase(840, "14:00")]
-    [TestCase(900, "15:00")]
+    [TestCase(0,    "00:00")]
+    [TestCase(1,    "00:01")]
+    [TestCase(5,    "00:05")]
+    [TestCase(60,   "01:00")]
+    [TestCase(300,  "05:00")]
+    [TestCase(428,  "07:08")]
+    [TestCase(590,  "09:50")]
+    [TestCase(608,  "10:08")]
+    [TestCase(840,  "14:00")]
+    [TestCase(900,  "15:00")]
+    [TestCase(1800, "30:00")]
+    [TestCase(2700, "45:00")]
+    [TestCase(3600, "60:00")]
     public void SetInterval_WhenSecondsIntervalIsNotOutOfRange_ShouldReturnsSuccessResult(int value, string expectedText)
     {
         // Arrange
