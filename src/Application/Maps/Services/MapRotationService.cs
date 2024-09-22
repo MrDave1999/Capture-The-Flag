@@ -11,6 +11,7 @@ public class MapRotationService
     private readonly TeamPickupService _teamPickupService;
     private readonly TeamTextDrawRenderer _teamTextDrawRenderer;
     private readonly PlayerStatsRenderer _playerStatsRenderer;
+    private readonly FlagAutoReturnTimer _flagAutoReturnTimer;
     private readonly TimeLeft _timeLeft;
     private readonly LoadTime _loadTime;
     private TimerReference _timerReference;
@@ -27,7 +28,8 @@ public class MapRotationService
         TeamIconService teamIconService,
         TeamPickupService teamPickupService,
         TeamTextDrawRenderer teamTextDrawRenderer,
-        PlayerStatsRenderer playerStatsRenderer)
+        PlayerStatsRenderer playerStatsRenderer,
+        FlagAutoReturnTimer flagAutoReturnTimer)
     {
         _serverService = serverService;
         _worldService = worldService;
@@ -38,6 +40,7 @@ public class MapRotationService
         _teamPickupService = teamPickupService;
         _teamTextDrawRenderer = teamTextDrawRenderer;
         _playerStatsRenderer = playerStatsRenderer;
+        _flagAutoReturnTimer = flagAutoReturnTimer;
         _timeLeft = new TimeLeft();
         _loadTime = new LoadTime(OnLoadingMap, OnLoadedMap);
         _isMapLoading = false;
@@ -112,6 +115,8 @@ public class MapRotationService
         _teamIconService.DestroyAll();
         _teamIconService.CreateFromBasePosition(Team.Alpha);
         _teamIconService.CreateFromBasePosition(Team.Beta);
+        _flagAutoReturnTimer.Stop(Team.Alpha);
+        _flagAutoReturnTimer.Stop(Team.Beta);
         _serverService.SendRconCommand($"loadfs {nextMap.Name}");
         _serverService.SendRconCommand($"mapname {nextMap.Name}");
     }

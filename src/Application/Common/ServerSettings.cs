@@ -8,4 +8,5 @@ public class ServerSettings
     public string MapName { get; init; } = string.Empty;
     public string WebUrl { get; init; } = string.Empty;
     public string IntroAudioUrl { get; init; } = string.Empty;
+    public int FlagAutoReturnTime { get; init; } = 120;
 }

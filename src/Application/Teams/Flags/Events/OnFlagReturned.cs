@@ -8,7 +8,8 @@ public class OnFlagReturned(
     IWorldService worldService,
     TeamPickupService teamPickupService,
     TeamSoundsService teamSoundsService,
-    PlayerStatsRenderer playerStatsRenderer) : IFlagEvent
+    PlayerStatsRenderer playerStatsRenderer,
+    FlagAutoReturnTimer flagAutoReturnTimer) : IFlagEvent
 {
     public FlagStatus FlagStatus => FlagStatus.Returned;
 
@@ -17,6 +18,7 @@ public class OnFlagReturned(
         teamPickupService.CreateFlagFromBasePosition(team);
         teamPickupService.DestroyPickupWithInfo(team);
         teamSoundsService.PlayFlagReturnedSound(team);
+        flagAutoReturnTimer.Stop(team);
         var message = Smart.Format(Messages.OnFlagReturned, new
         {
             PlayerName = player.Name,

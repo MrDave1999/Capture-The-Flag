@@ -124,6 +124,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {ColorName} flag has automatically returned to its base position after {Seconds} seconds!.
+        /// </summary>
+        internal static string FlagAutoReturn {
+            get {
+                return ResourceManager.GetString("FlagAutoReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team&apos;s flag and bring it back to their own base to score a point.
         /// </summary>
         internal static string GameModeDescription {
