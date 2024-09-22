@@ -1,7 +1,7 @@
 ﻿namespace CTF.Application.Teams.Flags.Events;
 
 /// <summary>
-/// This event occurs when a player attempts to pick up their own team's flag, which is currently at the base.
+/// This event occurs when a player attempts to pick up their own team's flag, which is currently at the base position.
 /// </summary>
 public class OnFlagAtBasePosition : IFlagEvent
 {
