@@ -3,9 +3,9 @@
 public enum FlagStatus
 {
     /// <summary>
-    /// Indicates that the flag is on its base.
+    /// Indicates that the flag is at the base position, where it is defended to prevent enemy capture.
     /// </summary>
-    InitialPosition,
+    BasePosition,
 
     /// <summary>
     /// Indicates that a player has captured the opposing team's flag from their base.

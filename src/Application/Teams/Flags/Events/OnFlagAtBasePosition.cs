@@ -5,7 +5,7 @@
 /// </summary>
 public class OnFlagAtBasePosition : IFlagEvent
 {
-    public FlagStatus FlagStatus => FlagStatus.InitialPosition;
+    public FlagStatus FlagStatus => FlagStatus.BasePosition;
 
     public void Handle(Team team, Player player)
     {
