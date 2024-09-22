@@ -125,7 +125,7 @@ public class Team
                 return FlagStatus.Brought;
             }
 
-            return FlagStatus.InitialPosition;
+            return FlagStatus.BasePosition;
         }
 
         if (flagPicker.Team == (int)Id)
@@ -143,7 +143,7 @@ public class Team
     {
         public NoTeam() { }
         public override string GetAvailabilityMessage(bool entireMessage = true) => string.Empty;
-        public override FlagStatus GetFlagStatus(Player flagPicker) => FlagStatus.InitialPosition;
+        public override FlagStatus GetFlagStatus(Player flagPicker) => FlagStatus.BasePosition;
         public override string GetMembersAsText() => string.Empty;
         public override string GetScoreAsText() => string.Empty;
         public override bool IsFull() => false;

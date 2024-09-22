@@ -102,12 +102,12 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromAlphaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsInitialPositionStatus()
+    public void GetFlagStatus_WhenPlayerFromAlphaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
     {
         // Arrange
         Team alphaTeam = Team.Alpha;
         var alphaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: alphaTeam.Id);
-        var expectedStatus = FlagStatus.InitialPosition;
+        var expectedStatus = FlagStatus.BasePosition;
 
         // Act
         FlagStatus actual = alphaTeam.GetFlagStatus(flagPicker: alphaTeamPlayer);
@@ -119,12 +119,12 @@ public class GetFlagStatusTests
     }
 
     [Test]
-    public void GetFlagStatus_WhenPlayerFromBetaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsInitialPositionStatus()
+    public void GetFlagStatus_WhenPlayerFromBetaTeamAttemptsToCaptureTheFlagOfTheirTeamFromBase_ShouldReturnsBasePositionStatus()
     {
         // Arrange
         Team betaTeam = Team.Beta;
         var betaTeamPlayer = new FakePlayer(id: 1, name: "Bob", team: betaTeam.Id);
-        var expectedStatus = FlagStatus.InitialPosition;
+        var expectedStatus = FlagStatus.BasePosition;
 
         // Act
         FlagStatus actual = betaTeam.GetFlagStatus(flagPicker: betaTeamPlayer);
