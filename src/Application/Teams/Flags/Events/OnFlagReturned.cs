@@ -16,7 +16,7 @@ public class OnFlagReturned(
     public void Handle(Team team, Player player)
     {
         teamPickupService.CreateFlagFromBasePosition(team);
-        teamPickupService.DestroyPickupWithInfo(team);
+        teamPickupService.DestroyExteriorMarker(team);
         teamSoundsService.PlayFlagReturnedSound(team);
         flagAutoReturnTimer.Stop(team);
         var message = Smart.Format(Messages.OnFlagReturned, new

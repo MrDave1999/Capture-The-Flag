@@ -15,7 +15,7 @@ public class FlagAutoReturnTimer(
         void OnComplete(IServiceProvider serviceProvider)
         {
             teamPickupService.CreateFlagFromBasePosition(team);
-            teamPickupService.DestroyPickupWithInfo(team);
+            teamPickupService.DestroyExteriorMarker(team);
             teamSoundsService.PlayFlagReturnedSound(team);
             team.IsFlagAtBasePosition = true;
             var message = Smart.Format(Messages.FlagAutoReturn, new

@@ -49,12 +49,12 @@ public class FlagSystem(
             IFlagEvent flagEvent = flagEvents[flagStatus];
             flagEvent.Handle(Team.Beta, player);
         }
-        else if (pickup.Model == (int)PickupInfo.Red)
+        else if (pickup.Model == (int)ExteriorMarker.Red)
         {
             if (player.Team == (int)TeamId.Alpha)
                 player.GameText(Messages.RedFlagIsNotAtBasePosition, 5000, 3);
         }
-        else if (pickup.Model == (int)PickupInfo.Blue)
+        else if (pickup.Model == (int)ExteriorMarker.Blue)
         {
             if (player.Team == (int)TeamId.Beta)
                 player.GameText(Messages.BlueFlagIsNotAtBasePosition, 5000, 3);

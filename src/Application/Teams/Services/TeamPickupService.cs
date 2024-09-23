@@ -6,8 +6,8 @@ public class TeamPickupService
     private readonly IWorldService _worldService;
     private Pickup _redFlagPickup;
     private Pickup _blueFlagPickup;
-    private Pickup _alphaPickupInfo;
-    private Pickup _betaPickupInfo;
+    private Pickup _redExteriorMarker;
+    private Pickup _blueExteriorMarker;
 
     public TeamPickupService(MapInfoService mapInfoService, IWorldService worldService)
     {
@@ -74,48 +74,48 @@ public class TeamPickupService
         DestroyFlag(Team.Beta);
     }
 
-    public void CreatePickupWithInfo(Team team)
+    public void CreateExteriorMarker(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
         CurrentMap currentMap = _mapInfoService.Read();
-        DestroyPickupWithInfo(team);
+        DestroyExteriorMarker(team);
         if (team.Id == TeamId.Alpha)
         {
-            _alphaPickupInfo = _worldService.CreatePickup(
-                model: (int)PickupInfo.Red,
+            _redExteriorMarker = _worldService.CreatePickup(
+                model: (int)ExteriorMarker.Red,
                 type: PickupType.ScriptedActionsOnlyEveryFewSeconds,
                 position: currentMap.FlagLocations.Red
             );
         }
         else if(team.Id == TeamId.Beta)
         {
-            _betaPickupInfo = _worldService.CreatePickup(
-                model: (int)PickupInfo.Blue,
+            _blueExteriorMarker = _worldService.CreatePickup(
+                model: (int)ExteriorMarker.Blue,
                 type: PickupType.ScriptedActionsOnlyEveryFewSeconds,
                 position: currentMap.FlagLocations.Blue
             );
         }
     }
 
-    public void DestroyPickupWithInfo(Team team)
+    public void DestroyExteriorMarker(Team team)
     {
         ArgumentNullException.ThrowIfNull(team);
         if (team.Id == TeamId.Alpha)
         {
-            _alphaPickupInfo?.Destroy();
-            _alphaPickupInfo = default;
+            _redExteriorMarker?.Destroy();
+            _redExteriorMarker = default;
         }
         else if (team.Id == TeamId.Beta)
         {
-            _betaPickupInfo?.Destroy();
-            _betaPickupInfo = default;
+            _blueExteriorMarker?.Destroy();
+            _blueExteriorMarker = default;
         }
     }
 
     public void DestroyAllPickups()
     {
-        DestroyPickupWithInfo(Team.Alpha);
-        DestroyPickupWithInfo(Team.Beta);
+        DestroyExteriorMarker(Team.Alpha);
+        DestroyExteriorMarker(Team.Beta);
         DestroyFlags();
     }
 }
