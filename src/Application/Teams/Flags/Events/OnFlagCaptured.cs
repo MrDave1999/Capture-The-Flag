@@ -14,7 +14,7 @@ public class OnFlagCaptured(
 
     public void Handle(Team team, Player player)
     {
-        teamPickupService.CreatePickupWithInfo(team);
+        teamPickupService.CreateExteriorMarker(team);
         teamPickupService.DestroyFlag(team);
         teamSoundsService.PlayFlagTakenSound(team);
         var message = Smart.Format(Messages.OnFlagCaptured, new

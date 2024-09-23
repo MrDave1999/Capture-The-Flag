@@ -16,7 +16,7 @@ public class OnFlagScore(
     public void Handle(Team team, Player player)
     {
         teamPickupService.CreateFlagFromBasePosition(team.RivalTeam);
-        teamPickupService.DestroyPickupWithInfo(team.RivalTeam);
+        teamPickupService.DestroyExteriorMarker(team.RivalTeam);
         teamSoundsService.PlayTeamScoresSound(team);
         teamTextDrawRenderer.UpdateTeamScore(team);
 
