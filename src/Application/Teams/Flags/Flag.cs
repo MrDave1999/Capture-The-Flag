@@ -21,6 +21,14 @@ public class Flag
     public bool IsCaptured() => Carrier is not null;
 
     /// <summary>
+    /// Gets the name of the player who captured the flag.
+    /// </summary>
+    /// <remarks>
+    /// If the flag is not captured, returns <c>None</c>.
+    /// </remarks>
+    public string CarrierName => IsCaptured() ? Carrier.Name : "None";
+
+    /// <summary>
     /// Sets the player who holds the flag.
     /// </summary>
     public void SetCarrier(Player player)

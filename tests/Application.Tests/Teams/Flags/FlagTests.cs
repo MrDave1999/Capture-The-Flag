@@ -43,6 +43,48 @@ public class FlagTests
     }
 
     [Test]
+    public void CarrierName_WhenFlagIsCaptured_ShouldReturnsCarrierName()
+    {
+        // Arrange
+        var flag = new Flag
+        {
+            Model = FlagModel.Blue,
+            Icon = FlagIcon.Blue,
+            Name = "Blue",
+            ColorHex = Color.Blue
+        };
+        var expectedCarrierName = "Bob";
+        var fakeCarrier = new FakePlayer(id: 1, expectedCarrierName);
+        flag.SetCarrier(fakeCarrier);
+
+        // Act
+        string actual = flag.CarrierName;
+
+        // Assert
+        actual.Should().Be(expectedCarrierName);
+    }
+
+    [Test]
+    public void CarrierName_WhenFlagIsNotCaptured_ShouldReturnsNone()
+    {
+        // Arrange
+        var flag = new Flag
+        {
+            Model = FlagModel.Blue,
+            Icon = FlagIcon.Blue,
+            Name = "Blue",
+            ColorHex = Color.Blue
+        };
+        var expectedCarrierName = "None";
+
+        // Act
+        string actual = flag.CarrierName;
+
+        // Assert
+        actual.Should().Be(expectedCarrierName);
+    }
+
+    [Test]
     public void SetCarrier_WhenArgumentIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
