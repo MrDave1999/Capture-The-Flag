@@ -10,6 +10,19 @@ public class TeamStatsSystem(
         teamTextDrawRenderer.Show(player);
     }
 
+    [Event]
+    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
+    {
+        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
+        deadPlayerInfo.Team.StatsPerRound.AddDeaths();
+
+        if (killer.IsInvalidPlayer())
+            return;
+
+        PlayerInfo killerInfo = killer.GetInfo();
+        killerInfo.Team.StatsPerRound.AddKills();
+    }
+
     [PlayerCommand("tstats")]
     public void ShowStats(Player player)
     {
