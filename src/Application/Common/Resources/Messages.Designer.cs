@@ -97,6 +97,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chat is currently disabled while you select your class. Please finish your selection before chatting!.
+        /// </summary>
+        internal static string ChatDisabled {
+            get {
+                return ResourceManager.GetString("ChatDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has had {Kills} consecutive kills without dying.
         /// </summary>
         internal static string ConsecutiveKills {

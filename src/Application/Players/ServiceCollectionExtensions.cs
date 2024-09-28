@@ -8,7 +8,8 @@ public static class PlayerServicesExtensions
             .AddSingleton<PlayerRankUpdater>()
             .AddSingleton<KillingSpreeUpdater>()
             .AddSingleton<PlayerStatsRenderer>()
-            .AddComboServices();
+            .AddComboServices()
+            .AddChatServices();
 
         return services;
     }

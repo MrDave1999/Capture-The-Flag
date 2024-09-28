@@ -25,6 +25,8 @@ global using CTF.Application.Players.Accounts.Services;
 global using CTF.Application.Players.Ranks;
 global using CTF.Application.Players.Combos;
 global using CTF.Application.Players.Combos.Services;
+global using CTF.Application.Players.Chats;
+global using CTF.Application.Players.Chats.Services;
 global using CTF.Application.Players.Extensions;
 global using CTF.Application.Teams;
 global using CTF.Application.Teams.ClassSelection;

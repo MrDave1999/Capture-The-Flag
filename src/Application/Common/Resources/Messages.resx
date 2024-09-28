@@ -129,6 +129,9 @@
   <data name="BlueFlagIsNotAtBasePosition" xml:space="preserve">
     <value>~n~~n~~n~~b~The blue flag is not at its base position</value>
   </data>
+  <data name="ChatDisabled" xml:space="preserve">
+    <value>Chat is currently disabled while you select your class. Please finish your selection before chatting!</value>
+  </data>
   <data name="ConsecutiveKills" xml:space="preserve">
     <value>{PlayerName} has had {Kills} consecutive kills without dying</value>
   </data>
