@@ -11,7 +11,8 @@ public class PrivateVipChat : IChatMessage
         var players = AlphaBetaTeamPlayers.GetAll();
         foreach (Player player in players)
         {
-            if (player.HasLowerRoleThan(RoleId.VIP))
+            PlayerInfo playerInfo = player.GetInfo();
+            if (playerInfo.HasLowerRoleThan(RoleId.VIP))
                 continue;
 
             player.SendClientMessage($"{{8b0000}}[Vip Chat] {player.Name}: {message}");

@@ -11,7 +11,8 @@ public class PrivateAdminChat : IChatMessage
         var players = AlphaBetaTeamPlayers.GetAll();
         foreach (Player player in players)
         {
-            if (player.HasLowerRoleThan(RoleId.Admin))
+            PlayerInfo playerInfo = player.GetInfo();
+            if (playerInfo.HasLowerRoleThan(RoleId.Admin))
                 continue;
 
             player.SendClientMessage(new Color(0x33FF33AA), $"[Admin Chat] {player.Name}: {message}");
