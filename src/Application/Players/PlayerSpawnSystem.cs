@@ -15,6 +15,7 @@ public class PlayerSpawnSystem(
         player.Interior = currentMap.Interior;
         player.Color = playerInfo.Team.ColorHex;
         player.Team = (int)playerInfo.Team.Id;
+        player.Skin = (int)playerInfo.Team.SkinId;
         if (playerInfo.HasSkin())
         {
             player.Skin = playerInfo.SkinId;
