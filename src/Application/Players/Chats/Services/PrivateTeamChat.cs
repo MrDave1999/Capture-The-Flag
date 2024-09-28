@@ -12,7 +12,7 @@ public class PrivateTeamChat : IChatMessage
         TeamMembers players = currentTeam.Members;
         foreach (Player player in players) 
         {
-            player.SendClientMessage(currentTeam.ColorHex, $"[Team Chat] {player.Name}: {message}");
+            player.SendClientMessage(currentTeam.ColorHex, $"[Team Chat] {sender.Name}: {message}");
         }
         return true;
     }

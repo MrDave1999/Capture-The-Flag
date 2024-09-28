@@ -18,7 +18,7 @@ public class PrivateVipChat(IEntityManager entityManager) : IChatMessage
             if (playerInfo.HasLowerRoleThan(RoleId.VIP))
                 continue;
 
-            player.SendClientMessage($"{{8b0000}}[Vip Chat] {player.Name}: {message}");
+            player.SendClientMessage($"{{8b0000}}[Vip Chat] {sender.Name}: {message}");
         }
         return true;
     }

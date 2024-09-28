@@ -18,7 +18,7 @@ public class PrivateAdminChat(IEntityManager entityManager) : IChatMessage
             if (playerInfo.HasLowerRoleThan(RoleId.Admin))
                 continue;
 
-            player.SendClientMessage(new Color(0x33FF33AA), $"[Admin Chat] {player.Name}: {message}");
+            player.SendClientMessage(new Color(0x33FF33AA), $"[Admin Chat] {sender.Name}: {message}");
         }
         return true;
     }
