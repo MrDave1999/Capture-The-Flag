@@ -349,6 +349,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You do not belong to any team.
+        /// </summary>
+        internal static string NoTeam {
+            get {
+                return ResourceManager.GetString("NoTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~n~~n~~n~{GameText}Defend this flag from enemy capture!.
         /// </summary>
         internal static string OnFlagAtBasePosition {
@@ -430,6 +439,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team.
+        /// </summary>
+        internal static string PlayerHasChangedTeams {
+            get {
+                return ResourceManager.GetString("PlayerHasChangedTeams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are already a member of that team.
+        /// </summary>
+        internal static string PlayerIsAlreadyInTeam {
+            get {
+                return ResourceManager.GetString("PlayerIsAlreadyInTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to That player name already exists.
         /// </summary>
         internal static string PlayerNameAlreadyExists {
@@ -507,6 +534,24 @@ namespace CTF.Application.Common.Resources {
         internal static string SuccessfulLogin {
             get {
                 return ResourceManager.GetString("SuccessfulLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The team is currently full.
+        /// </summary>
+        internal static string TeamIsFull {
+            get {
+                return ResourceManager.GetString("TeamIsFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Both teams have the same number of members.
+        /// </summary>
+        internal static string TeamsAreEqualInMembers {
+            get {
+                return ResourceManager.GetString("TeamsAreEqualInMembers", resourceCulture);
             }
         }
         
