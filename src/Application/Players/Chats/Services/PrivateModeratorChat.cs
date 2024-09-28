@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application.Players.Chats.Services;
 
-public class PrivateModeratorChat : IChatMessage
+public class PrivateModeratorChat(IEntityManager entityManager) : IChatMessage
 {
     public char Id => '&';
     public bool SendToAllPlayers(PlayerInfo sender, string message)
@@ -8,9 +8,12 @@ public class PrivateModeratorChat : IChatMessage
         if (sender.HasLowerRoleThan(RoleId.Moderator))
             return false;
 
-        var players = AlphaBetaTeamPlayers.GetAll();
+        var players = entityManager.GetComponents<Player>();
         foreach (Player player in players)
         {
+            if (player.IsInClassSelection())
+                continue;
+
             PlayerInfo playerInfo = player.GetInfo();
             if (playerInfo.HasLowerRoleThan(RoleId.Moderator))
                 continue;
