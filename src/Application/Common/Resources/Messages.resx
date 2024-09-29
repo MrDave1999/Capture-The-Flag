@@ -276,6 +276,9 @@
   <data name="RedFlagIsNotAtBasePosition" xml:space="preserve">
     <value>~n~~n~~n~~r~The red flag is not at its base position</value>
   </data>
+  <data name="SavedSkin" xml:space="preserve">
+    <value>The skin ID {SkinId} has been successfully saved</value>
+  </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>
   </data>
