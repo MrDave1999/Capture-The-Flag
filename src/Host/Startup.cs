@@ -29,7 +29,9 @@ public class Startup : IStartup
     public void Configure(IEcsBuilder builder)
     {
         // TODO: Enable desired ECS system features
-        builder.EnableSampEvents()
+        builder
+            .RegisterMiddlewares()
+            .EnableSampEvents()
             .EnablePlayerCommands()
             .EnableRconCommands()
             .EnableStreamerEvents();
