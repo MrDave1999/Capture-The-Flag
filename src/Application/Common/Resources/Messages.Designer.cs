@@ -106,6 +106,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot execute commands in the class selection.
+        /// </summary>
+        internal static string CommandLockClassSelection {
+            get {
+                return ResourceManager.GetString("CommandLockClassSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot execute commands while the map is loading.
+        /// </summary>
+        internal static string CommandLockMapLoading {
+            get {
+                return ResourceManager.GetString("CommandLockMapLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has had {Kills} consecutive kills without dying.
         /// </summary>
         internal static string ConsecutiveKills {
