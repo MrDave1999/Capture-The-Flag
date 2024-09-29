@@ -538,6 +538,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The skin ID {SkinId} has been successfully saved.
+        /// </summary>
+        internal static string SavedSkin {
+            get {
+                return ResourceManager.GetString("SavedSkin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A spawn location can only be obtained for the alpha or beta team.
         /// </summary>
         internal static string SpawnLocationFailure {
