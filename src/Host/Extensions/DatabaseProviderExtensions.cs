@@ -17,6 +17,7 @@ public static class DatabaseProviderExtensions
         if (providers.TryGetValue(selectedProvider, out Action addPersistenceServices))
         {
             addPersistenceServices();
+            Console.WriteLine($"[CTF.Host:INFO] This database provider has been selected: {selectedProvider}");
             return;
         }
 
