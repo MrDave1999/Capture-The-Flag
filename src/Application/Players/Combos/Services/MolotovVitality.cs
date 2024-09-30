@@ -2,7 +2,7 @@
 
 public class MolotovVitality : ICombo
 {
-    public string Name => "100 Health, 100 Armour and 25 Molotov cocktail";
+    public string Name => "100 Health, 100 Armour and Molotov cocktail";
     public int RequiredPoints => 100;
 
     public void Give(Player player)
@@ -10,7 +10,7 @@ public class MolotovVitality : ICombo
         PlayerInfo playerInfo = player.GetInfo();
         player.Health = 100;
         player.Armour = 100;
-        player.GiveWeapon(Weapon.Moltov, ammo: 25);
+        player.GiveWeapon(Weapon.Moltov, ammo: 6);
         playerInfo.StatsPerRound.ResetPoints();
     }
 }
