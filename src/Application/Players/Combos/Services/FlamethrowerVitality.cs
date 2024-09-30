@@ -10,8 +10,8 @@ public class FlamethrowerVitality : ICombo
         PlayerInfo playerInfo = player.GetInfo();
         player.Health = 100;
         player.Armour = 100;
-        // 5500 (shows in game as 500-50).
-        const int ammo = 5500;
+        // 1000 (shows in game as 50-50).
+        const int ammo = 1000;
         player.GiveWeapon(Weapon.FlameThrower, ammo);
         playerInfo.StatsPerRound.ResetPoints();
     }
