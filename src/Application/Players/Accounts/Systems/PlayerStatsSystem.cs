@@ -49,8 +49,23 @@ public class PlayerStatsSystem(
         playerStatsRenderer.UpdateTextDraw(killer);
     }
 
-    [PlayerCommand("stats")]
+    [PlayerCommand("mystats")]
     public void ShowStats(Player player)
+    {
+        var content = GetPlayerContent(player);
+        var dialog = new MessageDialog($"Stats: {player.Name}", content, "Close");
+        dialogService.ShowAsync(player, dialog);
+    }
+
+    [PlayerCommand("stats")]
+    public void ShowStats(Player player, Player playerId)
+    {
+        var content = GetPlayerContent(playerId);
+        var dialog = new MessageDialog($"Stats: {playerId.Name}", content, "Close");
+        dialogService.ShowAsync(player, dialog);
+    }
+
+    private static string GetPlayerContent(Player player)
     {
         PlayerInfo playerInfo = player.GetInfo();
         var content =
@@ -73,7 +88,6 @@ public class PlayerStatsSystem(
         Rank: {playerInfo.RankId}
         Registration Date: {playerInfo.CreatedAt.GetDateWithStandardFormat()}
         """;
-        var dialog = new MessageDialog($"Stats: {playerInfo.Name}", content, "Close");
-        dialogService.ShowAsync(player, dialog);
+        return content;
     }
 }
