@@ -4,6 +4,7 @@ public class FakePlayer : Player
 {
     private float _health = 100;
     private float _armour = 0;
+    private int _score = 0;
     private readonly int _id;
     private readonly Guid _type;
     public FakePlayer(int id, string name, TeamId team = TeamId.NoTeam)
@@ -38,5 +39,11 @@ public class FakePlayer : Player
     {
         get => _armour;
         set => _armour = value;
+    }
+
+    public override int Score
+    {
+        get => _score;
+        set => _score = value;
     }
 }
