@@ -1,11 +1,6 @@
 ﻿namespace CTF.Application.Players;
 
-public class PlayerDeathSystem(
-    IWorldService worldService,
-    IPlayerRepository playerRepository,
-    PlayerRankUpdater playerRankUpdater,
-    KillingSpreeUpdater killingSpreeUpdater,
-    PlayerStatsRenderer playerStatsRenderer) : ISystem
+public class PlayerDeathSystem(IWorldService worldService) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -23,22 +18,5 @@ public class PlayerDeathSystem(
     public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
     {
         worldService.SendDeathMessage(killer, deadPlayer, reason);
-        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
-        deadPlayerInfo.StatsPerRound.AddDeaths();
-        deadPlayerInfo.StatsPerRound.ResetKillingSpree();
-        deadPlayerInfo.AddTotalDeaths();
-        playerRepository.UpdateTotalDeaths(deadPlayerInfo);
-
-        if (killer.IsInvalidPlayer())
-            return;
-
-        PlayerInfo killerInfo = killer.GetInfo();
-        killerInfo.StatsPerRound.AddKills();
-        killerInfo.AddTotalKills();
-        killer.AddScore();
-        playerRepository.UpdateTotalKills(killerInfo);
-        killingSpreeUpdater.Update(killer, killerInfo);
-        playerRankUpdater.Update(killer, killerInfo);
-        playerStatsRenderer.UpdateTextDraw(killer);
     }
 }
