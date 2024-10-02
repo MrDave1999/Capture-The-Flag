@@ -3,6 +3,8 @@
 public class PlayerStatsSystem(
     IDialogService dialogService,
     IPlayerRepository playerRepository,
+    PlayerRankUpdater playerRankUpdater,
+    KillingSpreeUpdater killingSpreeUpdater,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
     [Event]
@@ -23,6 +25,28 @@ public class PlayerStatsSystem(
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.SetLastConnection();
         playerRepository.UpdateLastConnection(playerInfo);
+    }
+
+    [Event]
+    public void OnPlayerDeath(Player deadPlayer, Player killer, Weapon reason)
+    {
+        PlayerInfo deadPlayerInfo = deadPlayer.GetInfo();
+        deadPlayerInfo.StatsPerRound.AddDeaths();
+        deadPlayerInfo.StatsPerRound.ResetKillingSpree();
+        deadPlayerInfo.AddTotalDeaths();
+        playerRepository.UpdateTotalDeaths(deadPlayerInfo);
+
+        if (killer.IsInvalidPlayer())
+            return;
+
+        PlayerInfo killerInfo = killer.GetInfo();
+        killerInfo.StatsPerRound.AddKills();
+        killerInfo.AddTotalKills();
+        killer.AddScore();
+        playerRepository.UpdateTotalKills(killerInfo);
+        killingSpreeUpdater.Update(killer, killerInfo);
+        playerRankUpdater.Update(killer, killerInfo);
+        playerStatsRenderer.UpdateTextDraw(killer);
     }
 
     [PlayerCommand("stats")]
