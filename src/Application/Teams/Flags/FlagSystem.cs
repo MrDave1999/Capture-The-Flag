@@ -29,6 +29,7 @@ public class FlagSystem(
                 PlayerInfo killerInfo = killer.GetInfo();
                 killerInfo.StatsPerRound.AddPoints(4);
                 killer.AddHealth(10);
+                killer.AddScore(2);
                 playerStatsRenderer.UpdateTextDraw(killer);
             }
         }
