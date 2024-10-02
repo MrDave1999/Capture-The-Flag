@@ -31,6 +31,8 @@ public class PlayerStatsSystem(
         PlayerInfo playerInfo = player.GetInfo();
         var content =
         $"""
+        Current Team: {playerInfo.Team.Name}
+        Score for Round: {player.Score}
         Kills for Round: {playerInfo.StatsPerRound.Kills}
         Deaths for Round: {playerInfo.StatsPerRound.Deaths}
         Killing Spree for Round: {playerInfo.StatsPerRound.KillingSpree}
