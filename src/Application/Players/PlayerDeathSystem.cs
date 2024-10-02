@@ -35,6 +35,7 @@ public class PlayerDeathSystem(
         PlayerInfo killerInfo = killer.GetInfo();
         killerInfo.StatsPerRound.AddKills();
         killerInfo.AddTotalKills();
+        killer.AddScore();
         playerRepository.UpdateTotalKills(killerInfo);
         killingSpreeUpdater.Update(killer, killerInfo);
         playerRankUpdater.Update(killer, killerInfo);

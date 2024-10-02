@@ -29,6 +29,7 @@ public class OnFlagCaptured(
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.StatsPerRound.AddPoints(5);
         playerInfo.AddCapturedFlags();
+        player.AddScore(2);
         playerRepository.UpdateCapturedFlags(playerInfo);
         playerStatsRenderer.UpdateTextDraw(player);
     }
