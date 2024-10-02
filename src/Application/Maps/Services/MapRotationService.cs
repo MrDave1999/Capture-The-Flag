@@ -138,6 +138,7 @@ public class MapRotationService
             player.Team = (int)TeamId.NoTeam;
             player.ToggleControllable(true);
             player.Health = 100;
+            player.SetScore(0);
             player.RedirectToClassSelection();
             _playerStatsRenderer.HideTextDraw(player);
             _mapTextDrawRenderer.Hide(player);
