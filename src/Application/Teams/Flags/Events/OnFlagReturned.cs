@@ -31,6 +31,7 @@ public class OnFlagReturned(
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.StatsPerRound.AddPoints(5);
         playerInfo.AddReturnedFlags();
+        player.AddScore(2);
         playerRepository.UpdateReturnedFlags(playerInfo);
         playerStatsRenderer.UpdateTextDraw(player);
     }
