@@ -32,6 +32,7 @@ public class OnFlagScore(
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.StatsPerRound.AddPoints(8);
         playerInfo.AddBroughtFlags();
+        player.AddScore(4);
         playerRepository.UpdateBroughtFlags(playerInfo);
         GiveRewards(team);
     }
@@ -44,6 +45,7 @@ public class OnFlagScore(
             PlayerInfo playerInfo = player.GetInfo();
             playerInfo.StatsPerRound.AddPoints(5);
             player.AddHealth(10);
+            player.AddScore(1);
             playerStatsRenderer.UpdateTextDraw(player);
         }
     }
