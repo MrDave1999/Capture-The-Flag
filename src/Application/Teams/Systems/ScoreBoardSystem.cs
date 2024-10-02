@@ -22,6 +22,7 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
         var columnHeaders = new[]
         {
             "Name",
+            "Score",
             "Kills",
             "Deaths"
         };
@@ -33,33 +34,30 @@ public class ScoreBoardSystem(IDialogService dialogService) : ISystem
 
         var alphaTeamMembers = alphaTeam
             .Members
-            .Select(player => player.GetInfo())
-            .OrderByDescending(playerInfo => playerInfo.StatsPerRound.Kills);
-        foreach (PlayerInfo teamMember in alphaTeamMembers) 
+            .OrderByDescending(player => player.Score);
+        foreach (Player teamMember in alphaTeamMembers) 
         {
+            PlayerInfo teamMemberInfo = teamMember.GetInfo();
             string[] columns = [
                 $"{alphaTeam.ColorHex}{teamMember.Name}",
-                $"{alphaTeam.ColorHex}{teamMember.StatsPerRound.Kills}",
-                $"{alphaTeam.ColorHex}{teamMember.StatsPerRound.Deaths}"
+                $"{alphaTeam.ColorHex}{teamMember.Score}",
+                $"{alphaTeam.ColorHex}{teamMemberInfo.StatsPerRound.Kills}",
+                $"{alphaTeam.ColorHex}{teamMemberInfo.StatsPerRound.Deaths}"
             ];
             tablistDialog.Add(columns);
         }
 
-        if (alphaTeam.Members.Count > 0)
-        {
-            tablistDialog.Add(" ", " ", " ");
-        }
-
         var betaTeamMembers = betaTeam
             .Members
-            .Select(player => player.GetInfo())
-            .OrderByDescending(playerInfo => playerInfo.StatsPerRound.Kills);
-        foreach (PlayerInfo teamMember in betaTeamMembers)
+            .OrderByDescending(player => player.Score);
+        foreach (Player teamMember in betaTeamMembers)
         {
+            PlayerInfo teamMemberInfo = teamMember.GetInfo();
             string[] columns = [
                 $"{betaTeam.ColorHex}{teamMember.Name}",
-                $"{betaTeam.ColorHex}{teamMember.StatsPerRound.Kills}",
-                $"{betaTeam.ColorHex}{teamMember.StatsPerRound.Deaths}"
+                $"{betaTeam.ColorHex}{teamMember.Score}",
+                $"{betaTeam.ColorHex}{teamMemberInfo.StatsPerRound.Kills}",
+                $"{betaTeam.ColorHex}{teamMemberInfo.StatsPerRound.Deaths}"
             ];
             tablistDialog.Add(columns);
         }
