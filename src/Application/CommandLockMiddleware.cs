@@ -11,7 +11,7 @@ public class CommandLockMiddleware(
         EntityId entity = SampEntities.GetPlayerId(playerId);
         Player player = entityManager.GetComponent<Player>(entity);
 
-        if(player.IsNotLoggedInOrRegistered())
+        if(player.IsUnauthenticated())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
             return null;
