@@ -25,6 +25,7 @@ public class AccountSystem(
     [Event]
     public void OnPlayerConnect(ConnectedPlayer connectedPlayer)
     {
+        AddDefaultAccount(connectedPlayer);
         PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
         if(playerInfo is null)
         {
@@ -32,6 +33,14 @@ public class AccountSystem(
             return;
         }
         ShowLoginDialog(connectedPlayer, playerInfo);
+    }
+
+    private static void AddDefaultAccount(ConnectedPlayer connectedPlayer)
+    {
+        var playerInfo = new PlayerInfo();
+        bool isAuthenticated = false;
+        playerInfo.SetName(connectedPlayer.Name);
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
     }
 
     private async void ShowSignupDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
