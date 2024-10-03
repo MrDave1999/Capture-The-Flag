@@ -22,6 +22,9 @@ public class PlayerStatsSystem(
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
     {
+        if (player.IsUnauthenticated())
+            return;
+
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.SetLastConnection();
         playerRepository.UpdateLastConnection(playerInfo);
