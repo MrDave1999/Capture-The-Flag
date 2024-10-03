@@ -72,7 +72,9 @@ public class AccountSystem(
             return;
         }
 
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo);
+        bool isAuthenticated = true;
+        connectedPlayer.GetComponent<AccountComponent>().Destroy();
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
         var message = Smart.Format(Messages.CreatePlayerAccount, new { Password = enteredPassword });
         connectedPlayer.SendClientMessage(Color.Red, message);
         playerInfo.SetName(connectedPlayer.Name);
@@ -100,7 +102,9 @@ public class AccountSystem(
             return;
         }
 
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo);
+        bool isAuthenticated = true;
+        connectedPlayer.GetComponent<AccountComponent>().Destroy();
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
         connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
     }
 }
