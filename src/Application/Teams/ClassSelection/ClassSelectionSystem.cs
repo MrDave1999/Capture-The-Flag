@@ -56,7 +56,7 @@ public class ClassSelectionSystem(
     [Event]
     public bool OnPlayerRequestSpawn(Player player)
     {
-        if (player.IsNotLoggedInOrRegistered())
+        if (player.IsUnauthenticated())
         {
             player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
             return false;
@@ -86,7 +86,7 @@ public class ClassSelectionSystem(
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
     {
-        if (player.IsNotLoggedInOrRegistered())
+        if (player.IsUnauthenticated())
             return;
 
         PlayerInfo playerInfo = player.GetInfo();

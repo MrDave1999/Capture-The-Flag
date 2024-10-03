@@ -68,6 +68,10 @@ public class PlayerStatsSystem(
     private static string GetPlayerContent(Player player)
     {
         PlayerInfo playerInfo = player.GetInfo();
+        string createdAt = player.IsUnauthenticated() ? 
+            "None" : 
+            playerInfo.CreatedAt.GetDateWithStandardFormat();
+
         var content =
         $"""
         Current Team: {playerInfo.Team.Name}
@@ -86,7 +90,7 @@ public class PlayerStatsSystem(
         HeadShots: {playerInfo.HeadShots}
         Role: {playerInfo.RoleId}
         Rank: {playerInfo.RankId}
-        Registration Date: {playerInfo.CreatedAt.GetDateWithStandardFormat()}
+        Registration Date: {createdAt}
         """;
         return content;
     }

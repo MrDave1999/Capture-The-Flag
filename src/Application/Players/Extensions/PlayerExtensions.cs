@@ -20,6 +20,23 @@ public static class PlayerExtensions
             accountComponent.PlayerInfo;
     }
 
-    public static bool IsNotLoggedInOrRegistered(this Player player)
-        => player.GetComponent<AccountComponent>() is null;
+    /// <summary>
+    /// Checks if the player is unauthenticated.
+    /// </summary>
+    /// <param name="player">
+    /// The player to check for authentication status.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the player is unauthenticated; otherwise, <c>false</c>.
+    /// </returns>
+    /// <exception cref="InvalidOperationException">
+    /// when the <see cref="AccountComponent"/> component is not attached to the player.
+    /// </exception>
+    public static bool IsUnauthenticated(this Player player)
+    {
+        AccountComponent accountComponent = player.GetComponent<AccountComponent>();
+        return accountComponent is null ?
+            throw new InvalidOperationException($"The '{nameof(AccountComponent)}' component is not attached to the player") :
+            accountComponent.IsUnauthenticated;
+    }
 }

@@ -28,6 +28,51 @@ public class PlayerExtensionsTests
         act.Should().NotThrow<InvalidOperationException>();
     }
 
+    [Test]
+    public void IsUnauthenticated_WhenPlayerIsUnauthenticated_ShouldReturnsTrue()
+    {
+        // Arrange
+        var fakePlayer = new FakePlayer2()
+        {
+            IsAuthenticated = false
+        };
+
+        // Act
+        bool actual = fakePlayer.IsUnauthenticated();
+
+        // Assert
+        actual.Should().BeTrue();
+    }
+
+    [Test]
+    public void IsUnauthenticated_WhenPlayerIsAuthenticated_ShouldReturnsFalse()
+    {
+        // Arrange
+        var fakePlayer = new FakePlayer2()
+        {
+            IsAuthenticated = true
+        };
+
+        // Act
+        bool actual = fakePlayer.IsUnauthenticated();
+
+        // Assert
+        actual.Should().BeFalse();
+    }
+
+    [Test]
+    public void IsUnauthenticated_WhenNoAccountComponent_ShouldThrowInvalidOperationException()
+    {
+        // Arrange
+        var fakePlayer = new FakePlayer1();
+
+        // Act
+        Action act = () => fakePlayer.IsUnauthenticated();
+
+        // Assert
+        act.Should().Throw<InvalidOperationException>();
+    }
+
     private class FakePlayer1 : Player
     {
         public override T GetComponent<T>()
@@ -38,9 +83,10 @@ public class PlayerExtensionsTests
 
     private class FakePlayer2 : Player
     {
+        public bool IsAuthenticated { get; set; } = true;
         public override T GetComponent<T>()
         {
-            var accountComponent = new AccountComponent(new PlayerInfo());
+            var accountComponent = new AccountComponent(new PlayerInfo(), IsAuthenticated);
             return accountComponent as T;
         }
     }

@@ -25,6 +25,7 @@ public class AccountSystem(
     [Event]
     public void OnPlayerConnect(ConnectedPlayer connectedPlayer)
     {
+        AddDefaultAccount(connectedPlayer);
         PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
         if(playerInfo is null)
         {
@@ -32,6 +33,14 @@ public class AccountSystem(
             return;
         }
         ShowLoginDialog(connectedPlayer, playerInfo);
+    }
+
+    private static void AddDefaultAccount(ConnectedPlayer connectedPlayer)
+    {
+        var playerInfo = new PlayerInfo();
+        bool isAuthenticated = false;
+        playerInfo.SetName(connectedPlayer.Name);
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
     }
 
     private async void ShowSignupDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
@@ -63,7 +72,9 @@ public class AccountSystem(
             return;
         }
 
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo);
+        bool isAuthenticated = true;
+        connectedPlayer.GetComponent<AccountComponent>().Destroy();
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
         var message = Smart.Format(Messages.CreatePlayerAccount, new { Password = enteredPassword });
         connectedPlayer.SendClientMessage(Color.Red, message);
         playerInfo.SetName(connectedPlayer.Name);
@@ -91,7 +102,9 @@ public class AccountSystem(
             return;
         }
 
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo);
+        bool isAuthenticated = true;
+        connectedPlayer.GetComponent<AccountComponent>().Destroy();
+        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
         connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
     }
 }
