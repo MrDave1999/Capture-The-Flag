@@ -16,7 +16,7 @@ public class PlayerStatsPerRound
     public Result AddPoints(int value)
     {
         if (value < 1 || value > 100)
-            return Result.Failure(Messages.AddPoints);
+            return Result.Failure(Messages.InvalidAddPoints);
 
         Points += value;
         if(Points > 100) 
@@ -28,7 +28,7 @@ public class PlayerStatsPerRound
     public Result SubtractPoints(int value)
     {
         if (value < -100 || value > -1)
-            return Result.Failure(Messages.SubtractPoints);
+            return Result.Failure(Messages.InvalidSubtractPoints);
 
         Points -= -value;
         if(Points < 0) 

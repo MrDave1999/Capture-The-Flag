@@ -61,15 +61,6 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Points must be between 1 to 100.
-        /// </summary>
-        internal static string AddPoints {
-            get {
-                return ResourceManager.GetString("AddPoints", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to This round was won by the Alpha team.
         /// </summary>
         internal static string AlphaIsWinner {
@@ -205,6 +196,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Points must be between 1 to 100.
+        /// </summary>
+        internal static string InvalidAddPoints {
+            get {
+                return ResourceManager.GetString("InvalidAddPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The interval must be between 0 to {Max}.
         /// </summary>
         internal static string InvalidInterval {
@@ -255,6 +255,15 @@ namespace CTF.Application.Common.Resources {
         internal static string InvalidSkin {
             get {
                 return ResourceManager.GetString("InvalidSkin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Points must be between -1 to -100.
+        /// </summary>
+        internal static string InvalidSubtractPoints {
+            get {
+                return ResourceManager.GetString("InvalidSubtractPoints", resourceCulture);
             }
         }
         
@@ -633,15 +642,6 @@ namespace CTF.Application.Common.Resources {
         internal static string SpawnLocationFailure {
             get {
                 return ResourceManager.GetString("SpawnLocationFailure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Points must be between -1 to -100.
-        /// </summary>
-        internal static string SubtractPoints {
-            get {
-                return ResourceManager.GetString("SubtractPoints", resourceCulture);
             }
         }
         

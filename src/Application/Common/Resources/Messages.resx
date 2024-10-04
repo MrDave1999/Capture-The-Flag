@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddPoints" xml:space="preserve">
-    <value>Points must be between 1 to 100</value>
-  </data>
   <data name="AlphaIsWinner" xml:space="preserve">
     <value>This round was won by the Alpha team</value>
   </data>
@@ -165,6 +162,9 @@
   <data name="InsufficientPoints" xml:space="preserve">
     <value>You do not have enough points to obtain this combo</value>
   </data>
+  <data name="InvalidAddPoints" xml:space="preserve">
+    <value>Points must be between 1 to 100</value>
+  </data>
   <data name="InvalidInterval" xml:space="preserve">
     <value>The interval must be between 0 to {Max}</value>
   </data>
@@ -182,6 +182,9 @@
   </data>
   <data name="InvalidSkin" xml:space="preserve">
     <value>Skin ID must be between 0 and 311</value>
+  </data>
+  <data name="InvalidSubtractPoints" xml:space="preserve">
+    <value>Points must be between -1 to -100</value>
   </data>
   <data name="InvalidTeam" xml:space="preserve">
     <value>Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255</value>
@@ -308,9 +311,6 @@
   </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>
-  </data>
-  <data name="SubtractPoints" xml:space="preserve">
-    <value>Points must be between -1 to -100</value>
   </data>
   <data name="SuccessfulLogin" xml:space="preserve">
     <value>You have successfully logged in</value>

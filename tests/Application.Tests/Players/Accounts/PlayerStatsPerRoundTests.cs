@@ -71,7 +71,7 @@ public class PlayerStatsPerRoundTests
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        var expectedMessage = Messages.AddPoints;
+        var expectedMessage = Messages.InvalidAddPoints;
 
         // Act
         Result result = stats.AddPoints(value);
@@ -125,7 +125,7 @@ public class PlayerStatsPerRoundTests
         // Arrange
         var stats = new PlayerStatsPerRound();
         // Should be in the range of -1 to -100.
-        var expectedMessage = Messages.SubtractPoints;
+        var expectedMessage = Messages.InvalidSubtractPoints;
 
         // Act
         Result result = stats.SubtractPoints(value);
