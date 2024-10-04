@@ -234,6 +234,9 @@
   <data name="NoTeam" xml:space="preserve">
     <value>You do not belong to any team</value>
   </data>
+  <data name="OldSkinIsEqualsToNewSkin" xml:space="preserve">
+    <value>You already have that skin</value>
+  </data>
   <data name="OnFlagAtBasePosition" xml:space="preserve">
     <value>~n~~n~~n~{GameText}Defend this flag from enemy capture!</value>
   </data>
