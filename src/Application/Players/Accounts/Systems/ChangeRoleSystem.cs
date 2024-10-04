@@ -11,13 +11,13 @@ public class ChangeRoleSystem(IPlayerRepository playerRepository) : ISystem
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
-        if(currentPlayer == targetPlayer)
+        if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
             return;
         }
 
-        if(targetPlayer.IsUnauthenticated())
+        if (targetPlayer.IsUnauthenticated())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.UnauthenticatedPlayer);
             return;
