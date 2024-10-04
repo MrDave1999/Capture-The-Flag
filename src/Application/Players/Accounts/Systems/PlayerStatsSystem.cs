@@ -61,11 +61,11 @@ public class PlayerStatsSystem(
     }
 
     [PlayerCommand("stats")]
-    public void ShowStats(Player player, Player playerId)
+    public void ShowStats(Player currentPlayer, Player targetPlayer)
     {
-        var content = GetPlayerContent(playerId);
-        var dialog = new MessageDialog($"Stats: {playerId.Name}", content, "Close");
-        dialogService.ShowAsync(player, dialog);
+        var content = GetPlayerContent(targetPlayer);
+        var dialog = new MessageDialog($"Stats: {targetPlayer.Name}", content, "Close");
+        dialogService.ShowAsync(currentPlayer, dialog);
     }
 
     private static string GetPlayerContent(Player player)
