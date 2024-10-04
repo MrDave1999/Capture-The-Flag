@@ -61,7 +61,7 @@ public class PlayerStatsSystem(
     }
 
     [PlayerCommand("stats")]
-    public void ShowStats(Player currentPlayer, Player targetPlayer)
+    public void ShowStats(Player currentPlayer, [CommandParameter(Name = "playerId")]Player targetPlayer)
     {
         var content = GetPlayerContent(targetPlayer);
         var dialog = new MessageDialog($"Stats: {targetPlayer.Name}", content, "Close");
