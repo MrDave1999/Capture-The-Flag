@@ -178,6 +178,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has generously given {Points} points to all the players!.
+        /// </summary>
+        internal static string GivePointsToAllPlayers {
+            get {
+                return ResourceManager.GetString("GivePointsToAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have given {Points} points to {PlayerName}.
+        /// </summary>
+        internal static string GivePointsToPlayer {
+            get {
+                return ResourceManager.GetString("GivePointsToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough points to obtain this combo.
         /// </summary>
         internal static string InsufficientPoints {
@@ -552,6 +570,15 @@ namespace CTF.Application.Common.Resources {
         internal static string RankUpAward {
             get {
                 return ResourceManager.GetString("RankUpAward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Points} points from {PlayerName}!.
+        /// </summary>
+        internal static string ReceivePointsFromPlayer {
+            get {
+                return ResourceManager.GetString("ReceivePointsFromPlayer", resourceCulture);
             }
         }
         
