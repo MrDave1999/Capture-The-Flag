@@ -144,6 +144,9 @@
   <data name="CreatePlayerAccount" xml:space="preserve">
     <value>You have successfully registered. Password: {Password}</value>
   </data>
+  <data name="DemotedToRole" xml:space="preserve">
+    <value>Demoted to {RoleName} role</value>
+  </data>
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
   </data>
@@ -252,11 +255,17 @@
   <data name="PasswordSuccessfullyChanged" xml:space="preserve">
     <value>Password successfully changed. New password: {NewPassword}</value>
   </data>
+  <data name="PlayerAlreadyHasThatRole" xml:space="preserve">
+    <value>The player already has that role</value>
+  </data>
   <data name="PlayerHasChangedTeams" xml:space="preserve">
     <value>Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team</value>
   </data>
   <data name="PlayerIsAlreadyInTeam" xml:space="preserve">
     <value>You are already a member of that team</value>
+  </data>
+  <data name="PlayerIsEqualsToTargetPlayer" xml:space="preserve">
+    <value>You cannot use this command for yourself</value>
   </data>
   <data name="PlayerNameAlreadyExists" xml:space="preserve">
     <value>That player name already exists</value>
@@ -267,6 +276,9 @@
   <data name="PlayerNotFound" xml:space="preserve">
     <value>Player '{Name}' is not found</value>
   </data>
+  <data name="PromotedToRole" xml:space="preserve">
+    <value>Promoted to {RoleName} role</value>
+  </data>
   <data name="RankUpAward" xml:space="preserve">
     <value>You have gained +100 points, +100 armour, and +100 health</value>
   </data>
@@ -275,6 +287,9 @@
   </data>
   <data name="RedFlagIsNotAtBasePosition" xml:space="preserve">
     <value>~n~~n~~n~~r~The red flag is not at its base position</value>
+  </data>
+  <data name="RoleSuccessfullyChanged" xml:space="preserve">
+    <value>You have assigned the {RoleName} role to {PlayerName}</value>
   </data>
   <data name="SavedSkin" xml:space="preserve">
     <value>The skin ID {SkinId} has been successfully saved</value>
@@ -296,6 +311,9 @@
   </data>
   <data name="TiedTeams" xml:space="preserve">
     <value>It's a tie! Both teams couldn't beat each other this time</value>
+  </data>
+  <data name="UnauthenticatedPlayer" xml:space="preserve">
+    <value>The player is not authenticated</value>
   </data>
   <data name="ValueCannotBeNegative" xml:space="preserve">
     <value>The value cannot be negative</value>

@@ -142,6 +142,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Demoted to {RoleName} role.
+        /// </summary>
+        internal static string DemotedToRole {
+            get {
+                return ResourceManager.GetString("DemotedToRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have no items in your weapon package.
         /// </summary>
         internal static string EmptyWeaponPackage {
@@ -466,6 +475,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The player already has that role.
+        /// </summary>
+        internal static string PlayerAlreadyHasThatRole {
+            get {
+                return ResourceManager.GetString("PlayerAlreadyHasThatRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team.
         /// </summary>
         internal static string PlayerHasChangedTeams {
@@ -480,6 +498,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PlayerIsAlreadyInTeam {
             get {
                 return ResourceManager.GetString("PlayerIsAlreadyInTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot use this command for yourself.
+        /// </summary>
+        internal static string PlayerIsEqualsToTargetPlayer {
+            get {
+                return ResourceManager.GetString("PlayerIsEqualsToTargetPlayer", resourceCulture);
             }
         }
         
@@ -511,6 +538,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Promoted to {RoleName} role.
+        /// </summary>
+        internal static string PromotedToRole {
+            get {
+                return ResourceManager.GetString("PromotedToRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have gained +100 points, +100 armour, and +100 health.
         /// </summary>
         internal static string RankUpAward {
@@ -534,6 +570,15 @@ namespace CTF.Application.Common.Resources {
         internal static string RedFlagIsNotAtBasePosition {
             get {
                 return ResourceManager.GetString("RedFlagIsNotAtBasePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have assigned the {RoleName} role to {PlayerName}.
+        /// </summary>
+        internal static string RoleSuccessfullyChanged {
+            get {
+                return ResourceManager.GetString("RoleSuccessfullyChanged", resourceCulture);
             }
         }
         
@@ -597,6 +642,15 @@ namespace CTF.Application.Common.Resources {
         internal static string TiedTeams {
             get {
                 return ResourceManager.GetString("TiedTeams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The player is not authenticated.
+        /// </summary>
+        internal static string UnauthenticatedPlayer {
+            get {
+                return ResourceManager.GetString("UnauthenticatedPlayer", resourceCulture);
             }
         }
         
