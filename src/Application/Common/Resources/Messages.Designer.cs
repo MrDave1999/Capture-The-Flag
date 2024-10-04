@@ -412,6 +412,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You already have that skin.
+        /// </summary>
+        internal static string OldSkinIsEqualsToNewSkin {
+            get {
+                return ResourceManager.GetString("OldSkinIsEqualsToNewSkin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ~n~~n~~n~{GameText}Defend this flag from enemy capture!.
         /// </summary>
         internal static string OnFlagAtBasePosition {
