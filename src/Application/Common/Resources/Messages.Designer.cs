@@ -259,6 +259,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Points must be between -1 to -100.
+        /// </summary>
+        internal static string InvalidSubtractPoints {
+            get {
+                return ResourceManager.GetString("InvalidSubtractPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255.
         /// </summary>
         internal static string InvalidTeam {
@@ -633,15 +642,6 @@ namespace CTF.Application.Common.Resources {
         internal static string SpawnLocationFailure {
             get {
                 return ResourceManager.GetString("SpawnLocationFailure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Points must be between -1 to -100.
-        /// </summary>
-        internal static string SubtractPoints {
-            get {
-                return ResourceManager.GetString("SubtractPoints", resourceCulture);
             }
         }
         

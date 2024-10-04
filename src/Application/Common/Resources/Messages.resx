@@ -183,6 +183,9 @@
   <data name="InvalidSkin" xml:space="preserve">
     <value>Skin ID must be between 0 and 311</value>
   </data>
+  <data name="InvalidSubtractPoints" xml:space="preserve">
+    <value>Points must be between -1 to -100</value>
+  </data>
   <data name="InvalidTeam" xml:space="preserve">
     <value>Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255</value>
   </data>
@@ -308,9 +311,6 @@
   </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>
-  </data>
-  <data name="SubtractPoints" xml:space="preserve">
-    <value>Points must be between -1 to -100</value>
   </data>
   <data name="SuccessfulLogin" xml:space="preserve">
     <value>You have successfully logged in</value>
