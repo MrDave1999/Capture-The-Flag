@@ -16,7 +16,7 @@ public class PlayerStatsPerRound
     public Result AddPoints(int value)
     {
         if (value < 1 || value > 100)
-            return Result.Failure(Messages.AddPoints);
+            return Result.Failure(Messages.InvalidAddPoints);
 
         Points += value;
         if(Points > 100) 

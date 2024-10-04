@@ -71,7 +71,7 @@ public class PlayerStatsPerRoundTests
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        var expectedMessage = Messages.AddPoints;
+        var expectedMessage = Messages.InvalidAddPoints;
 
         // Act
         Result result = stats.AddPoints(value);

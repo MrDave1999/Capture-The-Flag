@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddPoints" xml:space="preserve">
-    <value>Points must be between 1 to 100</value>
-  </data>
   <data name="AlphaIsWinner" xml:space="preserve">
     <value>This round was won by the Alpha team</value>
   </data>
@@ -164,6 +161,9 @@
   </data>
   <data name="InsufficientPoints" xml:space="preserve">
     <value>You do not have enough points to obtain this combo</value>
+  </data>
+  <data name="InvalidAddPoints" xml:space="preserve">
+    <value>Points must be between 1 to 100</value>
   </data>
   <data name="InvalidInterval" xml:space="preserve">
     <value>The interval must be between 0 to {Max}</value>

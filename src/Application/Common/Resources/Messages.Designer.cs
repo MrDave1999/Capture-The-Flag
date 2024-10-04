@@ -61,15 +61,6 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Points must be between 1 to 100.
-        /// </summary>
-        internal static string AddPoints {
-            get {
-                return ResourceManager.GetString("AddPoints", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to This round was won by the Alpha team.
         /// </summary>
         internal static string AlphaIsWinner {
@@ -201,6 +192,15 @@ namespace CTF.Application.Common.Resources {
         internal static string InsufficientPoints {
             get {
                 return ResourceManager.GetString("InsufficientPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Points must be between 1 to 100.
+        /// </summary>
+        internal static string InvalidAddPoints {
+            get {
+                return ResourceManager.GetString("InvalidAddPoints", resourceCulture);
             }
         }
         
