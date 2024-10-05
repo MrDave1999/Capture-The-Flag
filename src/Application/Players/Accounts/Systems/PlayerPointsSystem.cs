@@ -84,7 +84,9 @@ public class PlayerPointsSystem(
             return;
         }
 
-        waitTimeComponent.Value = serverTimeService.GetTime() + (Minutes * 60);
+        static int ConvertMinutesToSeconds(int value) => value * 60;
+        int seconds = ConvertMinutesToSeconds(Minutes);
+        waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
         PlayerInfo currentPlayerInfo = currentPlayer.GetInfo();
         currentPlayerInfo.StatsPerRound.AddPoints(100);
         playerStatsRenderer.UpdateTextDraw(currentPlayer);
