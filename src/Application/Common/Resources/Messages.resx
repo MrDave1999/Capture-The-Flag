@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddArmourToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has added {Armour}%% to the armour of all players!</value>
+  </data>
+  <data name="AddArmourToPlayer" xml:space="preserve">
+    <value>You have added {Armour}%% armour to {PlayerName}!</value>
+  </data>
+  <data name="AddHealthToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has added {Health}%% to the health of all players!</value>
+  </data>
+  <data name="AddHealthToPlayer" xml:space="preserve">
+    <value>You have added {Health}%% health to {PlayerName}!</value>
+  </data>
   <data name="AddScoreToAllPlayers" xml:space="preserve">
     <value>{PlayerName} has added {Score} to the score of all players!</value>
   </data>
@@ -197,6 +209,9 @@
   </data>
   <data name="InvalidTeam" xml:space="preserve">
     <value>Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255</value>
+  </data>
+  <data name="InvalidVitality" xml:space="preserve">
+    <value>Vitality must be between 0 to 100</value>
   </data>
   <data name="InvalidWeapon" xml:space="preserve">
     <value>Invalid weapon has been passed</value>
@@ -302,6 +317,12 @@
   </data>
   <data name="RankUpAward" xml:space="preserve">
     <value>You have gained +100 points, +100 armour, and +100 health</value>
+  </data>
+  <data name="ReceiveArmourFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Armour}%% armour from {PlayerName}!</value>
+  </data>
+  <data name="ReceiveHealthFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Health}%% health from {PlayerName}!</value>
   </data>
   <data name="ReceivePointsFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Points} points from {PlayerName}!</value>

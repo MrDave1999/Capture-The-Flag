@@ -61,6 +61,42 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has added {Armour}%% to the armour of all players!.
+        /// </summary>
+        internal static string AddArmourToAllPlayers {
+            get {
+                return ResourceManager.GetString("AddArmourToAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have added {Armour}%% armour to {PlayerName}!.
+        /// </summary>
+        internal static string AddArmourToPlayer {
+            get {
+                return ResourceManager.GetString("AddArmourToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has added {Health}%% to the health of all players!.
+        /// </summary>
+        internal static string AddHealthToAllPlayers {
+            get {
+                return ResourceManager.GetString("AddHealthToAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have added {Health}%% health to {PlayerName}!.
+        /// </summary>
+        internal static string AddHealthToPlayer {
+            get {
+                return ResourceManager.GetString("AddHealthToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has added {Score} to the score of all players!.
         /// </summary>
         internal static string AddScoreToAllPlayers {
@@ -300,6 +336,15 @@ namespace CTF.Application.Common.Resources {
         internal static string InvalidTeam {
             get {
                 return ResourceManager.GetString("InvalidTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vitality must be between 0 to 100.
+        /// </summary>
+        internal static string InvalidVitality {
+            get {
+                return ResourceManager.GetString("InvalidVitality", resourceCulture);
             }
         }
         
@@ -615,6 +660,24 @@ namespace CTF.Application.Common.Resources {
         internal static string RankUpAward {
             get {
                 return ResourceManager.GetString("RankUpAward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Armour}%% armour from {PlayerName}!.
+        /// </summary>
+        internal static string ReceiveArmourFromPlayer {
+            get {
+                return ResourceManager.GetString("ReceiveArmourFromPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Health}%% health from {PlayerName}!.
+        /// </summary>
+        internal static string ReceiveHealthFromPlayer {
+            get {
+                return ResourceManager.GetString("ReceiveHealthFromPlayer", resourceCulture);
             }
         }
         
