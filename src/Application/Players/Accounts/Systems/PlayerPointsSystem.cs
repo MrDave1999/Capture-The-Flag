@@ -5,8 +5,8 @@ public class PlayerPointsSystem(
     IWorldService worldService,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
-    [PlayerCommand("givepoints")]
-    public void GivePointsToPlayer(
+    [PlayerCommand("addpoints")]
+    public void AddPointsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         int points)
@@ -41,8 +41,8 @@ public class PlayerPointsSystem(
         playerStatsRenderer.UpdateTextDraw(targetPlayer);
     }
 
-    [PlayerCommand("giveallpoints")]
-    public void GivePointsToAllPlayers(Player currentPlayer, int points)
+    [PlayerCommand("addallpoints")]
+    public void AddPointsToAllPlayers(Player currentPlayer, int points)
     {
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
