@@ -5,8 +5,8 @@ public class PlayerPointsSystem(
     IWorldService worldService,
     PlayerStatsRenderer playerStatsRenderer) : ISystem
 {
-    [PlayerCommand("givepoints")]
-    public void GivePointsToPlayer(
+    [PlayerCommand("addpoints")]
+    public void AddPointsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         int points)
@@ -23,7 +23,7 @@ public class PlayerPointsSystem(
         }
 
         {
-            var message = Smart.Format(Messages.GivePointsToPlayer, new
+            var message = Smart.Format(Messages.AddPointsToPlayer, new
             {
                 Points = points,
                 PlayerName = targetPlayer.Name
@@ -41,8 +41,8 @@ public class PlayerPointsSystem(
         playerStatsRenderer.UpdateTextDraw(targetPlayer);
     }
 
-    [PlayerCommand("giveallpoints")]
-    public void GivePointsToAllPlayers(Player currentPlayer, int points)
+    [PlayerCommand("addallpoints")]
+    public void AddPointsToAllPlayers(Player currentPlayer, int points)
     {
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
@@ -60,7 +60,7 @@ public class PlayerPointsSystem(
             playerStatsRenderer.UpdateTextDraw(targetPlayer);
         }
 
-        var message = Smart.Format(Messages.GivePointsToAllPlayers, new
+        var message = Smart.Format(Messages.AddPointsToAllPlayers, new
         {
             PlayerName = currentPlayer.Name,
             Points = points
