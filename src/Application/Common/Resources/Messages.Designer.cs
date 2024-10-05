@@ -619,6 +619,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The player is in the class selection.
+        /// </summary>
+        internal static string PlayerIsInClassSelection {
+            get {
+                return ResourceManager.GetString("PlayerIsInClassSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to That player name already exists.
         /// </summary>
         internal static string PlayerNameAlreadyExists {
@@ -745,6 +754,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You&apos;ve spawned {PlayerName} into the game!.
+        /// </summary>
+        internal static string SetSpawnToPlayer {
+            get {
+                return ResourceManager.GetString("SetSpawnToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A spawn location can only be obtained for the alpha or beta team.
         /// </summary>
         internal static string SpawnLocationFailure {
@@ -768,6 +786,15 @@ namespace CTF.Application.Common.Resources {
         internal static string SuccessfullyBanned {
             get {
                 return ResourceManager.GetString("SuccessfullyBanned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention, players! {CurrentPlayer} has kicked {TargetPlayer} [Reason: {Reason}].
+        /// </summary>
+        internal static string SuccessfullyKicked {
+            get {
+                return ResourceManager.GetString("SuccessfullyKicked", resourceCulture);
             }
         }
         
@@ -822,6 +849,15 @@ namespace CTF.Application.Common.Resources {
         internal static string ValueCannotBeNegative {
             get {
                 return ResourceManager.GetString("ValueCannotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {CurrentPlayer} has given a warning to {TargetPlayer} [{WarningsNumber}/3] [Reason: {Reason}].
+        /// </summary>
+        internal static string WarningSuccessfullyGiven {
+            get {
+                return ResourceManager.GetString("WarningSuccessfullyGiven", resourceCulture);
             }
         }
         

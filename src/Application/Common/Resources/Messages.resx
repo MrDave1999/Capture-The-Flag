@@ -303,6 +303,9 @@
   <data name="PlayerIsEqualsToTargetPlayer" xml:space="preserve">
     <value>You cannot use this command for yourself</value>
   </data>
+  <data name="PlayerIsInClassSelection" xml:space="preserve">
+    <value>The player is in the class selection</value>
+  </data>
   <data name="PlayerNameAlreadyExists" xml:space="preserve">
     <value>That player name already exists</value>
   </data>
@@ -345,6 +348,9 @@
   <data name="SetScoreToPlayer" xml:space="preserve">
     <value>You have successfully set {PlayerName}'s score to {Score}!</value>
   </data>
+  <data name="SetSpawnToPlayer" xml:space="preserve">
+    <value>You've spawned {PlayerName} into the game!</value>
+  </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>
   </data>
@@ -353,6 +359,9 @@
   </data>
   <data name="SuccessfullyBanned" xml:space="preserve">
     <value>Attention, players! {CurrentPlayer} has banned {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="SuccessfullyKicked" xml:space="preserve">
+    <value>Attention, players! {CurrentPlayer} has kicked {TargetPlayer} [Reason: {Reason}]</value>
   </data>
   <data name="SuccessfullyUnbanned" xml:space="preserve">
     <value>You have successfully unbanned IP: {Ip}!</value>
@@ -371,6 +380,9 @@
   </data>
   <data name="ValueCannotBeNegative" xml:space="preserve">
     <value>The value cannot be negative</value>
+  </data>
+  <data name="WarningSuccessfullyGiven" xml:space="preserve">
+    <value>{CurrentPlayer} has given a warning to {TargetPlayer} [{WarningsNumber}/3] [Reason: {Reason}]</value>
   </data>
   <data name="WeaponAlreadyExists" xml:space="preserve">
     <value>{Name} is already in the weapon package</value>
