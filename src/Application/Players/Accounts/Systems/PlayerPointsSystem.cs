@@ -3,7 +3,8 @@
 public class PlayerPointsSystem(
     IEntityManager entityManager,
     IWorldService worldService,
-    PlayerStatsRenderer playerStatsRenderer) : ISystem
+    PlayerStatsRenderer playerStatsRenderer,
+    ServerTimeService serverTimeService) : ISystem
 {
     [PlayerCommand("addpoints")]
     public void AddPointsToPlayer(
@@ -66,5 +67,38 @@ public class PlayerPointsSystem(
             Points = points
         });
         worldService.SendClientMessage(Color.Yellow, message);
+    }
+
+    [PlayerCommand("givemepoints")]
+    public void GiveMePoints(Player currentPlayer) 
+    {
+        if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
+            return;
+
+        const int Minutes = 4;
+        var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
+        if (waitTimeComponent.Value > serverTimeService.GetTime())
+        {
+            var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new { Minutes });
+            currentPlayer.SendClientMessage(Color.Red, message);
+            return;
+        }
+
+        static int ConvertMinutesToSeconds(int value) => value * 60;
+        int seconds = ConvertMinutesToSeconds(Minutes);
+        waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
+        PlayerInfo currentPlayerInfo = currentPlayer.GetInfo();
+        currentPlayerInfo.StatsPerRound.AddPoints(100);
+        playerStatsRenderer.UpdateTextDraw(currentPlayer);
+        currentPlayer.SendClientMessage(Color.Yellow, Messages.GiveMePoints);
+    }
+
+    [Event]
+    public void OnPlayerConnect(Player player)
+        => player.AddComponent<WaitTimeComponent>();
+
+    private class WaitTimeComponent : Component
+    {
+        public int Value { get; set; }
     }
 }
