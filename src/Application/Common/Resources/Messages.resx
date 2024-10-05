@@ -126,6 +126,9 @@
   <data name="AlphaIsWinner" xml:space="preserve">
     <value>This round was won by the Alpha team</value>
   </data>
+  <data name="BanReason" xml:space="preserve">
+    <value>The ban reason must be {Length} characters or less</value>
+  </data>
   <data name="BetaIsWinner" xml:space="preserve">
     <value>This round was won by the Beta team</value>
   </data>
@@ -326,6 +329,12 @@
   </data>
   <data name="SuccessfulLogin" xml:space="preserve">
     <value>You have successfully logged in</value>
+  </data>
+  <data name="SuccessfullyBanned" xml:space="preserve">
+    <value>Attention, players! {CurrentPlayer} has banned {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="SuccessfullyUnbanned" xml:space="preserve">
+    <value>You have successfully unbanned IP: {Ip}!</value>
   </data>
   <data name="TeamIsFull" xml:space="preserve">
     <value>The team is currently full</value>
