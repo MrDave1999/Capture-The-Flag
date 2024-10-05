@@ -23,7 +23,7 @@ public class PlayerPointsSystem(
         }
 
         {
-            var message = Smart.Format(Messages.GivePointsToPlayer, new
+            var message = Smart.Format(Messages.AddPointsToPlayer, new
             {
                 Points = points,
                 PlayerName = targetPlayer.Name
@@ -60,7 +60,7 @@ public class PlayerPointsSystem(
             playerStatsRenderer.UpdateTextDraw(targetPlayer);
         }
 
-        var message = Smart.Format(Messages.GivePointsToAllPlayers, new
+        var message = Smart.Format(Messages.AddPointsToAllPlayers, new
         {
             PlayerName = currentPlayer.Name,
             Points = points

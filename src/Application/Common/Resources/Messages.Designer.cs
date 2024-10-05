@@ -97,6 +97,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has generously given {Points} points to all the players!.
+        /// </summary>
+        internal static string AddPointsToAllPlayers {
+            get {
+                return ResourceManager.GetString("AddPointsToAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have given {Points} points to {PlayerName}.
+        /// </summary>
+        internal static string AddPointsToPlayer {
+            get {
+                return ResourceManager.GetString("AddPointsToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has added {Score} to the score of all players!.
         /// </summary>
         internal static string AddScoreToAllPlayers {
@@ -228,24 +246,6 @@ namespace CTF.Application.Common.Resources {
         internal static string GameModeDescription {
             get {
                 return ResourceManager.GetString("GameModeDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has generously given {Points} points to all the players!.
-        /// </summary>
-        internal static string GivePointsToAllPlayers {
-            get {
-                return ResourceManager.GetString("GivePointsToAllPlayers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You have given {Points} points to {PlayerName}.
-        /// </summary>
-        internal static string GivePointsToPlayer {
-            get {
-                return ResourceManager.GetString("GivePointsToPlayer", resourceCulture);
             }
         }
         
