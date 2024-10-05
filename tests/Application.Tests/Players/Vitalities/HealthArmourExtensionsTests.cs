@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Tests.Players.Extensions;
+﻿namespace CTF.Application.Tests.Players.Vitalities;
 
 public class HealthArmourExtensionsTests
 {
@@ -8,7 +8,7 @@ public class HealthArmourExtensionsTests
     [TestCase(70, 10, 80)]
     [TestCase(100, 0, 100)]
     public void AddHealth_WhenAmountIsPositiveAndBelowLimit_ShouldIncreaseHealth(
-        float currentHealth, 
+        float currentHealth,
         float amount,
         float expectedHealth)
     {

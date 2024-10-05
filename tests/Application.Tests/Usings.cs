@@ -11,6 +11,7 @@ global using CTF.Application.Players;
 global using CTF.Application.Players.Ranks;
 global using CTF.Application.Players.Weapons;
 global using CTF.Application.Players.Accounts;
+global using CTF.Application.Players.Vitalities;
 global using CTF.Application.Players.Extensions;
 global using CTF.Application.Teams;
 global using CTF.Application.Teams.Flags;
