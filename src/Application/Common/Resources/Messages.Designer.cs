@@ -61,6 +61,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has added {Score} to the score of all players!.
+        /// </summary>
+        internal static string AddScoreToAllPlayers {
+            get {
+                return ResourceManager.GetString("AddScoreToAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have added {Score} score to {PlayerName}!.
+        /// </summary>
+        internal static string AddScoreToPlayer {
+            get {
+                return ResourceManager.GetString("AddScoreToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This round was won by the Alpha team.
         /// </summary>
         internal static string AlphaIsWinner {
@@ -601,6 +619,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Score} score from {PlayerName}!.
+        /// </summary>
+        internal static string ReceiveScoreFromPlayer {
+            get {
+                return ResourceManager.GetString("ReceiveScoreFromPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} redeemed their points for the combo: {ComboName}.
         /// </summary>
         internal static string RedeemedPoints {
@@ -633,6 +660,15 @@ namespace CTF.Application.Common.Resources {
         internal static string SavedSkin {
             get {
                 return ResourceManager.GetString("SavedSkin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully set {PlayerName}&apos;s score to {Score}!.
+        /// </summary>
+        internal static string SetScoreToPlayer {
+            get {
+                return ResourceManager.GetString("SetScoreToPlayer", resourceCulture);
             }
         }
         

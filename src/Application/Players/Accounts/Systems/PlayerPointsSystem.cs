@@ -48,7 +48,7 @@ public class PlayerPointsSystem(
             return;
 
         IEnumerable<Player> players = entityManager.GetComponents<Player>();
-        foreach(Player targetPlayer in players)
+        foreach (Player targetPlayer in players)
         {
             PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
             Result result = targetPlayerInfo.StatsPerRound.AddPoints(points);
