@@ -180,6 +180,9 @@
   <data name="GameModeDescription" xml:space="preserve">
     <value>~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
   </data>
+  <data name="GiveMePoints" xml:space="preserve">
+    <value>You have obtained 100 points!</value>
+  </data>
   <data name="InsufficientPoints" xml:space="preserve">
     <value>You do not have enough points to obtain this combo</value>
   </data>
@@ -374,6 +377,9 @@
   </data>
   <data name="TiedTeams" xml:space="preserve">
     <value>It's a tie! Both teams couldn't beat each other this time</value>
+  </data>
+  <data name="TimeRequiredToReuseCommand" xml:space="preserve">
+    <value>You must wait {Minutes} minutes to use this command again</value>
   </data>
   <data name="UnauthenticatedPlayer" xml:space="preserve">
     <value>The player is not authenticated</value>

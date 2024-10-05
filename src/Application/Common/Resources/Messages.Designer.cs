@@ -250,6 +250,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have obtained 100 points!.
+        /// </summary>
+        internal static string GiveMePoints {
+            get {
+                return ResourceManager.GetString("GiveMePoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough points to obtain this combo.
         /// </summary>
         internal static string InsufficientPoints {
@@ -831,6 +840,15 @@ namespace CTF.Application.Common.Resources {
         internal static string TiedTeams {
             get {
                 return ResourceManager.GetString("TiedTeams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must wait {Minutes} minutes to use this command again.
+        /// </summary>
+        internal static string TimeRequiredToReuseCommand {
+            get {
+                return ResourceManager.GetString("TimeRequiredToReuseCommand", resourceCulture);
             }
         }
         
