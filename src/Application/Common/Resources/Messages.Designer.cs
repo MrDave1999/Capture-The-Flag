@@ -88,6 +88,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The ban reason must be {Length} characters or less.
+        /// </summary>
+        internal static string BanReason {
+            get {
+                return ResourceManager.GetString("BanReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This round was won by the Beta team.
         /// </summary>
         internal static string BetaIsWinner {
@@ -687,6 +696,24 @@ namespace CTF.Application.Common.Resources {
         internal static string SuccessfulLogin {
             get {
                 return ResourceManager.GetString("SuccessfulLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention, players! {CurrentPlayer} has banned {TargetPlayer} [Reason: {Reason}].
+        /// </summary>
+        internal static string SuccessfullyBanned {
+            get {
+                return ResourceManager.GetString("SuccessfullyBanned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully unbanned IP: {Ip}!.
+        /// </summary>
+        internal static string SuccessfullyUnbanned {
+            get {
+                return ResourceManager.GetString("SuccessfullyUnbanned", resourceCulture);
             }
         }
         
