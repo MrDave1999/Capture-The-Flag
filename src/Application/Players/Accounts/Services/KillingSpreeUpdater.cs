@@ -11,8 +11,8 @@ public class KillingSpreeUpdater(
         if (currentKillingSpree >= 2)
         {
             player.GameText($"KILL X{currentKillingSpree}", 3000, 3);
-            const int earnedPoints = 20;
-            playerInfo.StatsPerRound.AddPoints(earnedPoints);
+            const int earnedCoins = 20;
+            playerInfo.StatsPerRound.AddCoins(earnedCoins);
             player.AddHealth(10);
 
             if (playerInfo.HasSurpassedMaxKillingSpree())

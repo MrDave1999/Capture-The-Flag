@@ -79,6 +79,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has generously given {Coins} coins to all the players!.
+        /// </summary>
+        internal static string AddCoinsToAllPlayers {
+            get {
+                return ResourceManager.GetString("AddCoinsToAllPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have given {Coins} coins to {PlayerName}.
+        /// </summary>
+        internal static string AddCoinsToPlayer {
+            get {
+                return ResourceManager.GetString("AddCoinsToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has added {Health}%% to the health of all players!.
         /// </summary>
         internal static string AddHealthToAllPlayers {
@@ -93,24 +111,6 @@ namespace CTF.Application.Common.Resources {
         internal static string AddHealthToPlayer {
             get {
                 return ResourceManager.GetString("AddHealthToPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has generously given {Points} points to all the players!.
-        /// </summary>
-        internal static string AddPointsToAllPlayers {
-            get {
-                return ResourceManager.GetString("AddPointsToAllPlayers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You have given {Points} points to {PlayerName}.
-        /// </summary>
-        internal static string AddPointsToPlayer {
-            get {
-                return ResourceManager.GetString("AddPointsToPlayer", resourceCulture);
             }
         }
         
@@ -250,29 +250,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have obtained 100 points!.
+        ///   Looks up a localized string similar to You have obtained 100 coins!.
         /// </summary>
-        internal static string GiveMePoints {
+        internal static string GiveMeCoins {
             get {
-                return ResourceManager.GetString("GiveMePoints", resourceCulture);
+                return ResourceManager.GetString("GiveMeCoins", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You do not have enough points to obtain this combo.
+        ///   Looks up a localized string similar to You do not have enough coins to obtain this combo.
         /// </summary>
-        internal static string InsufficientPoints {
+        internal static string InsufficientCoins {
             get {
-                return ResourceManager.GetString("InsufficientPoints", resourceCulture);
+                return ResourceManager.GetString("InsufficientCoins", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Points must be between 1 to 100.
+        ///   Looks up a localized string similar to Coins must be between 1 to 100.
         /// </summary>
-        internal static string InvalidAddPoints {
+        internal static string InvalidAddCoins {
             get {
-                return ResourceManager.GetString("InvalidAddPoints", resourceCulture);
+                return ResourceManager.GetString("InvalidAddCoins", resourceCulture);
             }
         }
         
@@ -331,11 +331,11 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Points must be between -1 to -100.
+        ///   Looks up a localized string similar to Coins must be between -1 to -100.
         /// </summary>
-        internal static string InvalidSubtractPoints {
+        internal static string InvalidSubtractCoins {
             get {
-                return ResourceManager.GetString("InvalidSubtractPoints", resourceCulture);
+                return ResourceManager.GetString("InvalidSubtractCoins", resourceCulture);
             }
         }
         
@@ -673,7 +673,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have gained +100 points, +100 armour, and +100 health.
+        ///   Looks up a localized string similar to You have gained +100 coins, +100 armour, and +100 health.
         /// </summary>
         internal static string RankUpAward {
             get {
@@ -691,20 +691,20 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Coins} coins from {PlayerName}!.
+        /// </summary>
+        internal static string ReceiveCoinsFromPlayer {
+            get {
+                return ResourceManager.GetString("ReceiveCoinsFromPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Health}%% health from {PlayerName}!.
         /// </summary>
         internal static string ReceiveHealthFromPlayer {
             get {
                 return ResourceManager.GetString("ReceiveHealthFromPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Points} points from {PlayerName}!.
-        /// </summary>
-        internal static string ReceivePointsFromPlayer {
-            get {
-                return ResourceManager.GetString("ReceivePointsFromPlayer", resourceCulture);
             }
         }
         
@@ -718,11 +718,11 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} redeemed their points for the combo: {ComboName}.
+        ///   Looks up a localized string similar to {PlayerName} redeemed their coins for the combo: {ComboName}.
         /// </summary>
-        internal static string RedeemedPoints {
+        internal static string RedeemedCoins {
             get {
-                return ResourceManager.GetString("RedeemedPoints", resourceCulture);
+                return ResourceManager.GetString("RedeemedCoins", resourceCulture);
             }
         }
         

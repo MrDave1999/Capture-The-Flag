@@ -3,7 +3,7 @@
 public class FlamethrowerVitality : ICombo
 {
     public string Name => "100 Health, 100 Armour and FlameThrower";
-    public int RequiredPoints => 100;
+    public int RequiredCoins => 100;
 
     public void Give(Player player)
     {
@@ -13,6 +13,6 @@ public class FlamethrowerVitality : ICombo
         // 1000 (shows in game as 50-50).
         const int ammo = 1000;
         player.GiveWeapon(Weapon.FlameThrower, ammo);
-        playerInfo.StatsPerRound.ResetPoints();
+        playerInfo.StatsPerRound.ResetCoins();
     }
 }

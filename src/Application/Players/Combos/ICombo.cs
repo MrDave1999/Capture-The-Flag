@@ -12,9 +12,9 @@ public interface ICombo
     string Name { get; }
 
     /// <summary>
-    /// Gets the required points that a player must have to acquire the combo.
+    /// Gets the required coins that a player must have to acquire the combo.
     /// </summary>
-    int RequiredPoints { get; }
+    int RequiredCoins { get; }
 
     /// <summary>
     /// Assigns a combo to a player, e.g., 100 Health and 100 Armour.

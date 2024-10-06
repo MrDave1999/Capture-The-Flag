@@ -18,7 +18,7 @@ public class ComboSystem : ISystem
         var columnHeaders = new[]
         {
             "Combo",
-            "Required Points"
+            "Required Coins"
         };
         _tablistDialog = new TablistDialog(
             caption: "Combos",
@@ -27,7 +27,7 @@ public class ComboSystem : ISystem
             columnHeaders);
 
         foreach (ICombo combo in combos)
-            _tablistDialog.Add(combo.Name, combo.RequiredPoints.ToString());
+            _tablistDialog.Add(combo.Name, combo.RequiredCoins.ToString());
     }
 
     [PlayerCommand("combos")]
@@ -40,14 +40,14 @@ public class ComboSystem : ISystem
         string selectedItemName = response.Item.Columns[0];
         ICombo selectedCombo = _combos.First(combo => combo.Name == selectedItemName);
         PlayerStatsPerRound playerStats = player.GetInfo().StatsPerRound;
-        if(playerStats.HasInsufficientPoints(selectedCombo.RequiredPoints))
+        if(playerStats.HasInsufficientCoins(selectedCombo.RequiredCoins))
         {
-            player.SendClientMessage(Color.Red, Messages.InsufficientPoints);
+            player.SendClientMessage(Color.Red, Messages.InsufficientCoins);
             ShowCombos(player);
             return;
         }
 
-        var message = Smart.Format(Messages.RedeemedPoints, new 
+        var message = Smart.Format(Messages.RedeemedCoins, new 
         { 
             PlayerName  = player.Name,
             ComboName = selectedCombo.Name

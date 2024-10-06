@@ -11,7 +11,7 @@ public class PlayerRankUpdater(IPlayerRepository playerRepository)
             player.SendClientMessage(Color.Orange, Messages.RankUpAward);
             player.Armour = 100;
             player.Health = 100;
-            playerInfo.StatsPerRound.AddPoints(100);
+            playerInfo.StatsPerRound.AddCoins(100);
             playerInfo.SetRank(nextRank.Id);
             playerRepository.UpdateRank(playerInfo);
         }

@@ -208,14 +208,14 @@ public partial class PlayerInfo
             StatsPerRound.Kills,
             StatsPerRound.Deaths,
             StatsPerRound.KillingSpree,
-            StatsPerRound.Points,
+            StatsPerRound.Coins,
             MaxRank = RankCollection.Count,
             Level = (int)RankId,
             RankName = rankResult.Value.Name
         };
         const string message = 
             "~w~KILLS: ~y~{Kills} ~w~DEATHS: ~y~{Deaths} ~w~SPREE: ~y~{KillingSpree} " +
-            "~w~POINTS: ~y~{Points}/100 ~w~LEVEL: ~y~{Level}/{MaxRank} ~w~RANK: ~y~{RankName}";
+            "~w~COINS: ~y~{Coins}/100 ~w~LEVEL: ~y~{Level}/{MaxRank} ~w~RANK: ~y~{RankName}";
         return Smart.Format(message, stats);
     }
 }

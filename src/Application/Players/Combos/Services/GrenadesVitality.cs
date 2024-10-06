@@ -3,7 +3,7 @@
 public class GrenadesVitality : ICombo
 {
     public string Name => "100 Health, 100 Armour and Grenades";
-    public int RequiredPoints => 100;
+    public int RequiredCoins => 100;
 
     public void Give(Player player)
     {
@@ -11,6 +11,6 @@ public class GrenadesVitality : ICombo
         player.Health = 100;
         player.Armour = 100;
         player.GiveWeapon(Weapon.Grenade, ammo: 6);
-        playerInfo.StatsPerRound.ResetPoints();
+        playerInfo.StatsPerRound.ResetCoins();
     }
 }

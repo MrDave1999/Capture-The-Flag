@@ -123,17 +123,17 @@
   <data name="AddArmourToPlayer" xml:space="preserve">
     <value>You have added {Armour}%% armour to {PlayerName}!</value>
   </data>
+  <data name="AddCoinsToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has generously given {Coins} coins to all the players!</value>
+  </data>
+  <data name="AddCoinsToPlayer" xml:space="preserve">
+    <value>You have given {Coins} coins to {PlayerName}</value>
+  </data>
   <data name="AddHealthToAllPlayers" xml:space="preserve">
     <value>{PlayerName} has added {Health}%% to the health of all players!</value>
   </data>
   <data name="AddHealthToPlayer" xml:space="preserve">
     <value>You have added {Health}%% health to {PlayerName}!</value>
-  </data>
-  <data name="AddPointsToAllPlayers" xml:space="preserve">
-    <value>{PlayerName} has generously given {Points} points to all the players!</value>
-  </data>
-  <data name="AddPointsToPlayer" xml:space="preserve">
-    <value>You have given {Points} points to {PlayerName}</value>
   </data>
   <data name="AddScoreToAllPlayers" xml:space="preserve">
     <value>{PlayerName} has added {Score} to the score of all players!</value>
@@ -180,14 +180,14 @@
   <data name="GameModeDescription" xml:space="preserve">
     <value>~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
   </data>
-  <data name="GiveMePoints" xml:space="preserve">
-    <value>You have obtained 100 points!</value>
+  <data name="GiveMeCoins" xml:space="preserve">
+    <value>You have obtained 100 coins!</value>
   </data>
-  <data name="InsufficientPoints" xml:space="preserve">
-    <value>You do not have enough points to obtain this combo</value>
+  <data name="InsufficientCoins" xml:space="preserve">
+    <value>You do not have enough coins to obtain this combo</value>
   </data>
-  <data name="InvalidAddPoints" xml:space="preserve">
-    <value>Points must be between 1 to 100</value>
+  <data name="InvalidAddCoins" xml:space="preserve">
+    <value>Coins must be between 1 to 100</value>
   </data>
   <data name="InvalidInterval" xml:space="preserve">
     <value>The interval must be between 0 to {Max}</value>
@@ -207,8 +207,8 @@
   <data name="InvalidSkin" xml:space="preserve">
     <value>Skin ID must be between 0 and 311</value>
   </data>
-  <data name="InvalidSubtractPoints" xml:space="preserve">
-    <value>Points must be between -1 to -100</value>
+  <data name="InvalidSubtractCoins" xml:space="preserve">
+    <value>Coins must be between -1 to -100</value>
   </data>
   <data name="InvalidTeam" xml:space="preserve">
     <value>Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255</value>
@@ -322,22 +322,22 @@
     <value>Promoted to {RoleName} role</value>
   </data>
   <data name="RankUpAward" xml:space="preserve">
-    <value>You have gained +100 points, +100 armour, and +100 health</value>
+    <value>You have gained +100 coins, +100 armour, and +100 health</value>
   </data>
   <data name="ReceiveArmourFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Armour}%% armour from {PlayerName}!</value>
   </data>
+  <data name="ReceiveCoinsFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Coins} coins from {PlayerName}!</value>
+  </data>
   <data name="ReceiveHealthFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Health}%% health from {PlayerName}!</value>
-  </data>
-  <data name="ReceivePointsFromPlayer" xml:space="preserve">
-    <value>Congratulations! You've received {Points} points from {PlayerName}!</value>
   </data>
   <data name="ReceiveScoreFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Score} score from {PlayerName}!</value>
   </data>
-  <data name="RedeemedPoints" xml:space="preserve">
-    <value>{PlayerName} redeemed their points for the combo: {ComboName}</value>
+  <data name="RedeemedCoins" xml:space="preserve">
+    <value>{PlayerName} redeemed their coins for the combo: {ComboName}</value>
   </data>
   <data name="RedFlagIsNotAtBasePosition" xml:space="preserve">
     <value>~n~~n~~n~~r~The red flag is not at its base position</value>

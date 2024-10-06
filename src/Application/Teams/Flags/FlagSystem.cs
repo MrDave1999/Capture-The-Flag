@@ -27,7 +27,7 @@ public class FlagSystem(
             if (killer.IsValidPlayer())
             {
                 PlayerInfo killerInfo = killer.GetInfo();
-                killerInfo.StatsPerRound.AddPoints(4);
+                killerInfo.StatsPerRound.AddCoins(4);
                 killer.AddHealth(10);
                 killer.AddScore(2);
                 playerStatsRenderer.UpdateTextDraw(killer);
