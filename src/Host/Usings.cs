@@ -8,6 +8,7 @@ global using Microsoft.Extensions.Configuration;
 global using CTF.Application;
 global using CTF.Application.Common;
 global using CTF.Application.Common.Services;
+global using CTF.Application.Players;
 global using CTF.Host.Extensions;
 global using CTF.Host.Services;
 global using Persistence.SQLite;
