@@ -82,7 +82,7 @@ public class PlayerStatsSystem(
         Kills for Round: {playerInfo.StatsPerRound.Kills}
         Deaths for Round: {playerInfo.StatsPerRound.Deaths}
         Killing Spree for Round: {playerInfo.StatsPerRound.KillingSpree}
-        Points: {playerInfo.StatsPerRound.Points}/100
+        Coins: {playerInfo.StatsPerRound.Coins}/100
         Max Killing Spree: {playerInfo.MaxKillingSpree}
         Total Kills: {playerInfo.TotalKills}
         Total Deaths: {playerInfo.TotalDeaths}

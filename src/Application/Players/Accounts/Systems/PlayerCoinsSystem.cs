@@ -1,23 +1,23 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
-public class PlayerPointsSystem(
+public class PlayerCoinsSystem(
     IEntityManager entityManager,
     IWorldService worldService,
     PlayerStatsRenderer playerStatsRenderer,
     ServerTimeService serverTimeService,
     CommandCooldowns commandCooldowns) : ISystem
 {
-    [PlayerCommand("addpoints")]
-    public void AddPointsToPlayer(
+    [PlayerCommand("addcoins")]
+    public void AddCoinsToPlayer(
         Player currentPlayer,
         [CommandParameter(Name = "playerId")]Player targetPlayer,
-        int points)
+        int coins)
     {
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
         PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
-        Result result = targetPlayerInfo.StatsPerRound.AddPoints(points);
+        Result result = targetPlayerInfo.StatsPerRound.AddCoins(coins);
         if (result.IsFailed)
         {
             currentPlayer.SendClientMessage(Color.Red, result.Message);
@@ -25,17 +25,17 @@ public class PlayerPointsSystem(
         }
 
         {
-            var message = Smart.Format(Messages.AddPointsToPlayer, new
+            var message = Smart.Format(Messages.AddCoinsToPlayer, new
             {
-                Points = points,
+                Coins = coins,
                 PlayerName = targetPlayer.Name
             });
             currentPlayer.SendClientMessage(Color.Yellow, message);
         }
         {
-            var message = Smart.Format(Messages.ReceivePointsFromPlayer, new
+            var message = Smart.Format(Messages.ReceiveCoinsFromPlayer, new
             {
-                Points = points,
+                Coins = coins,
                 PlayerName = currentPlayer.Name
             });
             targetPlayer.SendClientMessage(Color.Yellow, message);
@@ -43,8 +43,8 @@ public class PlayerPointsSystem(
         playerStatsRenderer.UpdateTextDraw(targetPlayer);
     }
 
-    [PlayerCommand("addallpoints")]
-    public void AddPointsToAllPlayers(Player currentPlayer, int points)
+    [PlayerCommand("addallcoins")]
+    public void AddCoinsToAllPlayers(Player currentPlayer, int coins)
     {
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
@@ -53,7 +53,7 @@ public class PlayerPointsSystem(
         foreach (Player targetPlayer in players)
         {
             PlayerInfo targetPlayerInfo = targetPlayer.GetInfo();
-            Result result = targetPlayerInfo.StatsPerRound.AddPoints(points);
+            Result result = targetPlayerInfo.StatsPerRound.AddCoins(coins);
             if (result.IsFailed)
             {
                 currentPlayer.SendClientMessage(Color.Red, result.Message);
@@ -62,16 +62,16 @@ public class PlayerPointsSystem(
             playerStatsRenderer.UpdateTextDraw(targetPlayer);
         }
 
-        var message = Smart.Format(Messages.AddPointsToAllPlayers, new
+        var message = Smart.Format(Messages.AddCoinsToAllPlayers, new
         {
             PlayerName = currentPlayer.Name,
-            Points = points
+            Coins = coins
         });
         worldService.SendClientMessage(Color.Yellow, message);
     }
 
-    [PlayerCommand("givemepoints")]
-    public void GiveMePoints(Player currentPlayer) 
+    [PlayerCommand("givemecoins")]
+    public void GiveMeCoins(Player currentPlayer) 
     {
         if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
             return;
@@ -91,9 +91,9 @@ public class PlayerPointsSystem(
         int seconds = ConvertMinutesToSeconds(commandCooldowns.Coins);
         waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
         PlayerInfo currentPlayerInfo = currentPlayer.GetInfo();
-        currentPlayerInfo.StatsPerRound.AddPoints(100);
+        currentPlayerInfo.StatsPerRound.AddCoins(100);
         playerStatsRenderer.UpdateTextDraw(currentPlayer);
-        currentPlayer.SendClientMessage(Color.Yellow, Messages.GiveMePoints);
+        currentPlayer.SendClientMessage(Color.Yellow, Messages.GiveMeCoins);
     }
 
     [Event]

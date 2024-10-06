@@ -30,7 +30,7 @@ public class OnFlagScore(
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} team scores!", 5000, 3);
 
         PlayerInfo playerInfo = player.GetInfo();
-        playerInfo.StatsPerRound.AddPoints(8);
+        playerInfo.StatsPerRound.AddCoins(8);
         playerInfo.AddBroughtFlags();
         player.AddScore(4);
         playerRepository.UpdateBroughtFlags(playerInfo);
@@ -43,7 +43,7 @@ public class OnFlagScore(
         foreach (Player player in teamMembers)
         {
             PlayerInfo playerInfo = player.GetInfo();
-            playerInfo.StatsPerRound.AddPoints(5);
+            playerInfo.StatsPerRound.AddCoins(5);
             player.AddHealth(10);
             player.AddScore(1);
             playerStatsRenderer.UpdateTextDraw(player);

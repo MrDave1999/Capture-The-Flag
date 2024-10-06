@@ -5,14 +5,14 @@ public class PlayerStatsPerRoundTests
     [TestCase(10)]
     [TestCase(9)]
     [TestCase(8)]
-    public void HasSufficientPoints_WhenPlayerHasSufficientPoints_ShouldReturnsTrue(int amount)
+    public void HasSufficientCoins_WhenPlayerHasSufficientCoins_ShouldReturnsTrue(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        stats.AddPoints(10);
+        stats.AddCoins(10);
 
         // Act
-        bool actual = stats.HasSufficientPoints(amount);
+        bool actual = stats.HasSufficientCoins(amount);
 
         // Assert
         actual.Should().BeTrue();
@@ -20,14 +20,14 @@ public class PlayerStatsPerRoundTests
 
     [TestCase(11)]
     [TestCase(12)]
-    public void HasSufficientPoints_WhenPlayerHasInsufficientPoints_ShouldReturnsFalse(int amount)
+    public void HasSufficientCoins_WhenPlayerHasInsufficientCoins_ShouldReturnsFalse(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        stats.AddPoints(10);
+        stats.AddCoins(10);
 
         // Act
-        bool actual = stats.HasSufficientPoints(amount);
+        bool actual = stats.HasSufficientCoins(amount);
 
         // Assert
         actual.Should().BeFalse();
@@ -36,14 +36,14 @@ public class PlayerStatsPerRoundTests
     [TestCase(10)]
     [TestCase(9)]
     [TestCase(8)]
-    public void HasInsufficientPoints_WhenPlayerHasSufficientPoints_ShouldReturnsFalse(int amount)
+    public void HasInsufficientCoins_WhenPlayerHasSufficientCoins_ShouldReturnsFalse(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        stats.AddPoints(10);
+        stats.AddCoins(10);
 
         // Act
-        bool actual = stats.HasInsufficientPoints(amount);
+        bool actual = stats.HasInsufficientCoins(amount);
 
         // Assert
         actual.Should().BeFalse();
@@ -51,14 +51,14 @@ public class PlayerStatsPerRoundTests
 
     [TestCase(11)]
     [TestCase(12)]
-    public void HasInsufficientPoints_WhenPlayerHasInsufficientPoints_ShouldReturnsTrue(int amount)
+    public void HasInsufficientCoins_WhenPlayerHasInsufficientCoins_ShouldReturnsTrue(int amount)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        stats.AddPoints(10);
+        stats.AddCoins(10);
 
         // Act
-        bool actual = stats.HasInsufficientPoints(amount);
+        bool actual = stats.HasInsufficientCoins(amount);
 
         // Assert
         actual.Should().BeTrue();
@@ -67,14 +67,14 @@ public class PlayerStatsPerRoundTests
     [TestCase(0)]
     [TestCase(-1)]
     [TestCase(101)]
-    public void AddPoints_WhenPointsAreNotBetween1To100_ShouldReturnsFailureResult(int value)
+    public void AddCoins_WhenCoinsAreNotBetween1To100_ShouldReturnsFailureResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        var expectedMessage = Messages.InvalidAddPoints;
+        var expectedMessage = Messages.InvalidAddCoins;
 
         // Act
-        Result result = stats.AddPoints(value);
+        Result result = stats.AddCoins(value);
 
         // Asserts
         result.IsSuccess.Should().BeFalse();
@@ -85,50 +85,50 @@ public class PlayerStatsPerRoundTests
     [TestCase(2)]
     [TestCase(99)]
     [TestCase(100)]
-    public void AddPoints_WhenPointsAreBetween1To100_ShouldReturnsSuccessResult(int value)
+    public void AddCoins_WhenCoinsAreBetween1To100_ShouldReturnsSuccessResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
 
         // Act
-        Result result = stats.AddPoints(value);
+        Result result = stats.AddCoins(value);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
-        stats.Points.Should().Be(value);
+        stats.Coins.Should().Be(value);
     }
 
     [TestCase(21)]
     [TestCase(22)]
     [TestCase(23)]
     [TestCase(100)]
-    public void AddPoints_WhenSumOfPointsExceedsValueOf100_ShouldSetValueTo100(int value)
+    public void AddCoins_WhenSumOfCoinsExceedsValueOf100_ShouldSetValueTo100(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        int expectedPoints = 100;
-        stats.AddPoints(80);
+        int expectedCoins = 100;
+        stats.AddCoins(80);
 
         // Act
-        Result result = stats.AddPoints(value);
+        Result result = stats.AddCoins(value);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
-        stats.Points.Should().Be(expectedPoints);
+        stats.Coins.Should().Be(expectedCoins);
     }
 
     [TestCase(0)]
     [TestCase(1)]
     [TestCase(-101)]
-    public void SubtractPoints_WhenPointsAreNotInSpecifiedRange_ShouldReturnsFailureResult(int value)
+    public void SubtractCoins_WhenCoinsAreNotInSpecifiedRange_ShouldReturnsFailureResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
         // Should be in the range of -1 to -100.
-        var expectedMessage = Messages.InvalidSubtractPoints;
+        var expectedMessage = Messages.InvalidSubtractCoins;
 
         // Act
-        Result result = stats.SubtractPoints(value);
+        Result result = stats.SubtractCoins(value);
 
         // Asserts
         result.IsSuccess.Should().BeFalse();
@@ -139,37 +139,37 @@ public class PlayerStatsPerRoundTests
     [TestCase(-2)]
     [TestCase(-99)]
     [TestCase(-100)]
-    public void SubtractPoints_WhenPointsAreInSpecifiedRange_ShouldReturnsSuccessResult(int value)
+    public void SubtractCoins_WhenCoinsAreInSpecifiedRange_ShouldReturnsSuccessResult(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        int expectedPoints = 0;
+        int expectedCoins = 0;
 
         // Act
-        Result result = stats.SubtractPoints(value);
+        Result result = stats.SubtractCoins(value);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
-        stats.Points.Should().Be(expectedPoints);
+        stats.Coins.Should().Be(expectedCoins);
     }
 
     [TestCase(-11)]
     [TestCase(-12)]
     [TestCase(-13)]
     [TestCase(-100)]
-    public void SubtractPoints_WhenSubtractionOfPointsGivesNegativeResult_ShouldSetValueToZero(int value)
+    public void SubtractCoins_WhenSubtractionOfCoinsGivesNegativeResult_ShouldSetValueToZero(int value)
     {
         // Arrange
         var stats = new PlayerStatsPerRound();
-        int expectedPoints = 0;
-        stats.AddPoints(10);
+        int expectedCoins = 0;
+        stats.AddCoins(10);
 
         // Act
-        Result result = stats.SubtractPoints(value);
+        Result result = stats.SubtractCoins(value);
 
         // Asserts
         result.IsSuccess.Should().BeTrue();
-        stats.Points.Should().Be(expectedPoints);
+        stats.Coins.Should().Be(expectedCoins);
     }
 
     [Test]
@@ -228,7 +228,7 @@ public class PlayerStatsPerRoundTests
         stats.AddDeaths();
         stats.AddKillingSpree();
         stats.AddKillingSpree();
-        stats.AddPoints(15);
+        stats.AddCoins(15);
 
         // Act
         stats.ResetStats();
@@ -237,6 +237,6 @@ public class PlayerStatsPerRoundTests
         stats.Kills.Should().Be(0);
         stats.Deaths.Should().Be(0);
         stats.KillingSpree.Should().Be(0);
-        stats.Points.Should().Be(0);
+        stats.Coins.Should().Be(0);
     }
 }

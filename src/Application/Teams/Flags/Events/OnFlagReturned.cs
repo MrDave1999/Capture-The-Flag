@@ -29,7 +29,7 @@ public class OnFlagReturned(
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag returned!", 5000, 3);
 
         PlayerInfo playerInfo = player.GetInfo();
-        playerInfo.StatsPerRound.AddPoints(5);
+        playerInfo.StatsPerRound.AddCoins(5);
         playerInfo.AddReturnedFlags();
         player.AddScore(2);
         playerRepository.UpdateReturnedFlags(playerInfo);
