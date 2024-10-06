@@ -5,15 +5,18 @@ public class ComboSystem : ISystem
     private readonly IDialogService _dialogService;
     private readonly TablistDialog _tablistDialog;
     private readonly IWorldService _worldService;
+    private readonly PlayerStatsRenderer _playerStatsRenderer;
     private readonly IEnumerable<ICombo> _combos;
 
     public ComboSystem(
         IDialogService dialogService,
         IWorldService worldService,
+        PlayerStatsRenderer playerStatsRenderer,
         IEnumerable<ICombo> combos)
     {
         _dialogService = dialogService;
         _worldService = worldService;
+        _playerStatsRenderer = playerStatsRenderer;
         _combos = combos;
         var columnHeaders = new[]
         {
@@ -54,5 +57,6 @@ public class ComboSystem : ISystem
         });
         _worldService.SendClientMessage(Color.Yellow, message);
         selectedCombo.Give(player);
+        _playerStatsRenderer.UpdateTextDraw(player);
     }
 }
