@@ -16,6 +16,7 @@ global using Microsoft.Extensions.DependencyInjection;
 
 global using CTF.Application.Common;
 global using CTF.Application.Common.Results;
+global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.NativeObjects;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Common.Resources;

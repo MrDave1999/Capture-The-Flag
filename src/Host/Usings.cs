@@ -7,6 +7,7 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
 global using CTF.Application;
 global using CTF.Application.Common;
+global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Players;
 global using CTF.Host.Extensions;
