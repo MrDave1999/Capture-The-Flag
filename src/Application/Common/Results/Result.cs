@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Common;
+﻿namespace CTF.Application.Common.Results;
 
 /// <summary>
 /// Represents the result of an operation that does not return a value.
