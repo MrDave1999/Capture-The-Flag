@@ -3,7 +3,8 @@
 public class ArmourSystem(
     IWorldService worldService,
     IEntityManager entityManager,
-    ServerTimeService serverTimeService) : ISystem
+    ServerTimeService serverTimeService,
+    CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addarmour")]
     public void AddArmourToPlayer(
@@ -74,17 +75,19 @@ public class ArmourSystem(
         if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
             return;
 
-        const int Minutes = 4;
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
         if (waitTimeComponent.Value > serverTimeService.GetTime())
         {
-            var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new { Minutes });
+            var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new 
+            { 
+                Minutes = commandCooldowns.Armour
+            });
             currentPlayer.SendClientMessage(Color.Red, message);
             return;
         }
 
         static int ConvertMinutesToSeconds(int value) => value * 60;
-        int seconds = ConvertMinutesToSeconds(Minutes);
+        int seconds = ConvertMinutesToSeconds(commandCooldowns.Armour);
         waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
         currentPlayer.Armour = 100;
     }

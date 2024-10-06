@@ -3,7 +3,8 @@
 public class HealthSystem(
     IWorldService worldService,
     IEntityManager entityManager,
-    ServerTimeService serverTimeService) : ISystem
+    ServerTimeService serverTimeService,
+    CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addhealth")]
     public void AddHealthToPlayer(
@@ -74,17 +75,19 @@ public class HealthSystem(
         if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
             return;
 
-        const int Minutes = 4;
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
         if (waitTimeComponent.Value > serverTimeService.GetTime())
         {
-            var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new { Minutes });
+            var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new 
+            { 
+                Minutes = commandCooldowns.Health
+            });
             currentPlayer.SendClientMessage(Color.Red, message);
             return;
         }
 
         static int ConvertMinutesToSeconds(int value) => value * 60;
-        int seconds = ConvertMinutesToSeconds(Minutes);
+        int seconds = ConvertMinutesToSeconds(commandCooldowns.Health);
         waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
         currentPlayer.Health = 100;
     }
