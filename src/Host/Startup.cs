@@ -13,12 +13,17 @@ public class Startup : IStartup
             .GetRequiredSection("ServerInfo")
             .Get<ServerSettings>();
 
+        var commandCooldowns = configuration
+            .GetRequiredSection("CommandCooldowns")
+            .Get<CommandCooldowns>();
+
         services.ChooseDatabaseProvider(configuration);
         services.AddApplicationServices();
         services
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
             .AddSingleton<IStreamerService, StreamerService>()
-            .AddSingleton(serverSettings);
+            .AddSingleton(serverSettings)
+            .AddSingleton(commandCooldowns);
 
         // Add systems to the services collection
         services
