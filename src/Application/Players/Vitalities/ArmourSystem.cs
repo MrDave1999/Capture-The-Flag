@@ -2,7 +2,8 @@
 
 public class ArmourSystem(
     IWorldService worldService,
-    IEntityManager entityManager) : ISystem
+    IEntityManager entityManager,
+    ServerTimeService serverTimeService) : ISystem
 {
     [PlayerCommand("addarmour")]
     public void AddArmourToPlayer(
@@ -65,5 +66,35 @@ public class ArmourSystem(
             Armour = amount
         });
         worldService.SendClientMessage(Color.Yellow, message);
+    }
+
+    [PlayerCommand("armour")]
+    public void RestoreArmour(Player currentPlayer)
+    {
+        if (currentPlayer.HasLowerRoleThan(RoleId.VIP))
+            return;
+
+        const int Minutes = 4;
+        var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
+        if (waitTimeComponent.Value > serverTimeService.GetTime())
+        {
+            var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new { Minutes });
+            currentPlayer.SendClientMessage(Color.Red, message);
+            return;
+        }
+
+        static int ConvertMinutesToSeconds(int value) => value * 60;
+        int seconds = ConvertMinutesToSeconds(Minutes);
+        waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
+        currentPlayer.Armour = 100;
+    }
+
+    [Event]
+    public void OnPlayerConnect(Player player)
+        => player.AddComponent<WaitTimeComponent>();
+
+    private class WaitTimeComponent : Component
+    {
+        public int Value { get; set; }
     }
 }
