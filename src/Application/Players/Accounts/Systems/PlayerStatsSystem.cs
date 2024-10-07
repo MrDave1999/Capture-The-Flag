@@ -63,8 +63,7 @@ public class PlayerStatsSystem(
         playerStatsRenderer.UpdateTextDraw(player);
         var message = Smart.Format(Messages.ResetPlayerStats, new
         {
-            PlayerName = player.Name,
-            Color = Color.Red
+            PlayerName = player.Name
         });
         worldService.SendClientMessage(Color.Yellow, message);
     }
