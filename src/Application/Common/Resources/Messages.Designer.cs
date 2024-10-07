@@ -232,6 +232,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To exit spectator mode use the command /class.
+        /// </summary>
+        internal static string ExitSpectatorMode {
+            get {
+                return ResourceManager.GetString("ExitSpectatorMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {ColorName} flag has automatically returned to its base position after {Seconds} seconds!.
         /// </summary>
         internal static string FlagAutoReturn {
