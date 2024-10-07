@@ -799,7 +799,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has reset their stats, such as score, kills, and deaths, with the {Color}/re command.
+        ///   Looks up a localized string similar to {PlayerName} has reset their stats, such as score, kills and deaths.
         /// </summary>
         internal static string ResetPlayerStats {
             get {

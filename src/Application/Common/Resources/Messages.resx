@@ -364,7 +364,7 @@
     <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
   </data>
   <data name="ResetPlayerStats" xml:space="preserve">
-    <value>{PlayerName} has reset their stats, such as score, kills, and deaths, with the {Color}/re command</value>
+    <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>
   </data>
   <data name="RoleSuccessfullyChanged" xml:space="preserve">
     <value>You have assigned the {RoleName} role to {PlayerName}</value>
