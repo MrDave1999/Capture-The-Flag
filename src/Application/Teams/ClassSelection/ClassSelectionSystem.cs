@@ -113,12 +113,8 @@ public class ClassSelectionSystem(
             return;
         }
 
-        Team currentTeam = playerInfo.Team;
-        currentTeam.Members.Remove(player);
-        playerInfo.SetTeam(TeamId.NoTeam);
-        player.Team = (int)TeamId.NoTeam;
-        player.Color = Team.None.ColorHex;
+        Team removedTeam = player.RemoveFromCurrentTeam();
+        teamTextDrawRenderer.UpdateTeamMembers(removedTeam);
         player.RedirectToClassSelection();
-        teamTextDrawRenderer.UpdateTeamMembers(currentTeam);
     }
 }
