@@ -664,6 +664,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has reset their score with the command {Color}/re.
+        /// </summary>
+        internal static string PlayerScoreReset {
+            get {
+                return ResourceManager.GetString("PlayerScoreReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Promoted to {RoleName} role.
         /// </summary>
         internal static string PromotedToRole {
