@@ -67,7 +67,7 @@ public class PublicCommands(
         [CommandParameter(Name = "playerId")]Player targetPlayer,
         string reason)
     {
-        if(currentPlayer == targetPlayer)
+        if (currentPlayer == targetPlayer)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
             return;
@@ -77,7 +77,7 @@ public class PublicCommands(
             .GetComponents<Player>()
             .Where(player => player.GetInfo().RoleId >= RoleId.Moderator);
 
-        if(!admins.Any()) 
+        if (!admins.Any())
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.NoAdminsConnected);
             return;
@@ -89,11 +89,48 @@ public class PublicCommands(
             TargetPlayer = targetPlayer.Name,
             Reason = reason
         });
-        foreach(Player player in admins) 
-        { 
+        foreach (Player player in admins)
+        {
             player.SendClientMessage(Color.Red, message);
         }
         currentPlayer.SendClientMessage(Color.Yellow, Messages.ReportSuccessfullySent);
         currentPlayer.PlaySound(1058);
+    }
+
+    [PlayerCommand("spec")]
+    public void EnableSpectatorMode(
+        Player currentPlayer,
+        [CommandParameter(Name = "playerId")]Player targetPlayer,
+        TeamTextDrawRenderer teamTextDrawRenderer)
+    {
+        if (currentPlayer == targetPlayer)
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsEqualsToTargetPlayer);
+            return;
+        }
+
+        if (targetPlayer.IsInClassSelection())
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsInClassSelection);
+            return;
+        }
+
+        if (currentPlayer.GetInfo().HasCapturedFlag())
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.HasCapturedFlag);
+            return;
+        }
+
+        if (currentPlayer.Health < 85)
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.PlayerWithInsufficientHealth);
+            return;
+        }
+
+        Team removedTeam = currentPlayer.RemoveFromCurrentTeam();
+        teamTextDrawRenderer.UpdateTeamMembers(removedTeam);
+        currentPlayer.ToggleSpectating(true);
+        currentPlayer.SpectatePlayer(targetPlayer);
+        currentPlayer.SendClientMessage(Color.Yellow, Messages.ExitSpectatorMode);
     }
 }
