@@ -700,15 +700,6 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has reset their score with the command {Color}/re.
-        /// </summary>
-        internal static string PlayerScoreReset {
-            get {
-                return ResourceManager.GetString("PlayerScoreReset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You don&apos;t have enough health.
         /// </summary>
         internal static string PlayerWithInsufficientHealth {
@@ -804,6 +795,15 @@ namespace CTF.Application.Common.Resources {
         internal static string ReportToAnotherPlayer {
             get {
                 return ResourceManager.GetString("ReportToAnotherPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has reset their stats, such as score, kills and deaths.
+        /// </summary>
+        internal static string ResetPlayerStats {
+            get {
+                return ResourceManager.GetString("ResetPlayerStats", resourceCulture);
             }
         }
         

@@ -330,9 +330,6 @@
   <data name="PlayerNotFound" xml:space="preserve">
     <value>Player '{Name}' is not found</value>
   </data>
-  <data name="PlayerScoreReset" xml:space="preserve">
-    <value>{PlayerName} has reset their score with the command {Color}/re</value>
-  </data>
   <data name="PlayerWithInsufficientHealth" xml:space="preserve">
     <value>You don't have enough health</value>
   </data>
@@ -365,6 +362,9 @@
   </data>
   <data name="ReportToAnotherPlayer" xml:space="preserve">
     <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="ResetPlayerStats" xml:space="preserve">
+    <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>
   </data>
   <data name="RoleSuccessfullyChanged" xml:space="preserve">
     <value>You have assigned the {RoleName} role to {PlayerName}</value>
