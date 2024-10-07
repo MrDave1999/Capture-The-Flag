@@ -318,6 +318,9 @@
   <data name="PlayerNotFound" xml:space="preserve">
     <value>Player '{Name}' is not found</value>
   </data>
+  <data name="PlayerScoreReset" xml:space="preserve">
+    <value>{PlayerName} has reset their score with the command {Color}/re</value>
+  </data>
   <data name="PromotedToRole" xml:space="preserve">
     <value>Promoted to {RoleName} role</value>
   </data>
