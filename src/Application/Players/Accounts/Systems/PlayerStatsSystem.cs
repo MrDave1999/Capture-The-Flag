@@ -1,6 +1,7 @@
 ﻿namespace CTF.Application.Players.Accounts.Systems;
 
 public class PlayerStatsSystem(
+    IWorldService worldService,
     IDialogService dialogService,
     IPlayerRepository playerRepository,
     PlayerRankUpdater playerRankUpdater,
@@ -50,6 +51,22 @@ public class PlayerStatsSystem(
         killingSpreeUpdater.Update(killer, killerInfo);
         playerRankUpdater.Update(killer, killerInfo);
         playerStatsRenderer.UpdateTextDraw(killer);
+    }
+
+    [PlayerCommand("re")]
+    public void ResetPlayerStats(Player player)
+    {
+        PlayerInfo playerInfo = player.GetInfo();
+        playerInfo.StatsPerRound.ResetKills();
+        playerInfo.StatsPerRound.ResetDeaths();
+        player.SetScore(0);
+        playerStatsRenderer.UpdateTextDraw(player);
+        var message = Smart.Format(Messages.ResetPlayerStats, new
+        {
+            PlayerName = player.Name,
+            Color = Color.Red
+        });
+        worldService.SendClientMessage(Color.Yellow, message);
     }
 
     [PlayerCommand("mystats")]

@@ -2,9 +2,7 @@
 
 public class PublicCommands(
     IEntityManager entityManager,
-    IWorldService worldService,
-    IDialogService dialogService,
-    PlayerStatsRenderer playerStatsRenderer) : ISystem
+    IDialogService dialogService) : ISystem
 {
     [PlayerCommand("kill")]
     public void Kill(Player player)
@@ -16,22 +14,6 @@ public class PublicCommands(
             return;
         }
         player.Health = 0;
-    }
-
-    [PlayerCommand("re")]
-    public void ResetScore(Player player) 
-    {
-        PlayerInfo playerInfo = player.GetInfo();
-        playerInfo.StatsPerRound.ResetKills();
-        playerInfo.StatsPerRound.ResetDeaths();
-        player.SetScore(0);
-        playerStatsRenderer.UpdateTextDraw(player);
-        var message = Smart.Format(Messages.PlayerScoreReset, new
-        {
-            PlayerName = player.Name,
-            Color = Color.Red
-        });
-        worldService.SendClientMessage(Color.Yellow, message);
     }
 
     [PlayerCommand("admins")]
