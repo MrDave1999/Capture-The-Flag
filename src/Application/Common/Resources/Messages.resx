@@ -313,7 +313,7 @@
     <value>Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team</value>
   </data>
   <data name="PlayerInSpectatorMode" xml:space="preserve">
-    <value>You are in spectator mode</value>
+    <value>The player is in spectator mode</value>
   </data>
   <data name="PlayerIsAlreadyInTeam" xml:space="preserve">
     <value>You are already a member of that team</value>
