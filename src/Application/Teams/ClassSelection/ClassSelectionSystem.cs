@@ -97,15 +97,9 @@ public class ClassSelectionSystem(
         teamTextDrawRenderer.UpdateTeamMembers(playerInfo.Team);
     }
 
-    [PlayerCommand("afk")]
+    [PlayerCommand("class")]
     public void RedirectToClassSelection(Player player)
     {
-        if (player.State == PlayerState.Spectating)
-        {
-            player.SendClientMessage(Color.Red, Messages.PlayerInSpectatorMode);
-            return;
-        }
-
         PlayerInfo playerInfo = player.GetInfo();
         if (playerInfo.HasCapturedFlag())
         {
@@ -119,12 +113,8 @@ public class ClassSelectionSystem(
             return;
         }
 
-        Team currentTeam = playerInfo.Team;
-        currentTeam.Members.Remove(player);
-        playerInfo.SetTeam(TeamId.NoTeam);
-        player.Team = (int)TeamId.NoTeam;
-        player.Color = Team.None.ColorHex;
+        Team removedTeam = player.RemoveFromCurrentTeam();
+        teamTextDrawRenderer.UpdateTeamMembers(removedTeam);
         player.RedirectToClassSelection();
-        teamTextDrawRenderer.UpdateTeamMembers(currentTeam);
     }
 }

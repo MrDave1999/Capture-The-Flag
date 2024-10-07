@@ -174,6 +174,9 @@
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
   </data>
+  <data name="ExitSpectatorMode" xml:space="preserve">
+    <value>To exit spectator mode use the command /class</value>
+  </data>
   <data name="FlagAutoReturn" xml:space="preserve">
     <value>The {ColorName} flag has automatically returned to its base position after {Seconds} seconds!</value>
   </data>
