@@ -100,12 +100,6 @@ public class ClassSelectionSystem(
     [PlayerCommand("class")]
     public void RedirectToClassSelection(Player player)
     {
-        if (player.State == PlayerState.Spectating)
-        {
-            player.SendClientMessage(Color.Red, Messages.PlayerInSpectatorMode);
-            return;
-        }
-
         PlayerInfo playerInfo = player.GetInfo();
         if (playerInfo.HasCapturedFlag())
         {
