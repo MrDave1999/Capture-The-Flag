@@ -475,6 +475,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are currently no administrators connected to the server.
+        /// </summary>
+        internal static string NoAdminsConnected {
+            get {
+                return ResourceManager.GetString("NoAdminsConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No match found.
         /// </summary>
         internal static string NoMatchFound {
@@ -498,6 +507,15 @@ namespace CTF.Application.Common.Resources {
         internal static string NoTeam {
             get {
                 return ResourceManager.GetString("NoTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no VIP players connected at the moment.
+        /// </summary>
+        internal static string NoVIPsConnected {
+            get {
+                return ResourceManager.GetString("NoVIPsConnected", resourceCulture);
             }
         }
         
@@ -741,6 +759,24 @@ namespace CTF.Application.Common.Resources {
         internal static string RedFlagIsNotAtBasePosition {
             get {
                 return ResourceManager.GetString("RedFlagIsNotAtBasePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully sent the report.
+        /// </summary>
+        internal static string ReportSuccessfullySent {
+            get {
+                return ResourceManager.GetString("ReportSuccessfullySent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}].
+        /// </summary>
+        internal static string ReportToAnotherPlayer {
+            get {
+                return ResourceManager.GetString("ReportToAnotherPlayer", resourceCulture);
             }
         }
         

@@ -255,6 +255,9 @@
   <data name="NextRank" xml:space="preserve">
     <value>You moved up to {Name} rank, congratulations!</value>
   </data>
+  <data name="NoAdminsConnected" xml:space="preserve">
+    <value>There are currently no administrators connected to the server</value>
+  </data>
   <data name="NoMatchFound" xml:space="preserve">
     <value>No match found</value>
   </data>
@@ -263,6 +266,9 @@
   </data>
   <data name="NoTeam" xml:space="preserve">
     <value>You do not belong to any team</value>
+  </data>
+  <data name="NoVIPsConnected" xml:space="preserve">
+    <value>There are no VIP players connected at the moment</value>
   </data>
   <data name="OldSkinIsEqualsToNewSkin" xml:space="preserve">
     <value>You already have that skin</value>
@@ -344,6 +350,12 @@
   </data>
   <data name="RedFlagIsNotAtBasePosition" xml:space="preserve">
     <value>~n~~n~~n~~r~The red flag is not at its base position</value>
+  </data>
+  <data name="ReportSuccessfullySent" xml:space="preserve">
+    <value>You have successfully sent the report</value>
+  </data>
+  <data name="ReportToAnotherPlayer" xml:space="preserve">
+    <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
   </data>
   <data name="RoleSuccessfullyChanged" xml:space="preserve">
     <value>You have assigned the {RoleName} role to {PlayerName}</value>
