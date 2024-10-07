@@ -47,6 +47,12 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
             return;
         }
 
+        if (targetPlayer.State == PlayerState.Spectating)
+        {
+            currentPlayer.SendClientMessage(Color.Red, Messages.PlayerInSpectatorMode);
+            return;
+        }
+
         var message = Smart.Format(Messages.SetSpawnToPlayer, new { PlayerName = targetPlayer.Name });
         currentPlayer.SendClientMessage(Color.Yellow, message);
         targetPlayer.Spawn();
