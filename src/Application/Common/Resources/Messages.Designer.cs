@@ -259,6 +259,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot use this command because you are the flag carrier.
+        /// </summary>
+        internal static string HasCapturedFlag {
+            get {
+                return ResourceManager.GetString("HasCapturedFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough coins to obtain this combo.
         /// </summary>
         internal static string InsufficientCoins {
@@ -628,6 +637,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are in spectator mode.
+        /// </summary>
+        internal static string PlayerInSpectatorMode {
+            get {
+                return ResourceManager.GetString("PlayerInSpectatorMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are already a member of that team.
         /// </summary>
         internal static string PlayerIsAlreadyInTeam {
@@ -687,6 +705,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PlayerScoreReset {
             get {
                 return ResourceManager.GetString("PlayerScoreReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have enough health.
+        /// </summary>
+        internal static string PlayerWithInsufficientHealth {
+            get {
+                return ResourceManager.GetString("PlayerWithInsufficientHealth", resourceCulture);
             }
         }
         

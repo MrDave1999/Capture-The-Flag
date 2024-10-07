@@ -96,4 +96,35 @@ public class ClassSelectionSystem(
         playerInfo.Team.Members.Remove(player);
         teamTextDrawRenderer.UpdateTeamMembers(playerInfo.Team);
     }
+
+    [PlayerCommand("afk")]
+    public void RedirectToClassSelection(Player player)
+    {
+        if (player.State == PlayerState.Spectating)
+        {
+            player.SendClientMessage(Color.Red, Messages.PlayerInSpectatorMode);
+            return;
+        }
+
+        PlayerInfo playerInfo = player.GetInfo();
+        if (playerInfo.HasCapturedFlag())
+        {
+            player.SendClientMessage(Color.Red, Messages.HasCapturedFlag);
+            return;
+        }
+
+        if (player.Health < 85)
+        {
+            player.SendClientMessage(Color.Red, Messages.PlayerWithInsufficientHealth);
+            return;
+        }
+
+        Team currentTeam = playerInfo.Team;
+        currentTeam.Members.Remove(player);
+        playerInfo.SetTeam(TeamId.NoTeam);
+        player.Team = (int)TeamId.NoTeam;
+        player.Color = Team.None.ColorHex;
+        player.RedirectToClassSelection();
+        teamTextDrawRenderer.UpdateTeamMembers(currentTeam);
+    }
 }
