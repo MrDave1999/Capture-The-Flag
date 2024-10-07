@@ -646,7 +646,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are in spectator mode.
+        ///   Looks up a localized string similar to The player is in spectator mode.
         /// </summary>
         internal static string PlayerInSpectatorMode {
             get {
