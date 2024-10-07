@@ -183,6 +183,9 @@
   <data name="GiveMeCoins" xml:space="preserve">
     <value>You have obtained 100 coins!</value>
   </data>
+  <data name="HasCapturedFlag" xml:space="preserve">
+    <value>You cannot use this command because you are the flag carrier</value>
+  </data>
   <data name="InsufficientCoins" xml:space="preserve">
     <value>You do not have enough coins to obtain this combo</value>
   </data>
@@ -306,6 +309,9 @@
   <data name="PlayerHasChangedTeams" xml:space="preserve">
     <value>Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team</value>
   </data>
+  <data name="PlayerInSpectatorMode" xml:space="preserve">
+    <value>You are in spectator mode</value>
+  </data>
   <data name="PlayerIsAlreadyInTeam" xml:space="preserve">
     <value>You are already a member of that team</value>
   </data>
@@ -326,6 +332,9 @@
   </data>
   <data name="PlayerScoreReset" xml:space="preserve">
     <value>{PlayerName} has reset their score with the command {Color}/re</value>
+  </data>
+  <data name="PlayerWithInsufficientHealth" xml:space="preserve">
+    <value>You don't have enough health</value>
   </data>
   <data name="PromotedToRole" xml:space="preserve">
     <value>Promoted to {RoleName} role</value>
