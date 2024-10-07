@@ -97,7 +97,7 @@ public class ClassSelectionSystem(
         teamTextDrawRenderer.UpdateTeamMembers(playerInfo.Team);
     }
 
-    [PlayerCommand("afk")]
+    [PlayerCommand("class")]
     public void RedirectToClassSelection(Player player)
     {
         if (player.State == PlayerState.Spectating)
