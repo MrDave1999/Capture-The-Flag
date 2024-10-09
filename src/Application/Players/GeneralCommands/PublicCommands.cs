@@ -50,7 +50,7 @@ public class PublicCommands(
     {
         var help =
         """
-        {Color1}This is a capture the flag modification for SA-MP (San Andreas Multiplayer).
+        {Color1}This is a capture the flag game mode for SA-MP (San Andreas Multiplayer).
         {Color2}There are 2 flags on the map, one for each team. 
         Players need to capture the enemy's flag and bring it back to their own one.
         {Color1}Gameplay:{Color2}
