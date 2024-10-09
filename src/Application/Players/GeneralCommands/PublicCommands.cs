@@ -69,6 +69,35 @@ public class PublicCommands(
         dialogService.ShowAsync(player, dialog);
     }
 
+    [PlayerCommand("credits")]
+    public void ShowCredits(Player player)
+    {
+        var help =
+        """
+        {Color1}Capture The Flag is an open source project. 
+        {Color1}Check out its official repository: 
+        {Color2}https://github.com/MrDave1999/Capture-The-Flag
+        {Color1}Creator and programmer: {Color2}MrDave (Dave Roman)
+        {Color1}Mappers:{Color2} 
+        DragonZafiro, Elorreli, amirab, JamesT85,
+        TheYoungCapone, B4MB1[MC], Sleyer, mihaibr,
+        UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
+        Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
+        SENiOR, saawan, Risq, Famous and Leo.
+        {Color1}Acknowledgments to:{Color2}
+        ikkentim for creating the SampSharp framework.
+        Nickk888SAMP for creating NTD (TextDraw Editor).
+        samp-incognito for creating the streamer-plugin.
+        """;
+        var content = Smart.Format(help, new
+        {
+            Color1 = Color.Yellow,
+            Color2 = Color.White
+        });
+        var dialog = new MessageDialog(caption: "Credits", content, "Close");
+        dialogService.ShowAsync(player, dialog);
+    }
+
     [PlayerCommand("kill")]
     public void Kill(Player player)
     {
