@@ -1006,11 +1006,20 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!.
+        ///   Looks up a localized string similar to &gt;&gt;&gt; Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!.
         /// </summary>
         internal static string Welcome2 {
             get {
                 return ResourceManager.GetString("Welcome2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &gt;&gt;&gt; Your mission: capture the enemy&apos;s flag and bring it back to your own base. The victory is in your hands!.
+        /// </summary>
+        internal static string Welcome3 {
+            get {
+                return ResourceManager.GetString("Welcome3", resourceCulture);
             }
         }
         
