@@ -20,7 +20,7 @@ public class PublicCommands(
         {Color1}/skin: {Color2}Change your character's skin.
         {Color1}/weapons: {Color2}Display a list of available weapons
         {Color1}/pack: {Color2}Display your current weapons package.
-        {Color1}/combos: {Color2}Display a list of available combos for gameplay.
+        {Color1}/combos: {Color2}Display a list of available combos and their benefits.
         {Color1}/team: {Color2}Switch to a different team.
         {Color1}/scoreboard: {Color2}Show the current scoreboard with player scores.
         {Color1}/kill: {Color2}Eliminate your character for respawn purposes.
