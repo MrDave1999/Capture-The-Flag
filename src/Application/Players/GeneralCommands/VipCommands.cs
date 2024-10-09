@@ -8,18 +8,7 @@ public class VipCommands : ISystem
         if (player.HasLowerRoleThan(RoleId.VIP))
             return;
 
-        var commands =
-        """
-        {Color1}/armour: {Color2}Grants you temporary armour, reducing damage taken from attacks.
-        {Color1}/health: {Color2}Restores a portion of your health instantly.
-        {Color1}/saw: {Color2}Deploys a powerful saw to cut through obstacles or defeat enemies.
-        {Color1}/spray: {Color2}Releases a spray that can confuse and distract opponents.
-        {Color1}/teargas: {Color2}Deploys tear gas, impairing visibility and causing disorientation to nearby enemies.
-        {Color1}/givemecoins: {Color2}Awards you with in-game coins, enhancing your resources.
-
-        {Color1}Use the '$' symbol at the start of your message to access the private VIP chat.
-        """;
-        var content = Smart.Format(commands, new 
+        var content = Smart.Format(DetailedCommandInfo.VIP, new 
         { 
             Color1 = Color.Yellow,
             Color2 = Color.White

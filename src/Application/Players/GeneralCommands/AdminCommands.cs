@@ -11,26 +11,10 @@ public class AdminCommands(
         if (player.HasLowerRoleThan(RoleId.Admin))
             return;
 
-        var commands =
-        """
-        {Color1}/setrole: {Color2}Assigns a specific role to a player.
-        {Color1}/setscore: {Color2}Sets the score of a player to a specified value.
-        {Color1}/addscore: {Color2}Increases the player's score by a designated amount.
-        {Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
-        {Color1}/addcoins: {Color2}Increases the player's coins by a designated amount.
-        {Color1}/addallcoins: {Color2}Grant a set number of coins to all players.
-        {Color1}/goto: {Color2}Teleport to the position of a specified player.
-        {Color1}/get: {Color2}Bring a specified player to your current position.
-        {Color1}/ban: {Color2}Ban a player from the server.
-        {Color1}/unban: {Color2}Remove a ban from a player, allowing them back on the server.
-        {Color1}/bannedips: {Color2}View a list of IP addresses that are currently banned.
-
-        {Color1}Use the '#' symbol at the start of your message to access the private admin chat.
-        """;
-        var content = Smart.Format(commands, new
+        var content = Smart.Format(DetailedCommandInfo.Admin, new
         {
             Color1 = Color.Yellow,
-            Color2 = Color.White,
+            Color2 = Color.White
         });
         var dialog = new MessageDialog(caption: "Admin Commands", content, "Close");
         dialogService.ShowAsync(player, dialog);

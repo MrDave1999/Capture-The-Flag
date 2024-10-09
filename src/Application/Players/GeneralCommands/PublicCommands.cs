@@ -7,36 +7,7 @@ public class PublicCommands(
     [PlayerCommand("cmds")]
     public void ShowCommands(Player player)
     {
-        var commands =
-        """
-        {Color1}/help: {Color2}Display an introduction to the Capture The Flag game mode.
-        {Color1}/credits: {Color2}Show credits for the game and contributors.
-        {Color1}/ranks: {Color2}List the different player ranks and their requirements.
-        {Color1}/mystats: {Color2}Display the statistics of the current player.
-        {Color1}/stats: {Color2}Show the statistics of a specified player.
-        {Color1}/tstats: {Color2}Display the statistics of the teams (Alpha and Beta).
-        {Color1}/changepass: {Color2}Change your account password.
-        {Color1}/changename: {Color2}Change your account name.
-        {Color1}/skin: {Color2}Change your character's skin.
-        {Color1}/weapons: {Color2}Display a list of available weapons
-        {Color1}/pack: {Color2}Display your current weapons package.
-        {Color1}/combos: {Color2}Display a list of available combos and their benefits.
-        {Color1}/team: {Color2}Switch to a different team.
-        {Color1}/scoreboard: {Color2}Show the current scoreboard with player scores.
-        {Color1}/kill: {Color2}Eliminate your character for respawn purposes.
-        {Color1}/re: {Color2}Reset the statistics of the current player.
-        {Color1}/admins: {Color2}List the current server administrators.
-        {Color1}/vips: {Color2}Display the list of VIP players.
-        {Color1}/report: {Color2}Report a player for inappropriate behavior.
-        {Color1}/spec: {Color2}Spectate a specific player in the game.
-        {Color1}/class: {Color2}Redirect to the class selection menu and enter AFK mode.
-        {Color1}/cmdsvip: {Color2}Display a list of commands available to VIP players.
-        {Color1}/cmdsadmin: {Color2}Show the commands accessible to server administrators.
-        {Color1}/cmdsmoderator: {Color2}Show the commands accessible to server moderators.
-
-        {Color1}Use the '!' symbol at the start of your message to access the private team chat.
-        """;
-        var content = Smart.Format(commands, new
+        var content = Smart.Format(DetailedCommandInfo.Public, new
         {
             Color1 = Color.Yellow,
             Color2 = Color.White
@@ -48,19 +19,7 @@ public class PublicCommands(
     [PlayerCommand("help")]
     public void ShowHelp(Player player)
     {
-        var help =
-        """
-        {Color1}This is a capture the flag game mode for SA-MP (San Andreas Multiplayer).
-        {Color2}There are 2 flags on the map, one for each team. 
-        Players need to capture the enemy's flag and bring it back to their own one.
-        {Color1}Gameplay:{Color2}
-        The Alpha team plays against the Beta team. 
-        The aim is to carry the enemy's flag to the spawn of the own flag. 
-        The own flag needs to be at the spawn to score. 
-        So you have to conquer the opponent's flag and defend your own team's one at the same time. 
-        It's necassary for the whole team to work together tactically to win.
-        """;
-        var content = Smart.Format(help, new
+        var content = Smart.Format(DetailedCommandInfo.Help, new
         {
             Color1 = Color.Yellow,
             Color2 = Color.White
@@ -72,24 +31,7 @@ public class PublicCommands(
     [PlayerCommand("credits")]
     public void ShowCredits(Player player)
     {
-        var help =
-        """
-        {Color1}Capture The Flag is an open source project. 
-        {Color1}Check out its official repository: 
-        {Color2}https://github.com/MrDave1999/Capture-The-Flag
-        {Color1}Creator and programmer: {Color2}MrDave (Dave Roman)
-        {Color1}Mappers:{Color2} 
-        DragonZafiro, Elorreli, amirab, JamesT85,
-        TheYoungCapone, B4MB1[MC], Sleyer, mihaibr,
-        UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
-        Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
-        SENiOR, saawan, Risq, Famous and Leo.
-        {Color1}Acknowledgments to:{Color2}
-        ikkentim for creating the SampSharp framework.
-        Nickk888SAMP for creating NTD (TextDraw Editor).
-        samp-incognito for creating the streamer-plugin.
-        """;
-        var content = Smart.Format(help, new
+        var content = Smart.Format(DetailedCommandInfo.Credits, new
         {
             Color1 = Color.Yellow,
             Color2 = Color.White
