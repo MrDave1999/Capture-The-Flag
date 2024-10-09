@@ -4,6 +4,47 @@ public class PublicCommands(
     IEntityManager entityManager,
     IDialogService dialogService) : ISystem
 {
+    [PlayerCommand("cmds")]
+    public void ShowCommands(Player player)
+    {
+        var commands =
+        """
+        {Color1}/help: {Color2}Display an introduction to the Capture The Flag game mode.
+        {Color1}/credits: {Color2}Show credits for the game and contributors.
+        {Color1}/ranks: {Color2}List the different player ranks and their requirements.
+        {Color1}/mystats: {Color2}Display the statistics of the current player.
+        {Color1}/stats: {Color2}Show the statistics of a specified player.
+        {Color1}/tstats: {Color2}Display the statistics of the teams (Alpha and Beta).
+        {Color1}/changepass: {Color2}Change your account password.
+        {Color1}/changename: {Color2}Change your account name.
+        {Color1}/skin: {Color2}Change your character's skin.
+        {Color1}/weapons: {Color2}Display a list of available weapons
+        {Color1}/pack: {Color2}Display your current weapons package.
+        {Color1}/combos: {Color2}Display a list of available combos for gameplay.
+        {Color1}/team: {Color2}Switch to a different team.
+        {Color1}/scoreboard: {Color2}Show the current scoreboard with player scores.
+        {Color1}/kill: {Color2}Eliminate your character for respawn purposes.
+        {Color1}/re: {Color2}Reset the statistics of the current player.
+        {Color1}/admins: {Color2}List the current server administrators.
+        {Color1}/vips: {Color2}Display the list of VIP players.
+        {Color1}/report: {Color2}Report a player for inappropriate behavior.
+        {Color1}/spec: {Color2}Spectate a specific player in the game.
+        {Color1}/class: {Color2}Redirect to the class selection menu and enter AFK mode.
+        {Color1}/cmdsvip: {Color2}Display a list of commands available to VIP players.
+        {Color1}/cmdsadmin: {Color2}Show the commands accessible to server administrators.
+        {Color1}/cmdsmoderator: {Color2}Show the commands accessible to server moderators.
+
+        {Color1}Use the '!' symbol at the start of your message to access the private team chat.
+        """;
+        var content = Smart.Format(commands, new
+        {
+            Color1 = Color.Yellow,
+            Color2 = Color.White
+        });
+        var dialog = new MessageDialog(caption: "Commands", content, "Close");
+        dialogService.ShowAsync(player, dialog);
+    }
+
     [PlayerCommand("kill")]
     public void Kill(Player player)
     {
