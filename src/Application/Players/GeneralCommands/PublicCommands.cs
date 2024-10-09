@@ -45,6 +45,30 @@ public class PublicCommands(
         dialogService.ShowAsync(player, dialog);
     }
 
+    [PlayerCommand("help")]
+    public void ShowHelp(Player player)
+    {
+        var help =
+        """
+        {Color1}This is a capture the flag modification for SA-MP (San Andreas Multiplayer).
+        {Color2}There are 2 flags on the map, one for each team. 
+        Players need to capture the enemy's flag and bring it back to their own one.
+        {Color1}Gameplay:{Color2}
+        The Alpha team plays against the Beta team. 
+        The aim is to carry the enemy's flag to the spawn of the own flag. 
+        The own flag needs to be at the spawn to score. 
+        So you have to conquer the opponent's flag and defend your own team's one at the same time. 
+        It's necassary for the whole team to work together tactically to win.
+        """;
+        var content = Smart.Format(help, new
+        {
+            Color1 = Color.Yellow,
+            Color2 = Color.White
+        });
+        var dialog = new MessageDialog(caption: "Help", content, "Close");
+        dialogService.ShowAsync(player, dialog);
+    }
+
     [PlayerCommand("kill")]
     public void Kill(Player player)
     {
