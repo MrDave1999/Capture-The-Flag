@@ -8,27 +8,10 @@ public class ModeratorCommands(IWorldService worldService) : ISystem
         if (player.HasLowerRoleThan(RoleId.Moderator))
             return;
 
-        var commands =
-        """
-        {Color1}/maps: {Color2}Displays a list of available maps in the game.
-        {Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
-        {Color1}/startrt: {Color2}Starts the rotation timer for the current map.
-        {Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
-        {Color1}/kick: {Color2}Kicks a player from the game.
-        {Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavior.
-        {Color1}/setspawn: {Color2}Sets a new spawn point for players in the game.
-        {Color1}/addhealth: {Color2}Adds health to a specified player.
-        {Color1}/addallhealth: {Color2}Restores health to all players in the game.
-        {Color1}/addarmour: {Color2}Grants armour to a specified player.
-        {Color1}/addallarmour: {Color2}Gives armour to all players in the game.
-        {Color1}/clearallchat: {Color2}Clears all messages from the chat.
-
-        {Color1}Use the '&' symbol at the start of your message to access the private moderator chat.
-        """;
-        var content = Smart.Format(commands, new
+        var content = Smart.Format(DetailedCommandInfo.Moderator, new
         {
             Color1 = Color.Yellow,
-            Color2 = Color.White,
+            Color2 = Color.White
         });
         var dialog = new MessageDialog(caption: "Moderator Commands", content, "Close");
         dialogService.ShowAsync(player, dialog);
