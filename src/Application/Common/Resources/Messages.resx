@@ -433,7 +433,10 @@
     <value>&gt;&gt;&gt; Welcome to Capture The Flag TDM! We're excited to have you here!</value>
   </data>
   <data name="Welcome2" xml:space="preserve">
-    <value>Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!</value>
+    <value>&gt;&gt;&gt; Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!</value>
+  </data>
+  <data name="Welcome3" xml:space="preserve">
+    <value>&gt;&gt;&gt; Your mission: capture the enemy's flag and bring it back to your own base. The victory is in your hands!</value>
   </data>
   <data name="WrongPassword" xml:space="preserve">
     <value>The password you entered is incorrect. Please try again</value>
