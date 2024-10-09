@@ -165,6 +165,8 @@ public class PublicCommands(
 
         Team removedTeam = currentPlayer.RemoveFromCurrentTeam();
         teamTextDrawRenderer.UpdateTeamMembers(removedTeam);
+        currentPlayer.Interior = targetPlayer.Interior;
+        currentPlayer.VirtualWorld = targetPlayer.VirtualWorld;
         currentPlayer.ToggleSpectating(true);
         currentPlayer.SpectatePlayer(targetPlayer);
         currentPlayer.SendClientMessage(Color.Yellow, Messages.ExitSpectatorMode);
