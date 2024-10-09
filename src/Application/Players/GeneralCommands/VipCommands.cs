@@ -16,6 +16,8 @@ public class VipCommands : ISystem
         {Color1}/spray: {Color2}Releases a spray that can confuse and distract opponents.
         {Color1}/teargas: {Color2}Deploys tear gas, impairing visibility and causing disorientation to nearby enemies.
         {Color1}/givemecoins: {Color2}Awards you with in-game coins, enhancing your resources.
+
+        {Color1}Use the '$' symbol at the start of your message to access the private VIP chat.
         """;
         var content = Smart.Format(commands, new 
         { 
