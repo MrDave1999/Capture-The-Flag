@@ -997,6 +997,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &gt;&gt;&gt; Welcome to Capture The Flag TDM! We&apos;re excited to have you here!.
+        /// </summary>
+        internal static string Welcome1 {
+            get {
+                return ResourceManager.GetString("Welcome1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!.
+        /// </summary>
+        internal static string Welcome2 {
+            get {
+                return ResourceManager.GetString("Welcome2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The password you entered is incorrect. Please try again.
         /// </summary>
         internal static string WrongPassword {

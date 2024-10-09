@@ -429,6 +429,12 @@
   <data name="WeaponSuccessfullyRemoved" xml:space="preserve">
     <value>{Name} has been removed from your weapon package</value>
   </data>
+  <data name="Welcome1" xml:space="preserve">
+    <value>&gt;&gt;&gt; Welcome to Capture The Flag TDM! We're excited to have you here!</value>
+  </data>
+  <data name="Welcome2" xml:space="preserve">
+    <value>Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!</value>
+  </data>
   <data name="WrongPassword" xml:space="preserve">
     <value>The password you entered is incorrect. Please try again</value>
   </data>
