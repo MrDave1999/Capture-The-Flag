@@ -84,6 +84,10 @@ public class PublicCommands(
         UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
         Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
         SENiOR, saawan, Risq, Famous and Leo.
+        {Color1}Acknowledgments to:{Color2}
+        ikkentim for creating the SampSharp framework.
+        Nickk888SAMP for creating NTD (TextDraw Editor).
+        samp-incognito for creating the streamer-plugin.
         """;
         var content = Smart.Format(help, new
         {
