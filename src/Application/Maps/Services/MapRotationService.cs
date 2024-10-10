@@ -131,6 +131,7 @@ public class MapRotationService
             playerInfo.StatsPerRound.ResetStats();
             player.ToggleControllable(true);
             player.Health = 100;
+            player.Color = playerInfo.Team.ColorHex;
             player.SetScore(0);
             player.Spawn();
         }

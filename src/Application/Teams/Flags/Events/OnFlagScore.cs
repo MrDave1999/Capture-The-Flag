@@ -33,6 +33,7 @@ public class OnFlagScore(
         playerInfo.StatsPerRound.AddCoins(8);
         playerInfo.AddBroughtFlags();
         player.AddScore(4);
+        player.HideOnRadarMap();
         playerRepository.UpdateBroughtFlags(playerInfo);
         GiveRewards(team);
     }
