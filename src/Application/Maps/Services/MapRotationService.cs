@@ -9,8 +9,7 @@ public class MapRotationService
     private readonly MapTextDrawRenderer _mapTextDrawRenderer;
     private readonly TeamIconService _teamIconService;
     private readonly TeamPickupService _teamPickupService;
-    private readonly TeamTextDrawRenderer _teamTextDrawRenderer;
-    private readonly PlayerStatsRenderer _playerStatsRenderer;
+    private readonly TeamBalancer _teamBalancer;
     private readonly FlagAutoReturnTimer _flagAutoReturnTimer;
     private readonly TimeLeft _timeLeft;
     private readonly LoadTime _loadTime;
@@ -27,8 +26,7 @@ public class MapRotationService
         MapTextDrawRenderer mapTextDrawRenderer,
         TeamIconService teamIconService,
         TeamPickupService teamPickupService,
-        TeamTextDrawRenderer teamTextDrawRenderer,
-        PlayerStatsRenderer playerStatsRenderer,
+        TeamBalancer teamBalancer,
         FlagAutoReturnTimer flagAutoReturnTimer)
     {
         _serverService = serverService;
@@ -38,8 +36,7 @@ public class MapRotationService
         _mapTextDrawRenderer = mapTextDrawRenderer;
         _teamIconService = teamIconService;
         _teamPickupService = teamPickupService;
-        _teamTextDrawRenderer = teamTextDrawRenderer;
-        _playerStatsRenderer = playerStatsRenderer;
+        _teamBalancer = teamBalancer;
         _flagAutoReturnTimer = flagAutoReturnTimer;
         _timeLeft = new TimeLeft();
         _loadTime = new LoadTime(OnLoadingMap, OnLoadedMap);
@@ -129,27 +126,15 @@ public class MapRotationService
         CurrentMap currentMap = _mapInfoService.Read();
         string message = Smart.Format(Messages.MapSuccessfullyLoaded, new { currentMap.Name });
         _worldService.SendClientMessage(Color.Orange, message);
-        IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
-        foreach (Player player in players)
+        static void HandlePlayerAction(Player player, PlayerInfo playerInfo)
         {
-            PlayerInfo playerInfo = player.GetInfo();
             playerInfo.StatsPerRound.ResetStats();
-            playerInfo.SetTeam(TeamId.NoTeam);
-            player.Team = (int)TeamId.NoTeam;
             player.ToggleControllable(true);
             player.Health = 100;
             player.SetScore(0);
-            player.RedirectToClassSelection();
-            _playerStatsRenderer.HideTextDraw(player);
-            _mapTextDrawRenderer.Hide(player);
-            _teamTextDrawRenderer.Hide(player);
+            player.Spawn();
         }
-        Team.Alpha.Reset();
-        Team.Beta.Reset();
-        _teamTextDrawRenderer.UpdateTeamScore(Team.Alpha);
-        _teamTextDrawRenderer.UpdateTeamScore(Team.Beta);
-        _teamTextDrawRenderer.UpdateTeamMembers(Team.Alpha);
-        _teamTextDrawRenderer.UpdateTeamMembers(Team.Beta);
+        _teamBalancer.Balance(action: HandlePlayerAction);
         _worldService.SetWeather(currentMap.Weather);
         _serverService.SetWorldTime(currentMap.WorldTime);
         _mapTextDrawRenderer.UpdateMapName(currentMap);
