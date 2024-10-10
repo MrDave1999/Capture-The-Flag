@@ -201,7 +201,8 @@ It's necassary for the whole team to work together tactically to win.</value>
 {Color1}/cmdsadmin: {Color2}Show the commands accessible to server administrators.
 {Color1}/cmdsmoderator: {Color2}Show the commands accessible to server moderators.
 
-{Color1}Use the '!' symbol at the start of your message to access the private team chat.</value>
+{Color1}Use the '!' symbol at the start of your message to access the private team chat.
+{Color1}Use the 'N' key to show the scoreboard with the players of both teams.</value>
   </data>
   <data name="VIP" xml:space="preserve">
     <value>{Color1}/armour: {Color2}Grants you temporary armour, reducing damage taken from attacks.
