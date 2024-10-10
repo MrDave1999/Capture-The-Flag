@@ -29,6 +29,7 @@ public class OnFlagDropped(
 
         PlayerInfo playerInfo = player.GetInfo();
         playerInfo.AddDroppedFlags();
+        player.HideOnRadarMap();
         playerRepository.UpdateDroppedFlags(playerInfo);
     }
 }
