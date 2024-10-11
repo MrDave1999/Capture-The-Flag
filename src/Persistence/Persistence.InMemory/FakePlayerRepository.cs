@@ -27,16 +27,18 @@ internal class FakePlayerRepository(
             return default;
 
         var playerInfo = new PlayerInfo();
-        playerInfo.SetName(fakePlayer.Name);
         // The public setter is used only for plaintext passwords.
         // For that reason, we use Reflection to set the already encrypted password.
         playerInfo.SetValue(value: fakePlayer.PasswordHash, propertyName: nameof(PlayerInfo.Password));
+
+        playerInfo.SetName(fakePlayer.Name);
         playerInfo.SetTotalKills(fakePlayer.TotalKills);
         playerInfo.SetTotalDeaths(fakePlayer.TotalDeaths);
         playerInfo.SetMaxKillingSpree(fakePlayer.MaxKillingSpree);
         playerInfo.SetRole(fakePlayer.RoleId);
         playerInfo.SetRank(fakePlayer.RankId);
         playerInfo.SetSkin(fakePlayer.SkinId);
+
         // Reflection is used here because these properties are immutable.
         // What we did here is what ORMs like EF Core do, so it's nothing new.
         playerInfo.SetValue(value: fakePlayer.Id,             propertyName: nameof(PlayerInfo.AccountId));
