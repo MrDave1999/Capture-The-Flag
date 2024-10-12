@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players;
+﻿namespace CTF.Application.Players.Accounts;
 
 public interface IPlayerRepository
 {
