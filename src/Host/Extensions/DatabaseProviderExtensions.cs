@@ -8,7 +8,7 @@ public static class DatabaseProviderExtensions
     {
         var providers = new Dictionary<string, Action>(StringComparer.OrdinalIgnoreCase)
         {
-            { "InMemory", () => services.AddPersistenceInMemoryServices(configuration) },
+            { "InMemory", () => services.AddPersistenceInMemoryServices() },
             { "SQLite",   () => services.AddPersistenceSQLiteServices(configuration) },
             { "MariaDb",  () => services.AddPersistenceMariaDBServices(configuration) },
         };
