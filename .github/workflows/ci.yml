@@ -22,3 +22,15 @@ jobs:
     - name: Execute unit tests
       run: |
         dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
+
+  integration_testing:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Execute integration tests
+      run: |
+        dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release
