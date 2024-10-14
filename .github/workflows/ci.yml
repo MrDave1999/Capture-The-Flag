@@ -40,9 +40,12 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Import database
+    - name: Check sqlite3 version
+      run: sqlite3 --version
+    - name: Import databases
       run: |
        docker exec -i mariadb mariadb -uroot -p123456789 -h127.0.0.1 gamemode < ./scripts/mariadb/gamemode.sql
+       sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
     - name: Create .env files
       run: |
         cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
