@@ -1,6 +1,6 @@
 ﻿namespace Persistence.MariaDB;
 
-internal class MariaDbSettings
+public class MariaDbSettings
 {
     public string Server { get; set; }
     public uint Port { get; set; }
