@@ -339,4 +339,22 @@ public class IPlayerRepositoryTests
         // Assert
         actual.RankId.Should().Be(expectedRankId);
     }
+
+    [TestCaseSource(typeof(RepositoryManagerTestCases))]
+    public void ShouldUpdateLastConnection(IRepositoryManager source)
+    {
+        // Arrange
+        using var repositoryManager = source;
+        var playerRepository = repositoryManager.PlayerRepository;
+        var playerName = "Moderator_Player";
+        PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
+        playerInfo.SetLastConnection();
+
+        // Act
+        playerRepository.UpdateLastConnection(playerInfo);
+        PlayerInfo actual = playerRepository.GetOrDefault(playerName);
+
+        // Assert
+        actual.LastConnection.Should().Be(playerInfo.LastConnection);
+    }
 }
