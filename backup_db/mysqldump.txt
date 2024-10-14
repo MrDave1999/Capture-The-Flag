@@ -1,2 +1,0 @@
-mysqldump -h localhost -u username -p --routines dbname > filename.sql   ; export.
-mysql -h localhost -u username -p dbname < filename.sql       	         ; import.
