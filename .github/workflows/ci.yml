@@ -20,8 +20,7 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: Execute unit tests
-      run: |
-        dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
+      run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
 
   integration_testing:
     runs-on: ubuntu-latest
@@ -42,13 +41,15 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: Check sqlite3 version
       run: sqlite3 --version
+    - name: Waiting for database availability
+      run: |
+       chmod u+x wait-for-it.sh
+       ./wait-for-it.sh -t 60 127.0.0.1:3306
     - name: Import databases
       run: |
        docker exec -i mariadb mariadb -uroot -p123456789 -h127.0.0.1 gamemode < ./scripts/mariadb/gamemode.sql
        sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
-    - name: Create .env files
-      run: |
-        cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
+    - name: Create .env.test file
+      run: cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
     - name: Execute integration tests
-      run: |
-        dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release
+      run: dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release
