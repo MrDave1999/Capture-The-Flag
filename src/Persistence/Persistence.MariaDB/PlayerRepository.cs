@@ -120,7 +120,7 @@ internal class PlayerRepository(
         => Update(player.AccountId, "rank_id", player.RankId);
 
     public void UpdateRole(PlayerInfo player)
-        => Update(player.AccountId, "role_id", player.RoleId);
+        => Update(player.AccountId, "role_id", player.RoleId.ToString());
 
     public void UpdateSkin(PlayerInfo player)
         => Update(player.AccountId, "skin_id", player.SkinId);
