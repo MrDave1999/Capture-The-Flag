@@ -4,7 +4,6 @@ public class MariaDbRepositoryManager : IRepositoryManager
 {
     private readonly ServiceProvider _serviceProvider;
     public IPlayerRepository PlayerRepository { get; }
-
     public MariaDbRepositoryManager()
     {
         var services = new ServiceCollection();
