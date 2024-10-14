@@ -7,6 +7,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "moderator_player";
 
@@ -26,6 +27,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "NotFound";
 
@@ -41,6 +43,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "moderator_player";
 
@@ -56,6 +59,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "NotFound";
 
@@ -71,6 +75,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerInfo = new PlayerInfo();
         playerInfo.SetName("Player1");
@@ -93,6 +98,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var oldName = "Moderator_Player";
         var newName = "Player1";
@@ -112,6 +118,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         var expectedPassword = "D123456$";
@@ -131,6 +138,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedTotalKills = 20;
@@ -150,6 +158,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedTotalDeaths = 100;
@@ -169,6 +178,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedKillingSpree = 25;
@@ -188,6 +198,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedBroughtFlags = 2;
@@ -208,6 +219,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedCapturedFlags = 2;
@@ -228,6 +240,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedDroppedFlags = 2;
@@ -248,6 +261,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedReturnedFlags = 2;
@@ -268,6 +282,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedHeadShots = 2;
@@ -288,6 +303,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         RoleId expectedRoleId = RoleId.Admin;
@@ -307,6 +323,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedSkinId = 100;
@@ -326,6 +343,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         RankId expectedRankId = RankId.GameMaster;
@@ -345,6 +363,7 @@ public class IPlayerRepositoryTests
     {
         // Arrange
         using var repositoryManager = source;
+        repositoryManager.InitializeSeedData();
         var playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -355,6 +374,6 @@ public class IPlayerRepositoryTests
         PlayerInfo actual = playerRepository.GetOrDefault(playerName);
 
         // Assert
-        actual.LastConnection.Should().Be(playerInfo.LastConnection);
+        actual.LastConnection.Should().BeSameDateAs(playerInfo.LastConnection);
     }
 }
