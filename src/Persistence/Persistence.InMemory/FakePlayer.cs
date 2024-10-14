@@ -25,6 +25,6 @@ internal class FakePlayer
     public int SkinId { get; set; } = NoSkin;
     public RoleId RoleId { get; set; } = RoleId.Basic;
     public RankId RankId { get; set; } = RankId.Noob;
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime LastConnection { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.Parse("2023-10-12 12:19:24");
+    public DateTime LastConnection { get; set; } = DateTime.Parse("2023-10-13 12:19:24");
 }
