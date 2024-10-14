@@ -9,8 +9,9 @@
 # .NET Runtime binaries
 dotnet/runtime/
 
-# environment variables for development
-.env
+# environment variables for development and test
+**/.env
+**/.env.test
 
 # samp server configuration file
 server.cfg
