@@ -1,16 +1,15 @@
-﻿namespace Persistence.Tests.Common;
+﻿namespace Persistence.Tests.Common.DatabaseProviders;
 
-public class MariaDbRepositoryManager : IRepositoryManager
+public class SqliteRepositoryManager : IRepositoryManager
 {
     private readonly ServiceProvider _serviceProvider;
     public IPlayerRepository PlayerRepository { get; }
-
-    public MariaDbRepositoryManager()
+    public SqliteRepositoryManager()
     {
         var services = new ServiceCollection();
         IConfiguration configuration = EnvConfigurationBuilder.Instance;
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
-        services.AddPersistenceMariaDBServices(configuration);
+        services.AddPersistenceSQLiteServices(configuration);
         _serviceProvider = services.BuildServiceProvider();
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
     }
@@ -23,11 +22,11 @@ public class MariaDbRepositoryManager : IRepositoryManager
 
     public void InitializeSeedData()
     {
-        var settings = _serviceProvider.GetRequiredService<MariaDbSettings>();
+        var settings = _serviceProvider.GetRequiredService<SQLiteSettings>();
         var sqlCollection = _serviceProvider.GetRequiredService<ISqlCollection>();
-        using var connection = new MySqlConnection(settings.ConnectionString);
+        using var connection = new SqliteConnection(settings.ConnectionString);
         connection.Open();
-        MySqlCommand command = connection.CreateCommand();
+        SqliteCommand command = connection.CreateCommand();
         command.CommandText = sqlCollection["InitializeSeedData"];
         command.ExecuteNonQuery();
     }

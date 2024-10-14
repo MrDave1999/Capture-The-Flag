@@ -1,4 +1,4 @@
-﻿namespace Persistence.Tests.Common;
+﻿namespace Persistence.Tests.Common.DatabaseProviders;
 
 public class InMemoryRepositoryManager : IRepositoryManager
 {

@@ -5,6 +5,7 @@ public class RepositoryManagerTestCases : IEnumerable<IRepositoryManager>
     public IEnumerator<IRepositoryManager> GetEnumerator()
     {
         yield return new InMemoryRepositoryManager();
+        yield return new SqliteRepositoryManager();
         yield return new MariaDbRepositoryManager();
     }
 
