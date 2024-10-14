@@ -25,12 +25,27 @@ jobs:
 
   integration_testing:
     runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb
+        ports:
+          - 3306:3306
+        env:
+          MARIADB_DATABASE: gamemode
+          MARIADB_ROOT_PASSWORD: 123456789
+        options: --name mariadb
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Import database
+      run: |
+       docker exec -i mariadb mariadb -uroot -p123456789 -h127.0.0.1 gamemode < ./scripts/mariadb/gamemode.sql
+    - name: Create .env files
+      run: |
+        cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
     - name: Execute integration tests
       run: |
         dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release

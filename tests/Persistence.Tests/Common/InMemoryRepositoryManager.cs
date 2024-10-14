@@ -18,4 +18,9 @@ public class InMemoryRepositoryManager : IRepositoryManager
         _serviceProvider.Dispose();
         GC.SuppressFinalize(this);
     }
+
+    public void InitializeSeedData()
+    {
+
+    }
 }

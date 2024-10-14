@@ -3,4 +3,5 @@
 public interface IRepositoryManager : IDisposable
 {
     IPlayerRepository PlayerRepository { get; }
+    void InitializeSeedData();
 }
