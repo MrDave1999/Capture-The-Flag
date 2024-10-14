@@ -3,8 +3,7 @@
 public static class PersistenceInMemoryServicesExtensions
 {
     public static IServiceCollection AddPersistenceInMemoryServices(
-        this IServiceCollection services, 
-        IConfiguration configuration)
+        this IServiceCollection services)
     {
         PlayerIdValueGenerator.Instance.Reset();
         Dictionary<int, FakePlayer> players = FakePlayerSeedData.Create();

@@ -14,7 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Persistence\Persistence.InMemory\Persistence.InMemory.csproj" />
     <ProjectReference Include="..\..\src\Persistence\Persistence.SQLite\Persistence.SQLite.csproj" />
+    <ProjectReference Include="..\..\src\Persistence\Persistence.MariaDB\Persistence.MariaDB.csproj" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
 </Project>
