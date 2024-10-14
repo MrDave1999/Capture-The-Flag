@@ -1,105 +1,14 @@
-﻿namespace Persistence.Tests;
+﻿namespace Persistence.Tests.Players;
 
-public class IPlayerRepositoryTests
+public class UpdatePlayer
 {
-    [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetOrDefault_WhenPlayerExists_ShouldReturnPlayerInfo(IRepositoryManager source)
-    {
-        // Arrange
-        using var repositoryManager = source;
-        repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
-        var playerName = "moderator_player";
-
-        // Act
-        PlayerInfo actual = playerRepository.GetOrDefault(playerName);
-
-        // Asserts
-        actual.AccountId.Should().Be(2);
-        actual.Name.Should().Be("Moderator_Player");
-        actual.RoleId.Should().Be(RoleId.Moderator);
-        actual.RankId.Should().Be(RankId.Noob);
-        actual.SkinId.Should().Be(146);
-    }
-
-    [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void GetOrDefault_WhenPlayerDoesNotExist_ShouldReturnNull(IRepositoryManager source)
-    {
-        // Arrange
-        using var repositoryManager = source;
-        repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
-        var playerName = "NotFound";
-
-        // Act
-        PlayerInfo actual = playerRepository.GetOrDefault(playerName);
-
-        // Assert
-        actual.Should().BeNull();
-    }
-
-    [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void Exists_WhenPlayerExists_ShouldReturnTrue(IRepositoryManager source)
-    {
-        // Arrange
-        using var repositoryManager = source;
-        repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
-        var playerName = "moderator_player";
-
-        // Act
-        bool actual = playerRepository.Exists(playerName);
-
-        // Assert
-        actual.Should().BeTrue();
-    }
-
-    [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void Exists_WhenPlayerDoesNotExist_ShouldReturnFalse(IRepositoryManager source)
-    {
-        // Arrange
-        using var repositoryManager = source;
-        repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
-        var playerName = "NotFound";
-
-        // Act
-        bool actual = playerRepository.Exists(playerName);
-
-        // Assert
-        actual.Should().BeFalse();
-    }
-
-    [TestCaseSource(typeof(RepositoryManagerTestCases))]
-    public void Create_WhenCalled_ShouldCreatePlayerAndSetAccountId(IRepositoryManager source)
-    {
-        // Arrange
-        using var repositoryManager = source;
-        repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
-        var playerInfo = new PlayerInfo();
-        playerInfo.SetName("Player1");
-        playerInfo.SetPassword("DSR8887$#");
-
-        // Act
-        playerRepository.Create(playerInfo);
-        PlayerInfo actual = playerRepository.GetOrDefault(playerInfo.Name);
-
-        // Asserts
-        actual.AccountId.Should().BeGreaterThan(0);
-        actual.Name.Should().Be(playerInfo.Name);
-        actual.Password.Should().Be(playerInfo.Password);
-        actual.RoleId.Should().Be(RoleId.Basic);
-        actual.RankId.Should().Be(RankId.Noob);
-    }
-
     [TestCaseSource(typeof(RepositoryManagerTestCases))]
     public void ShouldUpdatePlayerName(IRepositoryManager source)
     {
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var oldName = "Moderator_Player";
         var newName = "Player1";
         PlayerInfo playerInfo = playerRepository.GetOrDefault(oldName);
@@ -119,7 +28,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         var expectedPassword = "D123456$";
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -139,7 +48,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedTotalKills = 20;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -159,7 +68,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedTotalDeaths = 100;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -179,7 +88,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedKillingSpree = 25;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -199,7 +108,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedBroughtFlags = 2;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -220,7 +129,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedCapturedFlags = 2;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -241,7 +150,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedDroppedFlags = 2;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -262,7 +171,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedReturnedFlags = 2;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -283,7 +192,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedHeadShots = 2;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -304,7 +213,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         RoleId expectedRoleId = RoleId.Admin;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -324,7 +233,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         int expectedSkinId = 100;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -344,7 +253,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         RankId expectedRankId = RankId.GameMaster;
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
@@ -364,7 +273,7 @@ public class IPlayerRepositoryTests
         // Arrange
         using var repositoryManager = source;
         repositoryManager.InitializeSeedData();
-        var playerRepository = repositoryManager.PlayerRepository;
+        IPlayerRepository playerRepository = repositoryManager.PlayerRepository;
         var playerName = "Moderator_Player";
         PlayerInfo playerInfo = playerRepository.GetOrDefault(playerName);
         playerInfo.SetLastConnection();
