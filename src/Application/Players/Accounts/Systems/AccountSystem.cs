@@ -29,7 +29,7 @@ public class AccountSystem(
         PlayerInfo playerInfo = playerRepository.GetOrDefault(connectedPlayer.Name);
         if(playerInfo is null)
         {
-            ShowSignupDialog(connectedPlayer, new PlayerInfo());
+            ShowSignupDialog(connectedPlayer);
             return;
         }
         ShowLoginDialog(connectedPlayer, playerInfo);
@@ -43,7 +43,7 @@ public class AccountSystem(
         connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
     }
 
-    private async void ShowSignupDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
+    private async void ShowSignupDialog(ConnectedPlayer connectedPlayer)
     {
         InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _signupDialog);
         if (response.Response == DialogResponse.Disconnected)
@@ -51,24 +51,22 @@ public class AccountSystem(
 
         if (response.Response == DialogResponse.RightButtonOrCancel)
         {
-            ShowSignupDialog(connectedPlayer, playerInfo);
+            ShowSignupDialog(connectedPlayer);
             return;
         }
 
         var enteredPassword = response.InputText ?? string.Empty;
-        CreatePlayerAccount(connectedPlayer, playerInfo, enteredPassword);
+        CreatePlayerAccount(connectedPlayer, enteredPassword);
     }
 
-    private void CreatePlayerAccount(
-        ConnectedPlayer connectedPlayer, 
-        PlayerInfo playerInfo,
-        string enteredPassword)
+    private void CreatePlayerAccount(ConnectedPlayer connectedPlayer, string enteredPassword)
     {
+        PlayerInfo playerInfo = connectedPlayer.GetInfo();
         Result passwordResult = playerInfo.SetPassword(enteredPassword);
         if (passwordResult.IsFailed)
         {
             connectedPlayer.SendClientMessage(Color.Red, passwordResult.Message);
-            ShowSignupDialog(connectedPlayer, playerInfo);
+            ShowSignupDialog(connectedPlayer);
             return;
         }
 
