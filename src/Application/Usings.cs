@@ -2,9 +2,6 @@
 global using System.Globalization;
 global using System.Reflection;
 global using System.Text.RegularExpressions;
-global using System.Runtime.CompilerServices;
-global using SampSharp.Core;
-global using SampSharp.Core.Natives.NativeObjects;
 global using SampSharp.Entities;
 global using SampSharp.Entities.SAMP;
 global using Color = SampSharp.Entities.SAMP.Color;
@@ -17,7 +14,6 @@ global using Microsoft.Extensions.DependencyInjection;
 global using CTF.Application.Common;
 global using CTF.Application.Common.Results;
 global using CTF.Application.Common.Settings;
-global using CTF.Application.Common.NativeObjects;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Common.Resources;
 global using CTF.Application.Common.Extensions;
