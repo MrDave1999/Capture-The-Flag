@@ -5,7 +5,8 @@ public static class ApplicationServicesExtensions
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services
-            .AddSingleton<ServerTimeService>()
+            .AddSingleton(TimeProvider.System)
+            .AddSingleton<UnixTimeSeconds>()
             .AddPlayerServices()
             .AddMapServices()
             .AddTeamServices();

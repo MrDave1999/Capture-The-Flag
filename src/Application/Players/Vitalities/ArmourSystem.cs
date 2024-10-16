@@ -3,7 +3,7 @@
 public class ArmourSystem(
     IWorldService worldService,
     IEntityManager entityManager,
-    ServerTimeService serverTimeService,
+    UnixTimeSeconds unixTimeSeconds,
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addarmour")]
@@ -76,7 +76,7 @@ public class ArmourSystem(
             return;
 
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
-        if (waitTimeComponent.Value > serverTimeService.GetTime())
+        if (waitTimeComponent.Value > unixTimeSeconds.Value)
         {
             var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new 
             { 
@@ -88,7 +88,7 @@ public class ArmourSystem(
 
         static int ConvertMinutesToSeconds(int value) => value * 60;
         int seconds = ConvertMinutesToSeconds(commandCooldowns.Armour);
-        waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
+        waitTimeComponent.Value = unixTimeSeconds.Value + seconds;
         currentPlayer.Armour = 100;
     }
 
@@ -98,6 +98,6 @@ public class ArmourSystem(
 
     private class WaitTimeComponent : Component
     {
-        public int Value { get; set; }
+        public long Value { get; set; }
     }
 }
