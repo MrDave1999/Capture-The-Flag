@@ -4,7 +4,7 @@ public class PlayerCoinsSystem(
     IEntityManager entityManager,
     IWorldService worldService,
     PlayerStatsRenderer playerStatsRenderer,
-    ServerTimeService serverTimeService,
+    UnixTimeSeconds unixTimeSeconds,
     CommandCooldowns commandCooldowns) : ISystem
 {
     [PlayerCommand("addcoins")]
@@ -77,7 +77,7 @@ public class PlayerCoinsSystem(
             return;
 
         var waitTimeComponent = currentPlayer.GetComponent<WaitTimeComponent>();
-        if (waitTimeComponent.Value > serverTimeService.GetTime())
+        if (waitTimeComponent.Value > unixTimeSeconds.Value)
         {
             var message = Smart.Format(Messages.TimeRequiredToReuseCommand, new 
             { 
@@ -89,7 +89,7 @@ public class PlayerCoinsSystem(
 
         static int ConvertMinutesToSeconds(int value) => value * 60;
         int seconds = ConvertMinutesToSeconds(commandCooldowns.Coins);
-        waitTimeComponent.Value = serverTimeService.GetTime() + seconds;
+        waitTimeComponent.Value = unixTimeSeconds.Value + seconds;
         PlayerInfo currentPlayerInfo = currentPlayer.GetInfo();
         currentPlayerInfo.StatsPerRound.AddCoins(100);
         playerStatsRenderer.UpdateTextDraw(currentPlayer);
@@ -102,6 +102,6 @@ public class PlayerCoinsSystem(
 
     private class WaitTimeComponent : Component
     {
-        public int Value { get; set; }
+        public long Value { get; set; }
     }
 }
