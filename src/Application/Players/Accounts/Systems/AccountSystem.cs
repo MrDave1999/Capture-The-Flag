@@ -32,6 +32,7 @@ public class AccountSystem(
             ShowSignupDialog(connectedPlayer);
             return;
         }
+        connectedPlayer.AddComponent<FailedAttemptCountComponent>();
         ShowLoginDialog(connectedPlayer, playerInfo);
     }
 
@@ -95,14 +96,28 @@ public class AccountSystem(
         bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: playerInfo.Password);
         if (isWrongPassword) 
         {
+            const int MaxFailedAttempts = 4;
+            var failedAttemptCount = connectedPlayer.GetComponent<FailedAttemptCountComponent>();
+            failedAttemptCount.Value++;
+            if (failedAttemptCount.Value == MaxFailedAttempts)
+            {
+                connectedPlayer.Kick();
+                return;
+            }
             connectedPlayer.SendClientMessage(Color.Red, Messages.WrongPassword);
             ShowLoginDialog(connectedPlayer, playerInfo);
             return;
         }
 
         bool isAuthenticated = true;
+        connectedPlayer.GetComponent<FailedAttemptCountComponent>().Destroy();
         connectedPlayer.GetComponent<AccountComponent>().Destroy();
         connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
         connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
+    }
+
+    private class FailedAttemptCountComponent : Component
+    {
+        public int Value { get; set; } = 0;
     }
 }
