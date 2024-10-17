@@ -23,7 +23,8 @@ public class Startup : IStartup
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
             .AddSingleton<IStreamerService, StreamerService>()
             .AddSingleton(serverSettings)
-            .AddSingleton(commandCooldowns);
+            .AddSingleton(commandCooldowns)
+            .AddSingleton(new TopPlayersSettings());
 
         // Add systems to the services collection
         services
