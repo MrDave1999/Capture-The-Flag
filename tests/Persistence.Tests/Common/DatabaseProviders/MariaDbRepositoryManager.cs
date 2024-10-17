@@ -4,14 +4,17 @@ public class MariaDbRepositoryManager : IRepositoryManager
 {
     private readonly ServiceProvider _serviceProvider;
     public IPlayerRepository PlayerRepository { get; }
+    public ITopPlayersRepository TopPlayersRepository { get; }
     public MariaDbRepositoryManager()
     {
         var services = new ServiceCollection();
         IConfiguration configuration = EnvConfigurationBuilder.Instance;
+        services.AddSingleton(new TopPlayersSettings());
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
         services.AddPersistenceMariaDBServices(configuration);
         _serviceProvider = services.BuildServiceProvider();
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
+        TopPlayersRepository = _serviceProvider.GetRequiredService<ITopPlayersRepository>();
     }
 
     public void Dispose()

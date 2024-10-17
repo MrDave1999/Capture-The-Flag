@@ -4,14 +4,17 @@ public class SqliteRepositoryManager : IRepositoryManager
 {
     private readonly ServiceProvider _serviceProvider;
     public IPlayerRepository PlayerRepository { get; }
+    public ITopPlayersRepository TopPlayersRepository { get; }
     public SqliteRepositoryManager()
     {
         var services = new ServiceCollection();
         IConfiguration configuration = EnvConfigurationBuilder.Instance;
+        services.AddSingleton(new TopPlayersSettings());
         services.AddSingleton<IPasswordHasher, FakePasswordHasher>();
         services.AddPersistenceSQLiteServices(configuration);
         _serviceProvider = services.BuildServiceProvider();
         PlayerRepository = _serviceProvider.GetRequiredService<IPlayerRepository>();
+        TopPlayersRepository = _serviceProvider.GetRequiredService<ITopPlayersRepository>();
     }
 
     public void Dispose()
