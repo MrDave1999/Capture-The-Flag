@@ -29,4 +29,8 @@ VALUES
 ('Basic_Player(4)','$2a$10$60QnEiafBCLfVBMfQkExVeolyBxVHWcSQKTvkxVJj9FUozRpRP/GW',170,0,20,0,0,0,0,0,'Basic',137,3,'2023-10-12 12:19:24','2023-10-13 12:19:24'),
 ('Basic_Player(5)','$2a$10$60QnEiafBCLfVBMfQkExVeolyBxVHWcSQKTvkxVJj9FUozRpRP/GW',200,0,25,0,0,0,0,0,'Basic',100,4,'2023-10-12 12:19:24','2023-10-13 12:19:24'),
 ('Basic_Player(6)','$2a$10$60QnEiafBCLfVBMfQkExVeolyBxVHWcSQKTvkxVJj9FUozRpRP/GW',251,0,50,0,0,0,0,0,'Basic',98,5,'2023-10-12 12:19:24','2023-10-13 12:19:24'),
-('Basic_Player(7)','$2a$10$60QnEiafBCLfVBMfQkExVeolyBxVHWcSQKTvkxVJj9FUozRpRP/GW',200,0,30,0,0,0,0,0,'Basic',150,4,'2023-10-12 12:19:24','2023-10-13 12:19:24');
+('Basic_Player(7)','$2a$10$60QnEiafBCLfVBMfQkExVeolyBxVHWcSQKTvkxVJj9FUozRpRP/GW',200,0,30,0,0,0,0,0,'Basic',150,4,'2023-10-12 12:19:24','2023-10-13 12:19:24')
+;
+
+-- name: RemoveSeedData
+DELETE FROM players;
