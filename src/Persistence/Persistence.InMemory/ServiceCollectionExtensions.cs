@@ -8,6 +8,7 @@ public static class PersistenceInMemoryServicesExtensions
         PlayerIdValueGenerator.Instance.Reset();
         Dictionary<int, FakePlayer> players = FakePlayerSeedData.Create();
         services.AddSingleton<IPlayerRepository, FakePlayerRepository>();
+        services.AddSingleton<ITopPlayersRepository, FakeTopPlayersRepository>();
         services.AddSingleton(players);
         return services;
     }
