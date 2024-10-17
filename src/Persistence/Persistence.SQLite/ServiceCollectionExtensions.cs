@@ -16,8 +16,9 @@ public static class PersistenceSQLiteServicesExtensions
         }.ToString();
 
         sqliteSettings.ConnectionString = connectionString;
-        services.AddSingleton(sqliteSettings);
-        services.AddSingleton<IPlayerRepository, PlayerRepository>();
+        services.AddSingleton(sqliteSettings)
+                .AddSingleton<IPlayerRepository, PlayerRepository>()
+                .AddSingleton<ITopPlayersRepository, TopPlayersRepository>();
 
         var path = Path.Combine("yesql", typeof(PersistenceSQLiteServicesExtensions).Namespace);
         ISqlCollection sqlCollection = new YeSqlLoader().LoadFromDirectories(path);
