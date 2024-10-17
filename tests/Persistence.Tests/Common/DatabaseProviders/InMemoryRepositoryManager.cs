@@ -26,4 +26,11 @@ public class InMemoryRepositoryManager : IRepositoryManager
     {
 
     }
+
+    public void RemoveSeedData()
+    {
+        _serviceProvider
+            .GetRequiredService<Dictionary<int, FakePlayer>>()
+            .Clear();
+    }
 }

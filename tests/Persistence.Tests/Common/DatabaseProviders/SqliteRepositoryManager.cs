@@ -23,14 +23,16 @@ public class SqliteRepositoryManager : IRepositoryManager
         GC.SuppressFinalize(this);
     }
 
-    public void InitializeSeedData()
+    public void InitializeSeedData() => ExecuteCommand("InitializeSeedData");
+    public void RemoveSeedData() => ExecuteCommand("RemoveSeedData");
+    private void ExecuteCommand(string tagName)
     {
         var settings = _serviceProvider.GetRequiredService<SQLiteSettings>();
         var sqlCollection = _serviceProvider.GetRequiredService<ISqlCollection>();
         using var connection = new SqliteConnection(settings.ConnectionString);
         connection.Open();
         SqliteCommand command = connection.CreateCommand();
-        command.CommandText = sqlCollection["InitializeSeedData"];
+        command.CommandText = sqlCollection[tagName];
         command.ExecuteNonQuery();
     }
 }

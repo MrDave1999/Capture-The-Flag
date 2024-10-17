@@ -23,14 +23,16 @@ public class MariaDbRepositoryManager : IRepositoryManager
         GC.SuppressFinalize(this);
     }
 
-    public void InitializeSeedData()
+    public void InitializeSeedData() => ExecuteCommand("InitializeSeedData");
+    public void RemoveSeedData() => ExecuteCommand("RemoveSeedData");
+    private void ExecuteCommand(string tagName)
     {
         var settings = _serviceProvider.GetRequiredService<MariaDbSettings>();
         var sqlCollection = _serviceProvider.GetRequiredService<ISqlCollection>();
         using var connection = new MySqlConnection(settings.ConnectionString);
         connection.Open();
         MySqlCommand command = connection.CreateCommand();
-        command.CommandText = sqlCollection["InitializeSeedData"];
+        command.CommandText = sqlCollection[tagName];
         command.ExecuteNonQuery();
     }
 }
