@@ -41,7 +41,7 @@ internal class PlayerRepository(
         SqliteCommand command = connection.CreateCommand();
         command.CommandText = sqlCollection["PlayerExists"];
         command.Parameters.AddWithValue("$name", name);
-        using var reader = command.ExecuteReader();
+        using SqliteDataReader reader = command.ExecuteReader();
         return reader.HasRows;
     }
 
@@ -54,7 +54,7 @@ internal class PlayerRepository(
         command.CommandText = sqlCollection["GetPlayerByName"];
         command.Parameters.AddWithValue("$name", name);
 
-        using var reader = command.ExecuteReader();
+        using SqliteDataReader reader = command.ExecuteReader();
         bool notExists = !reader.Read();
         if (notExists)
             return default;

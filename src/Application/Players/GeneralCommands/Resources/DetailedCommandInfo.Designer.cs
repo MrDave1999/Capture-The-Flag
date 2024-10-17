@@ -134,7 +134,7 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/mystats: {Color2}Display the statistics of the current player.
         ///{Color1}/stats: {Color2}Show the statistics of a specified player.
         ///{Color1}/tstats: {Color2}Display the statistics of the teams (Alpha and Beta).
-        ///{Color1}/changepass: {Color2}Change your account passwor [rest of string was truncated]&quot;;.
+        ///{Color1}/topkills: {Color2}Display the list of top playe [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Public {
             get {

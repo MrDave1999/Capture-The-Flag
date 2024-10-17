@@ -1,6 +1,6 @@
 ﻿namespace Persistence.InMemory;
 
-internal class FakePlayer
+public class FakePlayer
 {
     private const int NoSkin = -1;
     public FakePlayer() => Id = PlayerIdValueGenerator.Instance.Next();

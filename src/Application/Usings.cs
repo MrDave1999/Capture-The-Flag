@@ -27,6 +27,7 @@ global using CTF.Application.Players.Combos.Services;
 global using CTF.Application.Players.Chats;
 global using CTF.Application.Players.Chats.Services;
 global using CTF.Application.Players.Vitalities;
+global using CTF.Application.Players.TopPlayers.Models;
 global using CTF.Application.Players.GeneralCommands.Resources;
 global using CTF.Application.Players.Extensions;
 global using CTF.Application.Teams;
