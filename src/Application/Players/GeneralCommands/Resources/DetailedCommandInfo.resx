@@ -183,6 +183,8 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}/mystats: {Color2}Display the statistics of the current player.
 {Color1}/stats: {Color2}Show the statistics of a specified player.
 {Color1}/tstats: {Color2}Display the statistics of the teams (Alpha and Beta).
+{Color1}/topkills: {Color2}Display the list of top players based on their total number of kills.
+{Color1}/topspree: {Color2}Display the list of top players based on their maximum killing spree.
 {Color1}/changepass: {Color2}Change your account password.
 {Color1}/changename: {Color2}Change your account name.
 {Color1}/skin: {Color2}Change your character's skin.

@@ -1,15 +1,14 @@
 ﻿global using SampSharp.Core;
 global using SampSharp.Entities;
 global using SampSharp.Entities.SAMP;
-global using SampSharp.Entities.SAMP.Commands;
 global using SampSharp.Streamer.Entities;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
 global using CTF.Application;
-global using CTF.Application.Common;
 global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Players;
+global using CTF.Application.Players.TopPlayers.Models;
 global using CTF.Host.Extensions;
 global using CTF.Host.Services;
 global using Persistence.SQLite;

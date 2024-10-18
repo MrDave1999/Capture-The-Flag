@@ -20,8 +20,9 @@ public static class PersistenceMariaDBServicesExtensions
         }.ToString();
 
         mariadbSettings.ConnectionString = connectionString;
-        services.AddSingleton(mariadbSettings);
-        services.AddSingleton<IPlayerRepository, PlayerRepository>();
+        services.AddSingleton(mariadbSettings)
+                .AddSingleton<IPlayerRepository, PlayerRepository>()
+                .AddSingleton<ITopPlayersRepository, TopPlayersRepository>();
 
         var path = Path.Combine("yesql", typeof(PersistenceMariaDBServicesExtensions).Namespace);
         ISqlCollection sqlCollection = new YeSqlLoader().LoadFromDirectories(path);
