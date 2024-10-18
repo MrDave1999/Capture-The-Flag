@@ -34,13 +34,14 @@ jobs:
       uses: ankane/setup-mariadb@v1
       with:
         database: gamemode
-        run: |
-         mariadb -uroot -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'"
-         mariadb -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost'"
-         mariadb -uroot -e "FLUSH PRIVILEGES"
-         mariadb -uroot gamemode < ./scripts/mariadb/gamemode.sql
     - name: Check MariaDB version
       run: mariadb --version
+    - name: Initialize MariaDB
+      run: |
+       mariadb -uroot -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'"
+       mariadb -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost'"
+       mariadb -uroot -e "FLUSH PRIVILEGES"
+       mariadb -uroot gamemode < ./scripts/mariadb/gamemode.sql
     - name: Check SQLite version
       run: sqlite3 --version
     - name: Create SQLite database
