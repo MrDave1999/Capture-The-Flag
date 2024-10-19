@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS players (
     name REGEXP '^[0-9a-zA-Z\[\]\(\)\$\@._=]+$'
   ),
   password TEXT NOT NULL CHECK(
-    TRIM(password) != '') AND
+    TRIM(password) != '' AND
     LENGTH(password) = 60
   ),
   total_kills INTEGER NOT NULL CHECK(total_kills >= 0),
