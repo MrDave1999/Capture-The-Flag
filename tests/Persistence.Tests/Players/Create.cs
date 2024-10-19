@@ -12,6 +12,7 @@ public class CreatePlayer
         var playerInfo = new PlayerInfo();
         playerInfo.SetName("Player1");
         playerInfo.SetPassword("DSR8887$#");
+        playerInfo.SetSkin(146);
 
         // Act
         playerRepository.Create(playerInfo);

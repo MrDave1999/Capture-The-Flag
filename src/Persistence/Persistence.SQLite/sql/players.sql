@@ -36,6 +36,9 @@ VALUES (
 );
 select last_insert_rowid()
 
+-- name: UpdatePlayerName
+UPDATE players SET name = $name WHERE id = $id
+
 -- name: GetPlayerByName
 SELECT *
 FROM players

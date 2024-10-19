@@ -31,6 +31,7 @@ public class SqliteRepositoryManager : IRepositoryManager
         var sqlCollection = _serviceProvider.GetRequiredService<ISqlCollection>();
         using var connection = new SqliteConnection(settings.ConnectionString);
         connection.Open();
+        connection.CreateRegexpFunction();
         SqliteCommand command = connection.CreateCommand();
         command.CommandText = sqlCollection[tagName];
         command.ExecuteNonQuery();

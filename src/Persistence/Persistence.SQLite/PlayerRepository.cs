@@ -10,6 +10,7 @@ internal class PlayerRepository(
         var passwordHash = passwordHasher.HashPassword(player.Password);
         using var connection = new SqliteConnection(settings.ConnectionString);
         connection.Open();
+        connection.CreateRegexpFunction();
 
         SqliteCommand command = connection.CreateCommand();
         command.CommandText = sqlCollection["CreatePlayer"];
@@ -107,7 +108,17 @@ internal class PlayerRepository(
         => Update(player.AccountId, "max_killing_spree", player.MaxKillingSpree);
 
     public void UpdateName(PlayerInfo player)
-        => Update(player.AccountId, "name", player.Name);
+    {
+        using var connection = new SqliteConnection(settings.ConnectionString);
+        connection.Open();
+        connection.CreateRegexpFunction();
+
+        SqliteCommand command = connection.CreateCommand();
+        command.CommandText = sqlCollection["UpdatePlayerName"];
+        command.Parameters.AddWithValue("$id", player.AccountId);
+        command.Parameters.AddWithValue("$name", player.Name);
+        command.ExecuteNonQuery();
+    }
 
     public void UpdatePassword(PlayerInfo player)
     {

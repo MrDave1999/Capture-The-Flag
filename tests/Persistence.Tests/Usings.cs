@@ -16,4 +16,5 @@ global using Persistence.Tests.Common;
 global using Persistence.Tests.Common.DatabaseProviders;
 global using Persistence.InMemory;
 global using Persistence.SQLite;
+global using Persistence.SQLite.Extensions;
 global using Persistence.MariaDB;
