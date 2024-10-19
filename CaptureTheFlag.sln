@@ -36,6 +36,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{D718FC07-9D83-4987-8649-1FD1DC7E5213}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mariadb", "mariadb", "{3FAADC70-9EFB-4778-B290-72F90205C636}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\mariadb\gamemode.sql = scripts\mariadb\gamemode.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlite", "sqlite", "{00CD9221-B71C-4A59-935A-D876050403FB}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\sqlite\gamemode.sql = scripts\sqlite\gamemode.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +92,9 @@ Global
 		{8635E780-2A9B-4DF4-BAFF-A9A306C07F1C} = {5288534A-0560-492B-AFD0-972CBBF1FB73}
 		{0E7EC0C1-817D-42B4-9A40-833D295B15C8} = {5B2B6002-D4CD-4D3E-ABA2-9F2B3B9ADB4D}
 		{C62BE6B9-7E73-4347-8D92-53A7F68CA688} = {5B2B6002-D4CD-4D3E-ABA2-9F2B3B9ADB4D}
+		{D718FC07-9D83-4987-8649-1FD1DC7E5213} = {3B682FEF-739A-498C-84E9-C83A992AD968}
+		{3FAADC70-9EFB-4778-B290-72F90205C636} = {D718FC07-9D83-4987-8649-1FD1DC7E5213}
+		{00CD9221-B71C-4A59-935A-D876050403FB} = {D718FC07-9D83-4987-8649-1FD1DC7E5213}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {363EB35D-39EA-4E76-87BD-7A8C98D7DB38}
