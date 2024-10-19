@@ -1,7 +1,9 @@
-﻿global using Microsoft.Extensions.Configuration;
+﻿global using System.Text.RegularExpressions;
+global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Data.Sqlite;
 global using YeSql.Net;
+global using Persistence.SQLite.Extensions;
 global using CTF.Application.Common.Extensions;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Players.Accounts;
