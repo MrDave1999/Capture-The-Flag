@@ -24,28 +24,34 @@ jobs:
 
   integration_testing:
     runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb
+        ports:
+          - 3306:3306
+        env:
+          MARIADB_DATABASE: gamemode
+          MARIADB_ROOT_PASSWORD: 123456789
+        options: >-
+          --name mariadb
+          --health-cmd="mariadb-admin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Install MariaDB
-      uses: ankane/setup-mariadb@v1
-      with:
-        database: gamemode
     - name: Check MariaDB version
-      run: mariadb --version
-    - name: Initialize MariaDB
-      run: |
-       mariadb -uroot -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'"
-       mariadb -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost'"
-       mariadb -uroot -e "FLUSH PRIVILEGES"
-       mariadb -uroot gamemode < ./scripts/mariadb/gamemode.sql
+      run: docker exec mariadb mariadb --version
     - name: Check SQLite version
       run: sqlite3 --version
-    - name: Create SQLite database
-      run: sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
+    - name: Import databases
+      run: |
+       docker exec -i mariadb mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
+       sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
     - name: Create .env.test file
       run: cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
     - name: Execute integration tests
