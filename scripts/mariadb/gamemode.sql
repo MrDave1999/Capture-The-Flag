@@ -4,15 +4,15 @@ USE gamemode;
 CREATE TABLE IF NOT EXISTS players (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(20) NOT NULL
-   CHECK(
-     TRIM(name) != '' AND 
-     LENGTH(name) >= 3 AND 
-     LENGTH(name) <= 20 AND 
-     name REGEXP '^[0-9a-zA-Z\\[\\]\\(\\)\\$\\@\\.=_]+$'
-   ),
+  CHECK(
+    TRIM(name) != '' AND 
+    LENGTH(name) >= 3 AND 
+    LENGTH(name) <= 20 AND 
+    name REGEXP '^[0-9a-zA-Z\\[\\]\\(\\)\\$\\@\\.=_]+$'
+  ),
   password varchar(60) NOT NULL 
   CHECK(
-    TRIM(password) != '') AND
+    TRIM(password) != '' AND
     LENGTH(password) = 60
   ),
   total_kills int(11) NOT NULL CHECK(total_kills >= 0),
