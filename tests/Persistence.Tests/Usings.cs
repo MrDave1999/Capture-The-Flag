@@ -6,6 +6,7 @@ global using Microsoft.Extensions.Configuration;
 global using MySqlConnector;
 global using Microsoft.Data.Sqlite;
 global using YeSql.Net;
+global using CTF.Application.Common.Extensions;
 global using CTF.Application.Common.Services;
 global using CTF.Application.Common.Results;
 global using CTF.Application.Players.Accounts;
