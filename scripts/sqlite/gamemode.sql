@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "players" (
-  "id"	INTEGER,
+  "id" INTEGER,
   "name" TEXT NOT NULL UNIQUE COLLATE NOCASE,
   "password" TEXT NOT NULL,
   "total_kills"	INTEGER NOT NULL,
@@ -17,5 +17,5 @@ CREATE TABLE IF NOT EXISTS "players" (
   "created_at" TEXT NOT NULL,
   "last_connection" TEXT NOT NULL,
   PRIMARY KEY("id")
-);
+) STRICT;
 COMMIT;
