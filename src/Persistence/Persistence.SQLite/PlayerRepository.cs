@@ -114,7 +114,7 @@ internal class PlayerRepository(
         connection.CreateRegexpFunction();
 
         SqliteCommand command = connection.CreateCommand();
-        command.CommandText = "UPDATE players SET name = $name WHERE id = $id";
+        command.CommandText = sqlCollection["UpdatePlayerName"];
         command.Parameters.AddWithValue("$id", player.AccountId);
         command.Parameters.AddWithValue("$name", player.Name);
         command.ExecuteNonQuery();
