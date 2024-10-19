@@ -1,4 +1,4 @@
-﻿namespace Persistence.SQLite;
+﻿namespace Persistence.SQLite.Extensions;
 
 internal static class SqliteDataReaderExtensions
 {
