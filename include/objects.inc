@@ -3,8 +3,8 @@
 #endif
 #define _Objects_included
 
-#if !defined NAME_FS
-	#error "You must define the macro NAME_FS"
+#if !defined FILTER_SCRIPT_NAME
+	#error "You must define the macro FILTER_SCRIPT_NAME"
 #endif
 static CountObjects;
 static InitialObjectId;
