@@ -6,23 +6,22 @@
 #if !defined NAME_FS
 	#error "You must define the macro NAME_FS"
 #endif
-#define endID objectid
-static countObjects;
-static initId;
-static objectid;
+static CountObjects;
+static InitialObjectId;
+static EndObjectId;
 
 stock CreateObjectEx(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ)
 {
-	objectid = CreateObject(modelid, X, Y, Z, rX, rY, rZ, 300.0);
-	++countObjects;
-	if(countObjects == 1)
-		initId = objectid;
-	return objectid;
+	EndObjectId = CreateObject(modelid, X, Y, Z, rX, rY, rZ, 300.0);
+	++CountObjects;
+	if(CountObjects == 1)
+		InitialObjectId = EndObjectId;
+	return EndObjectId;
 }
 
 stock DestroyAllObjects()
 {
-	for(new i = initId, total = i + countObjects; i < total; ++i)
+	for(new i = InitialObjectId, total = i + CountObjects; i < total; ++i)
 		DestroyObject(i);
 	return 1;
 }
