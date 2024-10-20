@@ -119,6 +119,7 @@
   </resheader>
   <data name="Admin" xml:space="preserve">
     <value>{Color1}/setrole: {Color2}Assigns a specific role to a player.
+{Color1}/settotalkills: {Color2}Sets the total kills to a specific player.
 {Color1}/setscore: {Color2}Sets the score of a player to a specified value.
 {Color1}/addscore: {Color2}Increases the player's score by a designated amount.
 {Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
