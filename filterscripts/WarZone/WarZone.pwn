@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "WarZone"
+#define FILTER_SCRIPT_NAME "WarZone"
 #include "objects"
 
 public OnFilterScriptInit()

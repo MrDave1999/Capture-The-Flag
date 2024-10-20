@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "de_dust2_x3"
+#define FILTER_SCRIPT_NAME "de_dust2_x3"
 #include "objects"
 
 public OnFilterScriptInit()

@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "GateToHell"
+#define FILTER_SCRIPT_NAME "GateToHell"
 #include "objects"
 
 public OnFilterScriptInit()

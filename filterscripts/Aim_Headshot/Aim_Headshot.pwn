@@ -1,10 +1,10 @@
 #include <a_samp>
-#define NAME_FS "Aim_Headshot"
+#define FILTER_SCRIPT_NAME "Aim_Headshot"
 #include "objects"
 
 public OnFilterScriptInit()
 {
-	new objid;
+	new objectId;
     CreateObject(6989, -166.94000, 138.17999, -79.50000,   0.00000, 0.00000, -17.46000);
 	CreateObject(6989, -272.32999, 67.31000, -79.50000,   0.00000, 0.00000, 72.72000);
 	CreateObject(6989, -320.23999, -86.67000, -79.50000,   0.00000, 0.00000, 72.72000);
@@ -32,10 +32,10 @@ public OnFilterScriptInit()
 	CreateObject(16061, -175.15781, 113.35090, 1.95000,   0.00000, 0.00000, 250.56000);
 	CreateObject(16061, -148.36000, -10.28000, 2.59000,   0.00000, 0.00000, 156.84000);
 	CreateObject(16061, -258.48001, 27.26000, 1.40000,   0.00000, 0.00000, 340.01999);
-	objid = CreateObject(3885, -152.15030, 52.53920, 2.75850,   0.00000, 0.00000, 146.00000);
-	SetObjectMaterial(objid, 0, 10357, "tvtower_sfs", "ws_transmit_red", 0xFFFFFFFF);
-	objid = CreateObject(3885, -247.57410, -55.88480, 2.77900,   0.00000, 0.00000, -38.00000);
-    SetObjectMaterial(objid, 0, 6328, "sunset04_law2", "LAbluewall", 0xFFFFFFFF);
+	objectId = CreateObject(3885, -152.15030, 52.53920, 2.75850,   0.00000, 0.00000, 146.00000);
+	SetObjectMaterial(objectId, 0, 10357, "tvtower_sfs", "ws_transmit_red", 0xFFFFFFFF);
+	objectId = CreateObject(3885, -247.57410, -55.88480, 2.77900,   0.00000, 0.00000, -38.00000);
+    SetObjectMaterial(objectId, 0, 6328, "sunset04_law2", "LAbluewall", 0xFFFFFFFF);
 	CreateObject(18257, -142.27528, 54.97489, 6.50410,   0.00000, 0.00000, -18.00000);
 	CreateObject(18257, -156.45602, 59.57191, 6.50410,   0.00000, 0.00000, -18.00000);
 	CreateObject(18257, -168.30475, 63.68726, 6.50410,   0.00000, 0.00000, -18.00000);

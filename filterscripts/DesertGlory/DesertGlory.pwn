@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "DesertGlory"
+#define FILTER_SCRIPT_NAME "DesertGlory"
 #include "objects"
 
 public OnFilterScriptInit()

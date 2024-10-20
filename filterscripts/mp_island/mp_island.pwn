@@ -1,10 +1,10 @@
 #include <a_samp>
-#define NAME_FS "mp_island"
+#define FILTER_SCRIPT_NAME "mp_island"
 #include "objects"
 
 public OnFilterScriptInit()
 {
-    new objid;
+    new objectId;
     CreateObject(6959, 3499.10010, 1279.69995, 29.90000,   0.00000, 0.00000, 0.00000);
     CreateObject(6959, 3540.39941, 1279.69922, 29.90000,   0.00000, 0.00000, 0.00000);
     CreateObject(6959, 3581.70020, 1279.69922, 29.90000,   0.00000, 0.00000, 0.00000);
@@ -238,10 +238,10 @@ public OnFilterScriptInit()
     CreateObject(3399, 3504.43213, 1233.79907, 32.09830,   0.00000, 0.00000, 0.00000);
     CreateObject(3399, 3577.17603, 1234.72180, 32.09830,   0.00000, 0.00000, 179.00000);
     CreateObject(3399, 3577.22339, 1243.55383, 32.09830,   0.00000, 0.00000, 179.00000);
-    objid = CreateObject(3885, 3485.27075, 1252.74841, 29.85550,   0.00000, 0.00000, -98.00000);
-    SetObjectMaterial(objid, 0, 6328, "sunset04_law2", "LAbluewall", 0xFFFFFFFF);
-    objid = CreateObject(3885, 3597.28833, 1224.24060, 29.85550,   0.00000, 0.00000, 78.00000);
-    SetObjectMaterial(objid, 0, 10357, "tvtower_sfs", "ws_transmit_red", 0xFFFFFFFF);
+    objectId = CreateObject(3885, 3485.27075, 1252.74841, 29.85550,   0.00000, 0.00000, -98.00000);
+    SetObjectMaterial(objectId, 0, 6328, "sunset04_law2", "LAbluewall", 0xFFFFFFFF);
+    objectId = CreateObject(3885, 3597.28833, 1224.24060, 29.85550,   0.00000, 0.00000, 78.00000);
+    SetObjectMaterial(objectId, 0, 10357, "tvtower_sfs", "ws_transmit_red", 0xFFFFFFFF);
     CreateObject(988, 3494.48145, 1271.59753, 29.86270,   0.00000, 0.00000, 181.00000);
     CreateObject(988, 3495.89453, 1205.16357, 29.85877,   0.00000, 0.00000, 0.00000);
     return 1;

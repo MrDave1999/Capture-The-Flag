@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "TheWild"
+#define FILTER_SCRIPT_NAME "TheWild"
 #include "objects"
 
 public OnFilterScriptInit()

@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "fy_iceworld2"
+#define FILTER_SCRIPT_NAME "fy_iceworld2"
 #include "objects"
 
 public OnFilterScriptInit()

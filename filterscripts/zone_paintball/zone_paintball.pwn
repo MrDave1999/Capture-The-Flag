@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "zone_paintball"
+#define FILTER_SCRIPT_NAME "zone_paintball"
 #include "objects"
 
 public OnFilterScriptInit()

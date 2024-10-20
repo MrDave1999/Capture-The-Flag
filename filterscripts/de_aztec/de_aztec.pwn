@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "de_aztec"
+#define FILTER_SCRIPT_NAME "de_aztec"
 #include "objects"
 
 public OnFilterScriptInit()

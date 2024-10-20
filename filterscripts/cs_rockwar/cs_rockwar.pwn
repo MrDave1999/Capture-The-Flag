@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "cs_rockwar"
+#define FILTER_SCRIPT_NAME "cs_rockwar"
 #include "objects"
 
 public OnFilterScriptInit()
