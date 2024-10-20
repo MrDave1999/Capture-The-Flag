@@ -62,12 +62,12 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to {Color1}/setrole: {Color2}Assigns a specific role to a player.
+        ///{Color1}/settotalkills: {Color2}Sets the total kills to a specific player.
         ///{Color1}/setscore: {Color2}Sets the score of a player to a specified value.
         ///{Color1}/addscore: {Color2}Increases the player&apos;s score by a designated amount.
         ///{Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
         ///{Color1}/addcoins: {Color2}Increases the player&apos;s coins by a designated amount.
-        ///{Color1}/addallcoins: {Color2}Grant a set number of coins to all players.
-        ///{Color1}/goto: {Color2}Teleport to the positi [rest of string was truncated]&quot;;.
+        ///{Color1}/addallcoins: {Color2}Grant a set nu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Admin {
             get {
