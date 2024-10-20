@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "Compound"
+#define FILTER_SCRIPT_NAME "Compound"
 #include "objects"
 
 public OnFilterScriptInit()

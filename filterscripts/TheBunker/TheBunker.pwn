@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "TheBunker"
+#define FILTER_SCRIPT_NAME "TheBunker"
 #include "objects"
 
 public OnFilterScriptInit()

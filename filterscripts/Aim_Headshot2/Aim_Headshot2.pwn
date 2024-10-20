@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "Aim_Headshot2"
+#define FILTER_SCRIPT_NAME "Aim_Headshot2"
 #include "objects"
 
 public OnFilterScriptInit()

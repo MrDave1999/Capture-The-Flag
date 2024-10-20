@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "mp_jetdoor"
+#define FILTER_SCRIPT_NAME "mp_jetdoor"
 #include "objects"
 
 public OnFilterScriptInit()

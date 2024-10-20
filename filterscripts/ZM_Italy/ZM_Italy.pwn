@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "ZM_Italy"
+#define FILTER_SCRIPT_NAME "ZM_Italy"
 #include "objects"
 
 public OnFilterScriptInit()

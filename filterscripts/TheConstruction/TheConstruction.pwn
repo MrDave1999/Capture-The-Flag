@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "TheConstruction"
+#define FILTER_SCRIPT_NAME "TheConstruction"
 #include "objects"
 
 public OnFilterScriptInit()

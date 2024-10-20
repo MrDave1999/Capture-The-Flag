@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "Area51"
+#define FILTER_SCRIPT_NAME "Area51"
 #include "objects"
 
 public OnFilterScriptInit()

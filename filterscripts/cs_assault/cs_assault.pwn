@@ -1,5 +1,5 @@
 #include <a_samp>
-#define NAME_FS "cs_assault"
+#define FILTER_SCRIPT_NAME "cs_assault"
 #include "objects"
 
 public OnFilterScriptInit()
