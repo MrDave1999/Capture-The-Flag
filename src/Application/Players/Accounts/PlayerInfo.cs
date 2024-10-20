@@ -210,7 +210,7 @@ public partial class PlayerInfo
             StatsPerRound.KillingSpree,
             StatsPerRound.Coins,
             MaxRank = RankCollection.Count,
-            Level = (int)RankId,
+            Level = (int)RankId + 1,
             RankName = rankResult.Value.Name
         };
         const string message = 
