@@ -772,6 +772,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Kills} kills from {PlayerName}!.
+        /// </summary>
+        internal static string ReceiveKillsFromPlayer {
+            get {
+                return ResourceManager.GetString("ReceiveKillsFromPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Score} score from {PlayerName}!.
         /// </summary>
         internal static string ReceiveScoreFromPlayer {
@@ -840,6 +849,15 @@ namespace CTF.Application.Common.Resources {
         internal static string SavedSkin {
             get {
                 return ResourceManager.GetString("SavedSkin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully set {PlayerName}&apos;s kills to {Kills}!.
+        /// </summary>
+        internal static string SetKillsToPlayer {
+            get {
+                return ResourceManager.GetString("SetKillsToPlayer", resourceCulture);
             }
         }
         
