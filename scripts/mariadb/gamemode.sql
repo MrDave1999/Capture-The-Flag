@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS players (
   returned_flags int(11) NOT NULL CHECK(returned_flags >= 0),
   head_shots int(11) NOT NULL CHECK(head_shots >= 0),
   role_id enum('Basic','VIP','Moderator','Admin') NOT NULL,
-  skin_id int(11) NOT NULL CHECK(skin_id >= 0 AND skin_id <= 311),
+  skin_id int(11) NOT NULL CHECK(skin_id >= -1 AND skin_id <= 311),
   rank_id int(11) NOT NULL CHECK(rank_id >= 0 AND rank_id <= 14),
   created_at datetime NOT NULL,
   last_connection datetime NOT NULL,
