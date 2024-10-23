@@ -16,14 +16,10 @@ dotnet/runtime/
 # samp server configuration file
 server.cfg
 
-# Plugins directory
-plugins/
-
 # binaries
-*.exe
-*.dll
-*.so
-filterscripts/*.amx
+announce.exe
+samp-server.exe
+samp-npc.exe
 announce
 samp03svr
 samp-npc

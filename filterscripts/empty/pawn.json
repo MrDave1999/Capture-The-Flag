@@ -1,7 +1,0 @@
-{
-  "user": "MrDave1999",
-  "repo": "empty",
-  "entry": "empty.pwn",
-  "output": "../empty.amx",
-  "dependencies": ["sampctl/samp-stdlib"]
-}
