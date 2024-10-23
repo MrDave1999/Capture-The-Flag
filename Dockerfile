@@ -1,54 +1,45 @@
 #
-# Build app
+# Build stage/image
 #
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
+COPY *.sln .
+COPY *.props .
 
 # Copy csproj and restore as distinct layers
-COPY src/*.csproj .
+COPY ["src/Host/*.csproj", "src/Host/"]
+COPY ["src/Application/*.csproj", "src/Application/"]
+COPY ["src/Persistence/Persistence.InMemory/*.csproj", "src/Persistence/Persistence.InMemory/"]
+COPY ["src/Persistence/Persistence.MariaDB/*.csproj", "src/Persistence/Persistence.MariaDB/"]
+COPY ["src/Persistence/Persistence.SQLite/*.csproj", "src/Persistence/Persistence.SQLite/"]
+COPY ["src/Persistence/*.props", "src/Persistence/"]
 RUN dotnet restore
 
 # Copy everything else and build
-COPY src .
-RUN dotnet publish -c Release -o out
+COPY ["src/", "."]
+RUN dotnet publish -c Release -o out --no-restore
 
 #
-# Install SA-MP server with samptcl
+# Download SA-MP server and dotnet linux-x86 
 #
-FROM southclaws/sampctl AS samp-server
-WORKDIR /sampserver
-
-COPY pawn.json .
-RUN sampctl package ensure \
-    && rm -rf dependencies
-
-COPY include include
-COPY filterscripts filterscripts
-COPY build-filterscripts.sh .
-RUN chmod u+x build-filterscripts.sh
-RUN ["./build-filterscripts.sh"]
-RUN rm -rf include \
-    pawn.json \
-    build-filterscripts.sh
-
-WORKDIR /sampserver/filterscripts
-# Delete all directories except .amx files
-RUN rm -rf */
-
-#
-# Get .NET 6 Runtime x86
-#
-FROM ubuntu:20.04 AS net-runtime
-WORKDIR /dotnet
-
+FROM ubuntu:20.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget
 
-RUN wget https://deploy.timpotze.nl/packages/runtime_603_20220324.tar.gz --no-check-certificate \
-    && tar -xf runtime_603_20220324.tar.gz \
-    && rm -f runtime_603_20220324.tar.gz
+WORKDIR /samp-server
+RUN wget https://gta-multiplayer.cz/downloads/samp037svr_R2-2-1.tar.gz --no-check-certificate \
+    && tar -xf samp037svr_R2-2-1.tar.gz \
+    && rm -f samp037svr_R2-2-1.tar.gz
+COPY ["samp037svr_R2-2-1/samp03/", "."]
+RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles
 
-# 
-# Build runtime image
+WORKDIR /dotnet-runtime
+RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v8.0.4-90/dotnet-runtime-8.0.4-linux-x86.tar.gz --no-check-certificate \
+    && tar -xf dotnet-runtime-8.0.4-linux-x86.tar.gz \
+    && rm -f dotnet-runtime-8.0.4-linux-x86.tar.gz
+COPY ["dotnet-runtime-8.0.4-linux-x86/shared/Microsoft.NETCore.App/8.0.4/", "."]
+
+#
+# Final stage/image
 #
 FROM ubuntu:20.04
 WORKDIR /app
@@ -60,17 +51,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libstdc++6:i386 \
     libssl1.1:i386 \
     libicu-dev:i386 \
-    tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-COPY gamemodes gamemodes
-COPY wait-for-it.sh .
-RUN chmod u+x wait-for-it.sh
+COPY ["gamemodes/*.amx", "gamemodes/"]
+COPY ["filterscripts/*.amx", "filterscripts/"]
+COPY ["plugins/*.so", "plugins/"]
+COPY ["scriptfiles", "scriptfiles/"]
+COPY --from=tools /dotnet-runtime dotnet-runtime
+COPY --from=tools /samp-server .
+RUN echo "coreclr dotnet-runtime" >> server.cfg \
+    && echo "gamemode bin/CTF.Host.dll" >> server.cfg
 
-COPY --from=net-runtime /dotnet dotnet
-COPY --from=samp-server /sampserver .
-RUN echo "coreclr dotnet/runtime" >> server.cfg \
-    && echo "gamemode bin/CaptureTheFlag.dll" >> server.cfg
-
-COPY scriptfiles scriptfiles
-COPY --from=build-env /app/out bin
+COPY --from=build /app/out bin
