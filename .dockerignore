@@ -1,14 +1,12 @@
 **/bin
 **/obj
 **/dependencies
-filterscripts/*.amx
 dotnet/runtime/
 .vscode/
-plugins/
 .git/
-*.exe
-*.dll
-*.so
+announce.exe
+samp-server.exe
+samp-npc.exe
 announce
 samp03svr
 samp-npc
