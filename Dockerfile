@@ -30,7 +30,7 @@ RUN wget https://gta-multiplayer.cz/downloads/samp037svr_R2-2-1.tar.gz --no-chec
     && tar -xf samp037svr_R2-2-1.tar.gz \
     && rm -f samp037svr_R2-2-1.tar.gz
 COPY ["samp037svr_R2-2-1/samp03/", "."]
-RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles
+RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles server.cfg
 
 WORKDIR /dotnet-runtime
 RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v8.0.4-90/dotnet-runtime-8.0.4-linux-x86.tar.gz --no-check-certificate \
@@ -57,6 +57,7 @@ COPY ["gamemodes/*.amx", "gamemodes/"]
 COPY ["filterscripts/*.amx", "filterscripts/"]
 COPY ["plugins/*.so", "plugins/"]
 COPY ["scriptfiles", "scriptfiles/"]
+COPY ["server.cfg.example", "server.cfg"]
 COPY --from=tools /dotnet-runtime dotnet-runtime
 COPY --from=tools /samp-server .
 RUN echo "coreclr dotnet-runtime" >> server.cfg \
