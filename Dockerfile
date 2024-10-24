@@ -60,6 +60,7 @@ COPY ["scriptfiles", "scriptfiles/"]
 COPY ["server.cfg.example", "server.cfg"]
 COPY --from=tools /runtime/shared/Microsoft.NETCore.App/8.0.4 runtime
 COPY --from=tools /sampserver/samp03 .
-RUN echo "coreclr runtime" >> server.cfg \
+RUN echo "" >> server.cfg \ 
+    && echo "coreclr runtime" >> server.cfg \
     && echo "gamemode bin/CTF.Host.dll" >> server.cfg
 COPY --from=build /app/out bin
