@@ -9,26 +9,13 @@ public class Startup : IStartup
             .AddEnvironmentVariables()
             .Build();
 
-        var serverSettings = configuration
-            .GetRequiredSection("ServerInfo")
-            .Get<ServerSettings>();
-
-        var commandCooldowns = configuration
-            .GetRequiredSection("CommandCooldowns")
-            .Get<CommandCooldowns>();
-
-        var topPlayersSettings = configuration
-            .GetRequiredSection("TopPlayers")
-            .Get<TopPlayersSettings>();
-
         services.ChooseDatabaseProvider(configuration);
-        services.AddApplicationServices();
         services
+            .AddApplicationServices()
+            .AddSettings(configuration)
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
             .AddSingleton<IStreamerService, StreamerService>()
-            .AddSingleton(serverSettings)
-            .AddSingleton(commandCooldowns)
-            .AddSingleton(topPlayersSettings);
+            .AddSingleton(configuration);
 
         // Add systems to the services collection
         services
