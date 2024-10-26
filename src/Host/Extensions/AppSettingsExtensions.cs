@@ -1,6 +1,6 @@
 ﻿namespace CTF.Host.Extensions;
 
-public static class SettingsExtensions
+public static class AppSettingsExtensions
 {
     public static IServiceCollection AddSettings(
         this IServiceCollection services, 
