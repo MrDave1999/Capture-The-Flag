@@ -34,9 +34,13 @@ WORKDIR /sampserver/samp03
 RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles server.cfg
 
 WORKDIR /runtime
-RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v8.0.4-90/dotnet-runtime-8.0.4-linux-x86.tar.gz --no-check-certificate \
-    && tar -xf dotnet-runtime-8.0.4-linux-x86.tar.gz \
-    && rm -f dotnet-runtime-8.0.4-linux-x86.tar.gz
+ENV VERSION="8.0.4"
+RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v${VERSION}-90/dotnet-runtime-${VERSION}-linux-x86.tar.gz --no-check-certificate \
+    && mkdir runtime \
+    && tar -xf dotnet-runtime-${VERSION}-linux-x86.tar.gz -C runtime \
+    && rm -f dotnet-runtime-${VERSION}-linux-x86.tar.gz \
+    && cp -rf runtime/shared/Microsoft.NETCore.App/${VERSION}/** . \
+    && rm -rf runtime
 
 #
 # Final stage/image
@@ -58,7 +62,7 @@ COPY ["filterscripts/*.amx", "filterscripts/"]
 COPY ["plugins/*.so", "plugins/"]
 COPY ["scriptfiles", "scriptfiles/"]
 COPY ["server.cfg.example", "server.cfg"]
-COPY --from=tools /runtime/shared/Microsoft.NETCore.App/8.0.4 runtime
+COPY --from=tools /runtime runtime
 COPY --from=tools /sampserver/samp03 .
 RUN echo "" >> server.cfg \ 
     && echo "coreclr runtime" >> server.cfg \
