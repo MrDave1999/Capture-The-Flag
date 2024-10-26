@@ -17,6 +17,10 @@ public class Startup : IStartup
             .GetRequiredSection("CommandCooldowns")
             .Get<CommandCooldowns>();
 
+        var topPlayersSettings = configuration
+            .GetRequiredSection("TopPlayers")
+            .Get<TopPlayersSettings>();
+
         services.ChooseDatabaseProvider(configuration);
         services.AddApplicationServices();
         services
@@ -24,7 +28,7 @@ public class Startup : IStartup
             .AddSingleton<IStreamerService, StreamerService>()
             .AddSingleton(serverSettings)
             .AddSingleton(commandCooldowns)
-            .AddSingleton(new TopPlayersSettings());
+            .AddSingleton(topPlayersSettings);
 
         // Add systems to the services collection
         services
