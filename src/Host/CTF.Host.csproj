@@ -14,8 +14,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.Configuration" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
-    <PackageReference Include="Dotenv.Extensions.Microsoft.Configuration" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
+    <PackageReference Include="DotEnv.Core" />
     <PackageReference Include="BCrypt.Net-Next" />
   </ItemGroup>
 
