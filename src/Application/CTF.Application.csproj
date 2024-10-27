@@ -9,6 +9,7 @@
     <PackageReference Include="SampSharp.CTF.Entities" />
     <PackageReference Include="SampSharp.CTF.Streamer.Entities" />
     <PackageReference Include="seztion-parser" />
+    <PackageReference Include="DotEnv.Core" />
     <PackageReference Include="SmartFormat" />
   </ItemGroup>
 

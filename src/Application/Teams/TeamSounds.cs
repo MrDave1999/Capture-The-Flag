@@ -2,22 +2,31 @@
 
 public class TeamSounds
 {
-    public static readonly TeamSounds None = new();
-    public static readonly TeamSounds Alpha = new()
+    public static readonly TeamSounds None;
+    public static readonly TeamSounds Alpha;
+    public static readonly TeamSounds Beta;
+    static TeamSounds()
     {
-        FlagDropped  = "https://od.lk/s/Nl8yMDg4MTc0MzNf/red_flag_dropped.mp3",
-        FlagReturned = "https://od.lk/s/Nl8yMDg4MTc0MzRf/red_flag_returned.mp3",
-        FlagTaken    = "https://od.lk/s/Nl8yMDg4MTc0MzVf/red_flag_taken.mp3",
-        TeamScores   = "https://od.lk/s/Nl8yMDg4MTc0MzZf/red_team_scores.mp3"
-    };
+        var reader = new EnvReader();
+        var defaultValue = string.Empty;
+        Alpha = new()
+        {
+            FlagDropped  = reader.EnvString("RedFlagDroppedUrl",  defaultValue),
+            FlagReturned = reader.EnvString("RedFlagReturnedUrl", defaultValue),
+            FlagTaken    = reader.EnvString("RedFlagTakenUrl",    defaultValue),
+            TeamScores   = reader.EnvString("RedTeamScoresUrl",   defaultValue)
+        };
 
-    public static readonly TeamSounds Beta = new()
-    {
-        FlagDropped  = "https://od.lk/s/Nl8yMDg4MTc0Mjlf/blue_flag_dropped.mp3",
-        FlagReturned = "https://od.lk/s/Nl8yMDg4MTc0MzBf/blue_flag_returned.mp3",
-        FlagTaken    = "https://od.lk/s/Nl8yMDg4MTc0MzFf/blue_flag_taken.mp3",
-        TeamScores   = "https://od.lk/s/Nl8yMDg4MTc0MzJf/blue_team_scores.mp3"
-    };
+        Beta = new()
+        {
+            FlagDropped  = reader.EnvString("BlueFlagDroppedUrl",  defaultValue),
+            FlagReturned = reader.EnvString("BlueFlagReturnedUrl", defaultValue),
+            FlagTaken    = reader.EnvString("BlueFlagTakenUrl",    defaultValue),
+            TeamScores   = reader.EnvString("BlueTeamScoresUrl",   defaultValue)
+        };
+
+        None = new();
+    }
 
     private TeamSounds() { }
     public string FlagDropped { get; private set; }  = string.Empty;
