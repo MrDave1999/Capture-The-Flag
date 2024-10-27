@@ -4,8 +4,12 @@ public class Startup : IStartup
 {
     public void Configure(IServiceCollection services)
     {
+        new EnvLoader()
+            .EnableFileNotFoundException()
+            .AddEnvFile(".env")
+            .Load();
+
         IConfigurationRoot configuration = new ConfigurationBuilder()
-            .AddEnvFile(".env", optional: false)
             .AddEnvironmentVariables()
             .Build();
 
