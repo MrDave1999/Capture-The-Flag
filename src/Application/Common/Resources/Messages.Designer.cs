@@ -313,7 +313,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The maximum number of players must be between 5 to 50.
+        ///   Looks up a localized string similar to The maximum number of players must be between 5 to 15.
         /// </summary>
         internal static string InvalidMaxTopPlayers {
             get {
