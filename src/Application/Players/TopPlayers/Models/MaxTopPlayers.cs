@@ -17,7 +17,7 @@ public class MaxTopPlayers
     /// <param name="value">The desired maximum number of players.</param>
     public static Result<MaxTopPlayers> Create(int value)
     {
-        if (value < 5 || value > 50)
+        if (value < 5 || value > 15)
             return Result<MaxTopPlayers>.Failure(Messages.InvalidMaxTopPlayers);
 
         return Result<MaxTopPlayers>.Success(new MaxTopPlayers(value));
