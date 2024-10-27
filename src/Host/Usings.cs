@@ -4,6 +4,7 @@ global using SampSharp.Entities.SAMP;
 global using SampSharp.Streamer.Entities;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
+global using DotEnv.Core;
 global using CTF.Application;
 global using CTF.Application.Common.Settings;
 global using CTF.Application.Common.Services;

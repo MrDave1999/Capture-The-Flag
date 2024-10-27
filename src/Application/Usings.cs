@@ -9,6 +9,7 @@ global using SampSharp.Entities.SAMP.Commands;
 global using SampSharp.Streamer.Entities;
 global using SmartFormat;
 global using SeztionParser;
+global using DotEnv.Core;
 global using Microsoft.Extensions.DependencyInjection;
 
 global using CTF.Application.Common;
