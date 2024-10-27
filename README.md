@@ -1,13 +1,33 @@
 # Capture The Flag
 
 ![SA-MP logo](https://github.com/user-attachments/assets/dd12935e-5897-470b-ab06-a72b492a521c)
-[![CTF](https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/.NET%208.0-SampSharp.net-blue)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/GameMode-CSharp-yellow)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/Team%20Deathmatch-+Ranks-green)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/License-AGPL%203.0%20license-orange)](https://github.com/MrDave1999/Capture-the-flag)
 
-This is a capture the flag for [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas). There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own one.
+<p align="center">
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/.NET%208.0-SampSharp.net-blue" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/GameMode-CSharp-yellow" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/Team%20Deathmatch-+Ranks-green" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/License-AGPL%203.0%20license-orange" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://github.com/user-attachments/assets/2991265d-4626-4da5-839d-58a7ba2042e7" />
+  </a>
+</p>
+
+**Capture The Flag** is a game mode for [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas) created with [SampSharp](https://github.com/ikkentim/SampSharp).
+There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own one.
 
 ## Index
 - [About](#about)
@@ -112,6 +132,7 @@ In this video, you can watch a gameplay demo: https://youtu.be/yrPtJBuqB14
 ## Software Engineering
 
 Software engineering concepts have been applied in this project:
+- [Entity–component–system (ECS)](https://en.wikipedia.org/wiki/Entity_component_system)
 - [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
 - [Interface-based programming](https://en.wikipedia.org/wiki/Interface-based_programming)
 - [Modular programming](https://en.wikipedia.org/wiki/Modular_programming)
@@ -124,6 +145,8 @@ Software engineering concepts have been applied in this project:
 
 ## Installation
 
+In progress..
+
 ## Credentials
 
 The following table shows the default credentials for authentication from the game mode.
@@ -134,6 +157,11 @@ The following table shows the default credentials for authentication from the ga
 | Moderator_Player        | 123456                      |
 | VIP_Player              | 123456                      |
 | Basic_Player            | 123456                      |
+
+Note that these credentials are only available if your database provider is **in-memory**. In your .env file you must indicate it as follows.
+```sh
+DatabaseProvider=InMemory
+```
 
 ## Supported RDBMS
 
@@ -167,6 +195,24 @@ SQLite__DataSource=C:\Users\dave\OneDrive\Desktop\gamemode.db
 See the [example .env file](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/.env.example) for more information.
 
 ## Architectural overview
+
+<details>
+<summary><b>Show diagram</b></summary>
+
+![overview](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/architectural-overview.png)
+
+</details>
+
+### Main components
+- **Application Core.** Contains all the logic of the game called "Capture the Flag", including the rules and procedures that define how the game is played.
+- **Persistence layer.** Contains all data access logic. The purpose of this layer is to prevent the filtering of data access logic in the application core.
+- **Host Application.** Contains everything needed to run the game mode. It represents the entry point of the application.
+  This layer performs other tasks such as:
+  - Load application settings from `.env` file.
+  - Select the database provider.
+  - Register services to DI Container.
+  - Add systems to the services collection.
+  - Enable desired ECS system features.
 
 ## Credits
 
@@ -204,3 +250,11 @@ See the [example .env file](https://github.com/MrDave1999/Capture-The-Flag/blob/
 ## Contribution
 
 Any contribution is welcome! Remember that you can contribute not only in the code, but also in the documentation or even improve the tests.
+
+Follow the steps below:
+
+- Fork it
+- Create your custom branch (git checkout -b my-new-change)
+- Commit your changes (git commit -am 'Add some change')
+- Push to the branch (git push origin my-new-change)
+- Create new Pull Request
