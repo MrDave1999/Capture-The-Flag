@@ -60,7 +60,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY ["gamemodes/*.amx", "gamemodes/"]
 COPY ["filterscripts/*.amx", "filterscripts/"]
 COPY ["plugins/*.so", "plugins/"]
-COPY ["scriptfiles", "scriptfiles/"]
+COPY ["codepages/*.txt", "codepages/"]
 COPY ["server.cfg.example", "server.cfg"]
 COPY --from=tools /runtime runtime
 COPY --from=tools /sampserver/samp03 .
