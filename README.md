@@ -39,7 +39,8 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Testing](#testing)
   - [Own libraries](#own-libraries)
 - [Software Engineering](#software-engineering)
-- [Installation](#installation)
+- [Deployment without Docker](#deployment-without-docker)
+- [Deployment with Docker](#deployment-with-docker)
 - [Credentials](#credentials)
 - [Supported RDBMS](#supported-rdbms)
 - [Architectural overview](#architectural-overview)
@@ -143,9 +144,22 @@ Software engineering concepts have been applied in this project:
 - [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
 - [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)
 
-## Installation
+## Deployment without Docker
 
-In progress..
+- You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
+- You need to download the [ctf-gamemode-windows.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
+- Once downloaded, modify the `.env` file according to your needs.
+- Run the `samp-server.exe`.
+- Download GTA San Andreas to play the game.
+
+## Deployment with Docker
+
+The dockerfile of this project is built without problems. However when running the container, the game server (samp-server) stays initializing the dotnet runtime and does nothing else.
+
+This runtime has problems, since it consumes all the available memory of the current process: 
+https://github.com/Servarr/dotnet-linux-x86/releases/tag/v8.0.4-90. 
+
+As the game server (samp-server) is 32-bit, a 32-bit dotnet runtime is needed, only there is no official support.
 
 ## Credentials
 
