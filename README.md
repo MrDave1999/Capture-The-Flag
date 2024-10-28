@@ -30,14 +30,13 @@
 There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own one.
 
 ## Index
-- [About](#about)
+- [Gameplay](#gameplay)
 - [Screenshots](#screenshots)
 - [Technologies used](#technologies-used)
   - [Programming Languages](#programming-languages)
   - [Softwares](#softwares)
   - [Frameworks and libraries](#frameworks-and-libraries)
   - [Testing](#testing)
-  - [Own libraries](#own-libraries)
 - [Software Engineering](#software-engineering)
 - [Deployment without Docker](#deployment-without-docker)
 - [Deployment with Docker](#deployment-with-docker)
@@ -48,11 +47,11 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Mappers](#mappers)
 - [Contribution](#contribution)
 
-## About
+## Gameplay
 
 The Beta team plays against the Alpha team. The aim is to carry the enemy's flag to the spawn of the own flag. The own flag needs to be at the spawn to score. So you have to conquer the opponent's flag and defend your own team's one at the same time. It's necassary for the whole team to work together tactically to win.
 
-The team which which got more points after x minutes wins. If both teams have the same points after the time is up, it's a draw. 
+The team which which got more points after 15 minutes wins. If both teams have the same points after the time is up, it's a draw. 
 
 Beware! Enemies will see flag carriers on their radar as well!
 
@@ -99,6 +98,7 @@ In this video, you can watch a gameplay demo: https://youtu.be/yrPtJBuqB14
 ### Softwares
 - [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools)
 - [SA-MP Server](https://www.sa-mp.mp/downloads)
+- [CompileApp-FS](https://github.com/MrDave1999/CompileApp-FS)
 - [Visual Studio 2022](https://visualstudio.microsoft.com)
 - [vscode](https://github.com/microsoft/vscode)
 - [MariaDB](https://github.com/mariadb)
@@ -107,6 +107,7 @@ In this video, you can watch a gameplay demo: https://youtu.be/yrPtJBuqB14
 - [HeidiSQL](https://github.com/HeidiSQL)
 - [GitHub Actions](https://github.com/actions)
 - [Git](https://git-scm.com)
+- [draw.io](https://app.diagrams.net)
 - [Docker](https://github.com/docker)
 
 ### Frameworks and libraries
@@ -120,15 +121,13 @@ In this video, you can watch a gameplay demo: https://youtu.be/yrPtJBuqB14
 - [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)
 - [Microsoft.Extensions.Configuration.EnvironmentVariables](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.EnvironmentVariables)
 - [BCrypt.Net-Next](https://github.com/BcryptNet/bcrypt.net)
-
-### Testing
-- [NUnit](https://github.com/nunit/nunit)
-- [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
-
-### Own libraries
 - [DotEnv.Core](https://github.com/MrDave1999/dotenv.core)
 - [YeSql.Net](https://github.com/ose-net/yesql.net)
 - [seztion-parser](https://github.com/MrDave1999/seztion-parser)
+
+### Testing
+- [NUnit](https://github.com/nunit/nunit)
+- [Fluent Assertions](https://github.com/fluentassertions/fluentassertions)
 
 ## Software Engineering
 
@@ -218,7 +217,7 @@ See the [example .env file](https://github.com/MrDave1999/Capture-The-Flag/blob/
 </details>
 
 ### Main components
-- **Application Core.** Contains all the logic of the game called "Capture the Flag", including the rules and procedures that define how the game is played.
+- **Application Core.** Contains all the logic of the game called "Capture The Flag", including the rules and procedures that define how the game is played.
 - **Persistence layer.** Contains all data access logic. The purpose of this layer is to prevent the filtering of data access logic in the application core.
 - **Host Application.** Contains everything needed to run the game mode. It represents the entry point of the application.
   This layer performs other tasks such as:
