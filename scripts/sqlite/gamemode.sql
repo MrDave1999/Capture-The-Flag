@@ -5,8 +5,7 @@ CREATE TABLE IF NOT EXISTS players (
   CHECK(
     TRIM(name) != '' AND 
     LENGTH(name) >= 3 AND 
-    LENGTH(name) <= 20 AND 
-    name REGEXP '^[0-9a-zA-Z\[\]\(\)\$\@._=]+$'
+    LENGTH(name) <= 20
   ),
   password TEXT NOT NULL CHECK(TRIM(password) != ''),
   total_kills INTEGER NOT NULL CHECK(total_kills >= 0),
