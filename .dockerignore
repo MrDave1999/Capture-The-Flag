@@ -1,7 +1,9 @@
 **/bin
 **/obj
 **/dependencies
+ctf-gamemode-windows/
 dotnet/runtime/
+runtime/
 .vscode/
 .git/
 announce.exe
@@ -12,3 +14,5 @@ samp03svr
 samp-npc
 server.cfg
 server_log.txt
+*.zip
+*.rar
