@@ -1,8 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Windows'))">win-x86</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Linux'))">linux-x86</RuntimeIdentifier>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Persistence\Persistence.InMemory\Persistence.InMemory.csproj" />
@@ -18,7 +20,5 @@
     <PackageReference Include="DotEnv.Core" />
     <PackageReference Include="BCrypt.Net-Next" />
   </ItemGroup>
-
-  <Import Project="CopySQLiteLibrary.targets" />
 
 </Project>
