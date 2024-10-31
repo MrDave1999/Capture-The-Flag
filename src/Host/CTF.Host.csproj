@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Windows'))">win-x86</RuntimeIdentifier>
-    <RuntimeIdentifier Condition="$([MSBuild]::IsOSPlatform('Linux'))">linux-x86</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,5 +18,7 @@
     <PackageReference Include="DotEnv.Core" />
     <PackageReference Include="BCrypt.Net-Next" />
   </ItemGroup>
+
+  <Import Project="CopySQLiteLibrary.targets" />
 
 </Project>
