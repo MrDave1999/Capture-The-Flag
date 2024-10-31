@@ -62,7 +62,7 @@ public class MapRotationService
         if(_timeLeft.IsCompleted())
         {
             _loadTime.Decrease();
-            _worldService.GameText(_loadTime.GameText, time: 99999999, style: 3);
+            _mapTextDrawRenderer.UpdateLoadTime(_loadTime);
             return;
         }
 
@@ -121,7 +121,7 @@ public class MapRotationService
     private void OnLoadedMap()
     {
         _isMapLoading = false;
-        _worldService.GameText("_", 1000, 4);
+        _mapTextDrawRenderer.HideLoadTimeForAll();
         TimeLeft.Reset();
         CurrentMap currentMap = _mapInfoService.Read();
         string message = Smart.Format(Messages.MapSuccessfullyLoaded, new { currentMap.Name });
