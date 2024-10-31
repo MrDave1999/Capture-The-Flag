@@ -42,6 +42,8 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - [Deployment with Docker](#deployment-with-docker)
 - [Credentials](#credentials)
 - [Supported RDBMS](#supported-rdbms)
+  - [SQLite](#sqlite)
+  - [MariaDB](#mariadb)
 - [Architectural overview](#architectural-overview)
 - [Credits](#credits)
   - [Mappers](#mappers)
@@ -113,6 +115,7 @@ In this video, you can watch a gameplay demo: https://youtu.be/yrPtJBuqB14
 ### Frameworks and libraries
 - [.NET SDK 8.0](https://github.com/dotnet/runtime)
 - [SampSharp](https://github.com/ikkentim/SampSharp)
+- [SampSharp-streamer](https://github.com/ikkentim/SampSharp-streamer)
 - [samp-streamer-plugin](https://github.com/samp-incognito/samp-streamer-plugin)
 - [SmartFormat](https://github.com/axuno/SmartFormat)
 - [MySqlConnector](https://github.com/mysql-net/MySqlConnector)
@@ -178,21 +181,39 @@ DatabaseProvider=InMemory
 
 ## Supported RDBMS
 
-- [MariaDB](https://github.com/mariadb)
-- [SQLite](https://github.com/sqlite/sqlite)
+### SQLite
 
-You must specify the name of the database provider from the .env file.
-
-Examples:
+- Download sqlite3 CLI from [here](https://www.sqlite.org/download.html) (select the file named **sqlite-tools-win-x86**).
+- Create a file called `.env` in the root directory:
 ```sh
-DatabaseProvider=MariaDB
+copy .env.example .env
 ```
-Or also
+- You must specify the name of the database provider from the .env file:
 ```sh
 DatabaseProvider=SQLite
 ```
+- You must specify the location of the database file:
+```sh
+SQLite__DataSource=C:\Users\mrdave\OneDrive\Desktop\gamemode.db
+```
+- Finally, you must import the database:
+```sh
+sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
+```
+See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/scripts) for more information.
 
-If you choose to use MariaDB, you must specify the connection string in the .env file.
+### MariaDB
+
+- Install [MariaDb Server](https://mariadb.org/download) and set up your username and password.
+- Create a file called `.env` in the root directory:
+```sh
+copy .env.example .env
+```
+- You must specify the name of the database provider from the .env file:
+```sh
+DatabaseProvider=MariaDB
+```
+- You must specify the connection string in the .env file:
 ```sh
 MariaDB__Server=localhost
 MariaDB__Port=3306
@@ -200,12 +221,11 @@ MariaDB__Database=gamemode
 MariaDB__UserName=root
 MariaDB__Password=123456789
 ```
-Or, if you choose to use SQLite, you must specify the location of the database file.
+- Finally, you must import the database:
 ```sh
-SQLite__DataSource=C:\Users\dave\OneDrive\Desktop\gamemode.db
+mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
 ```
-
-See the [example .env file](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/.env.example) for more information.
+See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/scripts) for more information.
 
 ## Architectural overview
 
