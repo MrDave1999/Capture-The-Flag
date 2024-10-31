@@ -6,6 +6,7 @@ public class MapTextDrawRenderer
     private TextDraw _mapName;
     private TextDraw _timer;
     private TextDraw _timeLeft;
+    private TextDraw _loadTime;
 
     public MapTextDrawRenderer(IWorldService worldService)
     {
@@ -35,6 +36,17 @@ public class MapTextDrawRenderer
     public void UpdateTimeLeft(TimeLeft timeLeft)
     {
         _timeLeft.Text = timeLeft.TextDraw;
+    }
+
+    public void UpdateLoadTime(LoadTime loadTime)
+    {
+        _loadTime.Text = loadTime.GameText;
+        _loadTime.Show();
+    }
+
+    public void HideLoadTimeForAll()
+    {
+        _loadTime.Hide();
     }
 
     private void Initialize()
@@ -83,5 +95,19 @@ public class MapTextDrawRenderer
         _timeLeft.UseBox = true;
         _timeLeft.Proportional = true;
         _timeLeft.Selectable = false;
+
+        _loadTime = _worldService.CreateTextDraw(new Vector2(211.000000, 130.000000), string.Empty);
+        _loadTime.Text = "Loading map... (9)";
+        _loadTime.Font = TextDrawFont.Slim;
+        _loadTime.LetterSize = new Vector2(0.566666, 2.599997);
+        _loadTime.TextSize = new Vector2(503.500000, 16.000000);
+        _loadTime.Outline = 2;
+        _loadTime.Shadow = 1;
+        _loadTime.Alignment = TextDrawAlignment.Left;
+        _loadTime.ForeColor = new Color(-764862722);
+        _loadTime.BackColor = new Color(255);
+        _loadTime.BoxColor = new Color(50);
+        _loadTime.Proportional = true;
+        _loadTime.Selectable = false;
     }
 }
