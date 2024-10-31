@@ -1,6 +1,7 @@
 ﻿namespace CTF.Application.Teams.ClassSelection;
 
 public class ClassSelectionSystem(
+    IWorldService worldService,
     ClassSelectionTextDrawRenderer classSelectionTextDrawRenderer,
     TeamTextDrawRenderer teamTextDrawRenderer,
     MapRotationService mapRotationService,
@@ -80,6 +81,12 @@ public class ClassSelectionSystem(
         selectedTeam.Members.Add(player);
         classSelectionTextDrawRenderer.Hide(player);
         teamTextDrawRenderer.UpdateTeamMembers(selectedTeam);
+        var message = Smart.Format(Messages.PlayerAddedToTeam, new
+        {
+            PlayerName = player.Name,
+            TeamName = selectedTeam.Name
+        });
+        worldService.SendClientMessage(selectedTeam.ColorHex, message);
         return true;
     }
 
