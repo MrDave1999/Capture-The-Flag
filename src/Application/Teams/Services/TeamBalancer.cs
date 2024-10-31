@@ -37,11 +37,13 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
             {
                 alphaTeam.Members.Add(player);
                 playerInfo.SetTeam(alphaTeam.Id);
+                player.SendClientMessage(alphaTeam.ColorHex, Messages.AssignedToAlphaTeam);
             }
             else
             {
                 betaTeam.Members.Add(player);
                 playerInfo.SetTeam(betaTeam.Id);
+                player.SendClientMessage(betaTeam.ColorHex, Messages.AssignedToBetaTeam);
             }
             action.Invoke(player, playerInfo);
         }

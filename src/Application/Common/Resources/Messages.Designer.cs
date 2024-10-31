@@ -142,6 +142,24 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have been assigned to Alpha team.
+        /// </summary>
+        internal static string AssignedToAlphaTeam {
+            get {
+                return ResourceManager.GetString("AssignedToAlphaTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have been assigned to Beta team.
+        /// </summary>
+        internal static string AssignedToBetaTeam {
+            get {
+                return ResourceManager.GetString("AssignedToBetaTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ban reason must be {Length} characters or less.
         /// </summary>
         internal static string BanReason {

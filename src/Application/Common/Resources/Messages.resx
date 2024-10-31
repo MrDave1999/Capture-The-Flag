@@ -144,6 +144,12 @@
   <data name="AlphaIsWinner" xml:space="preserve">
     <value>This round was won by the Alpha team</value>
   </data>
+  <data name="AssignedToAlphaTeam" xml:space="preserve">
+    <value>You have been assigned to Alpha team</value>
+  </data>
+  <data name="AssignedToBetaTeam" xml:space="preserve">
+    <value>You have been assigned to Beta team</value>
+  </data>
   <data name="BanReason" xml:space="preserve">
     <value>The ban reason must be {Length} characters or less</value>
   </data>
