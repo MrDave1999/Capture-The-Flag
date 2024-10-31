@@ -3,11 +3,15 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# In this directory are all the files to run the game mode
+ctf-gamemode-windows/
+
 # Vendor directory for dependencies
 /**/dependencies/
 
 # .NET Runtime binaries
 dotnet/runtime/
+runtime/
 
 # environment variables for development and test
 **/.env
@@ -43,6 +47,8 @@ pawno/
 *.user
 *.userosscache
 *.sln.docstates
+*.zip
+*.rar
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
