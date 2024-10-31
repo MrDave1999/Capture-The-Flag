@@ -309,6 +309,9 @@
   <data name="PasswordSuccessfullyChanged" xml:space="preserve">
     <value>Password successfully changed. New password: {NewPassword}</value>
   </data>
+  <data name="PlayerAddedToTeam" xml:space="preserve">
+    <value>{PlayerName} has been added to the {TeamName} team</value>
+  </data>
   <data name="PlayerAlreadyHasThatRole" xml:space="preserve">
     <value>The player already has that role</value>
   </data>

@@ -637,6 +637,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has been added to the {TeamName} team.
+        /// </summary>
+        internal static string PlayerAddedToTeam {
+            get {
+                return ResourceManager.GetString("PlayerAddedToTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The player already has that role.
         /// </summary>
         internal static string PlayerAlreadyHasThatRole {
