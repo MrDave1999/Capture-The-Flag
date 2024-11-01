@@ -57,7 +57,7 @@ The team which which got more points after 15 minutes wins. If both teams have t
 
 Beware! Enemies will see flag carriers on their radar as well!
 
-In this video, you can watch a gameplay demo: https://youtu.be/yrPtJBuqB14
+In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or also see the [play list](https://www.youtube.com/playlist?list=PLBM-9TMXSAJjsWn4zmg1ua7eof9Aj83fS).
 
 ## Screenshots
 
@@ -153,6 +153,7 @@ Software engineering concepts have been applied in this project:
 - Once downloaded, modify the `.env` file according to your needs.
 - Run the `samp-server.exe`.
 - Download GTA San Andreas to play the game.
+- Finally, you must download the [SA-MP client](https://www.sa-mp.mp/downloads) or the [open.mp launcher](https://github.com/openmultiplayer/launcher/releases).
 
 ## Deployment with Docker
 
