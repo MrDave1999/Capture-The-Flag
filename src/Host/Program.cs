@@ -5,7 +5,9 @@ public class Program
     static void Main(string[] args)
     {
         var envVars = new EnvLoader()
+            #if DEBUG
             .EnableFileNotFoundException()
+            #endif
             .AddEnvFile(".env")
             .Load();
 
