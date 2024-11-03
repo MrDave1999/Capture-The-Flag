@@ -1,9 +1,11 @@
 #
 # Build stage/image
 #
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 COPY *.props .
+# .NET 8.0 is required because the game mode uses C# 12.0.
+COPY --from=mcr.microsoft.com/dotnet/sdk:8.0 /usr/share/dotnet /usr/share/dotnet
 
 # Copy csproj and restore as distinct layers
 COPY ["src/Host/*.csproj", "src/Host/"]
@@ -14,11 +16,11 @@ COPY ["src/Persistence/Persistence.MariaDB/*.csproj", "src/Persistence/Persisten
 COPY ["src/Persistence/Persistence.SQLite/*.csproj", "src/Persistence/Persistence.SQLite/"]
 COPY ["src/Persistence/*.props", "src/Persistence/"]
 WORKDIR /app/src/Host
-RUN dotnet restore
+RUN dotnet restore -p:TargetFramework=net6.0
 
 # Copy everything else and build
 COPY ["src/", "/app/src/"]
-RUN dotnet publish -c Release -o /app/out --no-restore
+RUN dotnet publish --framework=net6.0 -c Release -o /app/out --no-restore
 
 #
 # Download SA-MP server and dotnet linux-x86 
