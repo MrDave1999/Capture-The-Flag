@@ -12,17 +12,23 @@ env:
 
 jobs:
   unit_testing:
+    strategy:
+      matrix:
+        dotnet: ['6.x', '8.x']
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+        dotnet-version: ${{matrix.dotnet}}
     - name: Execute unit tests
       run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
 
   integration_testing:
+    strategy:
+      matrix:
+        dotnet: ['6.x', '8.x']
     runs-on: ubuntu-latest
     services:
       mariadb:
@@ -41,9 +47,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+        dotnet-version: ${{matrix.dotnet}}
     - name: Check MariaDB version
       run: docker exec mariadb mariadb --version
     - name: Check SQLite version
