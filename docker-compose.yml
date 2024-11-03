@@ -8,6 +8,8 @@ services:
       && ./samp03svr"
     ports:
       - ${Port}:7777/udp
+    volumes:
+      - ./scripts/sqlite:/app/scripts/sqlite
 
 networks:
   default:
