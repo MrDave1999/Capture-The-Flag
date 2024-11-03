@@ -1,4 +1,4 @@
-name: Capture.The.Flag
+name: CTF CI
 
 on: 
   push:
