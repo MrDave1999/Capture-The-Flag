@@ -38,6 +38,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Frameworks and libraries](#frameworks-and-libraries)
   - [Testing](#testing)
 - [Software Engineering](#software-engineering)
+- [Requirements to play](#requirements-to-play)
 - [Deployment without Docker](#deployment-without-docker)
 - [Deployment with Docker](#deployment-with-docker)
 - [Credentials](#credentials)
@@ -146,23 +147,41 @@ Software engineering concepts have been applied in this project:
 - [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
 - [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)
 
+## Requirements to play
+
+- You must have **DirectX 9** installed on your local machine.
+- You must download **Grand Theft Auto: San Andreas** on your local machine.
+- You must download the [SA-MP client](https://www.sa-mp.mp/downloads) or the [open.mp launcher](https://github.com/openmultiplayer/launcher/releases) to connect to the servers.
+
 ## Deployment without Docker
 
 - You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
 - You need to download the [ctf-gamemode-windows.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
 - Once downloaded, modify the `.env` file according to your needs.
 - Run the `samp-server.exe`.
-- Download GTA San Andreas to play the game.
-- Finally, you must download the [SA-MP client](https://www.sa-mp.mp/downloads) or the [open.mp launcher](https://github.com/openmultiplayer/launcher/releases).
 
 ## Deployment with Docker
 
-The dockerfile of this project is built without problems. However when running the container, the game server (samp-server) stays initializing the dotnet runtime and does nothing else.
-
-This runtime has problems, since it consumes all the available memory of the current process: 
-https://github.com/Servarr/dotnet-linux-x86/releases/tag/v8.0.4-90. 
-
-As the game server (samp-server) is 32-bit, a 32-bit dotnet runtime is needed, only there is no official support.
+- Clone the repository:
+```sh
+git clone https://github.com/MrDave1999/Capture-The-Flag.git
+```
+- Change directory:
+```sh
+cd Capture-The-Flag
+```
+- Copy the contents of `.env.example` to `.env`:
+```sh
+cp .env.example .env
+```
+- Build the image and initiate services:
+```sh
+docker compose up --build -d
+```
+- Add the server IP in your [SA-MP client](https://www.sa-mp.mp/downloads):
+```
+localhost:7777
+```
 
 ## Credentials
 
