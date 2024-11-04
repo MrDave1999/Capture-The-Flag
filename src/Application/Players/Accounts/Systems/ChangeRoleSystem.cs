@@ -68,8 +68,8 @@ public class ChangeRoleSystem(
         }
 
         var ownerName = serverOwnerSettings.Name.Trim();
-        bool isNotEquals = !currentPlayer.Name.Equals(ownerName, StringComparison.OrdinalIgnoreCase);
-        if (isNotEquals)
+        bool isNotOwner = !currentPlayer.Name.Equals(ownerName, StringComparison.OrdinalIgnoreCase);
+        if (isNotOwner)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.PlayerIsNotServerOwner);
             return;
