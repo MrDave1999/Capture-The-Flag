@@ -53,7 +53,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 
 ## Gameplay
 
-The Beta team plays against the Alpha team. The aim is to carry the enemy's flag to the spawn of the own flag. The own flag needs to be at the spawn to score. So you have to conquer the opponent's flag and defend your own team's one at the same time. It's necassary for the whole team to work together tactically to win.
+The Beta team plays against the Alpha team. The aim is to carry the enemy's flag to the spawn of the own flag. The own flag needs to be at the spawn to score. So you have to conquer the opponent's flag and defend your own team's one at the same time. It's necessary for the whole team to work together tactically to win.
 
 The team which which got more points after 15 minutes wins. If both teams have the same points after the time is up, it's a draw. 
 
