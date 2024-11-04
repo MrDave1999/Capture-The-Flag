@@ -42,6 +42,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - [Deployment without Docker](#deployment-without-docker)
 - [Deployment with Docker](#deployment-with-docker)
 - [Credentials](#credentials)
+- [How to become an admin?](#how-to-become-an-admin)
 - [Supported RDBMS](#supported-rdbms)
   - [SQLite](#sqlite)
   - [MariaDB](#mariadb)
@@ -198,6 +199,15 @@ Note that these credentials are only available if your database provider is **in
 ```sh
 DatabaseProvider=InMemory
 ```
+
+## How to become an admin?
+
+You must add your name and secret key from the `.env` file:
+```sh
+ServerOwner__Name=MrDave # Your nickname in the game
+ServerOwner__SecretKey=1234._%==?! # Specify the secret key to give me admin.
+```
+It is necessary to specify your secret key, which you will use when executing the command "**/givemeadmin**" in the game.
 
 ## Supported RDBMS
 
