@@ -18,10 +18,15 @@ public static class AppSettingsExtensions
             .GetRequiredSection("TopPlayers")
             .Get<TopPlayersSettings>();
 
+        var serverOwnerSettings = configuration
+            .GetRequiredSection("ServerOwner")
+            .Get<ServerOwnerSettings>();
+
         services
             .AddSingleton(serverSettings)
             .AddSingleton(commandCooldowns)
-            .AddSingleton(topPlayersSettings);
+            .AddSingleton(topPlayersSettings)
+            .AddSingleton(serverOwnerSettings);
 
         return services;
     }

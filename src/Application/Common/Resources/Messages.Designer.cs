@@ -628,6 +628,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Owner&apos;s name or secret key are not set.
+        /// </summary>
+        internal static string OwnerNameOrSecretKeyAreNotSet {
+            get {
+                return ResourceManager.GetString("OwnerNameOrSecretKeyAreNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password cannot be empty.
         /// </summary>
         internal static string PasswordCannotBeEmpty {
@@ -714,6 +723,15 @@ namespace CTF.Application.Common.Resources {
         internal static string PlayerIsInClassSelection {
             get {
                 return ResourceManager.GetString("PlayerIsInClassSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not the owner of this server.
+        /// </summary>
+        internal static string PlayerIsNotServerOwner {
+            get {
+                return ResourceManager.GetString("PlayerIsNotServerOwner", resourceCulture);
             }
         }
         
@@ -1083,6 +1101,15 @@ namespace CTF.Application.Common.Resources {
         internal static string WrongPassword {
             get {
                 return ResourceManager.GetString("WrongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The secret key you entered is incorrect. Please try again.
+        /// </summary>
+        internal static string WrongSecretKey {
+            get {
+                return ResourceManager.GetString("WrongSecretKey", resourceCulture);
             }
         }
     }
