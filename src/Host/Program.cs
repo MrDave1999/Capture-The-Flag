@@ -17,6 +17,7 @@ public class Program
         new GameModeBuilder()
             .UseEcs<Startup>()
             .UseEncoding(path)
+            .RedirectConsoleOutput()
             .Run();
     }
 }
