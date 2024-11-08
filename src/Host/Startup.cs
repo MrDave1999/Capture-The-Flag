@@ -27,6 +27,7 @@ public class Startup : IStartup
     {
         // TODO: Enable desired ECS system features
         builder
+            .EnableExceptionHandler()
             .RegisterMiddlewares()
             .EnableSampEvents()
             .EnablePlayerCommands()
