@@ -129,6 +129,9 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 - [DotEnv.Core](https://github.com/MrDave1999/dotenv.core)
 - [YeSql.Net](https://github.com/ose-net/yesql.net)
 - [seztion-parser](https://github.com/MrDave1999/seztion-parser)
+- [Serilog.Sinks.Console](https://github.com/serilog/serilog-sinks-console)
+- [Serilog.Sinks.File](https://github.com/serilog/serilog-sinks-file)
+- [Serilog.Extensions.Logging](https://github.com/serilog/serilog-extensions-logging)
 
 ### Testing
 - [NUnit](https://github.com/nunit/nunit)
