@@ -29,6 +29,7 @@ samp03svr
 samp-npc
 
 # logs
+logs/
 server_log.txt
 crashinfo.txt
 
