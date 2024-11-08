@@ -58,6 +58,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libstdc++6:i386 \
     libssl1.1:i386 \
     libicu-dev:i386 \
+    tzdata \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ["gamemodes/*.amx", "gamemodes/"]
