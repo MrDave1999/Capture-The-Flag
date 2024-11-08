@@ -10,6 +10,7 @@ public class Startup : IStartup
 
         services.ChooseDatabaseProvider(configuration);
         services
+            .AddSerilog()
             .AddApplicationServices()
             .AddSettings(configuration)
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
@@ -26,6 +27,7 @@ public class Startup : IStartup
     {
         // TODO: Enable desired ECS system features
         builder
+            .EnableExceptionHandler()
             .RegisterMiddlewares()
             .EnableSampEvents()
             .EnablePlayerCommands()

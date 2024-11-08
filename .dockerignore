@@ -6,6 +6,10 @@ dotnet/runtime/
 runtime/
 .vscode/
 .git/
+logs/
+scripts/
+screenshots/
+tests/
 announce.exe
 samp-server.exe
 samp-npc.exe
