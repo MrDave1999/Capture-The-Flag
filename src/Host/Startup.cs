@@ -10,6 +10,7 @@ public class Startup : IStartup
 
         services.ChooseDatabaseProvider(configuration);
         services
+            .AddSerilog()
             .AddApplicationServices()
             .AddSettings(configuration)
             .AddSingleton<IPasswordHasher, PasswordHasherBcrypt>()
