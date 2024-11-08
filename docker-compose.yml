@@ -11,6 +11,7 @@ services:
       - ${Port}:7777/udp
     volumes:
       - ./scripts/sqlite:/app/scripts/sqlite
+      - ./logs:/app/logs
 
 networks:
   default:
