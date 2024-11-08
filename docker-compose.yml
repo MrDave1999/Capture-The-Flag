@@ -9,6 +9,8 @@ services:
       && ./samp03svr"
     ports:
       - ${Port}:7777/udp
+    environment:
+      - TZ=${TZ}
     volumes:
       - ./scripts/sqlite:/app/scripts/sqlite
       - ./logs:/app/logs
