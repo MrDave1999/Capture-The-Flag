@@ -2,7 +2,7 @@ name: Upload artifacts
 
 on:
   release:
-    types: [created]
+    types: [published]
 env:
   DOTNET_VERSION: '8.x'
 
