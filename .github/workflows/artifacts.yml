@@ -33,7 +33,7 @@ jobs:
       - name: Copy .env file
         run: cp .env ctf-gamemode-windows
       - name: Create compressed file
-        run: zip ctf-gamemode-windows
+        run: zip -r ctf-gamemode-windows.zip ctf-gamemode-windows
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
