@@ -24,6 +24,10 @@ jobs:
         run: |
          mv ctf-gamemode-windows/samp03/** ctf-gamemode-windows
          rmdir ctf-gamemode-windows/samp03
+      - name: Add plugins to server.cfg file
+        run: |
+         echo "" >> ctf-gamemode-windows/server.cfg 
+         echo "plugins SampSharp streamer" >> ctf-gamemode-windows/server.cfg
       - name: Build game mode
         run: dotnet publish src/Host -c Release -o bin --framework=net8.0
       - name: Copy artifacts
