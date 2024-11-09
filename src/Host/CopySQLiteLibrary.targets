@@ -2,12 +2,10 @@
   <Target Name="CopySQLiteLibraryToOutputDir" AfterTargets="PostBuildEvent">
     <Message Importance="high" Text="OSPlatform: $(OS)" />
     <Copy
-      Condition="$([MSBuild]::IsOSPlatform('Windows'))"
       SourceFiles="bin\$(Configuration)\$(TargetFramework)\runtimes\win-x86\native\e_sqlite3.dll"
       DestinationFolder="$(OutputPath)"
     />
     <Copy
-      Condition="$([MSBuild]::IsOSPlatform('Linux'))"
       SourceFiles="bin\$(Configuration)\$(TargetFramework)\runtimes\linux-x86\native\libe_sqlite3.so"
       DestinationFolder="$(OutputPath)"
     />
@@ -17,12 +15,10 @@
     <Message Importance="high" Text="OutputPath: $(OutputPath)" />
     <Message Importance="high" Text="PublishDir: $(PublishDir)" />
     <Copy
-      Condition="$([MSBuild]::IsOSPlatform('Windows'))"
       SourceFiles="$(OutputPath)\e_sqlite3.dll"
       DestinationFolder="$(PublishDir)"
     />
     <Copy
-      Condition="$([MSBuild]::IsOSPlatform('Linux'))"
       SourceFiles="$(OutputPath)\libe_sqlite3.so"
       DestinationFolder="$(PublishDir)"
     />
