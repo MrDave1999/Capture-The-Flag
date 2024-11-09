@@ -182,6 +182,10 @@ cp .env.example .env
 ```sh
 docker compose up --build -d
 ```
+- Check the server logs to see if everything is working properly:
+```sh
+docker compose exec -it app cat server_log.txt
+```
 - Add the server IP in your [SA-MP client](https://www.sa-mp.mp/downloads):
 ```
 localhost:7777
