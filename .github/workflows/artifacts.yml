@@ -39,7 +39,7 @@ jobs:
         run: cp .env ctf-gamemode-windows
       - name: Create compressed file
         run: zip -r ctf-gamemode-windows.zip ctf-gamemode-windows
-      - name: Upload artifacts for release
+      - name: Upload artifacts to release
         uses: softprops/action-gh-release@v2
         with:
           files: ctf-gamemode-windows.zip
