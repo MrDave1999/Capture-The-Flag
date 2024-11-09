@@ -29,8 +29,8 @@ jobs:
       - name: Copy artifacts
         run: |
           cp -r bin ctf-gamemode-windows
-          cp -r plugins/*.dll ctf-gamemode-windows
-          cp -r filterscripts/*.amx ctf-gamemode-windows
+          cp -r plugins/*.dll ctf-gamemode-windows/plugins/
+          cp -r filterscripts/*.amx ctf-gamemode-windows/filterscripts/
           cp -r scripts ctf-gamemode-windows
       - name: Create .env file
         run: cp .env.example .env
