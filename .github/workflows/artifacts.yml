@@ -28,6 +28,7 @@ jobs:
         run: dotnet publish src/Host -c Release -o bin --framework=net8.0
       - name: Copy artifacts
         run: |
+          mkdir ctf-gamemode-windows/plugins ctf-gamemode-windows/filterscripts
           cp -r bin ctf-gamemode-windows
           cp plugins/*.dll ctf-gamemode-windows/plugins
           cp filterscripts/*.amx ctf-gamemode-windows/filterscripts
