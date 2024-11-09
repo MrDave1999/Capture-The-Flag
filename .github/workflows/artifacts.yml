@@ -19,20 +19,18 @@ jobs:
       - name: Download SA-MP Server
         run: wget https://github.com/MrDave1999/samp-server/releases/download/sampserver.v1/samp03.zip
       - name: Unzip SA-MP Server
+        run: unzip samp03.zip -d ctf-gamemode-windows
+      - name: Move contents of samp03 to root directory
         run: |
-         unzip samp03.zip -d ctf-gamemode-windows
          mv ctf-gamemode-windows/samp03/** ctf-gamemode-windows/
          rmdir ctf-gamemode-windows/samp03
-      - name: Copy contents of samp03 to the root directory
-        run: |
-         
       - name: Build game mode
         run: dotnet publish src/Host -c Release -o bin --framework=net8.0
       - name: Copy artifacts
         run: |
           cp -r bin ctf-gamemode-windows
-          cp -r plugins ctf-gamemode-windows
-          cp -r filterscripts ctf-gamemode-windows
+          cp -r plugins/*.dll ctf-gamemode-windows
+          cp -r filterscripts/*.amx ctf-gamemode-windows
           cp -r scripts ctf-gamemode-windows
       - name: Create .env file
         run: cp .env.example .env
