@@ -22,15 +22,15 @@ jobs:
         run: unzip samp03.zip -d ctf-gamemode-windows
       - name: Move contents of samp03 to root directory
         run: |
-         mv ctf-gamemode-windows/samp03/** ctf-gamemode-windows/
+         mv ctf-gamemode-windows/samp03/** ctf-gamemode-windows
          rmdir ctf-gamemode-windows/samp03
       - name: Build game mode
         run: dotnet publish src/Host -c Release -o bin --framework=net8.0
       - name: Copy artifacts
         run: |
           cp -r bin ctf-gamemode-windows
-          cp -r plugins/*.dll ctf-gamemode-windows/plugins/
-          cp -r filterscripts/*.amx ctf-gamemode-windows/filterscripts/
+          cp plugins/*.dll ctf-gamemode-windows/plugins
+          cp filterscripts/*.amx ctf-gamemode-windows/filterscripts
           cp -r scripts ctf-gamemode-windows
       - name: Create .env file
         run: cp .env.example .env
@@ -38,7 +38,7 @@ jobs:
         run: cp .env ctf-gamemode-windows
       - name: Create compressed file
         run: zip -r ctf-gamemode-windows.zip ctf-gamemode-windows
-      - name: Release
+      - name: Upload artifacts for release
         uses: softprops/action-gh-release@v2
         with:
           files: ctf-gamemode-windows.zip
