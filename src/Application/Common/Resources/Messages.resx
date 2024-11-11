@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddArmourToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has added {Armour}%% to the armour of all players!</value>
+  </data>
+  <data name="AddArmourToPlayer" xml:space="preserve">
+    <value>You have added {Armour}%% armour to {PlayerName}!</value>
+  </data>
+  <data name="AddCoinsToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has generously given {Coins} coins to all the players!</value>
+  </data>
+  <data name="AddCoinsToPlayer" xml:space="preserve">
+    <value>You have given {Coins} coins to {PlayerName}</value>
+  </data>
+  <data name="AddHealthToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has added {Health}%% to the health of all players!</value>
+  </data>
+  <data name="AddHealthToPlayer" xml:space="preserve">
+    <value>You have added {Health}%% health to {PlayerName}!</value>
+  </data>
+  <data name="AddScoreToAllPlayers" xml:space="preserve">
+    <value>{PlayerName} has added {Score} to the score of all players!</value>
+  </data>
+  <data name="AddScoreToPlayer" xml:space="preserve">
+    <value>You have added {Score} score to {PlayerName}!</value>
+  </data>
+  <data name="AlphaIsWinner" xml:space="preserve">
+    <value>This round was won by the Alpha team</value>
+  </data>
+  <data name="AssignedToAlphaTeam" xml:space="preserve">
+    <value>You have been assigned to Alpha team</value>
+  </data>
+  <data name="AssignedToBetaTeam" xml:space="preserve">
+    <value>You have been assigned to Beta team</value>
+  </data>
+  <data name="BanReason" xml:space="preserve">
+    <value>The ban reason must be {Length} characters or less</value>
+  </data>
+  <data name="BetaIsWinner" xml:space="preserve">
+    <value>This round was won by the Beta team</value>
+  </data>
+  <data name="BlueFlagIsNotAtBasePosition" xml:space="preserve">
+    <value>~n~~n~~n~~b~The blue flag is not at its base position</value>
+  </data>
+  <data name="ChatDisabled" xml:space="preserve">
+    <value>Chat is currently disabled while you select your class. Please finish your selection before chatting!</value>
+  </data>
+  <data name="CommandLockClassSelection" xml:space="preserve">
+    <value>You cannot execute commands in the class selection</value>
+  </data>
+  <data name="CommandLockMapLoading" xml:space="preserve">
+    <value>You cannot execute commands while the map is loading</value>
+  </data>
+  <data name="ConsecutiveKills" xml:space="preserve">
+    <value>{PlayerName} has had {Kills} consecutive kills without dying</value>
+  </data>
+  <data name="CreatePlayerAccount" xml:space="preserve">
+    <value>You have successfully registered. Password: {Password}</value>
+  </data>
+  <data name="DemotedToRole" xml:space="preserve">
+    <value>Demoted to {RoleName} role</value>
+  </data>
+  <data name="EmptyWeaponPackage" xml:space="preserve">
+    <value>You have no items in your weapon package</value>
+  </data>
+  <data name="ExitSpectatorMode" xml:space="preserve">
+    <value>To exit spectator mode use the command /class</value>
+  </data>
+  <data name="FlagAutoReturn" xml:space="preserve">
+    <value>The {ColorName} flag has automatically returned to its base position after {Seconds} seconds!</value>
+  </data>
+  <data name="GameModeDescription" xml:space="preserve">
+    <value>~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
+  </data>
+  <data name="GiveMeCoins" xml:space="preserve">
+    <value>You have obtained 100 coins!</value>
+  </data>
+  <data name="HasCapturedFlag" xml:space="preserve">
+    <value>You cannot use this command because you are the flag carrier</value>
+  </data>
+  <data name="InsufficientCoins" xml:space="preserve">
+    <value>You do not have enough coins to obtain this combo</value>
+  </data>
+  <data name="InvalidAddCoins" xml:space="preserve">
+    <value>Coins must be between 1 to 100</value>
+  </data>
+  <data name="InvalidInterval" xml:space="preserve">
+    <value>The interval must be between 0 to {Max}</value>
+  </data>
+  <data name="InvalidMap" xml:space="preserve">
+    <value>Invalid map id has been passed</value>
+  </data>
+  <data name="InvalidMaxTopPlayers" xml:space="preserve">
+    <value>The maximum number of players must be between 5 to 15</value>
+  </data>
+  <data name="InvalidNickName" xml:space="preserve">
+    <value>Must be 3-20 characters long and only contain valid characters (0-9, a-z, A-Z, [], (), $, @ . _ and = only)</value>
+  </data>
+  <data name="InvalidRank" xml:space="preserve">
+    <value>Invalid rank has been passed</value>
+  </data>
+  <data name="InvalidRole" xml:space="preserve">
+    <value>Role ID must be between 0 and 3</value>
+  </data>
+  <data name="InvalidSkin" xml:space="preserve">
+    <value>Skin ID must be between 0 and 311</value>
+  </data>
+  <data name="InvalidSubtractCoins" xml:space="preserve">
+    <value>Coins must be between -1 to -100</value>
+  </data>
+  <data name="InvalidTeam" xml:space="preserve">
+    <value>Invalid team has been passed. Should be Alpha = 0, Beta = 1 or NoTeam = 255</value>
+  </data>
+  <data name="InvalidVitality" xml:space="preserve">
+    <value>Vitality must be between 0 to 100</value>
+  </data>
+  <data name="InvalidWeapon" xml:space="preserve">
+    <value>Invalid weapon has been passed</value>
+  </data>
+  <data name="LocationListCannotBeEmpty" xml:space="preserve">
+    <value>The spawn location list cannot be empty</value>
+  </data>
+  <data name="LoginOrRegisterToContinue" xml:space="preserve">
+    <value>Please log in or register to continue</value>
+  </data>
+  <data name="MapChangeForced" xml:space="preserve">
+    <value>{PlayerName} forced the map change to {MapName}</value>
+  </data>
+  <data name="MapIsLoading" xml:space="preserve">
+    <value>Please wait while the map is being loaded</value>
+  </data>
+  <data name="MapNotFound" xml:space="preserve">
+    <value>Map has not been found</value>
+  </data>
+  <data name="MapSuccessfullyLoaded" xml:space="preserve">
+    <value>{Name} has been successfully loaded</value>
+  </data>
+  <data name="MemberAlreadyExists" xml:space="preserve">
+    <value>Player '{Name}' is a member that already exists</value>
+  </data>
+  <data name="NameCannotBeEmpty" xml:space="preserve">
+    <value>Name cannot be empty</value>
+  </data>
+  <data name="NameSuccessfullyChanged" xml:space="preserve">
+    <value>{OldName} changed their name to {NewName}</value>
+  </data>
+  <data name="NextMapSelection" xml:space="preserve">
+    <value>{PlayerName} decided that the next map will be in {MapName}</value>
+  </data>
+  <data name="NextMapWillBeLoadedSoon" xml:space="preserve">
+    <value>The next map will be loaded soon: {Name}</value>
+  </data>
+  <data name="NextRank" xml:space="preserve">
+    <value>You moved up to {Name} rank, congratulations!</value>
+  </data>
+  <data name="NoAdminsConnected" xml:space="preserve">
+    <value>There are currently no administrators connected to the server</value>
+  </data>
+  <data name="NoMatchFound" xml:space="preserve">
+    <value>No match found</value>
+  </data>
+  <data name="NoPermissions" xml:space="preserve">
+    <value>You do not have permissions to use this command</value>
+  </data>
+  <data name="NoTeam" xml:space="preserve">
+    <value>You do not belong to any team</value>
+  </data>
+  <data name="NoVIPsConnected" xml:space="preserve">
+    <value>There are no VIP players connected at the moment</value>
+  </data>
+  <data name="OldSkinIsEqualsToNewSkin" xml:space="preserve">
+    <value>You already have that skin</value>
+  </data>
+  <data name="OnFlagAtBasePosition" xml:space="preserve">
+    <value>~n~~n~~n~{GameText}Defend this flag from enemy capture!</value>
+  </data>
+  <data name="OnFlagCaptured" xml:space="preserve">
+    <value>{PlayerName} has captured the {TeamName} team's {ColorName} flag! Keep an eye on the score!</value>
+  </data>
+  <data name="OnFlagDropped" xml:space="preserve">
+    <value>{PlayerName} has dropped the {TeamName} team's {ColorName} flag! Retrieve it before the enemy does!</value>
+  </data>
+  <data name="OnFlagReturned" xml:space="preserve">
+    <value>{PlayerName} has returned the {TeamName} team's {ColorName} flag to its base! Keep up the defense!</value>
+  </data>
+  <data name="OnFlagScore" xml:space="preserve">
+    <value>{PlayerName} has brought the {ColorName} flag to the {TeamName} team's base. Point scored!</value>
+  </data>
+  <data name="OnFlagTaken" xml:space="preserve">
+    <value>{PlayerName} has taken the {TeamName} team's {ColorName} flag! Keep an eye on the score!</value>
+  </data>
+  <data name="OwnerNameOrSecretKeyAreNotSet" xml:space="preserve">
+    <value>Owner's name or secret key are not set</value>
+  </data>
+  <data name="PasswordCannotBeEmpty" xml:space="preserve">
+    <value>Password cannot be empty</value>
+  </data>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>Password must be between 5 and 20 characters</value>
+  </data>
+  <data name="PasswordSuccessfullyChanged" xml:space="preserve">
+    <value>Password successfully changed. New password: {NewPassword}</value>
+  </data>
+  <data name="PlayerAddedToTeam" xml:space="preserve">
+    <value>{PlayerName} has been added to the {TeamName} team</value>
+  </data>
+  <data name="PlayerAlreadyHasThatRole" xml:space="preserve">
+    <value>The player already has that role</value>
+  </data>
+  <data name="PlayerHasChangedTeams" xml:space="preserve">
+    <value>Attention, team! {PlayerName} has made the switch and is now part of the {TeamName} team</value>
+  </data>
+  <data name="PlayerInSpectatorMode" xml:space="preserve">
+    <value>The player is in spectator mode</value>
+  </data>
+  <data name="PlayerIsAlreadyInTeam" xml:space="preserve">
+    <value>You are already a member of that team</value>
+  </data>
+  <data name="PlayerIsEqualsToTargetPlayer" xml:space="preserve">
+    <value>You cannot use this command for yourself</value>
+  </data>
+  <data name="PlayerIsInClassSelection" xml:space="preserve">
+    <value>The player is in the class selection</value>
+  </data>
+  <data name="PlayerIsNotServerOwner" xml:space="preserve">
+    <value>You are not the owner of this server</value>
+  </data>
+  <data name="PlayerNameAlreadyExists" xml:space="preserve">
+    <value>That player name already exists</value>
+  </data>
+  <data name="PlayerNameLength" xml:space="preserve">
+    <value>Name must be between 3 and 20 characters</value>
+  </data>
+  <data name="PlayerNotFound" xml:space="preserve">
+    <value>Player '{Name}' is not found</value>
+  </data>
+  <data name="PlayerWithInsufficientHealth" xml:space="preserve">
+    <value>You don't have enough health</value>
+  </data>
+  <data name="PromotedToRole" xml:space="preserve">
+    <value>Promoted to {RoleName} role</value>
+  </data>
+  <data name="RankUpAward" xml:space="preserve">
+    <value>You have gained +100 coins, +100 armour, and +100 health</value>
+  </data>
+  <data name="ReceiveArmourFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Armour}%% armour from {PlayerName}!</value>
+  </data>
+  <data name="ReceiveCoinsFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Coins} coins from {PlayerName}!</value>
+  </data>
+  <data name="ReceiveHealthFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Health}%% health from {PlayerName}!</value>
+  </data>
+  <data name="ReceiveKillsFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Kills} kills from {PlayerName}!</value>
+  </data>
+  <data name="ReceiveScoreFromPlayer" xml:space="preserve">
+    <value>Congratulations! You've received {Score} score from {PlayerName}!</value>
+  </data>
+  <data name="RedeemedCoins" xml:space="preserve">
+    <value>{PlayerName} redeemed their coins for the combo: {ComboName}</value>
+  </data>
+  <data name="RedFlagIsNotAtBasePosition" xml:space="preserve">
+    <value>~n~~n~~n~~r~The red flag is not at its base position</value>
+  </data>
+  <data name="ReportSuccessfullySent" xml:space="preserve">
+    <value>You have successfully sent the report</value>
+  </data>
+  <data name="ReportToAnotherPlayer" xml:space="preserve">
+    <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="ResetPlayerStats" xml:space="preserve">
+    <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>
+  </data>
+  <data name="RoleSuccessfullyChanged" xml:space="preserve">
+    <value>You have assigned the {RoleName} role to {PlayerName}</value>
+  </data>
+  <data name="SavedSkin" xml:space="preserve">
+    <value>The skin ID {SkinId} has been successfully saved</value>
+  </data>
+  <data name="SetKillsToPlayer" xml:space="preserve">
+    <value>You have successfully set {PlayerName}'s kills to {Kills}!</value>
+  </data>
+  <data name="SetScoreToPlayer" xml:space="preserve">
+    <value>You have successfully set {PlayerName}'s score to {Score}!</value>
+  </data>
+  <data name="SetSpawnToPlayer" xml:space="preserve">
+    <value>You've spawned {PlayerName} into the game!</value>
+  </data>
+  <data name="SpawnLocationFailure" xml:space="preserve">
+    <value>A spawn location can only be obtained for the alpha or beta team</value>
+  </data>
+  <data name="SuccessfulLogin" xml:space="preserve">
+    <value>You have successfully logged in</value>
+  </data>
+  <data name="SuccessfullyBanned" xml:space="preserve">
+    <value>Attention, players! {CurrentPlayer} has banned {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="SuccessfullyKicked" xml:space="preserve">
+    <value>Attention, players! {CurrentPlayer} has kicked {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="SuccessfullyUnbanned" xml:space="preserve">
+    <value>You have successfully unbanned IP: {Ip}!</value>
+  </data>
+  <data name="TeamIsFull" xml:space="preserve">
+    <value>The team is currently full</value>
+  </data>
+  <data name="TeamsAreEqualInMembers" xml:space="preserve">
+    <value>Both teams have the same number of members</value>
+  </data>
+  <data name="TiedTeams" xml:space="preserve">
+    <value>It's a tie! Both teams couldn't beat each other this time</value>
+  </data>
+  <data name="TimeRequiredToReuseCommand" xml:space="preserve">
+    <value>You must wait {Minutes} minutes to use this command again</value>
+  </data>
+  <data name="UnauthenticatedPlayer" xml:space="preserve">
+    <value>The player is not authenticated</value>
+  </data>
+  <data name="ValueCannotBeNegative" xml:space="preserve">
+    <value>The value cannot be negative</value>
+  </data>
+  <data name="WarningSuccessfullyGiven" xml:space="preserve">
+    <value>{CurrentPlayer} has given a warning to {TargetPlayer} [{WarningsNumber}/3] [Reason: {Reason}]</value>
+  </data>
+  <data name="WeaponAlreadyExists" xml:space="preserve">
+    <value>{Name} is already in the weapon package</value>
+  </data>
+  <data name="WeaponNotFound" xml:space="preserve">
+    <value>Weapon has not been found</value>
+  </data>
+  <data name="WeaponSuccessfullyAdded" xml:space="preserve">
+    <value>{Name} was added to your weapon package</value>
+  </data>
+  <data name="WeaponSuccessfullyRemoved" xml:space="preserve">
+    <value>{Name} has been removed from your weapon package</value>
+  </data>
+  <data name="Welcome1" xml:space="preserve">
+    <value>&gt;&gt;&gt; Welcome to Capture The Flag TDM! We're excited to have you here!</value>
+  </data>
+  <data name="Welcome2" xml:space="preserve">
+    <value>&gt;&gt;&gt; Use /cmds and /help for more information about our server and to kick off your adventure. Have fun!</value>
+  </data>
+  <data name="Welcome3" xml:space="preserve">
+    <value>&gt;&gt;&gt; Your mission: capture the enemy's flag and bring it back to your own base. The victory is in your hands!</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>The password you entered is incorrect. Please try again</value>
+  </data>
+  <data name="WrongSecretKey" xml:space="preserve">
+    <value>The secret key you entered is incorrect. Please try again</value>
+  </data>
+</root>

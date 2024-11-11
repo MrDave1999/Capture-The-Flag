@@ -1,119 +1,296 @@
 # Capture The Flag
-[![CTF](https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/.NET%20Core-SampSharp.net-blue)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/GameMode-CSharp-yellow)](https://github.com/MrDave1999/Capture-the-flag)
-[![CTF](https://img.shields.io/badge/Team%20DeathMatch-+Ranks-green)](https://github.com/MrDave1999/Capture-the-flag)
 
-**Capture The Flag** is a gamemode for [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas) created with [sampsharp](https://github.com/ikkentim/SampSharp).
-Capture The Flag is a style of play in which two teams try to catch a flag and carry it to a certain location to score points.
-To play, players are divided into two teams (Alpha and Beta), each on a field. To earn points, you must capture the flag and take it to a certain location.
-Currently, the gamemode has more than 10 maps and every 20 minutes there is a map change.
+![SA-MP logo](https://github.com/user-attachments/assets/dd12935e-5897-470b-ab06-a72b492a521c)
 
-In this video you can find a demo of how the gamemode is looking: https://youtu.be/yrPtJBuqB14
+<p align="center">
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/Capture%20The%20Flag-SA:MP-red" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/.NET%208.0-SampSharp.net-blue" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/GameMode-CSharp-yellow" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/Team%20Deathmatch-+Ranks-green" />
+  </a>
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://img.shields.io/badge/License-AGPL%203.0%20license-orange" />
+  </a>
+</p>
 
-## Main features
+<p align="center">
+  <a href="https://github.com/MrDave1999/Capture-The-Flag">
+    <img src="https://github.com/user-attachments/assets/2991265d-4626-4da5-839d-58a7ba2042e7" />
+  </a>
+</p>
 
-- The gamemode has more than 10 maps. Every 20 minutes the map will be changed.
-- Every time you capture, recover and carry the flag, the player will earn a percentage of adrenaline. That "adrenaline" can be changed for some benefit with the `/combos` command or the H key. Some benefits that the player can redeem are: Invisibility, Jumps, Speed.
-- You can create your own weapon pack with the `/weapons` command (or with the Y key). For each respawn, you will have the same weapons.
-- You can remove a weapon from your weapon pack with the `/packet` command.
-- The gamemode has a killing sprees system. This way, players will know if any player has had a good killing streak.
-- The gamemode has a save system with MySQL `8.0.22`. So that players can create their account and save their statistics.
-- You can talk to your team members "privately" using the exclamation point (!).
-  Example: `!hello guys`.
-- The gamemode has a basic VIP system with 3 levels: Silver, Gold and Premium.
-- The gamemode has a basic administration system with 4 levels: Assistant, Moderator, Administrator and Owner.
-- Each player has their own rank. The gamemode has 15 ranks that are obtained for a certain amount of kills.
-  You can see the available ranges with the `/ranks` command.
-- You can see the top 10 players in terms of kills, deaths, dropped flags, headshots and killing sprees with the `/top` command.
+**Capture The Flag** is a game mode for [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas) created with [SampSharp](https://github.com/ikkentim/SampSharp).
+There are 2 flags on the map, one for each team. Players need to capture the enemy's flag and bring it back to their own one.
+
+## Index
+- [Gameplay](#gameplay)
+- [Screenshots](#screenshots)
+- [Technologies used](#technologies-used)
+  - [Programming Languages](#programming-languages)
+  - [Softwares](#softwares)
+  - [Frameworks and libraries](#frameworks-and-libraries)
+  - [Testing](#testing)
+- [Software Engineering](#software-engineering)
+- [Requirements to play](#requirements-to-play)
+- [Deployment without Docker](#deployment-without-docker)
+- [Deployment with Docker](#deployment-with-docker)
+- [Credentials](#credentials)
+- [How to become an admin?](#how-to-become-an-admin)
+- [Supported RDBMS](#supported-rdbms)
+  - [SQLite](#sqlite)
+  - [MariaDB](#mariadb)
+- [Architectural overview](#architectural-overview)
+- [Credits](#credits)
+  - [Mappers](#mappers)
+- [Contribution](#contribution)
+- [License](#license)
+
+## Gameplay
+
+The Beta team plays against the Alpha team. The aim is to carry the enemy's flag to the spawn of the own flag. The own flag needs to be at the spawn to score. So you have to conquer the opponent's flag and defend your own team's one at the same time. It's necessary for the whole team to work together tactically to win.
+
+The team which which got more points after 15 minutes wins. If both teams have the same points after the time is up, it's a draw. 
+
+Beware! Enemies will see flag carriers on their radar as well!
+
+In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or also see the [play list](https://www.youtube.com/playlist?list=PLBM-9TMXSAJjsWn4zmg1ua7eof9Aj83fS).
+
+## Screenshots
+
+<details>
+<summary>sa-mp-000</summary>
+
+![sa-mp-000](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-000.png)
+</details>
+
+<details>
+<summary>sa-mp-001</summary>
+
+![sa-mp-001](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-001.png)
+</details>
+
+<details>
+<summary>sa-mp-002</summary>
+
+![sa-mp-002](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-002.png)
+</details>
+
+<details>
+<summary>sa-mp-003</summary>
+
+![sa-mp-003](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-003.png)
+</details>
+
+<details>
+<summary>sa-mp-004</summary>
+
+![sa-mp-004](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/sa-mp-004.png)
+</details>
+
+## Technologies used
+
+### Programming Languages
+- [C Sharp](https://github.com/dotnet/csharplang)
+- [Pawn](https://github.com/compuphase/pawn)
+
+### Softwares
+- [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools)
+- [SA-MP Server](https://www.sa-mp.mp/downloads)
+- [CompileApp-FS](https://github.com/MrDave1999/CompileApp-FS)
+- [Visual Studio 2022](https://visualstudio.microsoft.com)
+- [vscode](https://github.com/microsoft/vscode)
+- [MariaDB](https://github.com/mariadb)
+- [SQLite](https://www.sqlite.org)
+- [DB Browser for SQLite](https://sqlitebrowser.org)
+- [HeidiSQL](https://github.com/HeidiSQL)
+- [GitHub Actions](https://github.com/actions)
+- [Git](https://git-scm.com)
+- [draw.io](https://app.diagrams.net)
+- [Docker](https://github.com/docker)
+
+### Frameworks and libraries
+- [.NET SDK 8.0](https://github.com/dotnet/runtime)
+- [SampSharp](https://github.com/ikkentim/SampSharp)
+- [SampSharp-streamer](https://github.com/ikkentim/SampSharp-streamer)
+- [samp-streamer-plugin](https://github.com/samp-incognito/samp-streamer-plugin)
+- [SmartFormat](https://github.com/axuno/SmartFormat)
+- [MySqlConnector](https://github.com/mysql-net/MySqlConnector)
+- [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite)
+- [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection)
+- [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)
+- [Microsoft.Extensions.Configuration.EnvironmentVariables](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.EnvironmentVariables)
+- [BCrypt.Net-Next](https://github.com/BcryptNet/bcrypt.net)
+- [DotEnv.Core](https://github.com/MrDave1999/dotenv.core)
+- [YeSql.Net](https://github.com/ose-net/yesql.net)
+- [seztion-parser](https://github.com/MrDave1999/seztion-parser)
+- [Serilog.Sinks.Console](https://github.com/serilog/serilog-sinks-console)
+- [Serilog.Sinks.File](https://github.com/serilog/serilog-sinks-file)
+- [Serilog.Extensions.Logging](https://github.com/serilog/serilog-extensions-logging)
+
+### Testing
+- [NUnit](https://github.com/nunit/nunit)
+- [Fluent Assertions](https://github.com/fluentassertions/fluentassertions)
+
+## Software Engineering
+
+Software engineering concepts have been applied in this project:
+- [Entity–component–system (ECS)](https://en.wikipedia.org/wiki/Entity_component_system)
+- [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
+- [Interface-based programming](https://en.wikipedia.org/wiki/Interface-based_programming)
+- [Modular programming](https://en.wikipedia.org/wiki/Modular_programming)
+- [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection)
+- [Operation Result Pattern](https://medium.com/@wgyxxbf/result-pattern-a01729f42f8c)
+- [Guard Clause](https://deviq.com/design-patterns/guard-clause)
+- [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+- [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
+- [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)
+
+## Requirements to play
+
+- You must have **DirectX 9** installed on your local machine.
+- You must download **Grand Theft Auto: San Andreas** on your local machine.
+- You must download the [SA-MP client](https://www.sa-mp.mp/downloads) or the [open.mp launcher](https://github.com/openmultiplayer/launcher/releases) to connect to the servers.
+
+## Deployment without Docker
+
+- You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
+- You need to download the [ctf-gamemode-windows.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
+- Once downloaded, modify the `.env` file according to your needs.
+- Run the `samp-server.exe`.
 
 ## Deployment with Docker
 
-**1.** Clone the repository:
+- Clone the repository:
 ```sh
 git clone https://github.com/MrDave1999/Capture-The-Flag.git
 ```
-**2.** Change directory:
+- Change directory:
 ```sh
 cd Capture-The-Flag
 ```
-**3.** Copy the contents of `.env.example` to `.env`:
-
-**On Linux:**
+- Copy the contents of `.env.example` to `.env`:
 ```sh
 cp .env.example .env
 ```
-**On Windows:**
+- Build the image and initiate services:
 ```sh
-copy .env.example .env
+docker compose up --build -d
 ```
-
-**4.** Build the image and initiate services:
+- Check the server logs to see if everything is working properly:
 ```sh
-docker-compose up --build -d
+docker compose exec -it app cat server_log.txt
 ```
-**5.** Add the server IP in your SA-MP client:
+- Add the server IP in your [SA-MP client](https://www.sa-mp.mp/downloads):
 ```
 localhost:7777
 ```
 
-## Deployment without Docker
+## Credentials
 
-**1.** You must download the SA-MP server [here](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) (choose the `.zip` file depending on the operating system you use.).
+The following table shows the default credentials for authentication from the game mode.
 
-**2.** Once downloaded, modify the `.env` file according to your needs (for example, you need to specify the credentials you will use to connect to the database).
+| PlayerName              | Password                    |
+|-------------------------|-----------------------------|
+| Admin_Player            | 123456                      |
+| Moderator_Player        | 123456                      |
+| VIP_Player              | 123456                      |
+| Basic_Player            | 123456                      |
 
-**3.** Download [MySQL Server 8.0](https://dev.mysql.com/downloads/mysql/).
-
-**4.** You must create the database:
-```sql
-CREATE DATABASE gamemode;
-```
-**5.** You must import the database:
-```sql
-mysql -h localhost -u MyUserName -p gamemode < gamemode.sql
-```
-**6.** This step should only be followed if you are using a Linux distribution. You need to install certain **32-bit packages** to be able to run the samp-server without problems.
-
-An example in Ubuntu:
+Note that these credentials are only available if your database provider is **in-memory**. In your .env file you must indicate it as follows.
 ```sh
-sudo dpkg --add-architecture i386
-sudo apt-get update && apt-get install libc6:i386 libstdc++6:i386 libssl1.1:i386 libicu-dev:i386
+DatabaseProvider=InMemory
 ```
-**7.** Finally run the samp-server and enjoy :)
 
-## Frequently Asked Questions
+## How to become an admin?
 
-#### How do I edit the connection string?
+You must add your name and secret key from the `.env` file:
+```sh
+ServerOwner__Name=MrDave # Your nickname in the game
+ServerOwner__SecretKey=1234._%==?! # Specify the secret key to give me admin.
+```
+It is necessary to specify your secret key, which you will use when executing the command "**/givemeadmin**" in the game.
 
-Go to the `.env` file and modify the `CONNECTION_STRING` key.
+## Supported RDBMS
 
-#### How can I become an administrator on the server?
+### SQLite
 
-Go to the `.env` file and modify the `HIDDEN_COMMAND` key, then log in in to the server and type the command.
+- Download sqlite3 CLI from [here](https://www.sqlite.org/download.html) (select the file named **sqlite-tools-win-x86**).
+- Create a file called `.env` in the root directory:
+```sh
+copy .env.example .env
+```
+- You must specify the name of the database provider from the .env file:
+```sh
+DatabaseProvider=SQLite
+```
+- You must specify the location of the database file:
+```sh
+SQLite__DataSource=C:\Users\mrdave\OneDrive\Desktop\gamemode.db
+```
+- Finally, you must import the database:
+```sh
+sqlite3 gamemode.db < ./scripts/sqlite/gamemode.sql
+```
+See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/scripts) for more information.
 
-#### How do I change the length of the game?
+### MariaDB
 
-Go to the `.env` file and modify the `MAX_TIME_ROUND` key, the time must be expressed in `seconds`.
+- Install [MariaDb Server](https://mariadb.org/download) and set up your username and password.
+- Create a file called `.env` in the root directory:
+```sh
+copy .env.example .env
+```
+- You must specify the name of the database provider from the .env file:
+```sh
+DatabaseProvider=MariaDB
+```
+- You must specify the connection string in the .env file:
+```sh
+MariaDB__Server=localhost
+MariaDB__Port=3306
+MariaDB__Database=gamemode
+MariaDB__UserName=root
+MariaDB__Password=123456789
+```
+- Finally, you must import the database:
+```sh
+mariadb -uroot -p123456789 gamemode < ./scripts/mariadb/gamemode.sql
+```
+See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/scripts) for more information.
 
-#### How can I change the timeout when the map is loading?
+## Architectural overview
 
-Go to the `.env` file and modify the `MAX_TIME_LOADING` key, the time must be expressed in `seconds`.
+<details>
+<summary><b>Show diagram</b></summary>
 
-## Images
-![image](https://user-images.githubusercontent.com/43916038/114632050-6d19fa80-9c83-11eb-812e-0241a288564d.png)
-![image](https://user-images.githubusercontent.com/43916038/114632071-77d48f80-9c83-11eb-9ff5-61609b64289e.png)
+![overview](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/screenshots/architectural-overview.png)
+
+</details>
+
+### Main components
+- **Application Core.** Contains all the logic of the game called "Capture The Flag", including the rules and procedures that define how the game is played.
+- **Persistence layer.** Contains all data access logic. The purpose of this layer is to prevent the filtering of data access logic in the application core.
+- **Host Application.** Contains everything needed to run the game mode. It represents the entry point of the application.
+  This layer performs other tasks such as:
+  - Load application settings from `.env` file.
+  - Select the database provider.
+  - Register services to DI Container.
+  - Add systems to the services collection.
+  - Enable desired ECS system features.
 
 ## Credits
 
-- [ikkentim](https://github.com/ikkentim/SampSharp) by create SampSharp.
-- [rickyah](https://github.com/rickyah/ini-parser) by create ini-parser.
-- [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) by create NTD (TextDraw Editor).
-- [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) by create streamer-plugin.
-- [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) by create gamemode.
-- [Ts-Pytham](https://github.com/Ts-Pytham) for collaborating with the administration system.
-- [IllidanS4](https://github.com/IllidanS4/YSF) by create YSF-plugin.
-- [BlasterDv](https://github.com/BlasterDv/SampSharp-YSF) by create Wrapper SampSharp.YSF of the YSF plugin.
+- [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) for creating the "Capture The Flag" game mode.
+- [ikkentim](https://github.com/ikkentim/SampSharp) for creating the SampSharp framework.
+- [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) for creating NTD (TextDraw Editor).
+- [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) for creating the streamer-plugin.
 
 ### Mappers
 
@@ -140,3 +317,19 @@ Go to the `.env` file and modify the `MAX_TIME_LOADING` key, the time must be ex
 - ZM_Italy - Unknown.
 - zone_paintball by Famous.
 - mp_island by Leo.
+
+## Contribution
+
+Any contribution is welcome! Remember that you can contribute not only in the code, but also in the documentation or even improve the tests.
+
+Follow the steps below:
+
+- Fork it
+- Create your custom branch (git checkout -b my-new-change)
+- Commit your changes (git commit -am 'Add some change')
+- Push to the branch (git push origin my-new-change)
+- Create new Pull Request
+
+## License
+
+This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/LICENSE)

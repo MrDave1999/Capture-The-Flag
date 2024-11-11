@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Admin" xml:space="preserve">
+    <value>{Color1}/setrole: {Color2}Assigns a specific role to a player.
+{Color1}/settotalkills: {Color2}Sets the total kills to a specific player.
+{Color1}/setscore: {Color2}Sets the score of a player to a specified value.
+{Color1}/addscore: {Color2}Increases the player's score by a designated amount.
+{Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
+{Color1}/addcoins: {Color2}Increases the player's coins by a designated amount.
+{Color1}/addallcoins: {Color2}Grant a set number of coins to all players.
+{Color1}/goto: {Color2}Teleport to the position of a specified player.
+{Color1}/get: {Color2}Bring a specified player to your current position.
+{Color1}/ban: {Color2}Ban a player from the server.
+{Color1}/unban: {Color2}Remove a ban from a player, allowing them back on the server.
+{Color1}/bannedips: {Color2}View a list of IP addresses that are currently banned.
+
+{Color1}Use the '#' symbol at the start of your message to access the private admin chat.</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>{Color1}Capture The Flag is an open source project. 
+{Color1}Check out its official repository: 
+{Color2}https://github.com/MrDave1999/Capture-The-Flag
+{Color1}Creator and programmer: {Color2}MrDave (Dave Roman)
+{Color1}Mappers:{Color2} 
+DragonZafiro, Elorreli, amirab, JamesT85,
+TheYoungCapone, B4MB1[MC], Sleyer, mihaibr,
+UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
+Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
+SENiOR, saawan, Risq, Famous and Leo.
+{Color1}Acknowledgments to:{Color2}
+ikkentim for creating the SampSharp framework.
+Nickk888SAMP for creating NTD (TextDraw Editor).
+samp-incognito for creating the streamer-plugin.</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>{Color1}This is a capture the flag game mode for SA-MP (San Andreas Multiplayer).
+{Color2}There are 2 flags on the map, one for each team. 
+Players need to capture the enemy's flag and bring it back to their own one.
+{Color1}Gameplay:{Color2}
+The Alpha team plays against the Beta team. 
+The aim is to carry the enemy's flag to the spawn of the own flag. 
+The own flag needs to be at the spawn to score. 
+So you have to conquer the opponent's flag and defend your own team's one at the same time. 
+It's necessary for the whole team to work together tactically to win.
+Beware! Enemies will see flag carriers on their radar as well!</value>
+  </data>
+  <data name="Moderator" xml:space="preserve">
+    <value>{Color1}/maps: {Color2}Displays a list of available maps in the game.
+{Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
+{Color1}/startrt: {Color2}Starts the rotation timer for the current map.
+{Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
+{Color1}/kick: {Color2}Kicks a player from the game.
+{Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavior.
+{Color1}/setspawn: {Color2}Sets a new spawn point for players in the game.
+{Color1}/addhealth: {Color2}Adds health to a specified player.
+{Color1}/addallhealth: {Color2}Restores health to all players in the game.
+{Color1}/addarmour: {Color2}Grants armour to a specified player.
+{Color1}/addallarmour: {Color2}Gives armour to all players in the game.
+{Color1}/clearallchat: {Color2}Clears all messages from the chat.
+
+{Color1}Use the '&amp;' symbol at the start of your message to access the private moderator chat.</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>{Color1}/help: {Color2}Display an introduction to the Capture The Flag game mode.
+{Color1}/credits: {Color2}Show credits for the game and contributors.
+{Color1}/ranks: {Color2}List the different player ranks and their requirements.
+{Color1}/mystats: {Color2}Display the statistics of the current player.
+{Color1}/stats: {Color2}Show the statistics of a specified player.
+{Color1}/tstats: {Color2}Display the statistics of the teams (Alpha and Beta).
+{Color1}/topkills: {Color2}Display the list of top players based on their total number of kills.
+{Color1}/topspree: {Color2}Display the list of top players based on their maximum killing spree.
+{Color1}/changepass: {Color2}Change your account password.
+{Color1}/changename: {Color2}Change your account name.
+{Color1}/skin: {Color2}Change your character's skin.
+{Color1}/weapons: {Color2}Display a list of available weapons
+{Color1}/pack: {Color2}Display your current weapons package.
+{Color1}/combos: {Color2}Display a list of available combos and their benefits.
+{Color1}/team: {Color2}Switch to a different team.
+{Color1}/scoreboard: {Color2}Show the current scoreboard with player scores.
+{Color1}/kill: {Color2}Eliminate your character for respawn purposes.
+{Color1}/re: {Color2}Reset the statistics of the current player.
+{Color1}/admins: {Color2}List the current server administrators.
+{Color1}/vips: {Color2}Display the list of VIP players.
+{Color1}/report: {Color2}Report a player for inappropriate behavior.
+{Color1}/spec: {Color2}Spectate a specific player in the game.
+{Color1}/class: {Color2}Redirect to the class selection menu and enter AFK mode.
+{Color1}/cmdsvip: {Color2}Display a list of commands available to VIP players.
+{Color1}/cmdsadmin: {Color2}Show the commands accessible to server administrators.
+{Color1}/cmdsmoderator: {Color2}Show the commands accessible to server moderators.
+
+{Color1}Use the '!' symbol at the start of your message to access the private team chat.
+{Color1}Use the 'N' key to show the scoreboard with the players of both teams.</value>
+  </data>
+  <data name="VIP" xml:space="preserve">
+    <value>{Color1}/armour: {Color2}Grants you temporary armour, reducing damage taken from attacks.
+{Color1}/health: {Color2}Restores a portion of your health instantly.
+{Color1}/saw: {Color2}Deploys a powerful saw to cut through obstacles or defeat enemies.
+{Color1}/spray: {Color2}Releases a spray that can confuse and distract opponents.
+{Color1}/teargas: {Color2}Deploys tear gas, impairing visibility and causing disorientation to nearby enemies.
+{Color1}/givemecoins: {Color2}Awards you with in-game coins, enhancing your resources.
+
+{Color1}Use the '$' symbol at the start of your message to access the private VIP chat.</value>
+  </data>
+</root>

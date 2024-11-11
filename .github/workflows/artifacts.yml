@@ -1,0 +1,49 @@
+name: Upload artifacts
+
+on:
+  release:
+    types: [published]
+env:
+  DOTNET_VERSION: '8.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Download SA-MP Server
+        run: wget https://github.com/MrDave1999/samp-server/releases/download/sampserver.v1/samp03.zip
+      - name: Unzip SA-MP Server
+        run: unzip samp03.zip -d ctf-gamemode-windows
+      - name: Move contents of samp03 to root directory
+        run: |
+         mv ctf-gamemode-windows/samp03/** ctf-gamemode-windows
+         rmdir ctf-gamemode-windows/samp03
+      - name: Add plugins to server.cfg file
+        run: |
+         echo "" >> ctf-gamemode-windows/server.cfg 
+         echo "plugins SampSharp streamer" >> ctf-gamemode-windows/server.cfg
+      - name: Build game mode
+        run: dotnet publish src/Host -c Release -o bin --framework=net8.0
+      - name: Copy artifacts
+        run: |
+          mkdir ctf-gamemode-windows/plugins ctf-gamemode-windows/filterscripts
+          cp -r bin ctf-gamemode-windows
+          cp plugins/*.dll ctf-gamemode-windows/plugins
+          cp filterscripts/*.amx ctf-gamemode-windows/filterscripts
+          cp -r scripts ctf-gamemode-windows
+      - name: Create .env file
+        run: cp .env.example .env
+      - name: Copy .env file
+        run: cp .env ctf-gamemode-windows
+      - name: Create compressed file
+        run: zip -r ctf-gamemode-windows.zip ctf-gamemode-windows
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ctf-gamemode-windows.zip

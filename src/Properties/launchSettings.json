@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "sampserver": {
-      "commandName": "Executable",
-      "executablePath": "samp-server.exe",
-      "workingDirectory": "../"
-    }
-  }
-}

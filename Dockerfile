@@ -1,54 +1,52 @@
 #
-# Build app
+# Build stage/image
 #
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
+COPY *.props .
+# .NET 8.0 is required because the game mode uses C# 12.0.
+COPY --from=mcr.microsoft.com/dotnet/sdk:8.0 /usr/share/dotnet /usr/share/dotnet
 
 # Copy csproj and restore as distinct layers
-COPY src/*.csproj .
-RUN dotnet restore
+COPY ["src/Host/*.csproj", "src/Host/"]
+COPY ["src/Host/*.targets", "src/Host/"]
+COPY ["src/Application/*.csproj", "src/Application/"]
+COPY ["src/Persistence/Persistence.InMemory/*.csproj", "src/Persistence/Persistence.InMemory/"]
+COPY ["src/Persistence/Persistence.MariaDB/*.csproj", "src/Persistence/Persistence.MariaDB/"]
+COPY ["src/Persistence/Persistence.SQLite/*.csproj", "src/Persistence/Persistence.SQLite/"]
+COPY ["src/Persistence/*.props", "src/Persistence/"]
+WORKDIR /app/src/Host
+RUN dotnet restore -p:TargetFramework=net6.0
 
 # Copy everything else and build
-COPY src .
-RUN dotnet publish -c Release -o out
+COPY ["src/", "/app/src/"]
+RUN dotnet publish --framework=net6.0 -c Release -o /app/out --no-restore
 
 #
-# Install SA-MP server with samptcl
+# Download SA-MP server and dotnet linux-x86 
 #
-FROM southclaws/sampctl AS samp-server
-WORKDIR /sampserver
-
-COPY pawn.json .
-RUN sampctl package ensure \
-    && rm -rf dependencies
-
-COPY include include
-COPY filterscripts filterscripts
-COPY build-filterscripts.sh .
-RUN chmod u+x build-filterscripts.sh
-RUN ["./build-filterscripts.sh"]
-RUN rm -rf include \
-    pawn.json \
-    build-filterscripts.sh
-
-WORKDIR /sampserver/filterscripts
-# Delete all directories except .amx files
-RUN rm -rf */
-
-#
-# Get .NET 6 Runtime x86
-#
-FROM ubuntu:20.04 AS net-runtime
-WORKDIR /dotnet
-
+FROM ubuntu:20.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget
 
-RUN wget https://deploy.timpotze.nl/packages/runtime_603_20220324.tar.gz --no-check-certificate \
-    && tar -xf runtime_603_20220324.tar.gz \
-    && rm -f runtime_603_20220324.tar.gz
+WORKDIR /sampserver
+RUN wget https://gta-multiplayer.cz/downloads/samp037svr_R2-2-1.tar.gz --no-check-certificate \
+    && tar -xf samp037svr_R2-2-1.tar.gz \
+    && rm -f samp037svr_R2-2-1.tar.gz
+WORKDIR /sampserver/samp03
+RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles server.cfg
 
-# 
-# Build runtime image
+WORKDIR /runtime
+ENV TARGET_FRAMEWORK="6.0.35"
+ENV VERSION="6.0.35-97"
+RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v${VERSION}/dotnet-runtime-${TARGET_FRAMEWORK}-linux-x86.tar.gz --no-check-certificate \
+    && mkdir runtime \
+    && tar -xf dotnet-runtime-${TARGET_FRAMEWORK}-linux-x86.tar.gz -C runtime \
+    && rm -f dotnet-runtime-${TARGET_FRAMEWORK}-linux-x86.tar.gz \
+    && cp -rf runtime/shared/Microsoft.NETCore.App/${TARGET_FRAMEWORK}/** . \
+    && rm -rf runtime
+
+#
+# Final stage/image
 #
 FROM ubuntu:20.04
 WORKDIR /app
@@ -63,14 +61,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-COPY gamemodes gamemodes
-COPY wait-for-it.sh .
-RUN chmod u+x wait-for-it.sh
-
-COPY --from=net-runtime /dotnet dotnet
-COPY --from=samp-server /sampserver .
-RUN echo "coreclr dotnet/runtime" >> server.cfg \
-    && echo "gamemode bin/CaptureTheFlag.dll" >> server.cfg
-
-COPY scriptfiles scriptfiles
-COPY --from=build-env /app/out bin
+COPY ["gamemodes/*.amx", "gamemodes/"]
+COPY ["filterscripts/*.amx", "filterscripts/"]
+COPY ["plugins/*.so", "plugins/"]
+COPY ["codepages/*.txt", "codepages/"]
+COPY ["server.cfg.example", "server.cfg"]
+COPY --from=tools /runtime runtime
+COPY --from=tools /sampserver/samp03 .
+RUN echo "" >> server.cfg \ 
+    && echo "coreclr runtime" >> server.cfg \
+    && echo "gamemode bin/CTF.Host.dll" >> server.cfg
+COPY --from=build /app/out bin

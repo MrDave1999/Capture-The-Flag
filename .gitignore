@@ -3,31 +3,33 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# In this directory are all the files to run the game mode
+ctf-gamemode-windows/
+
 # Vendor directory for dependencies
 /**/dependencies/
 
 # .NET Runtime binaries
 dotnet/runtime/
+runtime/
 
-# environment variables for development
-.env
+# environment variables for development and test
+**/.env
+**/.env.test
 
 # samp server configuration file
 server.cfg
 
-# Plugins directory
-plugins/
-
 # binaries
-*.exe
-*.dll
-*.so
-filterscripts/*.amx
+announce.exe
+samp-server.exe
+samp-npc.exe
 announce
 samp03svr
 samp-npc
 
 # logs
+logs/
 server_log.txt
 crashinfo.txt
 
@@ -46,6 +48,9 @@ pawno/
 *.user
 *.userosscache
 *.sln.docstates
+*.zip
+*.rar
+*.db
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
