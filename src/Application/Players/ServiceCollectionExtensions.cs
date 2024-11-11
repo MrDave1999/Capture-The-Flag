@@ -9,6 +9,7 @@ public static class PlayerServicesExtensions
             .AddSingleton<KillingSpreeUpdater>()
             .AddSingleton<PlayerStatsRenderer>()
             .AddSingleton<LoginDialogViewer>()
+            .AddSingleton<SignupDialogViewer>()
             .AddComboServices()
             .AddChatServices();
 
