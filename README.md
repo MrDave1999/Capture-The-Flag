@@ -50,6 +50,7 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
 - [Credits](#credits)
   - [Mappers](#mappers)
 - [Contribution](#contribution)
+- [License](#license)
 
 ## Gameplay
 
@@ -328,3 +329,7 @@ Follow the steps below:
 - Commit your changes (git commit -am 'Add some change')
 - Push to the branch (git push origin my-new-change)
 - Create new Pull Request
+
+## License
+
+This project is licensed under the [GNU Affero General Public License v3.0](https://github.com/MrDave1999/Capture-The-Flag/blob/dev/LICENSE)
