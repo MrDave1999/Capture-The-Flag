@@ -3,9 +3,6 @@ name: CTF Deploy
 on:
   push:
     branches: 
-      - test
-  pull_request:
-    branches:
       - main
 
 jobs:
@@ -21,6 +18,6 @@ jobs:
         port: 22
         script: |
           cd Capture-The-Flag
-          git pull origin dev
+          git pull origin main
           git status
           sudo docker compose up --build -d
