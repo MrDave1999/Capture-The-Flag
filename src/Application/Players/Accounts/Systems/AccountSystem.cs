@@ -5,20 +5,13 @@ namespace CTF.Application.Players.Accounts.Systems;
 public class AccountSystem(
     IDialogService dialogService,
     IPlayerRepository playerRepository,
-    IPasswordHasher passwordHasher) : ISystem
+    LoginDialogViewer loginDialogViewer) : ISystem
 {
     private readonly InputDialog _signupDialog = new()
     {
         IsPassword = true,
         Caption = "Signup",
         Content = "Enter a password",
-        Button1 = "Accept"
-    };
-    private readonly InputDialog _loginDialog = new()
-    {
-        IsPassword = true,
-        Caption = "Login",
-        Content = "Enter your password",
         Button1 = "Accept"
     };
 
@@ -32,8 +25,7 @@ public class AccountSystem(
             ShowSignupDialog(connectedPlayer);
             return;
         }
-        connectedPlayer.AddComponent<FailedAttemptCountComponent>();
-        ShowLoginDialog(connectedPlayer, playerInfo);
+        loginDialogViewer.View(connectedPlayer, playerInfo);
     }
 
     private static void AddDefaultAccount(ConnectedPlayer connectedPlayer)
@@ -78,46 +70,5 @@ public class AccountSystem(
         connectedPlayer.SendClientMessage(Color.Red, message);
         playerInfo.SetName(connectedPlayer.Name);
         playerRepository.Create(playerInfo);
-    }
-
-    private async void ShowLoginDialog(ConnectedPlayer connectedPlayer, PlayerInfo playerInfo)
-    {
-        InputDialogResponse response = await dialogService.ShowAsync(connectedPlayer, _loginDialog);
-        if (response.Response == DialogResponse.Disconnected)
-            return;
-
-        if (response.Response == DialogResponse.RightButtonOrCancel)
-        {
-            ShowLoginDialog(connectedPlayer, playerInfo);
-            return;
-        }
-
-        var enteredPassword = response.InputText ?? string.Empty;
-        bool isWrongPassword = !passwordHasher.Verify(enteredPassword, passwordHash: playerInfo.Password);
-        if (isWrongPassword) 
-        {
-            const int MaxFailedAttempts = 4;
-            var failedAttemptCount = connectedPlayer.GetComponent<FailedAttemptCountComponent>();
-            failedAttemptCount.Value++;
-            if (failedAttemptCount.Value == MaxFailedAttempts)
-            {
-                connectedPlayer.Kick();
-                return;
-            }
-            connectedPlayer.SendClientMessage(Color.Red, Messages.WrongPassword);
-            ShowLoginDialog(connectedPlayer, playerInfo);
-            return;
-        }
-
-        bool isAuthenticated = true;
-        connectedPlayer.GetComponent<FailedAttemptCountComponent>().Destroy();
-        connectedPlayer.GetComponent<AccountComponent>().Destroy();
-        connectedPlayer.AddComponent<AccountComponent>(playerInfo, isAuthenticated);
-        connectedPlayer.SendClientMessage(Color.Red, Messages.SuccessfulLogin);
-    }
-
-    private class FailedAttemptCountComponent : Component
-    {
-        public int Value { get; set; } = 0;
     }
 }
