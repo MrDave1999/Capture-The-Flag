@@ -26,6 +26,7 @@ public class MapTextDrawRenderer
         _mapName.Hide(player);
         _timer.Hide(player);
         _timeLeft.Hide(player);
+        _loadTime.Hide(player);
     }
 
     public void UpdateMapName(CurrentMap currentMap)
@@ -42,11 +43,6 @@ public class MapTextDrawRenderer
     {
         _loadTime.Text = loadTime.GameText;
         _loadTime.Show();
-    }
-
-    public void HideLoadTimeForAll()
-    {
-        _loadTime.Hide();
     }
 
     private void Initialize()

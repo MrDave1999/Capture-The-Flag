@@ -97,7 +97,6 @@ public class MapRotationService(
     private void OnLoadedMap()
     {
         _isMapLoading = false;
-        mapTextDrawRenderer.HideLoadTimeForAll();
         TimeLeft.Reset();
         CurrentMap currentMap = mapInfoService.Read();
         string message = Smart.Format(Messages.MapSuccessfullyLoaded, new { currentMap.Name });
