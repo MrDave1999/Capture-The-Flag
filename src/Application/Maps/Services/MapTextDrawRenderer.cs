@@ -93,7 +93,7 @@ public class MapTextDrawRenderer
         _timeLeft.Selectable = false;
 
         _loadTime = _worldService.CreateTextDraw(new Vector2(211.000000, 130.000000), string.Empty);
-        _loadTime.Text = "Loading map... (9)";
+        _loadTime.Text = string.Empty;
         _loadTime.Font = TextDrawFont.Slim;
         _loadTime.LetterSize = new Vector2(0.566666, 2.599997);
         _loadTime.TextSize = new Vector2(503.500000, 16.000000);
