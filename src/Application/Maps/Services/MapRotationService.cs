@@ -60,21 +60,8 @@ public class MapRotationService(
         serverService.SendRconCommand($"unloadfs {currentMap.Name}");
 
         IEnumerable<Player> players = AlphaBetaTeamPlayers.GetAll();
-        if (currentMap.Id == currentMap.NextMap.Id)
-        {
-            foreach (Player player in players)
-            {
-                player.Position = new Vector3(0, 0, 0);
-                player.Angle = 0;
-                player.Interior = 0;
-                player.ToggleControllable(false);
-            }
-        }
-        else
-        {
-            foreach (Player player in players)
-                player.ToggleControllable(false);
-        }
+        foreach (Player player in players)
+            player.ToggleSpectating(true);
 
         string message = Smart.Format(Messages.NextMapWillBeLoadedSoon, new { currentMap.NextMap.Name });
         worldService.SendClientMessage(Color.Orange, message);
@@ -108,7 +95,7 @@ public class MapRotationService(
             player.Health = 100;
             player.Color = playerInfo.Team.ColorHex;
             player.SetScore(0);
-            player.Spawn();
+            player.ToggleSpectating(false);
         }
         teamBalancer.Balance(action: HandlePlayerAction);
         worldService.SetWeather(currentMap.Weather);
