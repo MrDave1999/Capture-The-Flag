@@ -32,6 +32,7 @@ public class Startup : IStartup
             .EnableSampEvents()
             .EnablePlayerCommands()
             .EnableRconCommands()
-            .EnableStreamerEvents();
+            .EnableStreamerEvents()
+            .EnableYsfEvents();
     }
 }
