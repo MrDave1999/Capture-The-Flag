@@ -19,6 +19,7 @@ public class MapTextDrawRenderer
         _mapName.Show(player);
         _timer.Show(player);
         _timeLeft.Show(player);
+        _loadTime.Show();
     }
 
     public void Hide(Player player) 
@@ -42,7 +43,6 @@ public class MapTextDrawRenderer
     public void UpdateLoadTime(LoadTime loadTime)
     {
         _loadTime.Text = loadTime.GameText;
-        _loadTime.Show();
     }
 
     private void Initialize()
