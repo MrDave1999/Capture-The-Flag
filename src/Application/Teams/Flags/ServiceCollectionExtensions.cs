@@ -12,6 +12,7 @@ public static class FlagServicesExtensions
             .AddSingleton<IFlagEvent, OnFlagScore>()
             .AddSingleton<IFlagEvent, OnFlagTaken>();
 
+        services.AddSingleton<FlagAutoReturnTimer>();
         services.AddSingleton<OnFlagDropped>();
         services.AddSingleton<IDictionary<FlagStatus, IFlagEvent>>(serviceProvider =>
         {

@@ -186,6 +186,9 @@
   <data name="FlagAutoReturn" xml:space="preserve">
     <value>The {ColorName} flag has automatically returned to its base position after {Seconds} seconds!</value>
   </data>
+  <data name="FlagAutoReturn2" xml:space="preserve">
+    <value>The {ColorName} flag has returned to its base position after {PlayerName} was paused for {Seconds} seconds!</value>
+  </data>
   <data name="GameModeDescription" xml:space="preserve">
     <value>~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
   </data>

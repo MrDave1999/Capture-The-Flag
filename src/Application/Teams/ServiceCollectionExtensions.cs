@@ -10,7 +10,6 @@ public static class TeamServicesExtensions
             .AddSingleton<TeamSoundsService>()
             .AddSingleton<TeamTextDrawRenderer>()
             .AddSingleton<TeamBalancer>()
-            .AddSingleton<FlagAutoReturnTimer>()
             .AddSingleton<ClassSelectionTextDrawRenderer>()
             .AddFlagServices();
 
