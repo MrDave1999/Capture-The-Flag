@@ -22,10 +22,7 @@ public class PlayerSpawnSystem(
         }
         if (mapRotationService.IsMapLoading())
         {
-            player.Position = new Vector3(0, 0, 0);
-            player.Angle = 0;
-            player.Interior = 0;
-            player.ToggleControllable(false);
+            player.ToggleSpectating(true);
         }
     }
 }
