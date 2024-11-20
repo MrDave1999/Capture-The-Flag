@@ -33,9 +33,12 @@ public class FlagCarrierPauseHandler(
             var timerReference = timerService.Start(OnComplete, interval);
             player.AddComponent<PauseTimerReference>(timerReference);
         }
-        else if (!pauseState && playerInfo.HasCapturedFlag())
+        else if (!pauseState)
         {
             var pauseTimerReference = player.GetComponent<PauseTimerReference>();
+            if (pauseTimerReference is null)
+                return;
+
             timerService.Stop(pauseTimerReference.Value);
             pauseTimerReference.Destroy();
         }
