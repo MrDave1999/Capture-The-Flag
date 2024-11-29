@@ -23,8 +23,7 @@ public static class HostEcsBuilderExtensions
             "OnPlayerPickUpPickup",
             "OnPlayerSpawn",
             "OnPlayerRequestClass",
-            "OnPlayerRequestSpawn",
-            "OnPlayerPauseStateChange"
+            "OnPlayerRequestSpawn"
         ];
 
         foreach (string @event in events)
@@ -35,12 +34,11 @@ public static class HostEcsBuilderExtensions
         return builder;
     }
 
-    public static IEcsBuilder EnableYsfEvents(this IEcsBuilder builder) 
+    public static IEcsBuilder EnablePauseEvents(this IEcsBuilder builder) 
     {
-        builder
-            .EnableEvent<int, bool>("OnPlayerPauseStateChange");
-
-        builder.UseMiddleware<PlayerPauseStateChangeMiddleware>("OnPlayerPauseStateChange");
+        var playerPauseSystem = builder.Services.GetRequiredService<PlayerPauseSystem>();
+        var flagCarrierPauseHandler = builder.Services.GetRequiredService<FlagCarrierPauseHandler>();
+        playerPauseSystem.PauseEvent += flagCarrierPauseHandler.OnPlayerPauseStateChange;
         return builder;
     }
 }
