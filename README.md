@@ -120,7 +120,6 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 - [SampSharp](https://github.com/ikkentim/SampSharp)
 - [SampSharp-streamer](https://github.com/ikkentim/SampSharp-streamer)
 - [samp-streamer-plugin](https://github.com/samp-incognito/samp-streamer-plugin)
-- [YSF Server Functions](https://github.com/IS4Code/YSF)
 - [SmartFormat](https://github.com/axuno/SmartFormat)
 - [MySqlConnector](https://github.com/mysql-net/MySqlConnector)
 - [Microsoft.Data.Sqlite](https://www.nuget.org/packages/Microsoft.Data.SQLite)
@@ -293,7 +292,6 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - [ikkentim](https://github.com/ikkentim/SampSharp) for creating the SampSharp framework.
 - [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) for creating NTD (TextDraw Editor).
 - [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) for creating the streamer plugin.
-- [IS4Code](https://github.com/IS4Code/YSF) for maintaining the YSF (Y_Less's Server Fixes) plugin.
 
 ### Mappers
 
