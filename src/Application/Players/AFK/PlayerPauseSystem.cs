@@ -9,6 +9,7 @@ public class PlayerPauseSystem(
     /// Represents the minimum amount of time (in ticks) required for the player to be considered paused.
     /// </summary>
     private readonly long _minPauseTimeTicks = TimeSpan.FromMilliseconds(4000).Ticks;
+    private TimerReference _timerReference;
     private readonly List<PlayerDataComponent> _playerDataComponents = new(capacity: 32);
     public delegate void PauseEventHandler(Player player, bool pauseState);
     public event PauseEventHandler PauseEvent;
@@ -18,25 +19,30 @@ public class PlayerPauseSystem(
     {
         var createdComponent = player.AddComponent<PlayerDataComponent>(player);
         _playerDataComponents.Add(createdComponent);
+        if (_playerDataComponents.Count == 1)
+        {
+            TimeSpan interval = TimeSpan.FromMilliseconds(600);
+            _timerReference = timerService.Start(CheckPauseStatus, interval);
+        }
     }
 
     [Event]
     public void OnPlayerDisconnect(PlayerDataComponent playerDataComponent, DisconnectReason _) 
     {
         _playerDataComponents.Remove(playerDataComponent);
+        if (_playerDataComponents.Count == 0)
+        {
+            if (_timerReference is null)
+                return;
+
+            timerService.Stop(_timerReference);
+        }
     }
 
     [Event]
     public void OnPlayerUpdate(PlayerDataComponent playerDataComponent) 
     {
         playerDataComponent.LastUpdateTick = timeProvider.GetUtcNow().Ticks;
-    }
-
-    [Event]
-    public void OnGameModeInit()
-    {
-        TimeSpan interval = TimeSpan.FromMilliseconds(600);
-        timerService.Start(CheckPauseStatus, interval);
     }
 
     private void CheckPauseStatus(IServiceProvider serviceProvider)
