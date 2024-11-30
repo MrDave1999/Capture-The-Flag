@@ -33,6 +33,17 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
         {
             Player player = players[index];
             PlayerInfo playerInfo = player.GetInfo();
+            if (player.IsPaused())
+            {
+                playerInfo.StatsPerRound.ResetStats();
+                playerInfo.SetTeam(TeamId.NoTeam);
+                player.Team = (int)TeamId.NoTeam;
+                player.Color = Team.None.ColorHex;
+                player.SetScore(0);
+                player.RedirectToClassSelection();
+                continue;
+            }
+
             if (index.IsEvenInteger())
             {
                 alphaTeam.Members.Add(player);
@@ -47,6 +58,7 @@ public class TeamBalancer(TeamTextDrawRenderer teamTextDrawRenderer)
             }
             action.Invoke(player, playerInfo);
         }
+
         teamTextDrawRenderer.UpdateTeamScore(alphaTeam);
         teamTextDrawRenderer.UpdateTeamScore(betaTeam);
         teamTextDrawRenderer.UpdateTeamMembers(alphaTeam);

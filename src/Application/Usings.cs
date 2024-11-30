@@ -19,6 +19,7 @@ global using CTF.Application.Common.Services;
 global using CTF.Application.Common.Resources;
 global using CTF.Application.Common.Extensions;
 global using CTF.Application.Players;
+global using CTF.Application.Players.AFK;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.Accounts.Services;
 global using CTF.Application.Players.Weapons;
