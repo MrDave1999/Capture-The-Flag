@@ -1,7 +1,7 @@
 echo Executing Server Config...
 gamemode0 empty 
 skip_empty_check true
-plugins libSampSharp.so streamer.so YSF.so
+plugins libSampSharp.so streamer.so
 filterscripts
 rcon_password password
 port 7777

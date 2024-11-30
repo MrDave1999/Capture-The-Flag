@@ -7,6 +7,8 @@ public class MapRotationSystem(
     MapRotationService mapRotationService,
     MapTextDrawRenderer mapTextDrawRenderer) : ISystem
 {
+    private int _connectedPlayers;
+
     [Event]
     public void OnPlayerSpawn(Player player)
     {
@@ -14,9 +16,19 @@ public class MapRotationSystem(
     }
 
     [Event]
-    public void OnGameModeInit()
+    public void OnPlayerConnect(Player player)
     {
-        mapRotationService.StartRotationTimer();
+        _connectedPlayers++;
+        if (_connectedPlayers == 1)
+            mapRotationService.StartRotationTimer();
+    }
+
+    [Event]
+    public void OnPlayerDisconnect(Player player, DisconnectReason reason) 
+    {
+        _connectedPlayers--;
+        if (_connectedPlayers == 0)
+            mapRotationService.StopRotationTimer();
     }
 
     [PlayerCommand("startrt")]

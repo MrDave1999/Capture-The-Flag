@@ -33,6 +33,6 @@ public class Startup : IStartup
             .EnablePlayerCommands()
             .EnableRconCommands()
             .EnableStreamerEvents()
-            .EnableYsfEvents();
+            .EnablePauseEvents();
     }
 }
