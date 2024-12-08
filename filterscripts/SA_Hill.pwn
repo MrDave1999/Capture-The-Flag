@@ -1,4 +1,4 @@
-#include <a_samp>
+#include <open.mp>
 #define FILTER_SCRIPT_NAME "SA_Hill"
 #include "objects"
 

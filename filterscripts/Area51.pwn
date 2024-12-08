@@ -1,4 +1,4 @@
-#include <a_samp>
+#include <open.mp>
 #define FILTER_SCRIPT_NAME "Area51"
 #include "objects"
 

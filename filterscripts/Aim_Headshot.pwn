@@ -1,4 +1,4 @@
-#include <a_samp>
+#include <open.mp>
 #define FILTER_SCRIPT_NAME "Aim_Headshot"
 #include "objects"
 
