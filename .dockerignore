@@ -10,13 +10,17 @@ logs/
 scripts/
 screenshots/
 tests/
+components/
 announce.exe
 samp-server.exe
 samp-npc.exe
 announce
 samp03svr
 samp-npc
+omp-server.exe
+omp-server
 server.cfg
 server_log.txt
+log.txt
 *.zip
 *.rar
