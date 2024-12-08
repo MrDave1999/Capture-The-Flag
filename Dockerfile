@@ -23,17 +23,18 @@ COPY ["src/", "/app/src/"]
 RUN dotnet publish --framework=net6.0 -c Release -o /app/out --no-restore
 
 #
-# Download SA-MP server and dotnet linux-x86 
+# Download open.mp server and dotnet linux-x86 
 #
 FROM ubuntu:20.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget
 
-WORKDIR /sampserver
-RUN wget https://gta-multiplayer.cz/downloads/samp037svr_R2-2-1.tar.gz --no-check-certificate \
-    && tar -xf samp037svr_R2-2-1.tar.gz \
-    && rm -f samp037svr_R2-2-1.tar.gz
-WORKDIR /sampserver/samp03
-RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles server.cfg
+WORKDIR /open-mp
+ENV OPEN_MP_VERSION="1.3.1.2748"
+RUN wget https://github.com/openmultiplayer/open.mp/releases/download/v${OPEN_MP_VERSION}/open.mp-linux-x86.tar.gz --no-check-certificate \
+    && tar -xf open.mp-linux-x86.tar.gz \
+    && rm -f open.mp-linux-x86.tar.gz
+WORKDIR /open-mp/Server
+RUN rm -rf filterscripts gamemodes include npcmodes scriptfiles config.json
 
 WORKDIR /runtime
 ENV TARGET_FRAMEWORK="6.0.35"
@@ -67,8 +68,5 @@ COPY ["plugins/*.so", "plugins/"]
 COPY ["codepages/*.txt", "codepages/"]
 COPY ["server.cfg.example", "server.cfg"]
 COPY --from=tools /runtime runtime
-COPY --from=tools /sampserver/samp03 .
-RUN echo "" >> server.cfg \ 
-    && echo "coreclr runtime" >> server.cfg \
-    && echo "gamemode bin/CTF.Host.dll" >> server.cfg
+COPY --from=tools /open-mp/Server .
 COPY --from=build /app/out bin
