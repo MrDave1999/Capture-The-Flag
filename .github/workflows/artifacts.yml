@@ -16,14 +16,14 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-      - name: Download SA-MP Server
-        run: wget https://github.com/MrDave1999/samp-server/releases/download/sampserver.v1/samp03.zip
-      - name: Unzip SA-MP Server
-        run: unzip samp03.zip -d ctf-gamemode-windows
-      - name: Move contents of samp03 to root directory
+      - name: Download open.mp Server
+        run: wget https://github.com/MrDave1999/env.server/releases/download/omp-server/open.mp-win-x86.zip
+      - name: Unzip open.mp Server
+        run: unzip open.mp-win-x86.zip -d ctf-gamemode-windows
+      - name: Move contents of Server to root directory
         run: |
-         mv ctf-gamemode-windows/samp03/** ctf-gamemode-windows
-         rmdir ctf-gamemode-windows/samp03
+         mv ctf-gamemode-windows/Server/** ctf-gamemode-windows
+         rmdir ctf-gamemode-windows/Server
       - name: Add plugins to server.cfg file
         run: |
          echo "" >> ctf-gamemode-windows/server.cfg 
