@@ -1,6 +1,7 @@
 echo Executing Server Config...
-gamemode0 empty 
-skip_empty_check true
+coreclr runtime
+gamemode bin/CTF.Host.dll
+gamemode0 empty 1
 plugins libSampSharp.so streamer.so
 filterscripts
 rcon_password password
@@ -34,6 +35,4 @@ minconnectiontime 0
 connseedtime 300000
 db_logging 0
 db_log_queries 0
-conncookies 1
 cookielogging 0
-output 1

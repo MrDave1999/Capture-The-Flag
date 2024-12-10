@@ -6,7 +6,7 @@ services:
     command: >
       bash -c "sed -i 's/lagcompmode 1/lagcompmode ${LagCompMode}/' server.cfg 
       && sed -i 's/maxplayers 30/maxplayers ${MaxPlayers}/' server.cfg 
-      && ./samp03svr"
+      && ./omp-server"
     ports:
       - ${Port}:7777/udp
     environment:

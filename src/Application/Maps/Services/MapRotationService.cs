@@ -78,7 +78,7 @@ public class MapRotationService(
         flagAutoReturnTimer.Stop(Team.Alpha);
         flagAutoReturnTimer.Stop(Team.Beta);
         serverService.SendRconCommand($"loadfs {nextMap.Name}");
-        serverService.SendRconCommand($"mapname {nextMap.Name}");
+        serverService.SendRconCommand($"game.map {nextMap.Name}");
     }
 
     private void OnLoadedMap()
