@@ -106,20 +106,40 @@ public class AdminCommands(
         if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
             return;
 
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "samp.ban");
-        var bannedIPs = File.ReadAllLines(path);
-        if (bannedIPs.Length == 0)
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "bans.json");
+        var content = File.ReadAllText(path);
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+        var bannedPlayers = JsonSerializer.Deserialize<BannedPlayer[]>(content, options);
+        if (bannedPlayers.Length == 0)
         {
             currentPlayer.SendClientMessage(Color.Red, Messages.NoMatchFound);
             return;
         }
 
-        var dialog = new ListDialog(caption: $"Banned IPs: {bannedIPs.Length}", "Close");
-        foreach (string bannedIP in bannedIPs)
+        var dialog = new ListDialog(caption: $"Banned Players: {bannedPlayers.Length}", "Close");
+        foreach (BannedPlayer bannedPlayer in bannedPlayers)
         {
-            dialog.Add(bannedIP);
+            dialog.Add(bannedPlayer.ToString());
         }
 
         dialogService.ShowAsync(currentPlayer, dialog);
+    }
+
+    private class BannedPlayer
+    {
+        public string Address { get; set; } = string.Empty;
+        public string Player { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
+        public string Time { get; set; } = "2023-12-07T16:05:21-0500";
+        public override string ToString()
+        {
+            var dt = DateTimeOffset.Parse(Time).DateTime;
+            var date = dt.ToString("yyyy/MM/dd");
+            var time = dt.ToString("HH:mm:ss");
+            return $"{Address} [{date} | {time}] {Player} - {Reason}";
+        }
     }
 }
