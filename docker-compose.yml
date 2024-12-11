@@ -6,15 +6,12 @@ services:
     command: >
       bash -c "sed -i 's/lagcompmode 1/lagcompmode ${LagCompMode}/' server.cfg 
       && sed -i 's/maxplayers 30/maxplayers ${MaxPlayers}/' server.cfg 
+      && sed -i 's/port 7777/port ${Port}/' server.cfg 
       && ./omp-server"
     ports:
-      - ${Port}:7777/udp
+      - ${Port}:${Port}/udp
     environment:
       - TZ=${TZ}
     volumes:
       - ./scripts/sqlite:/app/scripts/sqlite
       - ./logs:/app/logs
-
-networks:
-  default:
-    name: 'gamemode-ctf'
