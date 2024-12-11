@@ -25,7 +25,7 @@ RUN dotnet publish --framework=net6.0 -c Release -o /app/out --no-restore
 #
 # Download open.mp server and dotnet linux-x86 
 #
-FROM ubuntu:20.04 AS tools
+FROM ubuntu:22.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget
 
 WORKDIR /open-mp
@@ -49,7 +49,7 @@ RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v${VERSIO
 #
 # Final stage/image
 #
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 WORKDIR /app
 EXPOSE 7777/udp
 
