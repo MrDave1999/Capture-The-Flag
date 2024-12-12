@@ -51,13 +51,11 @@ RUN wget https://github.com/Servarr/dotnet-linux-x86/releases/download/v${VERSIO
 #
 FROM ubuntu:22.04
 WORKDIR /app
-EXPOSE 7777/udp
-
 RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libc6:i386 \
     libstdc++6:i386 \
-    libssl1.1:i386 \
+    libssl3:i386 \
     libicu-dev:i386 \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
