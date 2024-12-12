@@ -38,6 +38,9 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Frameworks and libraries](#frameworks-and-libraries)
   - [Testing](#testing)
 - [Software Engineering](#software-engineering)
+  - [Programming Paradigms](#programming-paradigms)
+  - [Software Patterns](#software-patterns)
+  - [Design Principles](#design-principles)
 - [Requirements to play](#requirements-to-play)
 - [Deployment without Docker](#deployment-without-docker)
 - [Deployment with Docker](#deployment-with-docker)
@@ -141,18 +144,25 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 
 ## Software Engineering
 
-Software engineering concepts have been applied in this project:
+These concepts have been applied to this project:
+
+### Programming Paradigms
+- [Object-oriented programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming)
+- [Structured programming](https://en.wikipedia.org/wiki/Structured_programming)
+
+### Software Patterns
 - [Hexagonal architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 - [Entity–component–system (ECS)](https://en.wikipedia.org/wiki/Entity_component_system)
-- [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
 - [Interface-based programming](https://en.wikipedia.org/wiki/Interface-based_programming)
-- [Modular programming](https://en.wikipedia.org/wiki/Modular_programming)
 - [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection)
+- [Repository Pattern](https://deviq.com/design-patterns/repository-pattern)
 - [Operation Result Pattern](https://medium.com/@wgyxxbf/result-pattern-a01729f42f8c)
-- [Guard Clause](https://deviq.com/design-patterns/guard-clause)
-- [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
-- [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
+
+### Design Principles
 - [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)
+- [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+- [Dependency Inversion Principle](https://deviq.com/principles/dependency-inversion-principle)
+- [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
 
 ## Requirements to play
 
