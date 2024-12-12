@@ -1,4 +1,4 @@
-name: CTF Deploy
+name: CTF Deploy Production
 
 on:
   push:
@@ -17,7 +17,8 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd Capture-The-Flag
+          cd ctf-prod
           git pull origin main
           git status
           sudo docker compose up --build -d
+          sudo docker builder prune -f
