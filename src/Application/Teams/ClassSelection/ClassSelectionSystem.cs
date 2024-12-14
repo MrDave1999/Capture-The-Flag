@@ -75,7 +75,7 @@ public class ClassSelectionSystem(
             return false;
         }
         player.DisableClassSelection();
-        player.GameText("_", 1000, 4);
+        player.HideGameText(style: 3);
         player.GetInfo().SetTeam(selectedTeam.Id);
         player.StopAudioStream();
         selectedTeam.Members.Add(player);

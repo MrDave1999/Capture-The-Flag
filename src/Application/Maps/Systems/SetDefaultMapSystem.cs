@@ -18,7 +18,7 @@ public class SetDefaultMapSystem(
             mapInfoService.Load(mapResult.Value);
         }
         CurrentMap currentMap = mapInfoService.Read();
-        serverService.SendRconCommand($"mapname {currentMap.Name}");
+        serverService.SendRconCommand($"game.map {currentMap.Name}");
         serverService.SendRconCommand($"loadfs {currentMap.Name}");
         mapTextDrawRenderer.UpdateMapName(currentMap);
 

@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "samp-server": {
+    "omp-server": {
       "commandName": "Executable",
-      "executablePath": ".\\samp-server.exe",
+      "executablePath": ".\\omp-server.exe",
       "workingDirectory": "..\\..\\"
     }
   }

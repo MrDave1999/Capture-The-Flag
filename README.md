@@ -38,6 +38,9 @@ There are 2 flags on the map, one for each team. Players need to capture the ene
   - [Frameworks and libraries](#frameworks-and-libraries)
   - [Testing](#testing)
 - [Software Engineering](#software-engineering)
+  - [Programming Paradigms](#programming-paradigms)
+  - [Software Patterns](#software-patterns)
+  - [Design Principles](#design-principles)
 - [Requirements to play](#requirements-to-play)
 - [Deployment without Docker](#deployment-without-docker)
 - [Deployment with Docker](#deployment-with-docker)
@@ -102,7 +105,7 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 
 ### Softwares
 - [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools)
-- [SA-MP Server](https://www.sa-mp.mp/downloads)
+- [Open Multiplayer](https://github.com/openmultiplayer)
 - [CompileApp-FS](https://github.com/MrDave1999/CompileApp-FS)
 - [Visual Studio 2022](https://visualstudio.microsoft.com)
 - [vscode](https://github.com/microsoft/vscode)
@@ -111,9 +114,10 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 - [DB Browser for SQLite](https://sqlitebrowser.org)
 - [HeidiSQL](https://github.com/HeidiSQL)
 - [GitHub Actions](https://github.com/actions)
-- [Git](https://git-scm.com)
+- [Git](https://github.com/git/git)
 - [draw.io](https://app.diagrams.net)
 - [Docker](https://github.com/docker)
+- [Portainer](https://github.com/portainer/portainer)
 
 ### Frameworks and libraries
 - [.NET SDK 8.0](https://github.com/dotnet/runtime)
@@ -140,31 +144,38 @@ In this video, you can watch a gameplay demo: https://youtu.be/rsWCZaT4aBE or al
 
 ## Software Engineering
 
-Software engineering concepts have been applied in this project:
+These concepts have been applied to this project:
+
+### Programming Paradigms
+- [Object-oriented programming (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming)
+- [Structured programming](https://en.wikipedia.org/wiki/Structured_programming)
+
+### Software Patterns
 - [Hexagonal architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 - [Entity–component–system (ECS)](https://en.wikipedia.org/wiki/Entity_component_system)
-- [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming)
 - [Interface-based programming](https://en.wikipedia.org/wiki/Interface-based_programming)
-- [Modular programming](https://en.wikipedia.org/wiki/Modular_programming)
 - [Dependency injection](https://en.wikipedia.org/wiki/Dependency_injection)
+- [Repository Pattern](https://deviq.com/design-patterns/repository-pattern)
 - [Operation Result Pattern](https://medium.com/@wgyxxbf/result-pattern-a01729f42f8c)
-- [Guard Clause](https://deviq.com/design-patterns/guard-clause)
-- [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
-- [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
+
+### Design Principles
 - [Separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)
+- [Open-Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+- [Dependency Inversion Principle](https://deviq.com/principles/dependency-inversion-principle)
+- [Explicit dependencies](https://deviq.com/principles/explicit-dependencies-principle)
 
 ## Requirements to play
 
 - You must have **DirectX 9** installed on your local machine.
-- You must download **Grand Theft Auto: San Andreas** on your local machine.
-- You must download the [SA-MP client](https://www.sa-mp.mp/downloads) or the [open.mp launcher](https://github.com/openmultiplayer/launcher/releases) to connect to the servers.
+- You must download [Grand Theft Auto: San Andreas](https://mega.nz/file/yFMjSLZA#8Amh1xyauAKO9Ff1lsbXHZIWHqPC4qEg2McfqhqoHTc) on your local machine.
+- You must download [open.mp launcher](https://github.com/openmultiplayer/launcher/releases/latest) to connect to the servers.
 
 ## Deployment without Docker
 
 - You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
 - You need to download the [ctf-gamemode-windows.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
 - Once downloaded, modify the `.env` file according to your needs.
-- Run the `samp-server.exe`.
+- Run the `omp-server.exe`.
 
 ## Deployment with Docker
 
@@ -186,9 +197,9 @@ docker compose up --build -d
 ```
 - Check the server logs to see if everything is working properly:
 ```sh
-docker compose exec -it app cat server_log.txt
+docker compose exec -it app cat log.txt
 ```
-- Add the server IP in your [SA-MP client](https://www.sa-mp.mp/downloads):
+- Add the server IP in your [omp-launcher](https://github.com/openmultiplayer/launcher/releases/latest):
 ```
 localhost:7777
 ```
@@ -289,9 +300,11 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 ## Credits
 
 - [MrDave1999](https://github.com/MrDave1999/Capture-The-Flag) for creating the "Capture The Flag" game mode.
+- [Parca_35](https://www.youtube.com/channel/UCQUOz-GEp0jMtmGzUEQWElQ) for helping test the game mode.
 - [ikkentim](https://github.com/ikkentim/SampSharp) for creating the SampSharp framework.
 - [Nickk888SAMP](https://github.com/Nickk888SAMP/TextDraw-Editor) for creating NTD (TextDraw Editor).
 - [samp-incognito](https://github.com/samp-incognito/samp-streamer-plugin) for creating the streamer plugin.
+- [Open Multiplayer](https://github.com/openmultiplayer) for creating a multiplayer mod for Grand Theft Auto: San Andreas fully backward compatible with San Andreas Multiplayer (SA-MP).
 
 ### Mappers
 

@@ -27,10 +27,14 @@ samp-npc.exe
 announce
 samp03svr
 samp-npc
+components/
+omp-server.exe
+omp-server
 
 # logs
 logs/
 server_log.txt
+log.txt
 crashinfo.txt
 
 # License
@@ -38,9 +42,11 @@ samp-license.txt
 
 # Ban list
 samp.ban
+bans.json
 
 # IDE files (compiler, includes, etc)
 pawno/
+qawno/
 
 # User-specific files
 *.rsuser

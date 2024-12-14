@@ -1,0 +1,24 @@
+name: CTF Deploy Test
+
+on:
+  push:
+    branches: 
+      - test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@v1.1.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd ctf-test
+          git pull origin dev
+          git status
+          sudo docker compose up --build -d
+          sudo docker builder prune -f
