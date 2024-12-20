@@ -57,23 +57,7 @@ public class ClassSelectionSystem(
     [Event]
     public bool OnPlayerRequestSpawn(Player player)
     {
-        if (player.IsUnauthenticated())
-        {
-            player.SendClientMessage(Color.Red, Messages.LoginOrRegisterToContinue);
-            return false;
-        }
-        if (mapRotationService.IsMapLoading())
-        {
-            player.SendClientMessage(Color.Red, Messages.MapIsLoading);
-            return false;
-        }
         Team selectedTeam = player.Team == (int)TeamId.Alpha ? Team.Alpha : Team.Beta;
-        if (selectedTeam.IsFull())
-        {
-            string gameText = selectedTeam.GetAvailabilityMessage();
-            player.GameText(gameText, 999999999, 3);
-            return false;
-        }
         player.DisableClassSelection();
         player.HideGameText(style: 3);
         player.GetInfo().SetTeam(selectedTeam.Id);

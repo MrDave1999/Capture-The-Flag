@@ -20,6 +20,12 @@ public class WeaponSystem : ISystem
     }
 
     [Event]
+    public void OnPlayerRequestSpawn(Player player) 
+    {
+        ShowWeapons(player);
+    }
+
+    [Event]
     public void OnPlayerSpawn(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
