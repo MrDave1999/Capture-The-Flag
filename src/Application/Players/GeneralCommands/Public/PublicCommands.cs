@@ -1,21 +1,9 @@
-﻿namespace CTF.Application.Players.GeneralCommands;
+﻿namespace CTF.Application.Players.GeneralCommands.Public;
 
 public class PublicCommands(
     IEntityManager entityManager,
     IDialogService dialogService) : ISystem
 {
-    [PlayerCommand("cmds")]
-    public void ShowCommands(Player player)
-    {
-        var content = Smart.Format(DetailedCommandInfo.Public, new
-        {
-            Color1 = Color.Yellow,
-            Color2 = Color.White
-        });
-        var dialog = new MessageDialog(caption: "Commands", content, "Close");
-        dialogService.ShowAsync(player, dialog);
-    }
-
     [PlayerCommand("help")]
     public void ShowHelp(Player player)
     {
@@ -100,7 +88,7 @@ public class PublicCommands(
     [PlayerCommand("report")]
     public void ReportPlayer(
         Player currentPlayer,
-        [CommandParameter(Name = "playerId")]Player targetPlayer,
+        [CommandParameter(Name = "playerId")] Player targetPlayer,
         string reason)
     {
         if (currentPlayer == targetPlayer)
@@ -136,7 +124,7 @@ public class PublicCommands(
     [PlayerCommand("spec")]
     public void EnableSpectatorMode(
         Player currentPlayer,
-        [CommandParameter(Name = "playerId")]Player targetPlayer,
+        [CommandParameter(Name = "playerId")] Player targetPlayer,
         TeamTextDrawRenderer teamTextDrawRenderer)
     {
         if (currentPlayer == targetPlayer)
