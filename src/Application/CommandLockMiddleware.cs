@@ -5,6 +5,14 @@ public class CommandLockMiddleware(
     EventDelegate next,
     MapRotationService mapRotationService)
 {
+    /// <summary>
+    /// Invokes the middleware logic to lock player commands if certain conditions are met.
+    /// </summary>
+    /// <param name="context">Contains context information about the fired event.</param>
+    /// <returns>
+    /// <see langword="null"/> if any condition is met to block the command.
+    /// Otherwise, it proceeds to the next middleware or action.
+    /// </returns>
     public object Invoke(EventContext context)
     {
         int playerId = (int)context.Arguments[0];

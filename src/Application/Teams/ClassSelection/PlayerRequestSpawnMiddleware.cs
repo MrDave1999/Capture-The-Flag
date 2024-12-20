@@ -5,6 +5,14 @@ public class PlayerRequestSpawnMiddleware(
     EventDelegate next,
     MapRotationService mapRotationService)
 {
+    /// <summary>
+    /// Invokes the middleware logic to handle player spawn requests.
+    /// </summary>
+    /// <param name="context">Contains context information about the fired event.</param>
+    /// <returns>
+    /// <see langword="false"/> if any condition is met to prevent the player from spawning.
+    /// Otherwise, it proceeds to the next middleware or action.
+    /// </returns>
     public object Invoke(EventContext context)
     {
         int playerId = (int)context.Arguments[0];
