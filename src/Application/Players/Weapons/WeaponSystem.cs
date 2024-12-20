@@ -2,9 +2,11 @@
 
 public class WeaponSystem : ISystem
 {
+    private readonly IDialogService _dialogService;
     private readonly ListDialog _weaponsDialog;
-    public WeaponSystem()
+    public WeaponSystem(IDialogService dialogService)
     {
+        _dialogService = dialogService;
         _weaponsDialog = new ListDialog("Weapons", "Select", "Close");
         var weapons = GtaWeapons.GetAll();
         foreach (IWeapon weapon in weapons)
@@ -32,11 +34,11 @@ public class WeaponSystem : ISystem
     }
 
     [PlayerCommand("weapons")]
-    public async void ShowWeapons(Player player, IDialogService dialogService)
+    public async void ShowWeapons(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
-        ListDialogResponse response = await dialogService.ShowAsync(player, _weaponsDialog);
+        ListDialogResponse response = await _dialogService.ShowAsync(player, _weaponsDialog);
         if (response.IsRightButtonOrDisconnected())
             return;
 
@@ -45,7 +47,7 @@ public class WeaponSystem : ISystem
         {
             var message = Smart.Format(Messages.WeaponAlreadyExists, weaponSelectedFromDialog);
             player.SendClientMessage(Color.Red, message);
-            ShowWeapons(player, dialogService);
+            ShowWeapons(player);
             return;
         }
 
@@ -55,11 +57,11 @@ public class WeaponSystem : ISystem
             var message = Smart.Format(Messages.WeaponSuccessfullyAdded, weaponSelectedFromDialog);
             player.SendClientMessage(Color.Yellow, message);
         }
-        ShowWeapons(player, dialogService);
+        ShowWeapons(player);
     }
 
     [PlayerCommand("pack")]
-    public async void ShowWeaponPackage(Player player, IDialogService dialogService)
+    public async void ShowWeaponPackage(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();
         WeaponPack selectedWeapons = weaponSelection.SelectedWeapons;
@@ -72,7 +74,7 @@ public class WeaponSystem : ISystem
         foreach (IWeapon weapon in selectedWeapons)
             dialog.Add(weapon.Name);
 
-        ListDialogResponse response = await dialogService.ShowAsync(player, dialog);
+        ListDialogResponse response = await _dialogService.ShowAsync(player, dialog);
         if (response.IsRightButtonOrDisconnected())
             return;
 
@@ -83,6 +85,6 @@ public class WeaponSystem : ISystem
         player.ResetWeapons();
         foreach (IWeapon weapon in selectedWeapons)
             player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
-        ShowWeaponPackage(player, dialogService);
+        ShowWeaponPackage(player);
     }
 }
