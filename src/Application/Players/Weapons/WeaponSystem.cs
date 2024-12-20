@@ -26,6 +26,19 @@ public class WeaponSystem : ISystem
     }
 
     [Event]
+    public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
+    {
+        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Yes))
+        {
+            ShowWeapons(player);
+        }
+        else if (KeyUtils.HasPressed(newKeys,oldKeys, Keys.CtrlBack))
+        {
+            ShowWeaponPackage(player);
+        }
+    }
+
+    [Event]
     public void OnPlayerSpawn(Player player)
     {
         var weaponSelection = player.GetComponent<WeaponSelectionComponent>();

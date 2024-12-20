@@ -33,6 +33,15 @@ public class ComboSystem : ISystem
             _tablistDialog.Add(combo.Name, combo.RequiredCoins.ToString());
     }
 
+    [Event]
+    public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
+    {
+        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.AnalogLeft))
+        {
+            ShowCombos(player);
+        }
+    }
+
     [PlayerCommand("combos")]
     public async void ShowCombos(Player player)
     {
