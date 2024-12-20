@@ -1,6 +1,6 @@
 ﻿namespace CTF.Application;
 
-public class CommandLockMiddleware(
+public class PlayerCommandLockMiddleware(
     IEntityManager entityManager, 
     EventDelegate next,
     MapRotationService mapRotationService)
