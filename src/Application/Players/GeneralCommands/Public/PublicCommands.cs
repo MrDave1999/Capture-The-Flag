@@ -88,7 +88,7 @@ public class PublicCommands(
     [PlayerCommand("report")]
     public void ReportPlayer(
         Player currentPlayer,
-        [CommandParameter(Name = "playerId")] Player targetPlayer,
+        [CommandParameter(Name = "playerId")]Player targetPlayer,
         string reason)
     {
         if (currentPlayer == targetPlayer)
@@ -124,7 +124,7 @@ public class PublicCommands(
     [PlayerCommand("spec")]
     public void EnableSpectatorMode(
         Player currentPlayer,
-        [CommandParameter(Name = "playerId")] Player targetPlayer,
+        [CommandParameter(Name = "playerId")]Player targetPlayer,
         TeamTextDrawRenderer teamTextDrawRenderer)
     {
         if (currentPlayer == targetPlayer)
