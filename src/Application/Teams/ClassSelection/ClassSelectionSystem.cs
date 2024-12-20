@@ -4,7 +4,6 @@ public class ClassSelectionSystem(
     IWorldService worldService,
     ClassSelectionTextDrawRenderer classSelectionTextDrawRenderer,
     TeamTextDrawRenderer teamTextDrawRenderer,
-    MapRotationService mapRotationService,
     ServerSettings serverSettings) : ISystem
 {
     [Event]
