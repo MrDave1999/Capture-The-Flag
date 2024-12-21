@@ -15,10 +15,11 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.PRIVATE_KEY }}
-        port: 22
+        port: ${{ secrets.PORT }}
         script: |
           cd ctf-test
           git pull origin dev
           git status
           sudo docker compose up --build -d
-          sudo docker builder prune -f
+          sudo docker builder prune -f -a
+          sudo docker image prune -f -a
