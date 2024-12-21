@@ -21,4 +21,5 @@ jobs:
           git pull origin main
           git status
           sudo docker compose up --build -d
-          sudo docker builder prune -f
+          sudo docker builder prune -f -a
+          sudo docker image prune -f -a
