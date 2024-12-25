@@ -889,6 +889,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has reset the statistics of both teams (Alpha and Beta).
+        /// </summary>
+        internal static string ResetTeamStats {
+            get {
+                return ResourceManager.GetString("ResetTeamStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have assigned the {RoleName} role to {PlayerName}.
         /// </summary>
         internal static string RoleSuccessfullyChanged {

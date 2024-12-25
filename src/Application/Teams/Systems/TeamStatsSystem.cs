@@ -2,6 +2,7 @@
 
 public class TeamStatsSystem(
     IDialogService dialogService, 
+    IWorldService worldService,
     TeamTextDrawRenderer teamTextDrawRenderer) : ISystem
 {
     [Event]
@@ -21,6 +22,25 @@ public class TeamStatsSystem(
 
         PlayerInfo killerInfo = killer.GetInfo();
         killerInfo.Team.StatsPerRound.AddKills();
+    }
+
+    [PlayerCommand("rstats")]
+    public void ResetStats(Player player) 
+    {
+        if (player.HasLowerRoleThan(RoleId.Moderator))
+            return;
+
+        Team alphaTeam = Team.Alpha;
+        Team betaTeam = Team.Beta;
+        alphaTeam.StatsPerRound.Reset();
+        betaTeam.StatsPerRound.Reset();
+        teamTextDrawRenderer.UpdateTeamScore(alphaTeam);
+        teamTextDrawRenderer.UpdateTeamScore(betaTeam);
+        var message = Smart.Format(Messages.ResetTeamStats, new
+        {
+            PlayerName = player.Name
+        });
+        worldService.SendClientMessage(Color.Yellow, message);
     }
 
     [PlayerCommand("tstats")]
