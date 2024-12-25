@@ -35,8 +35,10 @@ public class HeadShotSystem(IPlayerRepository playerRepository) : ISystem
         {
             PlayerInfo issuerInfo = issuer.GetInfo();
             issuerInfo.AddHeadShots();
+            issuerInfo.StatsPerRound.AddCoins(50);
             playerRepository.UpdateHeadShots(issuerInfo);
-            issuer.GameText("HeadShot +1", 3000, 3);
+            issuer.GameText("Headshot +1", 3000, 3);
+            issuer.SendClientMessage(Color.Yellow, "Headshot +1");
             player.Health = 0;
         }
     }
