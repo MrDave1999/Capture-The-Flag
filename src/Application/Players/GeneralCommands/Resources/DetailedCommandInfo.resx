@@ -206,6 +206,7 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}/topspree: {Color2}Display the list of top players based on their maximum killing spree.
 {Color1}/team: {Color2}Switch to a different team.
 {Color1}/kill: {Color2}Eliminate your character for respawn purposes.
+{Color1}/p: {Color2}Allows the player to get a parachute.
 {Color1}/re: {Color2}Reset the statistics of the current player.
 {Color1}/admins: {Color2}List the current server administrators.
 {Color1}/vips: {Color2}Display the list of VIP players.

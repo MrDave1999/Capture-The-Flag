@@ -147,10 +147,10 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/topspree: {Color2}Display the list of top players based on their maximum killing spree.
         ///{Color1}/team: {Color2}Switch to a different team.
         ///{Color1}/kill: {Color2}Eliminate your character for respawn purposes.
+        ///{Color1}/p: {Color2}Allows the player to get a parachute.
         ///{Color1}/re: {Color2}Reset the statistics of the current player.
         ///{Color1}/admins: {Color2}List the current server administrators.
-        ///{Color1}/vips: {Color2}Display the list of VIP players.
-        ///{Col [rest of string was truncated]&quot;;.
+        ///{C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Public2 {
             get {
