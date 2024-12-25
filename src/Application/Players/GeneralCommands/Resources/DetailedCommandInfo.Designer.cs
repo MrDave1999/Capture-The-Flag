@@ -117,9 +117,9 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
         ///{Color1}/startrt: {Color2}Starts the rotation timer for the current map.
         ///{Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
+        ///{Color1}/rstats: {Color2}Reset the statistics of both teams (Alpha and Beta).
         ///{Color1}/kick: {Color2}Kicks a player from the game.
-        ///{Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavior.
-        ///{Color1}/setspawn: {Color2}Sets a new spawn point for players in the game.        /// [rest of string was truncated]&quot;;.
+        ///{Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavio [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Moderator {
             get {
