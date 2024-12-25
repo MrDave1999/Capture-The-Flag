@@ -393,6 +393,9 @@
   <data name="ResetPlayerStats" xml:space="preserve">
     <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>
   </data>
+  <data name="ResetTeamStats" xml:space="preserve">
+    <value>{PlayerName} has reset the statistics of both teams (Alpha and Beta)</value>
+  </data>
   <data name="RoleSuccessfullyChanged" xml:space="preserve">
     <value>You have assigned the {RoleName} role to {PlayerName}</value>
   </data>

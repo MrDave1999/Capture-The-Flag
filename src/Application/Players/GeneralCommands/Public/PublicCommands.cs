@@ -28,6 +28,12 @@ public class PublicCommands(
         dialogService.ShowAsync(player, dialog);
     }
 
+    [PlayerCommand("p")]
+    public void GiveParachute(Player player)
+    {
+        player.GiveWeapon(Weapon.Parachute, 1);
+    }
+
     [PlayerCommand("kill")]
     public void Kill(Player player)
     {

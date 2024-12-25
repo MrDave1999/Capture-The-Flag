@@ -53,6 +53,15 @@ public class PlayerStatsSystem(
         playerStatsRenderer.UpdateTextDraw(killer);
     }
 
+    [Event]
+    public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
+    {
+        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.AnalogRight))
+        {
+            ShowStats(player);
+        }
+    }
+
     [PlayerCommand("re")]
     public void ResetPlayerStats(Player player)
     {

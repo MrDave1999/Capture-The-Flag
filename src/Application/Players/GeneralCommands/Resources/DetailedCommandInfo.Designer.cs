@@ -117,9 +117,9 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
         ///{Color1}/startrt: {Color2}Starts the rotation timer for the current map.
         ///{Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
+        ///{Color1}/rstats: {Color2}Reset the statistics of both teams (Alpha and Beta).
         ///{Color1}/kick: {Color2}Kicks a player from the game.
-        ///{Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavior.
-        ///{Color1}/setspawn: {Color2}Sets a new spawn point for players in the game.        /// [rest of string was truncated]&quot;;.
+        ///{Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavio [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Moderator {
             get {
@@ -147,10 +147,10 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/topspree: {Color2}Display the list of top players based on their maximum killing spree.
         ///{Color1}/team: {Color2}Switch to a different team.
         ///{Color1}/kill: {Color2}Eliminate your character for respawn purposes.
+        ///{Color1}/p: {Color2}Allows the player to get a parachute.
         ///{Color1}/re: {Color2}Reset the statistics of the current player.
         ///{Color1}/admins: {Color2}List the current server administrators.
-        ///{Color1}/vips: {Color2}Display the list of VIP players.
-        ///{Col [rest of string was truncated]&quot;;.
+        ///{C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Public2 {
             get {
