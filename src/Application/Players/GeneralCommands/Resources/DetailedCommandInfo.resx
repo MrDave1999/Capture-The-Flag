@@ -197,7 +197,8 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color2}Use the 'N' key to show the scoreboard with the players of both teams.
 {Color2}Use the 'Y' key to show the weapons menu.
 {Color2}Use the 'H' key to show your current weapons package.
-{Color2}Use the 'NUM 4' key to show a list of available combos and their benefits.</value>
+{Color2}Use the 'NUM 4' key to show a list of available combos and their benefits.
+{Color2}Use the 'NUM 6' key to show your own statistics in the game.</value>
   </data>
   <data name="Public2" xml:space="preserve">
     <value>{Color1}/topkills: {Color2}Display the list of top players based on their total number of kills.
