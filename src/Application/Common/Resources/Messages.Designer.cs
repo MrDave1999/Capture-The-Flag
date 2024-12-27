@@ -304,6 +304,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName1} landed a headshot with a sniper at {PlayerName2}.
+        /// </summary>
+        internal static string HeadshotToPlayer {
+            get {
+                return ResourceManager.GetString("HeadshotToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough coins to obtain this combo.
         /// </summary>
         internal static string InsufficientCoins {

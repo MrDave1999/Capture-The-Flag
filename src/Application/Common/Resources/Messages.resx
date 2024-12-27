@@ -198,6 +198,9 @@
   <data name="HasCapturedFlag" xml:space="preserve">
     <value>You cannot use this command because you are the flag carrier</value>
   </data>
+  <data name="HeadshotToPlayer" xml:space="preserve">
+    <value>{PlayerName1} landed a headshot with a sniper at {PlayerName2}</value>
+  </data>
   <data name="InsufficientCoins" xml:space="preserve">
     <value>You do not have enough coins to obtain this combo</value>
   </data>
