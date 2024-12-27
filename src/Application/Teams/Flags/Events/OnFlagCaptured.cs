@@ -8,7 +8,8 @@ public class OnFlagCaptured(
     IWorldService worldService,
     TeamPickupService teamPickupService,
     TeamSoundsService teamSoundsService,
-    PlayerStatsRenderer playerStatsRenderer) : IFlagEvent
+    PlayerStatsRenderer playerStatsRenderer,
+    FlagCarrierSettings flagCarrierSettings) : IFlagEvent
 {
     public FlagStatus FlagStatus => FlagStatus.Captured;
 
@@ -30,7 +31,10 @@ public class OnFlagCaptured(
         playerInfo.StatsPerRound.AddCoins(5);
         playerInfo.AddCapturedFlags();
         player.AddScore(2);
-        player.ShowOnRadarMap();
+        if (flagCarrierSettings.ShowOnRadarMap)
+        {
+            player.ShowOnRadarMap();
+        }
         playerRepository.UpdateCapturedFlags(playerInfo);
         playerStatsRenderer.UpdateTextDraw(player);
     }
