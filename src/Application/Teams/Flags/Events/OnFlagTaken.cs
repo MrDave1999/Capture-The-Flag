@@ -7,7 +7,8 @@ public class OnFlagTaken(
     IWorldService worldService,
     TeamPickupService teamPickupService,
     TeamSoundsService teamSoundsService,
-    FlagAutoReturnTimer flagAutoReturnTimer) : IFlagEvent
+    FlagAutoReturnTimer flagAutoReturnTimer,
+    FlagCarrierSettings flagCarrierSettings) : IFlagEvent
 {
     public FlagStatus FlagStatus => FlagStatus.Taken;
 
@@ -24,6 +25,9 @@ public class OnFlagTaken(
         });
         worldService.SendClientMessage(team.ColorHex, message);
         worldService.GameText($"~n~~n~~n~{team.GameText}{team.ColorName} flag taken!", 5000, 3);
-        player.ShowOnRadarMap();
+        if (flagCarrierSettings.ShowOnRadarMap)
+        {
+            player.ShowOnRadarMap();
+        }
     }
 }
