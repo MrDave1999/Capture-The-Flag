@@ -1,6 +1,8 @@
 ﻿namespace CTF.Application.Players;
 
-public class HeadShotSystem(IPlayerRepository playerRepository) : ISystem
+public class HeadShotSystem(
+    IPlayerRepository playerRepository,
+    IWorldService worldService) : ISystem
 {
     /// <summary>
     /// This callback is called when a player takes damage.
@@ -37,9 +39,13 @@ public class HeadShotSystem(IPlayerRepository playerRepository) : ISystem
             issuerInfo.AddHeadShots();
             issuerInfo.StatsPerRound.AddCoins(5);
             playerRepository.UpdateHeadShots(issuerInfo);
-            issuer.GameText("Headshot +1", 3000, 3);
-            issuer.SendClientMessage(Color.Yellow, "Headshot +1");
             player.Health = 0;
+            var message = Smart.Format(Messages.HeadshotToPlayer, new
+            {
+                PlayerName1 = issuer.Name,
+                PlayerName2 = player.Name
+            });
+            worldService.SendClientMessage(Color.Yellow, message);
         }
     }
 }

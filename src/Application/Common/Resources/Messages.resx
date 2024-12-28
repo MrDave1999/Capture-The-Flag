@@ -168,6 +168,9 @@
   <data name="CommandLockMapLoading" xml:space="preserve">
     <value>You cannot execute commands while the map is loading</value>
   </data>
+  <data name="CommandNotFound" xml:space="preserve">
+    <value>Command not found. To see all available commands, use /cmds</value>
+  </data>
   <data name="ConsecutiveKills" xml:space="preserve">
     <value>{PlayerName} has had {Kills} consecutive kills without dying</value>
   </data>
@@ -197,6 +200,9 @@
   </data>
   <data name="HasCapturedFlag" xml:space="preserve">
     <value>You cannot use this command because you are the flag carrier</value>
+  </data>
+  <data name="HeadshotToPlayer" xml:space="preserve">
+    <value>{PlayerName1} landed a headshot with a sniper at {PlayerName2}</value>
   </data>
   <data name="InsufficientCoins" xml:space="preserve">
     <value>You do not have enough coins to obtain this combo</value>

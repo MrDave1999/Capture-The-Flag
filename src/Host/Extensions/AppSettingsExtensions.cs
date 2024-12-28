@@ -22,11 +22,16 @@ public static class AppSettingsExtensions
             .GetRequiredSection("ServerOwner")
             .Get<ServerOwnerSettings>();
 
+        var flagCarrierSettings = configuration
+            .GetRequiredSection("FlagCarrier")
+            .Get<FlagCarrierSettings>();
+
         services
             .AddSingleton(serverSettings)
             .AddSingleton(commandCooldowns)
             .AddSingleton(topPlayersSettings)
-            .AddSingleton(serverOwnerSettings);
+            .AddSingleton(serverOwnerSettings)
+            .AddSingleton(flagCarrierSettings);
 
         return services;
     }

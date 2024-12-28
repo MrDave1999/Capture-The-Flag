@@ -11,7 +11,7 @@ public class FlagCarrierPauseHandler(
     ITimerService timerService,
     TeamPickupService teamPickupService,
     TeamSoundsService teamSoundsService,
-    ServerSettings serverSettings) : ISystem
+    FlagCarrierSettings flagCarrierSettings) : ISystem
 {
     [Event]
     public void OnPlayerDisconnect(Player player, DisconnectReason reason)
@@ -29,7 +29,7 @@ public class FlagCarrierPauseHandler(
         PlayerInfo playerInfo = player.GetInfo();
         if (pauseState && playerInfo.HasCapturedFlag())
         {
-            var interval = TimeSpan.FromSeconds(serverSettings.FlagCarrierPauseTime);
+            var interval = TimeSpan.FromSeconds(flagCarrierSettings.PauseTime);
             var timerReference = timerService.Start(OnComplete, interval);
             player.AddComponent<PauseTimerReference>(timerReference);
         }
@@ -66,7 +66,7 @@ public class FlagCarrierPauseHandler(
             {
                 rivalTeam.ColorName,
                 PlayerName = player.Name,
-                Seconds = serverSettings.FlagCarrierPauseTime
+                Seconds = flagCarrierSettings.PauseTime
             });
             worldService.SendClientMessage(rivalTeam.ColorHex, message);
             worldService.GameText($"~n~~n~~n~{rivalTeam.GameText}{rivalTeam.ColorName} flag returned!", 5000, 3);

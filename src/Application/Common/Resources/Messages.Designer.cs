@@ -214,6 +214,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Command not found. To see all available commands, use /cmds.
+        /// </summary>
+        internal static string CommandNotFound {
+            get {
+                return ResourceManager.GetString("CommandNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has had {Kills} consecutive kills without dying.
         /// </summary>
         internal static string ConsecutiveKills {
@@ -300,6 +309,15 @@ namespace CTF.Application.Common.Resources {
         internal static string HasCapturedFlag {
             get {
                 return ResourceManager.GetString("HasCapturedFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName1} landed a headshot with a sniper at {PlayerName2}.
+        /// </summary>
+        internal static string HeadshotToPlayer {
+            get {
+                return ResourceManager.GetString("HeadshotToPlayer", resourceCulture);
             }
         }
         
