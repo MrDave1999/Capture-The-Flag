@@ -168,6 +168,9 @@
   <data name="CommandLockMapLoading" xml:space="preserve">
     <value>You cannot execute commands while the map is loading</value>
   </data>
+  <data name="CommandNotFound" xml:space="preserve">
+    <value>Command not found. To see all available commands, use /cmds</value>
+  </data>
   <data name="ConsecutiveKills" xml:space="preserve">
     <value>{PlayerName} has had {Kills} consecutive kills without dying</value>
   </data>
