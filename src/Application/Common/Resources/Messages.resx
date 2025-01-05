@@ -204,6 +204,9 @@
   <data name="HeadshotToPlayer" xml:space="preserve">
     <value>{PlayerName1} landed a headshot with a sniper at {PlayerName2}</value>
   </data>
+  <data name="HideFlagCarriersOnRadarMap" xml:space="preserve">
+    <value>{PlayerName} decided that the flag carriers will be hidden on the radar map</value>
+  </data>
   <data name="InsufficientCoins" xml:space="preserve">
     <value>You do not have enough coins to obtain this combo</value>
   </data>
@@ -416,6 +419,9 @@
   </data>
   <data name="SetSpawnToPlayer" xml:space="preserve">
     <value>You've spawned {PlayerName} into the game!</value>
+  </data>
+  <data name="ShowFlagCarriersOnRadarMap" xml:space="preserve">
+    <value>{PlayerName} decided that the flag carriers will be shown on the radar map</value>
   </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>
