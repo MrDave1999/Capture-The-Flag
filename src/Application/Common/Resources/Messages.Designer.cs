@@ -322,6 +322,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} decided that the flag carriers will be hidden on the radar map.
+        /// </summary>
+        internal static string HideFlagCarriersOnRadarMap {
+            get {
+                return ResourceManager.GetString("HideFlagCarriersOnRadarMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough coins to obtain this combo.
         /// </summary>
         internal static string InsufficientCoins {
@@ -957,6 +966,15 @@ namespace CTF.Application.Common.Resources {
         internal static string SetSpawnToPlayer {
             get {
                 return ResourceManager.GetString("SetSpawnToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} decided that the flag carriers will be shown on the radar map.
+        /// </summary>
+        internal static string ShowFlagCarriersOnRadarMap {
+            get {
+                return ResourceManager.GetString("ShowFlagCarriersOnRadarMap", resourceCulture);
             }
         }
         
