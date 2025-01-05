@@ -20,7 +20,7 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: Execute unit tests
-      run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
+      run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release --framework=net8.0
 
   integration_testing:
     runs-on: ubuntu-latest
@@ -55,4 +55,4 @@ jobs:
     - name: Create .env.test file
       run: cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
     - name: Execute integration tests
-      run: dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release
+      run: dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release --framework=net8.0
