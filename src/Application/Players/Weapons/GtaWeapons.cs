@@ -5,6 +5,7 @@ public class GtaWeapons
     private static readonly GtaWeapon[] s_weapons =
     [
         new(Weapon.Knife,           1),
+        new(Weapon.Colt45,          2),
         new(Weapon.Silenced,        2),
         new(Weapon.Deagle,          2),
         new(Weapon.Shotgun,         3),
