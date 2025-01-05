@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Teams.Flags;
+﻿namespace CTF.Application.Teams.Flags.Systems;
 
 public class FlagSystem(
     IDictionary<FlagStatus, IFlagEvent> flagEvents,
