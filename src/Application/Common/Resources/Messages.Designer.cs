@@ -808,6 +808,33 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to That player has private messages blocked.
+        /// </summary>
+        internal static string PrivateMessagesBlocked {
+            get {
+                return ResourceManager.GetString("PrivateMessagesBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now players cannot send you a private message.
+        /// </summary>
+        internal static string PrivateMessagesDisabled {
+            get {
+                return ResourceManager.GetString("PrivateMessagesDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now players can send you a private message.
+        /// </summary>
+        internal static string PrivateMessagesEnabled {
+            get {
+                return ResourceManager.GetString("PrivateMessagesEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Promoted to {RoleName} role.
         /// </summary>
         internal static string PromotedToRole {
