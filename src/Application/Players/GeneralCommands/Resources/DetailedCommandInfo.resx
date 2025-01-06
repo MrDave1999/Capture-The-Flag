@@ -125,6 +125,7 @@
 {Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
 {Color1}/addcoins: {Color2}Increases the player's coins by a designated amount.
 {Color1}/addallcoins: {Color2}Grant a set number of coins to all players.
+{Color1}/jetall: {Color2}Gives all players a jetpack.
 {Color1}/goto: {Color2}Teleport to the position of a specified player.
 {Color1}/get: {Color2}Bring a specified player to your current position.
 {Color1}/ban: {Color2}Ban a player from the server.

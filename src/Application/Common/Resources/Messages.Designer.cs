@@ -295,6 +295,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has given all players a jetpack.
+        /// </summary>
+        internal static string GiveJetpackToPlayers {
+            get {
+                return ResourceManager.GetString("GiveJetpackToPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have obtained 100 coins!.
         /// </summary>
         internal static string GiveMeCoins {
