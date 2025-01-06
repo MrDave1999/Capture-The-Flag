@@ -366,6 +366,15 @@
   <data name="PlayerWithInsufficientHealth" xml:space="preserve">
     <value>You don't have enough health</value>
   </data>
+  <data name="PrivateMessagesBlocked" xml:space="preserve">
+    <value>That player has private messages blocked</value>
+  </data>
+  <data name="PrivateMessagesDisabled" xml:space="preserve">
+    <value>Now players cannot send you a private message</value>
+  </data>
+  <data name="PrivateMessagesEnabled" xml:space="preserve">
+    <value>Now players can send you a private message</value>
+  </data>
   <data name="PromotedToRole" xml:space="preserve">
     <value>Promoted to {RoleName} role</value>
   </data>

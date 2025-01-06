@@ -216,6 +216,9 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}/report: {Color2}Report a player for inappropriate behavior.
 {Color1}/spec: {Color2}Spectate a specific player in the game.
 {Color1}/class: {Color2}Redirect to the class selection menu and enter AFK mode.
+{Color1}/pm: {Color2}Sends a private message to a player.
+{Color1}/blockpm: {Color2}Prevents players from sending you private messages.
+{Color1}/unblockpm: {Color2}Allows players to send you private messages.
 {Color1}/cmdsvip: {Color2}Display a list of commands available to VIP players.
 {Color1}/cmdsadmin: {Color2}Show the commands accessible to server administrators.
 {Color1}/cmdsmoderator: {Color2}Show the commands accessible to server moderators.</value>
