@@ -41,4 +41,12 @@ public static class HostEcsBuilderExtensions
         playerPauseSystem.PauseEvent += flagCarrierPauseHandler.OnPlayerPauseStateChange;
         return builder;
     }
+
+    public static IEcsBuilder EnableMapEvents(this IEcsBuilder builder)
+    {
+        var mapRotationService = builder.Services.GetRequiredService<MapRotationService>();
+        var rocketLauncherSystem = builder.Services.GetRequiredService<RocketLauncherSystem>();
+        mapRotationService.LoadingMapEvent += rocketLauncherSystem.OnLoadingMap;
+        return builder;
+    }
 }

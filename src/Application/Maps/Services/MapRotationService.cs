@@ -18,6 +18,11 @@ public class MapRotationService(
     private bool _isMapLoading;
     public bool IsMapLoading() => _isMapLoading;
 
+    public delegate void LoadingMapEventHandler();
+    public delegate void LoadedMapEventHandler();
+    public event LoadingMapEventHandler LoadingMapEvent;
+    public event LoadedMapEventHandler LoadedMapEvent;
+
     public void StartRotationTimer()
     {
         _loadTime ??= new LoadTime(OnLoadingMap, OnLoadedMap);
@@ -49,6 +54,7 @@ public class MapRotationService(
     private void OnLoadingMap()
     {
         _isMapLoading = true;
+        LoadingMapEvent?.Invoke();
         if (Team.Alpha.IsWinner())
             worldService.SendClientMessage(Color.Yellow, Messages.AlphaIsWinner);
         else if(Team.Beta.IsWinner())
@@ -84,6 +90,7 @@ public class MapRotationService(
     private void OnLoadedMap()
     {
         _isMapLoading = false;
+        LoadedMapEvent?.Invoke();
         TimeLeft.Reset();
         CurrentMap currentMap = mapInfoService.Read();
         string message = Smart.Format(Messages.MapSuccessfullyLoaded, new { currentMap.Name });
