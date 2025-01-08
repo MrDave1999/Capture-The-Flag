@@ -19,5 +19,5 @@ public interface ICombo
     /// <summary>
     /// Assigns a combo to a player, e.g., 100 Health and 100 Armour.
     /// </summary>
-    void Give(Player player);
+    Result Give(Player player);
 }
