@@ -250,11 +250,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has disabled the Rocket Launcher(RPG).
+        /// </summary>
+        internal static string DisableRocketLauncher {
+            get {
+                return ResourceManager.GetString("DisableRocketLauncher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have no items in your weapon package.
         /// </summary>
         internal static string EmptyWeaponPackage {
             get {
                 return ResourceManager.GetString("EmptyWeaponPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has enabled the Rocket Launcher(RPG). Use /combos or NUM 4 key.
+        /// </summary>
+        internal static string EnableRocketLauncher {
+            get {
+                return ResourceManager.GetString("EnableRocketLauncher", resourceCulture);
             }
         }
         
@@ -957,6 +975,15 @@ namespace CTF.Application.Common.Resources {
         internal static string ResetTeamStats {
             get {
                 return ResourceManager.GetString("ResetTeamStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The rocket launcher is disabled. It must be enabled by the STAFF.
+        /// </summary>
+        internal static string RocketLauncherDisabled {
+            get {
+                return ResourceManager.GetString("RocketLauncherDisabled", resourceCulture);
             }
         }
         
