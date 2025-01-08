@@ -4,6 +4,12 @@ public class RocketLauncherSystem(
     IWorldService worldService,
     ComboSettings comboSettings) : ISystem
 {
+    [Event]
+    public void OnLoadingMap()
+    {
+        comboSettings.IsRocketLauncherDisabled = true;
+    }
+
     [PlayerCommand("rpgon")]
     public void EnableRocketLauncher(Player player)
     {
