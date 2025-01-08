@@ -180,8 +180,14 @@
   <data name="DemotedToRole" xml:space="preserve">
     <value>Demoted to {RoleName} role</value>
   </data>
+  <data name="DisableRocketLauncher" xml:space="preserve">
+    <value>{PlayerName} has disabled the Rocket Launcher(RPG)</value>
+  </data>
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
+  </data>
+  <data name="EnableRocketLauncher" xml:space="preserve">
+    <value>{PlayerName} has enabled the Rocket Launcher(RPG). Use /combos or NUM 4 key</value>
   </data>
   <data name="ExitSpectatorMode" xml:space="preserve">
     <value>To exit spectator mode use the command /class</value>
@@ -416,6 +422,9 @@
   </data>
   <data name="ResetTeamStats" xml:space="preserve">
     <value>{PlayerName} has reset the statistics of both teams (Alpha and Beta)</value>
+  </data>
+  <data name="RocketLauncherDisabled" xml:space="preserve">
+    <value>The rocket launcher is disabled. It must be enabled by the STAFF</value>
   </data>
   <data name="RoleSuccessfullyChanged" xml:space="preserve">
     <value>You have assigned the {RoleName} role to {PlayerName}</value>

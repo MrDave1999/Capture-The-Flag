@@ -65,7 +65,10 @@ public class ComboSystem : ISystem
     {
         Result result = selectedCombo.Give(player);
         if (result.IsFailed)
+        {
+            ShowCombos(player);
             return;
+        }
 
         var message = Smart.Format(Messages.RedeemedCoins, new
         {

@@ -119,7 +119,8 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
         ///{Color1}/showrm: {Color2}Allows to show flag carriers on the radar map.
         ///{Color1}/hiderm: {Color2}Allows to hide flag carriers on the radar map.
-        ///{Color1}/rstats: {Color2}Reset the statistics of both teams (Alp [rest of string was truncated]&quot;;.
+        ///{Color1}/rpgon: {Color2}Enables the rocket launcher.
+        ///{Color1}/r [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Moderator {
             get {
