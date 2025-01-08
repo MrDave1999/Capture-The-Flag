@@ -169,6 +169,8 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
 {Color1}/showrm: {Color2}Allows to show flag carriers on the radar map.
 {Color1}/hiderm: {Color2}Allows to hide flag carriers on the radar map.
+{Color1}/rpgon: {Color2}Enables the rocket launcher.
+{Color1}/rpgoff: {Color2}Disables the rocket launcher.
 {Color1}/rstats: {Color2}Reset the statistics of both teams (Alpha and Beta).
 {Color1}/kick: {Color2}Kicks a player from the game.
 {Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavior.
