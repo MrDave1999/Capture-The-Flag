@@ -10,7 +10,7 @@ public class TearGasVitality : ICombo
         PlayerInfo playerInfo = player.GetInfo();
         player.Health = 100;
         player.Armour = 100;
-        player.GiveWeapon(Weapon.Teargas, ammo: 15);
+        player.GiveWeapon(Weapon.Teargas, ammo: 30);
         playerInfo.StatsPerRound.ResetCoins();
         return Result.Success();
     }
