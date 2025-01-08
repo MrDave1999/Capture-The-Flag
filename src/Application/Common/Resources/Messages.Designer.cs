@@ -196,6 +196,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use /combos or NUM 4 key.
+        /// </summary>
+        internal static string ComboUsage {
+            get {
+                return ResourceManager.GetString("ComboUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You cannot execute commands in the class selection.
         /// </summary>
         internal static string CommandLockClassSelection {
