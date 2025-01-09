@@ -385,6 +385,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid color. Only &apos;red&apos; and &apos;blue&apos; are valid options for this command.
+        /// </summary>
+        internal static string InvalidFlagColor {
+            get {
+                return ResourceManager.GetString("InvalidFlagColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The interval must be between 0 to {Max}.
         /// </summary>
         internal static string InvalidInterval {
@@ -966,6 +975,15 @@ namespace CTF.Application.Common.Resources {
         internal static string ReportToAnotherPlayer {
             get {
                 return ResourceManager.GetString("ReportToAnotherPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has reset the {ColorName} flag to its base position.
+        /// </summary>
+        internal static string ResetFlagPosition {
+            get {
+                return ResourceManager.GetString("ResetFlagPosition", resourceCulture);
             }
         }
         

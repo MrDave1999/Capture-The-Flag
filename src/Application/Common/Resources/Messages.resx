@@ -225,6 +225,9 @@
   <data name="InvalidAddCoins" xml:space="preserve">
     <value>Coins must be between 1 to 100</value>
   </data>
+  <data name="InvalidFlagColor" xml:space="preserve">
+    <value>Invalid color. Only 'red' and 'blue' are valid options for this command</value>
+  </data>
   <data name="InvalidInterval" xml:space="preserve">
     <value>The interval must be between 0 to {Max}</value>
   </data>
@@ -419,6 +422,9 @@
   </data>
   <data name="ReportToAnotherPlayer" xml:space="preserve">
     <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
+  </data>
+  <data name="ResetFlagPosition" xml:space="preserve">
+    <value>{PlayerName} has reset the {ColorName} flag to its base position</value>
   </data>
   <data name="ResetPlayerStats" xml:space="preserve">
     <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>
