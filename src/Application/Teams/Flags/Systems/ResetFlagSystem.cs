@@ -39,6 +39,7 @@ public class ResetFlagSystem(
         });
         team.IsFlagAtBasePosition = true;
         team.Flag.RemoveCarrier();
+        team.Flag.Carrier?.HideOnRadarMap();
         teamPickupService.CreateFlagFromBasePosition(team);
         teamPickupService.DestroyExteriorMarker(team);
         teamSoundsService.PlayFlagReturnedSound(team);
