@@ -38,8 +38,8 @@ public class ResetFlagSystem(
             team.ColorName
         });
         team.IsFlagAtBasePosition = true;
-        team.Flag.RemoveCarrier();
         team.Flag.Carrier?.HideOnRadarMap();
+        team.Flag.RemoveCarrier();
         teamPickupService.CreateFlagFromBasePosition(team);
         teamPickupService.DestroyExteriorMarker(team);
         teamSoundsService.PlayFlagReturnedSound(team);
