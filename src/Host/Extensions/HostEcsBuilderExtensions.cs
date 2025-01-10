@@ -34,11 +34,19 @@ public static class HostEcsBuilderExtensions
         return builder;
     }
 
-    public static IEcsBuilder EnablePauseEvents(this IEcsBuilder builder) 
+    public static IEcsBuilder RegisterPauseEventHandlers(this IEcsBuilder builder) 
     {
         var playerPauseSystem = builder.Services.GetRequiredService<PlayerPauseSystem>();
         var flagCarrierPauseHandler = builder.Services.GetRequiredService<FlagCarrierPauseHandler>();
         playerPauseSystem.PauseEvent += flagCarrierPauseHandler.OnPlayerPauseStateChange;
+        return builder;
+    }
+
+    public static IEcsBuilder RegisterMapEventHandlers(this IEcsBuilder builder)
+    {
+        var mapRotationService = builder.Services.GetRequiredService<MapRotationService>();
+        var rocketLauncherSystem = builder.Services.GetRequiredService<RocketLauncherSystem>();
+        mapRotationService.LoadingMapEvent += rocketLauncherSystem.OnLoadingMap;
         return builder;
     }
 }

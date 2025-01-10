@@ -162,6 +162,9 @@
   <data name="ChatDisabled" xml:space="preserve">
     <value>Chat is currently disabled while you select your class. Please finish your selection before chatting!</value>
   </data>
+  <data name="ComboUsage" xml:space="preserve">
+    <value>Use /combos or NUM 4 key</value>
+  </data>
   <data name="CommandLockClassSelection" xml:space="preserve">
     <value>You cannot execute commands in the class selection</value>
   </data>
@@ -180,8 +183,14 @@
   <data name="DemotedToRole" xml:space="preserve">
     <value>Demoted to {RoleName} role</value>
   </data>
+  <data name="DisableRocketLauncher" xml:space="preserve">
+    <value>{PlayerName} has disabled the Rocket Launcher(RPG)</value>
+  </data>
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
+  </data>
+  <data name="EnableRocketLauncher" xml:space="preserve">
+    <value>{PlayerName} has enabled the Rocket Launcher(RPG). Use /combos or NUM 4 key</value>
   </data>
   <data name="ExitSpectatorMode" xml:space="preserve">
     <value>To exit spectator mode use the command /class</value>
@@ -195,6 +204,9 @@
   <data name="GameModeDescription" xml:space="preserve">
     <value>~r~Welcome to Capture The Flag mode~n~~y~It is a game mode in which two teams (Alpha and Beta) compete to capture the other team's flag and bring it back to their own base to score a point</value>
   </data>
+  <data name="GiveJetpackToPlayers" xml:space="preserve">
+    <value>{PlayerName} has given all players a jetpack</value>
+  </data>
   <data name="GiveMeCoins" xml:space="preserve">
     <value>You have obtained 100 coins!</value>
   </data>
@@ -204,11 +216,17 @@
   <data name="HeadshotToPlayer" xml:space="preserve">
     <value>{PlayerName1} landed a headshot with a sniper at {PlayerName2}</value>
   </data>
+  <data name="HideFlagCarriersOnRadarMap" xml:space="preserve">
+    <value>{PlayerName} decided that the flag carriers will be hidden on the radar map</value>
+  </data>
   <data name="InsufficientCoins" xml:space="preserve">
     <value>You do not have enough coins to obtain this combo</value>
   </data>
   <data name="InvalidAddCoins" xml:space="preserve">
     <value>Coins must be between 1 to 100</value>
+  </data>
+  <data name="InvalidFlagColor" xml:space="preserve">
+    <value>Invalid color. Only 'red' and 'blue' are valid options for this command</value>
   </data>
   <data name="InvalidInterval" xml:space="preserve">
     <value>The interval must be between 0 to {Max}</value>
@@ -363,6 +381,15 @@
   <data name="PlayerWithInsufficientHealth" xml:space="preserve">
     <value>You don't have enough health</value>
   </data>
+  <data name="PrivateMessagesBlocked" xml:space="preserve">
+    <value>That player has private messages blocked</value>
+  </data>
+  <data name="PrivateMessagesDisabled" xml:space="preserve">
+    <value>Now players cannot send you a private message</value>
+  </data>
+  <data name="PrivateMessagesEnabled" xml:space="preserve">
+    <value>Now players can send you a private message</value>
+  </data>
   <data name="PromotedToRole" xml:space="preserve">
     <value>Promoted to {RoleName} role</value>
   </data>
@@ -396,11 +423,17 @@
   <data name="ReportToAnotherPlayer" xml:space="preserve">
     <value>{CurrentPlayer} reported to {TargetPlayer} [Reason: {Reason}]</value>
   </data>
+  <data name="ResetFlagPosition" xml:space="preserve">
+    <value>{PlayerName} has reset the {ColorName} flag to its base position</value>
+  </data>
   <data name="ResetPlayerStats" xml:space="preserve">
     <value>{PlayerName} has reset their stats, such as score, kills and deaths</value>
   </data>
   <data name="ResetTeamStats" xml:space="preserve">
     <value>{PlayerName} has reset the statistics of both teams (Alpha and Beta)</value>
+  </data>
+  <data name="RocketLauncherDisabled" xml:space="preserve">
+    <value>The rocket launcher is disabled. It must be enabled by the STAFF</value>
   </data>
   <data name="RoleSuccessfullyChanged" xml:space="preserve">
     <value>You have assigned the {RoleName} role to {PlayerName}</value>
@@ -416,6 +449,9 @@
   </data>
   <data name="SetSpawnToPlayer" xml:space="preserve">
     <value>You've spawned {PlayerName} into the game!</value>
+  </data>
+  <data name="ShowFlagCarriersOnRadarMap" xml:space="preserve">
+    <value>{PlayerName} decided that the flag carriers will be shown on the radar map</value>
   </data>
   <data name="SpawnLocationFailure" xml:space="preserve">
     <value>A spawn location can only be obtained for the alpha or beta team</value>

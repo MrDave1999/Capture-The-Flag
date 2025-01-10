@@ -52,20 +52,31 @@ public class ComboSystem : ISystem
         string selectedItemName = response.Item.Columns[0];
         ICombo selectedCombo = _combos.First(combo => combo.Name == selectedItemName);
         PlayerStatsPerRound playerStats = player.GetInfo().StatsPerRound;
-        if(playerStats.HasInsufficientCoins(selectedCombo.RequiredCoins))
+        if (playerStats.HasInsufficientCoins(selectedCombo.RequiredCoins))
         {
             player.SendClientMessage(Color.Red, Messages.InsufficientCoins);
             ShowCombos(player);
             return;
         }
+        GiveComboToPlayer(player, selectedCombo);
+    }
 
-        var message = Smart.Format(Messages.RedeemedCoins, new 
-        { 
-            PlayerName  = player.Name,
+    private void GiveComboToPlayer(Player player, ICombo selectedCombo)
+    {
+        Result result = selectedCombo.Give(player);
+        if (result.IsFailed)
+        {
+            ShowCombos(player);
+            return;
+        }
+
+        var message = Smart.Format(Messages.RedeemedCoins, new
+        {
+            PlayerName = player.Name,
             ComboName = selectedCombo.Name
         });
         _worldService.SendClientMessage(Color.Yellow, message);
-        selectedCombo.Give(player);
+        _worldService.GameText(Messages.ComboUsage, 5000, 3);
         _playerStatsRenderer.UpdateTextDraw(player);
     }
 }

@@ -13,5 +13,5 @@ public class FlagCarrierSettings
     /// <summary>
     /// Gets a value indicating whether the flag carrier should be shown on the radar map.
     /// </summary>
-    public bool ShowOnRadarMap { get; init; } = true;
+    public bool ShowOnRadarMap { get; set; } = true;
 }

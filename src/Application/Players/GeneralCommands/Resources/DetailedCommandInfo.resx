@@ -125,6 +125,7 @@
 {Color1}/addallscore: {Color2}Increases the score of all players by a specified amount.
 {Color1}/addcoins: {Color2}Increases the player's coins by a designated amount.
 {Color1}/addallcoins: {Color2}Grant a set number of coins to all players.
+{Color1}/jetall: {Color2}Gives all players a jetpack.
 {Color1}/goto: {Color2}Teleport to the position of a specified player.
 {Color1}/get: {Color2}Bring a specified player to your current position.
 {Color1}/ban: {Color2}Ban a player from the server.
@@ -164,8 +165,13 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
   <data name="Moderator" xml:space="preserve">
     <value>{Color1}/maps: {Color2}Displays a list of available maps in the game.
 {Color1}/settimeleft: {Color2}Sets the remaining time for the current game session.
+{Color1}/resetflag: {Color2}Resets the flag of a specific team to its base position.
 {Color1}/startrt: {Color2}Starts the rotation timer for the current map.
 {Color1}/stoprt: {Color2}Stops the rotation timer for the current map.
+{Color1}/showrm: {Color2}Allows to show flag carriers on the radar map.
+{Color1}/hiderm: {Color2}Allows to hide flag carriers on the radar map.
+{Color1}/rpgon: {Color2}Enables the rocket launcher.
+{Color1}/rpgoff: {Color2}Disables the rocket launcher.
 {Color1}/rstats: {Color2}Reset the statistics of both teams (Alpha and Beta).
 {Color1}/kick: {Color2}Kicks a player from the game.
 {Color1}/warn: {Color2}Issues a warning to a player for inappropriate behavior.
@@ -198,6 +204,7 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color2}Use the 'N' key to show the scoreboard with the players of both teams.
 {Color2}Use the 'Y' key to show the weapons menu.
 {Color2}Use the 'H' key to show your current weapons package.
+{Color2}Use the 'ALT + H' keys to get your parachute.
 {Color2}Use the 'NUM 4' key to show a list of available combos and their benefits.
 {Color2}Use the 'NUM 6' key to show your own statistics in the game.</value>
   </data>
@@ -213,6 +220,9 @@ Beware! Enemies will see flag carriers on their radar as well!</value>
 {Color1}/report: {Color2}Report a player for inappropriate behavior.
 {Color1}/spec: {Color2}Spectate a specific player in the game.
 {Color1}/class: {Color2}Redirect to the class selection menu and enter AFK mode.
+{Color1}/pm: {Color2}Sends a private message to a player.
+{Color1}/blockpm: {Color2}Prevents players from sending you private messages.
+{Color1}/unblockpm: {Color2}Allows players to send you private messages.
 {Color1}/cmdsvip: {Color2}Display a list of commands available to VIP players.
 {Color1}/cmdsadmin: {Color2}Show the commands accessible to server administrators.
 {Color1}/cmdsmoderator: {Color2}Show the commands accessible to server moderators.</value>

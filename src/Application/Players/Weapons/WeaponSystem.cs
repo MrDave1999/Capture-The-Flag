@@ -28,7 +28,11 @@ public class WeaponSystem : ISystem
     [Event]
     public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
     {
-        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Yes))
+        if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Walk | Keys.CtrlBack))
+        {
+            GiveParachute(player);
+        }
+        else if (KeyUtils.HasPressed(newKeys, oldKeys, Keys.Yes))
         {
             ShowWeapons(player);
         }
@@ -50,6 +54,12 @@ public class WeaponSystem : ISystem
             IWeapon weapon = selectedWeapons[i];
             player.GiveWeapon(weapon.Id, IWeapon.UnlimitedAmmo);
         }
+    }
+
+    [PlayerCommand("p")]
+    public void GiveParachute(Player player)
+    {
+        player.GiveWeapon(Weapon.Parachute, 1);
     }
 
     [PlayerCommand("weapons")]

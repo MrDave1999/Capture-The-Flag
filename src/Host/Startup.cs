@@ -29,10 +29,11 @@ public class Startup : IStartup
         builder
             .EnableExceptionHandler()
             .RegisterMiddlewares()
+            .RegisterPauseEventHandlers()
+            .RegisterMapEventHandlers()
             .EnableSampEvents()
             .EnablePlayerCommands()
             .EnableRconCommands()
-            .EnableStreamerEvents()
-            .EnablePauseEvents();
+            .EnableStreamerEvents();
     }
 }

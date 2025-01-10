@@ -196,6 +196,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use /combos or NUM 4 key.
+        /// </summary>
+        internal static string ComboUsage {
+            get {
+                return ResourceManager.GetString("ComboUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You cannot execute commands in the class selection.
         /// </summary>
         internal static string CommandLockClassSelection {
@@ -250,11 +259,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has disabled the Rocket Launcher(RPG).
+        /// </summary>
+        internal static string DisableRocketLauncher {
+            get {
+                return ResourceManager.GetString("DisableRocketLauncher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have no items in your weapon package.
         /// </summary>
         internal static string EmptyWeaponPackage {
             get {
                 return ResourceManager.GetString("EmptyWeaponPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has enabled the Rocket Launcher(RPG). Use /combos or NUM 4 key.
+        /// </summary>
+        internal static string EnableRocketLauncher {
+            get {
+                return ResourceManager.GetString("EnableRocketLauncher", resourceCulture);
             }
         }
         
@@ -295,6 +322,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has given all players a jetpack.
+        /// </summary>
+        internal static string GiveJetpackToPlayers {
+            get {
+                return ResourceManager.GetString("GiveJetpackToPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have obtained 100 coins!.
         /// </summary>
         internal static string GiveMeCoins {
@@ -322,6 +358,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} decided that the flag carriers will be hidden on the radar map.
+        /// </summary>
+        internal static string HideFlagCarriersOnRadarMap {
+            get {
+                return ResourceManager.GetString("HideFlagCarriersOnRadarMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough coins to obtain this combo.
         /// </summary>
         internal static string InsufficientCoins {
@@ -336,6 +381,15 @@ namespace CTF.Application.Common.Resources {
         internal static string InvalidAddCoins {
             get {
                 return ResourceManager.GetString("InvalidAddCoins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid color. Only &apos;red&apos; and &apos;blue&apos; are valid options for this command.
+        /// </summary>
+        internal static string InvalidFlagColor {
+            get {
+                return ResourceManager.GetString("InvalidFlagColor", resourceCulture);
             }
         }
         
@@ -799,6 +853,33 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to That player has private messages blocked.
+        /// </summary>
+        internal static string PrivateMessagesBlocked {
+            get {
+                return ResourceManager.GetString("PrivateMessagesBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now players cannot send you a private message.
+        /// </summary>
+        internal static string PrivateMessagesDisabled {
+            get {
+                return ResourceManager.GetString("PrivateMessagesDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Now players can send you a private message.
+        /// </summary>
+        internal static string PrivateMessagesEnabled {
+            get {
+                return ResourceManager.GetString("PrivateMessagesEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Promoted to {RoleName} role.
         /// </summary>
         internal static string PromotedToRole {
@@ -898,6 +979,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has reset the {ColorName} flag to its base position.
+        /// </summary>
+        internal static string ResetFlagPosition {
+            get {
+                return ResourceManager.GetString("ResetFlagPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has reset their stats, such as score, kills and deaths.
         /// </summary>
         internal static string ResetPlayerStats {
@@ -912,6 +1002,15 @@ namespace CTF.Application.Common.Resources {
         internal static string ResetTeamStats {
             get {
                 return ResourceManager.GetString("ResetTeamStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The rocket launcher is disabled. It must be enabled by the STAFF.
+        /// </summary>
+        internal static string RocketLauncherDisabled {
+            get {
+                return ResourceManager.GetString("RocketLauncherDisabled", resourceCulture);
             }
         }
         
@@ -957,6 +1056,15 @@ namespace CTF.Application.Common.Resources {
         internal static string SetSpawnToPlayer {
             get {
                 return ResourceManager.GetString("SetSpawnToPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} decided that the flag carriers will be shown on the radar map.
+        /// </summary>
+        internal static string ShowFlagCarriersOnRadarMap {
+            get {
+                return ResourceManager.GetString("ShowFlagCarriersOnRadarMap", resourceCulture);
             }
         }
         

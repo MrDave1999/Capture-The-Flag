@@ -1,6 +1,7 @@
 ﻿namespace CTF.Application.Players.GeneralCommands;
 
 public class AdminCommands(
+    IEntityManager entityManager,
     IServerService serverService,
     IWorldService worldService,
     IDialogService dialogService) : ISystem
@@ -18,6 +19,24 @@ public class AdminCommands(
         });
         var dialog = new MessageDialog(caption: "Admin Commands", content, "Close");
         dialogService.ShowAsync(player, dialog);
+    }
+
+    [PlayerCommand("jetall")]
+    public void GiveJetpackToPlayers(Player currentPlayer)
+    {
+        if (currentPlayer.HasLowerRoleThan(RoleId.Admin))
+            return;
+
+        var players = entityManager.GetComponents<Player>();
+        foreach (Player player in players)
+        {
+            player.SpecialAction = SpecialAction.UseJetpack;
+        }
+        var message = Smart.Format(Messages.GiveJetpackToPlayers, new 
+        { 
+            PlayerName = currentPlayer.Name 
+        });
+        worldService.SendClientMessage(Color.Yellow, message);
     }
 
     [PlayerCommand("goto")]
