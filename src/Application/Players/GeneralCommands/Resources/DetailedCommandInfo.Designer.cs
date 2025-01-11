@@ -85,9 +85,9 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///TheYoungCapone, B4MB1[MC], Sleyer, mihaibr,
         ///UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
         ///Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
-        ///SENiOR, saawan, Risq, Famous and Leo.
+        ///SENiOR, saawan, Risq, Famous, Leo and Pyraeus.
         ///{Color1}Acknowledgments to:{Color2}
-        ///ikkentim for cr [rest of string was truncated]&quot;;.
+        ///ikkent [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Credits {
             get {
