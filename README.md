@@ -332,6 +332,7 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - ZM_Italy - Unknown.
 - zone_paintball by Famous.
 - mp_island by Leo.
+- Baron's Playground (RC Battlefield V2) by Pyraeus.
 
 ## Contribution
 
