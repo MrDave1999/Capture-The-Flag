@@ -1,5 +1,5 @@
 #include <open.mp>
-#define FILTER_SCRIPT_NAME "de_dust2_x1"
+#define FILTER_SCRIPT_NAME "de_dust2x1"
 #include "objects"
 
 public OnFilterScriptInit()
