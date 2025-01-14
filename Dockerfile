@@ -29,7 +29,7 @@ FROM ubuntu:22.04 AS tools
 RUN apt-get update && apt-get install -y --no-install-recommends wget
 
 WORKDIR /open-mp
-ENV OPEN_MP_VERSION="1.3.1.2748"
+ENV OPEN_MP_VERSION="1.4.0.2779"
 RUN wget https://github.com/openmultiplayer/open.mp/releases/download/v${OPEN_MP_VERSION}/open.mp-linux-x86.tar.gz --no-check-certificate \
     && tar -xf open.mp-linux-x86.tar.gz \
     && rm -f open.mp-linux-x86.tar.gz

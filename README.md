@@ -174,7 +174,7 @@ These concepts have been applied to this project:
 ## Deployment without Docker
 
 - You must download [Visual C++ Redistributable x86](https://www.microsoft.com/en-us/download/details.aspx?id=48145) to load plugins such as SampSharp and Streamer.
-- You need to download the [ctf-gamemode-windows.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
+- You need to download the [ctf-win.zip](https://github.com/MrDave1999/Capture-The-Flag/releases/latest) file that contains the files to run the game mode.
 - Once downloaded, modify the `.env` file according to your needs.
 - Run the `omp-server.exe`.
 
@@ -312,7 +312,7 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - Area66 by DragonZafiro.
 - d_dust5, SA_Hill, de_aztec and de_dust2_small by Elorreli.
 - Compound and cs_rockwar by Amirab. 
-- DesertGlory, fy_iceworld2 and de_dust2_x3 by TheYoungCapone.
+- DesertGlory, fy_iceworld2 and de_dust2x3 by TheYoungCapone.
 - EntryMap and TheConstruction by B4MB1[MC].
 - fy_iceworld by Sleyer.
 - fy_snow by UnuAlex.
@@ -320,8 +320,9 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - de_dust2 by JamesT85.
 - Aim_Headshot by haubitze.
 - Aim_Headshot2 by Niktia_Ruchkov.
-- de_dust2_x1 by SpikY_.
-- de_dust2_x2 by Amads.
+- de_dust2x1 by SpikY_.
+- de_dust2x2 by Amads.
+- de_dust2x4 textured by excamunicado.
 - WarZone by Samarchai.
 - cs_assault by Ghost-X.
 - GateToHell and TheWild by Zniper.

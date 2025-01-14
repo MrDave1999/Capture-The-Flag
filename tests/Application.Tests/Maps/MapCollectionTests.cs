@@ -16,9 +16,10 @@ public class MapCollectionTests
             "de_aztec",
             "de_dust2",
             "de_dust2_small",
-            "de_dust2_x1",
-            "de_dust2_x2",
-            "de_dust2_x3",
+            "de_dust2x1",
+            "de_dust2x2",
+            "de_dust2x3",
+            "de_dust2x4",
             "de_dust5",
             "DesertGlory"
         ];
