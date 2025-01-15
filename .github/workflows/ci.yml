@@ -19,8 +19,12 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Setup .NET 6.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.x'
     - name: Execute unit tests
-      run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release --framework=net8.0
+      run: dotnet test ./tests/Application.Tests/CTF.Application.Tests.csproj -c Release
 
   integration_testing:
     runs-on: ubuntu-latest
@@ -44,6 +48,10 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Setup .NET 6.0
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.x'
     - name: Check MariaDB version
       run: docker exec mariadb mariadb --version
     - name: Check SQLite version
@@ -55,4 +63,4 @@ jobs:
     - name: Create .env.test file
       run: cp ./tests/Persistence.Tests/.env.test.example ./tests/Persistence.Tests/.env.test
     - name: Execute integration tests
-      run: dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release --framework=net8.0
+      run: dotnet test ./tests/Persistence.Tests/Persistence.Tests.csproj -c Release
