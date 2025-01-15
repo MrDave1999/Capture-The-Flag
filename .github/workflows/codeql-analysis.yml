@@ -8,6 +8,9 @@ on:
     - '**.csproj'
   pull_request:
     branches: [dev]
+    paths:
+    - '**.cs'
+    - '**.csproj'
   schedule:
     - cron: '0 8 * * 4'
 
@@ -30,7 +33,7 @@ jobs:
         languages: ${{ matrix.language }}
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+      uses: github/codeql-action/autobuild@v3
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
