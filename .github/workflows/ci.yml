@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET Core
+    - name: Setup .NET ${{ env.DOTNET_VERSION }}
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Setup .NET 6.0
+    - name: Setup .NET 6.x
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.x'
@@ -44,11 +44,11 @@ jobs:
           --health-retries=3
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET Core
+    - name: Setup .NET ${{ env.DOTNET_VERSION }}
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Setup .NET 6.0
+    - name: Setup .NET 6.x
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.x'
