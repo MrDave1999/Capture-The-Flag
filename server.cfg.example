@@ -5,6 +5,7 @@ gamemode0 empty 1
 plugins libSampSharp.so streamer.so
 filterscripts
 rcon_password password
+password
 port 7777
 hostname [CTF] Capture The Flag | TDM
 maxplayers 30
