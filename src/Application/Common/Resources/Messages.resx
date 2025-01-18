@@ -157,7 +157,7 @@
     <value>This round was won by the Beta team</value>
   </data>
   <data name="BlueFlagIsNotAtBasePosition" xml:space="preserve">
-    <value>~n~~n~~n~~b~The blue flag is not at its base position</value>
+    <value>~n~~n~~b~Your blue flag has been taken!~n~Recover it before the enemy scores!</value>
   </data>
   <data name="ChatDisabled" xml:space="preserve">
     <value>Chat is currently disabled while you select your class. Please finish your selection before chatting!</value>
@@ -415,7 +415,7 @@
     <value>{PlayerName} redeemed their coins for the combo: {ComboName}</value>
   </data>
   <data name="RedFlagIsNotAtBasePosition" xml:space="preserve">
-    <value>~n~~n~~n~~r~The red flag is not at its base position</value>
+    <value>~n~~n~~r~Your red flag has been taken!~n~Recover it before the enemy scores!</value>
   </data>
   <data name="ReportSuccessfullySent" xml:space="preserve">
     <value>You have successfully sent the report</value>

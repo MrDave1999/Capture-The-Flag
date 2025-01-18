@@ -178,7 +178,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~n~~n~~n~~b~The blue flag is not at its base position.
+        ///   Looks up a localized string similar to ~n~~n~~b~Your blue flag has been taken!~n~Recover it before the enemy scores!.
         /// </summary>
         internal static string BlueFlagIsNotAtBasePosition {
             get {
@@ -952,7 +952,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~n~~n~~n~~r~The red flag is not at its base position.
+        ///   Looks up a localized string similar to ~n~~n~~r~Your red flag has been taken!~n~Recover it before the enemy scores!.
         /// </summary>
         internal static string RedFlagIsNotAtBasePosition {
             get {
