@@ -2,7 +2,8 @@
 
 public class HeadShotSystem(
     IPlayerRepository playerRepository,
-    IWorldService worldService) : ISystem
+    IWorldService worldService,
+    ServerSettings serverSettings) : ISystem
 {
     /// <summary>
     /// This callback is called when a player takes damage.
@@ -36,10 +37,16 @@ public class HeadShotSystem(
         if (issuer.Team != receiver.Team && weapon == Weapon.Sniper && bodyPart == BodyPart.Head)
         {
             PlayerInfo issuerInfo = issuer.GetInfo();
+            PlayerInfo receiverInfo = receiver.GetInfo();
             issuerInfo.AddHeadShots();
             issuerInfo.StatsPerRound.AddCoins(5);
             playerRepository.UpdateHeadShots(issuerInfo);
             receiver.Health = 0;
+            if (!receiverInfo.HasCapturedFlag())
+            {
+                issuer.PlayAudioStream(serverSettings.HeadshotAudioUrl);
+                receiver.PlayAudioStream(serverSettings.HeadshotAudioUrl);
+            }
             var message = Smart.Format(Messages.HeadshotToPlayer, new
             {
                 PlayerName1 = issuer.Name,
