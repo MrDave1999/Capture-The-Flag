@@ -1204,11 +1204,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press Y to show the available weapons.
+        /// </summary>
+        internal static string WeaponListUsage {
+            get {
+                return ResourceManager.GetString("WeaponListUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weapon has not been found.
         /// </summary>
         internal static string WeaponNotFound {
             get {
                 return ResourceManager.GetString("WeaponNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press H to show your current weapon package.
+        /// </summary>
+        internal static string WeaponPackUsage {
+            get {
+                return ResourceManager.GetString("WeaponPackUsage", resourceCulture);
             }
         }
         
