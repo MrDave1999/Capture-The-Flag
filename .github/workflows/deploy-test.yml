@@ -20,6 +20,6 @@ jobs:
           cd ctf-test
           git pull origin dev
           git status
-          sudo docker compose up --build
+          sudo docker compose up --build -d
           sudo docker builder prune -f -a
           sudo docker image prune -f -a
