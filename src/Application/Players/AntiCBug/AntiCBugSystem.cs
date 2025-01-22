@@ -1,6 +1,6 @@
-﻿namespace CTF.Application.Players.AntiCrouchBug;
+﻿namespace CTF.Application.Players.AntiCBug;
 
-public class CrouchBugChecker(UnixTimeSeconds unixTimeSeconds) : ISystem
+public class AntiCBugSystem(UnixTimeSeconds unixTimeSeconds) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)

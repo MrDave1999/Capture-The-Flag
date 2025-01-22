@@ -1,4 +1,4 @@
-﻿namespace CTF.Application.Players.AntiCrouchBug;
+﻿namespace CTF.Application.Players.AntiCBug;
 
 /// <summary>
 /// Represents a component that stores the last shot time and 
