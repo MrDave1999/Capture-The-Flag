@@ -1,6 +1,8 @@
 ﻿namespace CTF.Application.Players.AntiCBug;
 
-public class AntiCBugSystem(UnixTimeSeconds unixTimeSeconds) : ISystem
+public class AntiCBugSystem(
+    UnixTimeSeconds unixTimeSeconds,
+    AntiCBugSettings antiCBugSettings) : ISystem
 {
     [Event]
     public void OnPlayerConnect(Player player)
@@ -11,6 +13,9 @@ public class AntiCBugSystem(UnixTimeSeconds unixTimeSeconds) : ISystem
     [Event]
     public void OnPlayerKeyStateChange(Player player, Keys newKeys, Keys oldKeys)
     {
+        if (antiCBugSettings.Disabled)
+            return;
+
         if (player.State != PlayerState.OnFoot)
             return;
 
