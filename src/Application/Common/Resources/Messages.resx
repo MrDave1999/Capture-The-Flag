@@ -498,8 +498,14 @@
   <data name="WeaponAlreadyExists" xml:space="preserve">
     <value>{Name} is already in the weapon package</value>
   </data>
+  <data name="WeaponListUsage" xml:space="preserve">
+    <value>Press Y to show the available weapons</value>
+  </data>
   <data name="WeaponNotFound" xml:space="preserve">
     <value>Weapon has not been found</value>
+  </data>
+  <data name="WeaponPackUsage" xml:space="preserve">
+    <value>Press H to show your current weapon package</value>
   </data>
   <data name="WeaponSuccessfullyAdded" xml:space="preserve">
     <value>{Name} was added to your weapon package</value>
