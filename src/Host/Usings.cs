@@ -15,6 +15,7 @@ global using CTF.Application.Players;
 global using CTF.Application.Players.Accounts;
 global using CTF.Application.Players.AFK;
 global using CTF.Application.Players.Combos;
+global using CTF.Application.Players.AntiCBug;
 global using CTF.Application.Players.TopPlayers.Models;
 global using CTF.Application.Teams.Flags;
 global using CTF.Application.Teams.Flags.Systems;

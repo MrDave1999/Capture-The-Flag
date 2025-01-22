@@ -26,12 +26,17 @@ public static class AppSettingsExtensions
             .GetRequiredSection("FlagCarrier")
             .Get<FlagCarrierSettings>();
 
+        var antiCBugSettings = configuration
+            .GetRequiredSection("AntiCBug")
+            .Get<AntiCBugSettings>();
+
         services
             .AddSingleton(serverSettings)
             .AddSingleton(commandCooldowns)
             .AddSingleton(topPlayersSettings)
             .AddSingleton(serverOwnerSettings)
-            .AddSingleton(flagCarrierSettings);
+            .AddSingleton(flagCarrierSettings)
+            .AddSingleton(antiCBugSettings);
 
         return services;
     }
