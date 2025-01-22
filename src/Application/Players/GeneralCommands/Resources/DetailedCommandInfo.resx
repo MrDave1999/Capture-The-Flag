@@ -131,6 +131,8 @@
 {Color1}/ban: {Color2}Ban a player from the server.
 {Color1}/unban: {Color2}Remove a ban from a player, allowing them back on the server.
 {Color1}/bannedips: {Color2}View a list of IP addresses that are currently banned.
+{Color1}/anticbugoff: {Color2}Disables the AntiCBug system.
+{Color1}/anticbugon: {Color2}Enables the AntiCBug system.
 
 {Color1}Use the '#' symbol at the start of your message to access the private admin chat.</value>
   </data>
