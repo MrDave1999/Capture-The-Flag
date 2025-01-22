@@ -183,11 +183,17 @@
   <data name="DemotedToRole" xml:space="preserve">
     <value>Demoted to {RoleName} role</value>
   </data>
+  <data name="DisableAntiCBug" xml:space="preserve">
+    <value>{PlayerName} has disabled the AntiCBug</value>
+  </data>
   <data name="DisableRocketLauncher" xml:space="preserve">
     <value>{PlayerName} has disabled the Rocket Launcher(RPG)</value>
   </data>
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
+  </data>
+  <data name="EnableAntiCBug" xml:space="preserve">
+    <value>{PlayerName} has enabled the AntiCBug</value>
   </data>
   <data name="EnableRocketLauncher" xml:space="preserve">
     <value>{PlayerName} has enabled the Rocket Launcher(RPG). Use /combos or NUM 4 key</value>
