@@ -20,6 +20,7 @@ public class MapCollectionTests
             "de_dust2x2",
             "de_dust2x3",
             "de_dust2x4",
+            "de_dust2x5",
             "de_dust5",
             "DesertGlory"
         ];
