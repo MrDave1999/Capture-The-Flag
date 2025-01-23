@@ -23,6 +23,8 @@ public class WeaponSystem : ISystem
     public void OnPlayerRequestSpawn(Player player) 
     {
         ShowWeapons(player);
+        player.SendClientMessage(Color.Orange, Messages.WeaponListUsage);
+        player.SendClientMessage(Color.Orange, Messages.WeaponPackUsage);
     }
 
     [Event]

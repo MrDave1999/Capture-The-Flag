@@ -168,7 +168,7 @@ These concepts have been applied to this project:
 ## Requirements to play
 
 - You must have **DirectX 9** installed on your local machine.
-- You must download [Grand Theft Auto: San Andreas](https://mega.nz/file/yFMjSLZA#8Amh1xyauAKO9Ff1lsbXHZIWHqPC4qEg2McfqhqoHTc) on your local machine.
+- You must download [Grand Theft Auto: San Andreas](https://mega.nz/file/mIlnjKQK#ZuqNUB3xqB6_pul917dmwUQaohGuYVcN7YwbXHqn-v4) on your local machine.
 - You must download [open.mp launcher](https://github.com/openmultiplayer/launcher/releases/latest) to connect to the servers.
 
 ## Deployment without Docker
@@ -314,7 +314,6 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - Compound and cs_rockwar by Amirab. 
 - DesertGlory, fy_iceworld2 and de_dust2x3 by TheYoungCapone.
 - EntryMap and TheConstruction by B4MB1[MC].
-- fy_iceworld by Sleyer.
 - fy_snow by UnuAlex.
 - fy_snow2 by mihaibr.
 - de_dust2 by JamesT85.
@@ -324,6 +323,7 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - de_dust2x2 by Amads.
 - de_dust2x4 textured by excamunicado.
 - WarZone by Samarchai.
+- WarZone2 by iMaster.
 - cs_assault by Ghost-X.
 - GateToHell and TheWild by Zniper.
 - TheBunker by Dr.Pawno.

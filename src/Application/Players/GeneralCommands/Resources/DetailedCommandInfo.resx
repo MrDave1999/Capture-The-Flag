@@ -131,6 +131,8 @@
 {Color1}/ban: {Color2}Ban a player from the server.
 {Color1}/unban: {Color2}Remove a ban from a player, allowing them back on the server.
 {Color1}/bannedips: {Color2}View a list of IP addresses that are currently banned.
+{Color1}/anticbugoff: {Color2}Disables the AntiCBug system.
+{Color1}/anticbugon: {Color2}Enables the AntiCBug system.
 
 {Color1}Use the '#' symbol at the start of your message to access the private admin chat.</value>
   </data>
@@ -141,7 +143,7 @@
 {Color1}Creator and programmer: {Color2}MrDave (Dave Roman)
 {Color1}Mappers:{Color2} 
 DragonZafiro, Elorreli, amirab, JamesT85,
-TheYoungCapone, B4MB1[MC], Sleyer, mihaibr,
+TheYoungCapone, B4MB1[MC], iMaster, mihaibr,
 UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
 Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
 SENiOR, saawan, Risq, Famous, Leo and Pyraeus.

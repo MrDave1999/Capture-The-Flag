@@ -183,11 +183,17 @@
   <data name="DemotedToRole" xml:space="preserve">
     <value>Demoted to {RoleName} role</value>
   </data>
+  <data name="DisableAntiCBug" xml:space="preserve">
+    <value>{PlayerName} has disabled the AntiCBug</value>
+  </data>
   <data name="DisableRocketLauncher" xml:space="preserve">
     <value>{PlayerName} has disabled the Rocket Launcher(RPG)</value>
   </data>
   <data name="EmptyWeaponPackage" xml:space="preserve">
     <value>You have no items in your weapon package</value>
+  </data>
+  <data name="EnableAntiCBug" xml:space="preserve">
+    <value>{PlayerName} has enabled the AntiCBug</value>
   </data>
   <data name="EnableRocketLauncher" xml:space="preserve">
     <value>{PlayerName} has enabled the Rocket Launcher(RPG). Use /combos or NUM 4 key</value>
@@ -492,8 +498,14 @@
   <data name="WeaponAlreadyExists" xml:space="preserve">
     <value>{Name} is already in the weapon package</value>
   </data>
+  <data name="WeaponListUsage" xml:space="preserve">
+    <value>Press Y to show the available weapons</value>
+  </data>
   <data name="WeaponNotFound" xml:space="preserve">
     <value>Weapon has not been found</value>
+  </data>
+  <data name="WeaponPackUsage" xml:space="preserve">
+    <value>Press H to show your current weapon package</value>
   </data>
   <data name="WeaponSuccessfullyAdded" xml:space="preserve">
     <value>{Name} was added to your weapon package</value>

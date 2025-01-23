@@ -259,6 +259,15 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has disabled the AntiCBug.
+        /// </summary>
+        internal static string DisableAntiCBug {
+            get {
+                return ResourceManager.GetString("DisableAntiCBug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {PlayerName} has disabled the Rocket Launcher(RPG).
         /// </summary>
         internal static string DisableRocketLauncher {
@@ -273,6 +282,15 @@ namespace CTF.Application.Common.Resources {
         internal static string EmptyWeaponPackage {
             get {
                 return ResourceManager.GetString("EmptyWeaponPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {PlayerName} has enabled the AntiCBug.
+        /// </summary>
+        internal static string EnableAntiCBug {
+            get {
+                return ResourceManager.GetString("EnableAntiCBug", resourceCulture);
             }
         }
         
@@ -1186,11 +1204,29 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Press Y to show the available weapons.
+        /// </summary>
+        internal static string WeaponListUsage {
+            get {
+                return ResourceManager.GetString("WeaponListUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weapon has not been found.
         /// </summary>
         internal static string WeaponNotFound {
             get {
                 return ResourceManager.GetString("WeaponNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press H to show your current weapon package.
+        /// </summary>
+        internal static string WeaponPackUsage {
+            get {
+                return ResourceManager.GetString("WeaponPackUsage", resourceCulture);
             }
         }
         
