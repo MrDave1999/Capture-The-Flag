@@ -82,12 +82,12 @@ namespace CTF.Application.Players.GeneralCommands.Resources {
         ///{Color1}Creator and programmer: {Color2}MrDave (Dave Roman)
         ///{Color1}Mappers:{Color2} 
         ///DragonZafiro, Elorreli, amirab, JamesT85,
-        ///TheYoungCapone, B4MB1[MC], Sleyer, mihaibr,
+        ///TheYoungCapone, B4MB1[MC], iMaster, mihaibr,
         ///UnuAlex, SpikY_, Niktia_Ruchkov, Amads,
         ///Samarchai, haubitze, Ghost-X, Zniper, Dr.Pawno,
         ///SENiOR, saawan, Risq, Famous, Leo and Pyraeus.
         ///{Color1}Acknowledgments to:{Color2}
-        ///ikkent [rest of string was truncated]&quot;;.
+        ///ikken [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Credits {
             get {
