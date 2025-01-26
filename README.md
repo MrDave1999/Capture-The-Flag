@@ -334,6 +334,7 @@ See the [scripts](https://github.com/MrDave1999/Capture-The-Flag/tree/dev/script
 - zone_paintball by Famous.
 - mp_island by Leo.
 - Baron's Playground (RC Battlefield V2) by Pyraeus.
+- cs_train, cs_opposition, fy_iceworld and de_dust2x5 by denis_32.
 
 ## Contribution
 
