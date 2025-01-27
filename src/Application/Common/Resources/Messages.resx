@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddArmourToAllPlayers" xml:space="preserve">
-    <value>{PlayerName} has added {Armour}%% to the armour of all players!</value>
+    <value>{PlayerName} has added {Armour}% to the armour of all players!</value>
   </data>
   <data name="AddArmourToPlayer" xml:space="preserve">
-    <value>You have added {Armour}%% armour to {PlayerName}!</value>
+    <value>You have added {Armour}% armour to {PlayerName}!</value>
   </data>
   <data name="AddCoinsToAllPlayers" xml:space="preserve">
     <value>{PlayerName} has generously given {Coins} coins to all the players!</value>
@@ -130,10 +130,10 @@
     <value>You have given {Coins} coins to {PlayerName}</value>
   </data>
   <data name="AddHealthToAllPlayers" xml:space="preserve">
-    <value>{PlayerName} has added {Health}%% to the health of all players!</value>
+    <value>{PlayerName} has added {Health}% to the health of all players!</value>
   </data>
   <data name="AddHealthToPlayer" xml:space="preserve">
-    <value>You have added {Health}%% health to {PlayerName}!</value>
+    <value>You have added {Health}% health to {PlayerName}!</value>
   </data>
   <data name="AddScoreToAllPlayers" xml:space="preserve">
     <value>{PlayerName} has added {Score} to the score of all players!</value>
@@ -403,13 +403,13 @@
     <value>You have gained +100 coins, +100 armour, and +100 health</value>
   </data>
   <data name="ReceiveArmourFromPlayer" xml:space="preserve">
-    <value>Congratulations! You've received {Armour}%% armour from {PlayerName}!</value>
+    <value>Congratulations! You've received {Armour}% armour from {PlayerName}!</value>
   </data>
   <data name="ReceiveCoinsFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Coins} coins from {PlayerName}!</value>
   </data>
   <data name="ReceiveHealthFromPlayer" xml:space="preserve">
-    <value>Congratulations! You've received {Health}%% health from {PlayerName}!</value>
+    <value>Congratulations! You've received {Health}% health from {PlayerName}!</value>
   </data>
   <data name="ReceiveKillsFromPlayer" xml:space="preserve">
     <value>Congratulations! You've received {Kills} kills from {PlayerName}!</value>
