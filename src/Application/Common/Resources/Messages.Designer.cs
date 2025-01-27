@@ -61,7 +61,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has added {Armour}%% to the armour of all players!.
+        ///   Looks up a localized string similar to {PlayerName} has added {Armour}% to the armour of all players!.
         /// </summary>
         internal static string AddArmourToAllPlayers {
             get {
@@ -70,7 +70,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have added {Armour}%% armour to {PlayerName}!.
+        ///   Looks up a localized string similar to You have added {Armour}% armour to {PlayerName}!.
         /// </summary>
         internal static string AddArmourToPlayer {
             get {
@@ -97,7 +97,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {PlayerName} has added {Health}%% to the health of all players!.
+        ///   Looks up a localized string similar to {PlayerName} has added {Health}% to the health of all players!.
         /// </summary>
         internal static string AddHealthToAllPlayers {
             get {
@@ -106,7 +106,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have added {Health}%% health to {PlayerName}!.
+        ///   Looks up a localized string similar to You have added {Health}% health to {PlayerName}!.
         /// </summary>
         internal static string AddHealthToPlayer {
             get {
@@ -916,7 +916,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Armour}%% armour from {PlayerName}!.
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Armour}% armour from {PlayerName}!.
         /// </summary>
         internal static string ReceiveArmourFromPlayer {
             get {
@@ -934,7 +934,7 @@ namespace CTF.Application.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Health}%% health from {PlayerName}!.
+        ///   Looks up a localized string similar to Congratulations! You&apos;ve received {Health}% health from {PlayerName}!.
         /// </summary>
         internal static string ReceiveHealthFromPlayer {
             get {
